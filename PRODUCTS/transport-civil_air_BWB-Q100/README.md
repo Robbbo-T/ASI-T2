@@ -28,6 +28,7 @@ Blended Wing Body Q100 passenger aircraft under the ASI-T2 portfolio. This READM
 * [Workflows](#workflows)
 * [Evidence & Compliance](#evidence--compliance)
 * [Glossary & Acronyms](#glossary--acronyms)
+* [FAQ](#FAQ)
 
 ---
 
@@ -466,3 +467,64 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
 * **AGV — Automated Guided Vehicle**: mobile platform for intralogistics/assembly.
 * **APU — Auxiliary Power Unit**: on-board power/air source (ATA-49).
 
+## BWB-Q100 — FAQ 
+
+**Q1. What’s the mission of BWB-Q100?**
+A \~100-passenger blended-wing-body optimized for **fuel burn ↓, emissions ↓, noise ↓, circularity ↑**. Work follows **TFA** (Top Federation Algorithm / Threading Final Assembly), **UIX.v1**, and **MAL-EEM**, with QS/UTCS provenance at every gate.
+
+**Q2. Where do I work for a given topic?**
+Navigate **Domain → Process (CAx/QOx) → ATA** under:
+`domains/<CODE>/{cax|qox}/<PHASE>/…` and `domains/<CODE>/ata/ATA-XX/…`.
+Examples:
+
+* Wing CFD: `domains/AAA/cax/CFD/` → quantum DOE in `domains/AAA/qox/CFD/` → docs in `domains/AAA/ata/ATA-57/`.
+* Landing gear: `domains/MEC/…` and docs in `domains/MEC/ata/ATA-32/`.
+
+**Q3. How do I add a new CAx study?**
+Create a folder in the owning domain: `domains/<CODE>/cax/<PHASE>/…` with a short `README.md`, inputs, configs, and results. Commit with UTCS anchors.
+
+**Q4. How do I produce a QOx run from a CAx study?**
+Encode the decision as **QUBO/BQM**:
+`domains/<CODE>/qox/<PHASE>/problems/<slug>.json`
+Solve with `qaoa/` or `annealing/`; outputs go to:
+`domains/<CODE>/qox/<PHASE>/runs/<YYYYMMDD-HHMMSS>/`
+Each run emits QS/UTCS (policy/model/data/operator hashes).
+
+**Q5. Where do ATA documents live and how do I link evidence?**
+Per domain in `domains/<CODE>/ata/ATA-XX/`. Reference CAx/QOx artefacts by relative links and include their QS/UTCS digests in the doc’s evidence section.
+
+**Q6. What if my work spans multiple domains?**
+Put **primary ownership** in the most responsible domain (e.g., propulsion in **PPP**). Cross-link secondary impacts from their ATA folders (e.g., nacelle structures in **AAA/ATA-54**).
+
+**Q7. How do revisions work (HOV)?**
+Baseline lives in the product root. For **rev ≥ 1**, create:
+`_revisions/REV_<LETTER>/HOV_<MSN_RANGE>_<PHASES>/…` mirroring the same domain/process/ATA structure. Keep filenames stable (no letters); encode rev in the path.
+
+**Q8. Where do SIM/LCA results go?**
+Attach **SIM** metrics (LCA per ISO 14040/44, GHG Scopes 1/2/3) alongside each QOx run:
+`domains/<CODE>/qox/<PHASE>/runs/<ts>/sim_lca/` and cite in ATA docs.
+
+**Q9. What’s the minimal PR that passes gates?**
+
+* New/updated CAx content with short README.
+* Matching QOx problem (if applicable) and at least one run.
+* QS/UTCS evidence blobs for the run(s).
+* Updated ATA doc with links & hashes.
+* Title/labels per styleguide; MAL-EEM must pass.
+
+**Q10. Quick map for common systems**
+
+* **Autoflight (ATA-22):** `domains/LCC` (controls) / `domains/IIS` (software).
+* **Information Systems (ATA-46):** `domains/DDD` and `domains/IIS`.
+* **Electrical Power (ATA-24):** `domains/EEE`.
+* **Fuel/H₂ (ATA-28):** `domains/PPP` (on-board) and `domains/AAP` (ground).
+* **Structures (ATA-51–57):** `domains/AAA` (airframe), `domains/MEC` (mech modules).
+
+**Q11. Which quantum method should I pick?**
+
+* **Routing/scheduling/layout:** QUBO/BQM → **Annealing/QAOA**.
+* **Materials/chemistry:** **VQE**.
+* **Large linear/PDE kernels:** **HHL/QLSA** (exploratory).
+
+**Q12. Where do I put compliance & safety test artefacts?**
+Under the **owning CAx phase** (`cax/CAT`, `cax/VP`, etc.) with links to the relevant **ATA** chapter folder; mirror any optimization in `qox/<PHASE>/…` and attach QS/UTCS.
