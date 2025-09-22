@@ -42,6 +42,7 @@ For BWB-Q100 ATA-57:
 - **BREX Data Module**: `DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml` - Project business rules
 - **Wing Structure Description**: `DMC-BWQ1-A-57-10-00-00A-040A-D-EN-US.xml` - Example descriptive module
 - **Publication Module**: `PMC-BWQ1-ATA57-00_001-00_EN-US.xml` - ATA-57 publication structure
+- **Data Module Requirements List**: `DML-BWQ1-ATA57-00.xml` - Complete ATA-57 data module requirements
 
 ## Compliance
 

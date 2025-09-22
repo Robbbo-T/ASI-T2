@@ -5,6 +5,7 @@ This directory contains template files for creating S1000D data modules and publ
 ## Available Templates
 
 - `data_module_template.xml` - Base template for all data module types with corrected S1000D Issue 6.0 compliance
+- `dmrl_template.xml` - Data Module Requirements List template for system-level requirements definition
 
 ## Template Features
 
@@ -18,12 +19,18 @@ The data module template includes:
   - Inspections/Tests: 300s (inspection), 345 (system test), 350 (functional check)
   - Fault Isolation: 420 (general FI), 421-428 (system-specific FI)
 
+The DMRL template includes:
+- **Requirements list structure** for complete system documentation planning
+- **Standard DMRL identification** (DML-BWQ1-{ATA}-{SEQ} format)
+- **Data module reference format** with proper S1000D code structure
+- **Human-readable requirement comments** for traceability
+
 ## Usage
 
 1. Copy the appropriate template file
-2. Rename with proper S1000D data module code (DMC-BWQ1-...)
+2. Rename with proper S1000D data module code (DMC-BWQ1-...) or DMRL code (DML-BWQ1-...)
 3. Replace placeholder values with actual content
-4. Update schema reference to match content type (descript.xsd, proced.xsd, etc.)
+4. Update schema reference to match content type (descript.xsd, dmrl.xsd, proced.xsd, etc.)
 5. Validate against S1000D Issue 6.0 schemas
 6. Review for ASI-T2 integration compliance
 

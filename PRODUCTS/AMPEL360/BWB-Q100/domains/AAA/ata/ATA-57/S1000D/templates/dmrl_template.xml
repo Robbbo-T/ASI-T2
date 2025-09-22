@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmrl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="../schemas/dmrl.xsd">
+<!-- 
+S1000D Data Module Requirements List (DMRL) Template
+Replace placeholder values with actual content
+
+DMRL Code Format: DML-{ModelIdent}-{System}-{SequenceNumber}
+For BWB-Q100: DML-BWQ1-{ATA_CHAPTER}-{SequenceNumber}
+-->
+  <identAndStatusSection>
+    <dmrlAddress>
+      <dmrlIdent dmrlCode="DML-BWQ1-{ATA_CHAPTER}-{SEQUENCE}" 
+                 languageIsoCode="en" countryIsoCode="US"/>
+      <issueInfo issueNumber="001" inWork="00"/>
+      <dmrlTitle>DMRL — {ATA_TITLE} ({CONFIGURATION})</dmrlTitle>
+    </dmrlAddress>
+  </identAndStatusSection>
+
+  <content>
+    <!-- Example data module requirement -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" 
+                systemCode="{SYSTEM}" subSystemCode="{SUBSYSTEM}" subSubSystemCode="{SUBSUBSYSTEM}"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" 
+                infoCode="{INFO_CODE}" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>{HUMAN_READABLE_DESCRIPTION}</reqComment>
+    </dmRequirement>
+    
+    <!-- Add additional dmRequirement elements as needed -->
+    
+  </content>
+</dmrl>
