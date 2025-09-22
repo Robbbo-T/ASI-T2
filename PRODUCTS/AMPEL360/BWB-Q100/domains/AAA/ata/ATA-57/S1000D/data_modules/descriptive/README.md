@@ -2,9 +2,14 @@
 
 Technical descriptions and specifications for ATA-57 Wing systems.
 
+## Key Files
+
+- **DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml** - Project BREX (Business Rules Exchange) - authoritative ruleset for BWB-Q100 S1000D implementation
+- **DMC-BWQ1-A-57-10-00-00A-040A-D-EN-US.xml** - Wing Structure General Description (example implementation)
+
 ## Contents
 
-This directory will contain descriptive data modules covering:
+This directory contains descriptive data modules covering:
 
 ### 57-10-00 Wing Structure
 - Wing box primary structure descriptions
@@ -45,3 +50,11 @@ Each descriptive data module includes:
 - Performance parameters
 - Material properties
 - Safety requirements
+
+## S1000D Issue 6.0 Compliance
+
+All data modules in this directory:
+- Use Model Identification Code "BWQ1" (mapped to "BWB-Q100")
+- Validate against XSD schemas (no DTD)
+- Reference the project BREX for business rules
+- Use proper information codes (040 for descriptions, 034 for technical data)

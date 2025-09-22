@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE dmodule PUBLIC "-//S1000D//DTD Data Module//EN" "dm.dtd">
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../schemas/{TYPE}.xsd">
 <!-- 
 S1000D Data Module Template for ATA-57 Wings
 Replace placeholder values with actual content
-Data Module Code: DMC-BWB-Q100-A-{System}-{SubSys}-{SubSubSys}-{Assy}-{DisAssy}-{InfoCode}-{InfoCodeVar}-{Location}-{Lang}-{Country}
+Data Module Code: DMC-BWQ1-A-{System}-{SubSys}-{SubSubSys}-{Assy}-{DisAssy}-{InfoCode}-{InfoCodeVar}-{Location}-{Lang}-{Country}
+
+Information Code Usage:
+- Descriptions: 040 (general), 034 (technical data)
+- Procedures: 200s (servicing/ops), 500s (removal), 600s (repair), 700s (install/rig)
+- Inspections/Tests: 300s (inspection), 345 (system test), 350 (functional check)
+- Fault Isolation: 420 (general FI), 421-428 (system-specific FI)
 -->
-<dmodule>
   <identAndStatusSection>
     <dmAddress>
       <dmIdent>
-        <dmCode modelIdentCode="BWB-Q100" systemDiffCode="A" systemCode="{SYSTEM_CODE}" 
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="{SYSTEM_CODE}" 
                 subSystemCode="{SUBSYSTEM_CODE}" subSubSystemCode="{SUBSUBSYSTEM_CODE}" 
                 assyCode="{ASSEMBLY_CODE}" disassyCode="{DISASSEMBLY_CODE}" 
                 disassyCodeVariant="{DISASSEMBLY_VARIANT}" infoCode="{INFO_CODE}" 
@@ -29,7 +35,7 @@ Data Module Code: DMC-BWB-Q100-A-{System}-{SubSys}-{SubSubSys}-{Assy}-{DisAssy}-
       <security securityClassification="01"/>
       <dataRestrictions>
         <restrictionInfo>
-          <restrictionInstructions>INTERNAL-EVIDENCE-REQUIRED</restrictionInstructions>
+          <restrictionInstructions>INTERNAL–EVIDENCE-REQUIRED</restrictionInstructions>
         </restrictionInfo>
       </dataRestrictions>
       <responsiblePartnerCompany>
@@ -46,10 +52,10 @@ Data Module Code: DMC-BWB-Q100-A-{System}-{SubSys}-{SubSubSys}-{Assy}-{DisAssy}-
       <brexDmRef>
         <dmRef>
           <dmRefIdent>
-            <dmCode modelIdentCode="S1000D" systemDiffCode="F" systemCode="04" 
-                    subSystemCode="10" subSubSystemCode="00" assyCode="00" 
-                    disassyCode="00A" disassyCodeVariant="A" infoCode="022" 
-                    infoCodeVariant="A" itemLocationCode="D"/>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="00" subSubSystemCode="00"
+                    assyCode="00" disassyCode="00A" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
           </dmRefIdent>
         </dmRef>
       </brexDmRef>

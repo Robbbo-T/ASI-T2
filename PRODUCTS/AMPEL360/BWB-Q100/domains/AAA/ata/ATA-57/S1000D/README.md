@@ -26,16 +26,29 @@ Data modules follow S1000D naming convention:
 - DMC-{Model Identification Code}-A-{System/Subsystem}-{Assembly}-{Disassembly}-{Information Code}-A-{Issue Number}-{Language}-{Country Code}
 
 For BWB-Q100 ATA-57:
-- Model: BWB-Q100
+- Model: BWQ1 (mapped to marketing name "BWB-Q100")
 - System: 57 (Wings)
 - Subsystems: 10, 20, 30, 40, 50
 
+## Information Code Usage (S1000D Issue 6.0)
+
+- **Descriptions**: 040 (general), 034 (technical data)
+- **Procedures**: 200s (servicing/ops), 500s (removal), 600s (repair), 700s (install/rig)
+- **Inspections/Tests**: 300s (inspection), 345 (system test), 350 (functional check)
+- **Fault Isolation**: 420 (general FI), 421-428 (system-specific FI)
+
+## Key Files
+
+- **BREX Data Module**: `DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml` - Project business rules
+- **Wing Structure Description**: `DMC-BWQ1-A-57-10-00-00A-040A-D-EN-US.xml` - Example descriptive module
+- **Publication Module**: `PMC-BWQ1-ATA57-00_001-00_EN-US.xml` - ATA-57 publication structure
+
 ## Compliance
 
-- **S1000D Version**: 6.0
+- **S1000D Version**: 6.0 (XSD-based validation, no DTD)
 - **Business Rules**: Defense and Commercial Aviation
-- **Schema**: S1000D Issue 6.0 schemas
-- **Validation**: All modules validated against S1000D DTD/XSD
+- **Schema**: S1000D Issue 6.0 schemas with XSD validation
+- **Model Identification**: BWQ1 (compliant with MIC requirements)
 
 ## Integration with ASI-T2
 
@@ -47,6 +60,6 @@ This S1000D implementation integrates with:
 
 ---
 
-**Last Updated**: 2025-01-22  
+**Last Updated**: 2025-09-22  
 **S1000D Version**: 6.0  
 **Classification**: INTERNAL–EVIDENCE-REQUIRED
