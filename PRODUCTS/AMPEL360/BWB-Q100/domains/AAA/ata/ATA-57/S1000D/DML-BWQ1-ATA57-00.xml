@@ -280,10 +280,10 @@
     <dmRequirement>
       <dmRefIdent>
         <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="40"
-                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A" itemLocationCode="D"/>
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
         <language languageIsoCode="en" countryIsoCode="US"/>
       </dmRefIdent>
-      <reqComment>57-30-40 Functional Description — Load alleviation (IC 042)</reqComment>
+      <reqComment>57-30-40 Functional Description — Load alleviation (IC 040)</reqComment>
     </dmRequirement>
     <dmRequirement>
       <dmRefIdent>
