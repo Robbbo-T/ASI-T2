@@ -29,7 +29,7 @@ Data Module Code: DMC-BWB-Q100-A-{System}-{SubSys}-{SubSubSys}-{Assy}-{DisAssy}-
       <security securityClassification="01"/>
       <dataRestrictions>
         <restrictionInfo>
-          <restrictionInstructions>INTERNAL–EVIDENCE-REQUIRED</restrictionInstructions>
+          <restrictionInstructions>INTERNAL-EVIDENCE-REQUIRED</restrictionInstructions>
         </restrictionInfo>
       </dataRestrictions>
       <responsiblePartnerCompany>
