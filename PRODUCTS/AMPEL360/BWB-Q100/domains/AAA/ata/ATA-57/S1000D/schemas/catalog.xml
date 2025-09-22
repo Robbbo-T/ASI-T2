@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <!-- XML Catalog for S1000D Issue 6.0 Schema Resolution -->
+  <uri name="descript.xsd" uri="descript.xsd"/>
+  <uri name="pm.xsd"       uri="pm.xsd"/>
+  <uri name="brex.xsd"     uri="brex.xsd"/>
+</catalog>
