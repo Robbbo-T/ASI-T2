@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commonInfoRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:noNamespaceSchemaLocation="../../schemas/cir.xsd">
+  <cirIdent>
+    <cirCode>CIR-BWQ1-00003</cirCode>
+    <cirType>procedures</cirType>
+  </cirIdent>
+  <content>
+    <commonProcedures>
+      <safetyProcedure id="ELEC-SAFETY">
+        <title>Electrical Safety Procedures</title>
+        <step>Ensure aircraft power is OFF before starting electrical work</step>
+        <step>Use lockout/tagout procedures on circuit breakers</step>
+        <step>Verify zero energy state with appropriate test equipment</step>
+        <step>Use properly rated PPE for electrical work</step>
+      </safetyProcedure>
+      <safetyProcedure id="FUEL-SAFETY">
+        <title>Fuel System Safety Procedures</title>
+        <step>Ensure no ignition sources within 50 feet of fuel operations</step>
+        <step>Use grounding straps to prevent static discharge</step>
+        <step>Have fire suppression equipment readily available</step>
+      </safetyProcedure>
+    </commonProcedures>
+  </content>
+</commonInfoRepository>

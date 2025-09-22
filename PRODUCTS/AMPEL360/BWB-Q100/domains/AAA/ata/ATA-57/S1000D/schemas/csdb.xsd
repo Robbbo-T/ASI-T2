@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="http://www.s1000d.org/csdb"
+           xmlns:tns="http://www.s1000d.org/csdb"
+           elementFormDefault="qualified">
+  <xs:element name="csdb">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="csdbIdent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="csdbCode" type="xs:string"/>
+              <xs:element name="issueInfo">
+                <xs:complexType>
+                  <xs:attribute name="issueNumber" type="xs:string" use="required"/>
+                  <xs:attribute name="inWork" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="repositories">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="repository" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="type" type="xs:string" use="required"/>
+                  <xs:attribute name="path" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
