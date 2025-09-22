@@ -476,10 +476,10 @@
     <dmRequirement>
       <dmRefIdent>
         <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="50"
-                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A" itemLocationCode="D"/>
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
         <language languageIsoCode="en" countryIsoCode="US"/>
       </dmRefIdent>
-      <reqComment>57-50-50 Functional Description — Smart/optimized wing features (IC 042)</reqComment>
+      <reqComment>57-50-50 Functional Description — Smart/optimized wing features (IC 040)</reqComment>
     </dmRequirement>
 
     <!-- =========================
