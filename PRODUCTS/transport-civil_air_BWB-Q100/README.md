@@ -45,7 +45,7 @@ Target: ~100-passenger BWB optimized for fuel burn ↓, emissions ↓, noise ↓
 
 ```
 
-BWB-Q100/conf_000_baseline/
+Model_BWB/version-Q100/conf_0000_baseline/MSN[0001-9999]
 └── domains/
     ├── AAA/
     │   ├── cax/
