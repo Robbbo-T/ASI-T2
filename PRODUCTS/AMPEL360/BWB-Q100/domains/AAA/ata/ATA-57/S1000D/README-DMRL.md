@@ -14,7 +14,7 @@ The DMRL serves as:
 
 ## Coverage Summary
 
-The DMRL specifies **67 data modules** across these subsystems:
+The DMRL specifies **55 data modules** across these subsystems:
 
 ### 57-10 Wing Structure (9 modules)
 - General description and maintenance planning
