@@ -1,0 +1,19 @@
+CAx domain,(i) What to optimize,(ii) Quantum mapping (formulation / algorithm),(iii) SIM lever (sustainability),(iv) Maturity
+CAD / CAID / CAAD,Design space & layout/topology,"QUBO/BQM → QAOA or Annealing; VQE for materials",Material use ↓; mass/drag ↓,Pilot/Research
+CAE / FEA,Topology/section sizing choices,"QUBO/BQM → QAOA/Annealing; future HHL/QLSA",Mass ↓ with safety margin ↑,Research
+CFD,Operating-point search; experiment/mesh strategy,"QUBO (DOE/active search); longer-term QLSA/HHL",Fuel burn ↓; emissions ↓,Research
+KBE / KLM,Rule/constraint satisfaction (Max-SAT),"QUBO Max-SAT → QAOA/Annealing",Right-first-time ↑; rework ↓,Pilot
+Virtual Prototyping,Test-plan / DOE selection,"QUBO/BQM → QAOA/Annealing",Test time/energy ↓,Pilot
+CAM / CNC,Tool-path batching; machine assignment/sequence,"QUBO/BQM (job-shop/flow-shop) → QAOA/Annealing",Energy/idle ↓; throughput ↑,Pilot
+CAPP / MPP / MPM,Routing; batch sizing; line balancing,"QUBO/BQM → QAOA/Annealing",WIP ↓; takt adherence ↑,Pilot
+MRP / MRP II / ERP,Multi-echelon inventory; capacity & lot sizing,"QUBO/BQM (multi-objective) → QAOA/Annealing; hybrid",Stockouts/waste ↓; service level ↑,Pilot
+CIM,Plant-level meta-scheduling & orchestration,"QUBO/BQM (global schedule) → QAOA/Annealing",Energy/CO₂ per unit ↓,Pilot
+Supply chain / Logistics,VRP / mVRP / network design,"QUBO/BQM (routing) → Annealing/QAOA; hybrid solvers",Transport emissions ↓; OTIF ↑,Now/Pilot
+PDM / PLM,BOM variant selection; change-impact minimization,"QUBO/BQM → QAOA/Annealing",Rework ↓; circularity ↑,Pilot
+CIS (Component Info System),Part-match & sourcing (assignment),"QUBO/BQM (assignment) → QAOA/Annealing",Lead time ↓; embodied carbon ↓,Pilot
+EDA,Placement / routing / floorplanning,"QUBO/BQM → Annealing/QAOA (active research)",PPA gains → lifecycle energy ↓,Pilot/Research
+CASE,Test selection; defect triage,"QUBO/BQM → QAOA",Defects/iterations ↓,Pilot
+CAR / CARD / CARE,Requirement consistency; rule synthesis/sequencing,"QUBO Max-SAT → QAOA/Annealing",Compliance risk ↓,Pilot
+CAI (HW-SW-AI embedding),Embedding architecture & component portfolio (multi-objective),"QUBO/BQM (weighted objectives) → QAOA",Energy efficiency ↑; abatement benefit ↑,Pilot
+CAA (Automation/Robotics),Cell/robot task allocation & timing,"QUBO/BQM (assignment/scheduling) → Annealing/QAOA",Utilization ↑; energy ↓,Pilot
+CAS / CASS (Medical),OR scheduling; instrument kitting; physics submodels,"QUBO/BQM → Annealing/QAOA; VQE for biomech/chem",Theatre time ↑; waste ↓,Pilot/Research
