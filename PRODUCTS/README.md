@@ -123,11 +123,10 @@ This closed-loop process is applied consistently across all products to ensure t
 ### Environments
 
 *   [`ENVIRONMENTS/air/`](../ENVIRONMENTS/air/): Manned and unmanned airborne platforms.
-*   [`ENVIRONMENTS/air-unmanned/`](../ENVIRONMENTS/air-unmanned/): Autonomous unmanned aerial systems.
 *   [`ENVIRONMENTS/ground/`](../ENVIRONMENTS/ground/): Ground-based systems and infrastructure.
 *   [`ENVIRONMENTS/sea/`](../ENVIRONMENTS/sea/): Maritime platforms and operations.
 *   [`ENVIRONMENTS/space/`](../ENVIRONMENTS/space/): Space-based platforms and orbital operations.
-*   [`ENVIRONMENTS/cross-environment/`](../ENVIRONMENTS/cross-environment/): Systems spanning multiple operational environments.
+*   [`ENVIRONMENTS/cross/`](../ENVIRONMENTS/cross/): Systems spanning multiple operational environments.
 *   [`ENVIRONMENTS/digital/`](../ENVIRONMENTS/digital/): Abstract computational and software environments.
 
 ### Core Optimization Framework
