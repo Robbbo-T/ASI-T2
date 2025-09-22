@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <!-- S1000D Issue 6.0 Descriptive Data Module Schema (simplified for validation) -->
+  
+  <xs:element name="dmodule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="identAndStatusSection"/>
+        <xs:element ref="content"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="identAndStatusSection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dmAddress"/>
+        <xs:element ref="dmStatus"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="dmAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dmIdent"/>
+        <xs:element ref="dmAddressItems"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="dmIdent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dmCode"/>
+        <xs:element ref="language"/>
+        <xs:element ref="issueInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="dmCode">
+    <xs:complexType>
+      <xs:attribute name="modelIdentCode" type="xs:string" use="required"/>
+      <xs:attribute name="systemDiffCode" type="xs:string" use="required"/>
+      <xs:attribute name="systemCode" type="xs:string" use="required"/>
+      <xs:attribute name="subSystemCode" type="xs:string" use="required"/>
+      <xs:attribute name="subSubSystemCode" type="xs:string" use="required"/>
+      <xs:attribute name="assyCode" type="xs:string" use="required"/>
+      <xs:attribute name="disassyCode" type="xs:string" use="required"/>
+      <xs:attribute name="disassyCodeVariant" type="xs:string" use="required"/>
+      <xs:attribute name="infoCode" type="xs:string" use="required"/>
+      <xs:attribute name="infoCodeVariant" type="xs:string" use="required"/>
+      <xs:attribute name="itemLocationCode" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="language">
+    <xs:complexType>
+      <xs:attribute name="languageIsoCode" type="xs:string" use="required"/>
+      <xs:attribute name="countryIsoCode" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="issueInfo">
+    <xs:complexType>
+      <xs:attribute name="issueNumber" type="xs:string" use="required"/>
+      <xs:attribute name="inWork" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="dmAddressItems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="issueDate"/>
+        <xs:element ref="dmTitle"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="issueDate">
+    <xs:complexType>
+      <xs:attribute name="year" type="xs:string" use="required"/>
+      <xs:attribute name="month" type="xs:string" use="required"/>
+      <xs:attribute name="day" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="dmTitle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="techName"/>
+        <xs:element ref="infoName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="techName" type="xs:string"/>
+  <xs:element name="infoName" type="xs:string"/>
+  
+  <xs:element name="dmStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="security"/>
+        <xs:element ref="dataRestrictions" minOccurs="0"/>
+        <xs:element ref="responsiblePartnerCompany"/>
+        <xs:element ref="originator"/>
+        <xs:element ref="applic"/>
+        <xs:element ref="brexDmRef"/>
+        <xs:element ref="qualityAssurance"/>
+      </xs:sequence>
+      <xs:attribute name="issueType" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="security">
+    <xs:complexType>
+      <xs:attribute name="securityClassification" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="dataRestrictions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="restrictionInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="restrictionInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="restrictionInstructions"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="restrictionInstructions" type="xs:string"/>
+  
+  <xs:element name="responsiblePartnerCompany">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="enterpriseName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="originator">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="enterpriseName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="enterpriseName" type="xs:string"/>
+  
+  <xs:element name="applic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="displayText"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="displayText">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="simplePara"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="simplePara" type="xs:string"/>
+  
+  <xs:element name="brexDmRef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dmRef"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="dmRef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dmRefIdent"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="dmRefIdent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dmCode"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="qualityAssurance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="unverified"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="unverified">
+    <xs:complexType/>
+  </xs:element>
+  
+  <xs:element name="content">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="description"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="description">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="levelledPara" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="levelledPara">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="title"/>
+        <xs:choice>
+          <xs:element ref="para"/>
+          <xs:element ref="randomList"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="para" type="xs:string"/>
+  
+  <xs:element name="randomList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="listItem" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="listItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="para"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

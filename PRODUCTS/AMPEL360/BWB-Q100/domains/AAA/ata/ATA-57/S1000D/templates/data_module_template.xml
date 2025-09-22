@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../schemas/{TYPE}.xsd">
+<!-- 
+S1000D Data Module Template for ATA-57 Wings
+Replace placeholder values with actual content
+Data Module Code: DMC-BWQ1-A-{System}-{SubSys}-{SubSubSys}-{Assy}-{DisAssy}-{InfoCode}-{InfoCodeVar}-{Location}-{Lang}-{Country}
+
+Information Code Usage:
+- Descriptions: 040 (general), 034 (technical data)
+- Procedures: 200s (servicing/ops), 500s (removal), 600s (repair), 700s (install/rig)
+- Inspections/Tests: 300s (inspection), 345 (system test), 350 (functional check)
+- Fault Isolation: 420 (general FI), 421-428 (system-specific FI)
+-->
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="{SYSTEM_CODE}" 
+                subSystemCode="{SUBSYSTEM_CODE}" subSubSystemCode="{SUBSUBSYSTEM_CODE}" 
+                assyCode="{ASSEMBLY_CODE}" disassyCode="{DISASSEMBLY_CODE}" 
+                disassyCodeVariant="{DISASSEMBLY_VARIANT}" infoCode="{INFO_CODE}" 
+                infoCodeVariant="{INFO_CODE_VARIANT}" itemLocationCode="{LOCATION_CODE}"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="{YEAR}" month="{MONTH}" day="{DAY}"/>
+        <dmTitle>
+          <techName>{TECHNICAL_NAME}</techName>
+          <infoName>{INFORMATION_NAME}</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <dataRestrictions>
+        <restrictionInfo>
+          <restrictionInstructions>INTERNAL–EVIDENCE-REQUIRED</restrictionInstructions>
+        </restrictionInfo>
+      </dataRestrictions>
+      <responsiblePartnerCompany>
+        <enterpriseName>ASI-T2 Architecture Team</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator>
+        <enterpriseName>AMPEL360 BWB-Q100 Program</enterpriseName>
+      </originator>
+      <applic>
+        <displayText>
+          <simplePara>BWB-Q100 Baseline Configuration (conf_000_baseline), MSN 0001-9999</simplePara>
+        </displayText>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="00" subSubSystemCode="00"
+                    assyCode="00" disassyCode="00A" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+  
+  <content>
+    <!-- Content section varies by information type -->
+    <!-- For descriptive modules (040): -->
+    <description>
+      <levelledPara>
+        <title>{SECTION_TITLE}</title>
+        <para>
+          {CONTENT_DESCRIPTION}
+        </para>
+      </levelledPara>
+    </description>
+    
+    <!-- For procedural modules (200s/500s/600s/700s): -->
+    <!--
+    <procedure>
+      <preliminaryRqmts>
+        <reqCondGroup>
+          <noConds/>
+        </reqCondGroup>
+        <reqPersons>
+          <personReq personCategory="REQ-PER001" trade="LAM">
+            <personQty quantityValue="1"/>
+          </personReq>
+        </reqPersons>
+        <reqSupportEquips>
+          <noSupportEquips/>
+        </reqSupportEquips>
+        <reqSupplies>
+          <noSupplies/>
+        </reqSupplies>
+        <reqSpares>
+          <noSpares/>
+        </reqSpares>
+        <reqSafety>
+          <noSafety/>
+        </reqSafety>
+      </preliminaryRqmts>
+      <mainProcedure>
+        <proceduralStep>
+          <para>{PROCEDURE_STEP}</para>
+        </proceduralStep>
+      </mainProcedure>
+      <closeRqmts>
+        <noCloseRqmts/>
+      </closeRqmts>
+    </procedure>
+    -->
+    
+    <!-- For fault modules (420/421-428): -->
+    <!--
+    <faultReporting>
+      <faultIsolation>
+        <isolationProcedure>
+          <isolationMainProcedure>
+            <isolationStep>
+              <para>{ISOLATION_STEP}</para>
+            </isolationStep>
+          </isolationMainProcedure>
+        </isolationProcedure>
+      </faultIsolation>
+    </faultReporting>
+    -->
+  </content>
+</dmodule>
