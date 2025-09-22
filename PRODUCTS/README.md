@@ -56,7 +56,7 @@ Products are uniquely identified by their position in the Field × Environment m
 | [`defense`](../FIELDS/defense/)                     | [`air-unmanned`](../ENVIRONMENTS/air-unmanned/)           | [`EE-US`](./defense_air-unmanned_EE-US/)                                | IIS, OOO, LCC, EDI, DDD                   | Ethically-governed autonomous UAV swarm for defense        |
 | [`cross-value-chain`](../FIELDS/cross-value-chain/)   | [`cross-environment`](../ENVIRONMENTS/cross-environment/) | [`LH2-CORRIDOR`](./cross-value-chain_cross-environment_LH2-CORRIDOR/)   | LIB, CQH, IIF, EEE, IIS                   | End-to-end green liquid hydrogen (LH2) value chain         |
 | **Core Platform**                                   |                                                         |                                                                         |                                           |                                                            |
-| [`quantum-aerospace`](../FIELDS/quantum-aerospace/)   | [`intelligence-model`](../ENVIRONMENTS/intelligence-model/) | [`QAIM`](./quantum-aerospace_intelligence-model_QAIM/)                  | IIS, CQH, OOO, DDD                        | Core quantum-classical optimization & AI engine            |
+| [`quantum-aerospace`](../FIELDS/quantum-aerospace/)   | [`intelligence-model`](../ENVIRONMENTS/digital/) | [`QAIM`](./quantum-aerospace_intelligence-model_QAIM/)                  | IIS, CQH, OOO, DDD                        | Core quantum-classical optimization & AI engine            |
 
 ---
 
