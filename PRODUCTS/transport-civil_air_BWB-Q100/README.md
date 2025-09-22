@@ -367,6 +367,18 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
 4. Document (ATA) → update `domains/<CODE>/ata/ATA-XX/` with references and evidence.
 5. Gate → PR includes UTCS anchors; MAL-EEM enforced.
 
+**in other words**:
+
+1. Model (CAx): An engineer performs a standard task using a classical tool, such as designing a component in CAD or analyzing airflow in CFD.
+
+2. Encode (QOx): A difficult optimization problem from the CAx study (e.g., finding the absolute best winglet topology to reduce drag or the most efficient manufacturing schedule) is mathematically encoded into a format suitable for a quantum computer. This is typically a Quadratic Unconstrained Binary Optimization (QUBO) problem.
+
+3. Solve (QOx): The QUBO problem is solved using a quantum algorithm, such as the Quantum Approximate Optimization Algorithm (QAOA) or Quantum Annealing. This process explores a vast number of potential solutions simultaneously to find a high-quality or optimal result.
+
+4. Document (ATA): The results from both the classical and quantum runs are documented in the relevant ATA chapter, providing a complete record of the work.
+
+5. Commit
+
 ---
 
 ## Evidence & Compliance
