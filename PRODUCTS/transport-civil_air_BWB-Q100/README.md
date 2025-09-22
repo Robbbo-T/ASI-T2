@@ -26,9 +26,13 @@ Blended Wing Body Q100 passenger aircraft under the ASI-T2 portfolio. This READM
 * [Domains ↔ Processes (CAx/QOx) ↔ ATA](#domains--processes-caxqox--ata)
 * [QAIM-2: CAx → QOx Matrix (SIM)](#qaim-2-cax--qox-matrix-sim)
 * [Workflows](#workflows)
+  * [Detailed Quantum Optimization Process](#detailed-quantum-optimization-process)
+  * [Domain-Specific Quantum Optimization Examples](#domain-specific-quantum-optimization-examples)
+  * [Best Practices & Troubleshooting](#best-practices--troubleshooting)
+* [Quantum Optimization Performance Metrics](#quantum-optimization-performance-metrics)
 * [Evidence & Compliance](#evidence--compliance)
 * [Glossary & Acronyms](#glossary--acronyms)
-* [FAQ](#FAQ)
+* [FAQ](#bwb-q100--faq)
 
 ---
 
@@ -339,45 +343,301 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
 
 ## QAIM-2: CAx → QOx Matrix (SIM)
 
+The Quantum-Accelerated Industry Model 2 (QAIM-2) provides strategic mapping from classical Computer-Aided (CAx) processes to Quantum-Optimized (QOx) implementations within the Sustainable Industry Model framework. This matrix identifies optimization targets, quantum formulations, sustainability levers, and technology maturity for BWB-Q100 development.
+
+> **Reference**: Complete QAIM-2 framework available at [`FIELDS/cross/QAIM-2/`](../../FIELDS/cross/QAIM-2/README.md) with detailed implementation strategies and 18 industrial domains.
+
+### BWB-Q100 Optimization Matrix
+
 *(i)* optimization target · *(ii)* quantum mapping · *(iii)* SIM lever · *(iv)* maturity
 
 | CAx domain | (i) What to optimize            | (ii) Quantum mapping                       | (iii) SIM lever                  | (iv) Maturity  |
 | ---------- | ------------------------------- | ------------------------------------------ | -------------------------------- | -------------- |
-| CAD        | Layout/topology                 | QUBO/BQM → QAOA/Annealing; VQE subproblems | Material use ↓; drag ↓           | Pilot/Research |
-| CAE        | Topology & sizing               | QUBO/BQM; exploratory QLSA/HHL             | Mass ↓ with safety ↑             | Research       |
-| CFD        | Operating points; DOE           | QUBO for DOE; exploratory QLSA/HHL         | Fuel burn ↓; emissions ↓         | Research       |
-| KBE        | Rule Max-SAT                    | QUBO Max-SAT → QAOA/Annealing              | Right-first-time ↑               | Pilot          |
-| VP         | Test plan selection             | QUBO/BQM → QAOA/Annealing                  | Test time/energy ↓               | Pilot          |
-| CAM        | Toolpath batch, sequencing      | QUBO/BQM (job/flow shop)                   | Energy/idle ↓; throughput ↑      | Pilot          |
-| CAPP       | Routing; takt balance           | QUBO/BQM                                   | WIP ↓; takt adherence ↑          | Pilot          |
-| MRP-ERP    | Inventory/capacity/lot sizing   | Multi-objective QUBO (hybrid)              | Stockouts/waste ↓; service ↑     | Pilot          |
-| CIM        | Plant meta-schedule             | Global schedule QUBO                       | Energy/CO₂ per unit ↓            | Pilot          |
-| SCM        | VRP/mVRP/network                | Routing QUBO → Annealing/QAOA (hybrid)     | Transport emissions ↓; OTIF ↑    | Now/Pilot      |
-| PDM-PLM    | BOM variants; change impact     | QUBO/BQM                                   | Rework ↓; circularity ↑          | Pilot          |
-| CAI        | Embedding portfolio (multi-obj) | Weighted-objective QUBO → QAOA             | Energy efficiency ↑; abatement ↑ | Pilot          |
-| CAA        | Robot/cell allocation & timing  | Assignment/scheduling QUBO                 | Utilization ↑; energy ↓          | Pilot          |
+| **CAD**    | Layout/topology                 | QUBO/BQM → QAOA/Annealing; VQE subproblems | Material use ↓; drag ↓           | Pilot/Research |
+| **CAE**    | Topology & sizing               | QUBO/BQM; exploratory QLSA/HHL             | Mass ↓ with safety ↑             | Research       |
+| **CFD**    | Operating points; DOE           | QUBO for DOE; exploratory QLSA/HHL         | Fuel burn ↓; emissions ↓         | Research       |
+| **KBE**    | Rule Max-SAT                    | QUBO Max-SAT → QAOA/Annealing              | Right-first-time ↑               | Pilot          |
+| **VP**     | Test plan selection             | QUBO/BQM → QAOA/Annealing                  | Test time/energy ↓               | Pilot          |
+| **CAM**    | Toolpath batch, sequencing      | QUBO/BQM (job/flow shop)                   | Energy/idle ↓; throughput ↑      | Pilot          |
+| **CAPP**   | Routing; takt balance           | QUBO/BQM                                   | WIP ↓; takt adherence ↑          | Pilot          |
+| **MRP-ERP**| Inventory/capacity/lot sizing   | Multi-objective QUBO (hybrid)              | Stockouts/waste ↓; service ↑     | Pilot          |
+| **CIM**    | Plant meta-schedule             | Global schedule QUBO                       | Energy/CO₂ per unit ↓            | Pilot          |
+| **SCM**    | VRP/mVRP/network                | Routing QUBO → Annealing/QAOA (hybrid)     | Transport emissions ↓; OTIF ↑    | Now/Pilot      |
+| **PDM-PLM**| BOM variants; change impact     | QUBO/BQM                                   | Rework ↓; circularity ↑          | Pilot          |
+| **CAI**    | Embedding portfolio (multi-obj) | Weighted-objective QUBO → QAOA             | Energy efficiency ↑; abatement ↑ | Pilot          |
+| **CAA**    | Robot/cell allocation & timing  | Assignment/scheduling QUBO                 | Utilization ↑; energy ↓          | Pilot          |
+
+### Implementation Strategy by Maturity Level
+
+#### Phase 1: Now/Pilot Deployment (Ready for immediate implementation)
+- **SCM Optimization**: Vehicle routing, supply network design using quantum annealing
+- **Production Scheduling**: CAPP routing optimization, takt time balancing
+- **Resource Allocation**: CAA robot scheduling, facility utilization optimization
+
+#### Phase 2: Pilot Programs (Near-term quantum systems)
+- **Design Optimization**: CAD topology optimization, materials selection via VQE
+- **Manufacturing Efficiency**: CAM toolpath optimization, CIM plant scheduling
+- **Knowledge Systems**: KBE rule satisfaction, VP test plan optimization
+- **Inventory Management**: MRP-ERP multi-echelon optimization
+
+#### Phase 3: Research & Development (Future quantum capabilities)
+- **Advanced Simulation**: CFD operating point optimization via HHL/QLSA
+- **Structural Analysis**: CAE topology/sizing with quantum linear solvers
+- **Multi-physics**: Coupled fluid-structure-thermal optimization
+
+### Quantum Hardware Requirements
+
+#### Current Generation (2024-2026)
+- **Quantum Annealers**: 5000+ qubits for SCM, CAPP, scheduling problems
+- **Gate-based Systems**: 100-1000 qubits for QAOA applications
+- **Classical Hybrid**: CPU/GPU clusters for pre/post-processing
+
+#### Near-term (2026-2030)
+- **Error-corrected Systems**: 1000+ logical qubits for VQE applications
+- **Photonic Processors**: Specialized for optimization and machine learning
+- **Distributed Quantum**: Multi-node quantum networks for large problems
+
+#### Long-term (2030+)
+- **Fault-tolerant Systems**: 10,000+ logical qubits for HHL/QLSA
+- **Application-specific**: Domain-optimized quantum processors
+- **Quantum-classical Integration**: Seamless hybrid computing platforms
+
+### Domain-Specific Quantum Optimization Examples
+
+#### AAA (Aerodynamics & Airframes) - Wing Design Optimization
+**Classical Problem**: Optimize wing geometry for minimum drag while maintaining structural integrity
+```
+Input: Wing geometry parameters (30-100 variables)
+Constraints: Lift requirements, structural limits, manufacturing feasibility
+Objective: Minimize drag coefficient + weight penalty
+```
+
+**Quantum Approach**:
+1. **CAD Phase**: Parametric wing model with discrete topology choices
+2. **QOx Encoding**: QUBO formulation with drag/weight objectives
+3. **Quantum Solve**: QAOA with p=3 layers, 500 parameters
+4. **Post-processing**: Classical refinement of continuous parameters
+5. **Expected Benefit**: 5-15% drag reduction, 20% faster optimization
+
+**File Structure**:
+```
+domains/AAA/cax/CAD/wing_optimization_baseline/
+domains/AAA/qox/CAD/problems/wing_topology_v1.json
+domains/AAA/qox/CAD/runs/20250122-143052/
+domains/AAA/ata/ATA-57/wing_quantum_optimization.md
+```
+
+#### PPP (Propulsion) - Engine Operating Point Optimization
+**Classical Problem**: Find optimal engine operating conditions across flight envelope
+```
+Input: Throttle settings, inlet conditions, flight phases (50-200 variables)
+Constraints: Temperature limits, surge margins, emissions regulations
+Objective: Minimize fuel consumption + emissions weighted sum
+```
+
+**Quantum Approach**:
+1. **CFD Phase**: High-fidelity engine simulations at discrete operating points
+2. **QOx Encoding**: DOE selection as QUBO, operating point optimization
+3. **Quantum Solve**: Quantum annealing for DOE + QAOA for continuous optimization
+4. **SIM Integration**: Real-time fuel/emissions tracking
+5. **Expected Benefit**: 8-12% fuel savings, 15% reduction in emissions
+
+#### MEC (Mechanical Systems) - Landing Gear Topology Optimization
+**Classical Problem**: Optimize landing gear structure for minimum weight with safety margins
+```
+Input: Load paths, material distribution, joint locations (100-500 variables)
+Constraints: Ultimate load factors, fatigue life, ground clearance
+Objective: Minimize structural weight while maximizing safety margin
+```
+
+**Quantum Approach**:
+1. **CAE Phase**: FEA topology optimization with discrete element choices
+2. **QOx Encoding**: Binary material distribution QUBO with stress constraints
+3. **Quantum Solve**: VQE for materials properties + QAOA for topology
+4. **Validation**: Classical FEA verification of quantum solutions
+5. **Expected Benefit**: 10-20% weight reduction, faster design iterations
+
+### Best Practices & Troubleshooting
+
+#### Problem Formulation Guidelines
+1. **Variable Reduction**: Use dimensionality reduction before quantum encoding
+2. **Constraint Handling**: Prefer penalty methods over Lagrange multipliers
+3. **Objective Scaling**: Normalize objectives to similar magnitude ranges
+4. **Decomposition**: Split large problems into quantum-amenable subproblems
+
+#### Performance Optimization
+- **Parameter Tuning**: Use Bayesian optimization for variational parameters
+- **Error Mitigation**: Apply zero-noise extrapolation for NISQ devices
+- **Classical Post-processing**: Combine quantum samples with local search
+- **Benchmarking**: Always compare against best classical algorithms
+
+#### Common Issues & Solutions
+| Issue | Symptoms | Solution |
+|-------|----------|----------|
+| Poor solution quality | Low energy, constraint violations | Increase penalty weights, improve problem formulation |
+| Slow convergence | High variance in results | Increase sampling shots, use better initial parameters |
+| Scaling problems | Exponential resource growth | Problem decomposition, hybrid algorithms |
+| Hardware limitations | Limited qubit connectivity | Graph embedding optimization, layout-aware formulation |
 
 ---
 
 ## Workflows
 
-1. Model (CAx) → commit in `domains/<CODE>/cax/<PHASE>/`.
-2. Encode (QOx) → emit QUBO/BQM into `domains/<CODE>/qox/<PHASE>/problems/`.
-3. Solve → run `qaoa/` or `annealing/`; save to `domains/<CODE>/qox/<PHASE>/runs/<YYYYMMDD-HHMMSS>/` (auto-QS/UTCS).
-4. Document (ATA) → update `domains/<CODE>/ata/ATA-XX/` with references and evidence.
-5. Gate → PR includes UTCS anchors; MAL-EEM enforced.
+### High-Level Process Flow
 
-**in other words**:
+1. **Model (CAx)** → commit in `domains/<CODE>/cax/<PHASE>/`.
+2. **Encode (QOx)** → emit QUBO/BQM into `domains/<CODE>/qox/<PHASE>/problems/`.
+3. **Solve** → run `qaoa/` or `annealing/`; save to `domains/<CODE>/qox/<PHASE>/runs/<YYYYMMDD-HHMMSS>/` (auto-QS/UTCS).
+4. **Document (ATA)** → update `domains/<CODE>/ata/ATA-XX/` with references and evidence.
+5. **Gate** → PR includes UTCS anchors; MAL-EEM enforced.
 
-1. Model (CAx): An engineer performs a standard task using a classical tool, such as designing a component in CAD or analyzing airflow in CFD.
+### Detailed Quantum Optimization Process
 
-2. Encode (QOx): A difficult optimization problem from the CAx study (e.g., finding the absolute best winglet topology to reduce drag or the most efficient manufacturing schedule) is mathematically encoded into a format suitable for a quantum computer. This is typically a Quadratic Unconstrained Binary Optimization (QUBO) problem.
+#### 1. Classical Modeling & Problem Identification (CAx)
+An engineer performs standard engineering tasks using classical tools:
+- **CAD**: Design component geometry, topology optimization, material selection
+- **CAE**: Structural analysis, thermal simulations, safety margin calculations  
+- **CFD**: Airflow analysis, drag/lift optimization, operating point studies
+- **Manufacturing**: Process planning, toolpath generation, scheduling constraints
 
-3. Solve (QOx): The QUBO problem is solved using a quantum algorithm, such as the Quantum Approximate Optimization Algorithm (QAOA) or Quantum Annealing. This process explores a vast number of potential solutions simultaneously to find a high-quality or optimal result.
+**Key Output**: Engineering problem with identified optimization opportunities that exceed classical computational limits.
 
-4. Document (ATA): The results from both the classical and quantum runs are documented in the relevant ATA chapter, providing a complete record of the work.
+#### 2. Quantum Problem Encoding (QOx)
+Transform the classical optimization problem into quantum-compatible formulations:
 
-5. Commit
+**2.1 Problem Analysis**
+- Identify decision variables (binary/discrete choices)
+- Define objective function (minimize drag, cost, energy, etc.)
+- Map constraints (safety, regulatory, physical limits)
+- Assess problem complexity (variable count, constraint interactions)
+
+**2.2 Mathematical Encoding**
+- **QUBO Formulation**: Convert to Quadratic Unconstrained Binary Optimization
+
+  $$
+  \text{minimize:} \quad \mathbf{x}^\mathrm{T} Q \mathbf{x} + \mathbf{c}^\mathrm{T} \mathbf{x}
+  $$
+  $$
+  \text{where} \quad \mathbf{x} \in \{0,1\}^n
+  $$
+- **BQM Structure**: Define binary quadratic model with bias and coupling terms
+- **Penalty Methods**: Incorporate constraints via penalty functions
+- **Multi-objective**: Weight sustainability objectives (fuel ↓, emissions ↓, mass ↓)
+
+**2.3 Problem Validation**
+- Verify QUBO matrix properties (symmetry, conditioning)
+- Test small instances with classical solvers
+- Validate constraint satisfaction in solution space
+
+#### 3. Quantum Algorithm Selection & Execution
+Choose optimal quantum approach based on problem characteristics:
+
+**3.1 Algorithm Selection Matrix**
+| Problem Type | Variables | Quantum Method | Hardware | Maturity |
+|--------------|-----------|----------------|----------|----------|
+| Routing/Scheduling | 100-1000 | QAOA + Classical | Gate-based | Pilot |
+| Layout/Topology | 50-500 | Quantum Annealing | Annealer | Now |
+| Materials/Chemistry | 10-100 | VQE | Gate-based | Research |
+| Large Linear Systems | 1000+ | HHL/QLSA | Future | Research |
+
+**3.2 Quantum Execution**
+- **Parameter Optimization**: Tune variational parameters (QAOA angles, annealing schedule)
+- **Noise Mitigation**: Apply error mitigation techniques for NISQ devices
+- **Hybrid Processing**: Combine quantum and classical post-processing
+- **Multi-shot Sampling**: Statistical analysis of quantum solutions
+
+**3.3 Solution Validation**
+- Classical verification of constraint satisfaction
+- Performance benchmarking vs. classical methods
+- Sustainability impact quantification (SIM levers)
+
+#### 4. Documentation & Traceability (ATA)
+Comprehensive documentation following aerospace standards:
+- **Evidence Package**: QS/UTCS hashes, run parameters, solution quality metrics
+- **ATA Integration**: Link to relevant aircraft system documentation
+- **Sustainability Metrics**: LCA impact, GHG reduction, circularity improvement
+- **Certification Trail**: MAL-EEM compliance, safety validation
+
+#### 5. Quality Gates & Integration
+- **Technical Review**: Solution quality, constraint satisfaction, performance gains
+- **Ethics Validation**: MAL-EEM safety checks, bias detection, fairness assessment
+- **Sustainability Assessment**: SIM lever effectiveness, environmental impact
+- **Integration Testing**: Compatibility with downstream processes
+
+---
+
+## Quantum Optimization Performance Metrics
+
+### Key Performance Indicators (KPIs)
+
+#### Technical Performance
+- **Solution Quality**: Energy gap from optimal (< 5% for pilot applications)
+- **Convergence Rate**: Iterations to 95% of best solution (target: <100 iterations)
+- **Success Probability**: Fraction of runs achieving target quality (>80%)
+- **Scalability**: Maximum problem size tractable (variables handled)
+- **Time-to-Solution**: Wall-clock time including classical pre/post processing
+
+#### Sustainability Impact (SIM Levers)
+- **Fuel Efficiency**: Percentage improvement in fuel burn (target: 5-15%)
+- **Emissions Reduction**: CO₂, NOx reduction compared to baseline (target: 10-20%)
+- **Material Efficiency**: Weight reduction, material waste minimization (target: 5-25%)
+- **Energy Consumption**: Manufacturing/operational energy reduction (target: 10-30%)
+- **Lifecycle Impact**: Cradle-to-grave environmental improvement (LCA metrics)
+
+#### Business Metrics
+- **Development Time**: Design iteration cycle reduction (target: 20-50%)
+- **Cost Reduction**: Total ownership cost improvement (target: 5-15%)
+- **Quality Improvement**: Defect reduction, right-first-time increase (target: 10-40%)
+- **Innovation Velocity**: New design concepts explored per time unit
+
+### Quantum Algorithm Benchmarks
+
+#### QAOA Performance Targets
+```
+Problem Size: 100 variables
+Circuit Depth: p=3 (target)
+Success Rate: >70% achieving <10% optimality gap
+Resource Usage: <1000 qubits, <10 minutes runtime
+Application: Wing topology, manufacturing scheduling
+```
+
+#### Quantum Annealing Performance Targets
+```
+Problem Size: 1000-5000 variables
+Annealing Time: 1-100 μs
+Success Rate: >60% achieving <15% optimality gap
+Resource Usage: 5000+ qubit annealer, <1 minute total
+Application: Supply chain, facility layout, routing
+```
+
+#### VQE Performance Targets
+```
+Problem Size: 10-100 qubits (molecular systems)
+Circuit Depth: 100-1000 gates
+Chemical Accuracy: 1 kcal/mol (target)
+Resource Usage: <200 qubits, fault-tolerant preferred
+Application: Materials design, catalyst optimization
+```
+
+### Monitoring & Continuous Improvement
+
+#### Real-time Monitoring
+- **Quantum Device Performance**: Error rates, coherence times, gate fidelities
+- **Solution Quality Trends**: Track improvement over time per domain
+- **Resource Utilization**: Quantum processor usage efficiency
+- **Integration Success**: CAx workflow integration metrics
+
+#### Continuous Optimization
+1. **Parameter Learning**: Bayesian optimization of variational parameters
+2. **Problem Decomposition**: Adaptive subproblem identification
+3. **Hardware Matching**: Optimal algorithm-hardware pairing
+4. **Classical Integration**: Hybrid algorithm performance tuning
+
+#### Quarterly Review Process
+- **Performance Assessment**: Compare actual vs. target KPIs
+- **Technology Roadmap**: Update quantum hardware adoption timeline
+- **Domain Prioritization**: Focus resources on highest-impact applications
+- **Training & Skills**: Quantum algorithm expertise development
 
 ---
 
@@ -534,9 +794,85 @@ Attach **SIM** metrics (LCA per ISO 14040/44, GHG Scopes 1/2/3) alongside each Q
 
 **Q11. Which quantum method should I pick?**
 
-* **Routing/scheduling/layout:** QUBO/BQM → **Annealing/QAOA**.
-* **Materials/chemistry:** **VQE**.
-* **Large linear/PDE kernels:** **HHL/QLSA** (exploratory).
+**Decision Matrix**:
+- **Routing/scheduling/layout**: QUBO/BQM → **Annealing/QAOA** (100-5000 variables)
+- **Materials/chemistry**: **VQE** (10-100 qubits, molecular simulations)
+- **Large linear/PDE kernels**: **HHL/QLSA** (exploratory, requires fault tolerance)
+- **Combinatorial optimization**: **QAOA** (discrete choices, <1000 qubits)
+- **Constraint satisfaction**: **QUBO Max-SAT** → **Annealing** (rule-based systems)
 
-**Q12. Where do I put compliance & safety test artefacts?**
+**Selection Criteria**:
+1. **Problem Size**: Match qubit requirements to available hardware
+2. **Problem Type**: Discrete → Annealing/QAOA, Continuous → VQE/HHL
+3. **Accuracy Requirements**: High precision → VQE, Approximate → QAOA
+4. **Time Constraints**: Fast results → Annealing, Quality → QAOA
+5. **Connectivity**: High → Annealing, Low → Gate-based
+
+**Q12. How do I validate quantum results?**
+
+**Validation Pipeline**:
+1. **Classical Verification**: Solve small instances classically for comparison
+2. **Constraint Checking**: Verify all problem constraints are satisfied
+3. **Statistical Analysis**: Multiple quantum runs, confidence intervals
+4. **Benchmarking**: Compare against best known classical algorithms
+5. **Physical Validation**: Test solutions in CAx tools (CAD, CAE, CFD)
+6. **SIM Impact**: Measure sustainability improvements (fuel, emissions, etc.)
+
+**Quality Metrics**:
+- **Solution Quality**: Energy gap from ground state
+- **Constraint Satisfaction**: Penalty function values
+- **Convergence**: Variance across multiple runs
+- **Performance Ratio**: Quantum vs. classical solution quality
+- **Resource Efficiency**: Time-to-solution, energy consumption
+
+**Q13. Where do I put compliance & safety test artefacts?**
 Under the **owning CAx phase** (`cax/CAT`, `cax/VP`, etc.) with links to the relevant **ATA** chapter folder; mirror any optimization in `qox/<PHASE>/…` and attach QS/UTCS.
+
+**Q14. How do I troubleshoot poor quantum performance?**
+
+**Diagnostic Checklist**:
+1. **Problem Formulation**:
+   - Check QUBO matrix conditioning (eigenvalue spread <1000)
+   - Verify constraint penalty weights (10x-100x objective scale)
+   - Validate variable encoding (no redundant symmetries)
+
+2. **Algorithm Parameters**:
+   - QAOA: Start with p=1, increase gradually; tune angles with Bayesian optimization
+   - Annealing: Adjust annealing time (1-1000 μs), check chain strength
+   - VQE: Use gradient-free optimizers (SPSA, COBYLA), initialize near chemical accuracy
+
+3. **Hardware Issues**:
+   - Monitor coherence times vs. circuit depth
+   - Check qubit connectivity graph embedding
+   - Apply error mitigation (zero-noise extrapolation, symmetry verification)
+
+4. **Solution Validation**:
+   - Compare multiple random initializations
+   - Verify against classical solvers on small instances
+   - Check constraint satisfaction in decoded solutions
+
+**Q15. What are the quantum resource requirements for different problem sizes?**
+
+**Resource Scaling Guidelines**:
+
+| Problem Variables | Classical Time | Quantum Approach | Qubit Requirement | Current Feasibility |
+|------------------|----------------|------------------|-------------------|-------------------|
+| 10-50 | Seconds | QAOA/VQE | 10-50 | ✅ Available |
+| 50-200 | Minutes-Hours | QAOA/Annealing | 50-200 | ✅ Available |
+| 200-1000 | Hours-Days | Annealing/Hybrid | 200-1000 | ✅ Available |
+| 1000-5000 | Days-Weeks | Annealing | 1000-5000 | ✅ Available |
+| 5000+ | Intractable | Future Quantum | 5000+ | 🔄 Development |
+
+**Q16. How do I integrate quantum results with existing CAx workflows?**
+
+**Integration Patterns**:
+1. **Pre-processing**: Use quantum for initial solution, refine classically
+2. **Post-processing**: Classical solution → quantum improvement → final validation
+3. **Hybrid Loop**: Alternate between quantum and classical optimization phases
+4. **Multi-objective**: Quantum for discrete choices, classical for continuous variables
+5. **Constraint Handling**: Quantum for feasible region exploration, classical for constraint refinement
+
+**Data Flow**:
+```
+CAx Model → Problem Extraction → QUBO Encoding → Quantum Solve → Solution Decoding → Classical Refinement → CAx Integration → ATA Documentation
+```
