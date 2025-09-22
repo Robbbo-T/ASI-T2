@@ -140,8 +140,7 @@ This closed-loop process is applied consistently across all products to ensure t
 *   [`FIELDS/transport-civil/`](../FIELDS/transport-civil/): Civil mobility and aviation.
 *   [`FIELDS/cyberdefense/`](../FIELDS/cyberdefense/): Aerospace and cyber defense.
 *   [`FIELDS/defense/`](../FIELDS/defense/): Ethically-constrained defense systems.
-*   [`FIELDS/cross-value-chain/`](../FIELDS/cross-value-chain/): Integrated industrial and logistical supply chains.
-*   [`FIELDS/quantum-aerospace/`](../FIELDS/quantum-aerospace/): The foundational science of quantum systems for aerospace.
+*   [`FIELDS/quantum-intelligence/`](../FIELDS/quantum-intelligence/): The foundational science of quantum systems for aerospace.
 *   [`FIELDS/cross/`](../FIELDS/cross/): Cross-cutting initiatives and frameworks.
 
 ### Environments
