@@ -18,7 +18,7 @@ def main():
     
     # Build from DMRL: source of truth
     if DMRL.exists():
-        dmrl = ET.parse(DMRL).getroot()
+        dmrl = defusedxml.etree.ElementTree.parse(DMRL).getroot()
         for req in dmrl.findall(".//dmRequirement"):
             dmCode = req.find("./dmRefIdent/dmCode")
             lang = req.find("./dmRefIdent/language")
