@@ -1,0 +1,86 @@
+{
+  "problem_id": "wing_topology_v1",
+  "description": "BWB-Q100 wing structural topology optimization",
+  "domain": "AAA",
+  "process": "CAD",
+  "created": "2025-01-22T14:30:00Z",
+  "author": "ASI-T Architecture Team",
+  "classification": "INTERNAL–EVIDENCE-REQUIRED",
+  
+  "problem_formulation": {
+    "type": "QUBO",
+    "objective": "minimize_weight_with_performance_constraints",
+    "variables": {
+      "rib_locations": {
+        "type": "binary",
+        "count": 45,
+        "description": "Binary variables for wing rib placement positions"
+      },
+      "spar_configuration": {
+        "type": "binary", 
+        "count": 28,
+        "description": "Binary variables for spar layout configuration"
+      },
+      "panel_sizes": {
+        "type": "discrete",
+        "count": 32,
+        "description": "Discrete panel size selection variables"
+      }
+    },
+    "constraints": {
+      "structural_loads": {
+        "type": "penalty",
+        "weight": 100.0,
+        "description": "Ultimate load requirements per CS-25"
+      },
+      "manufacturing": {
+        "type": "penalty",
+        "weight": 50.0,
+        "description": "Manufacturing feasibility constraints"
+      },
+      "access_requirements": {
+        "type": "penalty", 
+        "weight": 25.0,
+        "description": "Maintenance access requirements"
+      }
+    }
+  },
+  
+  "quantum_approach": {
+    "primary_method": "quantum_annealing",
+    "fallback_method": "QAOA",
+    "hardware_requirements": {
+      "qubits": 105,
+      "connectivity": "pegasus",
+      "annealing_time": "20_microseconds"
+    }
+  },
+  
+  "classical_baseline": {
+    "method": "genetic_algorithm",
+    "best_known_energy": -2847.3,
+    "computation_time": "4.2_hours",
+    "reference": "CAx/CAD/wing_baseline_optimization_report.pdf"
+  },
+  
+  "success_criteria": {
+    "energy_gap": "<10%",
+    "constraint_satisfaction": "100%",
+    "solution_time": "<30_minutes",
+    "feasibility": "manufacturing_verified"
+  },
+  
+  "sustainability_targets": {
+    "weight_reduction": "10-15%",
+    "material_efficiency": "8-12%", 
+    "manufacturing_waste": "<5%",
+    "lifecycle_impact": "measured_via_LCA"
+  },
+  
+  "integration": {
+    "cax_input": "../../cax/CAD/wing_baseline_model/geometry_v2.catpart",
+    "validation_process": "../../cax/CAE/structural_validation/",
+    "ata_documentation": "../../ata/ATA-57/",
+    "sim_integration": "lifecycle_assessment/wing_sustainability_metrics.json"
+  }
+}
