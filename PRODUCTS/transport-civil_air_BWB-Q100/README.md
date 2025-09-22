@@ -347,6 +347,100 @@ The Quantum-Accelerated Industry Model 2 (QAIM-2) provides strategic mapping fro
 
 > **Reference**: Complete QAIM-2 framework available at [`FIELDS/cross/QAIM-2/`](../../FIELDS/cross/QAIM-2/README.md) with detailed implementation strategies and 18 industrial domains.
 
+```mermaid
+flowchart TB
+    %% Top Level Pipelines
+    subgraph classical["Classical CAx Development Pipeline"]
+        C1["Sequential Workflow"]
+        C2["Expert-driven steps"]
+        C3["Heavy HPC usage"]
+        C4["Siloed Disciplines"]
+        C5["Proven, mature tools"]
+    end
+
+    subgraph qaim["QAIM-Optimized Pipeline"]
+        Q1["Integrated Multidisciplinary Workflow"]
+        Q2["AI & Quantum-assisted Design"]
+        Q3["Surrogate Modeling (ML)"]
+        Q4["Parallel Exploration"]
+        Q5["Unified Digital Thread"]
+        Q6["Cutting-edge, evolving tools"]
+    end
+
+    %% Connections to Criteria
+    Performance["Performance"]
+    Sustainability["Sustainability"]
+    Integration["Integration & Collaboration"]
+    Maturity["Tool Maturity"]
+    Domains["Domain-by-domain Impacts"]
+
+    %% Classical Flows
+    classical --> Performance
+    classical --> Sustainability
+    classical --> Integration
+    classical --> Maturity
+
+    %% QAIM Flows
+    qaim --> Performance
+    qaim --> Sustainability
+    qaim --> Integration
+    qaim --> Maturity
+
+    %% Detailed Criteria comparisons
+    subgraph perfComp["Performance Comparison"]
+        P1["Iteration: Slow, Serial (CAx) vs. Fast, Parallel (QAIM)"]
+        P2["Compute: High total (many full runs, prototypes) vs. Reduced (ML surrogates, quantum optim.)"]
+        P3["Design Quality: Narrowly/expert explored vs. Broad, global optimized"]
+    end
+    Performance -.-> perfComp
+
+    subgraph sustComp["Sustainability Comparison"]
+        S1["Development: High HPC & prototype energy use vs. Digital twin, fewer resources"]
+        S2["Product: Not always mass/CO2 optimized vs. Sustainability objectives embedded"]
+        S3["Circularity: Late/material afterthought vs. Early, domain-linked KPIs"]
+    end
+    Sustainability -.-> sustComp
+
+    subgraph integComp["Integration/Collab"]
+        I1["Siloed processes/manual sync vs. Unified digital model, real-time update"]
+        I2["Manual data management vs. Automated traceability & versioning"]
+        I3["Limited automation vs. Full CI/CD, AI co-pilots"]
+    end
+    Integration -.-> integComp
+
+    subgraph maturComp["Tool Maturity/Adoption"]
+        M1["Classical: Fully TRL, stable, slow"]
+        M2["QAIM: Evolving (AI, quantum ~2029), needs validation/hybridization"]
+        M3["Risks: Known in classical, new in QAIM; requires phased adoption"]
+    end
+    Maturity -.-> maturComp
+
+    subgraph domImpact["Domain Impacts"]
+        D1["Aerodynamics: Manual CFD vs. AI/gen-design, quantum search"]
+        D2["Structures: Conservative/manual vs. Coupled MDO, AI topology opt."]
+        D3["Propulsion: Piecemeal vs. System-of-systems (joint airframe/fuel)"]
+        D4["Controls: Post-hoc vs. In-loop co-design"]
+        D5["Manufacturing: Late/retrofit vs. Built-in process, maintainability"]
+    end
+    Domains -.-> domImpact
+
+    %% Criteria summary links
+    perfComp --> Domains
+    sustComp --> Domains
+    integComp --> Domains
+    maturComp --> Domains
+
+    %% Style for clarity
+    classDef caClass fill:#e8eaf6,stroke:#1a237e,stroke-width:2px
+    classDef qaClass fill:#e0f2f1,stroke:#004d40,stroke-width:2px
+    class classical caClass
+    class qaim qaClass
+```
+**visual comparison between the Classical CAx Development Pipeline and the QAIM-Optimized Pipeline for the BWB H₂ project across four main criteria: Performance (Iteration speed, Compute workload, Design quality)
+Sustainability (Energy/material use, End-product sustainability)
+Integration/Collaboration (Domain integration, Automation, Data management)
+Tool Maturity (Technology readiness, Risks, Adoption path)**
+
 ### BWB-Q100 Optimization Matrix
 
 *(i)* optimization target · *(ii)* quantum mapping · *(iii)* SIM lever · *(iv)* maturity
