@@ -77,7 +77,7 @@ Information Code Usage:
       </levelledPara>
     </description>
     
-    <!-- For procedural modules (012): -->
+    <!-- For procedural modules (200s/500s/600s/700s): -->
     <!--
     <procedure>
       <preliminaryRqmts>
