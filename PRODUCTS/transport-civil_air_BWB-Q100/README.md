@@ -6,10 +6,10 @@ environment: air
 configuration: baseline
 classification: INTERNAL–EVIDENCE-REQUIRED
 version: "0.3.1"
-release\_date: 2025-09-22
+release_date: 2025-09-22
 maintainer: "ASI-T Architecture Team"
 bridge: "CB→QB→UE→FE→FWD→QS"
-ethics\_guard: "MAL-EEM"
+ethics_guard: "MAL-EEM"
 ---
 
 # BWB-Q100 — Transport Civil × Air
