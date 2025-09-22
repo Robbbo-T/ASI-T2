@@ -1,0 +1,66 @@
+{
+  "problem_id": "<unique_problem_identifier>",
+  "description": "<human_readable_problem_description>",
+  "domain": "<AAA|AAP|CCC|CQH|DDD|EDI|EEE|EER|IIF|IIS|LCC|LIB|MEC|OOO|PPP>",
+  "process": "<CAD|CAE|CFD|CAM|CAPP|VP|SCM|MRP-ERP|CIM|CAI|CAA|CASE|KBE|CAT|PDM-PLM>",
+  "created": "<ISO_8601_timestamp>",
+  "author": "<team_or_individual>",
+  "classification": "INTERNAL–EVIDENCE-REQUIRED",
+  
+  "problem_formulation": {
+    "type": "<QUBO|BQM|ISING|VQE|QAOA>",
+    "objective": "<optimization_objective_description>",
+    "variables": {
+      "<variable_set_1>": {
+        "type": "<binary|discrete|continuous>",
+        "count": "<number_of_variables>",
+        "description": "<variable_description>"
+      }
+    },
+    "constraints": {
+      "<constraint_set_1>": {
+        "type": "<penalty|hard|soft>",
+        "weight": "<constraint_weight>",
+        "description": "<constraint_description>"
+      }
+    }
+  },
+  
+  "quantum_approach": {
+    "primary_method": "<quantum_annealing|QAOA|VQE|HHL|QLSA>",
+    "fallback_method": "<alternative_quantum_method>",
+    "hardware_requirements": {
+      "qubits": "<required_qubit_count>",
+      "connectivity": "<hardware_topology>",
+      "execution_time": "<estimated_execution_time>"
+    }
+  },
+  
+  "classical_baseline": {
+    "method": "<classical_algorithm_used>",
+    "best_known_energy": "<best_classical_solution_energy>",
+    "computation_time": "<classical_computation_time>",
+    "reference": "<path_to_classical_analysis>"
+  },
+  
+  "success_criteria": {
+    "energy_gap": "<acceptable_gap_from_optimal>",
+    "constraint_satisfaction": "<required_constraint_satisfaction_rate>",
+    "solution_time": "<maximum_acceptable_solution_time>",
+    "feasibility": "<feasibility_validation_requirements>"
+  },
+  
+  "sustainability_targets": {
+    "primary_metric": "<weight_reduction|energy_efficiency|emissions_reduction>",
+    "target_improvement": "<quantitative_improvement_target>",
+    "measurement_method": "<how_sustainability_will_be_measured>",
+    "lifecycle_impact": "<lifecycle_assessment_integration>"
+  },
+  
+  "integration": {
+    "cax_input": "<path_to_classical_input_data>",
+    "validation_process": "<path_to_validation_procedures>",
+    "ata_documentation": "<path_to_ata_documentation>",
+    "sim_integration": "<path_to_sustainability_impact_files>"
+  }
+}
