@@ -513,10 +513,13 @@ Transform the classical optimization problem into quantum-compatible formulation
 
 **2.2 Mathematical Encoding**
 - **QUBO Formulation**: Convert to Quadratic Unconstrained Binary Optimization
-  ```
-  minimize: x^T Q x + c^T x
-  where x ∈ {0,1}^n
-  ```
+
+  $$
+  \text{minimize:} \quad \mathbf{x}^\mathrm{T} Q \mathbf{x} + \mathbf{c}^\mathrm{T} \mathbf{x}
+  $$
+  $$
+  \text{where} \quad \mathbf{x} \in \{0,1\}^n
+  $$
 - **BQM Structure**: Define binary quadratic model with bias and coupling terms
 - **Penalty Methods**: Incorporate constraints via penalty functions
 - **Multi-objective**: Weight sustainability objectives (fuel ↓, emissions ↓, mass ↓)
