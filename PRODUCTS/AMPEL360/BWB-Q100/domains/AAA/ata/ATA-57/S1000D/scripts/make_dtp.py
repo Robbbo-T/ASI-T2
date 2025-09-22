@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 import zipfile, datetime
 from pathlib import Path
-import xml.etree.ElementTree as ET
+try:
+    import defusedxml.etree.ElementTree as ET
+except ImportError:
+    import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTDIR = ROOT/"exchange/packages"
@@ -29,7 +32,7 @@ def main():
     
     # Add DMs if index exists
     if dm_index_path.exists():
-        dm_index = defusedxml.etree.ElementTree.parse(dm_index_path).getroot()
+        dm_index = ET.parse(dm_index_path).getroot()
         for dm in dm_index.findall("./dm"):
             p = dm.get("path")
             if p and p != "MISSING":
