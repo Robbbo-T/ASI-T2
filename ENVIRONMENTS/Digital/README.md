@@ -1,4 +1,3 @@
-
 1.  **What is the full name of the QAIM model?**
     The full name is Quantum AI Model for Quantum Augmented/Accelerated Industrial Management.
 
