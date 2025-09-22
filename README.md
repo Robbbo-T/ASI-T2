@@ -12,11 +12,11 @@ Master portfolio for ASI-T2 under strict TFA architecture. This README is a simp
 - `FIELDS/cross/` — Cross-cutting initiatives and shared capabilities.
 
 ## 🌍 Environments
-- `ENVIRONMENTS/ground/` — Ground systems and operations.
-- `ENVIRONMENTS/air/` — Airborne platforms and operations.
-- `ENVIRONMENTS/sea/` — Maritime platforms and operations.
-- `ENVIRONMENTS/space/` — Space systems and operations.
-- `ENVIRONMENTS/cross/` — Combined/heterogeneous environments.
+- `ENVIRONMENTS/Ground/` — Ground systems and operations.
+- `ENVIRONMENTS/Air/` — Airborne platforms and operations.
+- `ENVIRONMENTS/Sea/` — Maritime platforms and operations.
+- `ENVIRONMENTS/Space/` — Space systems and operations.
+- `ENVIRONMENTS/Cross/` — Combined/heterogeneous environments.
 
 ## 🛠️ Products (matrix by field × environment)
 Canonical product folders live in `PRODUCTS/` using the pattern:
