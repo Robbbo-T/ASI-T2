@@ -46,17 +46,41 @@ The ASI-T2 portfolio encompasses a range of advanced aerospace systems, each dev
 
 ## Product Matrix
 
-Products are uniquely identified by their position in the Field × Environment matrix.
+Products are organized into three main product lines based on operational characteristics:
 
-| Field                                               | Environment                                             | Product Name                                                            | Primary Domains                           | Description                                                |
-| --------------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
-| **Applied Systems**                                 |                                                         |                                                                         |                                           |                                                            |
-| [`transport-civil`](../FIELDS/transport-civil/)       | [`air`](../ENVIRONMENTS/air/)                             | [`BWB-Q100`](./transport-civil_air_BWB-Q100/)                           | AAA, PPP, MEC, EEE, CQH                   | Blended Wing Body 100-passenger aircraft                   |
-| [`cyberdefense`](../FIELDS/cyberdefense/)             | [`space`](../ENVIRONMENTS/space/)                         | [`GAIA-SAT`](./cyberdefense_space_GAIA-SAT/)                            | DDD, IIS, EDI, LCC                        | Satellite constellation for aerospace cyber defense        |
-| [`defense`](../FIELDS/defense/)                     | [`air`](../ENVIRONMENTS/air/)           | [`EE-US`](./defense_air-unmanned_EE-US/)                                | IIS, OOO, LCC, EDI, DDD                   | Ethically-governed autonomous UAV swarm for defense        |
-| [`cross`](../FIELDS/cross/)   | [`cross`](../ENVIRONMENTS/cross/) | [`LH2-CORRIDOR`](./cross-LH2-CORRIDOR/)   | LIB, CQH, IIF, EEE, IIS                   | End-to-end green liquid hydrogen (LH2) value chain         |
-| **Core Platform**                                   |                                                         |                                                                         |                                           |                                                            |
-| [`quantum-intelligence`](../FIELDS/quantum-intelligence/)   | [`digital`](../ENVIRONMENTS/digital/) | [`QAIM`](./quantum-aerospace_intelligence-model_QAIM/)                  | IIS, CQH, OOO, DDD                        | Core quantum-classical optimization & AI engine            |
+### Product Lines
+
+**AMPEL360** (Aerospace Manned Program/Passenger Experimental Lines) - 360° full circularity for all aerospace products that transport human passengers, including aircraft, space stations, and shuttles.
+
+**GAIA_AIR_SPACE** - Aerospace products with no passengers on board, including UAVs, autonomous swarms, and space satellite products.
+
+**INFRANET** - Infrastructure and network systems, encompassing cross-cutting intelligence and ground physical infrastructures.
+
+### Product Directory
+
+| Product Line | Field | Environment | Product Name | Primary Domains | Description |
+| ------------ | ----- | ----------- | ------------ | --------------- | ----------- |
+| **AMPEL360** |       |             |              |                 |             |
+| | [`transport-civil`](../FIELDS/transport-civil/) | [`air`](../ENVIRONMENTS/air/) | [`BWB-Q100`](./AMPEL360/BWB-Q100/) | AAA, PPP, MEC, EEE, CQH | Blended Wing Body 100-passenger aircraft |
+| **GAIA_AIR_SPACE** |       |             |              |                 |             |
+| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`GAIA-SAT`](./GAIA_AIR_SPACE/GAIA-SAT/) | DDD, IIS, EDI, LCC | Satellite constellation for aerospace cyber defense |
+| | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`UAM-SWARM`](./GAIA_AIR_SPACE/UAM-SWARM/) | IIS, OOO, LCC, EDI, DDD | Ethically-governed autonomous UAV swarm for defense |
+| **INFRANET** |       |             |              |                 |             |
+| | [`cross`](../FIELDS/cross/) | [`cross`](../ENVIRONMENTS/cross/) | [`LH2-CORRIDOR`](./INFRANET/LH2_CORRIDOR/) | LIB, CQH, IIF, EEE, IIS | End-to-end green liquid hydrogen (LH2) value chain |
+| | [`quantum-intelligence`](../FIELDS/quantum-intelligence/) | [`digital`](../ENVIRONMENTS/digital/) | [`QAIM`](./INFRANET/QAIM/) | IIS, CQH, OOO, DDD | Core quantum-classical optimization & AI engine |
+| | Shared Templates | All | [`Templates`](./INFRANET/Shared/_templates/) | All | Shared boilerplates and templates |
+
+---
+
+## Migration Information
+
+The ASI-T2 product portfolio has been reorganized into three strategic product lines for better operational clarity and management. For historical tracking and migration details, see:
+
+- [`_migration/manifest.csv`](./_migration/manifest.csv) - Complete mapping of old to new paths
+- Migration rationale follows operational characteristics:
+  - **Passenger/crewed systems** → AMPEL360 (360° lifecycle management)
+  - **Uncrewed air/space systems** → GAIA_AIR_SPACE (autonomous operations)
+  - **Infrastructure/shared intelligence** → INFRANET (cross-cutting support)
 
 ---
 

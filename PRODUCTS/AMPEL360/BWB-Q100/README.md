@@ -345,7 +345,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
 
 The Quantum-Accelerated Industry Model 2 (QAIM-2) provides strategic mapping from classical Computer-Aided (CAx) processes to Quantum-Optimized (QOx) implementations within the Sustainable Industry Model framework. This matrix identifies optimization targets, quantum formulations, sustainability levers, and technology maturity for BWB-Q100 development.
 
-> **Reference**: Complete QAIM-2 framework available at [`FIELDS/cross/QAIM-2/`](../../FIELDS/cross/QAIM-2/README.md) with detailed implementation strategies and 18 industrial domains.
+> **Reference**: Complete QAIM-2 framework available at [`FIELDS/cross/QAIM-2/`](../../../FIELDS/cross/QAIM-2/README.md) with detailed implementation strategies and 18 industrial domains.
 
 ```mermaid
 flowchart TB
