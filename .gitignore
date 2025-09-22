@@ -1,0 +1,16 @@
+# Build artifacts
+*.log
+*.tmp
+
+# Exchange packages (too large for git)
+PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/exchange/packages/*.zip
+
+# Validation reports
+PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/validation/reports/*.html
+PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/validation/reports/*.pdf
+
+# Temporary files
+/tmp/
+__pycache__/
+*.pyc
+*.pyo
