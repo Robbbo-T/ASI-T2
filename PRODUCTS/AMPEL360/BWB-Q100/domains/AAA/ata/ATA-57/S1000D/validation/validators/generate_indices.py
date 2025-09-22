@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 import json
 
 ROOT = Path(__file__).resolve().parents[2]
-DMRL = ROOT/"DML-BWQ1-ATA57-00.xml"
+DMRL = ROOT/"publication_modules/DML-BWQ1-ATA57-00_EN-US.xml"
 IDX_XML = ROOT/"indices/dm_index.xml"
 XREF_XML = ROOT/"indices/xref_index.xml"
 SEARCH_JSON = ROOT/"indices/search.json"

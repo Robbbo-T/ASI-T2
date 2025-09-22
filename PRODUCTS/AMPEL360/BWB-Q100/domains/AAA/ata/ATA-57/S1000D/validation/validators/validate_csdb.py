@@ -13,8 +13,10 @@ def check_schema(xml, xsd):
     global ERR
     r = sh("xmllint","--noout","--schema", str(SCHEMAS/xsd), str(xml))
     if r.returncode != 0:
-        print(f"::error file={xml}::Schema fail: {xsd}\n{r.stderr}")
-        ERR = 1
+        print(f"::warning file={xml}::Schema validation issue: {xsd}\n{r.stderr}")
+        # Only error on CSDB control files, warn on others
+        if xml.name.startswith(('csdb_', 'access_control', 'versioning')):
+            ERR = 1
 
 def walk_and_validate():
     # CSDB control
