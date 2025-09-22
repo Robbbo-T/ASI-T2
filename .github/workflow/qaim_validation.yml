@@ -1,0 +1,128 @@
+name: QAIM Validation
+
+on:
+  pull_request:
+    paths:
+      - "domains/**"
+      - ".github/workflows/qaim_validation.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install deps (none strictly required)
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Validate UTCS/QS evidence, ATA links, and MAL-EEM
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os, sys, json, re, pathlib, glob, datetime
+
+          ROOT = pathlib.Path(".").resolve()
+          errors = []
+
+          # 1) Evidence manifests: every new QOx run must have manifest.json with required keys
+          required_keys = {"policy_hash","model_sha","data_manifest_hash","operator_id","canonical_hash","timestamp"}
+          run_dirs = glob.glob("domains/*/qox/*/runs/*")
+          for rd in run_dirs:
+              man = pathlib.Path(rd) / "manifest.json"
+              if man.exists():
+                  try:
+                      data = json.loads(man.read_text())
+                      missing = required_keys - data.keys()
+                      if missing:
+                          errors.append(f"[EVIDENCE] {man} missing keys: {sorted(missing)}")
+                  except Exception as e:
+                      errors.append(f"[EVIDENCE] {man} invalid JSON: {e}")
+              else:
+                  errors.append(f"[EVIDENCE] Missing manifest: {man}")
+
+          # 2) ATA linkage: each domain must contain ata/ with at least one ATA-XX folder
+          for dom in glob.glob("domains/*"):
+              ata = pathlib.Path(dom) / "ata"
+              if ata.exists():
+                  found = any(re.match(r"ATA-\d{2}$", p.name) and p.is_dir() for p in ata.iterdir())
+                  if not found:
+                      errors.append(f"[ATA] {ata} has no ATA-XX subfolders")
+              else:
+                  errors.append(f"[ATA] Missing ata/ for domain: {dom}")
+
+          # 3) Ethics guard presence: MAL-EEM marker in product README or domain docs
+          #    (lightweight check: search for 'MAL-EEM' string in top-level README.md and domain readmes)
+          ok_ethics = False
+          to_scan = [ROOT/"README.md"] + [p for p in ROOT.glob("domains/*/*/*/README.md")] + [p for p in ROOT.glob("domains/*/README.md")]
+          for p in to_scan:
+              if p.exists() and "MAL-EEM" in p.read_text():
+                  ok_ethics = True
+                  break
+          if not ok_ethics:
+              errors.append("[ETHICS] MAL-EEM guard not referenced in repo docs")
+
+          # 4) Classification strings: enforce INTERNAL–EVIDENCE-REQUIRED (en dash)
+          en_dash = "INTERNAL–EVIDENCE-REQUIRED"
+          for md in ROOT.rglob("*.md"):
+              txt = md.read_text(encoding="utf-8", errors="ignore")
+              if "classification:" in txt:
+                  for line in txt.splitlines():
+                      if line.strip().startswith("classification:"):
+                          if en_dash not in line:
+                              errors.append(f"[CLASS] {md} classification must be '{en_dash}' (use en dash)")
+                          break
+
+          if errors:
+              print("::error::Validation failed:")
+              for e in errors:
+                  print(f"- {e}")
+              sys.exit(1)
+          else:
+              print("QAIM validation passed at", datetime.datetime.utcnow().isoformat(), "Z")
+          PY
+
+      - name: Generate draft ATA docs from latest QOx run (info only)
+        if: success()
+        run: |
+          python - <<'PY'
+          import pathlib, json, datetime
+          for man in pathlib.Path("domains").rglob("qox/*/runs/*/manifest.json"):
+              try:
+                  data = json.loads(man.read_text())
+              except Exception:
+                  continue
+              phase = man.parent.parent.name  # e.g., CFD
+              domain = man.parents[4].name    # e.g., AAA
+              ata_dir = man.parents[4] / "ata"
+              # Choose a default ATA mapping when unknown; team will adjust
+              target = sorted([p for p in ata_dir.glob("ATA-*") if p.is_dir()])
+              if not target:
+                  continue
+              out = target[0] / "auto_doc.md"
+              body = f"""# Auto Doc — {domain}/{phase}
+Generated: {datetime.datetime.utcnow().isoformat()}Z
+
+- Evidence: `{man}`
+- Policy Hash: {data.get('policy_hash')}
+- Model SHA: {data.get('model_sha')}
+- Data Manifest: {data.get('data_manifest_hash')}
+- Operator: {data.get('operator_id')}
+
+## Summary
+Provide a short narrative of the QOx run, decisions, and impacts (fuel/emissions/noise/circularity).
+
+## Links
+- QOx run folder: `{man.parent}`
+- CAx source: `domains/{domain}/cax/{phase}/`
+"""
+              out.write_text(body)
+          print("Draft auto_doc.md generated where possible.")
+          PY
