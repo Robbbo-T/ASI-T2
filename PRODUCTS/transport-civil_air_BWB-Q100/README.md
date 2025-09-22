@@ -436,10 +436,10 @@ flowchart TB
     class classical caClass
     class qaim qaClass
 ```
-**visual comparison between the Classical CAx Development Pipeline and the QAIM-Optimized Pipeline for the BWB H₂ project across four main criteria: Performance (Iteration speed, Compute workload, Design quality)
+*visual comparison between the Classical CAx Development Pipeline and the QAIM-Optimized Pipeline for the BWB H₂ project across four main criteria: Performance (Iteration speed, Compute workload, Design quality)
 Sustainability (Energy/material use, End-product sustainability)
 Integration/Collaboration (Domain integration, Automation, Data management)
-Tool Maturity (Technology readiness, Risks, Adoption path)**
+Tool Maturity (Technology readiness, Risks, Adoption path)* [path_to_research](path_to_reserch)
 
 ### BWB-Q100 Optimization Matrix
 
