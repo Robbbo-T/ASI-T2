@@ -129,7 +129,7 @@ Information Type: 040 - Description
             <para>QOx Integration: Quantum optimization results from ../../qox/CAE/runs/20250122-load_path_opt/</para>
           </listItem>
           <listItem>
-            <para>SIM Metrics: Weight reduction −12%, Material waste −15% vs baseline</para>
+            <para>SIM Metrics: Weight reduction -12%, Material waste -15% vs baseline</para>
           </listItem>
         </randomList>
       </levelledPara>
