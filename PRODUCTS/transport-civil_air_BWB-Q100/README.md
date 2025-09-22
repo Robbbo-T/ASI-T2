@@ -439,7 +439,7 @@ flowchart TB
 *visual comparison between the Classical CAx Development Pipeline and the QAIM-Optimized Pipeline for the BWB H₂ project across four main criteria: Performance (Iteration speed, Compute workload, Design quality)
 Sustainability (Energy/material use, End-product sustainability)
 Integration/Collaboration (Domain integration, Automation, Data management)
-Tool Maturity (Technology readiness, Risks, Adoption path)* [path_to_research](path_to_reserch)
+Tool Maturity (Technology readiness, Risks, Adoption path)* [path_to_research]([path_to_research](https://chatgpt.com/s/dr_68d173dae3a88191bed90e69a4cf219b))
 
 ### BWB-Q100 Optimization Matrix
 
