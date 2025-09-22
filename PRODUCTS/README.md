@@ -1,12 +1,12 @@
 ---
 id: ASIT2-PORTFOLIO-PRODUCTS-OV
-rev: 2
+rev: 4
 field: portfolio
 environment: cross-environment
 configuration: n/a
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: "1.0.1"
-release_date: 2025-09-23
+version: "1.1.1"
+release_date: 2025-09-25
 maintainer: "ASI-T Architecture Team"
 bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: "MAL-EEM"
@@ -48,11 +48,15 @@ The ASI-T2 portfolio encompasses a range of advanced aerospace systems, each dev
 
 Products are uniquely identified by their position in the Field × Environment matrix.
 
-| Field                                         | Environment                                 | Product Name                                                 | Primary Domains                               | Description                                     |
-| --------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- | ----------------------------------------------- |
-| [`transport-civil`](../FIELDS/transport-civil/) | [`air`](../ENVIRONMENTS/air/)               | [`BWB-Q100`](./transport-civil_air_BWB-Q100/)                | AAA, PPP, MEC, EEE, CQH                         | Blended Wing Body 100-passenger aircraft        |
-| [`cyberdefense`](../FIELDS/cyberdefense/)       | [`space`](../ENVIRONMENTS/space/)           | [`GAIA-SAT`](./cyberdefense_space_GAIA-SAT/)                 | DDD, IIS, EDI, LCC                            | GAIA Satellite network cyber defense system     |
-| *... (Future Products)*                       | *...*                                       | *...*                                                        | *...*                                         | *...*                                           |
+| Field                                               | Environment                                             | Product Name                                                            | Primary Domains                           | Description                                                |
+| --------------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
+| **Applied Systems**                                 |                                                         |                                                                         |                                           |                                                            |
+| [`transport-civil`](../FIELDS/transport-civil/)       | [`air`](../ENVIRONMENTS/air/)                             | [`BWB-Q100`](./transport-civil_air_BWB-Q100/)                           | AAA, PPP, MEC, EEE, CQH                   | Blended Wing Body 100-passenger aircraft                   |
+| [`cyberdefense`](../FIELDS/cyberdefense/)             | [`space`](../ENVIRONMENTS/space/)                         | [`GAIA-SAT`](./cyberdefense_space_GAIA-SAT/)                            | DDD, IIS, EDI, LCC                        | Satellite constellation for aerospace cyber defense        |
+| [`defense`](../FIELDS/defense/)                     | [`air-unmanned`](../ENVIRONMENTS/air-unmanned/)           | [`EE-US`](./defense_air-unmanned_EE-US/)                                | IIS, OOO, LCC, EDI, DDD                   | Ethically-governed autonomous UAV swarm for defense        |
+| [`cross-value-chain`](../FIELDS/cross-value-chain/)   | [`cross-environment`](../ENVIRONMENTS/cross-environment/) | [`LH2-CORRIDOR`](./cross-value-chain_cross-environment_LH2-CORRIDOR/)   | LIB, CQH, IIF, EEE, IIS                   | End-to-end green liquid hydrogen (LH2) value chain         |
+| **Core Platform**                                   |                                                         |                                                                         |                                           |                                                            |
+| [`quantum-aerospace`](../FIELDS/quantum-aerospace/)   | [`intelligence-model`](../ENVIRONMENTS/intelligence-model/) | [`QAIM`](./quantum-aerospace_intelligence-model_QAIM/)                  | IIS, CQH, OOO, DDD                        | Core quantum-classical optimization & AI engine            |
 
 ---
 
@@ -111,14 +115,20 @@ This closed-loop process is applied consistently across all products to ensure t
 
 *   [`FIELDS/transport-civil/`](../FIELDS/transport-civil/): Civil mobility and aviation.
 *   [`FIELDS/cyberdefense/`](../FIELDS/cyberdefense/): Aerospace and cyber defense.
+*   [`FIELDS/defense/`](../FIELDS/defense/): Ethically-constrained defense systems.
+*   [`FIELDS/cross-value-chain/`](../FIELDS/cross-value-chain/): Integrated industrial and logistical supply chains.
+*   [`FIELDS/quantum-aerospace/`](../FIELDS/quantum-aerospace/): The foundational science of quantum systems for aerospace.
 *   [`FIELDS/cross/`](../FIELDS/cross/): Cross-cutting initiatives and frameworks.
 
 ### Environments
 
-*   [`ENVIRONMENTS/air/`](../ENVIRONMENTS/air/): Airborne platforms and operations.
-*   [`ENVIRONMENTS/ground/`](../ENVIRONMENTS/ground/): Ground systems and operations.
+*   [`ENVIRONMENTS/air/`](../ENVIRONMENTS/air/): Manned and unmanned airborne platforms.
+*   [`ENVIRONMENTS/air-unmanned/`](../ENVIRONMENTS/air-unmanned/): Autonomous unmanned aerial systems.
+*   [`ENVIRONMENTS/ground/`](../ENVIRONMENTS/ground/): Ground-based systems and infrastructure.
 *   [`ENVIRONMENTS/sea/`](../ENVIRONMENTS/sea/): Maritime platforms and operations.
-*   [`ENVIRONMENTS/space/`](../ENVIRONMENTS/space/): Space systems and operations.
+*   [`ENVIRONMENTS/space/`](../ENVIRONMENTS/space/): Space-based platforms and orbital operations.
+*   [`ENVIRONMENTS/cross-environment/`](../ENVIRONMENTS/cross-environment/): Systems spanning multiple operational environments.
+*   [`ENVIRONMENTS/intelligence-model/`](../ENVIRONMENTS/intelligence-model/): Abstract computational and software environments.
 
 ### Core Optimization Framework
 
@@ -132,20 +142,30 @@ This closed-loop process is applied consistently across all products to ensure t
 *   **ATA**: Air Transport Association; refers to the standard for technical documentation in aviation.
 *   **CAx**: Computer-Aided X; refers to classical engineering processes (CAD, CAE, etc.).
 *   **QOx**: Quantum-Optimized X; the quantum-augmented counterpart to a CAx process.
-*   **Domain**: A primary area of engineering expertise (e.g., AAA, PPP).
-    *   **AAA**: Aerodynamics & Airframes
-    *   **CQH**: Cryogenics, Quantum & H₂
-    *   **DDD**: Digital & Data Defense
-    *   **EEE**: Ecological Efficient Electrification
-    *   **EDI**: Electronics & Digital Instruments
-    *   **IIS**: Integrated Intelligence & Software
-    *   **LCC**: Linkages, Control & Communications
-    *   **MEC**: Mechanical Systems Modules
-    *   **PPP**: Propulsion & Fuel System
+*   **Domain**: A primary area of engineering expertise.
+    *   **AAA — Aerodynamics & Airframes Architectures**
+    *   **AAP — Airport Adaptable Platforms**
+    *   **CCC — Cockpit, Cabin & Cargo**
+    *   **CQH — Cryogenics, Quantum & H₂**
+    *   **DDD — Digital & Data Defense**
+    *   **EDI — Electronics & Digital Instruments**
+    *   **EEE — Ecological Efficient Electrification**
+    *   **EER — Environmental, Emissions & Remediation**
+    *   **IIF — Industrial Infrastructure & Facilities**
+    *   **IIS — Integrated Intelligence & Software**
+    *   **LCC — Linkages, Control & Communications**
+    *   **LIB — Logistics, Inventory & Blockchain**
+    *   **MEC — Mechanical Systems Modules**
+    *   **OOO — OS, Ontologies & Office Interfaces**
+    *   **PPP — Propulsion & Fuel System**
+*   **EE-US**: Ethics-Empathy Unmanned-Swarm.
+*   **LH2**: Liquid Hydrogen.
 *   **MAL-EEM**: Ethics & Empathy Module; the portfolio's safety and ethics guardrail.
 *   **QAIM-2**: **Quantum AI Model for Quantum Augmented/Accelerated Industrial Management**; the framework for applying quantum and hybrid AI optimization to industrial processes.
 *   **SIM**: Sustainable Industry Model; the framework for measuring sustainability impact.
 *   **TFA**: Top Federation Algorithm / Threading Final Assembly; the core architectural principle.
+*   **UAV**: Unmanned Aerial Vehicle.
 *   **UTCS/QS**: Universal Traceability & Configuration System / Quantum Seal; the evidence standard.
 
+---
 *Part of ASI-T2 - Artificial Super Intelligence Transponders for Aerospace Sustainable Industry Transition*
