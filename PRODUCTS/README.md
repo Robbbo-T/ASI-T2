@@ -128,7 +128,7 @@ This closed-loop process is applied consistently across all products to ensure t
 *   [`ENVIRONMENTS/sea/`](../ENVIRONMENTS/sea/): Maritime platforms and operations.
 *   [`ENVIRONMENTS/space/`](../ENVIRONMENTS/space/): Space-based platforms and orbital operations.
 *   [`ENVIRONMENTS/cross-environment/`](../ENVIRONMENTS/cross-environment/): Systems spanning multiple operational environments.
-*   [`ENVIRONMENTS/intelligence-model/`](../ENVIRONMENTS/intelligence-model/): Abstract computational and software environments.
+*   [`ENVIRONMENTS/digital/`](../ENVIRONMENTS/digital/): Abstract computational and software environments.
 
 ### Core Optimization Framework
 
