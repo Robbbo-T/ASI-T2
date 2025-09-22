@@ -45,7 +45,7 @@ Target: ~100-passenger BWB optimized for fuel burn ↓, emissions ↓, noise ↓
 
 ```
 
-Product_Line_AMPOEL360/Model_BWB/variant-Q100/conf_0000(HoV_baseline/MSN[0001-9999]
+Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_0000/HoV_baseline/MSN[0001-9999]
 └── domains/
     ├── AAA/
     │   ├── cax/
