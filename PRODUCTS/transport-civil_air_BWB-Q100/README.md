@@ -874,6 +874,5 @@ Under the **owning CAx phase** (`cax/CAT`, `cax/VP`, etc.) with links to the rel
 
 **Data Flow**:
 ```
-CAx Model → Problem Extraction → QUBO Encoding → Quantum Solve → 
-Solution Decoding → Classical Refinement → CAx Integration → ATA Documentation
+CAx Model → Problem Extraction → QUBO Encoding → Quantum Solve → Solution Decoding → Classical Refinement → CAx Integration → ATA Documentation
 ```
