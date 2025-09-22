@@ -27,7 +27,7 @@ Blended Wing Body Q100 passenger aircraft under the ASI-T2 portfolio. This READM
 * [QAIM-2: CAx → QOx Matrix (SIM)](#qaim-2-cax--qox-matrix-sim)
 * [Workflows](#workflows)
   * [Detailed Quantum Optimization Process](#detailed-quantum-optimization-process)
-  * [Domain-Specific Examples](#domain-specific-quantum-optimization-examples)
+  * [Domain-Specific Quantum Optimization Examples](#domain-specific-quantum-optimization-examples)
   * [Best Practices & Troubleshooting](#best-practices--troubleshooting)
 * [Quantum Optimization Performance Metrics](#quantum-optimization-performance-metrics)
 * [Evidence & Compliance](#evidence--compliance)
