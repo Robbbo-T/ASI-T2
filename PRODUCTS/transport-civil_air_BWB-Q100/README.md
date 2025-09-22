@@ -441,6 +441,113 @@ Sustainability (Energy/material use, End-product sustainability)
 Integration/Collaboration (Domain integration, Automation, Data management)
 Tool Maturity (Technology readiness, Risks, Adoption path)* [path_to_research](https://chatgpt.com/s/dr_68d173dae3a88191bed90e69a4cf219b)
 
+```mermaid
+flowchart LR
+    subgraph Legend
+      A[Blue Bar: Classical or Baseline] 
+      B[Orange Bar: QAIM Optimized/After]
+    end
+```
+```mermaid
+xychart-beta
+    title "CFD Compute Cost: Baseline vs QAIM-Optimized"
+    x-axis ["Classical CAx", "QAIM (Surrogates)"]
+    y-axis "Dev Phase CFD Cost ($K)" 0 --> 600
+    bar [500]
+    bar [250.5]
+```
+```mermaid
+xychart-beta
+    title "QAIM-Enabled Engineering Cost Savings (Base Case)"
+    x-axis ["Total Engr Cost", "QAIM Addressable", "QAIM Cycle-Time Saved"]
+    y-axis "Cost (Million $)" 0 --> 350
+    bar [324, 194.4, 58.3]
+```
+```mermaid
+xychart-beta
+    title "Test Campaign Cost (Dev Phase, All Scenarios)"
+    x-axis ["Classical", "QAIM"]
+    y-axis "Cost ($M)" 0 --> 50
+    bar [40] %% Classical CAx
+    bar [30] %% QAIM Optimized
+```
+```mermaid
+xychart-beta
+    title "Plant Annual Energy Cost (Ops Phase)"
+    x-axis ["Baseline", "QAIM Energy Optimized"]
+    y-axis "Plant Energy Cost ($M/yr)" 0 --> 12
+    bar [10]
+    bar [7.33]
+```
+```mermaid
+xychart-beta
+    title "Annual Logistics Cost: Baseline vs QAIM"
+    x-axis ["Classical", "QAIM"]
+    y-axis "Logistics Cost ($M/yr)" 0 --> 60
+    bar [50]
+    bar [45]
+```
+```mermaid
+xychart-beta
+    title "Annual Inventory Carrying Cost"
+    x-axis ["Baseline", "QAIM"]
+    y-axis "Carrying Cost ($M/yr)" 0 --> 18
+    bar [16]
+    bar [12]
+```
+```mermaid
+xychart-beta
+    title "Annual Fuel/CO₂ Savings: QAIM vs Baseline (12-jet fleet)"
+    x-axis ["Fuel Saved (t)", "CO₂ Avoided (t)", "Carbon $ Saved (K$)"]
+    y-axis "Qty per Year" 0 --> 16000
+    bar [4500, 14220, 995.4]
+```
+**source data**
+
+Here’s the table:
+
+| Parameter                                           | Conservative | Base     | Aggressive |
+|-----------------------------------------------------|--------------|----------|------------|
+| Dev duration (years)                                | 4            | 4        | 4          |
+| Ops horizon after dev (years)                       | 6            | 6        | 6          |
+| Discount rate                                       | 0.1          | 0.1      | 0.1        |
+| Engineers (avg)                                     | 250          | 300      | 350        |
+| Fully-loaded eng. cost ($/hr)                       | 140          | 150      | 160        |
+| Engineer hours/year                                 | 1800         | 1800     | 1800       |
+| Fraction workload QAIM-improvable                   | 0.5          | 0.6      | 0.7        |
+| Cycle-time reduction % (Conservative)               | 0.15         | 0.2      | 0.25       |
+| Cycle-time reduction % (Base)                       | 0.2          | 0.3      | 0.4        |
+| Cycle-time reduction % (Aggressive)                 | 0.3          | 0.4      | 0.5        |
+| CFD runs (baseline, dev phase total)                | 1500         | 2000     | 2500       |
+| Core-hours per CFD run                              | 4000         | 5000     | 6000       |
+| HPC cost per core-hour ($)                          | 0.05         | 0.05     | 0.05       |
+| Fraction runs replaced by surrogate/DOE             | 0.4          | 0.5      | 0.6        |
+| Surrogate/DOE speedup factor                        | 200          | 500      | 1000       |
+| Plant energy cost baseline ($/yr during ops)        | 8,000,000    | 10,000,000 | 12,000,000 |
+| Manufacturing energy reduction % (QAIM)             | 0.18         | 0.267    | 0.3        |
+| Annual logistics cost baseline ($/yr ops)           | 40,000,000   | 50,000,000 | 60,000,000 |
+| Logistics cost reduction % (QAIM)                   | 0.08         | 0.1      | 0.12       |
+| Inventory value baseline ($)                        | 60,000,000   | 80,000,000 | 100,000,000|
+| Carrying cost %/yr                                  | 0.2          | 0.2      | 0.2        |
+| Inventory reduction % (QAIM)                        | 0.1          | 0.15     | 0.2        |
+| Test cases (count, dev)                             | 1500         | 2000     | 2500       |
+| Cost per test ($)                                   | 15,000       | 20,000   | 25,000     |
+| Test reduction % (QAIM)                             | 0.2          | 0.25     | 0.3        |
+| Annual rework/scrap cost (dev+ops) ($)              | 6,000,000    | 8,000,000 | 10,000,000 |
+| Rework reduction % (QAIM)                           | 0.12         | 0.15     | 0.18       |
+| Per-aircraft yearly flights (ops)                   | 2500         | 3000     | 3500       |
+| Fuel burn baseline per flight (tonnes)              | 2            | 2.5      | 3          |
+| Fuel price ($/tonne)                                | 900          | 900      | 900        |
+| Fleet size entering ops                             | 10           | 12       | 15         |
+| Fuel burn reduction % via design weight/aero (QAIM) | 0.03         | 0.05     | 0.07       |
+| CO2 per tonne fuel (tonnes)                         | 3.16         | 3.16     | 3.16       |
+| Carbon price ($/tonne CO2)                          | 70           | 70       | 100        |
+| Quantum compute cost ($/yr dev)                     | 600,000      | 900,000  | 1,300,000  |
+| Platform licenses/support ($/yr dev+ops)            | 400,000      | 500,000  | 700,000    |
+| One-off integration/setup ($)                       | 1,500,000    | 2,000,000 | 2,500,000  |
+| Training/change mgmt one-off ($)                    | 800,000      | 1,000,000 | 1,200,000  |
+
+
 ### BWB-Q100 Optimization Matrix
 
 *(i)* optimization target · *(ii)* quantum mapping · *(iii)* SIM lever · *(iv)* maturity
@@ -460,6 +567,7 @@ Tool Maturity (Technology readiness, Risks, Adoption path)* [path_to_research](h
 | **PDM-PLM**| BOM variants; change impact     | QUBO/BQM                                   | Rework ↓; circularity ↑          | Pilot          |
 | **CAI**    | Embedding portfolio (multi-obj) | Weighted-objective QUBO → QAOA             | Energy efficiency ↑; abatement ↑ | Pilot          |
 | **CAA**    | Robot/cell allocation & timing  | Assignment/scheduling QUBO                 | Utilization ↑; energy ↓          | Pilot          |
+
 
 ### Implementation Strategy by Maturity Level
 
