@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 import zipfile, datetime
 from pathlib import Path
-import xml.etree.ElementTree as ET
+try:
+    import defusedxml.etree.ElementTree as ET
+except ImportError:
+    import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTDIR = ROOT/"exchange/packages"

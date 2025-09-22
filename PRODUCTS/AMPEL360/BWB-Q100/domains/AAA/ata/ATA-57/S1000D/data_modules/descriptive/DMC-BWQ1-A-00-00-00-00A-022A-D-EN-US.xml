@@ -6,36 +6,31 @@
       <dmIdent>
         <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
                 systemCode="00" subSystemCode="00" subSubSystemCode="00"
-                assyCode="00" disassyCode="00A" disassyCodeVariant="A"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
                 infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
         <language languageIsoCode="en" countryIsoCode="US"/>
-        <issueInfo issueNumber="001" inWork="00"/>
+        <issueInfo issueNumber="001" inWork="01"/>
       </dmIdent>
       <dmAddressItems>
         <issueDate year="2025" month="09" day="22"/>
-        <dmTitle><techName>BWB-Q100</techName><infoName>BREX — Business Rules Exchange</infoName></dmTitle>
+        <dmTitle>
+          <techName>BWB-Q100</techName>
+          <infoName>BREX — Project business rules (IC 022)</infoName>
+        </dmTitle>
       </dmAddressItems>
     </dmAddress>
-    <dmStatus issueType="new"><security securityClassification="01"/></dmStatus>
+    <dmStatus issueType="new">
+    <security securityClassification="01"/>
+  </dmStatus>
   </identAndStatusSection>
 
   <content>
     <rules>
-      <!-- Examples: tighten MIC, filenames, IC families, classification string -->
       <ruleGroup>
         <brParas>
-          <brPara>
-            <brTitle>Model Identification Code</brTitle>
-            <brText>Use MIC "BWQ1" (uppercase A–Z, 0–9 only). Store mapping to marketing name "BWB-Q100".</brText>
-          </brPara>
-          <brPara>
-            <brTitle>Information Codes for ATA-57</brTitle>
-            <brText>Descriptions use IC 040/034; inspections 300-series; fault isolation 420/421; removal 500-series; install/rig 700-series; repairs 600-series.</brText>
-          </brPara>
-          <brPara>
-            <brTitle>Classification string</brTitle>
-            <brText>All Markdown front-matter must include "INTERNAL–EVIDENCE-REQUIRED" (en dash) to satisfy CI rules.</brText>
-          </brPara>
+          <brPara><brTitle>MIC</brTitle><brText>Use BWQ1 (A–Z, 0–9 only).</brText></brPara>
+          <brPara><brTitle>Classification</brTitle><brText>Use INTERNAL–EVIDENCE-REQUIRED (en dash).</brText></brPara>
+          <brPara><brTitle>Schema</brTitle><brText>XSD only; no DTD.</brText></brPara>
         </brParas>
       </ruleGroup>
     </rules>

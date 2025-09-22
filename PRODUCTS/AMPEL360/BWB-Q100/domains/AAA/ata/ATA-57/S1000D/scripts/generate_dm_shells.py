@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Generate Data Module shells from DMRL requirements."""
 from pathlib import Path
-import xml.etree.ElementTree as ET
+try:
+    import defusedxml.etree.ElementTree as ET
+except ImportError:
+    import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 DMRL = ROOT/"publication_modules/DML-BWQ1-ATA57-00_EN-US.xml"
@@ -77,19 +80,19 @@ def main():
             schema = "brex.xsd"
         elif ic in ["200", "210", "220", "230", "240", "250", "260", "270", "280", "290"]:
             bucket = "procedural"
-            schema = "descript.xsd"  # TODO: create proced.xsd
+            schema = "proced.xsd"
         elif ic in ["500", "510", "520", "530", "540", "550", "560", "570", "580", "590"]:
             bucket = "procedural"
-            schema = "descript.xsd"
+            schema = "proced.xsd"
         elif ic in ["600", "610", "620", "630", "640", "650", "660", "670", "680", "690"]:
             bucket = "procedural"
-            schema = "descript.xsd"
+            schema = "proced.xsd"
         elif ic in ["700", "710", "720", "730", "740", "750", "760", "770", "780", "790"]:
             bucket = "procedural"
-            schema = "descript.xsd"
+            schema = "proced.xsd"
         elif ic in ["420", "421", "422", "423", "424", "425", "426", "427", "428"]:
             bucket = "fault"
-            schema = "descript.xsd"  # TODO: create fault.xsd
+            schema = "fault.xsd"
         else:
             bucket = "descriptive"
             schema = "descript.xsd"

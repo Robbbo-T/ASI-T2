@@ -131,6 +131,9 @@ Provide a short narrative of the QOx run, decisions, and impacts (fuel/emissions
         run: |
           sudo apt-get update && sudo apt-get install -y libxml2-utils
 
+      - name: Install Python deps for validators
+        run: pip3 install --no-cache-dir defusedxml
+
       - name: Validate CSDB control & CIR
         run: |
           BASE="PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D"

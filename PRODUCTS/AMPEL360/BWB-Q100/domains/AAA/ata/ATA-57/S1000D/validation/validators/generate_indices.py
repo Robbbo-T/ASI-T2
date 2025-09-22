@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import xml.etree.ElementTree as ET
+try:
+    import defusedxml.etree.ElementTree as ET
+except ImportError:
+    import xml.etree.ElementTree as ET
 import json
 
 ROOT = Path(__file__).resolve().parents[2]
