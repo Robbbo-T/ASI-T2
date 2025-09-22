@@ -52,7 +52,7 @@ def main():
         print(f"DMRL not found: {DMRL}")
         return
 
-    dmrl = ET.parse(DMRL).getroot()
+    dmrl = defusedxml.etree.ElementTree.parse(DMRL).getroot()
     generated = 0
 
     for req in dmrl.findall(".//dmRequirement"):
