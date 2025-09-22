@@ -4,4 +4,5 @@
   <uri name="descript.xsd" uri="descript.xsd"/>
   <uri name="pm.xsd"       uri="pm.xsd"/>
   <uri name="brex.xsd"     uri="brex.xsd"/>
+  <uri name="dmrl.xsd"     uri="dmrl.xsd"/>
 </catalog>

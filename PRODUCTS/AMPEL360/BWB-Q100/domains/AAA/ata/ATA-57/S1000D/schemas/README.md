@@ -10,6 +10,7 @@ This directory contains:
 - **`descript.xsd`** - Descriptive data module schema (Info Code 040)
 - **`brex.xsd`** - Business Rules Exchange schema (Info Code 022)  
 - **`pm.xsd`** - Publication Module schema
+- **`dmrl.xsd`** - Data Module Requirements List schema
 - **`catalog.xml`** - XML catalog for schema resolution
 
 ### Schema Files Structure
@@ -18,6 +19,7 @@ schemas/
 ├── brex.xsd        # BREX data module validation
 ├── descript.xsd    # Descriptive data module validation  
 ├── pm.xsd          # Publication module validation
+├── dmrl.xsd        # Data Module Requirements List validation
 └── catalog.xml     # XML catalog for editor integration
 ```
 
@@ -56,6 +58,7 @@ All ATA-57 data modules validate against these schemas:
 - Descriptive modules → `descript.xsd`
 - BREX modules → `brex.xsd`  
 - Publication modules → `pm.xsd`
+- Data Module Requirements Lists → `dmrl.xsd`
 
 Validation ensures:
 - Proper S1000D Issue 6.0 structure

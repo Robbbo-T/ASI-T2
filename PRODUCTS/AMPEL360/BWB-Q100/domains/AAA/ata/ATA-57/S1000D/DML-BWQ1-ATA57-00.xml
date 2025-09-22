@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmrl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="schemas/dmrl.xsd">
+  <identAndStatusSection>
+    <dmrlAddress>
+      <dmrlIdent dmrlCode="DML-BWQ1-ATA57-00" languageIsoCode="en" countryIsoCode="US"/>
+      <issueInfo issueNumber="001" inWork="00"/>
+      <dmrlTitle>DMRL — ATA-57 Wings (BWB-H2 Q100, conf_000_baseline)</dmrlTitle>
+    </dmrlAddress>
+  </identAndStatusSection>
+
+  <content>
+
+    <!-- =========================
+         57-10 Wing Structure
+         ========================= -->
+    <!-- 57-10-00 General + maintenance planning -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-00 General Description — Wing structure (IC 040)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="100" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-00 Scheduled Maintenance — Inspection intervals &amp; thresholds (IC 100)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-10-10 Wing box -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="034" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-10 Technical Data — Wing box primary structure (IC 034)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="310" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-10 Visual Inspection — Wing box (IC 310)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-10-20 Skins/Stringers/Spars/Ribs -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="20"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="034" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-20 Technical Data — Skins/Stringers/Spars/Ribs (IC 034)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="20"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="310" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-20 Visual Inspection — Primary members (IC 310)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-10-30 Blended integration -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="30"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="034" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-30 Technical Data — Wing/centerbody blended structure (IC 034)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="30"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="345" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-30 Structural/Interface Test — Blend zone (IC 345)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-10-40 Attachment fittings -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="40"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="034" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-40 Technical Data — Equipment attachment fittings (IC 034)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-10-50 BWB transition fairings (BWB-specific) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="50"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="034" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10-50 Technical Data — BWB transition fairings (IC 034)</reqComment>
+    </dmRequirement>
+
+    <!-- =========================
+         57-20 Wing Fuel System Interfaces (incl. H₂)
+         ========================= -->
+    <!-- 57-20-00 General + safety -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-00 General Description — Fuel section (IC 040)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-00 Warnings/Cautions — H₂ fuel safety (IC 018)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="011" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-00 Safety Summary — H₂ handling &amp; ventilation (IC 011)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-20-10 Integral tanks -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="345" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-10 Leak/Pressure Test — Integral tanks (IC 345)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="600" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-10 Servicing — Tank access/drain/inert (IC 600)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-20-20 Fuel line routing -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="20"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="052" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-20 Routing Diagram — Fuel lines (IC 052)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-20-30 Ventilation & inerting -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="30"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="350" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-30 Functional Check — Vent/Inerting logic (IC 350)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-20-40 Fuel measurement & management -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="40"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="350" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-40 Calibration/Functional Check — Fuel qty/management (IC 350)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-20-50 H2 tank structural interfaces (BWB-H2 specific) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="50"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-50 Description — H₂ tank structural interfaces (IC 040)</reqComment>
+    </dmRequirement>
+
+    <!-- =========================
+         57-30 Wing Control Surfaces
+         ========================= -->
+    <!-- 57-30-00 General + ops check -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-00 General Description — Control surfaces (IC 040)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="350" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-00 Operational Check — Surfaces (IC 350)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-30-10 Ailerons (R/I pair + IPD) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="500" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-10 Removal — Aileron/hinges/actuator (IC 5xx)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="700" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-10 Install/Rig — Aileron/actuator (IC 7xx)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="900" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-10 Illustrated Parts Data — Aileron group (IC 900)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-30-20 Spoilers/speedbrakes (R/I pair) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="20"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="500" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-20 Removal — Spoiler panel/actuator (IC 5xx)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="20"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="700" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-20 Install/Rig — Spoiler system (IC 7xx)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-30-30 Trailing-edge actuation (check + FI) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="30"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="350" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-30 Functional Check — TE actuation (IC 350)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="30"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="420" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-30 Fault Isolation — TE actuation (IC 420)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-30-40 Load alleviation (function + check) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="40"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-40 Functional Description — Load alleviation (IC 040)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="40"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="350" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-40 Functional Check — Load alleviation (IC 350)</reqComment>
+    </dmRequirement>
+
+    <!-- =========================
+         57-40 High-Lift Systems
+         ========================= -->
+    <!-- 57-40-00 General + ops check -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-00 General Description — High-lift systems (IC 040)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="350" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-00 Operational Check — High-lift (IC 350)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-40-10 Slats (R/I pair) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="500" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-10 Removal — Slats (IC 5xx)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="700" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-10 Install/Rig — Slats (IC 7xx)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-40-20 Flaps (R/I pair + IPD) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="20"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="500" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-20 Removal — Flaps (IC 5xx)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="20"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="700" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-20 Install/Rig — Flaps (IC 7xx)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="20"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="900" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-20 Illustrated Parts Data — Flap group (IC 900)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-40-30 Actuation & drive (check + FI) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="30"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="350" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-30 Functional Check — Drives/locks (IC 350)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="30"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="420" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-30 Fault Isolation — High-lift actuation (IC 420)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-40-40 Control & indication (function + check) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="40"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-40 Functional Description — Control/Indication (IC 042)</reqComment>
+    </dmRequirement>
+
+    <!-- =========================
+         57-50 Wing Equipment Integration
+         ========================= -->
+    <!-- 57-50-00 General + routing -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-00 General Description — Equipment integration (IC 040)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="052" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-00 Routing/Location — Wing wiring &amp; harnesses (IC 052)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-50-10 Antennas & sensors (desc + install) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-10 Description — Antennas &amp; sensor housings (IC 040)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="700" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-10 Install — Antenna/Sensor mounts (IC 7xx)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-50-20 Nav & comm integration -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="20"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-20 Functional Description — Nav/Comm integration (IC 042)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-50-30 Lighting (desc + check) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="30"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-30 Description — Wing lighting (IC 040)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="30"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="350" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-30 Functional Check — Lighting (IC 350)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-50-40 Ice detection/protection (desc + check) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="40"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-40 Description — Ice detection/protection (IC 040)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="40"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="350" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-40 Operational Check — Ice protection (IC 350)</reqComment>
+    </dmRequirement>
+
+    <!-- 57-50-50 Smart/quantum wing features (program-specific) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="50" subSubSystemCode="50"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-50-50 Functional Description — Smart/optimized wing features (IC 040)</reqComment>
+    </dmRequirement>
+
+    <!-- =========================
+         Fault Isolation roll-ups
+         ========================= -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="20" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="420" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-20-00 Fault Isolation — Fuel section general (IC 420)</reqComment>
+    </dmRequirement>
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="40" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="420" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-40-00 Fault Isolation — High-lift general (IC 420)</reqComment>
+    </dmRequirement>
+
+    <!-- =========================
+         Illustrated Parts / Parts Lists
+         ========================= -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="57" subSystemCode="30" subSubSystemCode="10"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="910" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-30-10 Parts List — Aileron group (IC 910)</reqComment>
+    </dmRequirement>
+
+    <!-- =========================
+         Governance / BREX &amp; Cross-ATA reference
+         ========================= -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="00" subSystemCode="00" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>BREX — Project business rules (IC 022)</reqComment>
+    </dmRequirement>
+
+    <!-- Cross-ATA pointer (read-only reference) -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A" systemCode="27" subSystemCode="50" subSubSystemCode="00"
+                assyCode="00" disassyCode="00A" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>ATA-27 Wing actuation interfaces (external reference from 57)</reqComment>
+    </dmRequirement>
+
+  </content>
+</dmrl>
