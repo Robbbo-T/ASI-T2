@@ -34,7 +34,7 @@ Each product directory contains:
 - [`ENVIRONMENTS/ground/`](../ENVIRONMENTS/Ground/) — Ground systems and operations
 - [`ENVIRONMENTS/sea/`](../ENVIRONMENTS/Sea/) — Maritime platforms and operations
 - [`ENVIRONMENTS/space/`](../ENVIRONMENTS/Space/) — Space systems and operations
-- [`ENVIRONMENTS/cross/`](../ENVIRONMENTS/Cross/) — Combined/heterogeneous environments
+- [`ENVIRONMENTS/Cross/`](../ENVIRONMENTS/Cross/) — Combined/heterogeneous environments
 
 ### Optimization Framework
 - [`FIELDS/cross/QAIM-2/`](../FIELDS/cross/QAIM-2/) — Quantum optimization matrix supporting all products
