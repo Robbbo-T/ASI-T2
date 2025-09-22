@@ -30,7 +30,7 @@ Information Type: 040 - Description
       <security securityClassification="01"/>
       <dataRestrictions>
         <restrictionInfo>
-          <restrictionInstructions>INTERNAL–EVIDENCE-REQUIRED</restrictionInstructions>
+          <restrictionInstructions>INTERNAL-EVIDENCE-REQUIRED</restrictionInstructions>
         </restrictionInfo>
       </dataRestrictions>
       <responsiblePartnerCompany>
