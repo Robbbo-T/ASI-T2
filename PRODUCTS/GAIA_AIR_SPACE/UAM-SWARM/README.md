@@ -52,7 +52,7 @@ This product is not a conventional kinetic swarm. It is a distributed sensing, d
 ## Directory Map (Domain → Process → ATA)
 
 ```
-Product_Line_AMPEL360/Model_EE-US/variant_001_baseline/Swarm[001-100]/Unit[0001-9999]
+Product_Line_GAIA-AIR-SPACE/Model_EE-US/variant_001_baseline/Swarm[001-100]/Unit[0001-9999]
 └── domains/
     ├── DDD/  // Digital & Data Defense
     │   ├── cax/
