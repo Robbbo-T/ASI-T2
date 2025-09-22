@@ -1,8 +1,8 @@
 ---
-id: ASIT2-CROSS-VALUE-CHAIN-LH2-CORRIDOR-0001-OV
+id: ASIT2-CROSS-LH2-CORRIDOR-0001-OV
 rev: 0
-field: cross-value-chain
-environment: cross-environment
+field: cross
+environment: cross
 configuration: baseline
 classification: INTERNAL–EVIDENCE-REQUIRED
 version: "0.1.0"
@@ -12,7 +12,7 @@ bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: "MAL-EEM"
 ---
 
-# LH2-CORRIDOR — Cross-Value Chain × Cross-Environment
+# LH2-CORRIDOR — Cross-Field  × Cross-Environment --> complete value chain
 
 An end-to-end, digitally-twinned, and quantum-optimized value chain for the production, storage, transport, and delivery of green liquid hydrogen (LH2). This product is a critical enabler for zero-emission aviation and other sustainable industries under the ASI-T2 portfolio.
 
@@ -52,7 +52,7 @@ Engineering follows the mandatory TFA-ONLY path grammar, UIX.v1, and MAL-EEM eth
 ## Directory Map (Domain → Process → ATA)
 
 ```
-Product_Line_AMPEL360/Model_LH2-CORRIDOR/variant_001_baseline/Node[0001-0500]
+Product_Line-AMPEL360/cross_LH2-CORRIDOR/variant_001_baseline/Node[0001-0500]
 └── domains/
     ├── AAP/  // Airport Adaptable Platforms
     │   ├── cax/
