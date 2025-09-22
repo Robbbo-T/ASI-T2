@@ -1,5 +1,4 @@
 ---
-
 id: ASIT2-TRANSCIVIL-AIR-BWB-Q100-0001-OV
 rev: 0
 field: transport-civil
@@ -11,7 +10,7 @@ release\_date: 2025-09-22
 maintainer: "ASI-T Architecture Team"
 bridge: "CB→QB→UE→FE→FWD→QS"
 ethics\_guard: "MAL-EEM"
-------------------------
+---
 
 # BWB-Q100 — Transport Civil × Air
 
