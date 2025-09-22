@@ -113,7 +113,7 @@ Information Code Usage:
     </procedure>
     -->
     
-    <!-- For fault modules (012): -->
+    <!-- For fault modules (420/421-428): -->
     <!--
     <faultReporting>
       <faultIsolation>
