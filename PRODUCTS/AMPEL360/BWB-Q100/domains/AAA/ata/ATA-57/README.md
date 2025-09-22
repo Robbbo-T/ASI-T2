@@ -12,118 +12,136 @@ ATA Chapter 57 covers wing-related systems, structures, and components including
 
 ## System Scope
 
-### 57-10 Wing Structure
-- Wing box primary structure
-- Wing skin and stiffening elements
-- Wing/fuselage integration (blended configuration)
-- Wing-mounted equipment attachment points
+### 57-10-00 Wing Structure — General
 
-### 57-20 Wing Fuel System Interface
-- Wing fuel tank integration
-- Fuel system routing through wing structures
-- Wing-specific fuel management components
+* **57-10-10** Wing box primary structure
+* **57-10-20** Wing skins, stringers, spars, ribs
+* **57-10-30** Wing/fuselage integration (blended structure)
+* **57-10-40** Wing-mounted equipment attachment fittings
 
-### 57-30 Wing Control Surfaces
-- Aileron systems and integration
-- Spoiler/speedbrake systems
-- Wing-mounted control surface actuation
+### 57-20-00 Wing Fuel System Interface
 
-### 57-40 Wing High-Lift Systems
-- Leading edge devices
-- Trailing edge flap systems
-- High-lift system actuation and control
+* **57-20-10** Integral fuel tank integration in wing box
+* **57-20-20** Fuel line routing through wing structures
+* **57-20-30** Ventilation and inerting systems in wing section
+* **57-20-40** Wing-specific fuel measurement & management components
 
-### 57-50 Wing Equipment Integration
-- Wing-mounted antennas and sensors
-- Navigation equipment integration
-- Wing lighting systems
+### 57-30-00 Wing Control Surfaces
+
+* **57-30-10** Ailerons: structure, hinges, actuators
+* **57-30-20** Spoilers/speedbrakes
+* **57-30-30** Trailing edge control surface actuation systems
+* **57-30-40** Control surface load alleviation features
+
+### 57-40-00 Wing High-Lift Systems
+
+* **57-40-10** Leading edge slats
+* **57-40-20** Trailing edge flaps (single/double-slotted)
+* **57-40-30** Actuation and drive mechanisms
+* **57-40-40** High-lift system control and indication
+
+### 57-50-00 Wing Equipment Integration
+
+* **57-50-10** Wing-mounted antennas and sensor housings
+* **57-50-20** Navigation & communication equipment integration
+* **57-50-30** Wing lighting systems (nav, anti-collision, taxi)
+* **57-50-40** Ice detection/protection devices on wing
 
 ## Design Requirements
 
 ### Structural Requirements
-- **Load Cases**: Ultimate load factors per CS-25
-- **Fatigue Life**: 90,000 flight cycles minimum
-- **Damage Tolerance**: Fail-safe design philosophy
-- **Materials**: Composite primary structure, metallic fittings
+
+* **Load Cases**: Ultimate load factors per CS-25
+* **Fatigue Life**: ≥ 90,000 flight cycles
+* **Damage Tolerance**: Fail-safe design philosophy
+* **Materials**: CFRP primary structure, metallic/titanium fittings
 
 ### Aerodynamic Requirements
-- **Design Cruise**: M0.78 at FL390
-- **Buffet Margin**: 0.3g at design cruise
-- **Stall Characteristics**: Predictable stall progression
-- **High-Lift Performance**: CLmax ≥ 2.8 with high-lift systems
+
+* **Design Cruise**: M0.78 @ FL390
+* **Buffet Margin**: ≥ 0.3g at cruise
+* **Stall Characteristics**: Predictable stall progression
+* **High-Lift Performance**: CLmax ≥ 2.8 with high-lift systems
 
 ### BWB-Specific Requirements
-- **Integration**: Seamless wing-fuselage blending
-- **Structural Continuity**: Load path through center body
-- **Manufacturing**: Large composite panel integration
-- **Access**: Maintenance access in blended configuration
+
+* **Integration**: Seamless wing-fuselage blending
+* **Structural Continuity**: Load path through center body
+* **Manufacturing**: Large integrated composite panels
+* **Access**: Inspection/maintenance access in blended wing
 
 ## CAx/QOx Integration
 
 ### Classical Analysis (CAx)
-- **CAD**: Wing geometry and structural definition
-  - Reference: `../../cax/CAD/wing_baseline_model/`
-- **CAE**: Structural analysis and sizing
-  - Reference: `../../cax/CAE/wing_structural_analysis/`
-- **CFD**: Aerodynamic performance validation
-  - Reference: `../../cax/CFD/wing_performance_validation/`
+
+* **CAD**: Wing geometry → `../../cax/CAD/wing_baseline_model/`
+* **CAE**: Structural analysis/sizing → `../../cax/CAE/wing_structural_analysis/`
+* **CFD**: Aerodynamic validation → `../../cax/CFD/wing_performance_validation/`
 
 ### Quantum Optimization (QOx)
-- **Topology Optimization**: Wing rib and spar layout optimization
-  - Reference: `../../qox/CAD/runs/20250120-wing_topology/`
-  - QS/UTCS: `a4f2d8e9...` (structural topology solution)
-- **Load Path Optimization**: Quantum-enhanced load distribution
-  - Reference: `../../qox/CAE/runs/20250122-load_path_opt/`
-  - QS/UTCS: `b7e3f1a2...` (load path optimization results)
+
+* **Topology Optimization**: Rib/spar layouts
+
+  * Path: `../../qox/CAD/runs/20250120-wing_topology/`
+  * QS/UTCS: `a4f2d8e9...`
+* **Load Path Optimization**: Wing load distribution
+
+  * Path: `../../qox/CAE/runs/20250122-load_path_opt/`
+  * QS/UTCS: `b7e3f1a2...`
 
 ## Certification Basis
 
-### Regulatory Requirements
-- **CS-25.301**: Load distribution and factor of safety
-- **CS-25.303**: Factor of safety requirements  
-- **CS-25.305**: Strength and deformation criteria
-- **CS-25.571**: Damage tolerance and fatigue evaluation
+### Regulatory References
+
+* **CS-25.301** Load distribution & factor of safety
+* **CS-25.303** Factor of safety
+* **CS-25.305** Strength & deformation
+* **CS-25.571** Fatigue & damage tolerance
 
 ### Test Requirements
-- **Static Tests**: Ultimate load demonstration
-- **Fatigue Tests**: Full-scale fatigue test article
-- **Environmental**: Temperature and moisture effects
-- **Manufacturing**: Production conformity validation
+
+* **Static**: Ultimate load wing bending
+* **Fatigue**: Full-scale wing fatigue article
+* **Environmental**: Temp/moisture degradation
+* **Manufacturing**: Production conformity
 
 ## Evidence Package
 
 ### Design Evidence
-- [ ] Wing structural design report (CAx/CAE analysis)
-- [ ] Aerodynamic design validation (CAx/CFD results)  
-- [ ] Quantum optimization results (QOx evidence with QS/UTCS)
-- [ ] Manufacturing process definition
-- [ ] Material specifications and allowables
+
+* [ ] Wing structural design report (CAE) — QS/UTCS: \_\_\_\_\_\_
+* [ ] Aerodynamic validation (CFD) — QS/UTCS: \_\_\_\_\_\_
+* [ ] Quantum optimization results — QS/UTCS: \_\_\_\_\_\_
+* [ ] Manufacturing process definition — QS/UTCS: \_\_\_\_\_\_
+* [ ] Material allowables — QS/UTCS: \_\_\_\_\_\_
 
 ### Test Evidence
-- [ ] Component test results (coupons, elements, details)
-- [ ] Subcomponent test results (panels, joints)
-- [ ] Full-scale test planning and results
-- [ ] Environmental testing results
+
+* [ ] Coupon/element tests — QS/UTCS: \_\_\_\_\_\_
+* [ ] Subcomponent panels/joints — QS/UTCS: \_\_\_\_\_\_
+* [ ] Full-scale static/fatigue test — QS/UTCS: \_\_\_\_\_\_
+* [ ] Environmental tests — QS/UTCS: \_\_\_\_\_\_
 
 ### Certification Evidence
-- [ ] Compliance demonstration matrix
-- [ ] Certification test plans
-- [ ] Type certification data sheets
-- [ ] Production conformity procedures
 
-## Sustainability Metrics (SIM Integration)
+* [ ] Compliance matrix — QS/UTCS: \_\_\_\_\_\_
+* [ ] Certification test plans — QS/UTCS: \_\_\_\_\_\_
+* [ ] Type certificate data sheets — QS/UTCS: \_\_\_\_\_\_
+* [ ] Conformity procedures — QS/UTCS: \_\_\_\_\_\_
 
-### Environmental Impact
-- **Weight Reduction**: Quantum-optimized structure 12% lighter than baseline
-- **Drag Reduction**: 8% improvement in wing aerodynamic efficiency
-- **Fuel Burn**: 5% reduction attributed to wing optimization
-- **Materials**: 15% reduction in composite material waste through optimization
+## Sustainability Metrics (SIM)
 
-### Lifecycle Assessment
-- **Manufacturing**: Energy consumption per wing assembly
-- **Operations**: Fuel consumption impact over 25-year lifecycle
-- **Maintenance**: Predicted maintenance burden and sustainability
-- **EoL**: Recyclability and material recovery planning
+* **Weight Reduction**: −12% vs. baseline
+* **Drag Reduction**: −8% improved wing efficiency
+* **Fuel Burn**: −5% attributable to wing design
+* **Material Waste**: −15% composite scrap
+
+**Lifecycle:**
+
+* Manufacturing energy/wing assembly
+* Operational CO₂/fuel burn tracking
+* Maintenance burden predictions
+* End-of-Life recyclability & recovery
 
 ## Revision History
 
