@@ -32,7 +32,7 @@ def main():
     
     # Add DMs if index exists
     if dm_index_path.exists():
-        dm_index = ET.parse(dm_index_path).getroot()
+        dm_index = defusedxml.etree.ElementTree.parse(dm_index_path).getroot()
         for dm in dm_index.findall("./dm"):
             p = dm.get("path")
             if p and p != "MISSING":
