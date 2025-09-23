@@ -169,7 +169,7 @@ def safe(s: str) -> str:
 
 def read_xml(path: Path):
     try:
-        return ET.parse(path).getroot()
+        return defusedxml.etree.ElementTree.parse(path).getroot()
     except Exception:
         return None
 
