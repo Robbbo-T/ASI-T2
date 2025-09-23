@@ -20,7 +20,7 @@ canonical_hash: pending
 
 ## Overview
 
-This document defines the product-specific binding of the generic [AQUA OS QAFbW Control Stack](../../../../../INFRANET/AQUA_OS_AIRCRAFT/components/QAFbW/) to the **AMPEL360 BWB-Q100** aircraft.
+This document defines the product-specific binding of the generic [AQUA OS QAFbW Control Stack](../../../../../../INFRANET/AQUA_OS_AIRCRAFT/components/QAFbW/) to the **AMPEL360 BWB-Q100** aircraft.
 
 The binding transforms the generic AQUA OS component specification into BWB-Q100-specific implementation through:
 1. **Physical Interface Mapping**: Logical topics → physical sensors/actuators
@@ -81,9 +81,9 @@ control_gains:
 ## Cross-Reference
 
 ### AQUA OS Component
-- **Generic Specification**: [QAFbW Component Spec](../../../../../INFRANET/AQUA_OS_AIRCRAFT/components/QAFbW/QAFbW_Component_Spec.md)
-- **Interface Contract**: [QAFbW ICD](../../../../../INFRANET/AQUA_OS_AIRCRAFT/components/QAFbW/QAFbW_ICD.yaml)
-- **Verification Matrix**: [QAFbW VCRM](../../../../../INFRANET/AQUA_OS_AIRCRAFT/components/QAFbW/QAFbW_VCRM.csv)
+- **Generic Specification**: [QAFbW Component Spec](../../../../../../INFRANET/AQUA_OS_AIRCRAFT/components/QAFbW/QAFbW_Component_Spec.md)
+- **Interface Contract**: [QAFbW ICD](../../../../../../INFRANET/AQUA_OS_AIRCRAFT/components/QAFbW/QAFbW_ICD.yaml)
+- **Verification Matrix**: [QAFbW VCRM](../../../../../../INFRANET/AQUA_OS_AIRCRAFT/components/QAFbW/QAFbW_VCRM.csv)
 
 ### BWB-Q100 Integration
 - **System Architecture**: [BWB-Q100 README](../../../../README.md)
