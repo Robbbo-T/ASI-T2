@@ -17,3 +17,20 @@ PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/validation/reports/*.pd
 __pycache__/
 *.pyc
 *.pyo
+
+# Python environments and packaging
+venv/
+env/
+.venv/
+.env
+*.egg-info/
+dist/
+build/
+.Python
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

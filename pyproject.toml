@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "asi-t2"
+version = "0.1.0"
+description = "Advanced Systems Integration - T2 Repository"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Proprietary"}
+authors = [
+    {name = "ASI-T Architecture Team"},
+]
+maintainers = [
+    {name = "ASI-T Architecture Team"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers", 
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    # Core Web Framework Dependencies (GenCMS API Server)
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.4.0",
+    "requests>=2.31.0",
+    "starlette>=0.27.0",
+    # Data Validation and Processing
+    "jsonschema>=4.17.0",
+    "PyYAML>=6.0",
+    # XML Processing (Security-focused)
+    "defusedxml>=0.7.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0", 
+    "httpx>=0.25.0",
+]
+docs = [
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.4.0",
+]
+xml = [
+    "lxml>=4.9.0",  # High-performance XML parsing
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Robbbo-T/ASI-T2"
+"Repository" = "https://github.com/Robbbo-T/ASI-T2"
+"Issues" = "https://github.com/Robbbo-T/ASI-T2/issues"
+
+[project.scripts]
+# Command-line scripts
+asi-derive-struct = "scripts.derive_struct_from_readmes:main"
+asi-validate-pax = "PRODUCTS.AMPEL360.BWB-Q100.domains.AAA.pax.scripts.validate_pax:main"
+asi-build-pages = "scripts.ghpages_build:main"
+
+[tool.setuptools]
+py-modules = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["scripts*", "PRODUCTS*"]
+exclude = ["tests*", "*site*", "*_site*"]
+
+# Linting and formatting configuration
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+  | _site
+  | site
+)/
+'''
