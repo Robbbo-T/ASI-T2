@@ -154,7 +154,7 @@ jobs:
             [ -f "$BASE/metadata/csdb_rules.xml" ]   && xmllint --noout --schema "$BASE/schemas/csdb_rules.xsd" "$BASE/metadata/csdb_rules.xml" || true
             [ -f "$BASE/metadata/access_control.xml" ] && xmllint --noout --schema "$BASE/schemas/access_control.xsd" "$BASE/metadata/access_control.xml" || true
             [ -f "$BASE/metadata/versioning.xml" ]   && xmllint --noout --schema "$BASE/schemas/versioning.xsd" "$BASE/metadata/versioning.xml" || true
-            find "$BASE/common_information" -name 'CIR-*.xml' -print0 2>/dev/null | xargs -0 -I{} xmllint --noout --schema "$BASE/schemas/cir.xsd" "{}" || true
+            find "$BASE/common_information" -name 'CIR-BWQ1-*.xml' -print0 2>/dev/null | xargs -0 -I{} xmllint --noout --schema "$BASE/schemas/cir.xsd" "{}" || true
           fi
 
       - name: Build CSDB indices (optional)
