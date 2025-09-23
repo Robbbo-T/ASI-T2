@@ -13,26 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
-      - name: Validate UTCS/QS evidence, ATA links, and MAL-EEM
+      - name: Validate UTCS/QS evidence, ATA links, MAL-EEM, and classification dash
         shell: bash
         run: |
           python - <<'PY'
-          import json, pathlib, glob, re, os, sys
-
+          import json, pathlib, glob, re, os, sys, datetime
           root = pathlib.Path(".").resolve()
           errors = []
-
           required = {"policy_hash","model_sha","data_manifest_hash","operator_id","canonical_hash","timestamp"}
           patterns = [
               "domains/*/qox/*/runs/*/manifest.json",
               "PRODUCTS/*/*/domains/*/qox/*/runs/*/manifest.json",
           ]
-
           found_any = False
           for pat in patterns:
               for man in glob.glob(pat):
@@ -48,22 +46,148 @@ jobs:
                       errors.append(f"[EVIDENCE] {p}: missing keys {missing}")
           if not found_any:
               errors.append("[EVIDENCE] no QOx runs found")
-
-          for dom in sorted(glob.glob("domains/*")):
-              ata = pathlib.Path(dom) / "ata"
+          ata_roots = [pathlib.Path(p) for p in glob.glob("domains/*")]
+          ata_roots += [pathlib.Path(p) for p in glob.glob("PRODUCTS/*/*/domains/*")]
+          for dom in sorted(ata_roots):
+              ata = dom / "ata"
               if not ata.exists():
                   errors.append(f"[ATA] {dom}: missing ata/")
               else:
                   has = any(d.is_dir() and re.fullmatch(r"ATA-\d{2}", d.name) for d in ata.iterdir())
                   if not has:
                       errors.append(f"[ATA] {ata}: no ATA-XX folders")
-
           ethics_ok = False
           scan = [root/"README.md"]
           scan += list(root.glob("domains/*/README.md"))
           scan += list(root.glob("domains/*/*/*/README.md"))
+          scan += list(root.glob("PRODUCTS/*/*/README.md"))
+          scan += list(root.glob("PRODUCTS/*/*/domains/*/README.md"))
           for p in scan:
               if p.exists():
+                  try:
+                      if "MAL-EEM" in p.read_text(encoding="utf-8"):
+                          ethics_ok = True
+                          break
+                  except Exception:
+                      pass
+          if not ethics_ok:
+              errors.append("[ETHICS] MAL-EEM marker not found in repository or domain readmes")
+          EN = "INTERNAL–EVIDENCE-REQUIRED"
+          for md in root.rglob("*.md"):
+              try:
+                  txt = md.read_text(encoding="utf-8", errors="ignore")
+              except Exception:
+                  continue
+              for line in txt.splitlines():
+                  if line.strip().lower().startswith("classification:"):
+                      if EN not in line:
+                          errors.append(f"[CLASS] {md}: classification must be '{EN}' (use EN dash)")
+                      break
+          if errors:
+              print("QAIM validation failed:")
+              for e in errors:
+                  print(f"::error::{e}")
+              with open(os.environ.get("GITHUB_STEP_SUMMARY","/tmp/summary.md"),"a",encoding="utf-8") as f:
+                  f.write("### QAIM Validation: FAIL\n")
+                  for e in errors:
+                      f.write(f"- {e}\n")
+              sys.exit(1)
+          else:
+              msg = f"QAIM validation passed at {datetime.datetime.utcnow().isoformat()}Z"
+              print(msg)
+              with open(os.environ.get("GITHUB_STEP_SUMMARY","/tmp/summary.md"),"a",encoding="utf-8") as f:
+                  f.write(f"### {msg}\n")
+          PY
+
+      - name: Generate latest QOx → ATA targets (info only)
+        if: success()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, pathlib, glob, time
+          rows = []
+          for pat in [
+              "domains/*/qox/*/runs/*/manifest.json",
+              "PRODUCTS/*/*/domains/*/qox/*/runs/*/manifest.json",
+          ]:
+              for m in glob.glob(pat):
+                  man = pathlib.Path(m)
+                  if len(man.parents) < 5:
+                      continue
+                  try:
+                      data = json.loads(man.read_text(encoding="utf-8"))
+                  except Exception:
+                      data = {}
+                  phase      = man.parents[2].name
+                  domain_dir = man.parents[4]
+                  domain     = domain_dir.name
+                  run_id     = man.parents[0].name
+                  ata_dir    = domain_dir / "ata"
+                  mtime      = man.stat().st_mtime
+                  rows.append((domain, phase, run_id, mtime, ata_dir))
+          latest = {}
+          for domain, phase, run_id, mtime, ata_dir in rows:
+              key = (domain, phase)
+              if key not in latest or mtime > latest[key]["mtime"]:
+                  latest[key] = {"run_id": run_id, "mtime": mtime, "ata_dir": ata_dir}
+          if not latest:
+              print("No QOx manifests found.")
+          else:
+              print("Latest QOx runs → suggested ATA targets (no files written):")
+              for (domain, phase), info in sorted(latest.items()):
+                  ts = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(info["mtime"]))
+                  print(f"- {domain}/{phase}: run={info['run_id']} @ {ts} UTC → {info['ata_dir']}")
+          PY
+
+      - name: Install xmllint
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+
+      - name: Install Python deps for validators
+        run: pip3 install --no-cache-dir defusedxml
+
+      - name: Validate CSDB control & CIR (if present)
+        shell: bash
+        run: |
+          BASE="PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D"
+          if [ -d "$BASE" ]; then
+            [ -f "$BASE/metadata/csdb_control.xml" ] && xmllint --noout --schema "$BASE/schemas/csdb.xsd" "$BASE/metadata/csdb_control.xml" || true
+            [ -f "$BASE/metadata/csdb_rules.xml" ]   && xmllint --noout --schema "$BASE/schemas/csdb_rules.xsd" "$BASE/metadata/csdb_rules.xml" || true
+            [ -f "$BASE/metadata/access_control.xml" ] && xmllint --noout --schema "$BASE/schemas/access_control.xsd" "$BASE/metadata/access_control.xml" || true
+            [ -f "$BASE/metadata/versioning.xml" ]   && xmllint --noout --schema "$BASE/schemas/versioning.xml" "$BASE/metadata/versioning.xml" || true
+            find "$BASE/common_information" -name 'CIR-*.xml' -print0 2>/dev/null | xargs -0 -I{} xmllint --noout --schema "$BASE/schemas/cir.xsd" "{}" || true
+          fi
+
+      - name: Build CSDB indices (optional)
+        shell: bash
+        run: |
+          BASE="PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D"
+          if [ -f "$BASE/validation/validators/generate_indices.py" ]; then
+            python3 "$BASE/validation/validators/generate_indices.py" || echo "::warning::Index generation failed"
+          fi
+
+      - name: Validate DMRL & DM coverage (optional)
+        shell: bash
+        run: |
+          BASE="PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D"
+          if [ -f "$BASE/publication_modules/DML-BWQ1-ATA57-00_EN-US.xml" ]; then
+            xmllint --noout --schema "$BASE/schemas/dmrl.xsd" "$BASE/publication_modules/DML-BWQ1-ATA57-00_EN-US.xml" || echo "::warning::DMRL validation failed"
+          fi
+          if [ -f "$BASE/scripts/generate_dm_shells.py" ]; then
+            python3 "$BASE/scripts/generate_dm_shells.py" | tee /tmp/dmrl_out.txt || echo "::warning::DM shell generation failed"
+            if grep -q "Total generated:" /tmp/dmrl_out.txt; then
+              echo "::warning::DM shells missing (generated by CI). Consider committing them."
+            fi
+            rm -f /tmp/dmrl_out.txt
+          fi
+
+      - name: CSDB lint (optional)
+        shell: bash
+        run: |
+          BASE="PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D"
+          if [ -f "$BASE/validation/validators/validate_csdb.py" ]; then
+            python3 "$BASE/validation/validators/validate_csdb.py" || echo "::warning::CSDB validation failed"
+          fi
+
                   try:
                       if "MAL-EEM" in p.read_text(encoding="utf-8"):
                           ethics_ok = True
