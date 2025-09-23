@@ -4,7 +4,7 @@ timebase: AQUA_OS/TIME_SYNC
 topics:
   - id: aqua.qs.anchor
     dir: OUT
-    rate_hz: 0.1  # every 10 seconds
+    rate_hz: 0.01  # every 100 seconds
     vl: VL-QS-ANCHOR
     payload:
       timestamp: uint64_ns
