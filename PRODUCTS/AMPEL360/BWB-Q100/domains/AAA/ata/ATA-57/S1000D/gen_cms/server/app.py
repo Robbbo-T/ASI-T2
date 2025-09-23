@@ -421,7 +421,7 @@ def generate(req: GenerateReq):
     # Sanitize: keep only inside <content>… if the model over-returned
     if "<content" in draft:
         draft = re.sub(r"^[\s\S]*?<content", "<content", draft, flags=re.S)
-        draft = re.sub(r"</content>[\s\S]*$", "</content>", draft, flags=re.S)
+        draft = re.sub(r"</content>.*$", "</content>", draft, flags=re.S)
     # Ensure at least a <description> exists
     if "<description" not in draft:
         draft = f"<content><description>{draft}</description></content>"
