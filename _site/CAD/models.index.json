@@ -1,0 +1,24 @@
+[
+  {
+    "name": "wing_oml_left.gltf",
+    "site_rel": "./assets/wing_oml_left.gltf",
+    "src_repo": "PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/surface_geometry/wing_oml_left.gltf",
+    "meta": {
+      "name": "wing_oml_left.gltf",
+      "meshes": 1,
+      "materials": 0,
+      "primitives": 1
+    }
+  },
+  {
+    "name": "wing_oml_right.gltf",
+    "site_rel": "./assets/wing_oml_right.gltf",
+    "src_repo": "PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/surface_geometry/wing_oml_right.gltf",
+    "meta": {
+      "name": "wing_oml_right.gltf",
+      "meshes": 1,
+      "materials": 1,
+      "primitives": 1
+    }
+  }
+]

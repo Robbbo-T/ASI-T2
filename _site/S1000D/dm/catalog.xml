@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <!-- XML Catalog for S1000D Issue 6.0 Schema Resolution -->
+  <uri name="descript.xsd" uri="descript.xsd"/>
+  <uri name="pm.xsd"       uri="pm.xsd"/>
+  <uri name="brex.xsd"     uri="brex.xsd"/>
+  <uri name="dmrl.xsd"     uri="dmrl.xsd"/>
+  <uri name="csdb.xsd"          uri="csdb.xsd"/>
+  <uri name="csdb_rules.xsd"    uri="csdb_rules.xsd"/>
+  <uri name="access_control.xsd" uri="access_control.xsd"/>
+  <uri name="versioning.xsd"     uri="versioning.xsd"/>
+  <uri name="cir.xsd"           uri="cir.xsd"/>
+  <uri name="ddn.xsd"           uri="ddn.xsd"/>
+</catalog>

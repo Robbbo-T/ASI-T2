@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>S1000D Viewer</title>
+<style>
+  body { font: 16px/1.5 system-ui, sans-serif; margin: 1rem; }
+  #out { border:1px solid #ddd; border-radius:12px; padding:1rem; }
+  .muted { color:#666 }
+  code { background:#f6f8fa; padding: .1rem .3rem; border-radius: 6px; }
+</style>
+<h1>S1000D — XML Viewer</h1>
+<p class="muted">Applies a minimal XSLT on the client. You can always open the raw XML.</p>
+<div id="out">Loading…</div>
+<p><a id="raw" href="#">Open raw XML</a> • <a href="./">Back to list</a></p>
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const name = params.get('dm');
+  const target = name ? `./dm/${name}` : null;
+  const raw = document.getElementById('raw');
+  if (!target) {
+    document.getElementById('out').textContent = 'No DM specified.';
+    raw.style.display = 'none';
+    return;
+  }
+  raw.href = target;
+
+  Promise.all([
+    fetch(target).then(r => r.text()),
+    fetch('./xslt/dm2html.xsl').then(r => r.text())
+  ]).then(([xmlText, xslText]) => {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, 'application/xml');
+    const xsl = parser.parseFromString(xslText, 'application/xml');
+    const proc = new XSLTProcessor();
+    proc.importStylesheet(xsl);
+    const frag = proc.transformToFragment(xml, document);
+    const out = document.getElementById('out');
+    out.textContent = '';
+    out.appendChild(frag);
+  }).catch(e => {
+    document.getElementById('out').textContent = 'Failed to load or transform XML.';
+    console.error(e);
+  });
+})();
+</script>
+</html>

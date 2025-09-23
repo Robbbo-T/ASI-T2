@@ -1,0 +1,4 @@
+# Pages build manifest (optional).
+# Set a "hero" CAD model to load by default in WebXR/Model Viewer.
+# Use a repo-relative path that matches one of the discovered assets.
+cad.hero: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/surface_geometry/wing_oml_left.gltf

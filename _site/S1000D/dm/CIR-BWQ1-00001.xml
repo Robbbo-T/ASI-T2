@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commonInfoRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:noNamespaceSchemaLocation="../../schemas/cir.xsd">
+  <cirIdent>
+    <cirCode>CIR-BWQ1-00001</cirCode>
+    <cirType>terminology</cirType>
+  </cirIdent>
+  <content>
+    <terminology>
+      <term id="BWB">
+        <definition>Blended Wing Body - An aircraft configuration where the wing and fuselage are integrated into a single blended structure</definition>
+      </term>
+      <term id="Q100">
+        <definition>Configuration designation for the 100-passenger capacity BWB aircraft</definition>
+      </term>
+      <term id="MIC">
+        <definition>Model Identification Code - S1000D identifier for equipment model (BWQ1 for BWB-Q100)</definition>
+      </term>
+    </terminology>
+  </content>
+</commonInfoRepository>

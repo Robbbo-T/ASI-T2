@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CAD Viewer</title>
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+  body { font: 16px/1.45 system-ui, sans-serif; margin: 1rem 1rem 2rem; }
+  .grid { display:grid; gap:1rem; grid-template-columns: 1fr; }
+  .card { border:1px solid #ddd; border-radius:12px; padding:1rem; }
+  .muted { color:#666 }
+  .row { display:flex; gap:.5rem; align-items:center; }
+  input[type=search] { width: 100%; padding:.5rem .75rem; border-radius:10px; border:1px solid #ccc; }
+  ul { padding-left:1.2rem; }
+  li small { display:block; }
+</style>
+<h1>CAD — WebXR scene & model viewer</h1>
+<p class='muted'>Hero model set via manifest: <code>PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/surface_geometry/wing_oml_left.gltf</code> (<code>pages.manifest.yaml</code>)</p>
+<div class="grid">
+  <div class="card">
+    <h2>WebXR (A-Frame)</h2>
+    <p class="muted">Enter VR if your browser/device supports WebXR. The scene loads the first (or hero) model.</p>
+    <a-scene renderer="antialias:true">
+      <a-sky color="#202225"></a-sky>
+      <a-plane rotation="-90 0 0" position="0 0 -4" width="10" height="10" color="#444"></a-plane>
+      <a-entity gltf-model="./assets/wing_oml_left.gltf" position="0 1.5 -3"></a-entity>
+      <a-entity position="0 1.6 0">
+        <a-entity camera look-controls wasd-controls></a-entity>
+      </a-entity>
+    </a-scene>
+  </div>
+
+  <div class="card">
+    <h2>Model Viewer (fallback)</h2>
+    <model-viewer src="./assets/wing_oml_left.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls autoplay style="width:100%;height:420px;"></model-viewer>
+  </div>
+
+  <div class="card">
+    <div class="row"><h2 style="margin:0">Available models</h2><input id="q" type="search" placeholder="Filter by name…"/></div>
+    <ul id="list">
+        <li class="item" data-name="wing_oml_left.gltf">
+          <a href="./assets/wing_oml_left.gltf">wing_oml_left.gltf</a>
+          <small class="muted">meshes: 1, prims: 1, mats: 0</small>
+        </li>
+        
+        <li class="item" data-name="wing_oml_right.gltf">
+          <a href="./assets/wing_oml_right.gltf">wing_oml_right.gltf</a>
+          <small class="muted">meshes: 1, prims: 1, mats: 1</small>
+        </li>
+        </ul>
+  </div>
+</div>
+<p><a href="../">← Back to site root</a></p>
+<script>
+const q = document.getElementById('q');
+const items = [...document.querySelectorAll('#list .item')];
+q?.addEventListener('input', e => {
+  const s = (q.value || '').toLowerCase();
+  items.forEach(li => {
+    li.style.display = li.dataset.name.toLowerCase().includes(s) ? '' : 'none';
+  });
+});
+</script>
+</html>
