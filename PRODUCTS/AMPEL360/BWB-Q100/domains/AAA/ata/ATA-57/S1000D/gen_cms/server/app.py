@@ -3,6 +3,7 @@ import os, re, json, subprocess, datetime
 from pathlib import Path
 from typing import Optional, Dict
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 # ---- repo layout ------------------------------------------------------------
@@ -221,6 +222,15 @@ class PromoteReq(BaseModel):
 
 # ---- FastAPI ----------------------------------------------------------------
 app = FastAPI(title="GenCMS for BWQ1 ATA-57")
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, specify actual origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/health")
 def health():
