@@ -144,8 +144,11 @@ def schema_for_bucket(bucket: str) -> str:
     return "descript.xsd" if bucket in {"descriptive","procedural","fault","ipd"} else "descript.xsd"
 
 def dm_filename(dm: Dict[str,str], lang="EN", ctry="US") -> str:
-    return ("DMC-{mic}-{sdc}-{sc}-{ssc}-{sssc}-{ac}-{dc}{dcv}-{ic}{icv}-{iloc}-"
-            f"{lang}-{ctry}.xml").format(**dm)
+    return (
+        f"DMC-{dm['mic']}-{dm['sdc']}-{dm['sc']}-{dm['ssc']}-{dm['sssc']}-"
+        f"{dm['ac']}-{dm['dc']}{dm['dcv']}-{dm['ic']}{dm['icv']}-{dm['iloc']}-"
+        f"{lang}-{ctry}.xml"
+    )
 
 def dm_template(schema: str, title: str, info: str, dm: Dict[str,str]) -> str:
     # BREX ref always included
