@@ -1,3 +1,18 @@
+---
+id: CAD-WING-BM-OV-0001
+project: AMPEL360/BWB-Q100
+artifact: domains/AAA/cax/CAD/wing_baseline_model/README.md
+llc: SYSTEMS
+classification: INTERNAL–EVIDENCE-REQUIRED
+version: 0.1.0
+release_date: 2025-09-23
+maintainer: "ASI-T Architecture Team"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: MAL-EEM
+utcs_mi: v5.0
+canonical_hash: "TBD"
+---
+
 # Wing Baseline Model — CAD Geometry Definition
 
 Parametric CAD models and geometry definition for BWB-Q100 wing baseline configuration.
@@ -6,7 +21,7 @@ Parametric CAD models and geometry definition for BWB-Q100 wing baseline configu
 
 Baseline wing geometry for BWB-Q100 configuration including wing box structure, control surfaces, high-lift systems, and wing-fuselage integration.
 
-**Configuration**: BWB-Q100 Baseline (conf_000_baseline)
+**Configuration**: BWB-Q100 Baseline (conf_000_baseline)  
 **Primary Application**: ATA-57 Wing Systems
 
 ## Model Components
@@ -52,16 +67,17 @@ Baseline wing geometry for BWB-Q100 configuration including wing box structure, 
 - Maintenance access provisions
 
 ## File Organization
-
 ```
+
 wing_baseline_model/
-├── master_model/          # Master parametric model
-├── surface_geometry/      # OML surface definitions
-├── structural_layout/     # Internal structure geometry
-├── control_surfaces/      # Movable surface definitions
-├── high_lift_systems/     # Flap and slat geometry
-├── integration/           # Interface definitions
-└── documentation/         # Model documentation
+├── master_model/
+├── surface_geometry/
+├── structural_layout/
+├── control_surfaces/
+├── high_lift_systems/
+├── integration/
+└── documentation/
+
 ```
 
 ## CAx Integration
@@ -91,5 +107,5 @@ wing_baseline_model/
 
 ---
 
-*Referenced by ATA-57 Wing Systems Documentation*
+*Referenced by ATA-57 Wing Systems Documentation*  
 *Part of AAA Domain under BWB-Q100 Transport Civil × Air*

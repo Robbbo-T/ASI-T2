@@ -1,0 +1,9 @@
+flaps:
+  type: double-slotted
+  tracks_per_side: 3
+  span_fraction: [0.20, 0.70]
+  deflection_max_deg: 35
+slats:
+  type: Krueger
+  span_fraction: [0.15, 0.85]
+  deflection_max_deg: 22

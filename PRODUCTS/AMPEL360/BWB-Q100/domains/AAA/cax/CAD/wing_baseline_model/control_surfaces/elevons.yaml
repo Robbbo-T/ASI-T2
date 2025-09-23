@@ -1,0 +1,25 @@
+deflection_limits_deg:
+  min: -25
+  max: 25
+
+segments:
+  - id: EL1_L
+    side: left
+    span_fraction: [0.20, 0.35]
+    chord_fraction: 0.25
+    hinge_line_x_over_c: 0.75
+  - id: EL2_L
+    side: left
+    span_fraction: [0.37, 0.52]
+    chord_fraction: 0.25
+    hinge_line_x_over_c: 0.75
+  - id: EL1_R
+    side: right
+    span_fraction: [0.20, 0.35]
+    chord_fraction: 0.25
+    hinge_line_x_over_c: 0.75
+  - id: EL2_R
+    side: right
+    span_fraction: [0.37, 0.52]
+    chord_fraction: 0.25
+    hinge_line_x_over_c: 0.75

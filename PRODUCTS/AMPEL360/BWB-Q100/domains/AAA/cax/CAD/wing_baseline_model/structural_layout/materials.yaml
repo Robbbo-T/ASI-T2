@@ -1,0 +1,11 @@
+alloys:
+  - name: Al-Li 2199-T8
+    E: 77e9
+    rho: 2670
+    nu: 0.33
+composites:
+  - name: IM7/8552 [(0/±45/90)s]
+    E1: 135e9
+    E2: 10e9
+    G12: 5e9
+    rho: 1600
