@@ -102,13 +102,6 @@ jobs:
               phase = man.parent.parent.name  # e.g., CFD
               domain = man.parents[4].name    # e.g., AAA
               ata_dir = man.parents[4] / "ata"
-              # Choose a default ATA mapping when unknown; team will adjust
-              target = sorted([p for p in ata_dir.glob("ATA-*") if p.is_dir()])
-              if not target:
-                  continue
-              out = target[0] / "auto_doc.md"
-              body = f"""# Auto Doc — {domain}/{phase}
-Generated: {datetime.datetime.utcnow().isoformat()}Z
 
 - Evidence: `{man}`
 - Policy Hash: {data.get('policy_hash')}
