@@ -1,0 +1,82 @@
+id: ASIT2-AQUAOS-AIR-A653PM-ICD
+rev: 1.0
+note: A653_PM provides platform APIs rather than network topics
+platform_apis:
+  - name: create_partition
+    description: Create and configure a new application partition
+    parameters:
+      - name: partition_id
+        type: uint32
+        description: Unique partition identifier
+      - name: memory_size
+        type: size_t
+        description: Memory allocation size in bytes
+      - name: cpu_budget
+        type: uint32
+        description: CPU percentage allocation (0-100)
+      - name: window_duration_ms
+        type: uint32
+        description: Time window duration in milliseconds
+    returns:
+      type: partition_handle_t
+      description: Handle to created partition or NULL on failure
+
+  - name: start_partition
+    description: Start execution of a configured partition
+    parameters:
+      - name: partition_handle
+        type: partition_handle_t
+        description: Handle to partition to start
+      - name: entry_point
+        type: void*
+        description: Application entry point function
+    returns:
+      type: int
+      description: Success (0) or error code
+
+  - name: schedule_partitions
+    description: Begin major frame scheduling cycle
+    parameters:
+      - name: major_frame_ms
+        type: uint32
+        description: Major frame duration in milliseconds
+    returns:
+      type: int
+      description: Success (0) or error code
+
+  - name: get_partition_status
+    description: Query partition health and performance metrics
+    parameters:
+      - name: partition_handle
+        type: partition_handle_t
+        description: Handle to partition to query
+    returns:
+      type: partition_status_t
+      description: Status structure with health/performance data
+
+health_topics:
+  - id: aqua.a653pm.overrun
+    dir: OUT
+    rate_hz: 0  # event-driven
+    payload:
+      timestamp: uint64_ns
+      partition_id: uint32
+      overrun_duration_us: uint32
+      action_taken: uint8  # 0=log, 1=restart, 2=isolate
+
+  - id: aqua.a653pm.health
+    dir: OUT  
+    rate_hz: 1
+    payload:
+      timestamp: uint64_ns
+      active_partitions: uint8
+      cpu_utilization: uint8  # percentage
+      memory_utilization: uint8  # percentage
+      context_switches_per_sec: uint32
+
+partition_limits:
+  max_partitions: 8
+  min_window_ms: 1
+  max_window_ms: 50
+  max_major_frame_ms: 100
+  context_switch_wcet_us: 50

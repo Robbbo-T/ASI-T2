@@ -1,0 +1,16 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+A653PM-SRD-001,Test,UT-A653PM-002,Planned,Memory protection enforcement
+A653PM-SRD-002,Test,UT-A653PM-003,Planned,Time partition scheduling
+A653PM-SRD-003,Test,IT-A653PM-001,Planned,Multi-DAL partition isolation
+A653PM-SRD-004,Test,IT-A653PM-002,Planned,Overrun detection timing
+A653PM-SRD-005,Test,UT-A653PM-004,Planned,Context switch performance
+A653PM-SRD-006,Test,UT-A653PM-001,Planned,ARINC-653 API compliance
+A653PM-SRD-007,Test,IT-A653PM-003,Planned,Health monitoring integration
+A653PM-SRD-008,Test,UT-A653PM-005,Planned,Resource budget enforcement
+A653PM-SRD-009,Test,IT-A653PM-004,Planned,Boot sequence verification
+A653PM-SRD-010,Test,IT-A653PM-005,Planned,Evidence sealing integration
+A653PM-SRD-011,Test,ST-A653PM-002,Planned,Performance optimization
+A653PM-SRD-012,Test,ST-A653PM-001,Planned,Diagnostics capability
+A653PM-SRD-013,Analysis,N/A,Planned,Dynamic config analysis only
+A653PM-SRD-014,Analysis,N/A,N/A,Explicitly excluded feature
+A653PM-SRD-015,Analysis,N/A,N/A,Explicitly excluded feature

@@ -1,0 +1,34 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-A653PM-PSSC",
+  "rev": "1.0",
+  "note": "A653_PM is the platform hypervisor that manages other partitions",
+  "platform_role": "hypervisor",
+  "criticality": "DAL-A",
+  "cpu_overhead_percent": 5,
+  "mem_mib": 16,
+  "wcet_context_switch_us": 50,
+  "supported_partitions": {
+    "max_count": 8,
+    "min_window_ms": 1,
+    "max_window_ms": 50,
+    "major_frame_range_ms": [10, 100]
+  },
+  "scheduling": {
+    "algorithm": "static_cyclic",
+    "preemption": "time_triggered",
+    "priority_levels": 4
+  },
+  "memory_management": {
+    "mmu_required": true,
+    "protection_domains": 8,
+    "shared_memory_regions": 4
+  },
+  "health_monitoring": {
+    "overrun_detection_us": 1000,
+    "deadline_monitoring": true,
+    "partition_isolation_verification": true
+  },
+  "evidence": {
+    "utcs_qs": ["partition_table", "config", "overrun_events", "health_logs"]
+  }
+}

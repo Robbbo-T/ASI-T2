@@ -1,0 +1,16 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+TIMESYNC-SRD-001,Test,IT-TIMESYNC-001,Planned,GM switchover and jitter testing
+TIMESYNC-SRD-002,Test,UT-TIMESYNC-001,Planned,API performance and determinism
+TIMESYNC-SRD-003,Test,UT-TIMESYNC-003,Planned,PTP protocol implementation
+TIMESYNC-SRD-004,Test,IT-TIMESYNC-001,Planned,Grandmaster switchover testing
+TIMESYNC-SRD-005,Test,UT-TIMESYNC-002,Planned,Time resolution and monotonic
+TIMESYNC-SRD-006,Test,IT-TIMESYNC-005,Planned,Health monitoring integration
+TIMESYNC-SRD-007,Test,IT-TIMESYNC-003,Planned,Multi-partition time distribution
+TIMESYNC-SRD-008,Test,IT-TIMESYNC-002,Planned,Network stack integration
+TIMESYNC-SRD-009,Test,IT-TIMESYNC-004,Planned,Hardware timer interface
+TIMESYNC-SRD-010,Test,ST-TIMESYNC-002,Planned,Evidence sealing verification
+TIMESYNC-SRD-011,Test,ST-TIMESYNC-003,Planned,Performance optimization
+TIMESYNC-SRD-012,Test,UT-TIMESYNC-006,Planned,Diagnostics and metrics
+TIMESYNC-SRD-013,Analysis,N/A,Planned,Adaptive algorithms analysis only
+TIMESYNC-SRD-014,Analysis,N/A,N/A,Explicitly excluded feature
+TIMESYNC-SRD-015,Analysis,N/A,N/A,Explicitly excluded feature
