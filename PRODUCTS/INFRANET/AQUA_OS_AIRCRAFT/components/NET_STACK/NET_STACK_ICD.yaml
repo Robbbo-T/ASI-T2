@@ -12,7 +12,7 @@ networks:
     redundancy_group: backup
 qos_defaults:
   integrity: CRC32C + GMAC-128
-  auth: AES-GCM-256 # via SEC_KMS
+  auth: GMAC-128 # via SEC_KMS; Note: GMAC-128 is used for both integrity and authentication for consistency with SEC_KMS.
   max_jitter_pp: 500us
   failover_frames: 3
 vl_management:
