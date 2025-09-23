@@ -22,6 +22,9 @@ Primary responsibility for aerodynamic performance and structural airframe desig
 - **[CAE](./qox/CAE/)** — Structural sizing optimization using quantum methods
 - **[CFD](./qox/CFD/)** — DOE selection and operating point optimization
 
+### PAx (Packaging & Applications)
+- **[PAx](./pax/)** — On-board/off-board packaging with SBOM, signatures, and UTCS/QS evidence
+
 ### ATA Documentation
 - **[ATA-20](./ata/ATA-20/)** — Standard Practices - Airframe
 - **[ATA-32](./ata/ATA-32/)** — Landing Gear

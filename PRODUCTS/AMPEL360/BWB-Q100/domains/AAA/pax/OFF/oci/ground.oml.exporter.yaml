@@ -1,0 +1,50 @@
+---
+id: AAA-PAX-OFF-OCI-0001
+project: AMPEL360/BWB-Q100
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/pax/OFF/oci/ground.oml.exporter.yaml
+llc: SYSTEMS
+classification: INTERNAL–EVIDENCE-REQUIRED
+version: 0.1.0
+release_date: "2025-01-23"
+maintainer: "ASI-T Ground Systems"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: MAL-EEM
+utcs_mi: v5.0
+canonical_hash: "TBD"
+---
+package:
+  name: "ground-oml-exporter"
+  kind: "OFF-OCI-IMAGE"
+  target:
+    platform: "OCI"
+    os: "linux"
+    arch: "amd64"
+    oci:
+      image: "registry.example/ampel360/ground-oml-exporter:0.1.0"
+      digest: "sha256:TBD"
+  resources:
+    cpu: 1
+    memory_mb: 512
+    storage_mb: 256
+  interfaces:
+    network:
+      - name: "http"
+        port: 8080
+        protocol: "TCP"
+security:
+  signing:
+    method: "sigstore-cosign"
+    signature_path: "../../OFF/oci/ground-oml-exporter.sig"
+  constraints:
+    linux:
+      runAsNonRoot: true
+      readOnlyRootFilesystem: true
+      seccompProfile: "runtime/default"
+      capabilitiesDrop: ["ALL"]
+  policies:
+    slsa_level: "L3"
+  sbom: "../../OFF/sbom/ground-oml-exporter.cdx.json"
+evidence:
+  qs_path: "PRODUCTS/AMPEL360/BWB-Q100/QS/OFF/ground-oml-exporter/"
+  attestations:
+    - "in-toto/attest-build.jsonl"
