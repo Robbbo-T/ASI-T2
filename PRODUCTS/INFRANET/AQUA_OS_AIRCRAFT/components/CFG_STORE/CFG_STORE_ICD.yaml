@@ -1,0 +1,7 @@
+id: ASIT2-AQUAOS-AIR-CFGSTORE-ICD
+rev: 1.0
+topics:
+  - id: aqua.cfg.hash
+    rate_hz: 1
+  - id: aqua.cfg.req
+    description: Ground-only config requests

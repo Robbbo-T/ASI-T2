@@ -1,0 +1,2 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+CFGSTORE-SRD-001,Test,ST-CFGSTORE-001,Planned,Immutable flight config with signed updates

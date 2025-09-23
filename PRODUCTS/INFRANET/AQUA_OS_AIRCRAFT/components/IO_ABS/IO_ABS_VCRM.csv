@@ -1,0 +1,4 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+IOABS-SRD-001,Test,UT-IOABS-001,Planned,Zero-copy and bounds checking
+IOABS-SRD-002,Test,IT-IOABS-001,Planned,Timeout behavior verification
+IOABS-SRD-003,Test,ST-IOABS-001,Planned,Data quality indicators

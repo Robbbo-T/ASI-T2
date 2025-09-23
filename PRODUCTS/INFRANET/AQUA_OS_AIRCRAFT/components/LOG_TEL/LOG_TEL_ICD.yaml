@@ -1,0 +1,7 @@
+id: ASIT2-AQUAOS-AIR-LOGTEL-ICD
+rev: 1.0
+topics:
+  - id: aqua.log.event
+    rate_hz: 0  # asynchronous
+  - id: aqua.tel.flight  
+    rate_hz: 50
