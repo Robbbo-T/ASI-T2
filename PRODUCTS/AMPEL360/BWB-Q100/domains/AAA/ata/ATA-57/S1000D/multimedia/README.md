@@ -17,6 +17,7 @@ This directory stores multimedia objects referenced by data modules including:
 multimedia/
 ├── graphics/              # 2D illustrations and diagrams
 ├── photos/               # Photographs and images
+│   └── gencms-interface-screenshot.png  # GenCMS system interface demo
 ├── 3d_models/           # 3D CAD models and renderings
 ├── animations/          # Animation sequences
 ├── videos/              # Video content
@@ -36,6 +37,7 @@ multimedia/
 - **Assembly Photos** - Installation and assembly views
 - **Inspection Photos** - Maintenance inspection examples
 - **Damage Photos** - Fault condition examples
+- **System Interface Screenshots** - Technical data content generator and management system interface captures
 
 ### 3D Content
 - **CAD Models** - Engineering 3D models from CAx systems

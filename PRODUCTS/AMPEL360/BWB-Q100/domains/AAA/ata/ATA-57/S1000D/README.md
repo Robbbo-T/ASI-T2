@@ -51,6 +51,16 @@ For BWB-Q100 ATA-57:
 - **Schema**: S1000D Issue 6.0 schemas with XSD validation
 - **Model Identification**: BWQ1 (compliant with MIC requirements)
 
+## Documentation
+
+### [📖 Authoring User Guide](docs/user-guide/User-Guide.md)
+Comprehensive guide for authors, reviewers, and integrators covering:
+- S1000D authoring best practices and module types
+- GenCMS (Generative Content Management System) usage
+- IETP (Interactive Electronic Technical Publication) features
+- Validation pipeline and CI/CD integration
+- Quality assurance and compliance requirements
+
 ## Integration with ASI-T2
 
 This S1000D implementation integrates with:
@@ -61,6 +71,6 @@ This S1000D implementation integrates with:
 
 ---
 
-**Last Updated**: 2025-09-22  
+**Last Updated**: 2025-01-21  
 **S1000D Version**: 6.0  
 **Classification**: INTERNAL–EVIDENCE-REQUIRED

@@ -8,6 +8,9 @@ body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 ui-sans-serif,
 a{color:var(--accent);text-decoration:none}
 .topbar{display:flex;gap:1rem;align-items:center;padding:.75rem 1rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:linear-gradient(180deg,#0b0f14,#0b0f14cc 70%,transparent)}
 .brand{font-weight:700;color:#fff}
+.nav-links{display:flex;gap:1rem;align-items:center}
+.doc-link{color:#98a7c0;font-size:.9rem;padding:.35rem .75rem;border:1px solid var(--border);border-radius:6px;transition:.15s all}
+.doc-link:hover{background:var(--chip);color:#fff}
 .search{margin-left:auto}
 .search input{width:28ch;max-width:42ch;background:#0f1722;border:1px solid var(--border);border-radius:8px;color:#fff;padding:.5rem .75rem}
 .chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:.5rem 1rem;border-bottom:1px solid var(--border)}
