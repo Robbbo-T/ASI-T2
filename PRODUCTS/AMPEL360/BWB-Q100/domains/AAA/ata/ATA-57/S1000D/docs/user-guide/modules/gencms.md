@@ -8,7 +8,7 @@ The Generative Content Management System (GenCMS) integrates directly into the I
 
 ## Interface Overview
 
-![GenCMS interface — context-aware prefill and guarded generation](../_assets/gencms-interface-screenshot.png)
+![GenCMS interface — context-aware prefill and guarded generation](multimedia/photos/gencms-interface-screenshot.png)
 
 ### Interface Elements
 
