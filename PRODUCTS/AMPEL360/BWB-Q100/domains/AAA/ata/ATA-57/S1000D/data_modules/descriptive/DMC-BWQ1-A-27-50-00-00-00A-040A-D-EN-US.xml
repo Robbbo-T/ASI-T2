@@ -32,8 +32,37 @@
   <content>
     <description>
       <levelledPara>
-        <title>ATA-27 Wing actuation interfaces (external reference from 57)</title>
-        <para>TODO: Add content for ATA-27 Wing actuation interfaces (external reference from 57)</para>
+        <title>ATA-27 Wing Actuation Interfaces (External Reference from ATA-57)</title>
+        <para>This data module defines the interface specifications for BWB-Q100 wing actuation systems referenced from ATA-57 structures.</para>
+      </levelledPara>
+      
+      <levelledPara>
+        <title>Interface Requirements Matrix</title>
+        <randomList>
+          <listItem>
+            <para>A-01: Primary structure bracket attachment - Mounting torque 350±25 Nm; thread lock compound per spec - Interface to primary wing structure; load distribution - FEM validated; bolt pattern approved; torque sequence recorded - 57/Stress - CDR</para>
+          </listItem>
+          <listItem>
+            <para>A-02: Wing stiffness coupling - Bracket stiffness ≥ TBD N/mm - Flutter and control loop phase margin - FEM correlated to GVT; modal margin ≥ spec - 57/Stress - CDR</para>
+          </listItem>
+          <listItem>
+            <para>A-03: Hydraulics class and flow - Option B: 5000 psi; 9 L/min cont; 24 L/min peak; return ≤0.5 MPa - Servo authority and thermal margin - Bench ATP + on‑aircraft ΔP log; leak/functional pass - 29/Hyd; 27/Act - PDR+90</para>
+          </listItem>
+          <listItem>
+            <para>A-04: Power budget - Option A: HVDC 270 V; EHA nominal/peak as listed; inrush ≤100 ms (TBA A) - Bus stability; avoid trips - Transient capture; bus droop within spec - 24/EPDS; 27/ECU - CDR</para>
+          </listItem>
+          <listItem>
+            <para>A-05: Network ICD - ASIT2‑AQUAOS‑AIR‑QAFBW‑ICD rev 0.3; topics and VLs as listed - Deterministic comms and BIT - ICD approval; SIL/HIL pass - 27/Av; 31/ICD - CDR</para>
+          </listItem>
+          <listItem>
+            <para>A-06: Free‑play limit - Tip free‑play ≤ TBA mm (100% span, dry) - Control surface effectiveness - Ground rig + flight test validation - 27/FCS; 05/Limits - CDR</para>
+          </listItem>
+        </randomList>
+      </levelledPara>
+      
+      <levelledPara>
+        <title>Network Interface Specification</title>
+        <para>The wing actuation system interfaces with the AQUA OS QAFbW control stack through the network ICD ASIT2‑AQUAOS‑AIR‑QAFBW‑ICD revision 0.3. This provides deterministic communication and built-in test capabilities required for DAL-A flight control applications.</para>
       </levelledPara>
     </description>
   </content>

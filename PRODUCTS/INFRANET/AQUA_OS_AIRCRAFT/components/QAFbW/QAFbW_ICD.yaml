@@ -1,5 +1,5 @@
 id: ASIT2-AQUAOS-AIR-QAFBW-ICD
-rev: 1.0
+rev: 0.3
 timebase: AQUA_OS/PTP (GM switchover tolerated)
 networks:
   - name: NET-A
