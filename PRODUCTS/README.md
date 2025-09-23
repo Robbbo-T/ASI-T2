@@ -50,9 +50,11 @@ Products are organized into three main product lines based on operational charac
 
 ### Product Lines
 
-**AMPEL360** (Aerospace Manned Program/Passenger Experimental Lines) - 360° full circularity for all aerospace products that transport human passengers, including aircraft, space stations, and shuttles.
+**AMPEL360** - Manned aerospace (certified passenger transport) - 360° full circularity for all aerospace products that transport human passengers, including aircraft, space stations, and shuttles.
 
-**GAIA_AIR_SPACE** - Aerospace products with no passengers on board, including UAVs, autonomous swarms, and space satellite products.
+**GAIA-AIR** - Unmanned Air (UAM/UAV) - Autonomous unmanned aerial systems for commercial and defense applications.
+
+**GAIA-SPACE** - Space-only (satellites & orbital robotics) - Autonomous space systems including satellite constellations and orbital servicing.
 
 **INFRANET** - Infrastructure and network systems, encompassing cross-cutting intelligence and ground physical infrastructures.
 
@@ -62,9 +64,12 @@ Products are organized into three main product lines based on operational charac
 | ------------ | ----- | ----------- | ------------ | --------------- | ----------- |
 | **AMPEL360** |       |             |              |                 |             |
 | | [`transport-civil`](../FIELDS/transport-civil/) | [`air`](../ENVIRONMENTS/air/) | [`BWB-Q100`](./AMPEL360/BWB-Q100/) | AAA, PPP, MEC, EEE, CQH | Blended Wing Body 100-passenger aircraft |
-| **GAIA_AIR_SPACE** |       |             |              |                 |             |
-| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`GAIA-SAT`](./GAIA_AIR_SPACE/GAIA-SAT/) | DDD, IIS, EDI, LCC | Satellite constellation for aerospace cyber defense |
-| | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`UAM-SWARM`](./GAIA_AIR_SPACE/UAM-SWARM/) | IIS, OOO, LCC, EDI, DDD | Ethically-governed autonomous UAV swarm for defense |
+| **GAIA-AIR** |       |             |              |                 |             |
+| | [`unmanned-air`](../FIELDS/unmanned-air/) | [`air`](../ENVIRONMENTS/air/) | [`HYDROBOTS`](./GAIA-AIR/HYDROBOTS/) | EEE, CQH, IIS, AAA | Hydrogen UAM retail (logistics, delivery, inspection) |
+| | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`ETHICS-EMPATHY-UAV`](./GAIA-AIR/ETHICS-EMPATHY-UAV/) | IIS, OOO, LCC, EDI, DDD | Ethical SHARM (STOP HARMFUL) logic for defense |
+| **GAIA-SPACE** |       |             |              |                 |             |
+| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`SAT-CONSTELLATIONS`](./GAIA-SPACE/SAT-CONSTELLATIONS/) | DDD, IIS, EDI, LCC | Earth observation, communications & quantum satellites |
+| | [`space-systems`](../FIELDS/space-systems/) | [`space`](../ENVIRONMENTS/space/) | [`ORBITAL-MACHINES`](./GAIA-SPACE/ORBITAL-MACHINES/) | IIS, MEC, AAA, LCC | Debris removal, assembly & servicing |
 | **INFRANET** |       |             |              |                 |             |
 | | [`cross`](../FIELDS/cross/) | [`cross`](../ENVIRONMENTS/cross/) | [`LH2-CORRIDOR`](./INFRANET/LH2_CORRIDOR/) | LIB, CQH, IIF, EEE, IIS | End-to-end green liquid hydrogen (LH2) value chain |
 | | [`quantum-intelligence`](../FIELDS/quantum-intelligence/) | [`digital`](../ENVIRONMENTS/digital/) | [`QAIM`](./INFRANET/QAIM/) | IIS, CQH, OOO, DDD | Core quantum-classical optimization & AI engine |
@@ -74,13 +79,22 @@ Products are organized into three main product lines based on operational charac
 
 ## Migration Information
 
-The ASI-T2 product portfolio has been reorganized into three strategic product lines for better operational clarity and management. For historical tracking and migration details, see:
+The ASI-T2 product portfolio has been reorganized into four strategic product lines for better operational clarity and management. For historical tracking and migration details, see:
 
 - [`_migration/manifest.csv`](./_migration/manifest.csv) - Complete mapping of old to new paths
 - Migration rationale follows operational characteristics:
   - **Passenger/crewed systems** → AMPEL360 (360° lifecycle management)
-  - **Uncrewed air/space systems** → GAIA_AIR_SPACE (autonomous operations)
+  - **Unmanned air systems** → GAIA-AIR (autonomous air operations)
+  - **Space-only systems** → GAIA-SPACE (satellites & orbital robotics)
   - **Infrastructure/shared intelligence** → INFRANET (cross-cutting support)
+
+### Recent Migration (2025-01-15)
+
+The former GAIA_AIR_SPACE product line has been split into two focused portfolios:
+- **GAIA-AIR**: All unmanned aerial systems (UAM/UAV)
+- **GAIA-SPACE**: All space-only systems (satellites & orbital robotics)
+
+This separation provides clearer domain focus and eliminates operational environment conflicts.
 
 ---
 
