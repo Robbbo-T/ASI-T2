@@ -1,0 +1,156 @@
+name: README reminder (PR)
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+env:
+  # 👇 Change to the user/bot you want to ping (without quotes is fine too)
+  COPILOT_HANDLE: "@copilot"
+  # Recognized README file names (pipe-separated regex alternation)
+  README_CANDIDATES: "README.md|README-PAGES.md|Readme.md|README"
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Build README checklist
+        id: build
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          script: |
+            const path = require('path');
+            const fs = require('fs');
+            const {owner, repo} = context.repo;
+            const pr = context.payload.pull_request?.number;
+            if (!pr) {
+              core.setOutput('result', 'Not a PR run');
+              return 'Not a PR run';
+            }
+
+            // 1) Gather changed files in the PR
+            const files = await github.paginate(
+              github.rest.pulls.listFiles,
+              { owner, repo, pull_number: pr, per_page: 100 }
+            );
+
+            // Ignore some housekeeping areas by default
+            const IGNORE_PREFIXES = ['.github', '.git', '_site', 'scripts', '.vscode', '.idea'];
+
+            const touchedDirs = new Set();
+            const changedByDir = {};
+            for (const f of files) {
+              const dir = path.posix.dirname(f.filename); // posix for GitHub paths
+              if (IGNORE_PREFIXES.some(p => dir === p || dir.startsWith(p + '/'))) continue;
+              touchedDirs.add(dir);
+              changedByDir[dir] = changedByDir[dir] || [];
+              changedByDir[dir].push(f);
+            }
+
+            // 2) Determine README status per folder
+            const ws = process.env.GITHUB_WORKSPACE;
+            const readmeRegex = new RegExp(`^(?:${process.env.README_CANDIDATES})$`, 'i');
+
+            function findReadmeName(dir) {
+              try {
+                const full = path.join(ws, dir);
+                const entries = fs.existsSync(full) ? fs.readdirSync(full) : [];
+                for (const e of entries) {
+                  if (readmeRegex.test(e)) return e;
+                }
+              } catch {}
+              return null;
+            }
+
+            const rows = [];
+            for (const dir of Array.from(touchedDirs).sort()) {
+              const readme = findReadmeName(dir);
+              const changes = changedByDir[dir] || [];
+              const readmeChanged = readme
+                ? changes.some(f => path.posix.basename(f.filename).toLowerCase() === readme.toLowerCase())
+                : false;
+              const nonReadmeChanged = changes.some(f => !/readme/i.test(path.posix.basename(f.filename)));
+
+              let status = 'OK';
+              if (!readme) status = 'MISSING';
+              else if (nonReadmeChanged && !readmeChanged) status = 'NEEDS_UPDATE';
+
+              rows.push({dir, readme: readme || '-', status});
+            }
+
+            // 3) Build comment body
+            const repoUrl = context.payload.repository.html_url;
+            const headSha = context.payload.pull_request.head.sha;
+            const copilot = (process.env.COPILOT_HANDLE || '').trim() || '@copilot';
+
+            const missing = rows.filter(r => r.status === 'MISSING');
+            const needs = rows.filter(r => r.status === 'NEEDS_UPDATE');
+            const ok = rows.filter(r => r.status === 'OK');
+
+            function linkToDir(d) { return `${repoUrl}/tree/${headSha}/${d}`; }
+
+            let body = `**📚 README review checklist** (ping ${copilot})\n\n`;
+            body += `Folders touched in this PR: **${rows.length}**\n\n`;
+
+            if (missing.length) {
+              body += `### ❌ Missing README\n`;
+              for (const r of missing) body += `- [ ] \`${r.dir}\` — add \`README.md\` ([open folder](${linkToDir(r.dir)}))\n`;
+              body += `\n`;
+            }
+            if (needs.length) {
+              body += `### ⚠️ Needs update (folder changed, README not updated)\n`;
+              for (const r of needs) body += `- [ ] \`${r.dir}\` — update \`${r.readme}\` ([open folder](${linkToDir(r.dir)}))\n`;
+              body += `\n`;
+            }
+            if (!missing.length && !needs.length) {
+              body += `### ✅ All good\nAll touched folders have an up-to-date README.\n\n`;
+            }
+
+            // Optional helper: reminder of accepted README names
+            body += `<sub>Accepted README names: ${process.env.README_CANDIDATES.replace(/\|/g, ', ')}</sub>\n`;
+
+            core.setOutput('result', body);
+            return body;
+
+      - name: Post sticky comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: "📚 README review checklist"
+          message: ${{ steps.build.outputs.result }}
+
+      - name: Add label if action needed
+        if: contains(steps.build.outputs.result, '❌') || contains(steps.build.outputs.result, '⚠️')
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: needs-readme-update
+
+      - name: Request review from Copilot
+        if: contains(steps.build.outputs.result, '❌') || contains(steps.build.outputs.result, '⚠️')
+        uses: actions/github-script@v7
+        env:
+          COPILOT_HANDLE: ${{ env.COPILOT_HANDLE }}
+        with:
+          script: |
+            const pr = context.payload.pull_request?.number;
+            if (!pr) return;
+            const reviewer = (process.env.COPILOT_HANDLE || '').replace(/^@/, '');
+            if (!reviewer) return;
+            try {
+              await github.rest.pulls.requestReviewers({
+                ...context.repo,
+                pull_number: pr,
+                reviewers: [reviewer],
+              });
+            } catch (e) {
+              core.info(`Could not request reviewer ${reviewer}: ${e.message}`);
+            }
