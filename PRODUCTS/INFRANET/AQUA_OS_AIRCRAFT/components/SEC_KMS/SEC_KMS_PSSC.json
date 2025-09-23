@@ -1,0 +1,38 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-SECKMS-PSSC",
+  "rev": "1.0",
+  "criticality": "DAL-A",
+  "cpu_pct_core": 4,
+  "mem_mib": 12,
+  "wcet_ms": 2,
+  "cryptographic_services": {
+    "algorithms": ["AES-256", "GMAC-128", "RSA-2048", "ECDSA-P256"],
+    "hardware_acceleration": true,
+    "fips_compliance": true
+  },
+  "key_management": {
+    "max_active_keys": 32,
+    "rotation_period_hours": 24,
+    "max_key_age_hours": 72,
+    "secure_storage_required": true
+  },
+  "pki_services": {
+    "max_cert_chain_depth": 4,
+    "root_cert_storage": "hardware_protected",
+    "cert_validation": "online_and_cached"
+  },
+  "performance": {
+    "gmac_computation_max_us": 100,
+    "key_generation_max_ms": 50,
+    "signature_verification_max_ms": 10
+  },
+  "security_features": {
+    "secure_boot_verification": true,
+    "attestation_generation": true,
+    "audit_logging": true,
+    "qkd_integration": "optional"
+  },
+  "evidence": {
+    "utcs_qs": ["key_events", "attestation", "security_config", "audit_logs"]
+  }
+}

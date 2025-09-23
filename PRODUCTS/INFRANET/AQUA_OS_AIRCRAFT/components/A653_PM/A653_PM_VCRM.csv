@@ -1,0 +1,34 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+A653PM-SRD-001,Test,UT-A653PM-002,Planned,Memory protection enforcement
+A653PM-SRD-001,Test,ST-A653PM-001,Planned,System-level isolation (multi-partition)
+A653PM-SRD-002,Test,UT-A653PM-003,Planned,Time partition scheduling
+A653PM-SRD-002,Test,IT-A653PM-006,Planned,CAST-32A core affinity & cache partitioning (no slot jitter increase)
+A653PM-SRD-002,Test,IT-A653PM-007,Planned,Mem BW/IRQ budgeting (no timing interference)
+A653PM-SRD-002,Test,ST-A653PM-005,Planned,Time-source GM failover without slot miss
+A653PM-SRD-003,Test,IT-A653PM-001,Planned,Multi-DAL partition isolation
+A653PM-SRD-003,Test,IT-A653PM-006,Planned,Freedom-from-interference: cache/cores
+A653PM-SRD-003,Test,IT-A653PM-007,Planned,Freedom-from-interference: DMA/BW/IRQ
+A653PM-SRD-004,Test,IT-A653PM-002,Planned,Overrun detection timing
+A653PM-SRD-005,Test,UT-A653PM-004,Planned,Context switch performance
+A653PM-SRD-006,Test,UT-A653PM-001,Planned,ARINC-653 API compliance
+A653PM-SRD-007,Test,IT-A653PM-003,Planned,Health monitoring integration
+A653PM-SRD-008,Test,UT-A653PM-005,Planned,Resource budget enforcement
+A653PM-SRD-009,Test,IT-A653PM-004,Planned,Boot sequence verification
+A653PM-SRD-010,Test,IT-A653PM-005,Planned,Evidence sealing integration
+A653PM-SRD-011,Test,ST-A653PM-002,Planned,Performance optimization
+A653PM-SRD-011,Test,ST-A653PM-004,Planned,24h endurance under load
+A653PM-SRD-012,Test,IT-A653PM-010,Planned,Diagnostics/health telemetry correctness (aqua.a653pm.health)
+A653PM-SRD-013,Analysis,N/A,Planned,Dynamic config analysis only
+A653PM-SRD-014,Analysis,N/A,N/A,Explicitly excluded feature
+A653PM-SRD-015,Analysis,N/A,N/A,Explicitly excluded feature
+A653PM-SRD-016,Test,IT-A653PM-006,Planned,Time base and jitter guarantees
+A653PM-SRD-017,Test,IT-A653PM-008,Planned,APEX IPC semantics (no writable SHM)
+A653PM-SRD-018,Test,IT-A653PM-009,Planned,Interrupt mediation and latency
+A653PM-SRD-019,Test,IT-A653PM-006,Planned,CAST-32A controls implementation
+A653PM-SRD-019,Test,ST-A653PM-008,Planned,Multi-core interference verification
+A653PM-SRD-020,Test,ST-A653PM-007,Planned,ECC memory integrity
+A653PM-SRD-021,Test,IT-A653PM-002,Planned,Overrun policy configuration
+A653PM-SRD-022,Test,ST-A653PM-006,Planned,Secure boot and attestation
+A653PM-SRD-023,Test,ST-A653PM-005,Planned,GM failover without slot miss
+A653PM-SRD-024,Test,IT-A653PM-010,Planned,Telemetry metrics accuracy
+A653PM-SRD-025,Test,ST-A653PM-001,Planned,Device access virtualization

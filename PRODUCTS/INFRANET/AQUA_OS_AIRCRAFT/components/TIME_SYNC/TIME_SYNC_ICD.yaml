@@ -1,0 +1,65 @@
+id: ASIT2-AQUAOS-AIR-TIMESYNC-ICD
+rev: 1.0
+timebase: AQUA_OS/TIME_SYNC  # TIME_SYNC is the timebase provider
+protocols:
+  - name: PTP
+    version: IEEE_1588_2008
+    role: slave_capable
+  - name: TTE
+    version: SAE_AS6802
+    role: sync_client
+topics:
+  - id: aqua.time.timebase
+    dir: OUT
+    rate_hz: 10
+    vl: VL-TIME-BASE
+    payload:
+      ts_ns: uint64      # current time in nanoseconds
+      gm_id: uint64      # grandmaster clock identity
+      state: uint8       # 0=init, 1=listening, 2=pre_master, 3=master, 4=passive, 5=uncalibrated, 6=slave
+
+  - id: aqua.time.gm_status
+    dir: OUT
+    rate_hz: 1
+    vl: VL-TIME-STATUS
+    payload:
+      ts_ns: uint64
+      gm_prio: uint8     # grandmaster priority
+      holdover: uint8    # holdover status (0=synced, 1=holdover, 2=freerun)
+      offset_ns: int64   # time offset from grandmaster
+      drift_ppm: int32   # clock drift in parts per million
+      jitter_ns: uint32  # measured jitter in nanoseconds
+
+platform_apis:
+  - name: get_time_ns
+    description: Get current monotonic time in nanoseconds
+    parameters: []
+    returns:
+      type: uint64_t
+      description: Current time in nanoseconds since system epoch
+
+  - name: set_time_callback
+    description: Register callback for time synchronization events
+    parameters:
+      - name: callback
+        type: time_sync_callback_t
+        description: Function to call on time events
+      - name: user_data
+        type: void*
+        description: User data passed to callback
+    returns:
+      type: int
+      description: Success (0) or error code
+
+  - name: get_sync_status  
+    description: Get current time synchronization status
+    parameters: []
+    returns:
+      type: time_sync_status_t
+      description: Structure with sync quality and health data
+
+performance_guarantees:
+  api_call_wcet_ns: 100    # get_time_ns() worst-case execution time
+  gm_switchover_max_us: 300
+  drift_tolerance_ppm: 50
+  jitter_budget_us: 500

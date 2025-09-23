@@ -1,0 +1,11 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-NAVSYS-PSSC",
+  "rev": "1.0",
+  "criticality": "DAL-B",
+  "cpu_pct_core": 12,
+  "mem_mib": 48,
+  "wcet_ms": 3,
+  "evidence": {
+    "utcs_qs": ["nav_config", "sensor_events", "filter_state", "calibration"]
+  }
+}

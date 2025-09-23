@@ -1,0 +1,10 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+UTCSQS-SRD-001,Test,ST-UTCSQS-002,Planned,Non-blocking anchor generation
+UTCSQS-SRD-002,Test,UT-UTCSQS-002,Planned,SHA-256 integrity verification
+UTCSQS-SRD-003,Test,IT-UTCSQS-002,Planned,Reproducible build verification
+UTCSQS-SRD-004,Test,UT-UTCSQS-001,Planned,Evidence sealing API
+UTCSQS-SRD-005,Test,IT-UTCSQS-002,Planned,Evidence storage and retrieval
+UTCSQS-SRD-006,Test,IT-UTCSQS-001,Planned,Audit trail verification
+UTCSQS-SRD-007,Test,ST-UTCSQS-002,Planned,Performance optimization
+UTCSQS-SRD-008,Analysis,N/A,N/A,Explicitly excluded feature
+UTCSQS-SRD-009,Analysis,N/A,N/A,Explicitly excluded feature

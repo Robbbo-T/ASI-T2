@@ -1,0 +1,69 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-A653PM-PSSC",
+  "rev": "1.1",
+  "note": "A653_PM is the platform hypervisor that manages static ARINC-653 time/spatial partitions.",
+  "platform_role": "hypervisor",
+  "criticality": "DAL-A",
+
+  "time_base": "PTP",
+  "major_frame": {
+    "range_ms": [10, 100],
+    "jitter_us_max": 100
+  },
+
+  "cpu_overhead_percent_max": 5,
+  "mem_mib_min": 16,
+  "wcet_context_switch_us": 50,
+  "slot_entry_jitter_us_max": 50,
+
+  "supported_partitions": {
+    "max_count": 8,
+    "min_window_ms": 1,
+    "max_window_ms": 50
+  },
+
+  "scheduling": {
+    "algorithm": "static_cyclic",
+    "preemption": "time_triggered"
+  },
+
+  "memory_management": {
+    "mmu_required": true,
+    "protection_domains": 8,
+    "ecc_required": true
+  },
+
+  "ipc": {
+    "mechanisms": ["sampling_port", "queuing_port"],
+    "shared_memory_regions": 0
+  },
+
+  "interrupts": {
+    "policy": "mediated",
+    "irq_latency_wcet_us": 50
+  },
+
+  "cast32a": {
+    "enabled": true,
+    "core_affinity": "enforced",
+    "cache_partitioning": "required",
+    "memory_bandwidth_caps": "enforced",
+    "irq_budgeting": "per_partition"
+  },
+
+  "health_monitoring": {
+    "overrun_detection_us": 1000,
+    "deadline_monitoring": true,
+    "partition_isolation_verification": true
+  },
+
+  "attestation": {
+    "secure_boot_required": true,
+    "partition_table_hash": "sealed_utcs_qs",
+    "schedule_binding": "boot_chain"
+  },
+
+  "evidence": {
+    "utcs_qs": ["partition_table", "schedule_hash", "config", "overrun_events", "health_logs", "attestation"]
+  }
+}

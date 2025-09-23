@@ -1,0 +1,76 @@
+id: ASIT2-AQUAOS-AIR-SECKMS-ICD
+rev: 1.0
+timebase: AQUA_OS/TIME_SYNC
+topics:
+  - id: aqua.sec.attest
+    dir: OUT
+    rate_hz: 0.2  # every 5 seconds
+    vl: VL-SEC-ATTEST
+    payload:
+      timestamp: uint64_ns
+      boot_measurement: bytes[64]  # SHA-512 of boot chain
+      result: uint8  # 0=pass, 1=warning, 2=fail
+      sequence: uint32
+
+  - id: aqua.sec.keystatus
+    dir: OUT
+    rate_hz: 0.2
+    vl: VL-SEC-STATUS
+    payload:
+      timestamp: uint64_ns
+      key_id: uint32
+      age_s: uint32        # seconds since key creation
+      health: uint8        # 0=good, 1=aging, 2=expired
+      rotation_pending: uint8
+
+crypto_apis:
+  - name: generate_session_key
+    description: Generate new session key for authenticated communication
+    parameters:
+      - name: key_id
+        type: uint32
+        description: Unique identifier for the key
+      - name: algorithm
+        type: crypto_algorithm_t
+        description: Key algorithm (AES256, etc.)
+    returns:
+      type: key_handle_t
+      description: Handle to generated key or NULL on failure
+
+  - name: compute_gmac
+    description: Compute GMAC-128 for message authentication
+    parameters:
+      - name: key_handle
+        type: key_handle_t
+        description: Key to use for MAC computation
+      - name: data
+        type: void*
+        description: Data to authenticate
+      - name: data_len
+        type: size_t
+        description: Length of data in bytes
+    returns:
+      type: gmac_result_t
+      description: 128-bit MAC result
+
+  - name: verify_signature
+    description: Verify digital signature using PKI certificates
+    parameters:
+      - name: cert_chain
+        type: cert_chain_t
+        description: Certificate chain for verification
+      - name: signature
+        type: signature_t
+        description: Digital signature to verify
+      - name: data
+        type: void*
+        description: Signed data
+    returns:
+      type: verify_result_t
+      description: Verification result and trust level
+
+security_policies:
+  key_rotation_hours: 24
+  max_key_age_hours: 72
+  cert_validation_required: true
+  hardware_security_preferred: true

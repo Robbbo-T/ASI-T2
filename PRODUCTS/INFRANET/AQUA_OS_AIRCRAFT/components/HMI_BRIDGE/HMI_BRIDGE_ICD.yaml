@@ -1,0 +1,3 @@
+id: ASIT2-AQUAOS-AIR-HMI_BRIDGE-ICD
+rev: 1.0
+description: Map QAFbW mode_status to CCC annunciations; inhibit on ground tests

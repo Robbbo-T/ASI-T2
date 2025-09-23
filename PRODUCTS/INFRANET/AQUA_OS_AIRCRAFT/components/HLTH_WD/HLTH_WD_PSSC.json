@@ -1,0 +1,11 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-HLTHWD-PSSC",
+  "rev": "1.0",
+  "criticality": "DAL-A",
+  "cpu_pct_core": 3,  
+  "mem_mib": 8,
+  "wcet_ms": 1,
+  "evidence": {
+    "utcs_qs": ["health_config", "fault_events", "heartbeat_logs"]
+  }
+}

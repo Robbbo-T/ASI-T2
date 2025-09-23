@@ -1,0 +1,16 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+SECKMS-SRD-001,Test,ST-SECKMS-001,Planned,Secure boot verification
+SECKMS-SRD-002,Test,UT-SECKMS-002,Planned,Key rotation testing
+SECKMS-SRD-003,Test,UT-SECKMS-001,Planned,FIPS cryptography compliance
+SECKMS-SRD-004,Test,UT-SECKMS-003,Planned,GMAC-128 implementation
+SECKMS-SRD-005,Test,UT-SECKMS-005,Planned,PKI certificate validation
+SECKMS-SRD-006,Test,IT-SECKMS-003,Planned,Hardware security integration
+SECKMS-SRD-007,Test,ST-SECKMS-001,Planned,System attestation
+SECKMS-SRD-008,Test,IT-SECKMS-005,Planned,Key distribution testing
+SECKMS-SRD-009,Test,IT-SECKMS-004,Planned,Audit trail verification
+SECKMS-SRD-010,Test,IT-SECKMS-004,Planned,Evidence sealing integration
+SECKMS-SRD-011,Test,ST-SECKMS-004,Planned,QKD integration testing
+SECKMS-SRD-012,Test,ST-SECKMS-004,Planned,Performance optimization
+SECKMS-SRD-013,Analysis,N/A,Planned,Quantum resistance analysis only
+SECKMS-SRD-014,Analysis,N/A,N/A,Explicitly excluded feature
+SECKMS-SRD-015,Analysis,N/A,N/A,Explicitly excluded feature

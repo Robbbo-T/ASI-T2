@@ -1,0 +1,38 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-TIMESYNC-PSSC",
+  "rev": "1.0",
+  "criticality": "DAL-A",
+  "cpu_pct_core": 5,
+  "mem_mib": 8,
+  "wcet_ms": 1,
+  "time_services": {
+    "resolution_ns": 1,
+    "monotonic": true,
+    "api_wcet_ns": 100,
+    "distribution_method": "zero_copy"
+  },
+  "synchronization": {
+    "protocols": ["PTP", "TTE"],
+    "gm_switchover_max_us": 300,
+    "drift_tolerance_ppm": 50,
+    "jitter_budget_us": 500
+  },
+  "network_integration": {
+    "ptp_message_rate_hz": 8,
+    "tte_sync_rate_hz": 1000,
+    "network_dependency": "NET_STACK"
+  },
+  "hardware_requirements": {
+    "timer_resolution_ns": 1,
+    "interrupt_latency_max_us": 10,
+    "crystal_stability_ppm": 25
+  },
+  "health_monitoring": {
+    "sync_loss_detection_ms": 100,
+    "drift_monitoring": true,
+    "quality_reporting": true
+  },
+  "evidence": {
+    "utcs_qs": ["time_config", "gm_events", "sync_quality", "drift_logs"]
+  }
+}

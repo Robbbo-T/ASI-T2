@@ -1,0 +1,34 @@
+id: ASIT2-AQUAOS-AIR-NAVSYS-ICD
+rev: 1.0
+timebase: AQUA_OS/TIME_SYNC
+topics:
+  - id: aqua.nav.state
+    dir: OUT
+    rate_hz: 400
+    vl: VL-NAV-STATE
+    payload:
+      timestamp: uint64_ns
+      pos_ned: float32[3]    # North-East-Down position (m)
+      vel_ned: float32[3]    # NED velocity (m/s)  
+      euler: float32[3]      # Roll-Pitch-Yaw (rad)
+      rates: float32[3]      # Angular rates (rad/s)
+      cov_diag: float32[10]  # Covariance diagonal elements
+      flags: uint16          # Validity/quality flags
+
+  - id: aqua.nav.airdata
+    dir: OUT
+    rate_hz: 200
+    vl: VL-NAV-AIRDATA
+    payload:
+      timestamp: uint64_ns
+      airspeed_mps: float32   # True airspeed (m/s)
+      altitude_m: float32     # Pressure altitude (m)
+      vertical_speed_mps: float32  # Vertical speed (m/s)
+      aoa_rad: float32        # Angle of attack (rad)
+      aos_rad: float32        # Angle of sideslip (rad)
+      flags: uint16           # Validity flags
+
+sensor_inputs:
+  - imu_rate_hz: 500
+  - adc_rate_hz: 200  
+  - gnss_rate_hz: 10

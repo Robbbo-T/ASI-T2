@@ -1,0 +1,37 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-NETSTACK-PSSC",
+  "rev": "1.0",
+  "criticality": "DAL-A",
+  "cpu_pct_core": 8,
+  "mem_mib": 16,
+  "wcet_ms": 1,
+  "network_interfaces": {
+    "redundant_ports": 2,
+    "max_bandwidth_mbps": 1000,
+    "supported_protocols": ["AFDX", "TSN", "TTE"]
+  },
+  "vl_management": {
+    "max_vls": 64,
+    "bandwidth_allocation": "strict_priority",
+    "qos_classes": 8,
+    "policing": "rate_limiting_with_burst"
+  },
+  "failover": {
+    "max_lost_frames": 3,
+    "detection_time_ms": 5,
+    "switchover_time_ms": 10
+  },
+  "authentication": {
+    "algorithm": "GMAC-128",
+    "key_rotation": "per_session",
+    "replay_protection": true
+  },
+  "performance": {
+    "max_latency_per_hop_us": 100,
+    "max_jitter_pp_us": 500,
+    "max_frame_rate_fps": 10000
+  },
+  "evidence": {
+    "utcs_qs": ["vl_config", "network_events", "statistics", "failover_logs"]
+  }
+}

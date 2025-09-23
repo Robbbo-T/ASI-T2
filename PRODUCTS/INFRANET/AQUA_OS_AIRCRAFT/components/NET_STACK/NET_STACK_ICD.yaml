@@ -1,0 +1,77 @@
+id: ASIT2-AQUAOS-AIR-NETSTACK-ICD
+rev: 1.0
+timebase: AQUA_OS/PTP (integrated with TIME_SYNC)
+networks:
+  - name: NET-A
+    type: AFDX|TSN|TTE
+    interface: eth0
+    redundancy_group: primary
+  - name: NET-B  
+    type: AFDX|TSN|TTE
+    interface: eth1
+    redundancy_group: backup
+qos_defaults:
+  integrity: CRC32C + GMAC-128
+  auth: GMAC-128 # via SEC_KMS; Note: GMAC-128 is used for both integrity and authentication for consistency with SEC_KMS.
+  max_jitter_pp: 500us
+  failover_frames: 3
+vl_management:
+  max_vls: 64
+  mtu_bytes: 1518
+  bandwidth_allocation: strict_priority
+topics:
+  - id: aqua.net.lifesign
+    dir: OUT
+    rate_hz: 10
+    vl: VL-NET-STATUS
+    payload:
+      timestamp: uint64_ns
+      active_network: uint8  # 0=NET-A, 1=NET-B, 2=both
+      link_status: uint16    # bitfield: A_up, B_up, A_traffic, B_traffic
+      failover_count: uint32
+      last_failover_ms: uint32
+
+  - id: aqua.net.stats
+    dir: OUT
+    rate_hz: 1
+    vl: VL-NET-STATS
+    payload:
+      timestamp: uint64_ns
+      tx_frames_per_sec: uint32
+      rx_frames_per_sec: uint32
+      tx_bytes_per_sec: uint32
+      rx_bytes_per_sec: uint32
+      vl_utilization: uint8[]  # percentage per VL
+      error_count: uint32
+      dropped_frames: uint32
+
+network_services:
+  vl_create:
+    description: Create and configure a Virtual Link
+    parameters:
+      vl_id: uint16
+      bandwidth_kbps: uint32
+      priority: uint8
+      max_frame_size: uint16
+      traffic_class: uint8
+    returns: success/error_code
+
+  vl_destroy:
+    description: Remove a Virtual Link configuration
+    parameters:
+      vl_id: uint16
+    returns: success/error_code
+
+  send_frame:
+    description: Transmit frame on specified VL
+    parameters:
+      vl_id: uint16
+      payload: byte_array
+      priority: uint8
+    returns: success/error_code
+
+performance_limits:
+  max_frame_rate_fps: 10000
+  latency_per_hop_us: 100
+  failover_time_ms: 10
+  vl_setup_time_ms: 50

@@ -1,0 +1,55 @@
+id: ASIT2-AQUAOS-AIR-UTCSQS-ICD
+rev: 1.0
+timebase: AQUA_OS/TIME_SYNC
+topics:
+  - id: aqua.qs.anchor
+    dir: OUT
+    rate_hz: 0.01  # every 100 seconds
+    vl: VL-QS-ANCHOR
+    payload:
+      timestamp: uint64_ns
+      kind: uint8          # 0=build, 1=config, 2=test, 3=log
+      sha256: bytes[32]    # evidence hash
+      sequence: uint32
+
+  - id: aqua.qs.audit
+    dir: OUT
+    rate_hz: 0.2  # every 5 seconds
+    vl: VL-QS-AUDIT
+    payload:
+      timestamp: uint64_ns
+      event: uint16        # event type code
+      component_id: uint32 # source component
+      ref: bytes[16]       # reference identifier
+
+evidence_apis:
+  - name: seal_evidence
+    description: Create immutable evidence anchor
+    parameters:
+      - name: kind
+        type: evidence_kind_t
+        description: Type of evidence (build/config/test/log)
+      - name: data
+        type: void*
+        description: Evidence data to seal
+      - name: data_len
+        type: size_t
+        description: Length of evidence data
+    returns:
+      type: anchor_id_t
+      description: Unique anchor identifier
+
+  - name: verify_evidence
+    description: Verify evidence integrity
+    parameters:
+      - name: anchor_id
+        type: anchor_id_t
+        description: Anchor to verify
+    returns:
+      type: verify_result_t
+      description: Verification result and metadata
+
+performance_limits:
+  anchor_generation_max_ms: 50
+  non_blocking_guarantee: true
+  storage_efficiency: high

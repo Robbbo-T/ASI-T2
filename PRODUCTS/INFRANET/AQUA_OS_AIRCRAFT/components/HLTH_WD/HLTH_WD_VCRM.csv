@@ -1,0 +1,10 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+HLTHWD-SRD-001,Test,UT-HLTHWD-001,Planned,Heartbeat monitoring timing
+HLTHWD-SRD-002,Test,UT-HLTHWD-002,Planned,Dead-man action execution
+HLTHWD-SRD-003,Test,IT-HLTHWD-001,Planned,BITE coordination
+HLTHWD-SRD-004,Test,IT-HLTHWD-002,Planned,A653_PM integration
+HLTHWD-SRD-005,Test,ST-HLTHWD-001,Planned,Fault reporting verification
+HLTHWD-SRD-006,Test,ST-HLTHWD-002,Planned,Evidence sealing
+HLTHWD-SRD-007,Test,ST-HLTHWD-001,Planned,Performance optimization
+HLTHWD-SRD-008,Analysis,N/A,N/A,Explicitly excluded feature
+HLTHWD-SRD-009,Analysis,N/A,N/A,Explicitly excluded feature

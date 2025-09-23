@@ -1,0 +1,7 @@
+id: ASIT2-AQUAOS-AIR-IOABS-ICD
+rev: 1.0
+topics:
+  - id: aqua.io.sens.*
+    description: Sensor data endpoints (IMU, ADC, etc.)
+  - id: aqua.io.actr.*
+    description: Actuator command/feedback endpoints
