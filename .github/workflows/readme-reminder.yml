@@ -76,7 +76,9 @@ jobs:
             for (const dir of Array.from(touchedDirs).sort()) {
               const readme = findReadmeName(dir);
               const changes = changedByDir[dir] || [];
-              const readmeChanged = changes.some(f => readme && path.posix.basename(f.filename).toLowerCase() === readme.toLowerCase());
+              const readmeChanged = readme
+                ? changes.some(f => path.posix.basename(f.filename).toLowerCase() === readme.toLowerCase())
+                : false;
               const nonReadmeChanged = changes.some(f => !/readme/i.test(path.posix.basename(f.filename)));
 
               let status = 'OK';
