@@ -1,0 +1,15 @@
+deflection_limits_deg:
+  min: -10
+  max: 30
+
+segments:
+  - id: FLAP_L
+    side: left
+    span_fraction: [0.55, 0.70]
+    chord_fraction: 0.28
+    hinge_line_x_over_c: 0.72
+  - id: FLAP_R
+    side: right
+    span_fraction: [0.55, 0.70]
+    chord_fraction: 0.28
+    hinge_line_x_over_c: 0.72

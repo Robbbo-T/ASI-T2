@@ -1,0 +1,20 @@
+reference_planes:
+  - name: BODY-0
+    description: Center body reference plane for BWB integration.
+  - name: WING-MATE
+    description: Wing-to-body join plane.
+
+mating_points:
+  - name: MP-01
+    description: Front-spar attach at center-body
+    csys: AC_REF
+    xyz: [3.2, 0.0, 0.0]
+  - name: MP-02
+    description: Rear-spar attach at center-body
+    csys: AC_REF
+    xyz: [5.6, 0.0, 0.0]
+
+coordinate_systems:
+  - name: AC_REF
+    origin: [0.0, 0.0, 0.0]
+    axes: ["+X fwd", "+Y right", "+Z up"]

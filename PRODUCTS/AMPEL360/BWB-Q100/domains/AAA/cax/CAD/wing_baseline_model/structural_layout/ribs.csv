@@ -1,0 +1,5 @@
+rib_id,eta,sweep_at_25c_deg,thickness_mm,lightening_holes
+R01,0.05,30.0,6.0,4
+R02,0.10,30.0,6.0,5
+R10,0.50,28.5,5.0,7
+R18,0.90,25.0,4.0,3
