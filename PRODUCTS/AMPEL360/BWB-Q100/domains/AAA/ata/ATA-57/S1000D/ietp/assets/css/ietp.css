@@ -1,0 +1,33 @@
+:root {
+  --bg:#0b0f14; --fg:#e7ecf3; --muted:#9fb0c6; --ink:#10151b;
+  --chip:#1a2230; --accent:#5c9dff; --ok:#39c07f; --todo:#ffaa3b; --card:#141b25;
+  --border:#223145;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+a{color:var(--accent);text-decoration:none}
+.topbar{display:flex;gap:1rem;align-items:center;padding:.75rem 1rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:linear-gradient(180deg,#0b0f14,#0b0f14cc 70%,transparent)}
+.brand{font-weight:700;color:#fff}
+.search{margin-left:auto}
+.search input{width:28ch;max-width:42ch;background:#0f1722;border:1px solid var(--border);border-radius:8px;color:#fff;padding:.5rem .75rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:.5rem 1rem;border-bottom:1px solid var(--border)}
+.chip{background:var(--chip);color:#dbe7ff;border:1px solid var(--border);border-radius:999px;padding:.35rem .75rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:#05152a;border-color:#69a6ff}
+.content{max-width:1100px;margin:1rem auto;padding:0 1rem}
+.muted{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem;transition:.15s transform}
+.card:hover{transform:translateY(-1px)}
+.card-title{font-weight:700;margin-bottom:.25rem}
+.card-sub{color:var(--muted)}
+.group{margin:1.25rem 0}
+.group h2{font-size:1.1rem;margin:0 0 .25rem 0;color:#d7e9ff}
+.dm-list{list-style:none;padding:0;margin:.25rem 0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.dm{display:flex;justify-content:space-between;gap:1rem;padding:.6rem .8rem;border-top:1px solid var(--border);background:#0f1520}
+.dm:first-child{border-top:none}
+.dm .meta{display:flex;gap:.5rem;align-items:center;color:var(--muted)}
+.tag,.bucket{border:1px solid var(--border);border-radius:6px;padding:.05rem .35rem}
+.status.ok{color:#091;}.status.todo{color:#fb3}
+.topbar .back{margin-left:auto;color:#cde2ff}
+.dm-article h1{margin:.5rem 0}
+.foot{padding:1.25rem 1rem;color:var(--muted);border-top:1px solid var(--border);margin-top:2rem}
