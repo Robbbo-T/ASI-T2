@@ -21,7 +21,8 @@ canonical_hash: pending
 
 ## MUST
 
-- A653PM-SRD-001 Partitioning: Enforce ARINC-653 spatial partitioning with MMU-backed memory protection; no partition shall access another's memory space.
+- A653PM-SRD-001a Partitioning: Enforce ARINC-653 spatial partitioning; no partition shall access another's memory space.
+- A653PM-SRD-001b Memory Protection: Provide MMU-backed memory protection to enforce partition isolation.
 - A653PM-SRD-002 Scheduling: Implement temporal partitioning with major frame 10-100ms; partition windows must be deterministic and repeatable.
 - A653PM-SRD-003 Isolation: Provide freedom from interference between different DAL level partitions per DO-297 requirements.
 - A653PM-SRD-004 Overrun Detection: Detect partition CPU overruns and deadline misses within 1ms; report to health monitoring.
