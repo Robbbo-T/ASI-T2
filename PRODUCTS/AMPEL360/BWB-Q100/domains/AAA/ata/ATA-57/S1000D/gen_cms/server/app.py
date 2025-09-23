@@ -13,6 +13,7 @@ DMRL = ROOT / "publication_modules" / "DML-BWQ1-ATA57-00_EN-US.xml"
 BREX_CANDIDATES = list((ROOT/"data_modules/descriptive").glob("DMC-BWQ1-*-022A-*-EN-US.xml"))
 BREX_DM = BREX_CANDIDATES[0] if BREX_CANDIDATES else None
 DRAFTS = ROOT / "gen_cms" / "drafts"
+PRESETS = ROOT / "gen_cms" / "presets" / "prefill.json"
 DRAFTS.mkdir(parents=True, exist_ok=True)
 
 # ---- LLM provider abstraction ----------------------------------------------
@@ -220,6 +221,112 @@ class PromoteReq(BaseModel):
     dmKey: str
     draft_path: str
 
+class PrefillReq(BaseModel):
+    dmKey: str = Field(..., description="Full DMC key string (from IETP)")
+
+class PrefillResp(BaseModel):
+    objective: str
+    constraints: str
+    seed_outline: str
+    safety_focus: str
+
+class RefineReq(BaseModel):
+    dmKey: str = Field(..., description="Full DMC key string (from IETP)")
+    xml_content: str = Field(..., description="Generated XML content to refine")
+    feedback: Optional[str] = ""
+
+class RefineResp(BaseModel):
+    xml: str
+    improvements: str
+    filename: str
+
+# ---- helper functions -------------------------------------------------------
+def load_prefill_templates() -> dict:
+    """Load prefill templates from JSON file"""
+    if PRESETS.exists():
+        try:
+            return json.loads(PRESETS.read_text())
+        except (json.JSONDecodeError, IOError):
+            pass
+    return {"defaults": {}, "ic_overrides": {}, "subsystem_modifiers": {}}
+
+def get_dm_requirement_comment(dm_key: str) -> str:
+    """Extract requirement comment from DMRL for this DM key"""
+    if not DMRL.exists():
+        return ""
+    
+    try:
+        import xml.etree.ElementTree as ET
+        dmrl = ET.parse(DMRL).getroot()
+        for req in dmrl.findall(".//dmRequirement"):
+            code = req.find("./dmRefIdent/dmCode")
+            if code is not None:
+                # Build the key from dmCode attributes
+                built_key = f"DMC-{code.get('modelIdentCode')}-{code.get('systemDiffCode')}-{code.get('systemCode')}-{code.get('subSystemCode')}-{code.get('subSubSystemCode')}-{code.get('assyCode')}-{code.get('disassyCode')}{code.get('disassyCodeVariant')}-{code.get('infoCode')}{code.get('infoCodeVariant')}-{code.get('itemLocationCode')}-EN-US"
+                if built_key == dm_key:
+                    comment = req.find("./reqComment")
+                    return comment.text if comment is not None else ""
+    except:
+        pass
+    return ""
+
+def generate_prefill_content(dm: Dict[str, str]) -> PrefillResp:
+    """Generate context-aware prefill content based on DM key"""
+    templates = load_prefill_templates()
+    defaults = templates.get("defaults", {})
+    ic_overrides = templates.get("ic_overrides", {})
+    subsys_modifiers = templates.get("subsystem_modifiers", {})
+    
+    # Extract components
+    ic = dm["ic"]
+    subsys = dm["ssc"] 
+    dm_key = f"DMC-{dm['mic']}-{dm['sdc']}-{dm['sc']}-{dm['ssc']}-{dm['sssc']}-{dm['ac']}-{dm['dc']}{dm['dcv']}-{dm['ic']}{dm['icv']}-{dm['iloc']}-EN-US"
+    
+    # Get requirement comment from DMRL
+    req_comment = get_dm_requirement_comment(dm_key)
+    
+    # Get IC-specific overrides
+    ic_data = ic_overrides.get(ic, {})
+    subsys_data = subsys_modifiers.get(subsys, {})
+    
+    # Build tokens for template substitution
+    tokens = {
+        "DM_KEY": dm_key,
+        "ATA": f"ATA-57-{subsys}",
+        "SUBSYS": subsys,
+        "IC": ic,
+        "IC_NAME": ic_data.get("name", "content"),
+        "SAFETY": subsys_data.get("safety_additions", defaults.get("safety", "")),
+        "REQ_COMMENT": req_comment
+    }
+    
+    # Apply template substitution
+    def substitute_tokens(template: str) -> str:
+        result = template
+        for token, value in tokens.items():
+            result = result.replace(f"{{{token}}}", value)
+        return result
+    
+    # Build response using IC overrides or defaults
+    objective = substitute_tokens(ic_data.get("objective", defaults.get("objective", "Provide {IC_NAME} for {ATA}")))
+    constraints = substitute_tokens(ic_data.get("constraints", defaults.get("constraints", "")))
+    outline = ic_data.get("outline", defaults.get("outline", ""))
+    safety = ic_data.get("safety", defaults.get("safety", "")) 
+    
+    # Add subsystem-specific safety additions
+    if subsys_data.get("safety_additions"):
+        if safety:
+            safety += f" {subsys_data['safety_additions']}"
+        else:
+            safety = subsys_data["safety_additions"]
+    
+    return PrefillResp(
+        objective=objective,
+        constraints=constraints,
+        seed_outline=outline,
+        safety_focus=safety
+    )
+
 # ---- FastAPI ----------------------------------------------------------------
 app = FastAPI(title="GenCMS for BWQ1 ATA-57")
 
@@ -346,3 +453,52 @@ def promote(req: PromoteReq):
     if gen.exists():
         subprocess.run(["python3", str(gen)], cwd=str(gen.parent), check=False)
     return {"ok": True, "path": str(dst.relative_to(ROOT))}
+
+@app.post("/prefill", response_model=PrefillResp)
+def prefill(req: PrefillReq):
+    """Generate context-aware prefill content based on DM key"""
+    dm = parse_dm_key(req.dmKey)
+    return generate_prefill_content(dm)
+
+@app.post("/refine", response_model=RefineResp)
+def refine(req: RefineReq):
+    """Refine generated XML content with improvements"""
+    dm = parse_dm_key(req.dmKey)
+    provider = pick_provider()
+    
+    # Create a refinement prompt
+    sys_msg = """You are a senior S1000D technical reviewer. Review the provided XML content and suggest improvements.
+Focus on S1000D compliance, clarity, completeness, and adherence to BREX rules.
+Return ONLY the improved XML content for the <content> section (no wrapper elements).
+Make minimal but meaningful improvements while preserving the core structure."""
+    
+    user_msg = f"""Review and improve this S1000D XML content for {req.dmKey}:
+
+{req.xml_content}
+
+Additional feedback: {req.feedback}
+
+Return the improved XML content only."""
+    
+    try:
+        improved_xml = provider.complete(sys_msg, user_msg).strip()
+        
+        # Sanitize: keep only inside <content>… if the model over-returned
+        if "<content" in improved_xml:
+            improved_xml = re.sub(r"^[\s\S]*?<content", "<content", improved_xml, flags=re.S)
+            improved_xml = re.sub(r"</content>[\s\S]*$", "</content>", improved_xml, flags=re.S)
+        
+        # Ensure at least a <description> exists
+        if "<description" not in improved_xml and "<procedure" not in improved_xml:
+            improved_xml = f"<content><description>{improved_xml}</description></content>"
+        
+        fname = dm_filename(dm)
+        improvements = "Content refined with improved structure, clarity, and S1000D compliance."
+        
+        return RefineResp(
+            xml=improved_xml,
+            improvements=improvements,
+            filename=fname
+        )
+    except Exception as e:
+        raise HTTPException(500, f"Refinement failed: {str(e)}")
