@@ -257,7 +257,7 @@ def get_dm_requirement_comment(dm_key: str) -> str:
     
     try:
         import xml.etree.ElementTree as ET
-        dmrl = ET.parse(DMRL).getroot()
+        dmrl = defusedxml.etree.ElementTree.parse(DMRL).getroot()
         for req in dmrl.findall(".//dmRequirement"):
             code = req.find("./dmRefIdent/dmCode")
             if code is not None:
