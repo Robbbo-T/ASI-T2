@@ -12,7 +12,7 @@ maintainer: ASI-T Architecture Team
 bridge: CB→QB→UE→FE→FWD→QS
 ethics_guard: MAL-EEM
 utcs_mi: v5.0
-canonical_hash: TBD
+canonical_hash: 2a29479843569b90
 -->
 <dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="../../schemas/descript.xsd">

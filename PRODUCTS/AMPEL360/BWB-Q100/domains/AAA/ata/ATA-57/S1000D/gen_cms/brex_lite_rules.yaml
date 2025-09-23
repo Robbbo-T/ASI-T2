@@ -1,0 +1,221 @@
+---
+# UTCS-MI v5.0 BREX-lite Ruleset for ATA-57 Wing Structure
+id: BWB-Q100-ATA57-BREX-LITE-RULES-0001
+project: AMPEL360-BWB-Q100
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/gen_cms/brex_lite_rules.yaml
+llc: SYSTEMS
+classification: INTERNAL–EVIDENCE-REQUIRED
+version: 0.1.0
+release_date: 2024-09-23
+maintainer: ASI-T Architecture Team
+bridge: CB→QB→UE→FE→FWD→QS
+ethics_guard: MAL-EEM
+utcs_mi: v5.0
+canonical_hash: 5025acb74c19cae1
+---
+
+# BREX-lite Validation Rules for S1000D Data Modules
+# Enforces business rules for BWB-Q100 ATA-57 Wing Structure documentation
+
+brex_version: "6.0-lite"
+model_identification_code: "BWQ1"
+target_domain: "AAA/ata/ATA-57"
+
+validation_rules:
+  
+  # UTCS Header Validation
+  utcs_header:
+    required_fields:
+      - id
+      - project
+      - artifact
+      - llc
+      - classification
+      - version
+      - release_date
+      - maintainer
+      - bridge
+      - ethics_guard
+      - utcs_mi
+      - canonical_hash
+    
+    field_validation:
+      classification:
+        required_value: "INTERNAL–EVIDENCE-REQUIRED"
+        error_message: "Must use en-dash (–) not hyphen (-)"
+      
+      bridge:
+        required_value: "CB→QB→UE→FE→FWD→QS"
+        error_message: "Bridge sequence must be exact"
+      
+      utcs_mi:
+        allowed_values: ["v5.0", "v5"]
+        error_message: "UTCS-MI version must be v5.0"
+      
+      version:
+        pattern: "^\\d+\\.\\d+\\.\\d+$"
+        error_message: "Version must follow semantic versioning (MAJOR.MINOR.PATCH)"
+      
+      release_date:
+        pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+        error_message: "Release date must be in YYYY-MM-DD format"
+      
+      maintainer:
+        required_value: "ASI-T Architecture Team"
+        error_message: "Maintainer must be ASI-T Architecture Team"
+      
+      ethics_guard:
+        required_value: "MAL-EEM"
+        error_message: "Ethics guard must be MAL-EEM"
+
+  # S1000D Data Module Code Validation
+  dmc_validation:
+    model_ident_code:
+      required_value: "BWQ1"
+      error_message: "Model Identification Code must be BWQ1"
+    
+    system_diff_code:
+      required_value: "A"
+      error_message: "System Difference Code must be A"
+    
+    system_code:
+      allowed_values: ["57"]
+      error_message: "System Code must be 57 for Wing systems"
+    
+    sub_system_code:
+      allowed_values: ["10", "20", "30", "40", "50"]
+      error_message: "Sub-system Code must be 10-50 for ATA-57"
+    
+    info_code_validation:
+      descriptive: ["040", "034", "042"]
+      procedural: ["200", "210", "220", "230", "240", "250", "500", "510", "520", "600", "610", "700", "710", "720"]
+      fault: ["420", "421", "422", "423", "424", "425", "426", "427", "428"]
+      inspection: ["300", "310", "345", "350"]
+      ipd: ["900", "910"]
+    
+    language:
+      iso_code: "en"
+      country_code: "US"
+      error_message: "Language must be en-US"
+
+  # Content Validation Rules
+  content_validation:
+    hydrogen_integration:
+      required_sections:
+        - "Hydrogen Fuel System Integration"
+        - "Cryogenic LH₂ Tank Interfaces"
+        - "Fire Safety and Zoning"
+      error_message: "Hydrogen integration sections are required for BWB-Q100"
+    
+    certification_mapping:
+      required_standards:
+        - "CS-25.305"
+        - "CS-25.571"
+        - "CS-25.603"
+        - "EASA CM-H₂"
+      error_message: "CS-25 and hydrogen standards must be referenced"
+    
+    cross_references:
+      required_ata_chapters:
+        - "ATA-28"  # Fuel System
+        - "ATA-47"  # Inert Gas
+        - "ATA-26"  # Fire Protection
+      error_message: "Cross-references to related ATA chapters required"
+    
+    qs_anchors:
+      pattern: "^BWQ1-[A-Z0-9-]+-QS-\\d{6}-\\d{3}$"
+      minimum_required: 4
+      types:
+        - "WING-STRUCT"
+        - "H2-INTEGRATION"
+        - "CERT-CS25"  
+        - "SUSTAINABILITY"
+      error_message: "QS anchors must follow BWQ1 pattern and include required types"
+
+  # Material Specifications Validation
+  materials_validation:
+    required_materials:
+      - "Al-Li-2050-T84"
+      - "CFRP-T800S"
+      - "Ti-6Al-4V"
+      - "Inconel-625"
+    
+    hydrogen_compatibility:
+      required_statement: true
+      error_message: "Hydrogen compatibility must be stated for all materials"
+    
+    mmpds_reference:
+      required: true
+      pattern: "^MMPDS-\\d{2}"
+      error_message: "MMPDS reference required for design allowables"
+
+  # Safety and Maintenance Validation
+  safety_validation:
+    emergency_provisions:
+      required_systems:
+        - "Emergency fuel jettison"
+        - "Emergency venting"
+        - "Fire suppression access"
+        - "Electrical isolation"
+      error_message: "All emergency provisions must be documented"
+    
+    inspection_intervals:
+      required_types:
+        - "GVI"    # General Visual Inspection
+        - "DET"    # Detailed Inspection
+        - "SSI"    # Structural Significant Item
+      hydrogen_specific:
+        - "Hydrogen system leak check"
+      error_message: "Standard and hydrogen-specific inspection intervals required"
+
+  # Sustainability Metrics Validation
+  sustainability_validation:
+    required_metrics:
+      - "Structural weight"
+      - "Thermal insulation efficiency"
+      - "Material recyclability"
+      - "End-of-life considerations"
+    error_message: "SIM integration metrics required"
+
+# Error Levels
+error_levels:
+  critical:
+    - "utcs_header.required_fields"
+    - "dmc_validation.model_ident_code"
+    - "content_validation.hydrogen_integration"
+    - "safety_validation.emergency_provisions"
+  
+  warning:
+    - "materials_validation.mmpds_reference"
+    - "sustainability_validation.required_metrics"
+  
+  info:
+    - "content_validation.qs_anchors"
+
+# Validation Actions
+validation_actions:
+  on_critical_error:
+    action: "reject"
+    message: "Data module cannot be published with critical errors"
+  
+  on_warning:
+    action: "flag"
+    message: "Review recommended before publication"
+  
+  on_info:
+    action: "log"
+    message: "Best practice recommendation"
+
+# Integration Points
+integration:
+  gencms:
+    auto_populate_from: ["structural_layout.yaml", "materials.yaml"]
+    validation_endpoint: "/api/v1/validate/brex-lite"
+  
+  ietp:
+    update_on_validation: true
+    rebuild_site: true
+  
+  quality_system:
+    log_validation_results: true
+    anchor_validation: true
