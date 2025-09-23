@@ -2,6 +2,9 @@
 *.log
 *.tmp
 
+# GitHub Pages build output
+_site/
+
 # Exchange packages (too large for git)
 PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/exchange/packages/*.zip
 
