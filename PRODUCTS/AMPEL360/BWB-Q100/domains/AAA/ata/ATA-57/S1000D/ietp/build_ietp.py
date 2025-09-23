@@ -8,7 +8,7 @@ Static IETP builder for ATA-57 (BWQ1).
 Requires: Python 3.9+ (stdlib only). Will optionally use defusedxml if present.
 """
 from __future__ import annotations
-import html, json, re, sys
+import html, json, re, sys, shutil
 from pathlib import Path
 
 # --- paths -------------------------------------------------------------------
@@ -62,7 +62,7 @@ LAYOUT = """<!doctype html>
 <header class="topbar">
   <a class="brand" href="../index.html">BWB-H₂ Q100 IETP</a>
   <div class="nav-links">
-    <a href="../docs/user-guide/User-Guide.md" class="doc-link">📖 Authoring User Guide</a>
+    <a href="../docs/user-guide/User-Guide.html" class="doc-link">📖 Authoring User Guide</a>
   </div>
   <div class="search"><input id="q" placeholder="Search titles & DM keys…"></div>
 </header>
@@ -257,11 +257,13 @@ def build():
     copy_assets(ASSETS/"css", OUTDIR/"assets/css", "*.css")
     copy_assets(ASSETS/"js", OUTDIR/"assets/js", "*.js")
     
-    # copy docs for User Guide access
+    # copy docs and render Markdown to HTML for nice in-IETP reading
     docs_source = ROOT / "docs"
     if docs_source.exists():
-        import shutil
         shutil.copytree(docs_source, OUTDIR / "docs", dirs_exist_ok=True)
+        for md in (OUTDIR/"docs").rglob("*.md"):
+            html_path = md.with_suffix(".html")
+            html_path.write_text(render_md(md.read_text(encoding="utf-8")), encoding="utf-8")
 
     reqs = load_dm_requirements()
     lut  = index_lookup()
@@ -346,6 +348,130 @@ def build():
     # search index for client JS
     (OUTDIR/"site_index.json").write_text(json.dumps(site_index, ensure_ascii=False, indent=2))
     print(f"IETP built → {OUTDIR}")
+
+# --- tiny markdown → HTML (headings, code fences, lists, paragraphs, tables) --------
+def render_md(src: str) -> str:
+    lines = src.splitlines()
+    out, in_code, in_table = [], False, False
+    def esc(s): return s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
+    
+    i = 0
+    while i < len(lines):
+        ln = lines[i]
+        
+        # Handle code fences
+        if ln.strip().startswith("```"):
+            out.append("</pre></code>" if in_code else "<code><pre>")
+            in_code = not in_code
+            i += 1
+            continue
+            
+        if in_code:
+            out.append(esc(ln))
+            i += 1
+            continue
+        
+        # Handle tables
+        if "|" in ln and not in_table:
+            # Check if next line is a separator line
+            if i + 1 < len(lines) and re.match(r'^[\|\s\-:]+$', lines[i + 1]):
+                in_table = True
+                out.append("<table>")
+                # Process header
+                headers = [cell.strip() for cell in ln.split("|") if cell.strip()]
+                out.append("<thead><tr>")
+                for header in headers:
+                    out.append(f"<th>{esc(header)}</th>")
+                out.append("</tr></thead><tbody>")
+                i += 2  # Skip separator line
+                continue
+        elif "|" in ln and in_table:
+            # Process table row
+            cells = [cell.strip() for cell in ln.split("|") if cell.strip()]
+            out.append("<tr>")
+            for cell in cells:
+                out.append(f"<td>{esc(cell)}</td>")
+            out.append("</tr>")
+            i += 1
+            continue
+        elif in_table and ln.strip() == "":
+            # End table
+            out.append("</tbody></table>")
+            in_table = False
+            i += 1
+            continue
+        elif in_table:
+            # End table if we hit non-table content
+            out.append("</tbody></table>")
+            in_table = False
+            # Don't increment i, process this line normally
+            continue
+        
+        # Handle headings
+        m = re.match(r"^(#{1,6})\s+(.*)", ln)
+        if m:
+            lvl = len(m.group(1))
+            out.append(f"<h{lvl}>{esc(m.group(2))}</h{lvl}>")
+            i += 1
+            continue
+        
+        # Handle lists
+        if ln.startswith(("- ","* ")):
+            if not out or not out[-1].startswith("<ul"):
+                out.append("<ul>")
+            out.append(f"<li>{esc(ln[2:])}</li>")
+        elif out and out[-1].startswith("<ul") and ln.strip() == "":
+            out.append("</ul>")
+        elif ln.strip() == "":
+            if out and out[-1].startswith("<ul"):
+                out.append("</ul>")
+            out.append("")
+        else:
+            # Handle markdown links
+            ln_with_links = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', ln)
+            # Handle bold text
+            ln_with_bold = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', ln_with_links)
+            # Handle code spans
+            ln_with_code = re.sub(r'`([^`]+)`', r'<code>\1</code>', ln_with_bold)
+            out.append(f"<p>{ln_with_code}</p>")
+        
+        i += 1
+    
+    # Close any open elements
+    if in_table:
+        out.append("</tbody></table>")
+    if out and out[-1].startswith("<ul"):
+        out.append("</ul>")
+    
+    body = "\n".join(out)
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S1000D User Guide</title>
+<link rel='stylesheet' href='../../assets/css/ietp.css'>
+<style>
+.doc {{ max-width: 900px; margin: 2rem auto; padding: 0 1rem; }}
+.doc pre {{ background:#0b1019; border:1px solid var(--border); border-radius:8px; padding:.75rem; overflow:auto; }}
+.doc code {{ background:#0b1019; border:1px solid var(--border); border-radius:4px; padding:.2rem .4rem; }}
+.doc table {{ border-collapse: collapse; width: 100%; margin: 1rem 0; }}
+.doc th, .doc td {{ border: 1px solid var(--border); padding: .5rem; text-align: left; }}
+.doc th {{ background: var(--chip); }}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html">BWB-H₂ Q100 IETP</a>
+  <div class="nav-links">
+    <a href="User-Guide.html" class="doc-link">📖 User Guide Home</a>
+  </div>
+</header>
+<main class="doc content">
+{body}
+</main>
+</body>
+</html>"""
 
 if __name__ == "__main__":
     build()
