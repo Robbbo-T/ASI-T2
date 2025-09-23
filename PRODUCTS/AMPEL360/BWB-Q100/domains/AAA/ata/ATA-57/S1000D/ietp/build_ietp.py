@@ -61,6 +61,9 @@ LAYOUT = """<!doctype html>
 </head><body>
 <header class="topbar">
   <a class="brand" href="../index.html">BWB-H₂ Q100 IETP</a>
+  <div class="nav-links">
+    <a href="../docs/user-guide/User-Guide.md" class="doc-link">📖 Authoring User Guide</a>
+  </div>
   <div class="search"><input id="q" placeholder="Search titles & DM keys…"></div>
 </header>
 <nav class="chips">{chips}</nav>
@@ -248,9 +251,17 @@ def build():
     OUTDIR.mkdir(parents=True, exist_ok=True)
     (OUTDIR/"dm").mkdir(exist_ok=True)
     (OUTDIR/"subsystem").mkdir(exist_ok=True)
+    (OUTDIR/"docs").mkdir(exist_ok=True)
+    
     # copy assets (assume already present)
     copy_assets(ASSETS/"css", OUTDIR/"assets/css", "*.css")
     copy_assets(ASSETS/"js", OUTDIR/"assets/js", "*.js")
+    
+    # copy docs for User Guide access
+    docs_source = ROOT / "docs"
+    if docs_source.exists():
+        import shutil
+        shutil.copytree(docs_source, OUTDIR / "docs", dirs_exist_ok=True)
 
     reqs = load_dm_requirements()
     lut  = index_lookup()
