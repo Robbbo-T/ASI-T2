@@ -36,13 +36,22 @@ This test plan covers verification of the A653_PM Partition Manager component's 
 - **IT-A653PM-003**: Health monitoring integration with HLTH_WD
 - **IT-A653PM-004**: Boot sequence with dependent partitions
 - **IT-A653PM-005**: Evidence sealing integration with UTCS_QS
+- **IT-A653PM-006**: CAST-32A core affinity & cache partitioning verification
+- **IT-A653PM-007**: Memory bandwidth/IRQ budgeting enforcement
+- **IT-A653PM-008**: APEX sampling/queuing ports IPC semantics
+- **IT-A653PM-009**: Interrupt mediation and latency verification
+- **IT-A653PM-010**: Diagnostics/health telemetry correctness
 
 ### 2.3 System Tests (ST)
 
 - **ST-A653PM-001**: Full system partition isolation verification
 - **ST-A653PM-002**: Performance under maximum partition load
 - **ST-A653PM-003**: Fault injection and recovery testing
-- **ST-A653PM-004**: Long-duration stability testing
+- **ST-A653PM-004**: Long-duration stability testing (24h endurance)
+- **ST-A653PM-005**: Time-source GM failover without slot miss
+- **ST-A653PM-006**: Secure boot chain and attestation verification
+- **ST-A653PM-007**: ECC memory integrity testing
+- **ST-A653PM-008**: Multi-core interference verification under stress
 
 ## 3. Test Environment
 
@@ -58,10 +67,17 @@ This test plan covers verification of the A653_PM Partition Manager component's 
 - Context switch times ≤50μs consistently
 - No memory leakage between partitions
 - Overrun detection within 1ms
+- APEX IPC semantics enforced (no writable SHM in flight baseline)
+- All device IRQs properly mediated
+- Secure boot chain validation successful
+- ECC error detection and correction verified
+- CAST-32A interference controls effective
 
 ### 4.2 Performance Criteria
-- Hypervisor overhead ≤5% CPU utilization
-- Major frame timing jitter ≤1μs
+- Hypervisor overhead ≤5% p95, ≤7% p100 CPU utilization
+- Major frame start jitter ≤100μs, slot hand-over jitter ≤50μs
+- Context switch times ≤50μs p100
+- IRQ delivery latency WCET ≤50μs
 - Deterministic partition startup sequences
 
 ## 5. Test Execution Schedule
