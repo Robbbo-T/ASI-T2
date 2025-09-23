@@ -1,6 +1,6 @@
 id: ASIT2-AQUAOS-AIR-TIMESYNC-ICD
 rev: 1.0
-timebase: SELF (TIME_SYNC is the timebase provider)
+timebase: AQUA_OS/TIME_SYNC  # TIME_SYNC is the timebase provider
 protocols:
   - name: PTP
     version: IEEE_1588_2008
