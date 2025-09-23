@@ -23,8 +23,8 @@ Canonical product folders live in `PRODUCTS/` using the pattern:
 
 
 **Examples**
-- `PRODUCTS/transport-civil_air_BWB-Q100/`
-- `PRODUCTS/cyberdefense_space_GAIA-SAT/`
+- `PRODUCTS/AMPEL360/BWB-Q100/`
+- `PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS/`
 
 Each product folder contains its own `README.md` and subdirectories (e.g., `docs/`, `design/`, `validation/`, `_revisions/`).
 
