@@ -42,23 +42,55 @@ parameters:
 
   control_surfaces:
     elevons:
-      count_per_side: 2
-      span_fractions: [[0.20, 0.35], [0.37, 0.52]]
-      chord_fraction: 0.25
+      deflection_limits_deg:
+        min: -25
+        max: 25
+      segments:
+        - id: EL1_L
+          side: left
+          span_fraction: [0.20, 0.35]
+          chord_fraction: 0.25
+          hinge_line_x_over_c: 0.75
+        - id: EL2_L
+          side: left
+          span_fraction: [0.37, 0.52]
+          chord_fraction: 0.25
+          hinge_line_x_over_c: 0.75
+        - id: EL1_R
+          side: right
+          span_fraction: [0.20, 0.35]
+          chord_fraction: 0.25
+          hinge_line_x_over_c: 0.75
+        - id: EL2_R
+          side: right
+          span_fraction: [0.37, 0.52]
+          chord_fraction: 0.25
+          hinge_line_x_over_c: 0.75
     flaperons:
-      count_per_side: 1
-      span_fraction: [0.55, 0.70]
-      chord_fraction: 0.28
+      deflection_limits_deg:
+        min: -10
+        max: 30
+      segments:
+        - id: FLAP_L
+          side: left
+          span_fraction: [0.55, 0.70]
+          chord_fraction: 0.28
+          hinge_line_x_over_c: 0.72
+        - id: FLAP_R
+          side: right
+          span_fraction: [0.55, 0.70]
+          chord_fraction: 0.28
+          hinge_line_x_over_c: 0.72
 
   high_lift:
     flaps:
       type: "double-slotted"
       span_fraction: [0.20, 0.70]
-      deflection_max: 35.0
+      deflection_max_deg: 35.0
     slats:
       type: "Krueger"
       span_fraction: [0.15, 0.85]
-      deflection_max: 22.0
+      deflection_max_deg: 22.0
 
 coordinate_systems:
   - name: AC_REF

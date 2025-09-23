@@ -69,12 +69,12 @@ Baseline wing geometry for BWB-Q100 configuration including wing box structure, 
 ## File Organization
 ```
 
-wing\_baseline\_model/
-├── master\_model/
-├── surface\_geometry/
-├── structural\_layout/
-├── control\_surfaces/
-├── high\_lift\_systems/
+wing_baseline_model/
+├── master_model/
+├── surface_geometry/
+├── structural_layout/
+├── control_surfaces/
+├── high_lift_systems/
 ├── integration/
 └── documentation/
 
