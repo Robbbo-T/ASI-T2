@@ -111,6 +111,7 @@ DM_PAGE = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>{title}</title>
 <link rel="stylesheet" href="../assets/css/ietp.css"/>
+<link rel="stylesheet" href="../assets/css/gencms.css"/>
 </head><body>
 <header class="topbar">
   <a class="brand" href="../index.html">BWB-H₂ Q100 IETP</a>
@@ -131,6 +132,7 @@ DM_PAGE = """<!doctype html>
   </article>
 </main>
 <footer class="foot">Generated from CSDB · MIC BWQ1 · ATA-57</footer>
+<script defer src="../assets/js/gencms.js"></script>
 </body></html>
 """
 
