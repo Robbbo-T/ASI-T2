@@ -1,0 +1,31 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-QAFBW-PSSC",
+  "rev": "1.0",
+  "arinc653": {
+    "major_frame_ms": 10,
+    "partitions": [
+      {
+        "name": "P1-QAFbW",
+        "dal": "A",
+        "window_ms": 5,
+        "cpu_budget_core_percent": 30,
+        "mem_mib": 64,
+        "net_reservation_mbps": 2,
+        "wcet_ms": 15,
+        "jitter_pp_us": 500,
+        "ffi_policy": "no_shared_writable_mem; io_via_os_only"
+      }
+    ]
+  },
+  "watchdog": {
+    "heartbeat_period_ms": 50,
+    "deadline_miss_action": "partition_restart_then_fail_operational"
+  },
+  "afdx_tsn_tte": {
+    "grandmaster_switchover": "no_mode_change",
+    "redundant_networks": ["NET-A", "NET-B"]
+  },
+  "evidence": {
+    "utcs_qs": ["build", "icd", "pssc", "test_runs", "logs", "sbom"]
+  }
+}

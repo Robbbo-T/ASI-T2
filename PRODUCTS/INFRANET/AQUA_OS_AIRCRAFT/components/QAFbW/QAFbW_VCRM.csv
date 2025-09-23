@@ -1,0 +1,14 @@
+ReqID,Title,Method,TestID,Artifact,Result,Notes
+QAFBW-SRD-001,Determinism & Latency,HIL Timing,QAFBW-T-001,logs/timing_10kframes.csv,PENDING,
+QAFBW-SRD-002,Modes & Transitions,PIL Eval,QAFBW-T-002,reports/modes_pil.pdf,PENDING,
+QAFBW-SRD-003,2oo3 Voter & Freeze,HIL Fault Inj,QAFBW-T-003,logs/fault_voter.json,PENDING,
+QAFBW-SRD-004,Envelope Protection,HIL Env Prot,QAFBW-T-004,reports/env_prot.pdf,PENDING,
+QAFBW-SRD-005,QAS Out-of-Loop,Neg. Testing,QAFBW-T-005,logs/qas_loss_noimpact.csv,PENDING,
+QAFBW-SRD-006,Security Boot & Links,Sec Tests,QAFBW-T-006,reports/sec_conformance.pdf,PENDING,
+QAFBW-SRD-007,Partition FFI,Load/Interference,QAFBW-T-007,logs/ffi_stress.csv,PENDING,
+QAFBW-SRD-008,Deterministic Networks,Failover Test,QAFBW-T-008,logs/ab_failover.pcap,PENDING,
+QAFBW-SRD-009,UTCS/QS Evidence,Audit,QAFBW-T-009,anchors/qseal_manifest.json,PENDING,
+QAFBW-SRD-010,Health & Diagnostics,API Exerciser,QAFBW-T-010,logs/health_api.json,PENDING,
+QAFBW-SRD-011,Fault Reaction ≤50ms,HIL Timing,QAFBW-T-011,logs/fault_react.csv,PENDING,
+QAFBW-SRD-012,Maintenance FI Guard,Config Review,QAFBW-T-012,configs/fi_policy.md,PENDING,
+QAFBW-SRD-013,QRNG/QKD Entropy,Sec Review,QAFBW-T-013,reports/entropy_integration.pdf,PENDING

@@ -1,0 +1,86 @@
+id: ASIT2-AQUAOS-AIR-QAFBW-ICD
+rev: 1.0
+timebase: AQUA_OS/PTP (GM switchover tolerated)
+networks:
+  - name: NET-A
+    type: AFDX|TSN|TTE
+  - name: NET-B
+    type: AFDX|TSN|TTE
+qos_defaults:
+  integrity: CRC32C
+  auth: AES-GCM-256 # keying via AQUA OS KMS; QKD optional
+  replay_window: 64
+  max_jitter_pp: 500us
+topics:
+  - id: aqua.fcl.sensor.imu
+    dir: IN
+    rate_hz: 500
+    vl: VL-IMU
+    payload:
+      timestamp: uint64_ns
+      gyro: [float32,3]
+      accel: [float32,3]
+      flags: uint32 # bitfield: valid, sat, overtemp, diag
+  - id: aqua.fcl.sensor.airdata
+    dir: IN
+    rate_hz: 200
+    vl: VL-AIR
+    payload:
+      timestamp: uint64_ns
+      p_static: float32
+      p_total: float32
+      oat: float32
+      flags: uint32
+  - id: aqua.fcl.surface_fb
+    dir: IN
+    rate_hz: 500
+    vl: VL-SURF-FB
+    payload:
+      timestamp: uint64_ns
+      pos_deg: float32[]
+      rate_dps: float32[]
+      torque_nm: float32[]
+      flags: uint32
+  - id: aqua.fcl.command
+    dir: OUT
+    rate_hz: 200-500
+    vl: VL-CMD
+    payload:
+      timestamp: uint64_ns
+      pos_cmd_deg: float32[]
+      rate_cmd_dps: float32[]
+      mode: enum8 [NORMAL, ALTERNATE, DIRECT, REVERSIONARY]
+      seq: uint16
+  - id: aqua.fcl.mode_status
+    dir: OUT
+    rate_hz: 50
+    vl: VL-MODE
+    payload:
+      mode: enum8
+      substate: uint8
+      reason: uint16
+      timers_ms: uint16
+  - id: aqua.fcl.health
+    dir: OUT
+    rate_hz: 10
+    vl: VL-HEALTH
+    payload:
+      voter: enum8 [AGREE, DISAGREE_FREEZE, BYPASS]
+      disagree_count: uint16
+      wcet_us: uint16
+      jitter_us: uint16
+      sensor_validity: uint32 # bitfield per input topic
+  - id: aqua.qas.aux
+    dir: IN
+    rate_hz: <=50
+    vl: VL-QAS
+    optional: true
+    payload:
+      kind: enum8 [QRNG, QKD_KEY, Q_SENSOR]
+      quality: uint8  # 0..100
+      value: bytes
+      ttl_ms: uint16
+frame_common:
+  crc: CRC32C
+  seq: uint16
+  auth_tag: 16 # bytes
