@@ -237,15 +237,18 @@ def index_lookup() -> dict[str, Path]:
     return lut
 
 # --- build site --------------------------------------------------------------
+def copy_assets(src_dir: Path, dst_dir: Path, pattern: str):
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    for src in src_dir.glob(pattern):
+        dst_dir.joinpath(src.name).write_text(src.read_text())
+
 def build():
     OUTDIR.mkdir(parents=True, exist_ok=True)
     (OUTDIR/"dm").mkdir(exist_ok=True)
     (OUTDIR/"subsystem").mkdir(exist_ok=True)
     # copy assets (assume already present)
-    for src in (ASSETS/"css").glob("*.css"):
-        dst = OUTDIR/"assets/css"; dst.mkdir(parents=True, exist_ok=True); dst.joinpath(src.name).write_text(src.read_text())
-    for src in (ASSETS/"js").glob("*.js"):
-        dst = OUTDIR/"assets/js"; dst.mkdir(parents=True, exist_ok=True); dst.joinpath(src.name).write_text(src.read_text())
+    copy_assets(ASSETS/"css", OUTDIR/"assets/css", "*.css")
+    copy_assets(ASSETS/"js", OUTDIR/"assets/js", "*.js")
 
     reqs = load_dm_requirements()
     lut  = index_lookup()
