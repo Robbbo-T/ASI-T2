@@ -1,69 +1,94 @@
-name: QAIM Validation
+name: QAIM Evidence & ATA Validation
 
 on:
   pull_request:
     paths:
       - "domains/**"
-      - ".github/workflows/qaim_validation.yml"
+      - "PRODUCTS/**"
+      - ".github/workflows/qaim-validate.yml"
+  workflow_dispatch:
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
-
-      - name: Install deps (none strictly required)
-        run: |
-          python -m pip install --upgrade pip
 
       - name: Validate UTCS/QS evidence, ATA links, and MAL-EEM
         shell: bash
         run: |
           python - <<'PY'
-          import os, sys, json, re, pathlib, glob, datetime
+          import json, pathlib, glob, re, os, sys
 
-          ROOT = pathlib.Path(".").resolve()
+          root = pathlib.Path(".").resolve()
           errors = []
 
-          # 1) Evidence manifests: every new QOx run must have manifest.json with required keys
-          required_keys = {"policy_hash","model_sha","data_manifest_hash","operator_id","canonical_hash","timestamp"}
-          run_dirs = glob.glob("domains/*/qox/*/runs/*")
-          for rd in run_dirs:
-              man = pathlib.Path(rd) / "manifest.json"
-              if man.exists():
+          required = {"policy_hash","model_sha","data_manifest_hash","operator_id","canonical_hash","timestamp"}
+          patterns = [
+              "domains/*/qox/*/runs/*/manifest.json",
+              "PRODUCTS/*/*/domains/*/qox/*/runs/*/manifest.json",
+          ]
+
+          found_any = False
+          for pat in patterns:
+              for man in glob.glob(pat):
+                  found_any = True
+                  p = pathlib.Path(man)
                   try:
-                      data = json.loads(man.read_text())
-                      missing = required_keys - data.keys()
-                      if missing:
-                          errors.append(f"[EVIDENCE] {man} missing keys: {sorted(missing)}")
+                      data = json.loads(p.read_text(encoding="utf-8"))
                   except Exception as e:
-                      errors.append(f"[EVIDENCE] {man} invalid JSON: {e}")
-              else:
-                  errors.append(f"[EVIDENCE] Missing manifest: {man}")
+                      errors.append(f"[EVIDENCE] {p}: invalid JSON: {e}")
+                      continue
+                  missing = sorted(required - data.keys())
+                  if missing:
+                      errors.append(f"[EVIDENCE] {p}: missing keys {missing}")
+          if not found_any:
+              errors.append("[EVIDENCE] no QOx runs found")
 
-          # 2) ATA linkage: each domain must contain ata/ with at least one ATA-XX folder
-          for dom in glob.glob("domains/*"):
+          for dom in sorted(glob.glob("domains/*")):
               ata = pathlib.Path(dom) / "ata"
-              if ata.exists():
-                  found = any(re.match(r"ATA-\d{2}$", p.name) and p.is_dir() for p in ata.iterdir())
-                  if not found:
-                      errors.append(f"[ATA] {ata} has no ATA-XX subfolders")
+              if not ata.exists():
+                  errors.append(f"[ATA] {dom}: missing ata/")
               else:
-                  errors.append(f"[ATA] Missing ata/ for domain: {dom}")
+                  has = any(d.is_dir() and re.fullmatch(r"ATA-\d{2}", d.name) for d in ata.iterdir())
+                  if not has:
+                      errors.append(f"[ATA] {ata}: no ATA-XX folders")
 
-          # 3) Ethics guard presence: MAL-EEM marker in product README or domain docs
-          #    (lightweight check: search for 'MAL-EEM' string in top-level README.md and domain readmes)
-          ok_ethics = False
-          to_scan = [ROOT/"README.md"] + [p for p in ROOT.glob("domains/*/*/*/README.md")] + [p for p in ROOT.glob("domains/*/README.md")]
-          for p in to_scan:
-              if p.exists() and "MAL-EEM" in p.read_text():
+          ethics_ok = False
+          scan = [root/"README.md"]
+          scan += list(root.glob("domains/*/README.md"))
+          scan += list(root.glob("domains/*/*/*/README.md"))
+          for p in scan:
+              if p.exists():
+                  try:
+                      if "MAL-EEM" in p.read_text(encoding="utf-8"):
+                          ethics_ok = True
+                          break
+                  except Exception:
+                      pass
+          if not ethics_ok:
+              errors.append("[ETHICS] MAL-EEM marker not found in repository or domain readmes")
+
+          if errors:
+              print("QAIM validation failed:")
+              for e in errors:
+                  print(f"::error::{e}")
+              with open(os.environ.get("GITHUB_STEP_SUMMARY","/tmp/summary.md"),"a",encoding="utf-8") as f:
+                  f.write("### QAIM Validation: FAIL\n")
+                  for e in errors:
+                      f.write(f"- {e}\n")
+              sys.exit(1)
+          else:
+              msg = "QAIM validation passed: evidence manifests, ATA links, and MAL-EEM marker verified."
+              print(msg)
+              with open(os.environ.get("GITHUB_STEP_SUMMARY","/tmp/summary.md"),"a",encoding="utf-8") as f:
+                  f.write(f"### {msg}\n")
+          PY
+
                   ok_ethics = True
                   break
           if not ok_ethics:
@@ -89,25 +114,59 @@ jobs:
               print("QAIM validation passed at", datetime.datetime.utcnow().isoformat(), "Z")
           PY
 
-      - name: Generate draft ATA docs from latest QOx run (info only)
-        if: success()
-        run: |
-          python - <<'PY'
-          import pathlib, json, datetime
-          for man in pathlib.Path("domains").rglob("qox/*/runs/*/manifest.json"):
-              try:
-                  data = json.loads(man.read_text())
-              except Exception:
-                  continue
-              phase = man.parent.parent.name  # e.g., CFD
-              domain = man.parents[4].name    # e.g., AAA
-              ata_dir = man.parents[4] / "ata"
+- name: Generate draft ATA docs from latest QOx run (info only)
+  if: success()
+  run: |
+    python - <<'PY'
+    import pathlib, json, time
 
-- Evidence: `{man}`
-- Policy Hash: {data.get('policy_hash')}
-- Model SHA: {data.get('model_sha')}
-- Data Manifest: {data.get('data_manifest_hash')}
-- Operator: {data.get('operator_id')}
+    def iter_manifests():
+        patterns = [
+            "domains/*/qox/*/runs/*/manifest.json",
+            "PRODUCTS/*/*/domains/*/qox/*/runs/*/manifest.json",
+        ]
+        for pat in patterns:
+            for p in pathlib.Path('.').glob(pat):
+                yield p
+
+    rows = []
+    for man in iter_manifests():
+        # Expect: .../domains/<DOMAIN>/qox/<PHASE>/runs/<RUN_ID>/manifest.json
+        if len(man.parents) < 5:
+            continue  # path too shallow / unexpected
+        try:
+            data = json.loads(man.read_text(encoding="utf-8"))
+        except Exception:
+            data = {}
+
+        phase       = man.parents[2].name           # e.g., CFD  (corrected)
+        domain_dir  = man.parents[4]                # .../domains/AAA
+        domain      = domain_dir.name               # e.g., AAA
+        run_id      = man.parents[0].name           # e.g., 2024_09_23_123045
+        ata_dir     = domain_dir / "ata"            # .../domains/AAA/ata
+        mtime       = man.stat().st_mtime
+
+        rows.append((domain, phase, run_id, mtime, ata_dir, man, data))
+
+    # Keep only the most recent manifest per (domain, phase)
+    latest = {}
+    for domain, phase, run_id, mtime, ata_dir, man, data in rows:
+        key = (domain, phase)
+        if key not in latest or mtime > latest[key]["mtime"]:
+            latest[key] = {
+                "run_id": run_id, "mtime": mtime, "ata_dir": ata_dir,
+                "manifest": man, "data": data
+            }
+
+    if not latest:
+        print("No QOx manifests found.")
+    else:
+        print("Detected latest QOx runs → suggested ATA targets (no files written):")
+        for (domain, phase), info in sorted(latest.items()):
+            ts = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(info["mtime"]))
+            print(f"- {domain}/{phase}: run={info['run_id']} @ {ts} UTC → {info['ata_dir']}")
+    PY
+
 
 ## Summary
 Provide a short narrative of the QOx run, decisions, and impacts (fuel/emissions/noise/circularity).
