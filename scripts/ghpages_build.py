@@ -93,6 +93,28 @@ def extract_glb_json(path: Path):
     except Exception:
         return None
 
+def gltf_external_uris_from_json(data):
+    uris = []
+    for buf in data.get("buffers", []):
+        u = buf.get("uri")
+        if u and not u.startswith("data:"):
+            uris.append(u)
+    for img in data.get("images", []):
+        u = img.get("uri")
+        if u and not u.startswith("data:"):
+            uris.append(u)
+    return sorted(set(uris))
+
+def collect_sidecars(gltf_path: Path):
+    if gltf_path.suffix.lower() == ".glb":
+        return []  # embedded
+    try:
+        data = json.loads(gltf_path.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    rels = gltf_external_uris_from_json(data)
+    return [ (gltf_path.parent / rel) for rel in rels ]
+
 def gltf_metadata(path: Path):
     meta = {"name": path.name}
     if path.suffix.lower() == ".gltf":
@@ -122,18 +144,29 @@ def build_cad_section():
     cad_out = SITE / "CAD" / "assets"
     cad_out.mkdir(parents=True, exist_ok=True)
 
-    # discover models
     models = []
     for root in glob_many(CAD_SEARCH):
         for ext in ("*.gltf","*.glb"):
             for f in sorted(root.glob(ext)):
-                dest = cad_out / f.name
-                shutil.copy2(f, dest)
+                # dedicated folder per model to avoid collisions
+                bucket = cad_out / f.stem
+                bucket.mkdir(parents=True, exist_ok=True)
+
+                # copy model file
+                shutil.copy2(f, bucket / f.name)
+
+                # copy sidecars for .gltf (textures, .bin) preserving relative paths
+                for sc in collect_sidecars(f):
+                    rel = sc.relative_to(f.parent)
+                    (bucket / rel).parent.mkdir(parents=True, exist_ok=True)
+                    if sc.exists():
+                        shutil.copy2(sc, bucket / rel)
+
                 m = gltf_metadata(f)
                 models.append({
                     "name": f.name,
-                    "site_rel": f"./assets/{f.name}",
-                    "src_repo": str(f.relative_to(ROOT)),
+                    "site_rel": f"./assets/{f.stem}/{f.name}",
+                    "src_repo": str(f.relative_to(ROOT)).replace("\\","/"),
                     "meta": m
                 })
 
@@ -144,7 +177,7 @@ def build_cad_section():
         hero_rel = manifest["cad.hero"]
         # find the one matching
         for i, m in enumerate(models):
-            if m["src_repo"].replace("\\","/") == hero_rel:
+            if m["src_repo"] == hero_rel:
                 # move to front
                 models.insert(0, models.pop(i))
                 break
@@ -226,19 +259,22 @@ q?.addEventListener('input', e => {{
 # ---------------- S1000D helpers ----------------
 
 def build_s1000d_section():
-    dm_out = SITE / "S1000D" / "dm"
-    dm_out.mkdir(parents=True, exist_ok=True)
+    dm_root = SITE / "S1000D" / "dm"
+    dm_root.mkdir(parents=True, exist_ok=True)
 
     dms = []
-    for root in glob_many(DM_SEARCH):
-        # Search recursively for XML files
+    roots = glob_many(DM_SEARCH)
+    for idx, root in enumerate(roots):
+        base = dm_root / f"root{idx+1}"
         for f in sorted(list(root.rglob("*.xml")) + list(root.rglob("*.XML"))):
-            dest = dm_out / f.name
+            rel = f.relative_to(root)  # keep subfolders
+            dest = base / rel
+            dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(f, dest)
             dms.append({
-                "name": f.name,
-                "site_rel": f"./dm/{f.name}",
-                "src_repo": str(f.relative_to(ROOT))
+                "name": str(Path(f"root{idx+1}") / rel).replace("\\","/"),  # path key for viewer
+                "site_rel": f"./dm/{Path('root'+str(idx+1))/rel}".replace("\\","/"),
+                "src_repo": str(f.relative_to(ROOT)).replace("\\","/")
             })
 
     write(SITE / "S1000D" / "index.html", s1000d_index_html(dms))
@@ -247,7 +283,8 @@ def build_s1000d_section():
 
 def s1000d_index_html(dms):
     rows = "".join(
-        f"<tr class='row' data-name='{html.escape(dm['name'])}'><td>{html.escape(dm['name'])}</td>"
+        f"<tr class='row' data-name='{html.escape(dm['name'])}'>"
+        f"<td>{html.escape(dm['name'])}</td>"
         f"<td><a href='./viewer.html?dm={html.escape(dm['name'])}'>view</a></td>"
         f"<td><a href='{html.escape(dm['site_rel'])}'>raw</a></td></tr>"
         for dm in dms
@@ -306,14 +343,14 @@ def s1000d_viewer_html():
 <script>
 (function(){
   const params = new URLSearchParams(location.search);
-  const name = params.get('dm');
-  const target = name ? `./dm/${name}` : null;
-  const raw = document.getElementById('raw');
-  if (!target) {
-    document.getElementById('out').textContent = 'No DM specified.';
-    raw.style.display = 'none';
+  const name = params.get('dm');              // may include subfolders (e.g. root1/publication_modules/PMC-...xml)
+  if (!name || name.includes('..')) {         // naive path sanitization
+    document.getElementById('out').textContent = 'Invalid DM path.'; 
+    document.getElementById('raw').style.display = 'none';
     return;
   }
+  const target = `./dm/${name}`;
+  const raw = document.getElementById('raw');
   raw.href = target;
 
   Promise.all([
