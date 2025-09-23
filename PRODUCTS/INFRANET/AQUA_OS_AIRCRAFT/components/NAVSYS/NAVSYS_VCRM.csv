@@ -1,0 +1,10 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+NAVSYS-SRD-001,Test,ST-NAVSYS-001,Planned,State output latency and accuracy
+NAVSYS-SRD-002,Test,UT-NAVSYS-002,Planned,EKF/UKF sensor fusion
+NAVSYS-SRD-003,Test,UT-NAVSYS-001,Planned,Navigation state rate verification
+NAVSYS-SRD-004,Test,ST-NAVSYS-001,Planned,Position accuracy requirements
+NAVSYS-SRD-005,Test,IT-NAVSYS-001,Planned,Multi-sensor redundancy
+NAVSYS-SRD-006,Test,ST-NAVSYS-002,Planned,Evidence sealing verification
+NAVSYS-SRD-007,Test,ST-NAVSYS-001,Planned,Performance optimization
+NAVSYS-SRD-008,Analysis,N/A,N/A,Explicitly excluded feature
+NAVSYS-SRD-009,Analysis,N/A,N/A,Explicitly excluded feature

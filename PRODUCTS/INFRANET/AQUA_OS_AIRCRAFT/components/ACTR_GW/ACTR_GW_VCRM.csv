@@ -1,0 +1,10 @@
+Requirement ID,Verification Method,Test Case ID,Status,Notes
+ACTRGW-SRD-001,Test,UT-ACTRGW-001,Planned,Command timeout and safety
+ACTRGW-SRD-002,Test,IT-ACTRGW-001,Planned,Bus interface integration
+ACTRGW-SRD-003,Test,UT-ACTRGW-002,Planned,Position feedback accuracy
+ACTRGW-SRD-004,Test,ST-ACTRGW-002,Planned,Safety interlock testing
+ACTRGW-SRD-005,Test,UT-ACTRGW-003,Planned,Fault detection verification
+ACTRGW-SRD-006,Test,ST-ACTRGW-001,Planned,Evidence sealing
+ACTRGW-SRD-007,Test,ST-ACTRGW-001,Planned,Performance optimization
+ACTRGW-SRD-008,Analysis,N/A,N/A,Explicitly excluded feature
+ACTRGW-SRD-009,Analysis,N/A,N/A,Explicitly excluded feature

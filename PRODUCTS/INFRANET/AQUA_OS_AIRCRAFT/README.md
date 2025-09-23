@@ -55,8 +55,30 @@ The **Aircraft Quantum Underlaying Architecture Operating System (AQUA OS)** is 
 
 ## Components
 
-### [QAFbW - Quantum-Assisted Fly-by-Wire](./components/QAFbW/)
-The flagship component of AQUA OS Aircraft Extension, providing high-integrity flight control capabilities with optional quantum-assisted services.
+### Platform-Level Components (DAL-A)
+
+#### [A653_PM - ARINC-653 Partition Manager](./components/A653_PM/)
+Foundational hypervisor providing spatial and temporal partitioning with freedom from interference between DAL levels.
+
+#### [NET_STACK - Deterministic Network Stack](./components/NET_STACK/)
+Real-time networking services supporting AFDX, TSN, and TTE protocols with guaranteed QoS and dual-network failover.
+
+#### [TIME_SYNC - Time & Synchronization Service](./components/TIME_SYNC/)
+Unified monotonic timebase using PTP/TTE with Grandmaster switchover tolerance for system-wide time distribution.
+
+#### [SEC_KMS - Security & Key Management](./components/SEC_KMS/)
+Cryptographic services, secure boot verification, and key management ensuring secure operation and message authentication.
+
+#### [HLTH_WD - Health & Watchdog Service](./components/HLTH_WD/)
+Partition health monitoring, heartbeat tracking, BITE coordination, and dead-man policy enforcement.
+
+#### [ACTR_GW - Actuator Gateway](./components/ACTR_GW/)
+Low-level actuator bus interfaces with command timeout handling, position feedback, and safety management for flight control surfaces.
+
+### Application Components
+
+#### [QAFbW - Quantum-Assisted Fly-by-Wire](./components/QAFbW/) (DAL-A)
+The flagship flight control component providing high-integrity control capabilities with optional quantum-assisted services.
 
 **Key Documents:**
 - [Component Specification](./components/QAFbW/QAFbW_Component_Spec.md)
@@ -67,6 +89,16 @@ The flagship component of AQUA OS Aircraft Extension, providing high-integrity f
 - [Test Plan](./components/QAFbW/QAFbW_Test_Plan.md)
 - [DO-297 Roles](./components/QAFbW/QAFbW_DO297_Roles.md)
 
+#### [NAVSYS - Navigation & Air Data Systems](./components/NAVSYS/) (DAL-B)
+Fused navigation state estimation using EKF/UKF of IMU, Air Data Computer, and GNSS inputs.
+
+#### [UTCS_QS - Evidence & Trace Service](./components/UTCS_QS/) (DAL-B)
+Immutable evidence anchoring for builds, configurations, test runs, and audit trail maintenance.
+
+### Supporting Components
+
+*Additional components include IO_ABS, LOG_TEL, MX_DIAG, CFG_STORE, SW_UPDATE, HMI_BRIDGE, SIM_BRIDGE, IETP_BRIDGE, and QAS_SUITE - full documentation sets available in their respective component directories.*
+
 ## Integration with Products
 
 AQUA OS Aircraft Extension serves as the foundational platform for aviation products in the ASI-T2 portfolio:
@@ -75,6 +107,16 @@ AQUA OS Aircraft Extension serves as the foundational platform for aviation prod
 - **LCC Domain**: Flight control integration via [ATA-27](../../AMPEL360/BWB-Q100/domains/LCC/ata/ATA-27/)
 - **EDI Domain**: Avionics integration via [ATA-22](../../AMPEL360/BWB-Q100/domains/EDI/ata/ATA-22/)
 - **OOO Domain**: Operating system binding and evidence
+
+## Documentation
+
+### [ATA Impact Analysis](./ATA_Impact_Analysis.md)
+Comprehensive analysis of AQUA OS Aircraft components across ATA (Air Transport Association) chapters and subjects, providing:
+- Component-to-ATA chapter mapping and impact analysis
+- Required Data Module types and cross-references for S1000D/IETP
+- Critical bidirectional cross-reference patterns (especially ATA-27 ↔ ATA-57)
+- DMRL (Data Module Requirements List) seed content
+- EHA vs EHSV configuration impact assessment
 
 ## Certification Approach
 
@@ -102,16 +144,33 @@ AQUA OS implements a **"quantum-aware but quantum-independent"** approach:
 
 ```
 components/
-├── QAFbW/              # Quantum-Assisted Fly-by-Wire Control Stack
-│   ├── QAFbW_Component_Spec.md
-│   ├── QAFbW_SRD.md
-│   ├── QAFbW_ICD.yaml
-│   ├── QAFbW_PSSC.json
-│   ├── QAFbW_VCRM.csv
-│   ├── QAFbW_Test_Plan.md
-│   └── QAFbW_DO297_Roles.md
-└── [Future Components]
+├── QAFbW/              # Quantum-Assisted Fly-by-Wire Control Stack (DAL-A)
+├── A653_PM/            # ARINC-653 Partition Manager (DAL-A Platform)
+├── NET_STACK/          # Deterministic Network Stack (DAL-A Platform)  
+├── TIME_SYNC/          # Time & Synchronization Service (DAL-A Platform)
+├── SEC_KMS/            # Security & Key Management (DAL-A)
+├── HLTH_WD/            # Health & Watchdog Service (DAL-A)
+├── ACTR_GW/            # Actuator Gateway (DAL-A)
+├── NAVSYS/             # Navigation & Air Data Systems (DAL-B)
+├── UTCS_QS/            # Evidence & Trace Service (DAL-B)
+├── IO_ABS/             # I/O Abstraction Layer (DAL-A)
+├── LOG_TEL/            # Logging & Telemetry (DAL-B)
+├── MX_DIAG/            # Maintenance & Diagnostics (DAL-B)
+├── CFG_STORE/          # Configuration & Parameter Store (DAL-A)
+├── SW_UPDATE/          # Software Load & Update (DAL-B)
+├── HMI_BRIDGE/         # HMI Bridge (DAL-B)
+├── SIM_BRIDGE/         # Simulation Bridge (DAL-C)
+├── IETP_BRIDGE/        # IETP S1000D Bridge (DAL-C)
+└── QAS_SUITE/          # Quantum Assist Services (DAL-C/B)
 ```
+
+Each component includes the same 6 document types:
+- `*_Component_Spec.md` - Component specification and architectural placement
+- `*_SRD.md` - System Requirements Document (MoSCoW format)
+- `*_ICD.yaml` - Interface Control Document (topics and APIs)
+- `*_PSSC.json` - Partition & Schedule Specification Contract
+- `*_Test_Plan.md` - Verification and testing approach
+- `*_VCRM.csv` - Verification Cross-Reference Matrix
 
 ---
 

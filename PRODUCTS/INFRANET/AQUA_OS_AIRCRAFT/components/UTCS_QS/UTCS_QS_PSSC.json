@@ -1,0 +1,22 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-UTCSQS-PSSC",
+  "rev": "1.0",
+  "criticality": "DAL-B",
+  "cpu_pct_core": 2,
+  "mem_mib": 8,
+  "wcet_ms": 1,
+  "evidence_services": {
+    "anchor_generation_max_ms": 50,
+    "hash_algorithm": "SHA-256",
+    "tamper_detection": true,
+    "non_blocking_api": true
+  },
+  "storage": {
+    "evidence_cache_mib": 4,
+    "secure_storage_required": true,
+    "compression": "optional"
+  },
+  "evidence": {
+    "utcs_qs": ["anchor", "audit", "config", "test_runs", "logs", "sbom"]
+  }
+}

@@ -1,0 +1,43 @@
+id: ASIT2-AQUAOS-AIR-HLTHWD-ICD
+rev: 1.0
+timebase: AQUA_OS/TIME_SYNC
+topics:
+  - id: aqua.hlth.hb
+    dir: OUT
+    rate_hz: 10
+    vl: VL-HEALTH-HB
+    payload:
+      timestamp: uint64_ns
+      partition_status: uint32  # bitfield for 8 partitions
+      missed_hb_count: uint8[]  # per partition
+      last_hb_age_ms: uint16[]  # per partition
+
+  - id: aqua.hlth.fault
+    dir: OUT
+    rate_hz: 0  # event-driven
+    vl: VL-HEALTH-FAULT
+    payload:
+      timestamp: uint64_ns
+      fault_code: uint32
+      partition_id: uint8
+      severity: uint8  # 0=info, 1=warning, 2=error, 3=critical
+      action_taken: uint8  # 0=log, 1=restart, 2=isolate
+
+health_apis:
+  - name: register_heartbeat
+    description: Register partition for heartbeat monitoring
+    parameters:
+      - name: partition_id
+        type: uint8
+      - name: expected_rate_hz
+        type: uint16
+    returns:
+      type: int
+
+  - name: send_heartbeat
+    description: Send heartbeat from monitored partition
+    parameters:
+      - name: partition_id
+        type: uint8
+    returns:
+      type: int

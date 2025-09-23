@@ -1,0 +1,11 @@
+{
+  "id": "ASIT2-AQUAOS-AIR-ACTRGW-PSSC",
+  "rev": "1.0",
+  "criticality": "DAL-A",
+  "cpu_pct_core": 7,
+  "mem_mib": 16,
+  "wcet_ms": 2,
+  "evidence": {
+    "utcs_qs": ["actuator_commands", "fault_events", "calibration", "config"]
+  }
+}
