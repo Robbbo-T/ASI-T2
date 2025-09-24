@@ -21,6 +21,7 @@ The repository includes comprehensive Python dependency management:
 ```bash
 pip install -r requirements.txt
 python verify_installation.py
+python scripts/verify_structure.py  # Validate repository structure
 ```
 
 ## How it works
@@ -28,6 +29,15 @@ python verify_installation.py
 * The build script scans the repo, copies assets into `_site/`, and writes minimal HTML/JS to browse/view them.
 * `_site/` is ignored by git and produced by CI (or locally via the script).
 * Script: `scripts/ghpages_build.py`
+
+### Repository Structure
+
+The repository follows a strict ENVIRONMENTS/FIELDS/PRODUCTS taxonomy:
+* **ENVIRONMENTS/DIGITAL/CONTEXT/** and **ENVIRONMENTS/PHYSICAL/CONTEXT/** — Operational deployment contexts
+* **FIELDS/** — Technology domains and specialized capabilities  
+* **PRODUCTS/** — Strategic product lines (source for CAD/S1000D content)
+
+Structure validation is automated via `scripts/verify_structure.py` and CI workflows.
 
 ## CAD
 
@@ -107,8 +117,9 @@ python -m http.server -d _site 8080
 
 ## CI / Deployment
 
-* Workflow in `.github/workflows/` builds `_site/` and deploys via GitHub Pages.
-* Triggers on push to `main` or `master`.
+* **Pages workflow** (`pages.yml`) builds `_site/` and deploys via GitHub Pages
+* **Structure guard** (`structure-guard.yml`) validates repository structure and prevents regressions
+* Triggers on push to `main` or `master`
 
 ## Notes & limits
 

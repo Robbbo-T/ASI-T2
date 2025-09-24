@@ -11,23 +11,57 @@ Master portfolio for ASI-T2 under strict TFA architecture. This README provides 
 Advanced technology domains and specialized capabilities:
 
 - **[`FIELDS/`](./FIELDS/)**
+  - [`air_manned/`](./FIELDS/air_manned/) — Manned aviation systems
+    - [`transport/`](./FIELDS/air_manned/transport/) — Passenger and cargo transport
+    - [`mobility/`](./FIELDS/air_manned/mobility/) — Urban air mobility and personal aviation
+  - [`air_unmanned/`](./FIELDS/air_unmanned/) — Unmanned aerial systems
+    - [`cargo/`](./FIELDS/air_unmanned/cargo/) — Autonomous cargo delivery
+    - [`retail/`](./FIELDS/air_unmanned/retail/) — Commercial UAV services
+  - [`communications/`](./FIELDS/communications/) — Advanced communications systems
   - [`cross/`](./FIELDS/cross/) — Cross-cutting initiatives and shared capabilities
     - [`process_engineering/`](./FIELDS/cross/process_engineering/)
       - [`QAIM-2/`](./FIELDS/cross/process_engineering/QAIM-2/) — Quantum AI Model framework
   - [`cyberdefense/`](./FIELDS/cyberdefense/) — Aerospace and cyber defense
+  - [`cybersecurity/`](./FIELDS/cybersecurity/) — Cybersecurity technologies
+  - [`defense/`](./FIELDS/defense/) — Defense and military applications
+  - [`intelligence/`](./FIELDS/intelligence/) — Intelligence systems and analysis
   - [`quantum-intelligence/`](./FIELDS/quantum-intelligence/) — Quantum computing and AI research
+  - [`space_tourism/`](./FIELDS/space_tourism/) — Space tourism and commercial space
   - [`transport-civil/`](./FIELDS/transport-civil/) — Civil mobility and aviation
 
 ### 🌍 Environments
 Operational environments for system deployment:
 
 - **[`ENVIRONMENTS/`](./ENVIRONMENTS/)**
-  - [`Air/`](./ENVIRONMENTS/Air/) — Airborne platforms and operations
-  - [`Cross/`](./ENVIRONMENTS/Cross/) — Combined/heterogeneous environments
-  - [`Digital/`](./ENVIRONMENTS/Digital/) — Digital and virtual environments
-  - [`Ground/`](./ENVIRONMENTS/Ground/) — Ground systems and operations
-  - [`Sea/`](./ENVIRONMENTS/Sea/) — Maritime platforms and operations
-  - [`Space/`](./ENVIRONMENTS/Space/) — Space systems and operations
+  - **[`DIGITAL/`](./ENVIRONMENTS/DIGITAL/)**
+    - **[`CONTEXT/`](./ENVIRONMENTS/DIGITAL/CONTEXT/)**
+      - [`VIRTUAL/`](./ENVIRONMENTS/DIGITAL/CONTEXT/VIRTUAL/)
+      - [`QUANTUM/`](./ENVIRONMENTS/DIGITAL/CONTEXT/QUANTUM/)
+      - [`AUGMENTATION/`](./ENVIRONMENTS/DIGITAL/CONTEXT/AUGMENTATION/)
+      - [`EXTENSION/`](./ENVIRONMENTS/DIGITAL/CONTEXT/EXTENSION/)
+      - [`PROJECTION/`](./ENVIRONMENTS/DIGITAL/CONTEXT/PROJECTION/)
+      - [`MIX/`](./ENVIRONMENTS/DIGITAL/CONTEXT/MIX/)
+      - [`CROSS/`](./ENVIRONMENTS/DIGITAL/CONTEXT/CROSS/)
+  - **[`PHYSICAL/`](./ENVIRONMENTS/PHYSICAL/)**
+    - **[`CONTEXT/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/)**
+      - [`AIR/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/AIR/)
+      - [`SEA/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/SEA/)
+      - [`DEEP_SEA/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/DEEP_SEA/)
+      - [`GROUND/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/GROUND/)
+      - [`SPACE/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/SPACE/)
+      - [`DEEP_SPACE/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/DEEP_SPACE/)
+      - [`CYBER/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/CYBER/)
+
+<details><summary>Legacy directories (kept for backward compatibility)</summary>
+
+- [`LEGACY_Air/`](./ENVIRONMENTS/LEGACY_Air/)
+- [`LEGACY_Cross/`](./ENVIRONMENTS/LEGACY_Cross/)
+- [`LEGACY_Digital/`](./ENVIRONMENTS/LEGACY_Digital/)
+- [`LEGACY_Ground/`](./ENVIRONMENTS/LEGACY_Ground/)
+- [`LEGACY_Sea/`](./ENVIRONMENTS/LEGACY_Sea/)
+- [`LEGACY_Space/`](./ENVIRONMENTS/LEGACY_Space/)
+
+</details>
 
 ### 🛠️ Products Portfolio
 Strategic product lines organized by operational characteristics:
