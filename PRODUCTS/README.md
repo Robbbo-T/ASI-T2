@@ -65,11 +65,11 @@ Products are organized into three main product lines based on operational charac
 | **AMPEL360** |       |             |              |                 |             |
 | | [`transport-civil`](../FIELDS/transport-civil/) | [`air`](../ENVIRONMENTS/air/) | [`BWB-Q100`](./AMPEL360/BWB-Q100/) | AAA, PPP, MEC, EEE, CQH | Blended Wing Body 100-passenger aircraft |
 | **GAIA-AIR** |       |             |              |                 |             |
-| | [`unmanned-air`](../FIELDS/unmanned-air/) | [`air`](../ENVIRONMENTS/air/) | [`HYDROBOTS`](./GAIA-AIR/HYDROBOTS/) | EEE, CQH, IIS, AAA | Hydrogen UAM retail (logistics, delivery, inspection) |
+| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`air`](../ENVIRONMENTS/air/) | [`HYDROBOTS`](./GAIA-AIR/HYDROBOTS/) | EEE, CQH, IIS, AAA | Hydrogen UAM retail (logistics, delivery, inspection) |
 | | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`ETHICS-EMPATHY-UAV`](./GAIA-AIR/ETHICS-EMPATHY-UAV/) | IIS, OOO, LCC, EDI, DDD | Ethical SHARM (STOP HARMFUL) logic for defense |
 | **GAIA-SPACE** |       |             |              |                 |             |
 | | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`SAT-CONSTELLATIONS`](./GAIA-SPACE/SAT-CONSTELLATIONS/) | DDD, IIS, EDI, LCC | Earth observation, communications & quantum satellites |
-| | [`space-systems`](../FIELDS/space-systems/) | [`space`](../ENVIRONMENTS/space/) | [`ORBITAL-MACHINES`](./GAIA-SPACE/ORBITAL-MACHINES/) | IIS, MEC, AAA, LCC | Debris removal, assembly & servicing |
+| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`ORBITAL-MACHINES`](./GAIA-SPACE/ORBITAL-MACHINES/) | IIS, MEC, AAA, LCC | Debris removal, assembly & servicing |
 | **INFRANET** |       |             |              |                 |             |
 | | [`cross`](../FIELDS/cross/) | [`cross`](../ENVIRONMENTS/cross/) | [`LH2-CORRIDOR`](./INFRANET/LH2_CORRIDOR/) | LIB, CQH, IIF, EEE, IIS | End-to-end green liquid hydrogen (LH2) value chain |
 | | [`quantum-intelligence`](../FIELDS/quantum-intelligence/) | [`digital`](../ENVIRONMENTS/digital/) | [`QAIM`](./INFRANET/QAIM/) | IIS, CQH, OOO, DDD | Core quantum-classical optimization & AI engine |
