@@ -70,10 +70,12 @@ Products are organized into three main product lines based on operational charac
 | **GAIA-SPACE** |       |             |              |                 |             |
 | | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`SAT-CONSTELLATIONS`](./GAIA-SPACE/SAT-CONSTELLATIONS/) | DDD, IIS, EDI, LCC | Earth observation, communications & quantum satellites |
 | | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`ORBITAL-MACHINES`](./GAIA-SPACE/ORBITAL-MACHINES/) | IIS, MEC, AAA, LCC | Debris removal, assembly & servicing |
+| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`LIGHTVIBES_QKM`](./GAIA_AIR_SPACE/GAIA_SPACE/GAIA-Deep-Space/LIGHTVIBES_QKM/) | IIS, CQH, DDD | Quantum key management for deep space operations |
 | **INFRANET** |       |             |              |                 |             |
 | | [`cross`](../FIELDS/cross/) | [`cross`](../ENVIRONMENTS/cross/) | [`LH2-CORRIDOR`](./INFRANET/LH2_CORRIDOR/) | LIB, CQH, IIF, EEE, IIS | End-to-end green liquid hydrogen (LH2) value chain |
 | | [`quantum-intelligence`](../FIELDS/quantum-intelligence/) | [`digital`](../ENVIRONMENTS/digital/) | [`QAIM`](./INFRANET/QAIM/) | IIS, CQH, OOO, DDD | Core quantum-classical optimization & AI engine |
 | | Shared Templates | All | [`Templates`](./INFRANET/Shared/_templates/) | All | Shared boilerplates and templates |
+
 
 ---
 

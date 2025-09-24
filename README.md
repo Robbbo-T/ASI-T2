@@ -101,15 +101,20 @@ Strategic product lines organized by operational characteristics:
 - **[`copilot_instructions/`](./copilot_instructions/)** — AI assistant configuration
 
 ---
-
 ## Architecture Overview
 
 All products follow the unified **Domain → Process → ATA** framework:
+
 - **Domains**: Engineering specializations (AAA, PPP, IIS, etc.)
 - **CAx**: Classical engineering processes (CAD, CAE, CFD, etc.)
 - **QOx**: Quantum-optimized counterparts using QAIM-2
 - **ATA**: Aerospace technical documentation standards
 
+**Examples**
+- `PRODUCTS/transport-civil_air_BWB-Q100/`
+- `PRODUCTS/cyberdefense_air_HYDROBOTS/`
+- `PRODUCTS/cyberdefense_space_SAT-CONSTELLATIONS/`
+- `PRODUCTS/GAIA_AIR_SPACE/GAIA_SPACE/GAIA-Deep-Space/LIGHTVIBES_QKM/`
+
 Core principles: **TFA** (Threading Final Assembly), **UIX** (Universal Injection), **MAL-EEM** (Ethics & Empathy), **QS/UTCS** (Quantum Seals)
 
----
