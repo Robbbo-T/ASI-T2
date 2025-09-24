@@ -1,5 +1,5 @@
 # ASI-T2
-**ARTIFICIAL SUPER INTELLIGENCE TRANSPONDERS for AEROSPACE SUSTAINABLE INDUSTRY TRANSITION**
+## ARTIFICIAL SUPER INTELLIGENCE TRANSPONDERS for AEROSPACE SUSTAINABLE INDUSTRY TRANSITION
 
 Master portfolio for ASI-T2 under strict TFA architecture. This README provides a comprehensive hyperlinkable index to all **fields**, **environments**, and **products** with their complete directory structure.
 
