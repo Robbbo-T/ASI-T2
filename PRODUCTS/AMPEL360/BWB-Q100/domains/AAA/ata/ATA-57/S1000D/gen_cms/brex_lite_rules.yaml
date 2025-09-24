@@ -42,7 +42,7 @@ validation_rules:
     field_validation:
       classification:
         required_value: "INTERNAL–EVIDENCE-REQUIRED"
-        error_message: "Must use en-dash (–) not hyphen (-)"
+        error_message: "Must use en-dash (–), not hyphen (-)."
       
       bridge:
         required_value: "CB→QB→UE→FE→FWD→QS"
