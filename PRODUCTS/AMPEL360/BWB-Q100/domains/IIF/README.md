@@ -17,10 +17,6 @@ Manufacturing infrastructure, industrial facilities, and production system optim
 - **[MRP-ERP](./cax/MRP-ERP/)** — Manufacturing resource planning
 - **[CAA](./cax/CAA/)** — Computer-aided automation
 
-### QOx (Quantum-Optimized Processes)
-- **[CAM](./qox/CAM/)** — Quantum-optimized toolpath and manufacturing processes
-- **[CIM](./qox/CIM/)** — Quantum-enhanced factory scheduling and integration
-
 ### ATA Documentation
 - **[ATA-20](./ata/ATA-20/)** — Standard Practices - Airframe
 - **[ATA-51](./ata/ATA-51/)** — Standard Practices & Structures - General

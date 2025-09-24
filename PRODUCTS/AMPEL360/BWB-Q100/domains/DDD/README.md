@@ -16,10 +16,6 @@ Digital security, data protection, and cybersecurity systems for aircraft operat
 - **[KBE](./cax/KBE/)** — Knowledge-based security rules and protocols
 - **[PDM-PLM](./cax/PDM-PLM/)** — Secure data lifecycle management
 
-### QOx (Quantum-Optimized Processes)
-- **[CAI](./qox/CAI/)** — Quantum-enhanced security algorithms
-- **[KBE](./qox/KBE/)** — Quantum cryptography and security rule optimization
-
 ### ATA Documentation
 - **[ATA-23](./ata/ATA-23/)** — Communications
 - **[ATA-31](./ata/ATA-31/)** — Indicating/Recording Systems

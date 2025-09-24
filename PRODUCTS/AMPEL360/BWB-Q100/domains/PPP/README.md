@@ -17,11 +17,6 @@ Propulsion systems, fuel management, and powerplant integration for BWB-Q100 sus
 - **[CAM](./cax/CAM/)** — Manufacturing processes for propulsion components
 - **[VP](./cax/VP/)** — Virtual testing of propulsion systems
 
-### QOx (Quantum-Optimized Processes)
-- **[CAD](./qox/CAD/)** — Quantum-optimized propulsion system design
-- **[CAE](./qox/CAE/)** — Quantum-enhanced structural optimization
-- **[CFD](./qox/CFD/)** — Quantum algorithms for fluid dynamics optimization
-
 ### ATA Documentation
 - **[ATA-28](./ata/ATA-28/)** — Fuel System
 - **[ATA-49](./ata/ATA-49/)** — Airborne Auxiliary Power

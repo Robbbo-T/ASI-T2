@@ -1,0 +1,48 @@
+domain: "EEE"
+project: "PRODUCTS/AMPEL360/BWB-Q100"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "21"
+    -
+      chapter: "24"
+    -
+      chapter: "30"
+  CAx:
+    - "CAD"
+    - "CAE"
+    - "CAI"
+    - "CAM"
+    - "CAX"
+    - "PDM-PLM-PLM"
+  QOx:
+
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 3
+  cax: 6
+  qox: 0
+  pax: 0
+  files: 9
+timestamp: "2025-09-24T08:50:22.667960Z"

@@ -1,7 +1,9 @@
 old_path,new_path,product_line,reasoning
 PRODUCTS/transport-civil_air_BWB-Q100,PRODUCTS/AMPEL360/BWB-Q100,AMPEL360,Passenger/crewed BWB program
-PRODUCTS/cyberdefense_space_GAIA-SAT,PRODUCTS/GAIA_AIR_SPACE/GAIA-SAT,GAIA_AIR_SPACE,Uncrewed satellite product
-PRODUCTS/defense_air_unmanned_ETHICS-EMPATHY-UAM-SWARM,PRODUCTS/GAIA_AIR_SPACE/UAM-SWARM,GAIA_AIR_SPACE,Uncrewed air/UAM swarm
+PRODUCTS/cyberdefense_space_GAIA-SAT,PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS,GAIA-SPACE,Space-only satellite product
+PRODUCTS/defense_air_unmanned_ETHICS-EMPATHY-UAM-SWARM,PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV,GAIA-AIR,Unmanned air/UAV swarm
 PRODUCTS/cross_LH2_CORRIDOR,PRODUCTS/INFRANET/LH2_CORRIDOR,INFRANET,Hydrogen corridor infrastructure
 PRODUCTS/quantum_aerospace_intelligence_model-QAIM,PRODUCTS/INFRANET/QAIM,INFRANET,Cross-cutting quantum/intel stack
 PRODUCTS/AMPEL360/BWB-Q100/_templates,PRODUCTS/INFRANET/Shared/_templates,INFRANET,Shared templates/boilerplates
+PRODUCTS/GAIA_AIR_SPACE/GAIA-SAT,PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS,GAIA-SPACE,Split from combined GAIA_AIR_SPACE into focused portfolios
+PRODUCTS/GAIA_AIR_SPACE/UAM-SWARM,PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV,GAIA-AIR,Split from combined GAIA_AIR_SPACE into focused portfolios

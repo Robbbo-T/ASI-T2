@@ -1,0 +1,82 @@
+domain: "LIB"
+project: "PRODUCTS/AMPEL360/BWB-Q100"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "20"
+    -
+      chapter: "51"
+      section: "57"
+    -
+      chapter: "70"
+      section: "79"
+    -
+      chapter: "51"
+    -
+      chapter: "57"
+    -
+      chapter: "70"
+    -
+      chapter: "79"
+    -
+      chapter: "52"
+    -
+      chapter: "53"
+    -
+      chapter: "54"
+    -
+      chapter: "55"
+    -
+      chapter: "56"
+    -
+      chapter: "71"
+    -
+      chapter: "72"
+    -
+      chapter: "73"
+    -
+      chapter: "74"
+    -
+      chapter: "75"
+    -
+      chapter: "76"
+    -
+      chapter: "77"
+    -
+      chapter: "78"
+  CAx:
+    - "CAX"
+    - "MRP-ERP"
+    - "PDM-PLM-PLM"
+    - "SCM"
+  QOx:
+
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 20
+  cax: 4
+  qox: 0
+  pax: 0
+  files: 24
+timestamp: "2025-09-24T08:50:22.686808Z"
