@@ -33,7 +33,7 @@ def create_session(req: SessionReq):
     simulated_qber = 0.03
     simulated_rate = 2000  # bits per second available
 
-    mode = "QMK" if simulated_qber <= QBER_THRESHOLD else ("PQC" if req.fallback == "PQC" else "PQC")
+    mode = "QMK" if simulated_qber <= QBER_THRESHOLD else "PQC"
     keybits = max(req.policy.min_keybits, 256)
     key_ref = secrets.token_hex(16)
     session_id = secrets.token_hex(12)
