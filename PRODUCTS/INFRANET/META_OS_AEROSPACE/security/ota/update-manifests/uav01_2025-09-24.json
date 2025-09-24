@@ -5,6 +5,6 @@
   "sbom": "sbom/uav01-1.2.3.spdx.json",
   "rollback": "uav01-1.2.2",
   "signingCert": "pki/certs/ops_signer.pem",
-  "signature": "BASE64-ED25519...",
+  "signature": "REPLACE_WITH_BASE64_ED25519_SIGNATURE",
   "schedule": "2025-09-24T21:10:00Z"
 }
