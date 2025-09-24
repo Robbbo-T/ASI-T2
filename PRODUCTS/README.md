@@ -63,7 +63,8 @@ Products are organized into three main product lines based on operational charac
 | Product Line | Field | Environment | Product Name | Primary Domains | Description |
 | ------------ | ----- | ----------- | ------------ | --------------- | ----------- |
 | **AMPEL360** |       |             |              |                 |             |
-| | [`transport-civil`](../FIELDS/transport-civil/) | [`air`](../ENVIRONMENTS/air/) | [`BWB-Q100`](./AMPEL360/BWB-Q100/) | AAA, PPP, MEC, EEE, CQH | Blended Wing Body 100-passenger aircraft |
+| | [`transport-civil`](../FIELDS/transport-civil/) | [`air`](../ENVIRONMENTS/air/) | [`BWB-Q100`](./AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/) | AAA, PPP, MEC, EEE, CQH | Blended Wing Body 100-passenger aircraft |
+| | [`space-tourism`](../FIELDS/space-tourism/) | [`space`](../ENVIRONMENTS/space/) | [`PLUS`](./AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/) | AAA, PPP, CCC, EEE, LCC, MEC, IIS | Space Tourism Aircraft AMPEL360PLUS |
 | **GAIA-AIR** |       |             |              |                 |             |
 | | [`cyberdefense`](../FIELDS/cyberdefense/) | [`air`](../ENVIRONMENTS/air/) | [`HYDROBOTS`](./GAIA-AIR/HYDROBOTS/) | EEE, CQH, IIS, AAA | Hydrogen UAM retail (logistics, delivery, inspection) |
 | | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`ETHICS-EMPATHY-UAV`](./GAIA-AIR/ETHICS-EMPATHY-UAV/) | IIS, OOO, LCC, EDI, DDD | Ethical SHARM (STOP HARMFUL) logic for defense |
