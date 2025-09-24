@@ -1,7 +1,7 @@
 {
   "asset": "UAV-01",
   "targetPartition": "A",
-  "imageSha256": "9f38...a2",
+  "imageSha256": "0000000000000000000000000000000000000000000000000000000000000000",
   "sbom": "sbom/uav01-1.2.3.spdx.json",
   "rollback": "uav01-1.2.2",
   "signingCert": "pki/certs/ops_signer.pem",
