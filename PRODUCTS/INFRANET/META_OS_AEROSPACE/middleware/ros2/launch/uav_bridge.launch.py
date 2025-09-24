@@ -33,7 +33,7 @@ def generate_launch_description():
                 'topic_out': '/uav01/imu',
                 'qos_profile': LaunchConfiguration('qos_profile'),
                 'deadline_ms': 5,
-                'priority_bits': 0b1110,  # 0x0E hex
+                'priority_bits': 0x0E,  # 0x0E hex
                 'partition': 'DAL-A'
             }]
         ),
