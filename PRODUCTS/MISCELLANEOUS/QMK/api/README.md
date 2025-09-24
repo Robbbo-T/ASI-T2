@@ -72,12 +72,12 @@ Retrieves an ephemeral key (one-time use only).
 
 ```bash
 # From repository root
-uvicorn LIGHTVIBES.api.server:app --reload --host 127.0.0.1 --port 8000
+uvicorn PRODUCTS.MISCELLANEOUS.QMK.api.server:app --reload --host 127.0.0.1 --port 8000
 ```
 
 ### Environment Variables
 
-Configure via `LIGHTVIBES/.env.example`:
+Configure via `PRODUCTS/MISCELLANEOUS/QMK/.env.example`:
 
 ```bash
 LIGHTVIBES_QBER_THRESHOLD=0.08
