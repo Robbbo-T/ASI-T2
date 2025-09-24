@@ -19,6 +19,17 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
+      - name: Verify dependency files are present
+        run: |
+          echo "Checking for dependency files..."
+          ls -la requirements.txt pyproject.toml
+          echo "Content of requirements.txt:"
+          head -5 requirements.txt
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
       - name: Validate UTCS/QS evidence, ATA links, MAL-EEM, and classification dash
         shell: bash
         run: |
