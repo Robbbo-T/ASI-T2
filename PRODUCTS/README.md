@@ -56,25 +56,33 @@ Products are organized into three main product lines based on operational charac
 
 **GAIA-SPACE** - Space-only (satellites & orbital robotics) - Autonomous space systems including satellite constellations and orbital servicing.
 
+**GAIA-SEA** - Marine & Ocean Systems - Autonomous marine and oceanic systems for environmental monitoring, scientific research, and sustainable ocean operations.
+
 **INFRANET** - Infrastructure and network systems, encompassing cross-cutting intelligence and ground physical infrastructures.
+
+**MISCELLANEOUS** - Legacy and transitional products being evaluated for integration into appropriate product lines.
 
 ### Product Directory
 
 | Product Line | Field | Environment | Product Name | Primary Domains | Description |
 | ------------ | ----- | ----------- | ------------ | --------------- | ----------- |
 | **AMPEL360** |       |             |              |                 |             |
-| | [`transport-civil`](../FIELDS/transport-civil/) | [`air`](../ENVIRONMENTS/air/) | [`BWB-Q100`](./AMPEL360/BWB-Q100/) | AAA, PPP, MEC, EEE, CQH | Blended Wing Body 100-passenger aircraft |
+|  | [`transport-civil`](../FIELDS/transport-civil/) | [`air`](../ENVIRONMENTS/air/) | [`BWB-Q100`](./AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/) | AAA, PPP, MEC, EEE, CQH | Blended Wing Body 100-passenger aircraft |
+|  | [`space-tourism`](../FIELDS/space_tourism/) | [`space`](../ENVIRONMENTS/space/) | [`AMPEL360PLUS`](./AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/) | CCC, EDI, IIS, LCC, LIB, MEC, PPP, CQH | Suborbital/orbital tourism vehicle |
 | **GAIA-AIR** |       |             |              |                 |             |
-| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`air`](../ENVIRONMENTS/air/) | [`HYDROBOTS`](./GAIA-AIR/HYDROBOTS/) | EEE, CQH, IIS, AAA | Hydrogen UAM retail (logistics, delivery, inspection) |
-| | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`ETHICS-EMPATHY-UAV`](./GAIA-AIR/ETHICS-EMPATHY-UAV/) | IIS, OOO, LCC, EDI, DDD | Ethical SHARM (STOP HARMFUL) logic for defense |
+|  | [`cyberdefense`](../FIELDS/cyberdefense/) | [`air`](../ENVIRONMENTS/air/) | [`HYDROBOTS`](./GAIA-AIR/HYDROBOTS/) | EEE, CQH, IIS, AAA | Hydrogen UAM retail (logistics, delivery, inspection) |
+|  | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`ETHICS-EMPATHY-UAV`](./GAIA-AIR/ETHICS-EMPATHY-UAV/) | IIS, OOO, LCC, EDI, DDD | Ethical SHARM (STOP HARMFUL) logic for defense |
 | **GAIA-SPACE** |       |             |              |                 |             |
-| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`SAT-CONSTELLATIONS`](./GAIA-SPACE/SAT-CONSTELLATIONS/) | DDD, IIS, EDI, LCC | Earth observation, communications & quantum satellites |
-| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`ORBITAL-MACHINES`](./GAIA-SPACE/ORBITAL-MACHINES/) | IIS, MEC, AAA, LCC | Debris removal, assembly & servicing |
-| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`QMK`](./MISCELLANEOUS/QMK/) | IIS, CQH, DDD | Quantum key management for deep space operations |
+|  | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`SAT-CONSTELLATIONS`](./GAIA-SPACE/SAT-CONSTELLATIONS/) | DDD, IIS, EDI, LCC | Earth observation, communications & quantum satellites |
+|  | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`ORBITAL-MACHINES`](./GAIA-SPACE/ORBITAL-MACHINES/) | IIS, MEC, AAA, LCC | Debris removal, assembly & servicing |
+| **GAIA-SEA** |       |             |              |                 |             |
+|  | [`EER`](../FIELDS/EER/) | [`sea`](../ENVIRONMENTS/sea/) | [`GAIA-SOUND`](./GAIA-SEA/GAIA-SOUND/) | EER, IIS, EDI, LCC, LIB | Sea Organisms and Universal Nature Diagnostics |
 | **INFRANET** |       |             |              |                 |             |
-| | [`cross`](../FIELDS/cross/) | [`cross`](../ENVIRONMENTS/cross/) | [`LH2-CORRIDOR`](./INFRANET/LH2_CORRIDOR/) | LIB, CQH, IIF, EEE, IIS | End-to-end green liquid hydrogen (LH2) value chain |
-| | [`quantum-intelligence`](../FIELDS/quantum-intelligence/) | [`digital`](../ENVIRONMENTS/digital/) | [`QAIM`](./INFRANET/QAIM/) | IIS, CQH, OOO, DDD | Core quantum-classical optimization & AI engine |
-| | Shared Templates | All | [`Templates`](./INFRANET/Shared/_templates/) | All | Shared boilerplates and templates |
+|  | [`cross`](../FIELDS/cross/) | [`cross`](../ENVIRONMENTS/cross/) | [`LH2-CORRIDOR`](./INFRANET/LH2_CORRIDOR/) | LIB, CQH, IIF, EEE, IIS | End-to-end green liquid hydrogen (LH2) value chain |
+|  | [`quantum-intelligence`](../FIELDS/quantum-intelligence/) | [`digital`](../ENVIRONMENTS/digital/) | [`QAIM`](./INFRANET/QAIM/) | IIS, CQH, OOO, DDD | Core quantum-classical optimization & AI engine |
+|  | Shared Templates | All | [`Templates`](./INFRANET/Shared/_templates/) | All | Shared boilerplates and templates |
+| **MISCELLANEOUS** |       |             |              |                 |             |
+|  | [`cyberdefense`](../FIELDS/cyberdefense/) | [`deep_space`](../ENVIRONMENTS/deep_space/) | [`LIGHTVIBES`](./MISCELLANEOUS/LIGHTVIBES/) | IIS, CQH, DDD | Quantum key management (migrated from root directory) |
 
 
 ---
