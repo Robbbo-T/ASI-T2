@@ -10,7 +10,7 @@ Technical descriptions and specifications for ATA-57 Wing systems.
 ## Hyperlinkable Index — BWB-Q100 (ATA-57 · S1000D)
 
 **Path Root:**  
-[`PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/)
+`./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/`
 
 ### Data Modules (DMs)
 
@@ -56,6 +56,7 @@ Technical descriptions and specifications for ATA-57 Wing systems.
 - [`DMC-BWQ1-A-57-50-40-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-40-00-00A-040A-D-EN-US.xml)
 - [`DMC-BWQ1-A-57-50-40-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-40-00-00A-350A-D-EN-US.xml)
 - [`DMC-BWQ1-A-57-50-50-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-50-00-00A-040A-D-EN-US.xml)
+
 
 
 ## Contents
