@@ -62,7 +62,7 @@ xml = [
 # Command-line scripts
 asi-derive-struct = "scripts.derive_struct_from_readmes:main"
 asi-validate-pax = "PRODUCTS.AMPEL360.BWB-Q100.domains.AAA.pax.scripts.validate_pax:main"
-asi-build-pages = "scripts.ghpages_build:main"
+# asi-build-pages = "scripts.ghpages_build:main"
 
 [tool.setuptools]
 py-modules = []
