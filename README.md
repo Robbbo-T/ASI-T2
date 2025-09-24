@@ -18,13 +18,36 @@ Advanced technology domains and specialized capabilities:
   - [`quantum-intelligence/`](./FIELDS/quantum-intelligence/) — Quantum computing and AI research
   - [`transport-civil/`](./FIELDS/transport-civil/) — Civil mobility and aviation
 
+### 🧭 Dimensions
+Top-level classification of **digital** and **physical** contexts used across ASI-T2.
+
+- **[`DIMENSIONS/`](./DIMENSIONS/)**
+  - **[`DIGITAL/`](./DIMENSIONS/DIGITAL/)**
+    - **[`CONTEXT/`](./DIMENSIONS/DIGITAL/CONTEXT/)**
+      - [`VIRTUAL/`](./DIMENSIONS/DIGITAL/CONTEXT/VIRTUAL/) — simulators, twins, synthetic envs
+      - [`QUANTUM/`](./DIMENSIONS/DIGITAL/CONTEXT/QUANTUM/) — QML, QUBO/BQM, state spaces
+      - [`AUGMENTATION/`](./DIMENSIONS/DIGITAL/CONTEXT/AUGMENTATION/) — AR/HMI, copilots
+      - [`EXTENSION/`](./DIMENSIONS/DIGITAL/CONTEXT/EXTENSION/) — edge/cloud offload, services
+      - [`PROJECTION/`](./DIMENSIONS/DIGITAL/CONTEXT/PROJECTION/) — viz, control rooms
+      - [`MIX/`](./DIMENSIONS/DIGITAL/CONTEXT/MIX/) — mixed reality compositions
+      - [`CROSS/`](./DIMENSIONS/DIGITAL/CONTEXT/CROSS/) — adapters, bridges, standards
+  - **[`PHYSICAL/`](./DIMENSIONS/PHYSICAL/)**
+    - **[`CONTEXT/`](./DIMENSIONS/PHYSICAL/CONTEXT/)**
+      - **[`HARDWARE/`](./DIMENSIONS/PHYSICAL/CONTEXT/HARDWARE/)**
+        - **[`PRODUCT_TYPE/`](./DIMENSIONS/PHYSICAL/CONTEXT/HARDWARE/PRODUCT_TYPE/)**
+          - [`AIRCRAFT/`](./DIMENSIONS/PHYSICAL/CONTEXT/HARDWARE/PRODUCT_TYPE/AIRCRAFT/)
+          - [`UAV/`](./DIMENSIONS/PHYSICAL/CONTEXT/HARDWARE/PRODUCT_TYPE/UAV/)
+          - [`SATELLITE/`](./DIMENSIONS/PHYSICAL/CONTEXT/HARDWARE/PRODUCT_TYPE/SATELLITE/)
+          - [`GROUND_SYSTEM/`](./DIMENSIONS/PHYSICAL/CONTEXT/HARDWARE/PRODUCT_TYPE/GROUND_SYSTEM/)
+          - [`INFRASTRUCTURE/`](./DIMENSIONS/PHYSICAL/CONTEXT/HARDWARE/PRODUCT_TYPE/INFRASTRUCTURE/)
+          - [`COMPONENT/`](./DIMENSIONS/PHYSICAL/CONTEXT/HARDWARE/PRODUCT_TYPE/COMPONENT/)
+
 ### 🌍 Environments
 Operational environments for system deployment:
 
 - **[`ENVIRONMENTS/`](./ENVIRONMENTS/)**
   - [`Air/`](./ENVIRONMENTS/Air/) — Airborne platforms and operations
   - [`Cross/`](./ENVIRONMENTS/Cross/) — Combined/heterogeneous environments
-  - [`Digital/`](./ENVIRONMENTS/Digital/) — Digital and virtual environments
   - [`Ground/`](./ENVIRONMENTS/Ground/) — Ground systems and operations
   - [`Sea/`](./ENVIRONMENTS/Sea/) — Maritime platforms and operations
   - [`Space/`](./ENVIRONMENTS/Space/) — Space systems and operations
