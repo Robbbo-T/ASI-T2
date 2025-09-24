@@ -56,7 +56,11 @@ Products are organized into three main product lines based on operational charac
 
 **GAIA-SPACE** - Space-only (satellites & orbital robotics) - Autonomous space systems including satellite constellations and orbital servicing.
 
+**GAIA-SEA** - Marine & Ocean Systems - Autonomous marine and oceanic systems for environmental monitoring, scientific research, and sustainable ocean operations.
+
 **INFRANET** - Infrastructure and network systems, encompassing cross-cutting intelligence and ground physical infrastructures.
+
+**MISCELLANEOUS** - Legacy and transitional products being evaluated for integration into appropriate product lines.
 
 ### Product Directory
 
@@ -70,11 +74,14 @@ Products are organized into three main product lines based on operational charac
 | **GAIA-SPACE** |       |             |              |                 |             |
 | | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`SAT-CONSTELLATIONS`](./GAIA-SPACE/SAT-CONSTELLATIONS/) | DDD, IIS, EDI, LCC | Earth observation, communications & quantum satellites |
 | | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`ORBITAL-MACHINES`](./GAIA-SPACE/ORBITAL-MACHINES/) | IIS, MEC, AAA, LCC | Debris removal, assembly & servicing |
-| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`LIGHTVIBES_QKM`](./GAIA_AIR_SPACE/GAIA_SPACE/GAIA-Deep-Space/LIGHTVIBES_QKM/) | IIS, CQH, DDD | Quantum key management for deep space operations |
+| **GAIA-SEA** |       |             |              |                 |             |
+| | [`EER`](../FIELDS/cross/process_engineering/) | [`sea`](../ENVIRONMENTS/PHYSICAL/CONTEXT/SEA/) | [`GAIA-SOUND`](./GAIA-SEA/GAIA-SOUND/) | EER, IIS, EDI, LCC, LIB | Sea Organisms and Universal Nature Diagnostics |
 | **INFRANET** |       |             |              |                 |             |
 | | [`cross`](../FIELDS/cross/) | [`cross`](../ENVIRONMENTS/cross/) | [`LH2-CORRIDOR`](./INFRANET/LH2_CORRIDOR/) | LIB, CQH, IIF, EEE, IIS | End-to-end green liquid hydrogen (LH2) value chain |
 | | [`quantum-intelligence`](../FIELDS/quantum-intelligence/) | [`digital`](../ENVIRONMENTS/digital/) | [`QAIM`](./INFRANET/QAIM/) | IIS, CQH, OOO, DDD | Core quantum-classical optimization & AI engine |
 | | Shared Templates | All | [`Templates`](./INFRANET/Shared/_templates/) | All | Shared boilerplates and templates |
+| **MISCELLANEOUS** |       |             |              |                 |             |
+| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`deep_space`](../ENVIRONMENTS/PHYSICAL/CONTEXT/DEEP_SPACE/) | [`LIGHTVIBES`](./MISCELLANEOUS/LIGHTVIBES/) | IIS, CQH, DDD | Quantum key management (migrated from root directory) |
 
 
 ---
