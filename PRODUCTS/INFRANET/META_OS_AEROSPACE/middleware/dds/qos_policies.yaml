@@ -1,0 +1,12 @@
+profiles:
+  crit-telemetry:
+    reliability: RELIABLE
+    history: {kind: KEEP_LAST, depth: 8}
+    deadline: 5ms
+    latency_budget: 1ms
+    transport_priority: 0x0E   # 1110b → prioridad alta en 4 bits
+    liveliness: {kind: AUTOMATIC, lease: 20ms}
+  bulk-downlink:
+    reliability: BEST_EFFORT
+    history: {kind: KEEP_LAST, depth: 32}
+    deadline: 250ms

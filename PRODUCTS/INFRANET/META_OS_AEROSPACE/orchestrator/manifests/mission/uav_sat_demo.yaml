@@ -1,0 +1,28 @@
+missionId: MS-0x4A3C
+timebase: UTC
+assets:
+  - id: UAV-01
+    nodeClass: uav
+    roles: [surveillance, relay]
+    qosProfile: crit-telemetry
+    constraints:
+      partition: DAL-A
+      power_budget_w: 45
+      link: radio.los
+  - id: SAT-LEO-7
+    nodeClass: satellite
+    roles: [downlink, compute]
+    constraints:
+      contact_window: T+00:12..T+00:19
+placement:
+  policy: deterministic
+  rules:
+    - if: asset.nodeClass == "uav"
+      then: pin(partition="A", cpu="0-1", mem="0x80000000..0x8FFFFFFF")
+telemetry:
+  topics:
+    - name: /uav01/imu
+      qos: {reliability: reliable, deadline_ms: 5, priority_bits: 0b1110}
+    - name: /sat7/health
+      qos: {reliability: best_effort, deadline_ms: 100}
+signing: required

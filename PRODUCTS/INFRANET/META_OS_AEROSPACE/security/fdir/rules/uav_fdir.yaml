@@ -1,0 +1,7 @@
+- id: LOST_GNSS
+  when: any(timeout(/uav01/gnss, 1000ms), variance(/uav01/imu) > 3.0*sigma)
+  then:
+    - action: set_mode(FAILSAFE)
+    - action: publish("/uav01/events", "GNSS_LOST")
+    - action: plan_rtl()         # return-to-launch
+    - action: attest("GNSS-SENSOR")

@@ -1,0 +1,8 @@
+syntax = "proto3";
+package telemetry;
+
+message Health {
+  uint32 status_flags = 1; // bit0:OK, bit1:WARN, bit2:CRIT, bit3:MAINT
+  uint32 error_code   = 2; // ej. 0x2A01 = timeout de bus
+  uint64 monotonic_ms = 3;
+}
