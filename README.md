@@ -51,12 +51,17 @@ Operational environments for system deployment:
       - [`SPACE/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/SPACE/)
       - [`DEEP_SPACE/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/DEEP_SPACE/)
       - [`CYBER/`](./ENVIRONMENTS/PHYSICAL/CONTEXT/CYBER/)
-  - [`Air/`](./ENVIRONMENTS/Air/) — Legacy: Airborne platforms and operations
-  - [`Cross/`](./ENVIRONMENTS/Cross/) — Legacy: Combined/heterogeneous environments
-  - [`Digital/`](./ENVIRONMENTS/Digital/) — Legacy: Digital and virtual environments
-  - [`Ground/`](./ENVIRONMENTS/Ground/) — Legacy: Ground systems and operations
-  - [`Sea/`](./ENVIRONMENTS/Sea/) — Legacy: Maritime platforms and operations
-  - [`Space/`](./ENVIRONMENTS/Space/) — Legacy: Space systems and operations
+
+<details><summary>Legacy directories (kept for backward compatibility)</summary>
+
+- [`LEGACY_Air/`](./ENVIRONMENTS/LEGACY_Air/)
+- [`LEGACY_Cross/`](./ENVIRONMENTS/LEGACY_Cross/)
+- [`LEGACY_Digital/`](./ENVIRONMENTS/LEGACY_Digital/)
+- [`LEGACY_Ground/`](./ENVIRONMENTS/LEGACY_Ground/)
+- [`LEGACY_Sea/`](./ENVIRONMENTS/LEGACY_Sea/)
+- [`LEGACY_Space/`](./ENVIRONMENTS/LEGACY_Space/)
+
+</details>
 
 ### 🛠️ Products Portfolio
 Strategic product lines organized by operational characteristics:
