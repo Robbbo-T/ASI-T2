@@ -1,0 +1,10 @@
+{
+  "asset": "UAV-01",
+  "targetPartition": "A",
+  "imageSha256": "9f38...a2",
+  "sbom": "sbom/uav01-1.2.3.spdx.json",
+  "rollback": "uav01-1.2.2",
+  "signingCert": "pki/certs/ops_signer.pem",
+  "signature": "BASE64-ED25519...",
+  "schedule": "2025-09-24T21:10:00Z"
+}

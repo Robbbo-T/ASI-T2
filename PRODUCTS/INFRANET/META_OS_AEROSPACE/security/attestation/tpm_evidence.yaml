@@ -1,0 +1,51 @@
+# TPM/TEE Evidence Structure for Asset Attestation
+# Used by metaosctl deploy --require-attestation
+
+evidence_format: "tpm2_quote"
+platform_config_registers:
+  pcr_0: "firmware_hash"     # UEFI/BIOS measurements
+  pcr_1: "firmware_config"   # Hardware configuration
+  pcr_4: "boot_manager"      # Bootloader measurements
+  pcr_5: "boot_manager_config" # Boot configuration
+  pcr_8: "kernel_cmdline"    # Kernel command line
+  pcr_9: "initrd"           # Initial RAM disk
+  pcr_10: "ima_template"    # IMA template digest
+
+asset_specific_pcrs:
+  uav:
+    pcr_16: "flight_control_partition"  # DAL-A partition hash
+    pcr_17: "mission_config"           # Mission-specific configuration
+    pcr_18: "sensor_calibration"       # Sensor calibration data
+  satellite:
+    pcr_16: "payload_partition"        # Payload software partition
+    pcr_17: "orbit_parameters"         # Orbital mechanics config
+    pcr_18: "communication_keys"       # Crypto key material (sealed)
+
+attestation_policy:
+  required_pcrs: [0, 1, 4, 5, 8, 9, 10, 16, 17]
+  golden_values:
+    pcr_0: "sha256:d2d2d2d2..."  # Known good firmware hash
+    pcr_4: "sha256:e3e3e3e3..."  # Known good bootloader
+    pcr_16: "sha256:f4f4f4f4..." # Known good partition hash
+  
+  validation_rules:
+    - name: "firmware_integrity"
+      condition: "pcr_0 == golden_values.pcr_0"
+      severity: "critical"
+    - name: "partition_integrity" 
+      condition: "pcr_16 in golden_values"
+      severity: "critical"
+    - name: "boot_integrity"
+      condition: "pcr_4 == golden_values.pcr_4"
+      severity: "high"
+
+quote_verification:
+  public_key_path: "pki/certs/tpm_endorsement.pem"
+  nonce_size: 32
+  signature_algorithm: "rsa_pss_sha256"
+  
+# Integration with Meta-OS FDIR
+fdir_integration:
+  attestation_failure_action: "quarantine_asset"
+  retry_count: 3
+  escalation_timeout_ms: 5000
