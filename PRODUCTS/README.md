@@ -79,7 +79,7 @@ Products are organized into three main product lines based on operational charac
 
 ## Migration Information
 
-The ASI-T2 product portfolio has been reorganized into four strategic product lines for better operational clarity and management. For historical tracking and migration details, see:
+The ASI-T2 product portfolio has been reorganized into four strategic product portfolios for better operational clarity and management. For historical tracking and migration details, see:
 
 - [`_migration/manifest.csv`](./_migration/manifest.csv) - Complete mapping of old to new paths
 - Migration rationale follows operational characteristics:
