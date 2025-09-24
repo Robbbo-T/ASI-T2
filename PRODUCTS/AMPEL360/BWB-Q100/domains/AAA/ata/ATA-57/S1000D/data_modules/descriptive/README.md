@@ -6,6 +6,7 @@ Technical descriptions and specifications for ATA-57 Wing systems.
 
 - **DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml** - Project BREX (Business Rules Exchange) - authoritative ruleset for BWB-Q100 S1000D implementation
 - **DMC-BWQ1-A-57-10-00-00A-040A-D-EN-US.xml** - Wing Structure General Description (example implementation)
+- **DMC-BWQ1-A-57-10-00-00-00A-040A-D_001-00_EN-US.xml** - Wing Structure with Hydrogen Integration - comprehensive S1000D data module with cryogenic LH₂ fuel system integration, CS-25 certification basis, and GenCMS metadata schemas
 
 ## Contents
 
@@ -16,6 +17,9 @@ This directory contains descriptive data modules covering:
 - Wing skins, stringers, spars, ribs specifications
 - Wing/fuselage integration documentation
 - Equipment attachment fittings specifications
+- **Hydrogen Integration**: Cryogenic LH₂ tank interfaces, thermal isolation systems, and safety provisions
+- **Advanced Materials**: Al-Li 2050-T84, CFRP T800S/3900-2, Ti-6Al-4V with hydrogen compatibility
+- **Certification Basis**: CS-25 compliance mapping with hydrogen-specific standards (EASA CM-H₂, SAE ARP7908)
 
 ### 57-20-00 Wing Fuel System Interface  
 - Integral fuel tank integration descriptions
@@ -58,3 +62,6 @@ All data modules in this directory:
 - Validate against XSD schemas (no DTD)
 - Reference the project BREX for business rules
 - Use proper information codes (040 for descriptions, 034 for technical data)
+- Include UTCS-MI v5.0 headers with canonical hashes for traceability
+- Support GenCMS auto-population through metadata schemas
+- Integrate hydrogen fuel system provisions for zero-emission aviation
