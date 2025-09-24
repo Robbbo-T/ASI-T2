@@ -7,8 +7,6 @@ Technical descriptions and specifications for ATA-57 Wing systems.
 - **DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml** - Project BREX (Business Rules Exchange) - authoritative ruleset for BWB-Q100 S1000D implementation
 - **DMC-BWQ1-A-57-10-00-00A-040A-D-EN-US.xml** - Wing Structure General Description (example implementation)
 
----
-
 ## Hyperlinkable Index — BWB-Q100 (ATA-57 · S1000D)
 
 **Path Root:**  
@@ -58,6 +56,7 @@ Technical descriptions and specifications for ATA-57 Wing systems.
 - [`DMC-BWQ1-A-57-50-40-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-40-00-00A-040A-D-EN-US.xml)
 - [`DMC-BWQ1-A-57-50-40-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-40-00-00A-350A-D-EN-US.xml)
 - [`DMC-BWQ1-A-57-50-50-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-50-00-00A-040A-D-EN-US.xml)
+
 
 
 
