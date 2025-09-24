@@ -58,3 +58,57 @@ All data modules in this directory:
 - Validate against XSD schemas (no DTD)
 - Reference the project BREX for business rules
 - Use proper information codes (040 for descriptions, 034 for technical data)
+
+---
+
+## Hyperlinkable Index — BWB-Q100 (ATA-57 · S1000D)
+
+**Path Root:**  
+[`PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/)
+
+### Data Modules (DMs)
+
+- [`DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml)
+- [`DMC-BWQ1-A-27-50-00-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-27-50-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-00-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-00-00-00A-040A-D_001-00_EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-00-00-00A-040A-D_001-00_EN-US.xml)
+- [`DMC-BWQ1-A-57-10-00-00-00A-100A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-00-00-00A-100A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-10-00-00A-034A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-10-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-10-00-00A-310A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-10-00-00A-310A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-20-00-00A-034A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-20-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-20-00-00A-310A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-20-00-00A-310A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-30-00-00A-034A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-30-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-30-00-00A-345A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-30-00-00A-345A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-40-00-00A-034A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-40-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-50-00-00A-034A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-10-50-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-00-00-00A-011A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-20-00-00-00A-011A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-00-00-00A-018A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-20-00-00-00A-018A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-00-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-20-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-10-00-00A-345A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-20-10-00-00A-345A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-20-00-00A-052A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-20-20-00-00A-052A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-30-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-20-30-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-40-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-20-40-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-50-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-20-50-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-00-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-30-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-00-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-30-00-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-10-00-00A-900A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-30-10-00-00A-900A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-10-00-00A-910A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-30-10-00-00A-910A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-30-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-30-30-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-40-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-30-40-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-40-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-30-40-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-00-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-40-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-00-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-40-00-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-20-00-00A-900A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-40-20-00-00A-900A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-30-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-40-30-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-40-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-40-40-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-00-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-00-00-00A-052A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-00-00-00A-052A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-10-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-10-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-20-00-00A-042A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-20-00-00A-042A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-30-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-30-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-30-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-30-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-40-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-40-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-40-00-00A-350A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-40-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-50-00-00A-040A-D-EN-US.xml`](./AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/common_info/common_information/data_modules/descriptive/DMC-BWQ1-A-57-50-50-00-00A-040A-D-EN-US.xml)
+
+---
