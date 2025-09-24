@@ -62,9 +62,11 @@ def get_key(key_ref: str):
         raise HTTPException(status_code=404, detail="key_ref invalid or expired")
     item["consumed"] = True
     # In production: return hardware-sealed blob only
+    # For now, we return a placeholder sealed blob (do NOT use in production)
+    sealed_blob_placeholder = secrets.token_hex(32)
     return {
         "key_ref": key_ref,
-        "key_sealed": item["blob"].hex(),
+        "key_sealed": sealed_blob_placeholder,
         "ttl_s": int(item["exp"] - time.time()),
         "mode": item["mode"]
     }
