@@ -1,0 +1,50 @@
+domain: "AAP"
+project: "PRODUCTS/AMPEL360/BWB-Q100"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "10"
+    -
+      chapter: "12"
+    -
+      chapter: "28"
+    -
+      chapter: "35"
+  CAx:
+    - "CAPP"
+    - "CAX"
+    - "CIM"
+    - "MRP-ERP"
+    - "SCM"
+  QOx:
+    - "ANNEALING"
+    - "QUBO"
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 4
+  cax: 5
+  qox: 2
+  pax: 0
+  files: 11
+timestamp: "2025-09-24T08:50:22.648672Z"

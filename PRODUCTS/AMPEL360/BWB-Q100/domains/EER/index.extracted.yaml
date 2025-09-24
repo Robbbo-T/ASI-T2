@@ -1,0 +1,48 @@
+domain: "EER"
+project: "PRODUCTS/AMPEL360/BWB-Q100"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "21"
+    -
+      chapter: "31"
+    -
+      chapter: "38"
+    -
+      chapter: "78"
+  CAx:
+    - "CASE"
+    - "CAX"
+    - "PDM-PLM-PLM"
+    - "VP"
+  QOx:
+
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 4
+  cax: 4
+  qox: 0
+  pax: 0
+  files: 8
+timestamp: "2025-09-24T08:50:22.670926Z"

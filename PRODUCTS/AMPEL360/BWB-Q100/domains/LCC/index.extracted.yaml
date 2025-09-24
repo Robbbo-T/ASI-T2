@@ -1,0 +1,50 @@
+domain: "LCC"
+project: "PRODUCTS/AMPEL360/BWB-Q100"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "22"
+    -
+      chapter: "23"
+    -
+      chapter: "27"
+    -
+      chapter: "34"
+    -
+      chapter: "46"
+  CAx:
+    - "CAI"
+    - "CASE"
+    - "CAX"
+    - "VP"
+  QOx:
+
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 5
+  cax: 4
+  qox: 0
+  pax: 0
+  files: 9
+timestamp: "2025-09-24T08:50:22.679419Z"

@@ -1,0 +1,58 @@
+domain: "MEC"
+project: "PRODUCTS/AMPEL360/BWB-Q100"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "21"
+    -
+      chapter: "27"
+    -
+      chapter: "29"
+    -
+      chapter: "30"
+    -
+      chapter: "32"
+    -
+      chapter: "35"
+    -
+      chapter: "36"
+    -
+      chapter: "38"
+  CAx:
+    - "CAD"
+    - "CAE"
+    - "CAM"
+    - "CAPP"
+    - "CAX"
+    - "VP"
+  QOx:
+
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 8
+  cax: 6
+  qox: 0
+  pax: 0
+  files: 14
+timestamp: "2025-09-24T08:50:22.691539Z"
