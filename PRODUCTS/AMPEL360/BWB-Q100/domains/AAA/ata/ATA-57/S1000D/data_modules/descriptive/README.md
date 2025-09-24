@@ -8,6 +8,59 @@ Technical descriptions and specifications for ATA-57 Wing systems.
 - **DMC-BWQ1-A-57-10-00-00A-040A-D-EN-US.xml** - Wing Structure General Description (example implementation)
 - **DMC-BWQ1-A-57-10-00-00-00A-040A-D_001-00_EN-US.xml** - Wing Structure with Hydrogen Integration - comprehensive S1000D data module with cryogenic LH₂ fuel system integration, CS-25 certification basis, and GenCMS metadata schemas
 
+## Hyperlinkable Index — BWB-Q100 (ATA-57 · S1000D)
+
+**Path Root:**  
+`PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/`
+
+### Data Modules (DMs)
+
+- [`DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml)
+- [`DMC-BWQ1-A-27-50-00-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-27-50-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-00-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-00-00-00A-040A-D_001-00_EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-00-00-00A-040A-D_001-00_EN-US.xml)
+- [`DMC-BWQ1-A-57-10-00-00-00A-100A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-00-00-00A-100A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-10-00-00A-034A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-10-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-10-00-00A-310A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-10-00-00A-310A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-20-00-00A-034A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-20-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-20-00-00A-310A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-20-00-00A-310A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-30-00-00A-034A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-30-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-30-00-00A-345A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-30-00-00A-345A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-40-00-00A-034A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-40-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-10-50-00-00A-034A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-10-50-00-00A-034A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-00-00-00A-011A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-20-00-00-00A-011A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-00-00-00A-018A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-20-00-00-00A-018A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-00-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-20-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-10-00-00A-345A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-20-10-00-00A-345A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-20-00-00A-052A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-20-20-00-00A-052A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-30-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-20-30-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-40-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-20-40-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-20-50-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-20-50-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-00-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-30-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-00-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-30-00-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-10-00-00A-900A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-30-10-00-00A-900A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-10-00-00A-910A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-30-10-00-00A-910A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-30-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-30-30-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-40-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-30-40-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-30-40-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-30-40-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-00-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-40-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-00-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-40-00-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-20-00-00A-900A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-40-20-00-00A-900A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-30-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-40-30-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-40-40-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-40-40-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-00-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-00-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-00-00-00A-052A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-00-00-00A-052A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-10-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-10-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-20-00-00A-042A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-20-00-00A-042A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-30-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-30-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-30-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-30-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-40-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-40-00-00A-040A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-40-00-00A-350A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-40-00-00A-350A-D-EN-US.xml)
+- [`DMC-BWQ1-A-57-50-50-00-00A-040A-D-EN-US.xml`](PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/data_modules/descriptive/DMC-BWQ1-A-57-50-50-00-00A-040A-D-EN-US.xml)
+
+
+
+
 ## Contents
 
 This directory contains descriptive data modules covering:
@@ -65,3 +118,4 @@ All data modules in this directory:
 - Include UTCS-MI v5.0 headers with canonical hashes for traceability
 - Support GenCMS auto-population through metadata schemas
 - Integrate hydrogen fuel system provisions for zero-emission aviation
+

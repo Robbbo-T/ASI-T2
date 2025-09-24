@@ -1,0 +1,35 @@
+# ASI-T2 Repository Dependencies
+# Installation requirements for all Python components
+
+# Core Web Framework Dependencies (GenCMS API Server)
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.4.0
+requests>=2.31.0
+
+# CORS middleware (already included with FastAPI but explicit for clarity)
+starlette>=0.27.0
+
+# Data Validation and Processing
+jsonschema>=4.17.0
+PyYAML>=6.0
+
+# XML Processing (Security-focused)
+defusedxml>=0.7.1
+
+# Optional: Enhanced XML parsing (fallback to stdlib xml.etree if not available)
+# lxml>=4.9.0  # Uncomment if high-performance XML parsing is needed
+
+# Development and Testing (Optional)
+# pytest>=7.4.0  # Uncomment for testing framework
+# pytest-asyncio>=0.21.0  # Uncomment for async test support
+# httpx>=0.25.0  # Uncomment for testing FastAPI endpoints
+
+# Documentation (Optional) 
+# mkdocs>=1.5.0  # Uncomment for documentation generation
+# mkdocs-material>=9.4.0  # Uncomment for Material Design theme
+
+# Note: Most scripts use only Python standard library modules:
+# - pathlib, os, sys, json, re, html, shutil, subprocess, datetime
+# - xml.etree.ElementTree (with defusedxml as security fallback)
+# - argparse, glob, zipfile, struct, unicodedata
