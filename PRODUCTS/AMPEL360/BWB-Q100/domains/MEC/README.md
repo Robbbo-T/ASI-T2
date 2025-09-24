@@ -17,9 +17,6 @@ Mechanical systems design, integration, and optimization for BWB-Q100 mechanical
 - **[CAPP](./cax/CAPP/)** — Process planning for mechanical assembly
 - **[VP](./cax/VP/)** — Virtual prototyping of mechanical systems
 
-### QOx (Quantum-Optimized Processes)
-- **[CAE](./qox/CAE/)** — Quantum-enhanced structural and mechanical optimization
-
 ### ATA Documentation
 - **[ATA-21](./ata/ATA-21/)** — Air Conditioning
 - **[ATA-27](./ata/ATA-27/)** — Flight Controls

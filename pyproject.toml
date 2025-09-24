@@ -58,11 +58,10 @@ xml = [
 "Repository" = "https://github.com/Robbbo-T/ASI-T2"
 "Issues" = "https://github.com/Robbbo-T/ASI-T2/issues"
 
-[project.scripts]
-# Command-line scripts
-asi-derive-struct = "scripts.derive_struct_from_readmes:main"
-asi-validate-pax = "PRODUCTS.AMPEL360.BWB-Q100.domains.AAA.pax.scripts.validate_pax:main"
-# asi-build-pages = "scripts.ghpages_build:main"
+# Note: Entry points disabled due to complex directory structure with dots
+# Scripts can be run directly with python path/to/script.py
+# [project.scripts]
+# asi-derive-struct = "scripts.derive_struct_from_readmes:main"
 
 [tool.setuptools]
 py-modules = []

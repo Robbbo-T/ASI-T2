@@ -17,8 +17,8 @@ Ground operations and airport integration systems for BWB-Q100 operations and su
 - **[CAPP](./cax/CAPP/)** — Process planning for ground service procedures
 
 ### QOx (Quantum-Optimized Processes)
-- **[SCM](./qox/SCM/)** — Vehicle routing optimization for ground equipment via quantum annealing
-- **[CIM](./qox/CIM/)** — Ground equipment scheduling optimization using QUBO
+- **[Annealing](./qox/annealing/)** — Vehicle routing optimization for ground equipment via quantum annealing
+- **[QUBO](./qox/qubo/)** — Ground equipment scheduling optimization using QUBO formulations
 
 ### ATA Documentation
 - **[ATA-10](./ata/ATA-10/)** — Parking, Mooring, Storage, and Return to Service

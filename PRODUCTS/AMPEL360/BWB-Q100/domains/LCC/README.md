@@ -15,9 +15,6 @@ Control systems, communication networks, and system linkages for integrated airc
 - **[VP](./cax/VP/)** — Virtual prototyping of control systems
 - **[CASE](./cax/CASE/)** — Software engineering for control systems
 
-### QOx (Quantum-Optimized Processes)
-- **[CAI](./qox/CAI/)** — Quantum-enhanced control algorithms and communication optimization
-
 ### ATA Documentation
 - **[ATA-22](./ata/ATA-22/)** — Autoflight
 - **[ATA-23](./ata/ATA-23/)** — Communications

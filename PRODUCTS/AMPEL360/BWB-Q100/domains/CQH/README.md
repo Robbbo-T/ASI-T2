@@ -16,10 +16,6 @@ Cryogenic systems, quantum computing infrastructure, and hydrogen fuel systems f
 - **[VP](./cax/VP/)** — Virtual testing of cryogenic and quantum systems
 - **[CAT](./cax/CAT/)** — Testing protocols for hydrogen and cryogenic systems
 
-### QOx (Quantum-Optimized Processes)
-- **[CAE](./qox/CAE/)** — Quantum-enhanced thermal optimization
-- **[CAI](./qox/CAI/)** — Quantum control algorithms for cryogenic systems
-
 ### ATA Documentation
 - **[ATA-21](./ata/ATA-21/)** — Air Conditioning
 - **[ATA-26](./ata/ATA-26/)** — Fire Protection

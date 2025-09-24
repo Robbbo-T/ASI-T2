@@ -1,0 +1,15 @@
+{
+  "policy_hash": "a4f2d8e9c1b7f3a5e8d2c6b9f4e7a1d5",
+  "model_sha": "d8e3a7c2f9b5e1a6c4d7b3f8a2e5c9b6",
+  "data_manifest_hash": "f7a2e8c5b4d9f3a7e1c8b5d2f6a9e4c3",
+  "operator_id": "c5f8a3e7b1d6c9f2a4e8b7d3c6f1a5e9",
+  "canonical_hash": "qt-aaa-cad-20250120-wing-topology",
+  "timestamp": "2025-01-20T14:30:52Z",
+  "run_id": "20250120-wing_topology",
+  "domain": "AAA",
+  "process": "CAD",
+  "problem": "wing_topology_optimization",
+  "quantum_device": "DWave_Advantage_6.1",
+  "certification": "MAL-EEM-PASSED",
+  "utcs_version": "1.2.0"
+}

@@ -15,10 +15,6 @@ Supply chain logistics, inventory management, and blockchain-based traceability 
 - **[MRP-ERP](./cax/MRP-ERP/)** — Materials resource planning and enterprise systems
 - **[PDM-PLM](./cax/PDM-PLM/)** — Product data and lifecycle management with traceability
 
-### QOx (Quantum-Optimized Processes)
-- **[SCM](./qox/SCM/)** — Quantum-enhanced supply chain routing and optimization
-- **[MRP-ERP](./qox/MRP-ERP/)** — Quantum optimization of inventory and resource planning
-
 ### ATA Documentation
 Multiple ATA chapters covering comprehensive supply chain integration:
 - **[ATA-20](./ata/ATA-20/)** — Standard Practices - Airframe

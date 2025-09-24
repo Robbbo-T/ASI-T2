@@ -17,8 +17,8 @@ Human-machine interfaces, passenger cabin systems, and cargo handling for the BW
 - **[PDM-PLM](./cax/PDM-PLM/)** — Configuration management for interior variants
 
 ### QOx (Quantum-Optimized Processes)
-- **[CAD](./qox/CAD/)** — Cabin layout optimization via QUBO for passenger comfort and efficiency
-- **[VP](./qox/VP/)** — Test plan optimization for human factors validation
+- **[QAOA](./qox/qaoa/)** — Cabin layout optimization via QAOA for passenger comfort and efficiency
+- **[QUBO](./qox/qubo/)** — Test plan optimization for human factors validation using QUBO formulations
 
 ### ATA Documentation
 - **[ATA-11](./ata/ATA-11/)** — Placards and Markings

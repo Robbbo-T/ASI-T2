@@ -1,0 +1,66 @@
+domain: "AAA"
+project: "PRODUCTS/AMPEL360/BWB-Q100"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "51"
+      section: "57"
+    -
+      chapter: "32"
+    -
+      chapter: "20"
+    -
+      chapter: "51"
+    -
+      chapter: "52"
+    -
+      chapter: "53"
+    -
+      chapter: "54"
+    -
+      chapter: "55"
+    -
+      chapter: "56"
+    -
+      chapter: "57"
+  CAx:
+    - "CAD"
+    - "CAE"
+    - "CAX"
+    - "CFD"
+    - "PDM-PLM-PLM"
+    - "VP"
+  QOx:
+    - "ANNEALING"
+    - "BQM"
+    - "QAOA"
+    - "QUBO"
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 10
+  cax: 2
+  qox: 4
+  pax: 0
+  files: 16
+timestamp: "2025-09-24T08:50:22.644440Z"

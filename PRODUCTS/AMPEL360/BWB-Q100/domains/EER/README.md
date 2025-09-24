@@ -16,9 +16,6 @@ Environmental impact mitigation, emissions reduction, and remediation systems fo
 - **[CASE](./cax/CASE/)** — Software for environmental monitoring
 - **[PDM-PLM](./cax/PDM-PLM/)** — Environmental impact lifecycle management
 
-### QOx (Quantum-Optimized Processes)
-- **[KBE](./qox/KBE/)** — Quantum optimization of environmental compliance rules
-
 ### ATA Documentation
 - **[ATA-21](./ata/ATA-21/)** — Air Conditioning (Environmental Control)
 - **[ATA-31](./ata/ATA-31/)** — Environmental Monitoring Systems
