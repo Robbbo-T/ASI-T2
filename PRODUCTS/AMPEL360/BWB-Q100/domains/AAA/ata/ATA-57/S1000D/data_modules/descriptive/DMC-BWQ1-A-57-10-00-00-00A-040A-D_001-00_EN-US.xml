@@ -201,7 +201,7 @@ canonical_hash: 2a29479843569b90
             <para>Local models: BWQ1-WING-H2TANK-v1.2.nas for hydrogen tank interfaces</para>
           </listItem>
           <listItem>
-            <para>Mesh quality metrics: Aspect ratio &lt;10:1, Jacobian &gt;0.6, Warpage &lt;15°</para>
+            <para>Mesh quality metrics: Aspect ratio &lt;10:1, Jacobian &gt;0.6, Warpage &lt;15&deg;</para>
           </listItem>
           <listItem>
             <para>Load cases: 2.5g limit load, +1.5g/-1.0g ultimate load with hydrogen mass</para>
