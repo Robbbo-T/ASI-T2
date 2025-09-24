@@ -364,7 +364,7 @@ canonical_hash: 2a29479843569b90
             <para>Thermal insulation efficiency: 0.08 W/m²K (MLI system performance)</para>
           </listItem>
           <listItem>
-            <para>Boil-off rate: &lt;0.2% per day at cruise altitude thermal environment</para>
+            <para>Boil-off rate: &lt;0.2% per day (measured at cruise altitude thermal environment, ambient temperature -50°C, with MLI insulation as specified, over 24 hours using gravimetric method, steady-state, no refueling)</para>
           </listItem>
           <listItem>
             <para>System availability: 99.9% (including redundant safety systems)</para>
