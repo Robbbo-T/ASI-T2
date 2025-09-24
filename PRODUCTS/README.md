@@ -64,6 +64,7 @@ Products are organized into three main product lines based on operational charac
 | | [`transport-civil`](../FIELDS/transport-civil/) | [`air`](../ENVIRONMENTS/air/) | [`BWB-Q100`](./AMPEL360/BWB-Q100/) | AAA, PPP, MEC, EEE, CQH | Blended Wing Body 100-passenger aircraft |
 | **GAIA_AIR_SPACE** |       |             |              |                 |             |
 | | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`GAIA-SAT`](./GAIA_AIR_SPACE/GAIA-SAT/) | DDD, IIS, EDI, LCC | Satellite constellation for aerospace cyber defense |
+| | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`LIGHTVIBES_QKM`](./GAIA_AIR_SPACE/GAIA_SPACE/GAIA-Deep-Space/LIGHTVIBES_QKM/) | IIS, CQH, DDD | Quantum key management for deep space operations |
 | | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`UAM-SWARM`](./GAIA_AIR_SPACE/UAM-SWARM/) | IIS, OOO, LCC, EDI, DDD | Ethically-governed autonomous UAV swarm for defense |
 | **INFRANET** |       |             |              |                 |             |
 | | [`cross`](../FIELDS/cross/) | [`cross`](../ENVIRONMENTS/cross/) | [`LH2-CORRIDOR`](./INFRANET/LH2_CORRIDOR/) | LIB, CQH, IIF, EEE, IIS | End-to-end green liquid hydrogen (LH2) value chain |
