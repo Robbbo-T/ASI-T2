@@ -19,7 +19,7 @@ Cybersecurity technologies and practices within the ASI-T2 portfolio, focusing o
 - [`FIELDS/communications/`](../communications/) — Secure communications
 
 ### Environments
-- [`ENVIRONMENTS/DIGITAL/CONTEXT/CYBER/`](../../ENVIRONMENTS/PHYSICAL/CONTEXT/CYBER/) — Cyber-physical systems
+- [`ENVIRONMENTS/PHYSICAL/CONTEXT/CYBER/`](../../ENVIRONMENTS/PHYSICAL/CONTEXT/CYBER/) — Cyber-physical systems
 - [`ENVIRONMENTS/DIGITAL/CONTEXT/QUANTUM/`](../../ENVIRONMENTS/DIGITAL/CONTEXT/QUANTUM/) — Quantum cryptography
 
 ---
