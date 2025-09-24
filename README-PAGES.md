@@ -8,6 +8,21 @@ This repo publishes a static site with:
 **Enable Pages** → *Settings* → *Pages* → **Source: GitHub Actions**.
 On push to `main`/`master`, the site builds and deploys automatically.
 
+## Installation & Dependencies
+
+The repository includes comprehensive Python dependency management:
+
+* **`requirements.txt`** — Traditional pip-installable requirements for all Python components
+* **`pyproject.toml`** — Modern Python project configuration with optional dependency groups
+* **`INSTALLATION.md`** — Complete installation guide with troubleshooting
+* **`verify_installation.py`** — Verification script to test all dependencies
+
+**Quick setup:**
+```bash
+pip install -r requirements.txt
+python verify_installation.py
+```
+
 ## How it works
 
 * The build script scans the repo, copies assets into `_site/`, and writes minimal HTML/JS to browse/view them.
