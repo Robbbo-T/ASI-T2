@@ -220,7 +220,7 @@ Core principles: **TFA** (Threading Final Assembly), **UIX** (Universal Injectio
 
 #### DEEP_SPACE
 - **Fields**: [`intelligence`](./FIELDS/intelligence/), [`communications`](./FIELDS/communications/), [`cyberdefense`](./FIELDS/cyberdefense/)
-- **Products**: [`GAIA-SPACE/ORBITAL-MACHINES`](./PRODUCTS/GAIA-SPACE/ORBITAL-MACHINES/), [`GAIA-SPACE/SAT-CONSTELLATIONS`](./PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS/), [`MISCELLANEOUS/LIGHTVIBES`](./PRODUCTS/MISCELLANEOUS/LIGHTVIBES/) (→ moving to PRODUCTS/MISCELLANEOUS/LIGHTVIBES/)
+- **Products**: [`GAIA-SPACE/ORBITAL-MACHINES`](./PRODUCTS/GAIA-SPACE/ORBITAL-MACHINES/), [`GAIA-SPACE/SAT-CONSTELLATIONS`](./PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS/), [`MISCELLANEOUS/LIGHTVIBES`](./PRODUCTS/MISCELLANEOUS/LIGHTVIBES/)
 
 #### CYBER
 - **Fields**: [`cybersecurity`](./FIELDS/cybersecurity/), [`cyberdefense`](./FIELDS/cyberdefense/), [`intelligence`](./FIELDS/intelligence/), [`communications`](./FIELDS/communications/)
