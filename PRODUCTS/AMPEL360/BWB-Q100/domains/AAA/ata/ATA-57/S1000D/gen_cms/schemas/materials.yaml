@@ -258,8 +258,12 @@ design_allowables:
             min: { type: number, unit: "°C" }
             max: { type: number, unit: "°C" }
         humidity_effects: { type: boolean }
-        hydrogen_environment: { type: boolean }
-        cryogenic_exposure: { type: boolean }
+        hydrogen_environment:
+          type: boolean
+          description: "Indicates whether the material is intended for use in environments with significant hydrogen presence (e.g., hydrogen fuel systems, storage, or exposure to hydrogen gas)."
+        cryogenic_exposure:
+          type: boolean
+          description: "Indicates whether the material is expected to be exposed to cryogenic temperatures (typically below -150°C), such as in liquid hydrogen or liquid nitrogen applications."
     knockdown_factors:
       type: object
       properties:
