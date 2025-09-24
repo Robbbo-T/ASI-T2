@@ -48,7 +48,7 @@ Target: A resilient, autonomous constellation of cyber-defense satellites optimi
 ## Directory Map (Domain → Process → ATA)
 
 ```
-Product_Line_AMPEL360/Model_GAIA-SAT/variant_001_baseline/Unit[0001-0100]
+Product_Line_GAIA_SPACE/Model_GAIA-SAT/variant_001_baseline/Unit[0001-0100]
 └── domains/
     ├── DDD/  // Digital & Data Defense
     │   ├── cax/
