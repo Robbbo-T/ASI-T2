@@ -3,10 +3,10 @@ name: LIGHTVIBES - QMK API Validation
 on:
   push:
     paths:
-      - 'LIGHTVIBES/**'
+      - 'PRODUCTS/MISCELLANEOUS/QMK/**'
   pull_request:
     paths:
-      - 'LIGHTVIBES/**'
+      - 'PRODUCTS/MISCELLANEOUS/QMK/**'
 
 jobs:
   validate:
@@ -27,7 +27,7 @@ jobs:
           
       - name: Validate OpenAPI schema
         run: |
-          cd LIGHTVIBES
+          cd PRODUCTS/MISCELLANEOUS/QMK
           python -c "
           import yaml
           with open('api/openapi.yaml', 'r') as f:
@@ -43,12 +43,12 @@ jobs:
           
       - name: Test FastAPI application
         run: |
-          cd LIGHTVIBES
+          cd PRODUCTS/MISCELLANEOUS/QMK
           python -c "
           import sys
-          sys.path.insert(0, '..')
+          sys.path.insert(0, '../../..')
+          from PRODUCTS.MISCELLANEOUS.QMK.api.server import app
           from fastapi.testclient import TestClient
-          from api.server import app
           
           client = TestClient(app)
           
@@ -76,11 +76,11 @@ jobs:
           
       - name: Validate UTCS/QS integration points
         run: |
-          cd LIGHTVIBES
+          cd PRODUCTS/MISCELLANEOUS/QMK
           python -c "
           import sys
-          sys.path.insert(0, '..')
-          from api.server import app, create_session, SessionReq, Policy
+          sys.path.insert(0, '../../..')
+          from PRODUCTS.MISCELLANEOUS.QMK.api.server import app, create_session, SessionReq, Policy
           
           # Check UTCS/QS evidence integration points exist in code
           with open('api/server.py', 'r') as f:
@@ -93,7 +93,7 @@ jobs:
           
       - name: Check MAL-EEM ethics guard references
         run: |
-          cd LIGHTVIBES
+          cd PRODUCTS/MISCELLANEOUS/QMK
           python -c "
           with open('README.md', 'r') as f:
               content = f.read()

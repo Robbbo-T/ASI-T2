@@ -117,7 +117,7 @@ flowchart TB
 ## Quickstart (dev)
 
 * OpenAPI: `LIGHTVIBES/api/openapi.yaml`
-* Reference server (dev): `uvicorn LIGHTVIBES.api.server:app --reload`
+* Reference server (dev): `uvicorn PRODUCTS.MISCELLANEOUS.QMK.api.server:app --reload`
 * Env: `LIGHTVIBES/.env.example` for knobs (QBER thresholds, key TTL)
 
 ## Evidence & Compliance

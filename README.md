@@ -148,7 +148,7 @@ All products follow the unified **Domain → Process → ATA** framework:
 - `PRODUCTS/transport-civil_air_BWB-Q100/`
 - `PRODUCTS/cyberdefense_air_HYDROBOTS/`
 - `PRODUCTS/cyberdefense_space_SAT-CONSTELLATIONS/`
-- `PRODUCTS/GAIA_AIR_SPACE/GAIA_SPACE/GAIA-Deep-Space/LIGHTVIBES_QKM/`
+- `PRODUCTS/MISCELLANEOUS/QMK/`
 
 Core principles: **TFA** (Threading Final Assembly), **UIX** (Universal Injection), **MAL-EEM** (Ethics & Empathy), **QS/UTCS** (Quantum Seals)
 
