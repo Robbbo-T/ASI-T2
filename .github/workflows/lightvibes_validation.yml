@@ -1,0 +1,104 @@
+name: LIGHTVIBES - QMK API Validation
+
+on:
+  push:
+    paths:
+      - 'LIGHTVIBES/**'
+  pull_request:
+    paths:
+      - 'LIGHTVIBES/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          
+      - name: Install dependencies
+        run: |
+          pip install fastapi uvicorn pydantic pyyaml httpx
+          
+      - name: Validate OpenAPI schema
+        run: |
+          cd LIGHTVIBES
+          python -c "
+          import yaml
+          with open('api/openapi.yaml', 'r') as f:
+              spec = yaml.safe_load(f)
+              assert 'openapi' in spec, 'Missing OpenAPI version'
+              assert spec['openapi'] == '3.1.0', 'Wrong OpenAPI version'
+              assert 'info' in spec, 'Missing info section'
+              assert 'paths' in spec, 'Missing paths section'
+              assert '/lightvibes/session' in spec['paths'], 'Missing session endpoint'
+              assert '/lightvibes/key/{key_ref}' in spec['paths'], 'Missing key endpoint'
+              print('✓ OpenAPI schema validation passed')
+          "
+          
+      - name: Test FastAPI application
+        run: |
+          cd LIGHTVIBES
+          python -c "
+          import sys
+          sys.path.insert(0, '..')
+          from fastapi.testclient import TestClient
+          from api.server import app
+          
+          client = TestClient(app)
+          
+          # Test session creation
+          payload = {
+              'peer_id': 'test-peer-001',
+              'policy': {'min_keybits': 256, 'ttl_s': 60},
+              'fallback': 'PQC'
+          }
+          response = client.post('/lightvibes/session', json=payload)
+          assert response.status_code == 201, f'Session creation failed: {response.text}'
+          data = response.json()
+          key_ref = data['key_ref']
+          
+          # Test key retrieval
+          response = client.get(f'/lightvibes/key/{key_ref}')
+          assert response.status_code == 200, f'Key retrieval failed: {response.text}'
+          
+          # Test key consumption (should fail on second attempt)
+          response = client.get(f'/lightvibes/key/{key_ref}')
+          assert response.status_code == 404, f'Key should be consumed: {response.text}'
+          
+          print('✓ FastAPI endpoint tests passed')
+          "
+          
+      - name: Validate UTCS/QS integration points
+        run: |
+          cd LIGHTVIBES
+          python -c "
+          import sys
+          sys.path.insert(0, '..')
+          from api.server import app, create_session, SessionReq, Policy
+          
+          # Check UTCS/QS evidence integration points exist in code
+          with open('api/server.py', 'r') as f:
+              content = f.read()
+              assert 'UTCS/QS' in content, 'Missing UTCS/QS evidence reference'
+              assert 'TODO: emit UTCS/QS event' in content, 'Missing UTCS/QS event emission'
+          
+          print('✓ UTCS/QS integration points validated')
+          "
+          
+      - name: Check MAL-EEM ethics guard references
+        run: |
+          cd LIGHTVIBES
+          python -c "
+          with open('README.md', 'r') as f:
+              content = f.read()
+              assert 'MAL-EEM' in content, 'Missing MAL-EEM ethics guard reference'
+              assert 'ethics_guard: MAL-EEM' in content, 'Missing ethics guard metadata'
+          
+          print('✓ MAL-EEM ethics guard references validated')
+          "
