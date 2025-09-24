@@ -15,47 +15,47 @@ canonical_hash: pending
 
 # Demo Mission: UAV + Satellite Coordination
 
-Este ejemplo demuestra una misión coordinada entre UAV-01 y SAT-LEO-7, mostrando todos los componentes del Meta-OS funcionando en conjunto.
+This example demonstrates a coordinated mission between UAV-01 and SAT-LEO-7, showing all Meta-OS components working together.
 
-## Escenario
+## Scenario
 
 ### Assets
-- **UAV-01**: Drone de surveillance con FreeRTOS/ROS2
-  - Rol: surveillance, relay
+- **UAV-01**: Surveillance drone with FreeRTOS/ROS2
+  - Role: surveillance, relay
   - Constraints: DAL-A partition, 45W power budget
   - QoS: crit-telemetry profile
   
-- **SAT-LEO-7**: Satélite LEO con RTEMS
-  - Rol: downlink, compute
+- **SAT-LEO-7**: LEO satellite with RTEMS
+  - Role: downlink, compute
   - Contact window: T+00:12..T+00:19
   - Protocols: MIL-STD-1553, SpaceWire
 
 ### Mission Flow
 
-1. **Detección** (T+00:00)
-   - UAV-01 detecta anomalía usando sensores IMU
-   - /uav01/imu topic → QoS reliable, 5ms deadline, prioridad 0x0E
+1. **Detection** (T+00:00)
+   - UAV-01 detects anomaly using IMU sensors
+   - /uav01/imu topic → QoS reliable, 5ms deadline, priority 0x0E
 
-2. **Comunicación** (T+00:05)
-   - Middleware traduce datos de ROS2 a MIL-STD-1553
-   - Gateway ARINC1553 reenvía a SAT-LEO-7
+2. **Communication** (T+00:05)
+   - Middleware translates data from ROS2 to MIL-STD-1553
+   - ARINC1553 gateway forwards to SAT-LEO-7
 
-3. **Decisión** (T+00:12)
-   - Orquestador central evalúa situación
-   - Digital Twin actualiza estado de misión
-   - QOx (quantum optimizer) recalcula ruta óptima
+3. **Decision** (T+00:12)
+   - Central orchestrator evaluates situation
+   - Digital Twin updates mission state
+   - QOx (quantum optimizer) recalculates optimal route
 
 4. **FDIR Activation** (T+00:15)
-   - Regla LOST_GNSS se activa por timeout
-   - Plan automático: set_mode(FAILSAFE) → plan_rtl()
-   - Attestation de sensores GNSS
+   - LOST_GNSS rule activates due to timeout
+   - Automatic plan: set_mode(FAILSAFE) → plan_rtl()
+   - GNSS sensor attestation
 
 5. **OTA Update** (T+00:20)
-   - Estación terrestre prepara parche firmado
-   - OTA manifest con signature BASE64-ED25519
-   - Deployment en partition A del UAV-01
+   - Ground station prepares signed patch
+   - OTA manifest with BASE64-ED25519 signature
+   - Deployment to UAV-01 partition A
 
-## Artifacts Utilizados
+## Artifacts Used
 
 - **Mission manifest**: `../../orchestrator/manifests/mission/uav_sat_demo.yaml`
 - **QoS policies**: `../../middleware/dds/qos_policies.yaml`
@@ -89,16 +89,16 @@ python tooling/cli/metaosctl.py fdir test security/fdir/rules/uav_fdir.yaml --in
 
 ## Integration Points
 
-### Con AQUA OS Components
-- **A653_PM**: Proporciona particionado base para DAL-A/B
-- **NET_STACK**: Foundation para DDS/ROS2 deterministic networking
-- **TIME_SYNC**: PTP/TTE synchronization entre UAV y SAT
-- **SEC_KMS**: PKI para OTA signing y zero-trust authentication
+### Integration with AQUA OS Components
+- **A653_PM**: Provides base partitioning for DAL-A/B
+- **NET_STACK**: Foundation for deterministic DDS/ROS2 networking
+- **TIME_SYNC**: PTP/TTE synchronization between UAV and SAT
+- **SEC_KMS**: PKI for OTA signing and zero-trust authentication
 
 ### Binary/Hex Examples
-- **Priority 0x0E** = 1110₂ (14 decimal) → alta prioridad en 4-bit scheme
-- **Memory mapping**: 0x80000000..0x8FFFFFFF para UAV partition A
-- **Major frame**: 20ms con minor frames [5,5,5,5] para determinismo ARINC-653
+- **Priority 0x0E** = 1110₂ (14 decimal) → high priority in 4-bit scheme
+- **Memory mapping**: 0x80000000..0x8FFFFFFF for UAV partition A
+- **Major frame**: 20ms with minor frames [5,5,5,5] for ARINC-653 determinism
 
 ---
 

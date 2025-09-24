@@ -15,15 +15,15 @@ def cmd_qos(args):
     q = yaml.safe_load(pathlib.Path('middleware/dds/qos_policies.yaml').read_text(encoding="utf-8"))
     profile = q.get('profiles',{}).get(args.profile)
     if not profile:
-        print(f"[qos] Perfil '{args.profile}' no encontrado", file=sys.stderr); sys.exit(1)
-    print(f"[qos] Perfil: {args.profile} → {profile}")
-    if args.asset: print(f"[qos] (stub) Auditando asset {args.asset} contra perfil... OK")
+        print(f"[qos] Profile '{args.profile}' not found", file=sys.stderr); sys.exit(1)
+    print(f"[qos] Profile: {args.profile} → {profile}")
+    if args.asset: print(f"[qos] (stub) Auditing asset {args.asset} against profile... OK")
 
 def cmd_fdir(args):
     rules = yaml.safe_load(pathlib.Path(args.rules).read_text(encoding="utf-8"))
-    print(f"[fdir] Cargadas {len(rules)} reglas.")
+    print(f"[fdir] Loaded {len(rules)} rules.")
     if args.inject:
-        print(f"[fdir] Inyectando evento {args.inject} → evaluando...")
+        print(f"[fdir] Injecting event {args.inject} → evaluating...")
         print("[fdir] Plan: set_mode(FAILSAFE) → publish → plan_rtl → attest  (stub OK)")
 
 def main():
