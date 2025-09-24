@@ -17,10 +17,6 @@ Sustainable electrification systems, power management, and ecological efficiency
 - **[PDM-PLM](./cax/PDM-PLM/)** — Electrical system lifecycle management
 - **[CAI](./cax/CAI/)** — AI-driven power management systems
 
-### QOx (Quantum-Optimized Processes)
-- **[CAE](./qox/CAE/)** — Quantum optimization of electrical networks
-- **[CAM](./qox/CAM/)** — Quantum-enhanced manufacturing optimization
-
 ### ATA Documentation
 - **[ATA-21](./ata/ATA-21/)** — Air Conditioning
 - **[ATA-24](./ata/ATA-24/)** — Electrical Power

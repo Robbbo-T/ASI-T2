@@ -15,10 +15,6 @@ Electronic systems, digital instrumentation, and avionics integration for BWB-Q1
 - **[CASE](./cax/CASE/)** — Software engineering for avionics
 - **[VP](./cax/VP/)** — Virtual prototyping of electronic systems
 
-### QOx (Quantum-Optimized Processes)
-- **[CAI](./qox/CAI/)** — Quantum computing integration in avionics
-- **[CASE](./qox/CASE/)** — Quantum-enhanced software development
-
 ### ATA Documentation
 - **[ATA-23](./ata/ATA-23/)** — Communications
 - **[ATA-31](./ata/ATA-31/)** — Indicating/Recording Systems

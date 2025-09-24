@@ -16,9 +16,6 @@ Operating systems, ontological frameworks, and office interface systems for inte
 - **[CASE](./cax/CASE/)** — Software engineering for operating systems
 - **[KBE](./cax/KBE/)** — Knowledge-based engineering and ontological frameworks
 
-### QOx (Quantum-Optimized Processes)
-- **[KBE](./qox/KBE/)** — Quantum-enhanced knowledge systems and ontological optimization
-
 ### ATA Documentation
 - **[ATA-45](./ata/ATA-45/)** — Central Maintenance System
 - **[ATA-46](./ata/ATA-46/)** — Information Systems

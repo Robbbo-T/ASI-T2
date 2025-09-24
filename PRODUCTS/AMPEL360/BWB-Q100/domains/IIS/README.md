@@ -15,10 +15,6 @@ Integrated software systems, artificial intelligence, and intelligent system int
 - **[CASE](./cax/CASE/)** — Computer-aided software engineering
 - **[KBE](./cax/KBE/)** — Knowledge-based engineering systems
 
-### QOx (Quantum-Optimized Processes)
-- **[CAI](./qox/CAI/)** — Quantum-enhanced artificial intelligence systems
-- **[KBE](./qox/KBE/)** — Quantum knowledge-based systems
-
 ### ATA Documentation
 - **[ATA-22](./ata/ATA-22/)** — Autoflight
 - **[ATA-42](./ata/ATA-42/)** — Integrated Modular Avionics
