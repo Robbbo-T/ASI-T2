@@ -1,0 +1,22 @@
+apiVersion: aoa.v1
+kind: Capability
+metadata:
+  id: cap.qaim.optimize_beamforming
+  owner: QAIM/OPTIMIZERS
+spec:
+  summary: Quantum-inspired beamforming optimization
+  inputs:
+    - name: signal_input
+      schemaRef: schemas/acoustic.proto#AcousticFrame
+  outputs:
+    - name: optimized_beam
+      schemaRef: schemas/detections.schema.json
+  slos:
+    latency_ms_p95: 50
+    availability: "99.9%"
+  policies:
+    requiresEthicsMode: POWER_EFFICIENT=true
+    dataResidency: EU
+  runtime:
+    adapter: ros2dds
+    endpoint: topic:/qaim/beamform

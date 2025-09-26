@@ -1,0 +1,1 @@
+# Placeholder – adapters for k8s/ROS2/RTOS to be added at Day 60.

@@ -1,0 +1,22 @@
+apiVersion: aoa.v1
+kind: Capability
+metadata:
+  id: cap.lightvibes.qkm
+  owner: MISCELLANEOUS/LIGHTVIBES_QKM
+spec:
+  summary: Quantum Micropulse Keying service
+  inputs:
+    - name: session_request
+      schemaRef: schemas/qkm_session.schema.json
+  outputs:
+    - name: ephemeral_keys
+      schemaRef: schemas/qkm_keys.schema.json
+  slos:
+    latency_ms_p95: 100
+    availability: "99.9%"
+  policies:
+    requiresEthicsMode: QUANTUM_SAFE=true
+    dataResidency: EU
+  runtime:
+    adapter: http
+    endpoint: http://lightvibes-api:8000/lightvibes

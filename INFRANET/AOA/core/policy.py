@@ -1,0 +1,1 @@
+# Placeholder – integrate OPA (Rego) via REST or wasm in next iteration.

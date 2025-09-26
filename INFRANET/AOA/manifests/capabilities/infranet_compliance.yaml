@@ -1,0 +1,22 @@
+apiVersion: aoa.v1
+kind: Capability
+metadata:
+  id: cap.infranet.compliance_report
+  owner: INFRANET/COMPLIANCE
+spec:
+  summary: Environmental compliance reporting
+  inputs:
+    - name: detection_data
+      schemaRef: schemas/detections.schema.json
+  outputs:
+    - name: compliance_report
+      schemaRef: schemas/detections.schema.json
+  slos:
+    latency_ms_p95: 200
+    availability: "99.5%"
+  policies:
+    requiresEthicsMode: COMPLIANCE_STRICT=true
+    dataResidency: EU
+  runtime:
+    adapter: http
+    endpoint: http://compliance-service/report

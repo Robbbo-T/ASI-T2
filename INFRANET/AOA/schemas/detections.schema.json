@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GAIA SOUND Detections",
+  "type": "object",
+  "properties": {
+    "detections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["species", "confidence", "timestamp_utc"],
+        "properties": {
+          "species": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "timestamp_utc": { "type": "string", "format": "date-time" },
+          "location": {
+            "type": "object",
+            "properties": { "lat": {"type":"number"}, "lon": {"type":"number"} },
+            "required": ["lat","lon"]
+          }
+        }
+      }
+    }
+  },
+  "required": ["detections"]
+}
