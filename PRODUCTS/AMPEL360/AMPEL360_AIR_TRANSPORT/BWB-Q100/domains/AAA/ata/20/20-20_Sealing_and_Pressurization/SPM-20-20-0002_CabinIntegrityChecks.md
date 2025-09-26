@@ -1,7 +1,7 @@
 ---
 id: SPM-20-20-0002
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: /home/runner/work/Robbbo-T/Robbbo-T/PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-20_Sealing_and_Pressurization/SPM-20-20-0002_CabinIntegrityChecks.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-20_Sealing_and_Pressurization/SPM-20-20-0002_CabinIntegrityChecks.md
 llc: SYSTEMS
 title: "SPM-20-20-0002: Standard Practice Manual — Pre-Flight/Pre-Close Cabin Integrity Checks"
 configuration: baseline
