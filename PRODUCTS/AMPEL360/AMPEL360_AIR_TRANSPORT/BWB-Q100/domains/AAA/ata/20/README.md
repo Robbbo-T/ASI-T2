@@ -1,7 +1,7 @@
 ---
 id: ATA-20-OV-0001
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: /home/runner/work/Robbbo-T/Robbbo-T/PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/README.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/README.md
 llc: SYSTEMS
 title: "ATA-20: Standard Practices — Airframe (BWB-Q100)"
 configuration: baseline
