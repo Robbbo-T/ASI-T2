@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # QOx/QUBO
 
-Optimización/cuántica **QUBO** detectada en el dominio.
+Quantum optimization **QUBO** detected in domain.
