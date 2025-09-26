@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # CAx/_meta
 
-Entrada de proceso **_meta** derivada del README de dominio.
+Process entry **_meta** derived from domain README.
