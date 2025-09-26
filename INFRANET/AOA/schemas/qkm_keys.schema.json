@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QKM Ephemeral Keys",
+  "type": "object",
+  "required": ["session_id", "keys"],
+  "properties": {
+    "session_id": { "type": "string" },
+    "keys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "material_b64", "expires_utc"],
+        "properties": {
+          "id": { "type": "string" },
+          "material_b64": { "type": "string" },
+          "expires_utc": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

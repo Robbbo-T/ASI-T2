@@ -1,0 +1,27 @@
+apiVersion: aoa.v1
+kind: Composition
+metadata:
+  id: cmp.bwb100.sea.health
+  intent: "Assess marine habitat health during BWB-Q100 coastal approach"
+  bridge: "CB→QB→UE→FE→FWD→QS"
+  # Optional flags/residency for the stub policy
+  flags:
+    MARINE_PROTECTED: true
+  dataResidency: EU
+spec:
+  graph:
+    - use: cap.gaia_sound.detect
+      as: detect_species
+    - use: cap.qaim.optimize_beamforming
+      with:
+        objective: maximize_SNR
+        budget: power<=50W
+      after: detect_species
+    - use: cap.infranet.compliance_report
+      with:
+        standard: "EER-SEA-2025"
+      after: detect_species
+  constraints:
+    fabrics: [edge, ground-cloud]
+    ethics: MAL-EEM:strict
+    evidence: UTCS:required, QS:required

@@ -1,0 +1,29 @@
+name: aoa-smoke
+on: [push, pull_request]
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -r requirements.txt || true
+      - run: pip install fastapi uvicorn requests pyyaml
+      - name: Launch AoA (background)
+        run: |
+          uvicorn INFRANET.AOA.core.app:app --host 127.0.0.1 --port 8000 &
+          echo $! > uv.pid
+          sleep 2
+      - name: Publish capabilities
+        run: |
+          export AOA_URL=http://127.0.0.1:8000
+          python INFRANET/AOA/cli/aoactl.py cap publish-dir INFRANET/AOA/manifests/capabilities
+      - name: Dry-run composition
+        run: |
+          export AOA_URL=http://127.0.0.1:8000
+          python INFRANET/AOA/cli/aoactl.py compose run INFRANET/AOA/manifests/compositions/mission.bwb100.sea.health.yaml --dry-run
+      - name: Health check
+        run: curl -sf http://127.0.0.1:8000/healthz
+      - name: Shutdown
+        if: always()
+        run: kill -9 $(cat uv.pid) || true

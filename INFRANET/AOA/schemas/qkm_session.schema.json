@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QKM Session Request",
+  "type": "object",
+  "required": ["client_id", "alg"],
+  "properties": {
+    "client_id": { "type": "string" },
+    "alg": { "type": "string", "enum": ["qkd-aes256-gcm", "pq-kyber768"] },
+    "ttl_s": { "type": "integer", "minimum": 1, "default": 300 }
+  }
+}

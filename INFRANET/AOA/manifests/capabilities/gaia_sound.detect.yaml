@@ -1,0 +1,22 @@
+apiVersion: aoa.v1
+kind: Capability
+metadata:
+  id: cap.gaia_sound.detect
+  owner: GAIA-SEA/GAIA-SOUND
+spec:
+  summary: Marine species acoustic detection
+  inputs:
+    - name: audio_stream
+      schemaRef: schemas/acoustic.proto#AcousticFrame
+  outputs:
+    - name: detections
+      schemaRef: schemas/detections.schema.json
+  slos:
+    latency_ms_p95: 120
+    availability: "99.5%"
+  policies:
+    requiresEthicsMode: MARINE_PROTECTED=true
+    dataResidency: EU
+  runtime:
+    adapter: ros2dds
+    endpoint: topic:/gaia_sound/frames
