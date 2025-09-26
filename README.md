@@ -70,26 +70,29 @@ Strategic product lines organized by operational characteristics:
   
   #### AMPEL360 — Manned Aerospace (Certified Passenger Transport)
   - **[`AMPEL360/`](./PRODUCTS/AMPEL360/)**
-    - **[`BWB-Q100/`](./PRODUCTS/AMPEL360/BWB-Q100/)** — Blended Wing Body 100-passenger aircraft
-      - [`domains/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/) — Engineering domains
-        - [`AAA/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/) — Aerodynamics & Airframes
-          - [`ata/ATA-57/S1000D/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/) — Technical documentation system
-          - [`cax/CAD/wing_baseline_model/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/) — Wing design models
-          - [`qox/CAD/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/qox/CAD/) — Quantum-optimized design
-        - [`AAP/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/AAP/) — Airport Adaptable Platforms
-        - [`CCC/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/CCC/) — Cockpit, Cabin & Cargo
-        - [`CQH/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/CQH/) — Cryogenics, Quantum & H₂
-        - [`DDD/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/DDD/) — Digital & Data Defense
-        - [`EDI/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/EDI/) — Electronics & Digital Instruments
-        - [`EEE/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/EEE/) — Ecological Efficient Electrification
-        - [`EER/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/EER/) — Environmental, Emissions & Remediation
-        - [`IIF/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/IIF/) — Industrial Infrastructure & Facilities
-        - [`IIS/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/IIS/) — Integrated Intelligence & Software
-        - [`LCC/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/LCC/) — Linkages, Control & Communications
-        - [`LIB/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/LIB/) — Logistics, Inventory & Blockchain
-        - [`MEC/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/MEC/) — Mechanical Systems Modules
-        - [`OOO/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/OOO/) — OS, Ontologies & Office Interfaces
-        - [`PPP/`](./PRODUCTS/AMPEL360/BWB-Q100/domains/PPP/) — Propulsion & Fuel Systems
+    - **[`AMPEL360_AIR_TRANSPORT/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/)** — Air transport products
+      - **[`BWB-Q100/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/)** — Blended Wing Body 100-passenger aircraft
+        - [`domains/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/) — Engineering domains
+          - [`AAA/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/) — Aerodynamics & Airframes
+            - [`ata/ATA-57/S1000D/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/) — Technical documentation system
+            - [`cax/CAD/wing_baseline_model/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/) — Wing design models
+            - [`qox/CAD/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/qox/CAD/) — Quantum-optimized design
+          - [`AAP/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAP/) — Airport Adaptable Platforms
+          - [`CCC/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/CCC/) — Cockpit, Cabin & Cargo
+          - [`CQH/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/CQH/) — Cryogenics, Quantum & H₂
+          - [`DDD/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/DDD/) — Digital & Data Defense
+          - [`EDI/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EDI/) — Electronics & Digital Instruments
+          - [`EEE/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EEE/) — Ecological Efficient Electrification
+          - [`EER/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EER/) — Environmental, Emissions & Remediation
+          - [`IIF/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIF/) — Industrial Infrastructure & Facilities
+          - [`IIS/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/) — Integrated Intelligence & Software
+          - [`LCC/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/LCC/) — Linkages, Control & Communications
+          - [`LIB/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/LIB/) — Logistics, Inventory & Blockchain
+          - [`MEC/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/MEC/) — Mechanical Systems Modules
+          - [`OOO/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/OOO/) — OS, Ontologies & Office Interfaces
+          - [`PPP/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/PPP/) — Propulsion & Fuel Systems
+    - **[`AMPEL360_SPACE_TOURISM/`](./PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/)** — Space tourism products
+      - **[`PLUS/`](./PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/)** — Space Tourism Aircraft AMPEL360PLUS
 
   #### GAIA-AIR — Unmanned Air (UAM/UAV)
   - **[`GAIA-AIR/`](./PRODUCTS/GAIA-AIR/)**

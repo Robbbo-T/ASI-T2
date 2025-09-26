@@ -4,8 +4,8 @@ project: AMPEL360
 artifact: ASI-T2/PRODUCTS/AMPEL360/README.md
 llc: GENESIS
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: 0.1.0
-release_date: 2025-09-23
+version: 0.2.0
+release_date: 2025-09-24
 maintainer: "Robbbo-T / ASI-T Architecture Team"
 bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: MAL-EEM
@@ -21,10 +21,13 @@ This space groups **crewed AMPEL360 products** under a single, auditable hub wit
 
 ## Quick navigation
 
-- **BWB-Q100 (Transport Civil × Air)** → `./BWB-Q100/`
-  - CAD Wing Baseline (AAA→cax→CAD) → `./BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/`
-  - Master Params → `./BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/master_model/params.yaml`
-  - (Optional) ATA-57 S1000D → `./BWB-Q100/ata/57/`
+- **AMPEL360_AIR_TRANSPORT** → `./AMPEL360_AIR_TRANSPORT/`
+  - **BWB-Q100 (Transport Civil × Air)** → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/`
+    - CAD Wing Baseline (AAA→cax→CAD) → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/`
+    - Master Params → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/master_model/params.yaml`
+    - (Optional) ATA-57 S1000D → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/ata/57/`
+- **AMPEL360_SPACE_TOURISM** → `./AMPEL360_SPACE_TOURISM/`
+  - **PLUS (Space Tourism Aircraft AMPEL360PLUS)** → `./AMPEL360_SPACE_TOURISM/PLUS/`
 - **Evidence & QS anchors** → see [Evidence & Provenance](#evidence--provenance-qsutcs).
 
 ---
@@ -42,10 +45,14 @@ This space groups **crewed AMPEL360 products** under a single, auditable hub wit
 
 ## Product family (current)
 
-- **BWB-Q100** — Baseline passenger configuration *(active)*  
-  Path: `./BWB-Q100/`
+- **AMPEL360_AIR_TRANSPORT** — Air transport products *(active)*
+  - **BWB-Q100** — Baseline passenger configuration *(active)*  
+    Path: `./AMPEL360_AIR_TRANSPORT/BWB-Q100/`
+- **AMPEL360_SPACE_TOURISM** — Space tourism products *(in development)*
+  - **PLUS** — Space Tourism Aircraft AMPEL360PLUS *(in development)*
+    Path: `./AMPEL360_SPACE_TOURISM/PLUS/`
 
-_Reserved:_ additional variants can be added as subfolders under `./` following the same governance pattern.
+_Reserved:_ additional variants can be added as subfolders under each product line following the same governance pattern.
 
 ---
 
@@ -54,22 +61,35 @@ _Reserved:_ additional variants can be added as subfolders under `./` following 
 ```
 
 ASI-T2/PRODUCTS/AMPEL360/
-├─ README.md                          # This file (UTCS-headed)
-└─ BWB-Q100/                          # Product instance (baseline)
-├─ domains/AAA/cax/CAD/wing\_baseline\_model/...
-├─ QS/ ...                         # Evidence, signatures, KPIs (to be added)
-└─ ata/57/ ...                     # S1000D/ATA seeds (optional)
+├─ README.md                                    # This file (UTCS-headed)
+├─ AMPEL360_AIR_TRANSPORT/                      # Air transport products
+│  ├─ README.md                                 # Air transport hub
+│  └─ BWB-Q100/                                 # Product instance (baseline)
+│     ├─ domains/AAA/cax/CAD/wing\_baseline\_model/...
+│     ├─ QS/ ...                               # Evidence, signatures, KPIs
+│     └─ ata/57/ ...                           # S1000D/ATA seeds (optional)
+└─ AMPEL360_SPACE_TOURISM/                      # Space tourism products
+   ├─ README.md                                 # Space tourism hub
+   └─ PLUS/                                     # Space tourism aircraft
+      ├─ domains/ ...                          # Engineering domains (to be developed)
+      ├─ QS/ ...                               # Evidence, signatures, KPIs (to be developed)
+      └─ ata/ ...                              # S1000D/ATA seeds (to be developed)
 
 ```
 
 ---
 
-## Domain → Process → ATA entry points (BWB-Q100)
+## Domain → Process → ATA entry points
 
+**Air Transport (BWB-Q100):**
 - **AAA / cax / CAD** (geometry & structures)  
-  `./BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/`
+  `./AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/`
 - Additional entries (add as they materialize):  
   **PPP / cax / CAE** (structures), **QQQ / cax / CFD** (aero), **ATA-57** publications.
+
+**Space Tourism (PLUS):**
+- Domain structure in development following BWB-Q100 pattern
+- Target domains: **AAA**, **PPP**, **CCC**, **EEE**, **LCC**, **MEC**, **IIS**
 
 ---
 
@@ -105,7 +125,8 @@ Track at product level; store under **QS** with UTCS headers:
 ## CI & automation hooks
 
 - **Validation:** CI should run schema + grammar checks on both canonical and product-scoped paths, e.g.:
-  - `PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model`
+  - Air Transport: `PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model`
+  - Space Tourism: `PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/...` (as developed)
 - **Gates:** UTCS front-matter presence; YAML/JSON schema; path grammar; QS signature verification (when enabled).
 - **Outputs:** Attach CI logs as QS evidence for release tags.
 
@@ -131,12 +152,18 @@ Track at product level; store under **QS** with UTCS headers:
 ## Contacts & ownership
 
 - **Maintainer:** Robbbo-T / ASI-T Architecture Team  
-- **Domain leads:** listed per product instance (see `./BWB-Q100/OWNERS.md` if present).
+- **Domain leads:** 
+  - Air Transport (BWB-Q100): listed in `./AMPEL360_AIR_TRANSPORT/BWB-Q100/OWNERS.md` if present
+  - Space Tourism (PLUS): to be assigned as development progresses
 
 ---
 
 ## Changelog
 
+- **0.2.0 — 2025-09-24**  
+  Restructured AMPEL360 folder with two main product lines:
+  - AMPEL360_AIR_TRANSPORT (moved BWB-Q100 here)
+  - AMPEL360_SPACE_TOURISM (added new PLUS space tourism aircraft)
 - **0.1.0 — 2025-09-23**  
   Initial AMPEL360 product hub with links to BWB-Q100 CAD baseline, governance sections, and QS/UTCS guidance.
 ```
