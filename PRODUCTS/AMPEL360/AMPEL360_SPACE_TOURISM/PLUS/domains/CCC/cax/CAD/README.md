@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # CAx/CAD
 
-Entrada de proceso **CAD** derivada del README de dominio.
+Process entry **CAD** derived from domain README.
