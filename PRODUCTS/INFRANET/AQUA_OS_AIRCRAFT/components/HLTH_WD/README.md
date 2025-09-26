@@ -26,7 +26,7 @@ Health & Watchdog Service monitoring system health and providing fault detection
 
 **Certification Level**: DO-178C DAL-A (Design Assurance Level A)
 
-**Architecture**: ARINC-653 partitioned application running on AQUA OS kernel services
+**Architecture**: Dedicated hardware watchdog integration in conjunction with an ARINC-653 partitioned application running on AQUA OS kernel services. The HLTH_WD component interfaces directly with platform hardware watchdog timers to provide real-time fault detection and recovery, ensuring compliance with DO-178C DAL-A requirements. This architecture enables both software-level health monitoring and hardware-enforced system integrity.
 
 ## Document Structure
 
