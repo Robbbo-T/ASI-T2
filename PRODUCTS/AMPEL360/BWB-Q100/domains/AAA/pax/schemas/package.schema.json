@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PAx Package Manifest Schema (TFA Compliant)",
+  "type": "object",
+  "properties": {
+    "canonical_hash": {
+      "type": "string",
+      "description": "UTCS hash ID linking this package to the configuration baseline."
+    },
+    "sbom_hash": {
+      "type": "string",
+      "description": "Hash of the mandatory Software Bill of Materials (SBOM)."
+    },
+    "utcs_signature": {
+      "type": "string",
+      "description": "Cryptographic signature derived from the UTCS Quantum Seal."
+    },
+    "security_policy_id": {
+      "type": "string",
+      "description": "ID referencing the security policy applied to this package."
+    },
+    "package_name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "package_name",
+    "version",
+    "canonical_hash",
+    "sbom_hash",
+    "utcs_signature",
+    "security_policy_id"
+  ],
+  "additionalProperties": true
+}
