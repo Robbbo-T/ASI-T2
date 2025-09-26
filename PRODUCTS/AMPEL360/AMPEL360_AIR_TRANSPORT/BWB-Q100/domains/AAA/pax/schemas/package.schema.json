@@ -2,8 +2,30 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "PAx Package Manifest",
   "type": "object",
-  "required": ["utcs_header", "package", "evidence"],
+  "required": ["utcs_header", "package", "evidence", "package_name", "canonical_hash", "sbom_hash", "utcs_signature", "security_policy_id"],
   "properties": {
+    "package_name": {
+      "type": "string",
+      "description": "Unique package identifier"
+    },
+    "canonical_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA256 hash of the canonical package content"
+    },
+    "sbom_hash": {
+      "type": "string", 
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA256 hash of the SBOM file"
+    },
+    "utcs_signature": {
+      "type": "string",
+      "description": "UTCS digital signature"
+    },
+    "security_policy_id": {
+      "type": "string",
+      "description": "Security policy identifier"
+    },
     "utcs_header": {
       "type": "object",
       "required": ["id","project","artifact","llc","classification","version","release_date","maintainer","bridge","ethics_guard","utcs_mi","canonical_hash"],
@@ -70,8 +92,33 @@
     },
     "evidence": {
       "type":"object",
-      "required": ["qs_path"],
+      "required": ["canonical_hash", "sbom", "signatures", "security_policy_id"],
       "properties": {
+        "canonical_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "sbom": {
+          "type": "object",
+          "required": ["path", "hash"],
+          "properties": {
+            "path": {"type": "string"},
+            "hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+          }
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "type"],
+            "properties": {
+              "path": {"type": "string"},
+              "type": {"enum": ["cosign", "in-toto", "x509"]},
+              "keyid": {"type": "string"}
+            }
+          }
+        },
+        "security_policy_id": {"type": "string"},
         "qs_path":{"type":"string"},
         "attestations":{"type":"array","items":{"type":"string"}},
         "notes":{"type":"string"}
