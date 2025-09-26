@@ -23,7 +23,7 @@ AMPEL360PLUS space tourism vehicle designed for safe, sustainable suborbital pas
 * [Overview](#overview)
 * [Development Roadmap](#development-roadmap)
 * [Safety & Compliance](#safety--compliance)
-* [Domain Structure (Planned)](#domain-structure-planned)
+* [Domain Structure](#domain-structure)
 * [Sustainability Targets](#sustainability-targets)
 * [Contact & Ownership](#contact--ownership)
 
@@ -92,19 +92,145 @@ AMPEL360PLUS space tourism vehicle designed for safe, sustainable suborbital pas
 
 ---
 
-## Domain Structure (Planned)
+## Domain Structure
 
-Following the AMPEL360 domain pattern, PLUS will implement:
+Following the AMPEL360 domain → process (CAx/QOx) → ATA pattern, PLUS implements:
 
-* **AAA** — Aerodynamics & Airframes (space vehicle configuration)
-* **PPP** — Propulsion & Fuel Systems (sustainable space propulsion)
-* **CCC** — Cockpit, Cabin & Cargo (passenger experience systems)
-* **EEE** — Ecological Efficient Electrification (power systems)
-* **LCC** — Linkages, Control & Communications (flight control systems)
-* **MEC** — Mechanical Systems Modules (structural systems)
-* **IIS** — Integrated Intelligence & Software (autonomous systems)
+### Domain Index
 
-Additional domains as needed for space tourism specific requirements.
+* [AAA — Aerodynamics & Airframes](./domains/AAA/) — Space vehicle structures and reentry aerodynamics
+* [PPP — Propulsion & Fuel Systems](./domains/PPP/) — Sustainable space propulsion and fuel management
+* [CCC — Cockpit, Cabin & Cargo](./domains/CCC/) — Passenger experience and life support systems
+* [EEE — Ecological Efficient Electrification](./domains/EEE/) — Sustainable power systems
+* [LCC — Linkages, Control & Communications](./domains/LCC/) — Flight control and communication systems
+* [MEC — Mechanical Systems Modules](./domains/MEC/) — Mechanical components and actuators
+* [IIS — Integrated Intelligence & Software](./domains/IIS/) — Autonomous systems and software
+
+### Directory Map (Domain → Process → ATA)
+
+```
+AMPEL360_SPACE_TOURISM/PLUS/
+└── domains/
+    ├── AAA/
+    │   ├── cax/
+    │   │   ├── CAD/
+    │   │   ├── CAE/
+    │   │   ├── CFD/
+    │   │   ├── VP/
+    │   │   └── PDM-PLM/
+    │   ├── qox/
+    │   │   ├── CAD/
+    │   │   ├── CAE/
+    │   │   └── CFD/
+    │   └── ata/
+    │       ├── ATA-20/
+    │       ├── ATA-32/
+    │       ├── ATA-51/
+    │       ├── ATA-53/
+    │       ├── ATA-55/
+    │       └── ATA-57/
+    ├── PPP/
+    │   ├── cax/
+    │   │   ├── CAD/
+    │   │   ├── CAE/
+    │   │   ├── CFD/
+    │   │   ├── VP/
+    │   │   └── PDM-PLM/
+    │   ├── qox/
+    │   │   ├── CAD/
+    │   │   ├── CAE/
+    │   │   └── CFD/
+    │   └── ata/
+    │       ├── ATA-71/
+    │       ├── ATA-72/
+    │       ├── ATA-73/
+    │       ├── ATA-74/
+    │       ├── ATA-75/
+    │       ├── ATA-76/
+    │       ├── ATA-77/
+    │       └── ATA-78/
+    ├── CCC/
+    │   ├── cax/
+    │   │   ├── CAD/
+    │   │   ├── CAE/
+    │   │   ├── VP/
+    │   │   └── PDM-PLM/
+    │   ├── qox/
+    │   │   ├── CAD/
+    │   │   └── VP/
+    │   └── ata/
+    │       ├── ATA-25/
+    │       ├── ATA-31/
+    │       ├── ATA-33/
+    │       ├── ATA-35/
+    │       ├── ATA-38/
+    │       └── ATA-11/
+    ├── EEE/
+    │   ├── cax/
+    │   │   ├── CAD/
+    │   │   ├── CAE/
+    │   │   ├── VP/
+    │   │   └── PDM-PLM/
+    │   ├── qox/
+    │   │   ├── CAD/
+    │   │   └── CAE/
+    │   └── ata/
+    │       ├── ATA-24/
+    │       ├── ATA-33/
+    │       └── ATA-42/
+    ├── LCC/
+    │   ├── cax/
+    │   │   ├── CAI/
+    │   │   ├── VP/
+    │   │   └── CASE/
+    │   ├── qox/
+    │   │   └── CAI/
+    │   └── ata/
+    │       ├── ATA-22/
+    │       ├── ATA-23/
+    │       ├── ATA-27/
+    │       ├── ATA-34/
+    │       └── ATA-46/
+    ├── MEC/
+    │   ├── cax/
+    │   │   ├── CAD/
+    │   │   ├── CAE/
+    │   │   ├── VP/
+    │   │   └── PDM-PLM/
+    │   ├── qox/
+    │   │   ├── CAD/
+    │   │   └── CAE/
+    │   └── ata/
+    │       ├── ATA-26/
+    │       ├── ATA-28/
+    │       ├── ATA-36/
+    │       └── ATA-47/
+    └── IIS/
+        ├── cax/
+        │   ├── CAI/
+        │   ├── CASE/
+        │   └── KBE/
+        ├── qox/
+        │   ├── CAI/
+        │   └── KBE/
+        └── ata/
+            ├── ATA-46/
+            ├── ATA-42/
+            ├── ATA-22/
+            └── ATA-45/
+```
+
+### Domains ↔ Processes (CAx/QOx) ↔ ATA
+
+| Domain | CAx (links) | QOx (links) | ATA docs (links) - Space Tourism Adapted |
+| ------ | ----------- | ----------- | ---------------------------------------- |
+| **AAA** | [CAD](./domains/AAA/cax/CAD/) · [CAE](./domains/AAA/cax/CAE/) · [CFD](./domains/AAA/cax/CFD/) · [VP](./domains/AAA/cax/VP/) · [PDM-PLM](./domains/AAA/cax/PDM-PLM/) | [CAD](./domains/AAA/qox/CAD/) · [CAE](./domains/AAA/qox/CAE/) · [CFD](./domains/AAA/qox/CFD/) | [ATA-20](./domains/AAA/ata/ATA-20/) · [ATA-32](./domains/AAA/ata/ATA-32/) · [ATA-51](./domains/AAA/ata/ATA-51/) · [ATA-53](./domains/AAA/ata/ATA-53/) · [ATA-55](./domains/AAA/ata/ATA-55/) · [ATA-57](./domains/AAA/ata/ATA-57/) |
+| **PPP** | [CAD](./domains/PPP/cax/CAD/) · [CAE](./domains/PPP/cax/CAE/) · [CFD](./domains/PPP/cax/CFD/) · [VP](./domains/PPP/cax/VP/) · [PDM-PLM](./domains/PPP/cax/PDM-PLM/) | [CAD](./domains/PPP/qox/CAD/) · [CAE](./domains/PPP/qox/CAE/) · [CFD](./domains/PPP/qox/CFD/) | [ATA-71](./domains/PPP/ata/ATA-71/) · [ATA-72](./domains/PPP/ata/ATA-72/) · [ATA-73](./domains/PPP/ata/ATA-73/) · [ATA-74](./domains/PPP/ata/ATA-74/) · [ATA-75](./domains/PPP/ata/ATA-75/) · [ATA-76](./domains/PPP/ata/ATA-76/) · [ATA-77](./domains/PPP/ata/ATA-77/) · [ATA-78](./domains/PPP/ata/ATA-78/) |
+| **CCC** | [CAD](./domains/CCC/cax/CAD/) · [CAE](./domains/CCC/cax/CAE/) · [VP](./domains/CCC/cax/VP/) · [PDM-PLM](./domains/CCC/cax/PDM-PLM/) | [CAD](./domains/CCC/qox/CAD/) · [VP](./domains/CCC/qox/VP/) | [ATA-25](./domains/CCC/ata/ATA-25/) · [ATA-31](./domains/CCC/ata/ATA-31/) · [ATA-33](./domains/CCC/ata/ATA-33/) · [ATA-35](./domains/CCC/ata/ATA-35/) · [ATA-38](./domains/CCC/ata/ATA-38/) · [ATA-11](./domains/CCC/ata/ATA-11/) |
+| **EEE** | [CAD](./domains/EEE/cax/CAD/) · [CAE](./domains/EEE/cax/CAE/) · [VP](./domains/EEE/cax/VP/) · [PDM-PLM](./domains/EEE/cax/PDM-PLM/) | [CAD](./domains/EEE/qox/CAD/) · [CAE](./domains/EEE/qox/CAE/) | [ATA-24](./domains/EEE/ata/ATA-24/) · [ATA-33](./domains/EEE/ata/ATA-33/) · [ATA-42](./domains/EEE/ata/ATA-42/) |
+| **LCC** | [CAI](./domains/LCC/cax/CAI/) · [VP](./domains/LCC/cax/VP/) · [CASE](./domains/LCC/cax/CASE/) | [CAI](./domains/LCC/qox/CAI/) | [ATA-22](./domains/LCC/ata/ATA-22/) · [ATA-23](./domains/LCC/ata/ATA-23/) · [ATA-27](./domains/LCC/ata/ATA-27/) · [ATA-34](./domains/LCC/ata/ATA-34/) · [ATA-46](./domains/LCC/ata/ATA-46/) |
+| **MEC** | [CAD](./domains/MEC/cax/CAD/) · [CAE](./domains/MEC/cax/CAE/) · [VP](./domains/MEC/cax/VP/) · [PDM-PLM](./domains/MEC/cax/PDM-PLM/) | [CAD](./domains/MEC/qox/CAD/) · [CAE](./domains/MEC/qox/CAE/) | [ATA-26](./domains/MEC/ata/ATA-26/) · [ATA-28](./domains/MEC/ata/ATA-28/) · [ATA-36](./domains/MEC/ata/ATA-36/) · [ATA-47](./domains/MEC/ata/ATA-47/) |
+| **IIS** | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/) · [KBE](./domains/IIS/cax/KBE/) | [CAI](./domains/IIS/qox/CAI/) · [KBE](./domains/IIS/qox/KBE/) | [ATA-46](./domains/IIS/ata/ATA-46/) · [ATA-42](./domains/IIS/ata/ATA-42/) · [ATA-22](./domains/IIS/ata/ATA-22/) · [ATA-45](./domains/IIS/ata/ATA-45/) |
 
 ---
 
