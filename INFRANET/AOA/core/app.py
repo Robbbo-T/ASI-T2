@@ -64,13 +64,22 @@ def _plan(comp: dict) -> dict:
     # Index by alias or id
     name = lambda n: n.get("as") or n["use"]
 
+    def get_after(node):
+        after = node.get("after")
+        if isinstance(after, list):
+            return set(after)
+        elif after:
+            return set([after])
+        else:
+            return set()
+
     # Verify all caps exist
     missing = [n["use"] for n in nodes if n["use"] not in CAPS]
     if missing:
         raise HTTPException(400, f"Missing capabilities in registry: {missing}")
 
     # Build adjacency & topo order
-    deps = {name(n): set(n.get("after") if isinstance(n.get("after"), list) else ([n["after"]] if n.get("after") else [])) for n in nodes}
+    deps = {name(n): get_after(n) for n in nodes}
     order, ready = [], sorted([k for k,v in deps.items() if not v])
     while ready:
         cur = ready.pop(0)
