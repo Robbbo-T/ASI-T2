@@ -1,10 +1,10 @@
 ---
-id: ASIT-PLUS-AAA-ATA57-OVERVIEW-0001
+id: ASIT-PLUS-AAA-ATA57-OV-0001
 rev: 0
 project: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM
 artifact: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/57/README.md
 llc: SYSTEMS
-title: "ATA-57 Wings & Lifting Surfaces — AMPEL360 PLUS"
+title: "ATA-57 — Wings & Lifting Surfaces (Space Tourism)"
 configuration: baseline
 classification: "INTERNAL–EVIDENCE-REQUIRED"
 version: "0.1.0"
@@ -23,80 +23,140 @@ provenance:
   operator_id: "UTCS:OP:copilot-gen"
 ---
 
-# ATA-57: Wings & Lifting Surfaces (AMPEL360 PLUS)
+# ATA-57 — Wings & Lifting Surfaces (Space Vehicle)
 
-## 1. Scope and Applicability
+Publications and evidence for **ATA-57** — space-vehicle wings and lifting surfaces adapted for suborbital space tourism operations.
+
+> **Key interfaces:** ATA-20 (Practices), ATA-32 (Gear bay/doors adjacency), ATA-53 (Body interfaces), ATA-55 (Control surfaces), LCC/ATA-27 (Flight controls), EEE/ATA-24 (Power), MEC/ATA-36 (Pneumatics where used).
+
+---
+
+## Table of Contents
+- [Scope](#scope)
+- [Space Tourism Adaptation](#space-tourism-adaptation)
+- [Breakdown & Routing](#breakdown--routing)
+  - [57-10 Primary Structure & Box](#57-10-primary-structure--box)
+  - [57-20 High-Temperature Leading Edges](#57-20-high-temperature-leading-edges)
+  - [57-30 TPS Acreage & Integration](#57-30-tps-acreage--integration)
+  - [57-40 Control-Surface Interfaces](#57-40-control-surface-interfaces)
+- [Documentation Categories](#documentation-categories)
+- [Traceability & Compliance](#traceability--compliance)
+- [Cross-References](#cross-references)
+
+---
+
+## Scope
+
+Space-vehicle lifting surfaces including:
+- Main wing structures (if applicable)
+- Control fins and stabilizers
+- Aerodynamic control surfaces
+- Thermal protection system (TPS) integration
+- Structural interfaces and mounting systems
+
 Standards, specifications, and evidence for **wings / strakes / lifting-body surfaces** supporting suborbital ascent, reentry, and autonomous runway landing. Covers primary structure, high-temperature leading edges, TPS integration, control-surface interfaces, mass properties, and inspection.
 
-**Key interfaces:**  
-ATA-20 (Practices), ATA-32 (Landing Gear Doors TPS adjacency), ATA-53 (Body interfaces), ATA-55 (Control Surfaces), LCC/ATA-27 (Flight Controls), EEE/ATA-24 (Power), MEC/ATA-36 (Pneumatics if used).
+---
 
-## 2. Index of Deliverables
-
-### 57-10: Primary Structure & Box
-> Spars, ribs, skins; joints; mass properties and stiffness.
-- **[DS-57-10-0001](./57-10_Primary_Structure/DS-57-10-0001_LiftSurface_Primary.md)** - Design Spec: Lifting Surface Primary Structure
-
-### 57-20: High-Temperature Leading Edges
-> RCC/C-C edges, seals, fasteners, refurbishment cycles.
-- **[PS-57-20-0001](./57-20_Leading_Edges/PS-57-20-0001_RCC_Handling_Bonding.md)** - Process Spec: RCC Panel Handling & Bonding
-
-### 57-30: TPS Acreage & Integration
-> AFRSI blankets, tile arrays, carrier panels, thermal expansion joints.
-- **[PS-57-30-0001](./57-30_TPS_Integration/PS-57-30-0001_TPS_AcreageInstallation.md)** - Process Spec: TPS Acreage Installation
-
-### 57-40: Control Surface Interfaces
-> Hinge lines, actuator attachment, thermal protection at gaps.
-- **[ICD-57-40-0001](./57-40_Control_Interfaces/ICD-57-40-0001_ControlSurfaceInterfaces.md)** - Interface Control: Control Surface Interfaces
-
-## 3. Space Tourism Adaptation
+## Space Tourism Adaptation
 
 This chapter adapts traditional aircraft "wings" to **space lifting surfaces**, including control fins and aerodynamic surfaces for suborbital profiles.
 
-**Key adaptations:**
+**Key adaptations**
 - Reentry aerodynamics for lifting surfaces  
 - Thermal protection integration for lifting surfaces  
 - Control-surface design for attitude control  
 - Structural design for space loads and thermal cycling
 
-## 4. Documentation Categories
+---
+
+## Breakdown & Routing
+
+**Inbound:**  
+- AAA domain index → [`../../`](../../)  
+- ATA index → [`../`](../)
+
+**Sibling ATA chapters:**  
+- ATA-53 Fuselage → [`../53/`](../53/)  
+- ATA-55 Stabilizers & Control Surfaces → [`../55/`](../55/)  
+- ATA-27 Flight Controls → [`../../../LCC/ata/27/`](../../../LCC/ata/27/)
+
+**CAx processes (consumers/providers):**  
+- CAD → [`../../cax/CAD/`](../../cax/CAD/)  
+- CAE → [`../../cax/CAE/`](../../cax/CAE/)  
+- CFD → [`../../cax/CFD/`](../../cax/CFD/)
+
+### 57-10 Primary Structure & Box
+- Folder → [`./57-10_Primary_Structure/`](./57-10_Primary_Structure/)
+- Design Spec (primary structure):  
+  [`DS-57-10-0001_LiftSurface_Primary.md`](./57-10_Primary_Structure/DS-57-10-0001_LiftSurface_Primary.md)
+
+### 57-20 High-Temperature Leading Edges
+- Folder → [`./57-20_Leading_Edges/`](./57-20_Leading_Edges/)
+- Process Spec (RCC handling & bonding):  
+  [`PS-57-20-0001_RCC_Handling_Bonding.md`](./57-20_Leading_Edges/PS-57-20-0001_RCC_Handling_Bonding.md)
+
+### 57-30 TPS Acreage & Integration
+- Folder → [`./57-30_TPS_Integration/`](./57-30_TPS_Integration/)
+- Process Spec (TPS acreage installation):  
+  [`PS-57-30-0001_TPS_AcreageInstallation.md`](./57-30_TPS_Integration/PS-57-30-0001_TPS_AcreageInstallation.md)
+
+### 57-40 Control-Surface Interfaces
+- Folder → [`./57-40_Control_Interfaces/`](./57-40_Control_Interfaces/)
+- Interface Control Doc (flight/control linkage):  
+  [`ICD-57-40-0001_ControlSurfaceInterfaces.md`](./57-40_Control_Interfaces/ICD-57-40-0001_ControlSurfaceInterfaces.md)
+
+> **Link policy:** relative links, directory links end with `/`, file links include the full filename.
+
+---
+
+## Documentation Categories
 
 ### Design Documentation
-- Wing/lifting-surface structural drawings
-- Aerodynamic performance specifications
-- Thermal protection system integration
-- Control-surface actuation systems
+- Wing/lifting-surface structural drawings (see **57-10** folder → [`./57-10_Primary_Structure/`](./57-10_Primary_Structure/))  
+- Aerodynamic performance specifications (CFD handoff → [`../../cax/CFD/`](../../cax/CFD/))  
+- TPS integration drawings (see **57-30** → [`./57-30_TPS_Integration/`](./57-30_TPS_Integration/))  
+- Control-surface actuation interfaces (see **57-40** → [`./57-40_Control_Interfaces/`](./57-40_Control_Interfaces/))
 
 ### Analysis & Testing
-- Structural analysis for space loads
-- Aerodynamic analysis for reentry conditions
-- Thermal analysis for space environment
-- Ground and flight test procedures
+- Structural analysis for space loads (CAE) → [`../../cax/CAE/`](../../cax/CAE/)  
+- Aerodynamic analysis for reentry conditions (CFD) → [`../../cax/CFD/`](../../cax/CFD/)  
+- Thermal analysis for space environment (CAE/CFD coupling) → [`../../cax/CAE/`](../../cax/CAE/)  
+- Ground & flight test procedures (ATA test index in product test tree; link from program Test Plan)
 
 ### Manufacturing & Quality
-- Space-qualified manufacturing procedures
-- Quality control and inspection procedures
-- Materials and processes specifications
-- Assembly and integration procedures
+- Space-qualified manufacturing procedures (PDM-PLM controlled)  
+- Quality control & inspection procedures (NDT, acceptance)  
+- Materials & processes specifications (TPS, RCC, C/C)  
+- Assembly & integration procedures
 
 ### Operations & Maintenance
-- Pre-flight inspection procedures
-- Post-flight inspection and maintenance
-- Repair and replacement procedures
-- Service life monitoring and tracking
+- Pre-flight inspection procedures  
+- Post-flight inspection & maintenance  
+- Repair & replacement procedures  
+- Service-life monitoring & tracking
 
-## 5. Traceability and Compliance
+---
+
+## Traceability & Compliance
 
 All procedures defined herein are traceable to the requirements of the **FAA/AST (14 CFR Parts 450/460)** and other applicable authorities. Compliance evidence is managed via the UTCS/QS system and linked to each artifact revision.
 
-## 6. Cross-References
+---
 
-**Related Domains:**
-- **AAA/CAx/CAD**: Wing geometry design and optimization
-- **AAA/CAx/CAE**: Structural analysis and validation
-- **AAA/CAx/CFD**: Aerodynamic performance analysis
+## Cross-References
+
+**Related Domains (CAx):**
+- **AAA/CAx/CAD** — geometry design & optimization → [`../../cax/CAD/`](../../cax/CAD/)
+- **AAA/CAx/CAE** — structural analysis & validation → [`../../cax/CAE/`](../../cax/CAE/)
+- **AAA/CAx/CFD** — aerodynamic performance analysis → [`../../cax/CFD/`](../../cax/CFD/)
 
 **Related ATA Chapters:**
-- **ATA-53**: Vehicle body/fuselage integration
-- **ATA-55**: Control surfaces and stabilizers
-- **ATA-27**: Flight control system integration
+- **ATA-53** — fuselage/body integration → [`../53/`](../53/)
+- **ATA-55** — control surfaces & stabilizers → [`../55/`](../55/)
+- **ATA-27** — flight control system integration → [`../../../LCC/ata/27/`](../../../LCC/ata/27/)
+
+---
+
+*Space-tourism adapted ATA documentation under AAA Domain.*  
+*Part of PLUS Space Tourism Aircraft technical documentation.*
