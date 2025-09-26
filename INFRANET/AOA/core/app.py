@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from typing import Dict, List, Any, Optional
 import hashlib, json, time
+from datetime import datetime, timezone
 
 # In-memory stores (replace with DB later)
 CAPS: Dict[str, dict] = {}
@@ -70,15 +71,17 @@ def _plan(comp: dict) -> dict:
 
     # Build adjacency & topo order
     deps = {name(n): set(n.get("after") if isinstance(n.get("after"), list) else ([n["after"]] if n.get("after") else [])) for n in nodes}
-    order, ready = [], [k for k,v in deps.items() if not v]
+    order, ready = [], sorted([k for k,v in deps.items() if not v])
     while ready:
-        cur = ready.pop()
+        cur = ready.pop(0)
         order.append(cur)
         for k in deps:
             if cur in deps[k]:
                 deps[k].remove(cur)
-                if not deps[k]:
+                if not deps[k] and k not in order and k not in ready:
+                    # maintain stable order
                     ready.append(k)
+                    ready.sort()
     if any(deps[k] for k in deps):
         raise HTTPException(400, f"Cycle or unresolved deps: {deps}")
     return {"order": order, "nodes": nodes}
@@ -86,13 +89,13 @@ def _plan(comp: dict) -> dict:
 def _evidence_envelope(comp: dict) -> dict:
     """Create a QS/UTCS-like envelope (placeholder)."""
     art = [{"id": f"{n['use']}@v1", "sha256": _sha256_str(n['use'])} for n in comp["spec"]["graph"]]
-    ts = int(time.time())
+    now_iso = datetime.now(timezone.utc).isoformat()
     utcs = "utcs:" + _sha256_str(json.dumps(comp, sort_keys=True))[:16]
     qs = "qs:" + _sha256_str("".join(a["sha256"] for a in art))[:16]
     return {
         "compositionId": comp["metadata"]["id"],
         "artifacts": art,
-        "timestamps": {"planned": ts},
+        "timestamps": {"planned": now_iso},
         "attestation": {},
         "utcs_anchor": utcs,
         "qs_anchor": qs,

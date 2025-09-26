@@ -2,9 +2,10 @@
 import argparse, requests, sys, yaml, json, os
 
 BASE = os.environ.get("AOA_URL", "http://127.0.0.1:8000")
+HTTP_TIMEOUT = float(os.environ.get("AOA_HTTP_TIMEOUT", "30"))
 
 def post(path, payload):
-    r = requests.post(BASE + path, json=payload)
+    r = requests.post(BASE + path, json=payload, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
     return r.json()
 
