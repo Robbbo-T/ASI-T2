@@ -104,6 +104,10 @@ Strategic product lines organized by operational characteristics:
     - [`ORBITAL-MACHINES/`](./PRODUCTS/GAIA-SPACE/ORBITAL-MACHINES/) — Debris removal, assembly & servicing
     - [`SAT-CONSTELLATIONS/`](./PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS/) — Earth observation, communications & quantum satellites
 
+  #### GAIA-SEA — Marine & Ocean Systems
+  - **[`GAIA-SEA/`](./PRODUCTS/GAIA-SEA/)**
+    - [`GAIA-SOUND/`](./PRODUCTS/GAIA-SEA/GAIA-SOUND/) — Sea Organisms and Universal Nature Diagnostics
+
   #### INFRANET — Infrastructure & Network Systems
   - **[`INFRANET/`](./PRODUCTS/INFRANET/)**
     - [`AQUA_OS_AIRCRAFT/`](./PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/) — Aircraft operating system
@@ -132,6 +136,10 @@ Strategic product lines organized by operational characteristics:
       - [`_templates/`](./PRODUCTS/INFRANET/Shared/_templates/) — Shared templates and boilerplates
     - [`_migration/`](./PRODUCTS/_migration/) — Migration tracking and history
 
+  #### MISCELLANEOUS — Legacy & Transitional Products
+  - **[`MISCELLANEOUS/`](./PRODUCTS/MISCELLANEOUS/)**
+    - [`LIGHTVIBES/`](./PRODUCTS/MISCELLANEOUS/LIGHTVIBES/) — Quantum key management (migrated from root)
+
 ### 🔧 Development & Operations
 - **[`scripts/`](./scripts/)** — Repository automation and build scripts
 - **[`.github/workflows/`](./.github/workflows/)** — CI/CD pipeline configurations
@@ -154,4 +162,72 @@ All products follow the unified **Domain → Process → ATA** framework:
 - `PRODUCTS/MISCELLANEOUS/QMK/`
 
 Core principles: **TFA** (Threading Final Assembly), **UIX** (Universal Injection), **MAL-EEM** (Ethics & Empathy), **QS/UTCS** (Quantum Seals)
+
+---
+## Context → Fields & Products Map
+
+<details>
+<summary><strong>Environment Context to Implementation Mapping</strong></summary>
+
+### DIGITAL / CONTEXT
+
+#### VIRTUAL
+- **Fields**: [`intelligence`](./FIELDS/intelligence/), [`communications`](./FIELDS/communications/), [`air_unmanned`](./FIELDS/air_unmanned/), [`air_manned`](./FIELDS/air_manned/), [`cross`](./FIELDS/cross/)
+- **Products**: [`AMPEL360/BWB-Q100`](./PRODUCTS/AMPEL360/BWB-Q100/), [`GAIA-AIR/ETHICS-EMPATHY-UAV`](./PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/), [`GAIA-AIR/HYDROBOTS`](./PRODUCTS/GAIA-AIR/HYDROBOTS/), [`INFRANET/AQUA_OS_AIRCRAFT`](./PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/), [`INFRANET/META_OS_AEROSPACE`](./PRODUCTS/INFRANET/META_OS_AEROSPACE/)
+
+#### QUANTUM
+- **Fields**: [`quantum-intelligence`](./FIELDS/quantum-intelligence/), [`cybersecurity`](./FIELDS/cybersecurity/), [`cyberdefense`](./FIELDS/cyberdefense/), [`cross`](./FIELDS/cross/)
+- **Products**: [`INFRANET/QAIM`](./PRODUCTS/INFRANET/QAIM/), [`INFRANET/META_OS_AEROSPACE`](./PRODUCTS/INFRANET/META_OS_AEROSPACE/), [`GAIA-SPACE/SAT-CONSTELLATIONS`](./PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS/)
+
+#### AUGMENTATION
+- **Fields**: [`air_manned`](./FIELDS/air_manned/), [`air_unmanned`](./FIELDS/air_unmanned/), [`communications`](./FIELDS/communications/), [`intelligence`](./FIELDS/intelligence/)
+- **Products**: [`AMPEL360/BWB-Q100`](./PRODUCTS/AMPEL360/BWB-Q100/), [`GAIA-AIR/ETHICS-EMPATHY-UAV`](./PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/), [`INFRANET/AQUA_OS_AIRCRAFT`](./PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/)
+
+#### EXTENSION
+- **Fields**: [`communications`](./FIELDS/communications/), [`intelligence`](./FIELDS/intelligence/), [`air_unmanned`](./FIELDS/air_unmanned/)
+- **Products**: [`INFRANET/META_OS_AEROSPACE`](./PRODUCTS/INFRANET/META_OS_AEROSPACE/), [`INFRANET/AQUA_OS_AIRCRAFT`](./PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/)
+
+#### PROJECTION
+- **Fields**: [`communications`](./FIELDS/communications/), [`intelligence`](./FIELDS/intelligence/), [`air_manned`](./FIELDS/air_manned/)
+- **Products**: [`INFRANET/AQUA_OS_AIRCRAFT`](./PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/), [`INFRANET/META_OS_AEROSPACE`](./PRODUCTS/INFRANET/META_OS_AEROSPACE/)
+
+#### MIX
+- **Fields**: [`cross`](./FIELDS/cross/), [`air_manned`](./FIELDS/air_manned/), [`air_unmanned`](./FIELDS/air_unmanned/), [`communications`](./FIELDS/communications/)
+- **Products**: [`AMPEL360/BWB-Q100`](./PRODUCTS/AMPEL360/BWB-Q100/), [`GAIA-AIR/HYDROBOTS`](./PRODUCTS/GAIA-AIR/HYDROBOTS/), [`INFRANET/AQUA_OS_AIRCRAFT`](./PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/)
+
+#### CROSS
+- **Fields**: [`cross`](./FIELDS/cross/), [`cyberdefense`](./FIELDS/cyberdefense/), [`cybersecurity`](./FIELDS/cybersecurity/)
+- **Products**: [`INFRANET/Shared/_templates`](./PRODUCTS/INFRANET/Shared/_templates/), [`INFRANET/_migration`](./PRODUCTS/_migration/), [`INFRANET/META_OS_AEROSPACE`](./PRODUCTS/INFRANET/META_OS_AEROSPACE/)
+
+### PHYSICAL / CONTEXT
+
+#### AIR
+- **Fields**: [`air_manned`](./FIELDS/air_manned/), [`air_unmanned`](./FIELDS/air_unmanned/), [`transport-civil`](./FIELDS/transport-civil/), [`defense`](./FIELDS/defense/), [`communications`](./FIELDS/communications/)
+- **Products**: [`AMPEL360/BWB-Q100`](./PRODUCTS/AMPEL360/BWB-Q100/), [`GAIA-AIR/ETHICS-EMPATHY-UAV`](./PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/), [`GAIA-AIR/HYDROBOTS`](./PRODUCTS/GAIA-AIR/HYDROBOTS/), [`INFRANET/AQUA_OS_AIRCRAFT`](./PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/)
+
+#### SEA
+- **Fields**: [`communications`](./FIELDS/communications/), [`defense`](./FIELDS/defense/), [`intelligence`](./FIELDS/intelligence/)
+- **Products**: [`GAIA-SEA/GAIA-SOUND`](./PRODUCTS/GAIA-SEA/GAIA-SOUND/), [`INFRANET/LH2_CORRIDOR`](./PRODUCTS/INFRANET/LH2_CORRIDOR/)
+
+#### DEEP_SEA
+- **Fields**: [`defense`](./FIELDS/defense/), [`intelligence`](./FIELDS/intelligence/)
+- **Products**: [`GAIA-SEA/GAIA-SOUND`](./PRODUCTS/GAIA-SEA/GAIA-SOUND/) (abyssal mode)
+
+#### GROUND
+- **Fields**: [`communications`](./FIELDS/communications/), [`intelligence`](./FIELDS/intelligence/), [`defense`](./FIELDS/defense/), [`cross`](./FIELDS/cross/)
+- **Products**: [`INFRANET/LH2_CORRIDOR`](./PRODUCTS/INFRANET/LH2_CORRIDOR/), [`INFRANET/META_OS_AEROSPACE`](./PRODUCTS/INFRANET/META_OS_AEROSPACE/)
+
+#### SPACE
+- **Fields**: [`cyberdefense`](./FIELDS/cyberdefense/), [`intelligence`](./FIELDS/intelligence/), [`space_tourism`](./FIELDS/space_tourism/)
+- **Products**: [`GAIA-SPACE/ORBITAL-MACHINES`](./PRODUCTS/GAIA-SPACE/ORBITAL-MACHINES/), [`GAIA-SPACE/SAT-CONSTELLATIONS`](./PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS/)
+
+#### DEEP_SPACE
+- **Fields**: [`intelligence`](./FIELDS/intelligence/), [`communications`](./FIELDS/communications/), [`cyberdefense`](./FIELDS/cyberdefense/)
+- **Products**: [`GAIA-SPACE/ORBITAL-MACHINES`](./PRODUCTS/GAIA-SPACE/ORBITAL-MACHINES/), [`GAIA-SPACE/SAT-CONSTELLATIONS`](./PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS/), [`MISCELLANEOUS/LIGHTVIBES`](./PRODUCTS/MISCELLANEOUS/LIGHTVIBES/)
+
+#### CYBER
+- **Fields**: [`cybersecurity`](./FIELDS/cybersecurity/), [`cyberdefense`](./FIELDS/cyberdefense/), [`intelligence`](./FIELDS/intelligence/), [`communications`](./FIELDS/communications/)
+- **Products**: [`INFRANET/QAIM`](./PRODUCTS/INFRANET/QAIM/), [`INFRANET/META_OS_AEROSPACE`](./PRODUCTS/INFRANET/META_OS_AEROSPACE/), [`GAIA-AIR/ETHICS-EMPATHY-UAV`](./PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/)
+
+</details>
 

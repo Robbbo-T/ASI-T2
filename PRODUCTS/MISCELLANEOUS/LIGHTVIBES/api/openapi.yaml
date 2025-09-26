@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: LIGHTVIBES — Quantum Micropulse Keying API
+  version: 0.1.0
+  description: |
+    QMK control-plane endpoints for session bootstrap and one-shot key retrieval.
+    Modes: QMK (quantum) or PQC fallback, both fully evidenced via UTCS/QS.
+servers:
+  - url: https://api.gaia-ds2.local
+paths:
+  /lightvibes/session:
+    post:
+      summary: Create a QMK session
+      operationId: createSession
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [peer_id, policy]
+              properties:
+                peer_id:
+                  type: string
+                policy:
+                  type: object
+                  properties:
+                    min_keybits: { type: integer, minimum: 128, default: 256 }
+                    ttl_s: { type: integer, minimum: 10, default: 120 }
+                fallback:
+                  type: string
+                  enum: [PQC, DISABLE]
+                  default: PQC
+      responses:
+        "201":
+          description: Session created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  session_id: { type: string }
+                  key_ref: { type: string }
+                  health:
+                    type: object
+                    properties:
+                      qber: { type: number }
+                      rate_bps: { type: number }
+                  mode:
+                    type: string
+                    enum: [QMK, PQC]
+        "409":
+          description: Session conflict
+  /lightvibes/key/{key_ref}:
+    get:
+      summary: Retrieve ephemeral key (sealed to HSM/TEE)
+      operationId: getKey
+      parameters:
+        - name: key_ref
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: One-shot key material (sealed)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key_ref: { type: string }
+                  key_sealed: { type: string, description: "Opaque, device-sealed blob" }
+                  ttl_s: { type: integer }
+                  mode: { type: string, enum: [QMK, PQC] }
+        "404":
+          description: Unknown or already consumed key_ref
+components: {}
