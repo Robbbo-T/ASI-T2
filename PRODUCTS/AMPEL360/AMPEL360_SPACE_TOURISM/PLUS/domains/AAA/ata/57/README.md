@@ -25,20 +25,36 @@ provenance:
 
 # ATA-57 — Wings & Lifting Surfaces (Space Vehicle)
 
-Publications and evidence for **ATA-57** — space-vehicle wings and lifting surfaces adapted for suborbital space tourism.
+Publications and evidence for **ATA-57** — space-vehicle wings and lifting surfaces adapted for suborbital space tourism operations.
+
+> **Key interfaces:** ATA-20 (Practices), ATA-32 (Gear bay/doors adjacency), ATA-53 (Body interfaces), ATA-55 (Control surfaces), LCC/ATA-27 (Flight controls), EEE/ATA-24 (Power), MEC/ATA-36 (Pneumatics where used).
 
 ---
 
 ## Table of Contents
-- [Space Tourism Adaptation](#space-tourism-adaptation)
 - [Scope](#scope)
+- [Space Tourism Adaptation](#space-tourism-adaptation)
 - [Breakdown & Routing](#breakdown--routing)
   - [57-10 Primary Structure & Box](#57-10-primary-structure--box)
   - [57-20 High-Temperature Leading Edges](#57-20-high-temperature-leading-edges)
   - [57-30 TPS Acreage & Integration](#57-30-tps-acreage--integration)
   - [57-40 Control-Surface Interfaces](#57-40-control-surface-interfaces)
 - [Documentation Categories](#documentation-categories)
+- [Traceability & Compliance](#traceability--compliance)
 - [Cross-References](#cross-references)
+
+---
+
+## Scope
+
+Space-vehicle lifting surfaces including:
+- Main wing structures (if applicable)
+- Control fins and stabilizers
+- Aerodynamic control surfaces
+- Thermal protection system (TPS) integration
+- Structural interfaces and mounting systems
+
+Standards, specifications, and evidence for **wings / strakes / lifting-body surfaces** supporting suborbital ascent, reentry, and autonomous runway landing. Covers primary structure, high-temperature leading edges, TPS integration, control-surface interfaces, mass properties, and inspection.
 
 ---
 
@@ -51,17 +67,6 @@ This chapter adapts traditional aircraft "wings" to **space lifting surfaces**, 
 - Thermal protection integration for lifting surfaces  
 - Control-surface design for attitude control  
 - Structural design for space loads and thermal cycling
-
----
-
-## Scope
-
-Space-vehicle lifting surfaces including:
-- Main wing structures (if applicable)
-- Control fins and stabilizers
-- Aerodynamic control surfaces
-- Thermal protection system (TPS) integration
-- Structural interfaces and mounting systems
 
 ---
 
@@ -130,6 +135,12 @@ Space-vehicle lifting surfaces including:
 - Post-flight inspection & maintenance  
 - Repair & replacement procedures  
 - Service-life monitoring & tracking
+
+---
+
+## Traceability & Compliance
+
+All procedures defined herein are traceable to the requirements of the **FAA/AST (14 CFR Parts 450/460)** and other applicable authorities. Compliance evidence is managed via the UTCS/QS system and linked to each artifact revision.
 
 ---
 
