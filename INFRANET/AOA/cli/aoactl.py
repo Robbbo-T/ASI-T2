@@ -4,7 +4,7 @@ import argparse, requests, sys, yaml, json, os
 BASE = os.environ.get("AOA_URL", "http://127.0.0.1:8000")
 
 def post(path, payload):
-    r = requests.post(BASE + path, json=payload)
+    r = requests.post(BASE + path, json=payload, timeout=30)
     r.raise_for_status()
     return r.json()
 
