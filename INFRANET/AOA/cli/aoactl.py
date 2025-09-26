@@ -55,7 +55,7 @@ def main():
 
     cmpr = cmp_sub.add_parser("run")
     cmpr.add_argument("path")
-    cmpr.add_argument("--dry-run", action="store_true", default=True)
+    cmpr.add_argument("--dry-run", action="store_true")
     cmpr.set_defaults(func=cmd_compose_run)
 
     pol = sub.add_parser("policy")
