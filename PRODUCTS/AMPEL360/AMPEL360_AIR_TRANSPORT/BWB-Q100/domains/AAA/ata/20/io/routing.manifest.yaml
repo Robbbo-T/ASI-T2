@@ -1,0 +1,76 @@
+# ATA-20 Routing Manifest for BWB-Q100
+module: AAA/ata/20
+version: 0.1.0
+title: "ATA-20: Standard Practices — Airframe (BWB-Q100)"
+
+inputs:
+  - id: AAA/CAX/CAD/OML
+    path: /pdm/cad/oml/2.3/
+    format: STEP
+    schema: OML-2.3
+    cadence: on-release
+    owner: CAD Team
+  - id: AAA/CAE/Structural
+    path: /pdm/cae/structural/loads/
+    format: FEA Results
+    schema: FEA-1.2
+    cadence: post-analysis
+    owner: CAE Team
+  - id: QA/Standards
+    path: /pdm/qa/standards/ata20/
+    format: PDF/XML
+    schema: Standards-1.0
+    cadence: on-update
+    owner: QA Team
+
+outputs:
+  - id: AAA/ATA/51-57
+    path: /pdm/ata/practices/20/
+    format: SPM/PS/MS
+    schema: ATA-Practices-1.0
+    contract: ICD-AAA-ATA-020
+    owner: ATA Team
+  - id: Manufacturing
+    path: /pdm/mfg/practices/20/
+    format: Work Instructions
+    schema: MFG-Instructions-1.0
+    contract: ICD-MFG-ATA-020
+    owner: MFG Team
+  - id: QA/Inspection
+    path: https://qa.api/practices/ata20
+    format: JSON
+    schema: QA-API-1.0
+    contract: ICD-QA-ATA-020
+    owner: QA Team
+
+environments:
+  dev: file:///dev/ata/20/
+  stage: file:///stage/ata/20/
+  prod: /pdm/ata/20/
+
+controls:
+  classification: INTERNAL–EVIDENCE-REQUIRED
+  access: 
+    - AAA.contributors
+    - ASI-T.arch
+  change_control: CN + MRB
+
+reliability:
+  slo_publish_minutes: 30
+  retries: 3
+  alert_channel: "#aaa-ata20"
+  escalation_minutes: 15
+
+submodules:
+  - name: "20-10_Structural_Practices"
+    owner: "M&P Engineering Team"
+    slo_publish_minutes: 15
+  - name: "20-20_Sealing_and_Pressurization" 
+    owner: "Environmental Systems Team"
+    slo_publish_minutes: 20
+  - name: "20-30_Material_Handling"
+    owner: "Materials & Processes Team"
+    slo_publish_minutes: 10
+  - name: "20-40_Electrical_Bonding"
+    owner: "Electrical Systems Team"
+    slo_publish_minutes: 25
