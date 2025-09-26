@@ -9,6 +9,10 @@ COMPS: Dict[str, dict] = {}
 
 app = FastAPI(title="ASI-T2 AoA", version="0.1.0")
 
+@app.get("/healthz")
+def healthz():
+    return {"ok": True, "caps": len(CAPS), "comps": len(COMPS)}
+
 class PublishResult(BaseModel):
     id: str
     status: str = "accepted"
@@ -16,6 +20,10 @@ class PublishResult(BaseModel):
 class PolicyDecision(BaseModel):
     allowed: bool
     reasons: List[str] = Field(default_factory=list)
+
+class ComposeRequest(BaseModel):
+    comp: Optional[dict] = None
+    comp_id: Optional[str] = None
 
 def _sha256_str(s: str) -> str:
     return hashlib.sha256(s.encode("utf-8")).hexdigest()
@@ -116,7 +124,10 @@ def policy_admit(body: dict):
     return _simple_policy_check(body)
 
 @app.post("/api/v1/compose/dry-run")
-def compose_dry_run(comp: Optional[dict] = None, comp_id: Optional[str] = None):
+def compose_dry_run(request: ComposeRequest):
+    comp = request.comp
+    comp_id = request.comp_id
+    
     if comp_id:
         comp = COMPS.get(comp_id)
         if not comp:

@@ -4,7 +4,7 @@ import argparse, requests, sys, yaml, json, os
 BASE = os.environ.get("AOA_URL", "http://127.0.0.1:8000")
 
 def post(path, payload):
-    r = requests.post(BASE + path, json=payload, timeout=30)
+    r = requests.post(BASE + path, json=payload)
     r.raise_for_status()
     return r.json()
 
@@ -14,11 +14,19 @@ def cmd_cap_publish(args):
         out = post("/api/v1/registry/capabilities", data)
         print(f"published: {out['id']}")
 
+def cmd_cap_publish_dir(args):
+    import glob, os
+    base = args.dir
+    for p in sorted(glob.glob(os.path.join(base, "*.yaml"))):
+        data = yaml.safe_load(open(p, "r"))
+        out = post("/api/v1/registry/capabilities", data)
+        print(f"published: {out['id']}")
+
 def cmd_compose_run(args):
     comp = yaml.safe_load(open(args.path, "r"))
     # publish composition on the fly
     post("/api/v1/registry/compositions", comp)
-    res = post("/api/v1/compose/dry-run", comp)
+    res = post("/api/v1/compose/dry-run", {"comp": comp})
     print(json.dumps(res, indent=2))
 
 def cmd_policy_test(args):
@@ -36,6 +44,10 @@ def main():
     spp = sp_sub.add_parser("publish")
     spp.add_argument("paths", nargs="+")
     spp.set_defaults(func=cmd_cap_publish)
+
+    spd = sp_sub.add_parser("publish-dir")
+    spd.add_argument("dir")
+    spd.set_defaults(func=cmd_cap_publish_dir)
 
     cmp = sub.add_parser("compose", help="composition ops")
     cmp_sub = cmp.add_subparsers(required=True)
