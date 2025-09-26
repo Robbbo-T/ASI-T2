@@ -171,19 +171,23 @@ The **PAx** framework transforms CAx/QOx outputs into deployable packages with S
 
 ### Structure Overview
 
+Based on current repository implementations:
+
+**Complete PAx Structure (AAA domain example):**
 ```
 pax/
 ├── OB/                    # On-Board (Aviation Systems)
-│   ├── manifests/         # ARINC 653/IMA partition manifests, A661 CDS
-│   ├── artifacts/         # Binary/partition outputs (exclude from version control if large)
-│   ├── sbom/             # SPDX/CycloneDX software bills of materials
-│   └── certificates/     # Signatures (cosign/in-toto), X.509 certificate chains
+│   └── manifests/         # ARINC 653/IMA partition manifests, A661 CDS
 ├── OFF/                  # Off-Board (OCI/Edge/Cloud)
-│   ├── oci/              # Container image descriptors and attestations
-│   ├── services/         # Helm charts, Docker Compose, Kustomize manifests
-│   └── sbom/             # SPDX/CycloneDX for containerized services
+│   └── oci/              # Container image descriptors and attestations
 ├── schemas/              # JSON schemas for PAx manifests
 └── scripts/              # PAx validators and linters
+```
+
+**Partial PAx Structure (DDD domain example):**
+```
+pax/
+└── OB/                   # On-Board implementation only
 ```
 
 ### Components
@@ -202,10 +206,27 @@ pax/
 
 ### Implementation Examples
 
-PAx structure is implemented across product domains:
+PAx structure is currently implemented in BWB-Q100 domains:
 
-- **[BWB-Q100/AAA/pax/](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/)** — Aerodynamics & Airframes packaging
-- **[BWB-Q100/DDD/pax/](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/DDD/pax/)** — Digital & Data Defense packaging
+- **[BWB-Q100/AAA/pax/](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/)** — Aerodynamics & Airframes packaging (complete: OB/, OFF/, schemas/, scripts/)
+- **[BWB-Q100/DDD/pax/](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/DDD/pax/)** — Digital & Data Defense packaging (partial: OB/ only)
+
+#### Current Directory Contents
+
+**AAA/pax/** (Complete implementation):
+```
+pax/
+├── OB/manifests/         # partition.example.yaml
+├── OFF/oci/             # ground.oml.exporter.yaml
+├── schemas/             # package.schema.json
+└── scripts/             # validate_pax.py
+```
+
+**DDD/pax/** (Minimal implementation):
+```
+pax/
+└── OB/                  # Basic on-board structure
+```
 
 ### Quality Standards
 
