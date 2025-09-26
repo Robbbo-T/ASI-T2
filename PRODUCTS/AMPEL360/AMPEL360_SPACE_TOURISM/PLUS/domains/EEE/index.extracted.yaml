@@ -1,0 +1,50 @@
+domain: "EEE"
+project: "PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "24"
+    -
+      chapter: "33"
+    -
+      chapter: "42"
+  CAx:
+    - "CAD"
+    - "CAE"
+    - "CAX"
+    - "PDM-PLM-PLM"
+    - "VP"
+  QOx:
+    - "ANNEALING"
+    - "BQM"
+    - "QAOA"
+    - "QUBO"
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 3
+  cax: 5
+  qox: 4
+  pax: 0
+  files: 12
+timestamp: "2025-09-26T07:56:34.117066Z"

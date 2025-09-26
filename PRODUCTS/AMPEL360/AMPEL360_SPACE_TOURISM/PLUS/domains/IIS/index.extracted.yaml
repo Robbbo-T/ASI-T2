@@ -1,0 +1,47 @@
+domain: "IIS"
+project: "PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "46"
+    -
+      chapter: "42"
+    -
+      chapter: "22"
+    -
+      chapter: "45"
+  CAx:
+    - "CAI"
+    - "CASE"
+    - "CAX"
+  QOx:
+
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 4
+  cax: 2
+  qox: 0
+  pax: 0
+  files: 6
+timestamp: "2025-09-26T07:56:34.120009Z"
