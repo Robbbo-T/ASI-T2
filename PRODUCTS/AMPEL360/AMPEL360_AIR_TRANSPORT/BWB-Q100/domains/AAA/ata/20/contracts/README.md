@@ -1,7 +1,7 @@
 ---
 id: ATA-20-CONTRACTS-OV-0001
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: /home/runner/work/Robbbo-T/Robbbo-T/PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/contracts/README.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/contracts/README.md
 llc: SYSTEMS
 title: "ATA-20 Contracts & ICDs (BWB-Q100)"
 configuration: baseline
