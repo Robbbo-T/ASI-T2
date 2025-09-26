@@ -115,7 +115,7 @@ ata/57/
 **CAx (classical):**
 - **CAD:** Wing geometry → [`../../cax/CAD/wing_baseline_model/`](../../cax/CAD/wing_baseline_model/)
 - **CFD:** Aero validation → [`../../cax/CFD/wing_performance_validation/`](../../cax/CFD/wing_performance_validation/)
-- **CAE:** Structural sizing → [`../../cax/CAE/wing_structural_analysis/`](../../cax/CAE/wing_structural_analysis/)
+- **CAE:** Structural sizing → [`../../cax/CAE/wing_structural_analysis/README.md`](../../cax/CAE/wing_structural_analysis/README.md)
 
 **QOx (discrete optimization):**
 - **Topology (ribs/spars):** [`../../qox/cad/runs/20250120-wing_topology/`](../../qox/cad/runs/20250120-wing_topology/) — QS: `a4f2d8e9…`
