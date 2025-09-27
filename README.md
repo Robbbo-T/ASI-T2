@@ -1,5 +1,6 @@
 # ASI-T2
 ## ARTIFICIAL SUPER INTELLIGENCE TRANSPONDERS for AEROSPACE SUSTAINABLE INDUSTRY TRANSITION
+
 ## Purpose and Author Mission
 
 The ASI‑T2 repository positions itself as "Artificial Super Intelligence Transponders for Aerospace Sustainable Industry Transition". This long title encapsulates the vision: to design aerospace products and infrastructure that integrate classical computer‑aided engineering (CAx) with quantum‑optimised processes (QOx) to accelerate the transition to sustainable aviation.
@@ -179,10 +180,9 @@ The OS architecture shows a kernel providing time, network, security, evidence a
 
 The robbbo‑t/ASI‑T2 repository is an ambitious attempt to fuse classical aerospace engineering with quantum computing and rigorous ethical/sustainability frameworks. Its structure—Fields → Environments → Products; Domain → Process → ATA; CAx → QOx—reflects a meticulous approach to organising complex engineering projects. The BWB‑Q100 README stands out as a detailed blueprint illustrating how quantum optimisation could reshape aircraft design and manufacturing, and the AQUA OS demonstrates readiness for safety‑critical deployment. However, the repository currently serves more as a framework and vision document than a repository of functioning code or data. Completing the missing components, providing end‑to‑end examples and engaging a broader community will be essential for realising the author's mission of ethical, sustainable and quantum‑augmented aerospace systems.
 
-
-**Master portfolio for ASI-T2 under strict TFA architecture. This README provides a comprehensive hyperlinkable index to all **fields**, **environments**, and **products** with their complete directory structure.**
-
 ---
+
+**Master portfolio for ASI-T2 under strict TFA architecture. This README provides a comprehensive hyperlinkable index to all fields, environments, and products with their complete directory structure.**
 
 ## 📁 Repository Structure Index
 
@@ -324,7 +324,6 @@ Strategic product lines organized by operational characteristics:
 - **[`.github/workflows/`](./.github/workflows/)** — CI/CD pipeline configurations
 - **[`copilot_instructions/`](./copilot_instructions/)** — AI assistant configuration
 
----
 ## Architecture Overview
 
 All products follow the unified **Domain → Process → ATA** framework:
@@ -343,7 +342,6 @@ All products follow the unified **Domain → Process → ATA** framework:
 
 Core principles: **TFA** (Threading Final Assembly), **UIX** (Universal Injection), **MAL-EEM** (Ethics & Empathy), **QS/UTCS** (Quantum Seals)
 
----
 ## PAx Structure — Packaging & Applications
 
 The **PAx** framework transforms CAx/QOx outputs into deployable packages with SBOM, signatures, and UTCS/QS evidence.
@@ -414,7 +412,6 @@ pax/
 - **UTCS traceability**: canonical_hash and QS integration in all manifests
 - **Security principles**: least privilege, readonly root filesystems, non-root execution
 
----
 ## Context → Fields & Products Map
 
 <details>
@@ -481,4 +478,3 @@ pax/
 - **Products**: [`INFRANET/QAIM`](./PRODUCTS/INFRANET/QAIM/), [`INFRANET/META_OS_AEROSPACE`](./PRODUCTS/INFRANET/META_OS_AEROSPACE/), [`GAIA-AIR/ETHICS-EMPATHY-UAV`](./PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/)
 
 </details>
-
