@@ -1,14 +1,17 @@
 {
+  "$id": "cad_manifest.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "CAD Manifest Schema",
+  "title": "CAD Manifest Schema (AMPEL360 PLUS)",
   "description": "Schema for CAD manifest files in AMPEL360 PLUS space vehicle design",
   "type": "object",
+  "additionalProperties": false,
   "required": ["id", "vehicle", "kind", "rev", "exports", "utcs"],
   "properties": {
+    "$schema": { "type": "string" },
     "id": {
       "type": "string",
-      "pattern": "^[A-Z0-9]+(-[A-Z0-9]+)*$",
-      "description": "Unique identifier for the CAD artifact"
+      "pattern": "^PLUS-[A-Z0-9-]+$",
+      "description": "Unique identifier for the CAD artifact (e.g., PLUS-OML-A02)"
     },
     "vehicle": {
       "type": "string",
@@ -25,6 +28,11 @@
       "pattern": "^[A-Z][0-9]{2}$",
       "description": "Revision identifier (e.g., A02, B05)"
     },
+    "status": {
+      "type": "string",
+      "enum": ["in-work","baseline","superseded"],
+      "description": "Lifecycle status"
+    },
     "description": {
       "type": "string",
       "description": "Optional description of the CAD artifact"
@@ -34,10 +42,12 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["path", "format", "units"],
+        "additionalProperties": false,
+        "required": ["path", "format", "units", "purpose"],
         "properties": {
           "path": {
             "type": "string",
+            "pattern": "^\\.\\./exports/PLUS-[A-Z0-9-]+-[A-Za-z0-9_]+-[A-Z][0-9]{2}\\.(step|stp|iges|igs|x_t|x_b|stl)$",
             "description": "Relative path to exported file"
           },
           "format": {
@@ -54,45 +64,75 @@
             "type": "string",
             "enum": ["CFD", "CAE", "Manufacturing", "Visualization", "Archive"],
             "description": "Intended use of the export"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^(TBD|sha256:[a-f0-9]{64})$",
+            "description": "SHA256 hash of the exported file"
           }
         }
       }
     },
     "refs": {
       "type": "object",
+      "additionalProperties": false,
       "description": "References to related documentation",
       "properties": {
         "ata_practices": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": {
+            "type": "string",
+            "pattern": "^\\.\\./\\.\\./\\.\\./\\.\\./ata/ATA-[0-9]{2}/.*\\.xml$"
+          },
           "description": "References to ATA-20 practice documents"
         },
         "ata_structures": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": {
+            "type": "string",
+            "pattern": "^\\.\\./\\.\\./\\.\\./\\.\\./ata/ATA-[0-9]{2}/.*\\.xml$"
+          },
           "description": "References to ATA-57 structure documents"
         },
         "s1000d_dms": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": {
+            "type": "string",
+            "pattern": "^\\.\\./\\.\\./\\.\\./\\.\\./ata/ATA-[0-9]{2}/.*\\.xml$"
+          },
           "description": "References to S1000D data modules"
         }
       }
     },
     "geometry": {
       "type": "object",
+      "additionalProperties": false,
       "description": "Geometry-specific metadata",
       "properties": {
         "bounding_box": {
           "type": "object",
+          "additionalProperties": false,
+          "required": ["min", "max", "units"],
           "properties": {
             "min": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
-            "max": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3}
+            "max": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+            "units": {"type": "string", "enum": ["mm", "m", "in", "ft"]}
           }
         },
         "coordinate_system": {
           "type": "string",
           "description": "Reference coordinate system"
+        },
+        "origin": {
+          "type": "array",
+          "items": {"type": "number"},
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "Origin coordinates [x, y, z]"
+        },
+        "axes_definition": {
+          "type": "string",
+          "description": "Definition of coordinate axes orientation"
         },
         "material_properties": {
           "type": "object",
@@ -102,11 +142,12 @@
     },
     "utcs": {
       "type": "object",
+      "additionalProperties": false,
       "required": ["provenance"],
       "properties": {
         "canonical_hash": {
           "type": "string",
-          "pattern": "^(sha256:[a-f0-9]{64}|TBD)$",
+          "pattern": "^(TBD|sha256:[a-f0-9]{64})$",
           "description": "SHA256 hash of canonical content or TBD for development"
         },
         "provenance": {
@@ -115,6 +156,7 @@
         },
         "evidence_path": {
           "type": "string",
+          "pattern": "^\\.\\./.+/$",
           "description": "Path to QS evidence files"
         }
       }

@@ -84,7 +84,11 @@ def extract_paths_from_markdown(md_file: Path) -> List[Tuple[str, str]]:
         for pattern, context in patterns:
             matches = re.finditer(pattern, content, re.IGNORECASE)
             for match in matches:
-                path = match.group(1) if '(' not in pattern else match.group(2)
+                # Handle different capture group patterns
+                if context == 'markdown link':
+                    path = match.group(2)  # Second group for markdown links
+                else:
+                    path = match.group(1)  # First group for all others
                 if path and not path.startswith(('http://', 'https://', 'mailto:', '#')):
                     paths.append((path, f"{context} (line {content[:match.start()].count(chr(10)) + 1})"))
     

@@ -43,7 +43,8 @@
       "description": "Complete surface coverage required",
       "parameters": {
         "min_coverage": 0.999,
-        "overlap_penalty": 5.0
+        "overlap_penalty": 5.0,
+        "units": { "coverage": "fraction" }
       }
     },
     {
@@ -52,7 +53,8 @@
       "description": "Panel size limits for manufacturing",
       "parameters": {
         "max_area_m2": 0.5,
-        "max_aspect_ratio": 3.0
+        "max_aspect_ratio": 3.0,
+        "units": { "area": "m2", "aspect_ratio": "dimensionless" }
       }
     },
     {
@@ -60,7 +62,17 @@
       "weight": 6.0,
       "description": "No overlapping panels",
       "parameters": {
-        "tolerance_mm": 2.0
+        "tolerance_mm": 2.0,
+        "units": { "tolerance": "mm" }
+      }
+    },
+    {
+      "type": "thermal_gradient",
+      "weight": 3.0,
+      "description": "Limit thermal gradients at seams",
+      "parameters": {
+        "max_gradient_k_per_mm": 5.0,
+        "units": { "gradient": "K/mm" }
       }
     }
   ],
@@ -70,12 +82,25 @@
     "parameters": {
       "layers": 3,
       "optimizer": "COBYLA",
-      "max_iterations": 200
+      "max_iterations": 200,
+      "random_seed": 42,
+      "warm_start": true
     },
     "hardware": {
       "backend": "simulator",
       "qubits": 600
     }
+  },
+  "data_sources": {
+    "coverage_matrix": "../../geometry/exports/PLUS-OML-A02.step",
+    "incidence_table": "../../tps/layout/panel_incidence_R1.csv",
+    "overlap_rules": "../../tps/layout/seam_overlap_rules.json",
+    "thermal_loads": "../../mdo/thermal/reentry_R1_loads.json"
+  },
+  "scaling": {
+    "objective_weights_normalized": true,
+    "constraint_penalties_big_m": [8.0, 4.0, 6.0, 3.0],
+    "variable_scaling": "unit_interval"
   },
   "roundtrip": {
     "exports": ["../../geometry/exports/PLUS-OML-A02.step"],

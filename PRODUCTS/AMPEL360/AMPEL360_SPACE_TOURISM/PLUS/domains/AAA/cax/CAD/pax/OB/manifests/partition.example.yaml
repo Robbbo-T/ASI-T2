@@ -1,32 +1,73 @@
 # ARINC 653 Partition Manifest for CAD Visualization Tools
 # On-board deployment for space vehicle flight displays
+schema_version: "1.0"
+manifest_kind: "A653_OB_PARTITION"
 
 partition:
   name: "PLUS-CAD-DISPLAY-A01"
   type: "ARINC653_PARTITION"
-  criticality: "DAL-C"
-  
+  dal: "C"            # Display-only viewer; adjust per FHA/SSA
+  uuid: "urn:uuid:TBD"
+
+a653:
+  major_frame_ms: 100          # Module major frame
+  window_ms: 15                # This partition's time window (15% of frame)
+  offset_ms: 0
+  preemptive: true
+  processes:
+    - name: "display_task"
+      type: "PERIODIC"
+      period_ms: 50
+      time_capacity_ms: 8
+      priority: 200
+      stack_kb: 64
+    - name: "hm_task"
+      type: "APERIODIC"
+      time_capacity_ms: 2
+      priority: 150
+      stack_kb: 32
+
 system:
   memory_kb: 8192
-  cpu_percent: 15
-  period_ms: 50
-  
+  time_source: "PTP"           # IEEE-1588 if available
+
 interfaces:
   arinc664:
     - vlink_id: "VL_CAD_GEOMETRY"
       direction: "RX"
       refresh_ms: 100
-    - vlink_id: "VL_DISPLAY_CMD" 
+      bag_ms: 4                # Bandwidth Allocation Gap
+      lmax_bytes: 1471
+      dest_end_system: "DISPLAY_MFD_1"
+    - vlink_id: "VL_DISPLAY_CMD"
       direction: "TX"
       refresh_ms: 50
-      
+      bag_ms: 4
+      lmax_bytes: 512
+      dest_end_system: "AVIONICS_BACKBONE"
+
   arinc429:
-    - label: "271"  # Vehicle attitude
-      direction: "RX"
-      rate_hz: 50
-    - label: "272"  # Position data
-      direction: "RX" 
-      rate_hz: 10
+    base: "octal"              # Labels are specified in OCTAL
+    ports:
+      - label: "271"           # 0o271 = 185 dec, Vehicle attitude
+        sdi: 0
+        direction: "RX"
+        rate_hz: 50
+      - label: "272"           # Position data
+        sdi: 0
+        direction: "RX"
+        rate_hz: 10
+
+ports:
+  sampling:
+    - name: "SAM_CAD_GEOM"
+      direction: "SOURCE"
+      msg_size_bytes: 2048
+      refresh_ms: 100
+    - name: "SAM_DISPLAY_CMD"
+      direction: "DESTINATION"
+      msg_size_bytes: 512
+      refresh_ms: 50
 
 cad_specific:
   geometry_formats: ["STEP_LITE", "STL_COMPRESSED"]
@@ -36,7 +77,18 @@ cad_specific:
 health_monitoring:
   watchdog_ms: 200
   built_in_test: true
-  
+  fault_tolerance: "DETECT_AND_ISOLATE"
+
+evidence:
+  sbom:
+    path: "../../sbom/partition-display-A01.spdx.json"
+    hash: "sha256:TBD"
+    format: "SPDX"
+  signatures:
+    - type: "cosign"
+      path: "../../signatures/partition-display-A01.cosign.sig"
+      keyid: "ampel360-ob-signing"
+
 utcs:
   canonical_hash: "TBD"
   provenance: "ASIT-PLUS-AAA-CAX-CAD-OV-0001"

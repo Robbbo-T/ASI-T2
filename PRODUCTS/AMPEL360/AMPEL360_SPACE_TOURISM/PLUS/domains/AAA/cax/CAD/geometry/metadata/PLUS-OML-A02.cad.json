@@ -4,31 +4,41 @@
   "vehicle": "AMPEL360_PLUS",
   "kind": "OML",
   "rev": "A02",
+  "status": "in-work",
   "description": "Outer mold line geometry for AMPEL360 PLUS space vehicle - windows and viewport integration",
   "exports": [
     {
       "path": "../exports/PLUS-OML-window-A02.step",
       "format": "STEP",
       "units": "mm",
-      "purpose": "CFD"
+      "purpose": "CFD",
+      "sha256": "TBD"
     },
     {
       "path": "../exports/PLUS-OML-window-A02.iges",
-      "format": "IGES", 
+      "format": "IGES",
       "units": "mm",
-      "purpose": "CAE"
+      "purpose": "CAE",
+      "sha256": "TBD"
     }
   ],
   "refs": {
-    "ata_practices": ["../../ata/ATA-20/S1000D/data_modules/descriptive/DMC-PLS1-A-20-10-00-00A-040A-D-EN-US.xml"],
-    "s1000d_dms": ["../../ata/ATA-57/S1000D/data_modules/descriptive/DMC-PLS1-A-57-11-00-00A-040A-D-EN-US.xml"]
+    "ata_practices": [
+      "../../../../ata/ATA-20/S1000D/data_modules/descriptive/DMC-PLS1-A-20-10-00-00A-040A-D-EN-US.xml"
+    ],
+    "s1000d_dms": [
+      "../../../../ata/ATA-57/S1000D/data_modules/descriptive/DMC-PLS1-A-57-11-00-00A-040A-D-EN-US.xml"
+    ]
   },
   "geometry": {
     "bounding_box": {
       "min": [-1200.0, -800.0, -300.0],
-      "max": [1200.0, 800.0, 300.0]
+      "max": [1200.0, 800.0, 300.0],
+      "units": "mm"
     },
     "coordinate_system": "AMPEL360_PLUS_MASTER",
+    "origin": [0.0, 0.0, 0.0],
+    "axes_definition": "X forward, Y right, Z up (aircraft coordinates)",
     "material_properties": {
       "primary_structure": "Ti-6Al-4V",
       "thermal_barrier": "AFRSI"

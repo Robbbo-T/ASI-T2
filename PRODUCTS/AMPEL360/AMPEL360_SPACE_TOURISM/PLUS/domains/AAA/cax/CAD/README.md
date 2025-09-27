@@ -61,14 +61,14 @@ CAD/
 │   └── materials/            # RCC/CMC/ABLATOR specs (refs only)
 ├── interfaces/               # Seats, restraints, hatches, docking, landing gear
 ├── mdo/                      # MDO configs (CFD/FEA coupling), design spaces
-├── qox\_bridge/               # QUBO/BQM encodings, QAIM-2 configs
+├── qox_bridge/               # QUBO/BQM encodings, QAIM-2 configs
 │   └── problems/             # TPS tiling, joint placement, layout selection
 ├── pax/                      # Packaging (OB/OFF), schemas, scripts (see §7)
 │   ├── OB/manifests/
 │   ├── OFF/oci/
 │   ├── schemas/
 │   └── scripts/
-├── schemas/                  # JSON schemas (cad\_manifest.schema.json, qox\_problem.schema.json)
+├── schemas/                  # JSON schemas (cad_manifest.schema.json, qox_problem.schema.json)
 ├── scripts/                  # Validators (naming, links, schema validation)
 └── README.md                 # (this file)
 
@@ -145,7 +145,7 @@ pax/
 ├── OB/manifests/partition.example.yaml     # If any OB visualisation/sim tools ship to EFB/LRU
 ├── OFF/oci/cad-ci.exporter.yaml            # OCI image descriptors/attestations
 ├── schemas/package.schema.json             # For OB/OFF manifests
-└── scripts/validate\_pax.py                 # CI validator
+└── scripts/validate_pax.py                 # CI validator
 
 ```
 
