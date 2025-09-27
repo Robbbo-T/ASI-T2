@@ -1,0 +1,30 @@
+{
+  "test_id": "LCC-FAIL-PAIR-003",
+  "description": "Paired failure: SP1_L stuck + SP1_R hydraulic pressure loss",
+  "mode": "APPROACH",
+  "failure": [
+    {
+      "type": "stuck",
+      "surface": "SP1_L",
+      "angle_deg": -5.0,
+      "time_s": 8.0
+    },
+    {
+      "type": "hyd_press_low",
+      "surface": "SP1_R",
+      "pressure_pct": 35.0,
+      "time_s": 12.0
+    }
+  ],
+  "acceptance_criteria": {
+    "stability_margin_min": 4.0,
+    "pio_index_max": 0.6,
+    "allocator_recovery_cycles_max": 2,
+    "approach_path_deviation_max_ft": 50.0
+  },
+  "expected_response": {
+    "fdir_action": "AP_RECONFIG",
+    "alert": "LCC-MULTI-SURF-FAIL",
+    "recovery_time_max_s": 0.8
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "test_id": "LCC-FAIL-SP2L-001",
+  "description": "SP2_L surface stuck at +8 degrees during AP_ALT_HOLD mode",
+  "mode": "AP_ALT_HOLD",
+  "failure": {
+    "type": "stuck",
+    "surface": "SP2_L",
+    "angle_deg": 8.0,
+    "time_s": 10.0
+  },
+  "acceptance_criteria": {
+    "stability_margin_min": 6.0,
+    "pio_index_max": 0.5,
+    "allocator_recovery_cycles_max": 2,
+    "cross_coupling_max": 0.15
+  },
+  "expected_response": {
+    "fdir_action": "SURF_RECONF",
+    "alert": "LCC-SURF-STUCK",
+    "recovery_time_max_s": 0.4
+  }
+}

@@ -1,0 +1,11 @@
+role: advisory
+topics_in: [wx/nowcast, atc/slots, winds/aloft, company/efficiency]
+topics_out: [lcc/plan/advice]
+accept_predicates:
+  - "Δfuel_pct <= 3.0 && min_separation_nm >= 5 && terrain_clear == true"
+  - "time_to_conflict >= 600"   # seconds
+max_age_s: 20
+fallback: "retain current plan"
+utcs: 
+  require_signature: true
+  record_backend: true

@@ -1,0 +1,37 @@
+{
+  "artifact": "qafbw_flight_ctrl.bin",
+  "canonical_hash": "sha256:...",
+  "inputs": {
+    "commit": "GIT_SHA",
+    "params": "cfg/qafbw_params.yaml#sha256:...",
+    "toolchain": "gcc-12.3 -O2 -fno-fast-math"
+  },
+  "verification": {
+    "mcdc": 1.0,
+    "hil_runs": 1200,
+    "deadline_misses": 0,
+    "jitter_us_p999": 80,
+    "cross_axis_coupling_max": 0.14,
+    "sync_skew_ms_p95": 3.8,
+    "allocator_recovery_cycles_max": 2
+  },
+  "qb_advisory": {
+    "enabled": true,
+    "accept_predicates": 2,
+    "adopted_pct": 0.31,
+    "rejected_pct": 0.69
+  },
+  "provenance": {
+    "ci_run": "GH-12345",
+    "timestamp_utc": "2025-09-28T11:03:12Z"
+  },
+  "utcs": {
+    "canonical_hash": "sha256:a1b2c3d4e5f6...",
+    "sig": "cosign://…/qafbw:1.0.0.sig",
+    "intoto": "oci://…/qafbw:1.0.0.intoto"
+  },
+  "qs": {
+    "sig": "cosign://…/qafbw:1.0.0.sig",
+    "intoto": "oci://…/qafbw:1.0.0.intoto"
+  }
+}

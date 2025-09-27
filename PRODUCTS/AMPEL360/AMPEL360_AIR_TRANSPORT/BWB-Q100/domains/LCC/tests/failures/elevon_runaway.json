@@ -1,0 +1,22 @@
+{
+  "test_id": "LCC-FAIL-EL2L-002",
+  "description": "EL2_L elevon runaway during NAV mode approach",
+  "mode": "NAV",
+  "failure": {
+    "type": "runaway",
+    "surface": "EL2_L",
+    "rate_deg_per_s": -15.0,
+    "time_s": 5.0
+  },
+  "acceptance_criteria": {
+    "stability_margin_min": 6.0,
+    "pio_index_max": 0.5,
+    "allocator_recovery_cycles_max": 2,
+    "runway_tracking_error_max_m": 3.0
+  },
+  "expected_response": {
+    "fdir_action": "SURF_ISOLATE",
+    "alert": "LCC-ELEVON-RUNAWAY",
+    "recovery_time_max_s": 0.3
+  }
+}
