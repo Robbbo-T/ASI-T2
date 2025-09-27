@@ -22,7 +22,11 @@ import glob
 from pathlib import Path
 from typing import Any, Dict, List, Tuple, Optional
 
-import yaml
+try:
+    import yaml
+except ImportError:
+    print("❌ ERROR: Missing required package 'PyYAML'. Please install it with 'pip install pyyaml'.")
+    sys.exit(1)
 from jsonschema import Draft202012Validator
 
 # -----------------------------------------------------------------------------
