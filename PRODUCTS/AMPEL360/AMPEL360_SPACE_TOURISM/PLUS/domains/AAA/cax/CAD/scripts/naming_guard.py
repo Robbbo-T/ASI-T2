@@ -24,7 +24,29 @@ from typing import List, Dict, Tuple, Pattern
 NAMING_PATTERNS = {
     # CAD export files
     'cad_exports': {
-        'pattern': re.compile(r'^PLUS-[A-Z0-9]+-[a-zA-Z0-9_]+-[A-Z][0-9]{2}\.(step|iges|x_t|stl|parasolid)$', re.IGNORECASE),
+        # Regex pattern components for CAD export files:
+        #   ^PLUS-           : Start of string, literal 'PLUS-'
+        #   [A-Z0-9]+        : <MODULE> (uppercase letters and digits, one or more)
+        #   -                : Literal dash
+        #   [a-zA-Z0-9_]+    : <FEATURE> (letters, digits, or underscore, one or more)
+        #   -                : Literal dash
+        #   [A-Z][0-9]{2}    : <REV> (uppercase letter followed by two digits)
+        #   \.               : Literal dot
+        #   (step|iges|x_t|stl|parasolid) : Allowed file extensions
+        #   $                : End of string
+        'pattern': re.compile(
+            r'^'                       # Start of string
+            r'PLUS-'                   # Literal 'PLUS-'
+            r'(?P<module>[A-Z0-9]+)'   # <MODULE>
+            r'-'
+            r'(?P<feature>[a-zA-Z0-9_]+)' # <FEATURE>
+            r'-'
+            r'(?P<rev>[A-Z][0-9]{2})'  # <REV>
+            r'\.'
+            r'(?P<ext>step|iges|x_t|stl|parasolid)' # Extension
+            r'$',
+            re.IGNORECASE
+        ),
         'description': 'CAD exports should follow: PLUS-<MODULE>-<FEATURE>-<REV>.<ext>',
         'examples': ['PLUS-OML-window-A02.step', 'PLUS-TPS-tiling-v05.iges'],
         'directories': ['geometry/exports', 'structure/exports', 'tps/exports']
