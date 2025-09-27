@@ -1,12 +1,17 @@
-# Data Modules Directory
+# Data Modules — ATA-57
 
-S1000D Data Modules for ATA-57 Wings system documentation.
+Buckets by information code family:
 
-## Organization
+- **Descriptive** (`040`, `034`, `011`, `018`, `052`, `310`, `345`, `350`) → [`descriptive/`](./descriptive/)
+- **Procedural** (`500`, `600`, `700`) → [`procedural/`](./procedural/)
+- **Fault Isolation** (`420`) → [`fault/`](./fault/)
+- **IPD / Parts** (`900`, `910`) → [`ipd/`](./ipd/)
 
-- **descriptive/**: System descriptions, specifications, and technical data
-- **procedural/**: Maintenance, operation, and assembly procedures  
-- **fault/**: Fault isolation, troubleshooting, and reporting procedures
+## Examples
+- 57-10 General Description → [`descriptive/DMC-BWQ1-A-57-10-00-00-00A-040A-D-EN-US.xml`](./descriptive/DMC-BWQ1-A-57-10-00-00-00A-040A-D-EN-US.xml)
+- Aileron Removal → [`procedural/DMC-BWQ1-A-57-30-10-00-00A-500A-D-EN-US.xml`](./procedural/DMC-BWQ1-A-57-30-10-00-00A-500A-D-EN-US.xml)
+- Spoiler FI → [`fault/DMC-BWQ1-A-57-40-30-00-00A-420A-D-EN-US.xml`](./fault/DMC-BWQ1-A-57-40-30-00-00A-420A-D-EN-US.xml)
+- Aileron IPD → [`ipd/DMC-BWQ1-A-57-30-10-00-00A-900A-D-EN-US.xml`](./ipd/DMC-BWQ1-A-57-30-10-00-00A-900A-D-EN-US.xml)
 
 ## Data Module Types
 
@@ -26,3 +31,10 @@ Fault isolation and troubleshooting information including:
 - Isolation procedures
 - Corrective actions
 - Parts information
+
+### IPD / Parts Lists
+Illustrated Parts Data and Parts Lists:
+- Component diagrams and illustrations
+- Parts identification and specifications
+- Part number cross-references
+- Assembly relationships
