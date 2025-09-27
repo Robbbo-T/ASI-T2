@@ -69,7 +69,7 @@ ASI-T2/PRODUCTS/AMPEL360/
 │  ├─ README.md                                 # Air transport hub
 │  └─ BWB-Q100/                                 # Product instance (baseline)
 │     ├─ domains/AAA/                          # Engineering domain AAA
-│     │  ├─ cax/CAD/wing\_baseline\_model/...  # Classical CAD models
+│     │  ├─ cax/CAD/wing_baseline_model/...    # Classical CAD models
 │     │  ├─ qox/ ...                           # Quantum optimization
 │     │  └─ pax/                               # Packaging & Applications
 │     │     ├─ OB/                             # On-Board (ARINC 653/IMA, A661, A664)
