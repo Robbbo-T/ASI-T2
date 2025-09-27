@@ -18,6 +18,10 @@ Provides automation for:
 - **Deployment scripts** - Container orchestration and service deployment automation
 - **Utility scripts** - Package management and maintenance automation
 
+## Files
+
+- `validate_pax.py` - Python script for PAx package validation using JSON schema
+
 ## Automation Integration
 
 Scripts support:

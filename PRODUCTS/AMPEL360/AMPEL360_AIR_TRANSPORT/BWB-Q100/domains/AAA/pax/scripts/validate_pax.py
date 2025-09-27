@@ -4,226 +4,262 @@ PAx manifest validator (BWB-Q100 / AAA)
 
 - Validates JSON **or** YAML manifests against package.schema.json
 - Enforces UTCS/QS evidence fields and patterns
-- Verifies referenced files exist (artifact, SBOM, signatures)
+- Verifies referenced files exist (SBOM, signatures)
 - Emits clear, CI-friendly output and non-zero exit on failure
 
 Usage:
-  python validate_pax.py <manifest_file1> [<manifest_file2>...]
+  python validate_pax.py <manifest1> [<manifest2> ...]
+  python validate_pax.py --schema <schema_file> --root <directory>
 """
+
+from __future__ import annotations
 
 import json
 import os
 import sys
-import yaml
-from pathlib import Path
-from jsonschema import Draft202012Validator, ValidationError
 import re
 import glob
+from pathlib import Path
+from typing import Any, Dict, List, Tuple, Optional
 
-# --- Configuration ---
-SCRIPT_DIR = Path(__file__).parent
-SCHEMA_PATH = SCRIPT_DIR / "../schemas/package.schema.json"
+import yaml
+from jsonschema import Draft202012Validator
 
-# Mandatory QS/UTCS evidence fields (nested structure)
+# -----------------------------------------------------------------------------
+# Configuration
+# -----------------------------------------------------------------------------
+SCRIPT_DIR = Path(__file__).resolve().parent
+DEFAULT_SCHEMA_PATH = (SCRIPT_DIR / "../schemas/package.schema.json").resolve()
+
+# Mandatory UTCS/QS evidence fields (dot-paths inside the manifest)
 MANDATORY_EVIDENCE_FIELDS = [
-    'evidence.canonical_hash',
-    'evidence.sbom.path',
-    'evidence.sbom.hash',
-    'evidence.signatures',
-    'evidence.security_policy_id'
+    "evidence.canonical_hash",
+    "evidence.sbom.path",
+    "evidence.sbom.hash",
+    "evidence.signatures",           # list of {path, type, hash?}
+    "evidence.security_policy_id",
 ]
 
-# Pattern validation
-HASH_PATTERN = re.compile(r'^sha256:[a-f0-9]{64}$')
+# Simple pattern checks (extend as needed)
+SHA256_PATTERN = re.compile(r"^sha256:[a-f0-9]{64}$", re.IGNORECASE)
 
-def load_schema():
-    """Load and return the PAx package schema."""
-    try:
-        with open(SCHEMA_PATH, 'r') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"Error: Schema file not found at {SCHEMA_PATH}")
-        sys.exit(1)
-    except json.JSONDecodeError as e:
-        print(f"Error: Invalid JSON in schema file: {e}")
-        sys.exit(1)
 
-def load_manifest(file_path):
-    """Load manifest from JSON or YAML file."""
-    path = Path(file_path)
+# -----------------------------------------------------------------------------
+# IO helpers
+# -----------------------------------------------------------------------------
+def load_schema(path: Path) -> Dict[str, Any]:
     if not path.exists():
-        raise FileNotFoundError(f"Manifest file not found: {file_path}")
-    
+        print(f"Error: Schema file not found at {path}")
+        sys.exit(1)
     try:
-        with open(path, 'r') as f:
-            if path.suffix.lower() in ['.yaml', '.yml']:
-                # Handle YAML documents with UTCS frontmatter
-                docs = list(yaml.safe_load_all(f))
-                if len(docs) == 2:
-                    # First doc is UTCS header, second is the package data
-                    utcs_header, package_data = docs
-                    return {"utcs_header": utcs_header, **package_data}
-                elif len(docs) == 1:
-                    return docs[0]
-                else:
-                    return {}
-            else:
-                return json.load(f)
-    except (json.JSONDecodeError, yaml.YAMLError) as e:
-        raise ValueError(f"Error parsing {file_path}: {e}")
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        print(f"Error: Invalid JSON in schema file {path}: {e}")
+        sys.exit(1)
 
-def get_nested_value(data, path):
-    """Get nested value using dot notation (e.g., 'evidence.sbom.path')."""
-    keys = path.split('.')
-    value = data
-    for key in keys:
-        if isinstance(value, dict) and key in value:
-            value = value[key]
+
+def load_manifest(path: Path) -> Dict[str, Any]:
+    if not path.exists():
+        raise FileNotFoundError(f"Manifest file not found: {path}")
+
+    try:
+        text = path.read_text(encoding="utf-8")
+        if path.suffix.lower() in [".yaml", ".yml"]:
+            # Support optional UTCS YAML front matter: two YAML docs in one file
+            docs = list(yaml.safe_load_all(text))
+            if len(docs) == 2 and isinstance(docs[0], dict) and isinstance(docs[1], dict):
+                utcs_header, package_data = docs
+                # Keep header under a dedicated key for provenance (doesn't affect schema unless defined)
+                return {"utcs_header": utcs_header, **package_data}
+            elif len(docs) == 1:
+                return docs[0] or {}
+            else:
+                # Multi-doc YAML not in expected 2-part form; merge best-effort
+                merged: Dict[str, Any] = {}
+                for d in docs:
+                    if isinstance(d, dict):
+                        merged.update(d)
+                return merged
+        else:
+            return json.loads(text)
+    except (yaml.YAMLError, json.JSONDecodeError) as e:
+        raise ValueError(f"Parse error in {path}: {e}")
+
+
+# -----------------------------------------------------------------------------
+# Utilities
+# -----------------------------------------------------------------------------
+def get_nested_value(data: Dict[str, Any], dot_path: str) -> Any:
+    cur: Any = data
+    for key in dot_path.split("."):
+        if isinstance(cur, dict) and key in cur:
+            cur = cur[key]
         else:
             return None
-    return value
+    return cur
 
-def validate_schema(manifest_data, schema):
-    """Validate manifest against JSON schema, collecting all errors."""
+
+def validate_schema(manifest: Dict[str, Any], schema: Dict[str, Any]) -> Tuple[bool, str]:
     validator = Draft202012Validator(schema)
     errors = []
-    
-    for error in validator.iter_errors(manifest_data):
-        path = ".".join([str(x) for x in error.path])
-        errors.append(f"{path}: {error.message}")
-    
+    for err in validator.iter_errors(manifest):
+        path = ".".join(str(p) for p in err.path)
+        errors.append(f"{path or '<root>'}: {err.message}")
     if errors:
         return False, "Schema validation errors:\n  " + "\n  ".join(errors)
-    else:
-        return True, "Schema validation passed"
+    return True, "Schema validation passed."
 
-def validate_evidence_fields(manifest_data):
-    """Check for mandatory UTCS/QS evidence fields."""
-    missing_fields = []
-    
-    for field_path in MANDATORY_EVIDENCE_FIELDS:
-        value = get_nested_value(manifest_data, field_path)
-        if value is None:
-            missing_fields.append(field_path)
-    
-    if missing_fields:
-        return False, f"Missing mandatory evidence fields: {', '.join(missing_fields)}"
-    else:
-        return True, "All mandatory evidence fields present"
 
-def validate_file_references(manifest_data, manifest_path):
-    """Verify that referenced files exist."""
-    manifest_dir = Path(manifest_path).parent
-    missing_files = []
-    
-    # Check SBOM file reference
-    sbom_path = get_nested_value(manifest_data, 'evidence.sbom.path')
-    if sbom_path:
-        sbom_file = manifest_dir / sbom_path
-        if not sbom_file.exists():
-            missing_files.append(f"SBOM file: {sbom_path}")
-    
-    # Check signature files
-    signatures = get_nested_value(manifest_data, 'evidence.signatures')
-    if signatures and isinstance(signatures, list):
-        for sig in signatures:
-            if isinstance(sig, dict) and 'path' in sig:
-                sig_file = manifest_dir / sig['path']
-                if not sig_file.exists():
-                    missing_files.append(f"Signature file: {sig['path']}")
-    
-    if missing_files:
-        return False, f"Missing referenced files: {', '.join(missing_files)}"
-    else:
-        return True, "All referenced files exist"
+def validate_evidence_present(manifest: Dict[str, Any]) -> Tuple[bool, str]:
+    missing: List[str] = []
+    for field in MANDATORY_EVIDENCE_FIELDS:
+        if get_nested_value(manifest, field) in (None, "", []):
+            missing.append(field)
+    if missing:
+        return False, f"Missing mandatory evidence fields: {', '.join(missing)}"
+    return True, "All mandatory evidence fields present."
 
-def validate_pax_manifest(manifest_path, schema):
-    """Perform complete validation on a single manifest."""
+
+def validate_evidence_patterns(manifest: Dict[str, Any]) -> Tuple[bool, str]:
+    problems: List[str] = []
+
+    # canonical hash format
+    ch = get_nested_value(manifest, "evidence.canonical_hash")
+    if ch and not SHA256_PATTERN.match(str(ch)):
+        problems.append("evidence.canonical_hash must match sha256:<64-hex>")
+
+    # sbom hash format
+    sbom_hash = get_nested_value(manifest, "evidence.sbom.hash")
+    if sbom_hash and not SHA256_PATTERN.match(str(sbom_hash)):
+        problems.append("evidence.sbom.hash must match sha256:<64-hex>")
+
+    # signatures present and optional hash formats
+    sigs = get_nested_value(manifest, "evidence.signatures")
+    if isinstance(sigs, list):
+        for i, sig in enumerate(sigs):
+            if not isinstance(sig, dict) or "path" not in sig:
+                problems.append(f"evidence.signatures[{i}] must be an object with 'path'")
+            h = sig.get("hash")
+            if h and not SHA256_PATTERN.match(str(h)):
+                problems.append(f"evidence.signatures[{i}].hash must match sha256:<64-hex>")
+
+    if problems:
+        return False, "Evidence pattern errors:\n  " + "\n  ".join(problems)
+    return True, "Evidence patterns OK."
+
+
+def validate_file_references(manifest: Dict[str, Any], manifest_path: Path) -> Tuple[bool, str]:
+    base = manifest_path.parent
+    missing: List[str] = []
+
+    sbom_rel = get_nested_value(manifest, "evidence.sbom.path")
+    if sbom_rel:
+        if not (base / sbom_rel).exists():
+            missing.append(f"SBOM file missing: {sbom_rel}")
+
+    sigs = get_nested_value(manifest, "evidence.signatures")
+    if isinstance(sigs, list):
+        for i, sig in enumerate(sigs):
+            if isinstance(sig, dict) and "path" in sig:
+                if not (base / sig["path"]).exists():
+                    missing.append(f"Signature file missing: {sig['path']}")
+
+    if missing:
+        return False, "Missing referenced files:\n  " + "\n  ".join(missing)
+    return True, "All referenced files exist."
+
+
+def validate_one_manifest(manifest_path: Path, schema: Dict[str, Any]) -> bool:
     print(f"\n--- Validating {manifest_path} ---")
-    
     try:
         manifest = load_manifest(manifest_path)
-    except (FileNotFoundError, ValueError) as e:
+    except Exception as e:
         print(f"Load Error: FAIL - {e}")
         return False
-    
-    all_passed = True
-    
-    # 1. Schema validation
-    schema_ok, schema_msg = validate_schema(manifest, schema)
-    print(f"Schema Check: {'PASS' if schema_ok else 'FAIL'}")
-    if not schema_ok:
-        print(f"  {schema_msg}")
-        all_passed = False
-    
-    # 2. Evidence fields validation (only if schema passed)
-    if schema_ok:
-        evidence_ok, evidence_msg = validate_evidence_fields(manifest)
-        print(f"Evidence Check: {'PASS' if evidence_ok else 'FAIL'}")
-        if not evidence_ok:
-            print(f"  {evidence_msg}")
-            all_passed = False
-        
-        # 3. File reference validation
-        file_ok, file_msg = validate_file_references(manifest, manifest_path)
-        print(f"File Reference Check: {'PASS' if file_ok else 'FAIL'}")
-        if not file_ok:
-            print(f"  {file_msg}")
-            all_passed = False
-    
-    return all_passed
 
-def main():
-    """Main entry point."""
+    ok = True
+
+    s_ok, s_msg = validate_schema(manifest, schema)
+    print(f"Schema Check:   {'PASS' if s_ok else 'FAIL'}")
+    if not s_ok:
+        print("  " + s_msg.replace("\n", "\n  "))
+        ok = False
+
+    if s_ok:
+        p_ok, p_msg = validate_evidence_present(manifest)
+        print(f"Evidence Check: {'PASS' if p_ok else 'FAIL'}")
+        if not p_ok:
+            print("  " + p_msg)
+            ok = False
+
+        r_ok, r_msg = validate_evidence_patterns(manifest)
+        print(f"Pattern Check:  {'PASS' if r_ok else 'FAIL'}")
+        if not r_ok:
+            print("  " + r_msg.replace("\n", "\n  "))
+            ok = False
+
+        f_ok, f_msg = validate_file_references(manifest, manifest_path)
+        print(f"Files Check:    {'PASS' if f_ok else 'FAIL'}")
+        if not f_ok:
+            print("  " + f_msg.replace("\n", "\n  "))
+            ok = False
+
+    return ok
+
+
+# -----------------------------------------------------------------------------
+# CLI
+# -----------------------------------------------------------------------------
+def main() -> None:
     import argparse
-    import glob
-    
-    # Check if we have the old-style arguments (--schema and --root)
-    if len(sys.argv) > 2 and sys.argv[1] == '--schema':
-        parser = argparse.ArgumentParser()
-        parser.add_argument("--schema", required=True, help="Path to schema file")
-        parser.add_argument("--root", required=True, help="Root directory to search for YAML files")
+
+    # Two modes:
+    # 1) Direct file list
+    # 2) Sweep mode: --schema <schema> --root <dir>
+    if len(sys.argv) > 2 and sys.argv[1] == "--schema":
+        parser = argparse.ArgumentParser(description="PAx manifest validator (sweep mode)")
+        parser.add_argument("--schema", required=True, help="Path to JSON schema file")
+        parser.add_argument("--root", required=True, help="Root directory to search for manifests")
         args = parser.parse_args()
-        
-        print(f"Loading PAx schema from: {args.schema}")
-        schema = load_schema_from_path(args.schema)
-        
-        # Find all YAML files recursively in the root directory
-        yaml_files = []
-        for pattern in ['**/*.yaml', '**/*.yml']:
-            yaml_files.extend(glob.glob(os.path.join(args.root, pattern), recursive=True))
-        
+
+        schema_path = Path(args.schema).resolve()
+        schema = load_schema(schema_path)
+
+        # Accept both YAML and JSON; skip obvious non-manifests by quick heuristic
+        patterns = ["**/*.yaml", "**/*.yml", "**/*.json"]
+        manifest_files: List[Path] = []
+        for pat in patterns:
+            manifest_files.extend(Path(args.root).rglob(pat))
+
         all_passed = True
-        for yaml_file in yaml_files:
+        for mf in manifest_files:
             try:
-                # Skip README files and other non-manifest files
-                manifest = load_manifest(yaml_file)
-                if not isinstance(manifest, dict) or "package" not in manifest:
-                    continue  # Skip non-manifest files
-                
-                if not validate_pax_manifest(yaml_file, schema):
-                    all_passed = False
-            except Exception as e:
-                print(f"Skipping {yaml_file}: {e}")
+                # Heuristic: parse and require that it's a dict
+                mf_data = load_manifest(mf)
+                if not isinstance(mf_data, dict) or not mf_data:
+                    continue
+            except Exception:
+                # Skip files that aren't valid manifests
                 continue
-    else:
-        # New-style arguments (direct file list)
-        manifest_paths = sys.argv[1:]
-        
-        if not manifest_paths:
-            print("Usage: python validate_pax.py <manifest_file1> [<manifest_file2>...]")
-            print("   or: python validate_pax.py --schema <schema_file> --root <root_directory>")
-            print("Supports both JSON and YAML manifest files.")
-            sys.exit(1)
-        
-        print(f"Loading PAx schema from: {SCHEMA_PATH}")
-        schema = load_schema()
-        
-        all_passed = True
-        for path in manifest_paths:
-            if not validate_pax_manifest(path, schema):
+
+            if not validate_one_manifest(mf, schema):
                 all_passed = False
-    
+
+    else:
+        # Direct file list mode
+        manifest_args = sys.argv[1:]
+        if not manifest_args:
+            print("Usage:")
+            print("  python validate_pax.py <manifest1> [<manifest2> ...]")
+            print("  python validate_pax.py --schema <schema_file> --root <directory>")
+            sys.exit(1)
+
+        schema = load_schema(DEFAULT_SCHEMA_PATH)
+        all_passed = True
+        for m in manifest_args:
+            if not validate_one_manifest(Path(m).resolve(), schema):
+                all_passed = False
+
     if all_passed:
         print("\n✅ SUCCESS: All PAx manifests validated successfully")
         sys.exit(0)
@@ -231,17 +267,6 @@ def main():
         print("\n❌ FAILURE: One or more PAx manifests failed validation")
         sys.exit(1)
 
-def load_schema_from_path(schema_path):
-    """Load and return the PAx package schema from a specific path."""
-    try:
-        with open(schema_path, 'r') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"Error: Schema file not found at {schema_path}")
-        sys.exit(1)
-    except json.JSONDecodeError as e:
-        print(f"Error: Invalid JSON in schema file: {e}")
-        sys.exit(1)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

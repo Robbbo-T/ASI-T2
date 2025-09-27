@@ -153,6 +153,7 @@ All products follow the unified **Domain → Process → ATA** framework:
 - **Domains**: Engineering specializations (AAA, PPP, IIS, etc.)
 - **CAx**: Classical engineering processes (CAD, CAE, CFD, etc.)
 - **QOx**: Quantum-optimized counterparts using QAIM-2
+- **PAx**: Packaging & Applications (On-Board/Off-Board deployment)
 - **ATA**: Aerospace technical documentation standards
 
 **Examples**
@@ -162,6 +163,77 @@ All products follow the unified **Domain → Process → ATA** framework:
 - `PRODUCTS/MISCELLANEOUS/QMK/`
 
 Core principles: **TFA** (Threading Final Assembly), **UIX** (Universal Injection), **MAL-EEM** (Ethics & Empathy), **QS/UTCS** (Quantum Seals)
+
+---
+## PAx Structure — Packaging & Applications
+
+The **PAx** framework transforms CAx/QOx outputs into deployable packages with SBOM, signatures, and UTCS/QS evidence.
+
+### Structure Overview
+
+Based on current repository implementations:
+
+**Complete PAx Structure (AAA domain example):**
+```
+pax/
+├── OB/                    # On-Board (Aviation Systems)
+│   └── manifests/         # ARINC 653/IMA partition manifests, A661 CDS
+├── OFF/                  # Off-Board (OCI/Edge/Cloud)
+│   └── oci/              # Container image descriptors and attestations
+├── schemas/              # JSON schemas for PAx manifests
+└── scripts/              # PAx validators and linters
+```
+
+**Partial PAx Structure (DDD domain example):**
+```
+pax/
+└── OB/                   # On-Board implementation only
+```
+
+### Components
+
+#### On-Board (OB)
+- **ARINC 653/IMA** partitions with CPU/memory limits and health monitoring
+- **A661 CDS** interfaces and **A664/AFDX** network configurations  
+- **A429** port definitions for legacy avionics integration
+- **Real-time** systems with deterministic behavior requirements
+
+#### Off-Board (OFF)
+- **OCI containers** for edge, cloud, and ground systems
+- **EFB** (Electronic Flight Bag), **MRO** (Maintenance, Repair, Operations)
+- **Digital Twin** and **QAUDIT** quality assurance services
+- **Kubernetes/Docker** orchestration with security policies
+
+### Implementation Examples
+
+PAx structure is currently implemented in BWB-Q100 domains:
+
+- **[BWB-Q100/AAA/pax/](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/)** — Aerodynamics & Airframes packaging (complete: OB/, OFF/, schemas/, scripts/)
+- **[BWB-Q100/DDD/pax/](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/DDD/pax/)** — Digital & Data Defense packaging (partial: OB/ only)
+
+#### Current Directory Contents
+
+**AAA/pax/** (Complete implementation):
+```
+pax/
+├── OB/manifests/         # partition.example.yaml
+├── OFF/oci/             # ground.oml.exporter.yaml
+├── schemas/             # package.schema.json
+└── scripts/             # validate_pax.py
+```
+
+**DDD/pax/** (Minimal implementation):
+```
+pax/
+└── OB/                  # Basic on-board structure
+```
+
+### Quality Standards
+
+- **SBOM mandatory**: SPDX/CycloneDX for all OB/OFF components
+- **Digital signatures**: sigstore/cosign, in-toto attestations, SLSA-L3 compliance
+- **UTCS traceability**: canonical_hash and QS integration in all manifests
+- **Security principles**: least privilege, readonly root filesystems, non-root execution
 
 ---
 ## Context → Fields & Products Map

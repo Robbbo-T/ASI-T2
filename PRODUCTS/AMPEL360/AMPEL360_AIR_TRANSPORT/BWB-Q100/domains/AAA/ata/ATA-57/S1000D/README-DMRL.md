@@ -1,136 +1,254 @@
-# Data Module Requirements List (DMRL) for ATA-57 Wings
+---
+id: ASIT-PLUS-BWQ1-AAA-ATA57-S1000D-DMRL-OV-0001
+rev: 0
+project: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100
+artifact: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/README-DMRL.md
+llc: SYSTEMS
+title: "DMRL — ATA-57 Wings (BWB-Q100, S1000D Issue 6.0)"
+configuration: conf_000_baseline
+classification: INTERNAL–EVIDENCE-REQUIRED
+version: "0.1.0"
+release_date: 2025-01-21
+maintainer: "ASI-T Architecture Team"
+licenses:
+  docs: "CC-BY-4.0"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: MAL-EEM
+utcs_mi: v5.0
+canonical_hash: "TBD"
+provenance:
+  policy_hash: "sha256:TBD"
+  model_sha: "sha256:TBD"
+  data_manifest_hash: "sha256:TBD"
+  operator_id: "UTCS:OP:copilot-gen"
+---
 
-## Overview
+# Data Module Requirements List (DMRL) — ATA-57 Wings
 
-The Data Module Requirements List (DMRL) `DML-BWQ1-ATA57-00.xml` defines all required S1000D data modules for the BWB-Q100 ATA-57 Wings system. This comprehensive requirements list ensures complete technical documentation coverage across all wing subsystems.
+**S1000D master list:** [`DML-BWQ1-ATA57-00.xml`](./DML-BWQ1-ATA57-00.xml)  
+**ATA-57 landing:** [`../README.md`](../README.md)  
+**AAA domain:** [`../../../`](../../../)  
 
-## Purpose
-
-The DMRL serves as:
-- **Requirements traceability**: Complete list of all data modules needed for ATA-57
-- **Project planning**: Documentation scope and effort estimation
-- **Validation reference**: Ensures no missing documentation components
-- **S1000D compliance**: Formal requirements definition per S1000D Issue 6.0
-
-## Coverage Summary
-
-The DMRL specifies **55 data modules** across these subsystems:
-
-### 57-10 Wing Structure (9 modules)
-- General description and maintenance planning
-- Wing box primary structure
-- Skins, stringers, spars, and ribs
-- Wing/centerbody blended integration
-- Equipment attachment fittings
-- BWB transition fairings
-
-### 57-20 Wing Fuel System Interfaces (11 modules)
-- General description and H₂ fuel safety
-- Integral tank integration
-- Fuel line routing and management
-- Ventilation and inerting systems
-- H₂ tank structural interfaces
-
-### 57-30 Wing Control Surfaces (10 modules)
-- General control surface description
-- Ailerons (removal, installation, parts data)
-- Spoilers and speedbrakes
-- Trailing-edge actuation systems
-- Load alleviation systems
-
-### 57-40 High-Lift Systems (9 modules)
-- General high-lift system description
-- Slats (removal and installation)
-- Flaps (removal, installation, parts data)
-- Actuation and drive systems
-- Control and indication systems
-
-### 57-50 Wing Equipment Integration (10 modules)
-- General equipment integration
-- Wing-mounted antennas and sensors
-- Navigation and communication integration
-- Wing lighting systems
-- Ice detection and protection
-- Smart/quantum wing features
-
-### Additional Modules (18 modules)
-- Fault isolation procedures for multiple subsystems
-- Illustrated parts data and parts lists
-- Business rules (BREX)
-- Cross-ATA references
-
-## Information Code Usage
-
-The DMRL uses S1000D Issue 6.0 information codes:
-
-- **040**: General descriptions
-- **034**: Technical data (physical breakdowns)
-- **018**: Warnings and cautions
-- **011**: Safety summaries
-- **100**: Scheduled maintenance
-- **052**: Routing and location diagrams
-- **310**: Visual inspections
-- **345**: System and structural tests
-- **350**: Functional checks
-- **420**: Fault isolation
-- **500**: Removal procedures
-- **600**: Servicing procedures
-- **700**: Installation and rigging
-- **900**: Illustrated parts data
-- **910**: Parts lists
-
-## File Structure
-
-```xml
-<dmrl>
-  <identAndStatusSection>
-    <dmrlAddress>
-      <dmrlIdent dmrlCode="DML-BWQ1-ATA57-00" ... />
-      <issueInfo issueNumber="001" inWork="00"/>
-      <dmrlTitle>DMRL — ATA-57 Wings (BWB-H2 Q100, conf_000_baseline)</dmrlTitle>
-    </dmrlAddress>
-  </identAndStatusSection>
-  
-  <content>
-    <!-- 67 dmRequirement elements, each specifying -->
-    <dmRequirement>
-      <dmRefIdent>
-        <dmCode modelIdentCode="BWQ1" systemCode="57" ... />
-        <language languageIsoCode="en" countryIsoCode="US"/>
-      </dmRefIdent>
-      <reqComment>Human-readable requirement description</reqComment>
-    </dmRequirement>
-    ...
-  </content>
-</dmrl>
-```
-
-## Validation
-
-The DMRL validates against the `dmrl.xsd` schema which ensures:
-- Proper S1000D Issue 6.0 structure
-- Valid model identification codes (BWQ1)
-- Correct data module code format
-- Required element completeness
-
-## Usage in Documentation Project
-
-1. **Requirements Analysis**: Use DMRL to identify all needed data modules
-2. **Project Planning**: Estimate documentation effort and resource allocation
-3. **Progress Tracking**: Check off completed modules against requirements
-4. **Quality Assurance**: Verify no documentation gaps exist
-5. **Publication Planning**: Structure technical publications based on requirements
-
-## Integration with ASI-T2
-
-This DMRL integrates with:
-- **QS/UTCS**: Quantum traceability for requirements evidence
-- **CAx/QOx**: Engineering process documentation requirements
-- **SIM**: Sustainability metrics for documentation practices
-- **MAL-EEM**: Ethics validation for comprehensive documentation
+> **Link policy:** relative links only. Directories end with `/`; files include full names.
 
 ---
 
-**Classification**: INTERNAL–EVIDENCE-REQUIRED  
-**S1000D Version**: 6.0  
-**Last Updated**: 2025-01-21
+## 1) Overview
+
+The **DMRL** defines the complete set of **S1000D data modules** required to document **ATA-57 — Wings** for the **BWB-Q100** program. It drives scope, planning, and QA completeness for the wing structure, fuel interfaces, control surfaces, high-lift, and equipment integration.
+
+- Format: **S1000D Issue 6.0**  
+- Model Ident Code (MIC): **`BWQ1`**  
+- Governing file: [`DML-BWQ1-ATA57-00.xml`](./DML-BWQ1-ATA57-00.xml)  
+- BREX (business rules): *(placeholder, to be added)* `BREX-BWQ1-AAA.xml`
+
+---
+
+## 2) Purpose
+
+- **Requirements traceability:** single source of truth for required DMs
+- **Planning & progress tracking:** plan effort and mark completion vs. DMRL
+- **Validation:** prevents documentation gaps; supports **QS/UTCS** evidence
+- **Compliance:** aligns to **S1000D Issue 6.0** structure and code rules
+
+---
+
+## 3) Coverage Summary
+
+The DMRL specifies **~55 data modules** across subsystems:
+
+### 57-10 Wing Structure *(~9 DMs)*
+- General description & maintenance planning  
+- Wing box primary structure; skins, stringers, spars, ribs  
+- BWB wing/center-body blended integration  
+- Equipment attachment fittings; transition fairings
+
+### 57-20 Wing Fuel System Interfaces *(~11 DMs)*
+- General description; **H₂ fuel safety**  
+- Integral tank integration; line routing and management  
+- Ventilation & inerting; H₂ tank structural interfaces
+
+### 57-30 Wing Control Surfaces *(~10 DMs)*
+- Control-surface overview  
+- Ailerons (remove/install/IPD)  
+- Spoilers/speedbrakes  
+- Trailing-edge actuation; load-alleviation
+
+### 57-40 High-Lift Systems *(~9 DMs)*
+- System overview  
+- Slats & flaps (R/I, IPD)  
+- Actuation & drive; control & indication
+
+### 57-50 Wing Equipment Integration *(~10 DMs)*
+- Antennas & sensors  
+- Nav/comm integration; wing lighting  
+- Ice detect/protect; smart/quantum wing features
+
+> Final counts are managed in the XML DMRL; this README summarizes the scope.
+
+---
+
+## 4) Information Codes (Issue 6.0)
+
+| Code | Meaning                         |
+|:----:|---------------------------------|
+| 040  | General descriptions            |
+| 034  | Technical data / breakdowns     |
+| 011  | Safety summaries                |
+| 018  | Warnings & cautions             |
+| 100  | Scheduled maintenance           |
+| 052  | Routing/location diagrams       |
+| 310  | Visual inspections              |
+| 345  | System/structural tests         |
+| 350  | Functional checks               |
+| 420  | Fault isolation                 |
+| 500  | Removal procedures              |
+| 600  | Servicing procedures            |
+| 700  | Installation/rigging            |
+| 900  | Illustrated parts data (IPD)    |
+| 910  | Parts lists (PL)                |
+
+> Use **040/034** for descriptions/breakdowns, **500/700** for R/I, **900/910** for IPD/PL, **420** for FI.
+
+---
+
+## 5) DMRL XML Skeleton
+
+```xml
+<dmrl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="schemas/dmrl.xsd">
+  <identAndStatusSection>
+    <dmrlAddress>
+      <dmrlIdent dmrlCode="DML-BWQ1-ATA57-00"/>
+      <issueInfo issueNumber="001" inWork="00"/>
+      <dmrlTitle>DMRL — ATA-57 Wings (BWB-Q100, conf_000_baseline)</dmrlTitle>
+    </dmrlAddress>
+  </identAndStatusSection>
+
+  <content>
+    <!-- Repeat one dmRequirement per required DM -->
+    <dmRequirement>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemCode="57" subsystemCode="10"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="A"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+      <reqComment>57-10 General Description</reqComment>
+    </dmRequirement>
+
+    <!-- … ~55 total dmRequirement elements … -->
+  </content>
+</dmrl>
+````
+
+**Schema path (relative):** `./schemas/dmrl.xsd` *(add if not present)*
+
+---
+
+## 6) Data Module Code (DMC) Pattern
+
+**Minimal** S1000D DMC fields used by this project:
+
+* `modelIdentCode` = **BWQ1**
+* `systemCode` = **57** (ATA chapter)
+* `subsystemCode` / `subsubsystemCode` = **10/20/30/40/50** as needed
+* `infoCode` / `infoCodeVariant` = from table above
+* `itemLocationCode` = e.g., `A` (aircraft-level), refine as needed
+
+**Example (flap removal):**
+
+```
+BWQ1-57-40-500-A
+  MIC  SYS SUB  IC   ICV ILC
+```
+
+---
+
+## 7) Filenames & Foldering
+
+* **DMRL file**: `DML-BWQ1-ATA57-00.xml` *(this folder)*
+* **Data module XMLs**: place under `./DM/` or per your S1000D build layout
+
+  * Suggested: `./DM/57-xx/<DMC>.xml`
+* **BREX**: `./BREX/BREX-BWQ1-AAA.xml`
+* **Schema**: `./schemas/dmrl.xsd`
+
+> Keep filenames consistent with the DMC inside the file to simplify QA automation.
+
+---
+
+## 8) Validation
+
+**Prereqs:** add `dmrl.xsd` under `./schemas/`
+
+```bash
+# XML well-formedness
+xmllint --noout ./DML-BWQ1-ATA57-00.xml
+
+# Schema validation
+xmllint --noout --schema ./schemas/dmrl.xsd ./DML-BWQ1-ATA57-00.xml
+```
+
+**Checks performed:**
+
+* Issue 6.0 structure and required elements
+* Valid **MIC** (`BWQ1`) and **systemCode** (`57`)
+* DMC formatting and language blocks
+
+---
+
+## 9) Use in the Documentation Project
+
+1. **Scope** — derive all required DMs from the DMRL.
+2. **Plan** — assign owners/effort per DM; track status.
+3. **Author** — create DM XMLs matching DMRL entries.
+4. **QA** — validate XML + cross-check against DMRL (no gaps).
+5. **Publish** — assemble IETP/IETM per S1000D workflow.
+
+**Progress Checklist (sample):**
+
+| Subsystem       | DM Count | Authored | QA Pass | Notes |
+| --------------- | -------: | -------: | ------: | ----- |
+| 57-10 Structure |        9 |        0 |       0 |       |
+| 57-20 Fuel IF   |       11 |        0 |       0 |       |
+| 57-30 Ctrl Surf |       10 |        0 |       0 |       |
+| 57-40 High-Lift |        9 |        0 |       0 |       |
+| 57-50 Equip Int |       10 |        0 |       0 |       |
+| **Total**       |  **~55** |        0 |       0 |       |
+
+> Maintain a living checklist next to the DMRL; each DM shall link back to this DMRL.
+
+---
+
+## 10) Integration (ASI-T2)
+
+* **QS/UTCS:** log DMRL hash and each DM’s canonical hash for traceable publication chains.
+* **CAx/QOx:** reference engineering sources (CAD/CAE/CFD/QUBO) inside applicable DMs.
+* **SIM:** prefer modular, reusable content; track update energy/cost (optional).
+* **MAL-EEM:** ensure safety/ethics content (warnings, cautions) is present and consistent.
+
+---
+
+## 11) Cross-References
+
+* ATA-57 root → [`../README.md`](../README.md)
+* AAA domain index → [`../../../`](../../../)
+* Sibling ATA (examples):
+
+  * ATA-27 Flight Controls → [`../../27/README.md`](../../27/README.md)
+  * ATA-20 Standard Practices → [`../../20/README.md`](../../20/README.md)
+
+---
+
+## 12) Revision History
+
+| Rev | Date       | Description                   | QS/UTCS Ref |
+| --- | ---------- | ----------------------------- | ----------- |
+| 0   | 2025-01-21 | Initial DMRL README (Issue 6) | `TBD`       |
+
+---
+
+*Classification: INTERNAL–EVIDENCE-REQUIRED • S1000D v6.0 • BWB-Q100 / ATA-57*
+
+```
+
