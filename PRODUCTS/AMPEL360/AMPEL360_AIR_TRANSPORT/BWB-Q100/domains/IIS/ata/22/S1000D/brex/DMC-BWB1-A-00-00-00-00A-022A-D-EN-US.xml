@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- UTCS canonical_hash: TBD | MAL-EEM -->
+<brex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.s1000d.org/S1000D_6-0/brex"
+      xsi:schemaLocation="http://www.s1000d.org/S1000D_6-0/brex brex.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWB1" systemDiffCode="A" systemCode="00" subSystemCode="00"
+                subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmIdent>
+      <language countryIsoCode="US">en</language>
+    </dmAddress>
+    <issueInfo issueNumber="001" inWork="01"/>
+    <security securityClassification="01"/>
+  </identAndStatusSection>
+  <brexContent>
+    <ruleGroup>
+      <rule id="brex.mode.naming">Use standardized AFCS mode names (LAT ENG, VNAV, LNAV, APPR) — avoid synonyms.</rule>
+      <rule id="brex.timing.determinism">Document partition periods/jitters; include worst-case mode-change latency.</rule>
+      <rule id="brex.data.buses">Map A429 labels and A664 VLIDs in a table; no duplicates across partitions.</rule>
+      <rule id="brex.safety.margin">State engagement/disengagement thresholds and protections with tolerances.</rule>
+      <rule id="brex.qs.utcs">Embed QS/UTCS canonical_hash on release.</rule>
+    </ruleGroup>
+  </brexContent>
+</brex>

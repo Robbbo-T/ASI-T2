@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmrl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.s1000d.org/S1000D_6-0/dmrl"
+      xsi:schemaLocation="http://www.s1000d.org/S1000D_6-0/dmrl dmrl.xsd">
+  <dmrlHeader>
+    <dmrlIdent modelIdentCode="BWB1" issueInfo="001"/>
+    <language countryIsoCode="US">en</language>
+  </dmrlHeader>
+  <dmrlContent>
+    <!-- List required DMs; add as you author them -->
+    <dmRef><dmCode modelIdentCode="BWB1" systemDiffCode="A" systemCode="22" subSystemCode="10"
+                   subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                   infoCode="040" infoCodeVariant="A" itemLocationCode="D"/></dmRef>
+    <dmRef><dmCode modelIdentCode="BWB1" systemDiffCode="A" systemCode="22" subSystemCode="10"
+                   subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                   infoCode="720" infoCodeVariant="A" itemLocationCode="D"/></dmRef>
+    <dmRef><dmCode modelIdentCode="BWB1" systemDiffCode="A" systemCode="22" subSystemCode="20"
+                   subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                   infoCode="940" infoCodeVariant="A" itemLocationCode="D"/></dmRef>
+  </dmrlContent>
+</dmrl>
