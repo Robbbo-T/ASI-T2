@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- UTCS canonical_hash: pending | MAL-EEM -->
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.s1000d.org/S1000D_6-0/descript"
+         xsi:schemaLocation="http://www.s1000d.org/S1000D_6-0/descript descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="PLS1" systemDiffCode="A" systemCode="20" subSystemCode="10"
+                subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmIdent>
+      <language countryIsoCode="US">en</language>
+    </dmAddress>
+    <issueInfo issueNumber="001" inWork="01"/>
+    <security securityClassification="01"/>
+  </identAndStatusSection>
+
+  <content>
+    <levelledPara id="sec.overview">
+      <title>Scope</title>
+      <para>This data module defines standard torque practices for airframe fasteners used on the AMPEL360 PLUS vehicle line.</para>
+    </levelledPara>
+
+    <levelledPara id="sec.units">
+      <title>Units, Tolerances, and Notes</title>
+      <para>Torque values shall be specified with units (N·m) and tolerances (±%), along with lubrication condition and temperature range.</para>
+    </levelledPara>
+
+    <levelledPara id="sec.tables">
+      <title>Reference Tables</title>
+      <para>Use the following tables as general guidance; when a system-specific DM provides a different value, the system-specific value prevails.</para>
+      <para>
+        <definitionList>
+          <definitionListItem>
+            <term>Metric bolts (property class 8.8 / 10.9)</term>
+            <definition>See Table A (to be attached via IETP table or referenced from materials spec).</definition>
+          </definitionListItem>
+          <definitionListItem>
+            <term>Hi-Lok / Hi-Lite</term>
+            <definition>Refer to manufacturer spec; apply correction factors for lubricated threads.</definition>
+          </definitionListItem>
+        </definitionList>
+      </para>
+    </levelledPara>
+
+    <levelledPara id="sec.crossref">
+      <title>Cross-References</title>
+      <para>For flight control surfaces, see ATA-27 system-specific torque DMs. For engine mounts, see ATA-71/72/73 as applicable.</para>
+    </levelledPara>
+  </content>
+</dmodule>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- UTCS canonical_hash: pending | MAL-EEM -->
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.s1000d.org/S1000D_6-0/descript"
+         xsi:schemaLocation="http://www.s1000d.org/S1000D_6-0/descript descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="PLS1" systemDiffCode="A" systemCode="20" subSystemCode="30"
+                subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmIdent>
+      <language countryIsoCode="US">en</language>
+    </dmAddress>
+    <issueInfo issueNumber="001" inWork="01"/>
+    <security securityClassification="01"/>
+  </identAndStatusSection>
+
+  <content>
+    <levelledPara id="sec.overview">
+      <title>Scope</title>
+      <para>This data module defines corrosion prevention and control practices for AMPEL360 PLUS airframe structures and components.</para>
+    </levelledPara>
+
+    <levelledPara id="sec.materials">
+      <title>Protective Systems</title>
+      <para>Approved coatings, treatments, and material combinations to prevent galvanic and environmental corrosion in space tourism applications.</para>
+    </levelledPara>
+
+    <levelledPara id="sec.inspection">
+      <title>Inspection Requirements</title>
+      <para>Regular inspection intervals and criteria for identifying and addressing corrosion in critical airframe components.</para>
+    </levelledPara>
+
+    <levelledPara id="sec.crossref">
+      <title>Cross-References</title>
+      <para>For engine mount corrosion control, see ATA-71/72/73. For landing gear corrosion control, see ATA-32.</para>
+    </levelledPara>
+  </content>
+</dmodule>

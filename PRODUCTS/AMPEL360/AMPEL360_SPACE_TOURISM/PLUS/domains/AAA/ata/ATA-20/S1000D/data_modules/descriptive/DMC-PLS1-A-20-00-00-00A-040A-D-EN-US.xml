@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- UTCS canonical_hash: pending | MAL-EEM -->
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.s1000d.org/S1000D_6-0/descript"
+         xsi:schemaLocation="http://www.s1000d.org/S1000D_6-0/descript descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="PLS1" systemDiffCode="A" systemCode="20" subSystemCode="00"
+                subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmIdent>
+      <language countryIsoCode="US">en</language>
+    </dmAddress>
+    <issueInfo issueNumber="001" inWork="01"/>
+    <security securityClassification="01"/>
+  </identAndStatusSection>
+
+  <content>
+    <levelledPara id="overview">
+      <title>Purpose</title>
+      <para>Define reusable, safety-critical airframe practices for AMPEL360 PLUS across design, manufacturing, and maintenance.</para>
+    </levelledPara>
+    <levelledPara id="governance">
+      <title>Governance</title>
+      <para>All practices are governed by BREX rules, UTCS traceability, and MAL-EEM ethics. Conflicts defer to system-specific DMs.</para>
+    </levelledPara>
+    <levelledPara id="scope">
+      <title>Scope</title>
+      <para>Fasteners &amp; torque; sealants &amp; adhesives; corrosion prevention; electrical bonding &amp; grounding.</para>
+    </levelledPara>
+  </content>
+</dmodule>

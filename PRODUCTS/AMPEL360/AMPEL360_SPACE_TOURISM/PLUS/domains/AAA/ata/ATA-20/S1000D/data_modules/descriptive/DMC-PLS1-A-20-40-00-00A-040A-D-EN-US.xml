@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- UTCS canonical_hash: pending | MAL-EEM -->
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.s1000d.org/S1000D_6-0/descript"
+         xsi:schemaLocation="http://www.s1000d.org/S1000D_6-0/descript descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="PLS1" systemDiffCode="A" systemCode="20" subSystemCode="40"
+                subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmIdent>
+      <language countryIsoCode="US">en</language>
+    </dmAddress>
+    <issueInfo issueNumber="001" inWork="01"/>
+    <security securityClassification="01"/>
+  </identAndStatusSection>
+
+  <content>
+    <levelledPara id="sec.overview">
+      <title>Scope</title>
+      <para>This data module defines electrical bonding and grounding practices for AMPEL360 PLUS airframe to ensure electrical continuity and EMI protection.</para>
+    </levelledPara>
+
+    <levelledPara id="sec.requirements">
+      <title>Bonding Requirements</title>
+      <para>Electrical continuity requirements between airframe components, including resistance thresholds and measurement procedures.</para>
+    </levelledPara>
+
+    <levelledPara id="sec.emi">
+      <title>EMI Protection</title>
+      <para>Electromagnetic interference shielding requirements and grounding practices for sensitive avionics and control systems.</para>
+    </levelledPara>
+
+    <levelledPara id="sec.crossref">
+      <title>Cross-References</title>
+      <para>For avionics grounding, see ATA-31/34. For electrical power system grounding, see ATA-24.</para>
+    </levelledPara>
+  </content>
+</dmodule>

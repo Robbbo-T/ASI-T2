@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- UTCS canonical_hash: pending | MAL-EEM -->
+<brex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.s1000d.org/S1000D_6-0/brex"
+      xsi:schemaLocation="http://www.s1000d.org/S1000D_6-0/brex brex.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="PLS1" systemDiffCode="A" systemCode="00" subSystemCode="00" subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmIdent>
+      <language countryIsoCode="US">en</language>
+    </dmAddress>
+    <issueInfo issueNumber="001" inWork="01"/>
+    <security securityClassification="01"/>
+  </identAndStatusSection>
+  <brexContent>
+    <ruleGroup>
+      <rule id="brex.text.style">All torque values must state unit system and tolerance.</rule>
+      <rule id="brex.cross.ref">Cross-reference other ATA chapters; do not duplicate tasks.</rule>
+      <rule id="brex.qs.utcs">On release, embed QS/UTCS canonical_hash in release notes.</rule>
+    </ruleGroup>
+  </brexContent>
+</brex>
