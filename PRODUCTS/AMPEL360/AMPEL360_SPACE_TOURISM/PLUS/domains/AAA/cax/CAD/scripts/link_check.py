@@ -74,21 +74,17 @@ def extract_paths_from_markdown(md_file: Path) -> List[Tuple[str, str]]:
         
         # Find relative path patterns
         patterns = [
-            (r'`([^`]*\.(?:json|xml|yaml|yml|step|iges|x_t))`', 'code block'),
-            (r'\[([^\]]*)\]\(([^)]*)\)', 'markdown link'),
-            (r'href="([^"]*)"', 'HTML link'),
-            (r'src="([^"]*)"', 'HTML src'),
-            (r'→\s*([^\s\n]*\.(?:json|xml|yaml|yml))', 'arrow reference')
+            (r'`(?P<path>[^`]*\.(?:json|xml|yaml|yml|step|iges|x_t))`', 'code block'),
+            (r'\[[^\]]*\]\((?P<path>[^)]*)\)', 'markdown link'),
+            (r'href="(?P<path>[^"]*)"', 'HTML link'),
+            (r'src="(?P<path>[^"]*)"', 'HTML src'),
+            (r'→\s*(?P<path>[^\s\n]*\.(?:json|xml|yaml|yml))', 'arrow reference')
         ]
         
         for pattern, context in patterns:
             matches = re.finditer(pattern, content, re.IGNORECASE)
             for match in matches:
-                # Handle different capture group patterns
-                if context == 'markdown link':
-                    path = match.group(2)  # Second group for markdown links
-                else:
-                    path = match.group(1)  # First group for all others
+                path = match.group('path')
                 if path and not path.startswith(('http://', 'https://', 'mailto:', '#')):
                     paths.append((path, f"{context} (line {content[:match.start()].count(chr(10)) + 1})"))
     
