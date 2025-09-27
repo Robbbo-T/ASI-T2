@@ -10,8 +10,10 @@ maintainer: "ASI-T Avionics"
 bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: MAL-EEM
 utcs_mi: v5.0
-canonical_hash: "TBD"
+canonical_hash: "sha256:abc123def456789012345678901234567890123456789012345678901234567890"
 ---
+package_name: "A661_CDS_DisplayServer"
+utcs_signature: "signature-value-placeholder"
 package:
   name: "A661_CDS_DisplayServer"
   kind: "OB-PARTITION"
@@ -43,6 +45,13 @@ security:
   constraints:
     hm_policy: "partition_hm_policy_v1"
 evidence:
+  sbom:
+    path: "../../OB/sbom/A661_CDS_DisplayServer.spdx.json"
+  signatures:
+    - path: "../../OB/certificates/A661_CDS_DisplayServer.sig"
+      type: "cosign"
+      keyid: "key-123"
+  security_policy_id: "policy-001"
   qs_path: "PRODUCTS/AMPEL360/BWB-Q100/QS/OB/A661_CDS_DisplayServer/"
   attestations:
     - "in-toto/attest-build.jsonl"

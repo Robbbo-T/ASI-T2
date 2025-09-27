@@ -1,0 +1,18 @@
+{
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "A661_CDS_DisplayServer-sbom",
+  "documentNamespace": "https://asi-t.example/sbom/A661_CDS_DisplayServer",
+  "creators": ["Tool: ASI-T PAx Generator"],
+  "created": "2025-01-23T00:00:00Z",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package",
+      "name": "A661_CDS_DisplayServer",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "copyrightText": "NOASSERTION"
+    }
+  ]
+}

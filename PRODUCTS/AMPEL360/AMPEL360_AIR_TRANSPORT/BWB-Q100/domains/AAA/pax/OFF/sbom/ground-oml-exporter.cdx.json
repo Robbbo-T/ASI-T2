@@ -1,0 +1,21 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-01-23T00:00:00Z",
+    "tools": [
+      {
+        "vendor": "ASI-T",
+        "name": "PAx Generator",
+        "version": "1.0.0"
+      }
+    ],
+    "component": {
+      "type": "container",
+      "name": "ground-oml-exporter",
+      "version": "0.1.0"
+    }
+  },
+  "components": []
+}
