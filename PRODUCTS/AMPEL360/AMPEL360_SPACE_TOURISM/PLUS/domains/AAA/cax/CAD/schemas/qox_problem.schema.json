@@ -1,0 +1,175 @@
+{
+  "$id": "qox_problem.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QOx Problem Specification Schema (AMPEL360 PLUS)",
+  "description": "Schema for quantum optimisation problems in the CAx→QOx bridge",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "goal", "variables", "objective", "constraints", "bridge"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": {
+      "type": "string",
+      "pattern": "^PLUS-[A-Z0-9-]+$",
+      "description": "Unique problem ID (e.g., PLUS-TPS-TILING-QUBO-001)"
+    },
+    "goal": { "type": "string" },
+    "variables": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "description": "Variable pools (e.g., x_i, y_j)",
+      "patternProperties": {
+        "^[a-zA-Z_][a-zA-Z0-9_]*$": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["count", "domain"],
+          "properties": {
+            "count": { "type": "integer", "minimum": 1 },
+            "domain": { "type": "string", "enum": ["binary", "integer", "continuous"] },
+            "meaning": { "type": "string" },
+            "bounds": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "min": {"type": "number"},
+                "max": {"type": "number"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "objective": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["term", "weight"],
+        "properties": {
+          "term": { "type": "string" },
+          "weight": { "type": "number" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "weight"],
+        "properties": {
+          "type": { "type": "string" },
+          "weight": { "type": "number", "minimum": 0 },
+          "description": { "type": "string" },
+          "parameters": {
+            "type": "object",
+            "description": "Constraint-specific parameters"
+          }
+        }
+      }
+    },
+    "bridge": {
+      "type": "string",
+      "enum": ["CAx→QOx (QAIM-2)", "CAx→QOx (QAOA)", "CAx→QOx (Annealing)"]
+    },
+    "algorithm": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["QAOA", "VQE", "Annealing", "QUBO"]
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Algorithm-specific parameters"
+        },
+        "hardware": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "backend": {
+              "type": "string",
+              "pattern": "^[a-z0-9_\\-]+$",
+              "description": "Quantum backend provider identifier (e.g., 'simulator', 'ibm_quantum', 'dwave', 'rigetti', 'ionq', 'quantinuum', 'oqc')."
+            },
+            "qubits": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "data_sources": {
+      "type": "object",
+      "description": "Data sources for problem matrices/inputs"
+    },
+    "scaling": {
+      "type": "object",
+      "description": "Scaling and normalization parameters"
+    },
+    "roundtrip": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exports": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "validation": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["CAE/structural", "CAE/thermal", "CFD/aero", "Manufacturing/tooling"]
+          }
+        },
+        "tolerance": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "objective": {"type": "number", "minimum": 0},
+            "constraints": {"type": "number", "minimum": 0}
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "author": { "type": "string" },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "tags": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "utcs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_hash"],
+      "properties": {
+        "canonical_hash": {
+          "type": "string",
+          "pattern": "^(TBD|sha256:[a-f0-9]{64})$"
+        },
+        "evidence_path": {
+          "type": "string",
+          "pattern": "^\\.\\./.+/$"
+        }
+      }
+    }
+  }
+}

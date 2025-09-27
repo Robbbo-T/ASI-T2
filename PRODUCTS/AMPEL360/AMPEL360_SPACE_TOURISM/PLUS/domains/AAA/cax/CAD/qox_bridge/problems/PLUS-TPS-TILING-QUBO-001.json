@@ -1,0 +1,123 @@
+{
+  "$schema": "../../schemas/qox_problem.schema.json",
+  "id": "PLUS-TPS-TILING-QUBO-001",
+  "goal": "TPS panel placement optimization for reentry segment R1 - minimize thermal stress while maintaining structural integrity",
+  "variables": {
+    "x_i": {
+      "count": 480,
+      "domain": "binary",
+      "meaning": "tile selection - 1 if tile i is selected, 0 otherwise"
+    },
+    "y_j": {
+      "count": 120,
+      "domain": "binary", 
+      "meaning": "seam configuration - 1 if seam j is active, 0 otherwise"
+    }
+  },
+  "objective": [
+    {
+      "term": "thermal_margin",
+      "weight": -2.0,
+      "description": "Maximize thermal safety margin during reentry"
+    },
+    {
+      "term": "mass",
+      "weight": 1.0,
+      "description": "Minimize total TPS mass"
+    },
+    {
+      "term": "seam_length",
+      "weight": 0.5,
+      "description": "Minimize total seam length for maintainability"
+    },
+    {
+      "term": "maintainability",
+      "weight": -0.3,
+      "description": "Maximize accessibility for inspection and replacement"
+    }
+  ],
+  "constraints": [
+    {
+      "type": "coverage",
+      "weight": 8.0,
+      "description": "Complete surface coverage required",
+      "parameters": {
+        "min_coverage": 0.999,
+        "overlap_penalty": 5.0,
+        "units": { "coverage": "fraction" }
+      }
+    },
+    {
+      "type": "max_panel_size",
+      "weight": 4.0,
+      "description": "Panel size limits for manufacturing",
+      "parameters": {
+        "max_area_m2": 0.5,
+        "max_aspect_ratio": 3.0,
+        "units": { "area": "m2", "aspect_ratio": "dimensionless" }
+      }
+    },
+    {
+      "type": "no_conflict",
+      "weight": 6.0,
+      "description": "No overlapping panels",
+      "parameters": {
+        "tolerance_mm": 2.0,
+        "units": { "tolerance": "mm" }
+      }
+    },
+    {
+      "type": "thermal_gradient",
+      "weight": 3.0,
+      "description": "Limit thermal gradients at seams",
+      "parameters": {
+        "max_gradient_k_per_mm": 5.0,
+        "units": { "gradient": "K/mm" }
+      }
+    }
+  ],
+  "bridge": "CAx→QOx (QAIM-2)",
+  "algorithm": {
+    "type": "QAOA",
+    "parameters": {
+      "layers": 3,
+      "optimizer": "COBYLA",
+      "max_iterations": 200,
+      "random_seed": 42,
+      "warm_start": true
+    },
+    "hardware": {
+      "backend": "simulator",
+      "qubits": 600
+    }
+  },
+  "data_sources": {
+    "coverage_matrix": "../../geometry/exports/PLUS-OML-A02.step",
+    "incidence_table": "../../tps/layout/panel_incidence_R1.csv",
+    "overlap_rules": "../../tps/layout/seam_overlap_rules.json",
+    "thermal_loads": "../../mdo/thermal/reentry_R1_loads.json"
+  },
+  "scaling": {
+    "objective_weights_normalized": true,
+    "constraint_penalties_big_m": [8.0, 4.0, 6.0, 3.0],
+    "variable_scaling": "unit_interval"
+  },
+  "roundtrip": {
+    "exports": ["../../geometry/exports/PLUS-OML-A02.step"],
+    "validation": ["CAE/thermal", "CFD/aero"],
+    "tolerance": {
+      "objective": 0.05,
+      "constraints": 0.01
+    }
+  },
+  "metadata": {
+    "created": "2025-09-27T16:00:00Z",
+    "author": "QOx.Optimization.Team",
+    "version": "1.0.0",
+    "tags": ["TPS", "thermal", "reentry", "QUBO", "optimization"]
+  },
+  "utcs": {
+    "canonical_hash": "TBD",
+    "evidence_path": "../../evidence/PLUS-TPS-TILING-QUBO-001/"
+  }
+}
