@@ -45,10 +45,8 @@ security:
   constraints:
     hm_policy: "partition_hm_policy_v1"
 evidence:
-  canonical_hash: "sha256:abc123def456789abcdef0123456789abcdef0123456789abcdef012345678ab"
   sbom:
     path: "../../OB/sbom/A661_CDS_DisplayServer.spdx.json"
-    hash: "sha256:def456abc789012bcdef123456789abcdef0123456789abcdef012345678abcd"
   signatures:
     - path: "../../OB/certificates/A661_CDS_DisplayServer.sig"
       type: "cosign"
