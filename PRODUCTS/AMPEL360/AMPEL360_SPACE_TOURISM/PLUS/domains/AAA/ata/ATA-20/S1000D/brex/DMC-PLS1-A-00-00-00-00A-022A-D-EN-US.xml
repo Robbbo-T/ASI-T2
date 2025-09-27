@@ -7,11 +7,13 @@
     <dmAddress>
       <dmIdent>
         <dmCode modelIdentCode="PLS1" systemDiffCode="A" systemCode="00" subSystemCode="00" subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+        <issueInfo issueNumber="001" inWork="01"/>
       </dmIdent>
+      <dmStatus>
+        <security securityClassification="01"/>
+      </dmStatus>
       <language countryIsoCode="US">en</language>
     </dmAddress>
-    <issueInfo issueNumber="001" inWork="01"/>
-    <security securityClassification="01"/>
   </identAndStatusSection>
   <brexContent>
     <ruleGroup>
