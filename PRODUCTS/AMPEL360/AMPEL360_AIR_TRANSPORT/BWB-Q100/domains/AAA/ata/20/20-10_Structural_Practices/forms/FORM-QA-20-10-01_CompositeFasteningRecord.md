@@ -2,7 +2,7 @@
 id: ASIT-BWBQ100-AAA-FORM-QA-20-10-01
 rev: 0
 project: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100
-artifact: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_CompositeFasteningRecord.md
+artifact: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_CompositeFasteningRecord.md
 llc: EVIDENCE
 title: "FORM-QA-20-10-01 — Composite Fastening Record (BWB-Q100)"
 classification: INTERNAL–EVIDENCE-REQUIRED

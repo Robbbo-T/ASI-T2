@@ -131,13 +131,13 @@ Product_Line-AMPEL360/cross_LH2-CORRIDOR/variant_001_baseline/Node[0001-0500]
 
 | Domain | CAx (links)                                                 | QOx (links)                               | ATA docs (links) (Analogous Chapters)         |
 | ------ | ----------------------------------------------------------- | ----------------------------------------- | --------------------------------------------- |
-| **AAP**  | [SCM](./domains/AAP/cax/SCM/) · [CIM](./domains/AAP/cax/CIM/)               | -                                         | [ATA-12](./domains/AAP/ata/ATA-12/) · [ATA-28](./domains/AAP/ata/ATA-28/)       |
+| **AAP**  | [SCM](./domains/AAP/cax/SCM/) · [CIM](./domains/AAP/cax/CIM/)               | -                                         | [ATA-12](./domains/AAP/ata/ATA-12/) · [ATA-28](./domains/AAA/ata/ATA-28/)       |
 | **CQH**  | [CAD](./domains/CQH/cax/CAD/) · [CAE](./domains/CQH/cax/CAE/) · [CFD](./domains/CQH/cax/CFD/) | [CAE](./domains/CQH/qox/CAE/)                   | [ATA-21](./domains/CQH/ata/ATA-21/) · [ATA-26](./domains/CQH/ata/ATA-26/) · [ATA-36](./domains/CQH/ata/ATA-36/) |
 | **DDD**  | [CAI](./domains/DDD/cax/CAI/)                                 | -                                         | [ATA-46](./domains/DDD/ata/ATA-46/)               |
 | **EEE**  | [CAE](./domains/EEE/cax/CAE/) · [CAI](./domains/EEE/cax/CAI/)               | [CAI](./domains/EEE/qox/CAI/)                   | [ATA-24](./domains/EEE/ata/ATA-24/)               |
-| **IIF**  | [CAPP](./domains/IIF/cax/CAPP/) · [CIM](./domains/IIF/cax/CIM/)             | [CIM](./domains/IIF/qox/CIM/)                   | [ATA-20](./domains/IIF/ata/ATA-20/)               |
-| **IIS**  | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/)             | [CAI](./domains/IIS/qox/CAI/)                   | [ATA-46](./domains/IIS/ata/ATA-46/)               |
-| **LIB**  | [SCM](./domains/LIB/cax/SCM/) · [MRP-ERP](./domains/LIB/cax/MRP-ERP/) · [PDM-PLM](./domains/LIB/cax/PDM-PLM/) | [SCM](./domains/LIB/qox/SCM/) · [MRP-ERP](./domains/LIB/qox/MRP-ERP/) | [ATA-20](./domains/LIB/ata/ATA-20/)               |
+| **IIF**  | [CAPP](./domains/IIF/cax/CAPP/) · [CIM](./domains/IIF/cax/CIM/)             | [CIM](./domains/IIF/qox/CIM/)                   | [ATA-20](./domains/AAA/ata/ATA-20/)               |
+| **IIS**  | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/)             | [CAI](./domains/IIS/qox/CAI/)                   | [ATA-46](./domains/DDD/ata/ATA-46/)               |
+| **LIB**  | [SCM](./domains/LIB/cax/SCM/) · [MRP-ERP](./domains/LIB/cax/MRP-ERP/) · [PDM-PLM](./domains/LIB/cax/PDM-PLM/) | [SCM](./domains/LIB/qox/SCM/) · [MRP-ERP](./domains/LIB/qox/MRP-ERP/) | [ATA-20](./domains/AAA/ata/ATA-20/)               |
 
 ---
 

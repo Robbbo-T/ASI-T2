@@ -123,9 +123,9 @@ Product_Line_GAIA_SPACE/Model_GAIA-SAT/variant_001_baseline/Unit[0001-0100]
 | ------ | ------------------------------------------------- | ----------------------------------------- | ---------------------------------------------------- |
 | **DDD**  | [CAI](./domains/DDD/cax/CAI/) · [CASE](./domains/DDD/cax/CASE/) · [KBE](./domains/DDD/cax/KBE/) | [CAI](./domains/DDD/qox/CAI/) · [KBE](./domains/DDD/qox/KBE/) | [ATA-42](./domains/DDD/ata/ATA-42/) · [ATA-46](./domains/DDD/ata/ATA-46/)          |
 | **EEE**  | [CAD](./domains/EEE/cax/CAD/) · [CAE](./domains/EEE/cax/CAE/) · [CAI](./domains/EEE/cax/CAI/) | [CAE](./domains/EEE/qox/CAE/) · [CAI](./domains/EEE/qox/CAI/) | [ATA-24](./domains/EEE/ata/ATA-24/)                  |
-| **EDI**  | [CAD](./domains/EDI/cax/CAD/) · [CAM](./domains/EDI/cax/CAM/) · [CAI](./domains/EDI/cax/CAI/) | [CAI](./domains/EDI/qox/CAI/)                     | [ATA-31](./domains/EDI/ata/ATA-31/) · [ATA-34](./domains/EDI/ata/ATA-34/)          |
-| **IIS**  | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/) · [KBE](./domains/IIS/cax/KBE/) | [CAI](./domains/IIS/qox/CAI/) · [KBE](./domains/IIS/qox/KBE/) | [ATA-22](./domains/IIS/ata/ATA-22/) · [ATA-45](./domains/IIS/ata/ATA-45/) · [ATA-46](./domains/IIS/ata/ATA-46/) |
-| **LCC**  | [CAI](./domains/LCC/cax/CAI/) · [CASE](./domains/LCC/cax/CASE/) · [VP](./domains/LCC/cax/VP/) | [CAI](./domains/LCC/qox/CAI/)                     | [ATA-23](./domains/LCC/ata/ATA-23/) · [ATA-34](./domains/LCC/ata/ATA-34/)          |
+| **EDI**  | [CAD](./domains/EDI/cax/CAD/) · [CAM](./domains/EDI/cax/CAM/) · [CAI](./domains/EDI/cax/CAI/) | [CAI](./domains/EDI/qox/CAI/)                     | [ATA-31](./domains/CCC/ata/ATA-31/) · [ATA-34](./domains/AAA/ata/ATA-34/)          |
+| **IIS**  | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/) · [KBE](./domains/IIS/cax/KBE/) | [CAI](./domains/IIS/qox/CAI/) · [KBE](./domains/IIS/qox/KBE/) | [ATA-22](./domains/IIS/ata/ATA-22/) · [ATA-45](./domains/DDD/ata/ATA-45/) · [ATA-46](./domains/DDD/ata/ATA-46/) |
+| **LCC**  | [CAI](./domains/LCC/cax/CAI/) · [CASE](./domains/LCC/cax/CASE/) · [VP](./domains/LCC/cax/VP/) | [CAI](./domains/LCC/qox/CAI/)                     | [ATA-23](./domains/DDD/ata/ATA-23/) · [ATA-34](./domains/AAA/ata/ATA-34/)          |
 
 ---
 
@@ -211,7 +211,7 @@ We use the ATA Spec 100 as a standardized documentation structure. For GAIA-SAT,
 *   **ATA-46 (Information Systems):** Onboard data processing and ground segment interfaces.
 
 **Q5. Where do I find the design for the primary SIGINT payload?**
-The electronic hardware design is in the **EDI (Electronics & Digital Instruments)** domain at `domains/EDI/cax/CAD/`. The software to operate it is in **IIS**, and the data it produces is managed by **DDD**. Formal documentation is in `domains/EDI/ata/ATA-34/` (as an analog for Navigation/Surveillance).
+The electronic hardware design is in the **EDI (Electronics & Digital Instruments)** domain at `domains/EDI/cax/CAD/`. The software to operate it is in **IIS**, and the data it produces is managed by **DDD**. Formal documentation is in `domains/AAA/ata/ATA-34/` (as an analog for Navigation/Surveillance).
 
 **Q6. How do we ensure the satellite's autonomous actions are safe and ethical?**
 This is the primary function of the **MAL-EEM (Ethics & Empathy Module)**. All autonomous decision logic developed in the **IIS** domain is continuously vetted against a set of "Rules of Engagement" hard-coded into the MAL-EEM guard. Any planned action that violates these rules (e.g., risk of unacceptable collateral impact) is automatically vetoed. This is a non-negotiable, fail-closed system.

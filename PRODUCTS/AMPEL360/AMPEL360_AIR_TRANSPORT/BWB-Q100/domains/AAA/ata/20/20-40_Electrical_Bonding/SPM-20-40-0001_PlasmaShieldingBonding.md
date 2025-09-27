@@ -1,7 +1,7 @@
 ---
 id: SPM-20-40-0001
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-40_Electrical_Bonding/SPM-20-40-0001_PlasmaShieldingBonding.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-20/20-40_Electrical_Bonding/SPM-20-40-0001_PlasmaShieldingBonding.md
 llc: SYSTEMS
 title: "SPM-20-40-0001: Standard Practice Manual — Plasma/EMI Shielding & Structural Bonding"
 configuration: baseline

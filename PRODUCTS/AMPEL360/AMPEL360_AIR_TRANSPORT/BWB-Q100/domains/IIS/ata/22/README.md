@@ -1,7 +1,7 @@
 ---
 id: ATA-22-OV-0001
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/IIS/ata/22/README.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/IIS/ata/ATA-22/README.md
 llc: SYSTEMS
 classification: "INTERNAL–EVIDENCE-REQUIRED"
 version: "0.2.0"
@@ -22,7 +22,7 @@ canonical_hash: "TBD"
 ---
 
 ## 0) Path Root (TFA)
-`PRODUCTS/AMPEL360/BWB-Q100/domains/IIS/ata/22/`
+`PRODUCTS/AMPEL360/BWB-Q100/domains/IIS/ata/ATA-22/`
 
 ---
 

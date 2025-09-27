@@ -7,10 +7,10 @@ classification: INTERNAL–EVIDENCE-REQUIRED
 version: 0.1.0
 release_date: 2025-09-24
 maintainer: "ASI-T Architecture Team"
-bridge: "CB→QB→UE→FE→FWD→QS"
+bridge: CB→QB→UE→FE→FWD→QS
 ethics_guard: MAL-EEM
 utcs_mi: v5.0
-canonical_hash: "TBD"
+canonical_hash: TBD
 ---
 # ATA-21
 

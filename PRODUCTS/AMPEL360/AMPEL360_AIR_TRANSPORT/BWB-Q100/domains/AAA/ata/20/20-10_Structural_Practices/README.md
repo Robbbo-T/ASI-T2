@@ -1,7 +1,7 @@
 ---
 id: ATA-20-10-OV-0001
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-10_Structural_Practices/README.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-20/20-10_Structural_Practices/README.md
 llc: SYSTEMS
 title: "ATA-20-10: Structural Practices (BWB-Q100)"
 configuration: baseline

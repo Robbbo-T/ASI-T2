@@ -67,11 +67,11 @@ Target: autonomous H₂-fuel-cell UAV fleet optimized for **delivery efficiency*
 - PAx (packaging & applications) → [`./domains/AAA/pax/`](./domains/AAA/pax/)
 
 **ATA (UAM-adapted)**
-- ATA-20 — Standard Practices → [`./domains/AAA/ata/20/`](./domains/AAA/ata/20/)
+- ATA-20 — Standard Practices → [`./domains/AAA/ata/ATA-20/`](./domains/AAA/ata/ATA-20/)
 - ATA-27 — Flight Controls → [`./domains/AAA/ata/27/`](./domains/AAA/ata/27/)
-- ATA-51 — Structures (General) → [`./domains/AAA/ata/51/`](./domains/AAA/ata/51/)
-- ATA-53 — Fuselage/Body (UAS cell) → [`./domains/AAA/ata/53/`](./domains/AAA/ata/53/)
-- ATA-57 — Lifting Surfaces → [`./domains/AAA/ata/57/`](./domains/AAA/ata/57/)
+- ATA-51 — Structures (General) → [`./domains/AAA/ata/ATA-51/`](./domains/AAA/ata/ATA-51/)
+- ATA-53 — Fuselage/Body (UAS cell) → [`./domains/AAA/ata/ATA-53/`](./domains/AAA/ata/ATA-53/)
+- ATA-57 — Lifting Surfaces → [`./domains/AAA/ata/ATA-57/`](./domains/AAA/ata/ATA-57/)
 
 **Quality & Evidence**
 - QS/UTCS forms → [`./quality/forms/`](./quality/forms/)

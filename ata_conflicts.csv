@@ -1,0 +1,28 @@
+Chapter,Canonical_Location,Canonical_Score,Duplicate_Locations,Issues_Resolved
+ATA-57,domains/AAA/ata/ATA-57,150,4 locations merged,S1000D content preserved from all sources
+ATA-35,domains/CCC/ata/ATA-35,100,2 locations merged,Front-matter consolidated
+ATA-11,domains/CCC/ata/ATA-11,100,2 locations merged,Evidence references preserved
+ATA-38,domains/CCC/ata/ATA-38,100,3 locations merged,README content merged
+ATA-31,domains/CCC/ata/ATA-31,100,4 locations merged,Documentation structure maintained
+ATA-33,domains/CCC/ata/ATA-33,100,3 locations merged,Cross-references updated
+ATA-25,domains/CCC/ata/ATA-25,100,2 locations merged,Technical specifications preserved
+ATA-26,domains/CQH/ata/ATA-26,100,2 locations merged,Certification evidence maintained
+ATA-21,domains/CQH/ata/ATA-21,100,4 locations merged,QS/UTCS references consolidated
+ATA-36,domains/CQH/ata/ATA-36,100,3 locations merged,Configuration management preserved
+ATA-47,domains/CQH/ata/ATA-47,100,2 locations merged,Procedural documentation merged
+ATA-45,domains/DDD/ata/ATA-45,100,3 locations merged,Test procedures consolidated
+ATA-23,domains/DDD/ata/ATA-23,100,3 locations merged,Design specifications preserved
+ATA-46,domains/DDD/ata/ATA-46,100,6 locations merged,Multiple domain content integrated
+ATA-42,domains/DDD/ata/ATA-42,100,4 locations merged,Interface definitions consolidated
+ATA-24,domains/EEE/ata/ATA-24,100,2 locations merged,Electrical system specs preserved
+ATA-78,domains/EER/ata/ATA-78,100,3 locations merged,Powerplant documentation merged
+ATA-22,domains/IIS/ata/ATA-22,100,3 locations merged,Auto-flight system content preserved
+ATA-70,domains/LIB/ata/ATA-70,100,2 locations merged,Engine library documentation
+ATA-71,domains/LIB/ata/ATA-71,100,3 locations merged,Engine control specifications
+ATA-72,domains/LIB/ata/ATA-72,100,4 locations merged,Engine interface definitions
+ATA-73,domains/LIB/ata/ATA-73,100,3 locations merged,Fuel system integration
+ATA-74,domains/LIB/ata/ATA-74,100,3 locations merged,Ignition system specs
+ATA-75,domains/LIB/ata/ATA-75,100,3 locations merged,Air system documentation
+ATA-76,domains/LIB/ata/ATA-76,100,3 locations merged,Engine controls preserved
+ATA-77,domains/LIB/ata/ATA-77,100,4 locations merged,Engine indication consolidated
+ATA-79,domains/LIB/ata/ATA-79,100,2 locations merged,Oil system specifications

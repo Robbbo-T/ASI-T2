@@ -104,7 +104,7 @@ Immutable evidence anchoring for builds, configurations, test runs, and audit tr
 AQUA OS Aircraft Extension serves as the foundational platform for aviation products in the ASI-T2 portfolio:
 
 ### AMPEL360 BWB-Q100 Integration
-- **LCC Domain**: Flight control integration via [ATA-27](../../AMPEL360/BWB-Q100/domains/LCC/ata/ATA-27/)
+- **LCC Domain**: Flight control integration via [ATA-27](../../AMPEL360/BWB-Q100/domains/AAA/ata/ATA-27/)
 - **EDI Domain**: Avionics integration via [ATA-22](../../AMPEL360/BWB-Q100/domains/EDI/ata/ATA-22/)
 - **OOO Domain**: Operating system binding and evidence
 

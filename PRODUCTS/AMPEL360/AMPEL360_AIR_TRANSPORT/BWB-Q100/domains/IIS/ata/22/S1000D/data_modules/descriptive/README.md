@@ -9,7 +9,7 @@ Technical descriptions and specifications for ATA-22 Auto Flight Control System.
 ## Hyperlinkable Index — BWB-Q100 (ATA-22 · S1000D)
 
 **Path Root:**  
-`PRODUCTS/AMPEL360/BWB-Q100/domains/IIS/ata/22/S1000D/data_modules/descriptive/`
+`PRODUCTS/AMPEL360/BWB-Q100/domains/IIS/ata/ATA-22/S1000D/data_modules/descriptive/`
 
 ### Data Modules (DMs)
 

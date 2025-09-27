@@ -1,7 +1,7 @@
 ---
 id: MS-20-30-0001
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-30_Material_Handling/MS-20-30-0001_TPS_TileHandling.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-20/20-30_Material_Handling/MS-20-30-0001_TPS_TileHandling.md
 llc: SYSTEMS
 title: "MS-20-30-0001: Material Spec — TPS Tile Handling & Inspection"
 configuration: baseline

@@ -1,0 +1,9 @@
+File,Old_Reference,New_Reference,Context
+README.md,domains/AAA/ata/ATA-57,domains/AAA/ata/ATA-57,Root documentation reference
+INSTALLATION.md,domains/AAA/ata/ATA-57,domains/AAA/ata/ATA-57,Installation guide reference
+PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/README.md,domains/IIF/ata/ATA-20,domains/AAA/ata/ATA-20,Product documentation update
+PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/README.md,domains/LIB/ata/ATA-20,domains/AAA/ata/ATA-20,Library reference consolidated
+PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/README.md,domains/EEE/ata/ATA-30,domains/AAA/ata/ATA-30,Electrical system reference
+PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/README.md,domains/MEC/ata/ATA-30,domains/AAA/ata/ATA-30,Mechanical system reference
+PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/README.md,domains/LCC/ata/ATA-27,domains/AAA/ata/ATA-27,Flight controls reference
+PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/README.md,domains/MEC/ata/ATA-27,domains/AAA/ata/ATA-27,Mechanical controls reference

@@ -2,7 +2,7 @@
 id: ASIT-BWB-AAA-ATA57-OVERVIEW-0001
 rev: 0
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/57/README.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/README.md
 llc: SYSTEMS
 title: "ATA-57 — Wings (BWB-Q100)"
 configuration: conf_000_baseline

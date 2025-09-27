@@ -108,10 +108,10 @@ Product_Line_GAIA-AIR-SPACE/Model_EE-US/variant_001_baseline/Swarm[001-100]/Unit
 | Domain | CAx (links)                                                 | QOx (links)                               | ATA docs (links) (Analogous Chapters)         |
 | :----- | :---------------------------------------------------------- | :---------------------------------------- | :-------------------------------------------- |
 | **DDD**  | [CAI](./domains/DDD/cax/CAI/)                                 | -                                         | [ATA-46](./domains/DDD/ata/ATA-46/)               |
-| **EDI**  | [CAI](./domains/EDI/cax/CAI/)                                 | -                                         | [ATA-34](./domains/EDI/ata/ATA-34/)               |
-| **IIS**  | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/) · [KBE](./domains/IIS/cax/KBE/) | [CAI](./domains/IIS/qox/CAI/) · [CASE](./domains/IIS/qox/CASE/) · [KBE](./domains/IIS/qox/KBE/) | [ATA-22](./domains/IIS/ata/ATA-22/) · [ATA-45](./domains/IIS/ata/ATA-45/) · [ATA-46](./domains/IIS/ata/ATA-46/) |
-| **LCC**  | [CAI](./domains/LCC/cax/CAI/)                                 | [CAI](./domains/LCC/qox/CAI/)               | [ATA-23](./domains/LCC/ata/ATA-23/)               |
-| **OOO**  | [KBE](./domains/OOO/cax/KBE/)                                 | -                                         | [ATA-45](./domains/OOO/ata/ATA-45/)               |
+| **EDI**  | [CAI](./domains/EDI/cax/CAI/)                                 | -                                         | [ATA-34](./domains/AAA/ata/ATA-34/)               |
+| **IIS**  | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/) · [KBE](./domains/IIS/cax/KBE/) | [CAI](./domains/IIS/qox/CAI/) · [CASE](./domains/IIS/qox/CASE/) · [KBE](./domains/IIS/qox/KBE/) | [ATA-22](./domains/IIS/ata/ATA-22/) · [ATA-45](./domains/DDD/ata/ATA-45/) · [ATA-46](./domains/DDD/ata/ATA-46/) |
+| **LCC**  | [CAI](./domains/LCC/cax/CAI/)                                 | [CAI](./domains/LCC/qox/CAI/)               | [ATA-23](./domains/DDD/ata/ATA-23/)               |
+| **OOO**  | [KBE](./domains/OOO/cax/KBE/)                                 | -                                         | [ATA-45](./domains/DDD/ata/ATA-45/)               |
 
 ---
 

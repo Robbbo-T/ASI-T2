@@ -101,8 +101,8 @@ Product_Line_AMPEL360/Model_QAIM/variant_2_0_baseline/
 | :----- | :---------------------------------------------------------- | :---------------------------------------- | :-------------------------------------------- |
 | **CQH**  | [CASE](./domains/CQH/cax/CASE/)                               | [CASE](./domains/CQH/qox/CASE/)             | [ATA-42](./domains/CQH/ata/ATA-42/)               |
 | **DDD**  | [KBE](./domains/DDD/cax/KBE/)                                 | -                                         | [ATA-46](./domains/DDD/ata/ATA-46/)               |
-| **IIS**  | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/) · [KBE](./domains/IIS/cax/KBE/) | [CAI](./domains/IIS/qox/CAI/) · [KBE](./domains/IIS/qox/KBE/) | [ATA-45](./domains/IIS/ata/ATA-45/) · [ATA-46](./domains/IIS/ata/ATA-46/) |
-| **OOO**  | [KBE](./domains/OOO/cax/KBE/)                                 | -                                         | [ATA-45](./domains/OOO/ata/ATA-45/)               |
+| **IIS**  | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/) · [KBE](./domains/IIS/cax/KBE/) | [CAI](./domains/IIS/qox/CAI/) · [KBE](./domains/IIS/qox/KBE/) | [ATA-45](./domains/DDD/ata/ATA-45/) · [ATA-46](./domains/DDD/ata/ATA-46/) |
+| **OOO**  | [KBE](./domains/OOO/cax/KBE/)                                 | -                                         | [ATA-45](./domains/DDD/ata/ATA-45/)               |
 
 ---
 
@@ -130,7 +130,7 @@ The development of QAIM follows a **self-referential improvement loop**:
 3.  **Encode (QOx)** → This bottleneck is formulated as a QUBO problem—*by QAIM itself*—and stored in `domains/IIS/qox/CAI/problems/`.
 4.  **Solve** → QAIM's current solver version is used to solve the optimization problem for its *next* version. Results are sealed in `.../runs/`.
 5.  **Integrate & Deploy** → The optimized component is integrated back into the QAIM codebase, creating a more powerful version of the platform.
-6.  **Document (ATA)** → The architecture improvement is formally documented in `domains/IIS/ata/ATA-45/`.
+6.  **Document (ATA)** → The architecture improvement is formally documented in `domains/DDD/ata/ATA-45/`.
 
 ---
 

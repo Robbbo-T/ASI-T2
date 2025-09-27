@@ -1,3 +1,9 @@
+---
+utcs_mi: v5.0
+canonical_hash: TBD
+bridge: CB→QB→UE→FE→FWD→QS
+ethics_guard: MAL-EEM
+---
 # ATA-57 — Wings
 
 Wing systems documentation, specifications, and certification evidence for BWB-Q100 blended wing body configuration.

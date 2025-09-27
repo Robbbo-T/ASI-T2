@@ -1,7 +1,7 @@
 ---
 id: PS-20-20-0001
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-20_Sealing_and_Pressurization/PS-20-20-0001_AblativeSealantApplication.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-20/20-20_Sealing_and_Pressurization/PS-20-20-0001_AblativeSealantApplication.md
 llc: SYSTEMS
 title: "PS-20-20-0001: Process Spec — Ablative/Barrier Sealant Application"
 configuration: baseline

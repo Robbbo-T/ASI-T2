@@ -1,7 +1,7 @@
 ---
 id: SPM-20-10-0001
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-10_Structural_Practices/SPM-20-10-0001_CompositeFastening.md
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-20/20-10_Structural_Practices/SPM-20-10-0001_CompositeFastening.md
 llc: SYSTEMS
 title: "SPM-20-10-0001: Standard Practice Manual — Composite Fastening & Bonding"
 configuration: baseline

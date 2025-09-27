@@ -1,7 +1,7 @@
 ---
 id: ATA-32-OV-0001
 project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: /home/runner/work/ASI-T2/ASI-T2/PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/32/README.md
+artifact: /home/runner/work/ASI-T2/ASI-T2/PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-32/README.md
 llc: SYSTEMS
 classification: INTERNAL–EVIDENCE-REQUIRED
 version: 0.1.0
