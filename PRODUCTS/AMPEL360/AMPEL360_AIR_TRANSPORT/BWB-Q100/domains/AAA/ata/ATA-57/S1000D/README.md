@@ -1,24 +1,31 @@
-# S1000D v6 - ATA-57 Wings Documentation Modules
+# S1000D — ATA-57 Wings (BWB-Q100)
 
-This directory contains S1000D version 6 compliant technical documentation modules for ATA-57 Wing systems of the BWB-Q100 aircraft.
+**DMRL:** [`publication_modules/DML-BWQ1-ATA57-00_EN-US.xml`](./publication_modules/DML-BWQ1-ATA57-00_EN-US.xml)  
+**PM (Publication Module):** [`publication_modules/PMC-BWQ1-ATA57-00_001-00_EN-US.xml`](./publication_modules/PMC-BWQ1-ATA57-00_001-00_EN-US.xml)  
+**Indices:** [`indices/dm_index.xml`](./indices/dm_index.xml) · [`indices/xref_index.xml`](./indices/xref_index.xml)
 
-## S1000D Structure Overview
+## Routing
+- **Common Information (CIR):** [`common_information/`](./common_information/)
+- **Data Modules:** [`data_modules/`](./data_modules/)
+  - Descriptive → [`data_modules/descriptive/`](./data_modules/descriptive/)
+  - Procedural → [`data_modules/procedural/`](./data_modules/procedural/)
+  - Fault Isolation → [`data_modules/fault/`](./data_modules/fault/)
+  - IPD / Parts Lists → [`data_modules/ipd/`](./data_modules/ipd/)
+- **Schemas:** [`schemas/`](./schemas/) · **Validators:** [`validation/validators/`](./validation/validators/)
+- **Publication Modules:** [`publication_modules/`](./publication_modules/)
+- **IETP Build:** [`ietp/`](./ietp/) · **Server:** [`gen_cms/server/`](./gen_cms/server/)
 
-S1000D (International specification for technical publications using a common source database) organizes technical documentation into modular components called Data Modules (DM).
+## Build & Validate
+```bash
+# Rebuild indices and validate CSDB
+python validation/validators/generate_indices.py
+python validation/validators/validate_csdb.py
 
-## Directory Organization
-
+# Optional: build IETP package
+python ietp/build_ietp.py
 ```
-S1000D/
-├── data_modules/           # Individual S1000D data modules
-│   ├── descriptive/       # Descriptive data modules
-│   ├── procedural/        # Procedural data modules
-│   └── fault/            # Fault isolation and reporting modules
-├── publication_modules/   # Publication modules (PM)
-├── schemas/              # S1000D schema files
-├── common_info/          # Common information repositories
-└── multimedia/           # Associated multimedia objects
-```
+
+> **Link policy:** relative links; directories end with `/`; files include full name (with issue/inWork if used).
 
 ## Data Module Naming Convention
 
@@ -27,7 +34,7 @@ Data modules follow S1000D naming convention:
 
 For BWB-Q100 ATA-57:
 - Model: BWQ1 (mapped to marketing name "BWB-Q100")
-- System: 57 (Wings)
+- System: 57 (Wings)  
 - Subsystems: 10, 20, 30, 40, 50
 
 ## Information Code Usage (S1000D Issue 6.0)
@@ -36,20 +43,14 @@ For BWB-Q100 ATA-57:
 - **Procedures**: 200s (servicing/ops), 500s (removal), 600s (repair), 700s (install/rig)
 - **Inspections/Tests**: 300s (inspection), 345 (system test), 350 (functional check)
 - **Fault Isolation**: 420 (general FI), 421-428 (system-specific FI)
+- **IPD/Parts**: 900 (illustrated parts data), 910 (parts lists)
 
 ## Key Files
 
 - **BREX Data Module**: `DMC-BWQ1-A-00-00-00-00A-022A-D-EN-US.xml` - Project business rules
 - **Wing Structure Description**: `DMC-BWQ1-A-57-10-00-00A-040A-D-EN-US.xml` - Example descriptive module
 - **Publication Module**: `PMC-BWQ1-ATA57-00_001-00_EN-US.xml` - ATA-57 publication structure
-- **Data Module Requirements List**: `DML-BWQ1-ATA57-00.xml` - Complete ATA-57 data module requirements
-
-## Compliance
-
-- **S1000D Version**: 6.0 (XSD-based validation, no DTD)
-- **Business Rules**: Defense and Commercial Aviation
-- **Schema**: S1000D Issue 6.0 schemas with XSD validation
-- **Model Identification**: BWQ1 (compliant with MIC requirements)
+- **Data Module Requirements List**: `DML-BWQ1-ATA57-00_EN-US.xml` - Complete ATA-57 data module requirements
 
 ## Documentation
 
