@@ -1,0 +1,7 @@
+Chapter,Domain,Path,ContentHash,Size,Reason
+ATA-72,LIB,domains/LIB/ata/ATA-72/README.md,aa0f9f6d63b90d6a...,447,Content differs significantly - manual review required
+ATA-72,PPP,domains/PPP/ata/ATA-72/README.md,9bd812116fa35bb4...,5546,Content differs significantly - manual review required
+ATA-57,LIB,domains/LIB/ata/ATA-57/README.md,ce83ace48119f6a5...,447,Content differs significantly - manual review required
+ATA-57,AAA,domains/AAA/ata/ATA-57/README.md,a5ff2a70909a23b8...,5236,Content differs significantly - manual review required
+ATA-27,LCC,domains/LCC/ata/ATA-27/README.md,6dee7e7d8f83c66f...,1232,Content differs significantly - manual review required
+ATA-27,MEC,domains/MEC/ata/ATA-27/README.md,fcdb2e8d104aec07...,447,Content differs significantly - manual review required

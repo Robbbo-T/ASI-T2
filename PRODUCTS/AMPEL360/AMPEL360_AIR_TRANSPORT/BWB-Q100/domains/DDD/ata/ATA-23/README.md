@@ -1,16 +1,16 @@
 ---
-id: ATA-23-OV-0001
-project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: /home/runner/work/ASI-T2/ASI-T2/PRODUCTS/AMPEL360/BWB-Q100/domains/DDD/ata/23/README.md
-llc: SYSTEMS
+artifact: '"PRODUCTS/AMPEL360/BWB-Q100/domains/DDD/ata/23/README.md"'
+bridge: '"CB→QB→UE→FE→FWD→QS"'
+canonical_hash: '"100affaa73cb160273441e534f50f2458aac149b1302988a3852ba41c22889e2"'
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: 0.1.0
+ethics_guard: '"MAL-EEM"'
+id: '"ATA-23-OV-0001"'
+llc: SYSTEMS
+maintainer: '"ASI-T Architecture Team"'
+project: '"PRODUCTS/AMPEL360/BWB-Q100"'
 release_date: 2025-09-24
-maintainer: "ASI-T Architecture Team"
-bridge: "CB→QB→UE→FE→FWD→QS"
-ethics_guard: MAL-EEM
-utcs_mi: v5.0
-canonical_hash: "TBD"
+utcs_mi: '"v5.0"'
+version: 0.1.0
 ---
 # ATA-23
 
