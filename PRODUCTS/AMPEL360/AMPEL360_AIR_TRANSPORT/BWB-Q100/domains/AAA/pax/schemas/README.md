@@ -1,3 +1,18 @@
+---
+id: AAA-PAX-SCHEMAS-OV-0001
+project: AMPEL360/BWB-Q100
+artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/pax/schemas/README.md
+llc: SYSTEMS
+classification: INTERNAL–EVIDENCE-REQUIRED
+version: 0.1.0
+release_date: "2025-01-23"
+maintainer: "ASI-T Architecture Team"
+bridge: "CB→QB→UE→FWD→QS"
+ethics_guard: MAL-EEM
+utcs_mi: v5.0
+canonical_hash: "TBD"
+---
+
 # PAx Schemas - Packaging
 
 This directory contains schema definitions for BWB-Q100 AAA domain packaging and containerization specifications.

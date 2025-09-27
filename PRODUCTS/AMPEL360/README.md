@@ -24,6 +24,9 @@ This space groups **crewed AMPEL360 products** under a single, auditable hub wit
 - **AMPEL360_AIR_TRANSPORT** → `./AMPEL360_AIR_TRANSPORT/`
   - **BWB-Q100 (Transport Civil × Air)** → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/`
     - CAD Wing Baseline (AAA→cax→CAD) → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/`
+    - PAx Packaging (AAA→pax) → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/`
+      - On-Board Packaging → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/OB/`
+      - Off-Board Packaging → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/OFF/`
     - Master Params → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/master_model/params.yaml`
     - (Optional) ATA-57 S1000D → `./AMPEL360_AIR_TRANSPORT/BWB-Q100/ata/57/`
 - **AMPEL360_SPACE_TOURISM** → `./AMPEL360_SPACE_TOURISM/`
@@ -65,7 +68,19 @@ ASI-T2/PRODUCTS/AMPEL360/
 ├─ AMPEL360_AIR_TRANSPORT/                      # Air transport products
 │  ├─ README.md                                 # Air transport hub
 │  └─ BWB-Q100/                                 # Product instance (baseline)
-│     ├─ domains/AAA/cax/CAD/wing\_baseline\_model/...
+│     ├─ domains/AAA/                          # Engineering domain AAA
+│     │  ├─ cax/CAD/wing_baseline_model/...    # Classical CAD models
+│     │  ├─ qox/ ...                           # Quantum optimization
+│     │  └─ pax/                               # Packaging & Applications
+│     │     ├─ OB/                             # On-Board (ARINC 653/IMA, A661, A664)
+│     │     │  ├─ manifests/                   # Partition manifests
+│     │     │  ├─ sbom/                        # SPDX/CycloneDX SBOM
+│     │     │  └─ certificates/                # Signatures, X.509 chains
+│     │     ├─ OFF/                            # Off-Board (OCI/edge/cloud)
+│     │     │  ├─ oci/                         # OCI descriptors/attestations
+│     │     │  └─ sbom/                        # Container SBOM
+│     │     ├─ schemas/                        # JSON schemas for manifests
+│     │     └─ scripts/                        # Validators/linters
 │     ├─ QS/ ...                               # Evidence, signatures, KPIs
 │     └─ ata/57/ ...                           # S1000D/ATA seeds (optional)
 └─ AMPEL360_SPACE_TOURISM/                      # Space tourism products
