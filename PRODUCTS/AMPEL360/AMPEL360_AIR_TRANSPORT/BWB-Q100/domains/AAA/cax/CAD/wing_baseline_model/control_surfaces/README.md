@@ -13,10 +13,13 @@ Manages control surface geometry and design including:
 
 ## BWB-Q100 Control Surfaces
 
-- **Elevons** - Combined elevator and aileron surfaces for BWB configuration
-- **Winglets/Vertical surfaces** - Directional control and stability surfaces
-- **Spoilers** - Lift reduction and drag generation surfaces
-- **Trim surfaces** - Fine control and balance adjustment surfaces
+- **Elevons** - Combined elevator and aileron surfaces for BWB configuration (elevons.yaml)
+- **Flaperons** - High-lift and control surface combination (flaperons.yaml)
+- **Spoilers** - Lift reduction, drag generation, and roll assist surfaces (spoilers.yaml)
+- **Vertical surfaces** - Twin winglet rudders and center vertical stabilizer (vertical_surfaces.yaml)
+- **Trim surfaces** - Pitch, roll, yaw, and span load distribution trim tabs (trim_surfaces.yaml)
+
+See index.yaml for complete control surface inventory and integration summary.
 
 ## CAD Integration
 

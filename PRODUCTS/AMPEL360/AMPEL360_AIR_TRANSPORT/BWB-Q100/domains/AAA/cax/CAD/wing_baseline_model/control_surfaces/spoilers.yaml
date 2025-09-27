@@ -1,0 +1,140 @@
+# AMPEL360 BWB-Q100 Spoiler Configuration
+# Path: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/control_surfaces/spoilers.yaml
+# Version: 2.0
+# Last Updated: 2024-09-27
+
+metadata:
+  aircraft: BWB-Q100
+  surface_type: spoiler_speedbrake
+  primary_function: lift_dump_drag_generation
+  coordinate_system: body_fixed
+
+deflection_limits_deg:
+  min: 0     # Fully retracted
+  max: 60    # Maximum deflection
+  intermediate: 30  # Half speedbrake
+
+deployment_modes:
+  - name: RETRACTED
+    angle_deg: 0
+    drag_coefficient_delta: 0.000
+    lift_reduction_percent: 0
+    
+  - name: FLIGHT_SPOILER
+    angle_deg: 15
+    drag_coefficient_delta: 0.012
+    lift_reduction_percent: 10
+    
+  - name: SPEEDBRAKE
+    angle_deg: 30
+    drag_coefficient_delta: 0.045
+    lift_reduction_percent: 25
+    
+  - name: GROUND_SPOILER
+    angle_deg: 60
+    drag_coefficient_delta: 0.120
+    lift_reduction_percent: 60
+
+segments:
+  # Left Wing - Inboard Group
+  - id: SP1_L
+    side: left
+    span_fraction: [0.15, 0.20]  # Just inboard of elevons
+    chord_fraction: 0.12
+    hinge_line_x_over_c: 0.60
+    type: panel
+    function: [speedbrake, ground_spoiler, roll_assist]
+    actuator_type: hydraulic
+    deployment_time_sec: 2.0
+    mass_kg: 8.5
+    
+  - id: SP2_L
+    side: left
+    span_fraction: [0.35, 0.40]  # Between elevon segments
+    chord_fraction: 0.12
+    hinge_line_x_over_c: 0.60
+    type: panel
+    function: [speedbrake, ground_spoiler, roll_assist]
+    actuator_type: hydraulic
+    deployment_time_sec: 2.0
+    mass_kg: 8.2
+    
+  - id: SP3_L
+    side: left
+    span_fraction: [0.52, 0.57]  # Between elevon and flap
+    chord_fraction: 0.11
+    hinge_line_x_over_c: 0.60
+    type: panel
+    function: [speedbrake, ground_spoiler]
+    actuator_type: hydraulic
+    deployment_time_sec: 2.0
+    mass_kg: 7.8
+    
+  - id: SP4_L
+    side: left
+    span_fraction: [0.70, 0.75]  # Outboard position
+    chord_fraction: 0.10
+    hinge_line_x_over_c: 0.62
+    type: panel
+    function: [ground_spoiler]
+    actuator_type: electric
+    deployment_time_sec: 2.5
+    mass_kg: 6.5
+    
+  # Right Wing - Mirror Configuration
+  - id: SP1_R
+    side: right
+    span_fraction: [0.15, 0.20]
+    chord_fraction: 0.12
+    hinge_line_x_over_c: 0.60
+    type: panel
+    function: [speedbrake, ground_spoiler, roll_assist]
+    actuator_type: hydraulic
+    deployment_time_sec: 2.0
+    mass_kg: 8.5
+    
+  - id: SP2_R
+    side: right
+    span_fraction: [0.35, 0.40]
+    chord_fraction: 0.12
+    hinge_line_x_over_c: 0.60
+    type: panel
+    function: [speedbrake, ground_spoiler, roll_assist]
+    actuator_type: hydraulic
+    deployment_time_sec: 2.0
+    mass_kg: 8.2
+    
+  - id: SP3_R
+    side: right
+    span_fraction: [0.52, 0.57]
+    chord_fraction: 0.11
+    hinge_line_x_over_c: 0.60
+    type: panel
+    function: [speedbrake, ground_spoiler]
+    actuator_type: hydraulic
+    deployment_time_sec: 2.0
+    mass_kg: 7.8
+    
+  - id: SP4_R
+    side: right
+    span_fraction: [0.70, 0.75]
+    chord_fraction: 0.10
+    hinge_line_x_over_c: 0.62
+    type: panel
+    function: [ground_spoiler]
+    actuator_type: electric
+    deployment_time_sec: 2.5
+    mass_kg: 6.5
+
+control_logic:
+  auto_ground_spoiler: 
+    enabled: true
+    conditions: [weight_on_wheels, throttle_idle]
+  roll_assist:
+    max_deflection_deg: 25
+    segments: [SP1, SP2]
+  symmetric_deployment: required_for_speedbrake
+  
+integration:
+  fcs_interface: ARINC429
+  interlock_with_flaps: true  # Limit deployment with flaps extended
