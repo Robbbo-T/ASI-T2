@@ -12,7 +12,7 @@
       <dmStatus>
         <security securityClassification="01"/>
       </dmStatus>
-      <language countryIsoCode="US">en</language>
+      <language languageIsoCode="en" countryIsoCode="US"/>
     </dmAddress>
   </identAndStatusSection>
   <brexContent>
