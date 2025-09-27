@@ -5,15 +5,15 @@ dal: A
 schedule:
   major_frame_ms: 35
   windows:
-    - task: SENSOR_FUSION      # 20%
+    - task: SENSOR_FUSION      # 14.3%
       budget_ms: 5
-    - task: CTRL_LAW           # 40%
+    - task: CTRL_LAW           # 28.6%
       budget_ms: 10
-    - task: SURF_COORD         # 25%
+    - task: SURF_COORD         # 17.1%
       budget_ms: 6
-    - task: MONITOR            # 10%
+    - task: MONITOR            # 5.7%
       budget_ms: 2
-    - task: HOUSEKEEPING       # 5%
+    - task: HOUSEKEEPING       # 5.7%
       budget_ms: 2
 wcet_margin_pct: 25
 memory:
