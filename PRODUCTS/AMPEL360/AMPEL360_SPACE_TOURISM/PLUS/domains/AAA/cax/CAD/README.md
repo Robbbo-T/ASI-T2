@@ -184,7 +184,7 @@ Schema: `schemas/cad_manifest.schema.json`
   ],
   "refs": {
     "ata_practices": ["../../ata/ATA-20/S1000D/data_modules/descriptive/DMC-PLS1-A-20-10-00-00A-040A-D-EN-US.xml"],
-    "ata_structures": ["../../ata/ATA-57/S1000D/..."]
+    "ata_structures": ["../../../../ata/ATA-57/S1000D/..."]
   },
   "utcs": {
     "canonical_hash": "TBD",
