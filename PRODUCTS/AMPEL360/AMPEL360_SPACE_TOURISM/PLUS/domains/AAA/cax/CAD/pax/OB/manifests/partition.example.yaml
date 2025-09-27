@@ -1,0 +1,43 @@
+# ARINC 653 Partition Manifest for CAD Visualization Tools
+# On-board deployment for space vehicle flight displays
+
+partition:
+  name: "PLUS-CAD-DISPLAY-A01"
+  type: "ARINC653_PARTITION"
+  criticality: "DAL-C"
+  
+system:
+  memory_kb: 8192
+  cpu_percent: 15
+  period_ms: 50
+  
+interfaces:
+  arinc664:
+    - vlink_id: "VL_CAD_GEOMETRY"
+      direction: "RX"
+      refresh_ms: 100
+    - vlink_id: "VL_DISPLAY_CMD" 
+      direction: "TX"
+      refresh_ms: 50
+      
+  arinc429:
+    - label: "271"  # Vehicle attitude
+      direction: "RX"
+      rate_hz: 50
+    - label: "272"  # Position data
+      direction: "RX" 
+      rate_hz: 10
+
+cad_specific:
+  geometry_formats: ["STEP_LITE", "STL_COMPRESSED"]
+  display_modes: ["WIREFRAME", "SHADED", "THERMAL_OVERLAY"]
+  max_polygons: 50000
+  
+health_monitoring:
+  watchdog_ms: 200
+  built_in_test: true
+  
+utcs:
+  canonical_hash: "TBD"
+  provenance: "ASIT-PLUS-AAA-CAX-CAD-OV-0001"
+  evidence_path: "../../evidence/partition.example/"

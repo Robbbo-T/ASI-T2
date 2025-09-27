@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CAD Manifest Schema",
+  "description": "Schema for CAD manifest files in AMPEL360 PLUS space vehicle design",
+  "type": "object",
+  "required": ["id", "vehicle", "kind", "rev", "exports", "utcs"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9]+(-[A-Z0-9]+)*$",
+      "description": "Unique identifier for the CAD artifact"
+    },
+    "vehicle": {
+      "type": "string",
+      "enum": ["AMPEL360_PLUS"],
+      "description": "Vehicle program identifier"
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["OML", "STRUCTURE", "TPS", "INTERFACE", "ASSEMBLY"],
+      "description": "Type of CAD artifact"
+    },
+    "rev": {
+      "type": "string",
+      "pattern": "^[A-Z][0-9]{2}$",
+      "description": "Revision identifier (e.g., A02, B05)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the CAD artifact"
+    },
+    "exports": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "format", "units"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Relative path to exported file"
+          },
+          "format": {
+            "type": "string",
+            "enum": ["STEP", "IGES", "Parasolid", "STL", "X_T"],
+            "description": "CAD export format"
+          },
+          "units": {
+            "type": "string",
+            "enum": ["mm", "m", "in", "ft"],
+            "description": "Units of the exported geometry"
+          },
+          "purpose": {
+            "type": "string",
+            "enum": ["CFD", "CAE", "Manufacturing", "Visualization", "Archive"],
+            "description": "Intended use of the export"
+          }
+        }
+      }
+    },
+    "refs": {
+      "type": "object",
+      "description": "References to related documentation",
+      "properties": {
+        "ata_practices": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "References to ATA-20 practice documents"
+        },
+        "ata_structures": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "References to ATA-57 structure documents"
+        },
+        "s1000d_dms": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "References to S1000D data modules"
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "description": "Geometry-specific metadata",
+      "properties": {
+        "bounding_box": {
+          "type": "object",
+          "properties": {
+            "min": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+            "max": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3}
+          }
+        },
+        "coordinate_system": {
+          "type": "string",
+          "description": "Reference coordinate system"
+        },
+        "material_properties": {
+          "type": "object",
+          "description": "Material assignments and properties"
+        }
+      }
+    },
+    "utcs": {
+      "type": "object",
+      "required": ["provenance"],
+      "properties": {
+        "canonical_hash": {
+          "type": "string",
+          "pattern": "^(sha256:[a-f0-9]{64}|TBD)$",
+          "description": "SHA256 hash of canonical content or TBD for development"
+        },
+        "provenance": {
+          "type": "string",
+          "description": "Reference to source document or process"
+        },
+        "evidence_path": {
+          "type": "string",
+          "description": "Path to QS evidence files"
+        }
+      }
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modification timestamp"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author/creator identifier"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+# OCI Image Descriptor for CAD Export CI Pipeline
+# Off-board container for automated CAD geometry export and validation
+
+apiVersion: v1
+kind: ImageDescriptor
+metadata:
+  name: "plus-cad-exporter"
+  version: "1.2.0"
+  
+image:
+  registry: "ghcr.io/ampel360"
+  repository: "plus-cad-exporter"
+  tag: "v1.2.0"
+  digest: "sha256:abcd1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab"
+  
+platform:
+  os: "linux" 
+  architecture: "amd64"
+  variant: ""
+  
+cad_capabilities:
+  input_formats: ["CATIA_V5", "NX_NATIVE", "FUSION360"]
+  output_formats: ["STEP", "IGES", "X_T", "STL"]
+  validation_tools: 
+    - "geometry_checker"
+    - "mass_properties"
+    - "naming_validator"
+  
+resources:
+  cpu: "2.0"
+  memory: "4Gi"
+  storage: "10Gi"
+  gpu: false
+  
+networking:
+  ports:
+    - name: "api"
+      port: 8080
+      protocol: "HTTP"
+    - name: "metrics"
+      port: 9090
+      protocol: "HTTP"
+      
+security:
+  run_as_user: 1001
+  run_as_group: 1001
+  read_only_root_fs: true
+  allow_privilege_escalation: false
+  
+sbom:
+  format: "CycloneDX"
+  path: "/usr/share/sbom/sbom.json"
+  hash: "sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+  
+signatures:
+  - type: "cosign"
+    keyid: "ampel360-cad-signing-key"
+    path: "/usr/share/signatures/cosign.sig"
+    
+utcs:
+  canonical_hash: "TBD"
+  provenance: "ASIT-PLUS-AAA-CAX-CAD-OV-0001"
+  evidence_path: "../../evidence/cad-ci.exporter/"
