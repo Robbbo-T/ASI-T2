@@ -414,9 +414,6 @@ pax/
 
 ## Context → Fields & Products Map
 
-<details>
-<summary><strong>Environment Context to Implementation Mapping</strong></summary>
-
 ### DIGITAL / CONTEXT
 
 #### VIRTUAL
@@ -477,4 +474,4 @@ pax/
 - **Fields**: [`cybersecurity`](./FIELDS/cybersecurity/), [`cyberdefense`](./FIELDS/cyberdefense/), [`intelligence`](./FIELDS/intelligence/), [`communications`](./FIELDS/communications/)
 - **Products**: [`INFRANET/QAIM`](./PRODUCTS/INFRANET/QAIM/), [`INFRANET/META_OS_AEROSPACE`](./PRODUCTS/INFRANET/META_OS_AEROSPACE/), [`GAIA-AIR/ETHICS-EMPATHY-UAV`](./PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/)
 
-</details>
+
