@@ -18,6 +18,16 @@
       <rule id="brex.text.style">All torque values must state unit system and tolerance.</rule>
       <rule id="brex.cross.ref">Cross-reference other ATA chapters; do not duplicate tasks.</rule>
       <rule id="brex.qs.utcs">On release, embed QS/UTCS canonical_hash in release notes.</rule>
+      <rule id="brex.numbers.format">Use '.' as decimal separator; no thousands separators; significant figures must match measurement uncertainty.</rule>
+      <rule id="brex.torque.tables">Torque tables must specify: fastener type/size, material class, lubrication condition, temperature band, tolerance, and reference spec/version.</rule>
+      <rule id="brex.torque.override">System-specific DMs may override generic torque values; overrides must cite the controlling DMC via dmRef.</rule>
+      <rule id="brex.material.refs">All materials (sealants/adhesives/RCC/CMC) must reference a controlled specification and revision.</rule>
+      <rule id="brex.graphics.policy">Prefer vector graphics (SVG). Raster images must be ≥300 dpi at final size and embedded with alt text.</rule>
+      <rule id="brex.figure.table.ids">Figures, tables, and sections must use stable IDs with the pattern sec.*, fig.*, tbl.* for cross-DM linking.</rule>
+      <rule id="brex.procedure.safety">Use S1000D WARNING/CAUTION/NOTE elements; never encode safety text as plain paragraphs.</rule>
+      <rule id="brex.duplication">Do not duplicate content across ATA chapters; use dmRef with explicit DMC instead.</rule>
+      <rule id="brex.naming.convention">All attached artifacts must follow PLUS-* naming (vehicle-module-feature-rev.ext).</rule>
+      <rule id="brex.qs.evidence">On release, include UTCS/QS canonical_hash and evidence pack references in dmStatus/repositorySourceDmIdent.</rule>
     </ruleGroup>
   </brexContent>
 </brex>

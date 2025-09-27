@@ -3,17 +3,31 @@
 <dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://www.s1000d.org/S1000D_6-0/descript"
          xsi:schemaLocation="http://www.s1000d.org/S1000D_6-0/descript descript.xsd">
+
   <identAndStatusSection>
     <dmAddress>
       <dmIdent>
         <dmCode modelIdentCode="PLS1" systemDiffCode="A" systemCode="20" subSystemCode="20"
                 subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
                 infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="01"/>
       </dmIdent>
-      <language countryIsoCode="US">en</language>
+
+      <dmAddressItems>
+        <issueDate day="27" month="09" year="2025"/>
+        <dmTitle>
+          <techName>Standard Practices—Sealants &amp; Adhesives (Airframe)</techName>
+          <infoName>Materials and application</infoName>
+        </dmTitle>
+      </dmAddressItems>
     </dmAddress>
-    <issueInfo issueNumber="001" inWork="01"/>
-    <security securityClassification="01"/>
+
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="AAA"/>
+      <originator enterpriseCode="AAA"/>
+    </dmStatus>
   </identAndStatusSection>
 
   <content>
@@ -34,7 +48,7 @@
 
     <levelledPara id="sec.crossref">
       <title>Cross-References</title>
-      <para>For pressure vessel sealing, see ATA-21. For fuel system sealing, see ATA-28. For environmental control sealing, see ATA-21.</para>
+      <para>For pressure vessel sealing, see ATA-53 (Fuselage). For fuel system sealing, see ATA-28. For environmental control sealing, see ATA-21.</para>
     </levelledPara>
   </content>
 </dmodule>
