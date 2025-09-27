@@ -23,7 +23,7 @@ from typing import Dict, List, Tuple, Any
 try:
     from jsonschema import Draft202012Validator, ValidationError
 except ImportError:
-    print("ERROR: jsonschema package required. Install with: pip install jsonschema")
+    print("ERROR: The 'jsonschema' package (version >= 4.0.0) is required. Install it with: pip install 'jsonschema>=4.0.0'\nIf you are using a virtual environment, ensure it is activated. For more help, see: https://pypi.org/project/jsonschema/")
     sys.exit(1)
 
 # Schema file mappings
