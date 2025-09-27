@@ -94,9 +94,12 @@ def validate_schedulability(manifest: Dict[str, Any], wcet_data: Dict[str, float
         issues.append(f"Total budget {total_budget}ms exceeds major frame {major_frame_ms}ms")
     
     # Check for adequate slack
-    slack_pct = ((major_frame_ms - total_budget) / major_frame_ms) * 100
-    if slack_pct < margin_pct:
-        issues.append(f"Insufficient slack {slack_pct:.1f}% < required {margin_pct}%")
+    if major_frame_ms > 0:
+        slack_pct = ((major_frame_ms - total_budget) / major_frame_ms) * 100
+        if slack_pct < margin_pct:
+            issues.append(f"Insufficient slack {slack_pct:.1f}% < required {margin_pct}%")
+    else:
+        issues.append("Cannot compute slack: major_frame_ms is zero or negative.")
     
     return len(issues) == 0, issues
 
