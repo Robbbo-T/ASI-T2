@@ -1,0 +1,30 @@
+partition:
+  name: "BWB-AFCS-A01"
+  type: "ARINC653_PARTITION"
+  criticality: "DAL-A"
+system:
+  memory_kb: 32768
+  cpu_percent: 40
+  period_ms: 20
+interfaces:
+  arinc664:
+    - vlink_id: "VL_AFCS_CMD"   # TX flight-guidance commands
+      direction: "TX"
+      refresh_ms: 20
+    - vlink_id: "VL_AFCS_SENS"  # RX sensors/FMS data
+      direction: "RX"
+      refresh_ms: 20
+  arinc429:
+    - label: "203"  # Roll command/monitor (example)
+      direction: "TX"
+      rate_hz: 50
+    - label: "204"  # Pitch command/monitor
+      direction: "TX"
+      rate_hz: 50
+health_monitoring:
+  watchdog_ms: 100
+  built_in_test: true
+utcs:
+  canonical_hash: "TBD"
+  provenance: "ATA-22-OV-0001"
+  evidence_path: "../../evidence/AFCS.partition/"

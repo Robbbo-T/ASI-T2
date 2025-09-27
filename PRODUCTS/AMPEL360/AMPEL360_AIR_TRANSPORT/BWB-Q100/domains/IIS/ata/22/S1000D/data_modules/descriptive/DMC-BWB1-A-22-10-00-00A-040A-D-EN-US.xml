@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.s1000d.org/S1000D_6-0/dmodule"
+         xsi:schemaLocation="http://www.s1000d.org/S1000D_6-0/dmodule dmodule.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWB1" systemDiffCode="A" systemCode="22" subSystemCode="10"
+                subSubSystemCode="00" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmIdent>
+      <language countryIsoCode="US">en</language>
+    </dmAddress>
+    <issueInfo issueNumber="001" inWork="01"/>
+  </identAndStatusSection>
+  <content>
+    <description>
+      <para>The Auto Flight Control System (AFCS) provides AP, FD, A/T, and protection functions.
+            It exchanges data with FMS, QAFbW, NAVSYS and HMI_BRIDGE over A653/A664.</para>
+      <para>Deterministic timing is enforced by ARINC 653 partitions; network isolation via AFDX VLs.</para>
+    </description>
+  </content>
+</dmodule>
