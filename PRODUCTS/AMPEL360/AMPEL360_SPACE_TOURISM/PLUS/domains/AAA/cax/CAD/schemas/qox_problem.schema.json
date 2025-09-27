@@ -93,7 +93,8 @@
           "properties": {
             "backend": {
               "type": "string",
-              "enum": ["simulator", "ibm_quantum", "dwave", "rigetti", "ionq", "quantinuum", "oqc"]
+              "pattern": "^[a-z0-9_\\-]+$",
+              "description": "Quantum backend provider identifier (e.g., 'simulator', 'ibm_quantum', 'dwave', 'rigetti', 'ionq', 'quantinuum', 'oqc')."
             },
             "qubits": {
               "type": "integer",
