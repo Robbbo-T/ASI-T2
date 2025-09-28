@@ -9,27 +9,27 @@ PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies
 
 ### Primary Views
 
-* [`BWB-Q100-ASM-001-GA-001` — General Arrangement (3-view)](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-GA-001_General_Arrangement.md)
-* [`BWB-Q100-ASM-001-GA-002` — Isometric Views](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-GA-002_Isometric_Views.md)
-* [`BWB-Q100-ASM-001-GA-003` — Station Reference Grid](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-GA-003_Station_Reference_Grid.md)
+* [`BWB-Q100-ASM-001-GA-001` — General Arrangement (3-view)](BWB-Q100-ASM-001-GA-001_General_Arrangement.md)
+* [`BWB-Q100-ASM-001-GA-002` — Isometric Views](BWB-Q100-ASM-001-GA-002_Isometric_Views.md)
+* [`BWB-Q100-ASM-001-GA-003` — Station Reference Grid](BWB-Q100-ASM-001-GA-003_Station_Reference_Grid.md)
 
 ### Surface Definition
 
-* [`BWB-Q100-ASM-001-SD-001` — Loft Sections (STA 0–2000)](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-SD-001_Loft_Sections_STA0-2000.md)
-* [`BWB-Q100-ASM-001-SD-002` — Loft Sections (STA 2000–4000)](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-SD-002_Loft_Sections_STA2000-4000.md)
-* [`BWB-Q100-ASM-001-SD-003` — Planform & Twist Distribution](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-SD-003_Planform_and_Twist_Distribution.md)
-* [`BWB-Q100-ASM-001-SD-004` — Blend Region Geometry](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-SD-004_Blend_Region_Geometry.md)
+* [`BWB-Q100-ASM-001-SD-001` — Loft Sections (STA 0–2000)](BWB-Q100-ASM-001-SD-001_Loft_Sections_STA0-2000.md)
+* [`BWB-Q100-ASM-001-SD-002` — Loft Sections (STA 2000–4000)](BWB-Q100-ASM-001-SD-002_Loft_Sections_STA2000-4000.md)
+* [`BWB-Q100-ASM-001-SD-003` — Planform & Twist Distribution](BWB-Q100-ASM-001-SD-003_Planform_and_Twist_Distribution.md)
+* [`BWB-Q100-ASM-001-SD-004` — Blend Region Geometry](BWB-Q100-ASM-001-SD-004_Blend_Region_Geometry.md)
 
 ### Interface Control
 
-* [`BWB-Q100-ASM-001-IC-001` — ASM-002/003/004 Join Lines](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-IC-001_Join_Lines_ASM002-004.md)
-* [`BWB-Q100-ASM-001-IC-002` — Control Surface Cutouts](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-IC-002_Control_Surface_Cutouts.md)
-* [`BWB-Q100-ASM-001-IC-003` — Systems Penetrations](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-IC-003_Systems_Penetrations.md)
+* [`BWB-Q100-ASM-001-IC-001` — ASM-002/003/004 Join Lines](BWB-Q100-ASM-001-IC-001_Join_Lines_ASM002-004.md)
+* [`BWB-Q100-ASM-001-IC-002` — Control Surface Cutouts](BWB-Q100-ASM-001-IC-002_Control_Surface_Cutouts.md)
+* [`BWB-Q100-ASM-001-IC-003` — Systems Penetrations](BWB-Q100-ASM-001-IC-003_Systems_Penetrations.md)
 
 ### Manufacturing
 
-* [`BWB-Q100-ASM-001-MF-001` — Surface Tolerance Map](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-MF-001_Surface_Tolerance_Map.md)
-* [`BWB-Q100-ASM-001-MF-002` — Tooling Reference Points](PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/assemblies/ASM-001/drawings/BWB-Q100-ASM-001-MF-002_Tooling_Reference_Points.md)
+* [`BWB-Q100-ASM-001-MF-001` — Surface Tolerance Map](BWB-Q100-ASM-001-MF-001_Surface_Tolerance_Map.md)
+* [`BWB-Q100-ASM-001-MF-002` — Tooling Reference Points](BWB-Q100-ASM-001-MF-002_Tooling_Reference_Points.md)
 
 ---
 
