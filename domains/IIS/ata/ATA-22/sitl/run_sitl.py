@@ -1,7 +1,9 @@
 import time, yaml, math
+import os
 from ata22.mode_manager import ModeManager
 
-with open("domains/IIS/ata/ATA-22/config/modes.yaml") as f:
+config_path = os.path.join(os.path.dirname(__file__), "..", "config", "modes.yaml")
+with open(config_path) as f:
     cfg = yaml.safe_load(f)
 
 mm = ModeManager(cfg)
