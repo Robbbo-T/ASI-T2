@@ -1,25 +1,25 @@
 ---
-id: ATA-20-10-OV-0001
-project: PRODUCTS/AMPEL360/BWB-Q100
 artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-10_Structural_Practices/README.md
-llc: SYSTEMS
-title: "ATA-20-10: Structural Practices (BWB-Q100)"
-configuration: baseline
+bridge: CB→QB→UE→FE→FWD→QS
+canonical_hash: TBD
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: "0.1.0"
-release_date: 2025-09-24
-maintainer: "M&P Engineering Team"
-licenses:
-  docs: "CC-BY-4.0"
-bridge: "CB→QB→UE→FE→FWD→QS"
+configuration: baseline
 ethics_guard: MAL-EEM
-utcs_mi: v5.0
-canonical_hash: "TBD"
+id: ATA-20-10-OV-0001
+licenses:
+  docs: CC-BY-4.0
+llc: SYSTEMS
+maintainer: M&P Engineering Team
+project: PRODUCTS/AMPEL360/BWB-Q100
 provenance:
-  policy_hash: "sha256:TBD"
-  model_sha: "sha256:TBD" 
-  data_manifest_hash: "sha256:TBD"
-  operator_id: "UTCS:OP:copilot-gen"
+  data_manifest_hash: sha256:TBD
+  model_sha: sha256:TBD
+  operator_id: UTCS:OP:copilot-gen
+  policy_hash: sha256:TBD
+release_date: 2025-09-24
+title: 'ATA-20-10: Structural Practices (BWB-Q100)'
+utcs_mi: v5.0
+version: 0.1.0
 ---
 
 # ATA-20-10 — Structural Practices

@@ -1,19 +1,19 @@
 ---
-id: ASIT2-APLUS-AAA-ATA20-INDEX
-project: ASI-T2
-artifact: ATA-20 Standard Practices — Airframe (PLUS)
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 0.1.0
-release_date: 2025-09-27
-maintainer: AAA (Airframes) · PLUS Line
+artifact: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS
+brex_dmref: DMC-PLS1-A-00-00-00-00A-022A-D-EN-US
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
 canonical_hash: pending
-language_default: en-US
+classification: INTERNAL–EVIDENCE-REQUIRED
+dmrl_file: ./S1000D/dmrl/DMRL-ATA20-PLUS.csv
 enterprise_code: AAA
-brex_dmref: DMC-PLS1-A-00-00-00-00A-022A-D-EN-US  # project BREX (placeholder)
-dmrl_file: ./S1000D/dmrl/DMRL-ATA20-PLUS.csv  # DMRL covering the DMs below
+ethics_guard: MAL-EEM
+id: ASIT2-APLUS-AAA-ATA20-INDEX
+language_default: en-US
+llc: SYSTEMS
+maintainer: AAA (Airframes) · PLUS Line
+project: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS
+release_date: 2025-09-27
+version: 0.1.0
 ---
 
 # ATA-20 — Standard Practices (Airframe) · AMPEL360 PLUS

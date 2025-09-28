@@ -1,0 +1,181 @@
+# AMPEL360 BWB-Q100 Flap Configuration
+# Path: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-52/cax/CAD/wing_baseline_model/control_surfaces/flaps.yaml
+# Version: 2.0
+# Last Updated: 2024-09-27
+
+metadata:
+  aircraft: BWB-Q100
+  surface_type: trailing_edge_flap
+  flap_technology: simple_hinged  # or fowler/slotted
+  coordinate_system: body_fixed
+
+deflection_limits_deg:
+  min: -10  # Negative for cruise optimization
+  max: 35   # Increased for better landing performance
+
+deployment_positions:
+  - name: RETRACTED
+    angle_deg: 0
+    usage: cruise
+    drag_coefficient_delta: 0.000
+    lift_coefficient_delta: 0.00
+    
+  - name: TAKEOFF_1
+    angle_deg: 10
+    usage: takeoff_initial
+    drag_coefficient_delta: 0.015
+    lift_coefficient_delta: 0.25
+    
+  - name: TAKEOFF_2
+    angle_deg: 15
+    usage: takeoff_rotate
+    drag_coefficient_delta: 0.025
+    lift_coefficient_delta: 0.40
+    
+  - name: APPROACH
+    angle_deg: 25
+    usage: approach
+    drag_coefficient_delta: 0.045
+    lift_coefficient_delta: 0.65
+    
+  - name: LANDING
+    angle_deg: 35
+    usage: landing
+    drag_coefficient_delta: 0.075
+    lift_coefficient_delta: 0.85
+
+speed_limits:
+  max_operating_speed_kts:
+    RETRACTED: 350
+    TAKEOFF_1: 250
+    TAKEOFF_2: 230
+    APPROACH: 200
+    LANDING: 180
+
+segments:
+  # Left Wing - Inboard Section
+  - id: FLAP1_L
+    side: left
+    span_fraction: [0.12, 0.25]  # Inboard flap for center lift
+    chord_fraction: 0.30
+    hinge_line_x_over_c: 0.70
+    type: simple_hinged
+    actuator_type: hydraulic
+    redundancy: dual
+    mass_kg: 45.2
+    deployment_time_sec: 15
+    
+  # Left Wing - Mid-Inboard Section
+  - id: FLAP2_L
+    side: left
+    span_fraction: [0.28, 0.42]  # Mid-inboard
+    chord_fraction: 0.30
+    hinge_line_x_over_c: 0.70
+    type: simple_hinged
+    actuator_type: hydraulic
+    redundancy: dual
+    mass_kg: 42.8
+    deployment_time_sec: 15
+    
+  # Left Wing - Mid-Outboard Section
+  - id: FLAP3_L
+    side: left
+    span_fraction: [0.45, 0.58]  # Mid-outboard
+    chord_fraction: 0.28
+    hinge_line_x_over_c: 0.72
+    type: simple_hinged
+    actuator_type: hydraulic
+    redundancy: single
+    mass_kg: 38.5
+    deployment_time_sec: 15
+    
+  # Left Wing - Outboard Section
+  - id: FLAP4_L
+    side: left
+    span_fraction: [0.61, 0.72]  # Outboard (avoiding tip)
+    chord_fraction: 0.26
+    hinge_line_x_over_c: 0.74
+    type: simple_hinged
+    actuator_type: electric
+    redundancy: single
+    mass_kg: 32.1
+    deployment_time_sec: 18
+    
+  # Right Wing - Inboard Section (Mirror)
+  - id: FLAP1_R
+    side: right
+    span_fraction: [0.12, 0.25]
+    chord_fraction: 0.30
+    hinge_line_x_over_c: 0.70
+    type: simple_hinged
+    actuator_type: hydraulic
+    redundancy: dual
+    mass_kg: 45.2
+    deployment_time_sec: 15
+    
+  # Right Wing - Mid-Inboard Section (Mirror)
+  - id: FLAP2_R
+    side: right
+    span_fraction: [0.28, 0.42]
+    chord_fraction: 0.30
+    hinge_line_x_over_c: 0.70
+    type: simple_hinged
+    actuator_type: hydraulic
+    redundancy: dual
+    mass_kg: 42.8
+    deployment_time_sec: 15
+    
+  # Right Wing - Mid-Outboard Section (Mirror)
+  - id: FLAP3_R
+    side: right
+    span_fraction: [0.45, 0.58]
+    chord_fraction: 0.28
+    hinge_line_x_over_c: 0.72
+    type: simple_hinged
+    actuator_type: hydraulic
+    redundancy: single
+    mass_kg: 38.5
+    deployment_time_sec: 15
+    
+  # Right Wing - Outboard Section (Mirror)
+  - id: FLAP4_R
+    side: right
+    span_fraction: [0.61, 0.72]
+    chord_fraction: 0.26
+    hinge_line_x_over_c: 0.74
+    type: simple_hinged
+    actuator_type: electric
+    redundancy: single
+    mass_kg: 32.1
+    deployment_time_sec: 18
+
+sequencing:
+  deployment_order: [FLAP1, FLAP2, FLAP3, FLAP4]
+  asymmetry_protection: enabled
+  max_asymmetry_deg: 5
+  
+load_limits:
+  max_hinge_moment_nm: 15000
+  safety_factor: 1.5
+  
+aerodynamic_effects:
+  stall_angle_reduction_deg: 3
+  pitch_moment_change: -0.15  # Nose down
+  
+integration:
+  fcs_interface: ARINC429
+  flap_lever_positions: 5
+  position_sensor_type: RVDT
+  power_source: 
+    hydraulic: system_A_B
+    electric: 115VAC_bus
+  
+failure_modes:
+  asymmetric_deployment: flaps_locked
+  uncommanded_retraction: maintain_position
+  jammed_flap: adjacent_compensation
+
+maintenance:
+  inspection_interval_hours: 500
+  lubrication_points: 8
+  rigging_tolerance_deg: 0.5

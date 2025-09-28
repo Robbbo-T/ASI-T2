@@ -1,16 +1,16 @@
 ---
-id: GAIA-DS2-LIGHTVIBES-OV-0001
-project: GAIA-DS2 / LIGHTVIBES
-artifact: LIGHTVIBES/README.md
-llc: SECURITY
+artifact: PRODUCTS/MISCELLANEOUS/QMK/README.md
+bridge: CB→QB→UE→FE→FWD→QS
+canonical_hash: TBD
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: 0.1.0
-release_date: 2025-09-23
-maintainer: "GAIA DS2 — Data Science for Deep Space"
-bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: MAL-EEM
+id: GAIA-DS2-LIGHTVIBES-OV-0001
+llc: SECURITY
+maintainer: GAIA DS2 — Data Science for Deep Space
+project: PRODUCTS/MISCELLANEOUS/QMK/README.md
+release_date: 2025-09-23
 utcs_mi: v5.0
-canonical_hash: "TBD"
+version: 0.1.0
 ---
 
 # LIGHTVIBES — Quantum Micropulse Keying (QMK)

@@ -15,21 +15,21 @@ repos:
         types: [file]  # run on any change
       - id: cad-json-validation
         name: CAD JSON Schema Validation
-        entry: python3 PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/scripts/validate_json.py PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/schemas PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/geometry PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/qox_bridge
+        entry: python3 PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/scripts/validate_json.py PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/schemas PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/geometry PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/qox_bridge
         language: system
-        files: 'PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/.*\.(json)$'
+        files: 'PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/.*\.(json)$'
       - id: cad-link-check
         name: CAD Link Validation
-        entry: python3 PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/scripts/link_check.py PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD
+        entry: python3 PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/scripts/link_check.py PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD
         language: system
-        files: 'PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/.*\.(json|md)$'
+        files: 'PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/.*\.(json|md)$'
       - id: cad-naming-guard
         name: CAD Naming Convention Guard
-        entry: python3 PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/scripts/naming_guard.py PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD
+        entry: python3 PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/scripts/naming_guard.py PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD
         language: system
-        files: 'PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/.*'
+        files: 'PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/.*'
       - id: cad-pax-validation
         name: CAD PAx Package Validation
-        entry: python3 PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/pax/scripts/validate_pax.py --schema PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/pax/schemas/package.schema.json --root PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/pax
+        entry: python3 PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/pax/scripts/validate_pax.py --schema PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/pax/schemas/package.schema.json --root PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/pax
         language: system
-        files: 'PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/cax/CAD/pax/.*\.(json|yaml|yml)$'
+        files: 'PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-20/cax/CAD/pax/.*\.(json|yaml|yml)$'

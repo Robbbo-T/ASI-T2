@@ -1,0 +1,51 @@
+# AMPEL360 BWB-Q100 Control Surfaces Master Index
+# Path: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-52/cax/CAD/wing_baseline_model/control_surfaces/index.yaml
+# Version: 2.0
+
+control_surface_inventory:
+  primary_control:
+    elevons:
+      count: 6  # 3 per side
+      file: elevons.yaml
+      span_coverage_percent: 48
+      
+  high_lift:
+    flaps:
+      count: 8  # 4 per side
+      file: flaperons.yaml
+      span_coverage_percent: 60
+      
+  spoilers_speedbrakes:
+    spoilers:
+      count: 8  # 4 per side
+      file: spoilers.yaml
+      functions: [lift_dump, speedbrake, roll_assist]
+      
+  directional_control:
+    vertical_surfaces:
+      count: 3  # 2 winglets + 1 center
+      file: vertical_surfaces.yaml
+      configuration: twin_winglet_plus_center
+      
+  trim_systems:
+    trim_tabs:
+      count: 10
+      file: trim_surfaces.yaml
+      axes: [pitch, roll, yaw, span_load]
+
+total_control_surfaces: 35
+
+mass_summary_kg:
+  elevons: 138.0
+  flaps: 317.8
+  spoilers: 61.0
+  vertical_surfaces: 165.4
+  trim_tabs: 18.5
+  total: 700.7
+
+integration_requirements:
+  hydraulic_systems: [A, B]
+  electrical_systems: [main_bus, essential_bus]
+  fcs_channels: 3  # Triple redundancy
+  position_sensors: RVDT
+  data_bus: ARINC429

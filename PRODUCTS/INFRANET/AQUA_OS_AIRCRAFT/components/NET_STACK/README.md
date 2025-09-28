@@ -1,19 +1,22 @@
 ---
-id: ASIT2-AQUAOS-AIR-NETSTACK-COMP-README
-project: ASI-T2
-artifact: NET_STACK Deterministic Network Stack Component Documentation
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-26
-maintainer: EDI (Avionics/Net), OOO (OS)
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
-utcs_mi: |
-  component: NET_STACK Deterministic Network Stack
-  certification_level: DO-178C DAL-A
-  quantum_boundary: out-of-loop-assistive-only
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-AQUAOS-AIR-NETSTACK-COMP-README
+llc: SYSTEMS
+maintainer: EDI (Avionics/Net), OOO (OS)
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
+release_date: 2024-09-26
+utcs_mi: 'component: NET_STACK Deterministic Network Stack
+
+  certification_level: DO-178C DAL-A
+
+  quantum_boundary: out-of-loop-assistive-only
+
+  '
+version: 1.0
 ---
 
 # NET_STACK Deterministic Network Stack Component

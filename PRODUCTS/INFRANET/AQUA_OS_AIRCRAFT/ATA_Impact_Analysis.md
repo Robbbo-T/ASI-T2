@@ -1,15 +1,15 @@
 ---
-id: ASIT2-AQUAOS-AIR-ATA-IMPACT
-project: ASI-T2
-artifact: AQUA OS Aircraft - ATA Impact Analysis
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-23
-maintainer: OOO (OS), LCC (Control Laws), EDI (Avionics)
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/ATA_Impact_Analysis.md
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-AQUAOS-AIR-ATA-IMPACT
+llc: SYSTEMS
+maintainer: OOO (OS), LCC (Control Laws), EDI (Avionics)
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/ATA_Impact_Analysis.md
+release_date: 2024-09-23
+version: 1.0
 ---
 
 # AQUA OS (Aircraft) — ATA Impact Analysis

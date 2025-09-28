@@ -1,8 +1,8 @@
 ---
-id: ASIT2-AQUAOS-AIR-UTCSQS-TEST
-project: ASI-T2
-artifact: UTCS_QS Evidence & Trace Test Plan
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
 canonical_hash: pending
+id: ASIT2-AQUAOS-AIR-UTCSQS-TEST
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
 ---
 
 # UTCS_QS Evidence & Trace Test Plan

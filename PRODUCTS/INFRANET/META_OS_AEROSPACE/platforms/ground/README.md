@@ -1,16 +1,16 @@
 ---
-id: ASIT2-INFRANET-METAOS-PLATFORMS-GROUND
-project: ASI-T2
-artifact: Ground Platform Support
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-24
-maintainer: OOO (OS), IIS (Integration)
+artifact: PRODUCTS/INFRANET/META_OS_AEROSPACE/platforms
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
-utcs_mi: v5.0
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-INFRANET-METAOS-PLATFORMS-GROUND
+llc: SYSTEMS
+maintainer: OOO (OS), IIS (Integration)
+project: PRODUCTS/INFRANET/META_OS_AEROSPACE/platforms
+release_date: 2024-09-24
+utcs_mi: v5.0
+version: 1.0
 ---
 
 # Ground Platform Support

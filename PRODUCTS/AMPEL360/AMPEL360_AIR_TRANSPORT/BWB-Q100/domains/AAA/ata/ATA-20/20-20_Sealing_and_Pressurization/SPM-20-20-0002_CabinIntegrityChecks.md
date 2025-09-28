@@ -1,25 +1,26 @@
 ---
-id: SPM-20-20-0002
-project: PRODUCTS/AMPEL360/BWB-Q100
 artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-20_Sealing_and_Pressurization/SPM-20-20-0002_CabinIntegrityChecks.md
-llc: SYSTEMS
-title: "SPM-20-20-0002: Standard Practice Manual — Pre-Flight/Pre-Close Cabin Integrity Checks"
-configuration: baseline
+bridge: CB→QB→UE→FE→FWD→QS
+canonical_hash: TBD
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: "0.1.0"
-release_date: 2025-09-24
-maintainer: "Ground Operations Team"
-licenses:
-  docs: "CC-BY-4.0"
-bridge: "CB→QB→UE→FE→FWD→QS"
+configuration: baseline
 ethics_guard: MAL-EEM
-utcs_mi: v5.0
-canonical_hash: "TBD"
+id: SPM-20-20-0002
+licenses:
+  docs: CC-BY-4.0
+llc: SYSTEMS
+maintainer: Ground Operations Team
+project: PRODUCTS/AMPEL360/BWB-Q100
 provenance:
-  policy_hash: "sha256:TBD"
-  model_sha: "sha256:TBD"
-  data_manifest_hash: "sha256:TBD"
-  operator_id: "UTCS:OP:copilot-gen"
+  data_manifest_hash: sha256:TBD
+  model_sha: sha256:TBD
+  operator_id: UTCS:OP:copilot-gen
+  policy_hash: sha256:TBD
+release_date: 2025-09-24
+title: 'SPM-20-20-0002: Standard Practice Manual — Pre-Flight/Pre-Close Cabin Integrity
+  Checks'
+utcs_mi: v5.0
+version: 0.1.0
 ---
 
 # SPM-20-20-0002: Standard Practice Manual — Pre-Flight/Pre-Close Cabin Integrity Checks

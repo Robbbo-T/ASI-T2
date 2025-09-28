@@ -1,20 +1,24 @@
 ---
-id: ASIT2-AQUAOS-AIR-TIMESYNC-SRD
-project: ASI-T2
-artifact: TIME_SYNC Time & Synchronization (AQUA OS — Aircraft Extension) SRD
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-23
-maintainer: EDI (Avionics), OOO (OS)
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
-utcs_mi: |
-  component: TIME_SYNC Time & Synchronization (AQUA OS — Aircraft Extension)
-  level: DO-178C DAL-A; PTP/TTE protocols
-  bridges: CB→QB→UE→FE→FWD→QS
-  status: BASELINED
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-AQUAOS-AIR-TIMESYNC-SRD
+llc: SYSTEMS
+maintainer: EDI (Avionics), OOO (OS)
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
+release_date: 2024-09-23
+utcs_mi: 'component: TIME_SYNC Time & Synchronization (AQUA OS — Aircraft Extension)
+
+  level: DO-178C DAL-A; PTP/TTE protocols
+
+  bridges: CB→QB→UE→FE→FWD→QS
+
+  status: BASELINED
+
+  '
+version: 1.0
 ---
 
 # TIME_SYNC System Requirements (MoSCoW)

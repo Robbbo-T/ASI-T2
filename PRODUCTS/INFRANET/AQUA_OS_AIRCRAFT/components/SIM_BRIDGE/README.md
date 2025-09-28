@@ -1,19 +1,22 @@
 ---
-id: ASIT2-AQUAOS-AIR-SIMBRIDGE-COMP-README
-project: ASI-T2
-artifact: SIM_BRIDGE Simulation Integration Component Documentation
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-26
-maintainer: OOO (OS), IIS (Integration)
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
-utcs_mi: |
-  component: SIM_BRIDGE Simulation Integration
-  certification_level: DO-178C DAL-B
-  quantum_boundary: out-of-loop-assistive-only
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-AQUAOS-AIR-SIMBRIDGE-COMP-README
+llc: SYSTEMS
+maintainer: OOO (OS), IIS (Integration)
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
+release_date: 2024-09-26
+utcs_mi: 'component: SIM_BRIDGE Simulation Integration
+
+  certification_level: DO-178C DAL-B
+
+  quantum_boundary: out-of-loop-assistive-only
+
+  '
+version: 1.0
 ---
 
 # SIM_BRIDGE Simulation Integration Component

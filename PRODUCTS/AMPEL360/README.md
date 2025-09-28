@@ -140,7 +140,7 @@ Track at product level; store under **QS** with UTCS headers:
 ## CI & automation hooks
 
 - **Validation:** CI should run schema + grammar checks on both canonical and product-scoped paths, e.g.:
-  - Air Transport: `PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model`
+  - Air Transport: `PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-52/cax/CAD/wing_baseline_model`
   - Space Tourism: `PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/...` (as developed)
 - **Gates:** UTCS front-matter presence; YAML/JSON schema; path grammar; QS signature verification (when enabled).
 - **Outputs:** Attach CI logs as QS evidence for release tags.

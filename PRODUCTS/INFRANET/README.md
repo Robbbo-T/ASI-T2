@@ -1,18 +1,19 @@
 ---
-id: ASIT2-INFRANET-PORTFOLIO
-project: ASI-T2
 artifact: Infrastructure and Network Systems Portfolio
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-27
-maintainer: INFRANET Architecture Team
 bridge: CB→QB→UE→FE→FWD→QS
+classification: INTERNAL–EVIDENCE-REQUIRED
 ethics_guard: MAL-EEM
-utcs_mi: |
-  product_type: infrastructure_portfolio
+id: ASIT2-INFRANET-PORTFOLIO
+llc: SYSTEMS
+maintainer: INFRANET Architecture Team
+project: ASI-T2
+release_date: 2024-09-27
+utcs_mi: 'product_type: infrastructure_portfolio
+
   target_domain: cross-cutting
-  certification_basis: multi-domain
+
+  certification_basis: multi-domain'
+version: 1.0
 ---
 
 # INFRANET — Infrastructure and Network Systems

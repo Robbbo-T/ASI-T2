@@ -1,25 +1,25 @@
 ---
-id: MS-20-30-0001
-project: PRODUCTS/AMPEL360/BWB-Q100
 artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/20/20-30_Material_Handling/MS-20-30-0001_TPS_TileHandling.md
-llc: SYSTEMS
-title: "MS-20-30-0001: Material Spec — TPS Tile Handling & Inspection"
-configuration: baseline
+bridge: CB→QB→UE→FE→FWD→QS
+canonical_hash: TBD
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: "0.1.0"
-release_date: 2025-09-24
-maintainer: "Materials & Processes Team"
-licenses:
-  docs: "CC-BY-4.0"
-bridge: "CB→QB→UE→FE→FWD→QS"
+configuration: baseline
 ethics_guard: MAL-EEM
-utcs_mi: v5.0
-canonical_hash: "TBD"
+id: MS-20-30-0001
+licenses:
+  docs: CC-BY-4.0
+llc: SYSTEMS
+maintainer: Materials & Processes Team
+project: PRODUCTS/AMPEL360/BWB-Q100
 provenance:
-  policy_hash: "sha256:TBD"
-  model_sha: "sha256:TBD"
-  data_manifest_hash: "sha256:TBD"
-  operator_id: "UTCS:OP:copilot-gen"
+  data_manifest_hash: sha256:TBD
+  model_sha: sha256:TBD
+  operator_id: UTCS:OP:copilot-gen
+  policy_hash: sha256:TBD
+release_date: 2025-09-24
+title: 'MS-20-30-0001: Material Spec — TPS Tile Handling & Inspection'
+utcs_mi: v5.0
+version: 0.1.0
 ---
 
 # MS-20-30-0001: Material Spec — TPS Tile Handling & Inspection

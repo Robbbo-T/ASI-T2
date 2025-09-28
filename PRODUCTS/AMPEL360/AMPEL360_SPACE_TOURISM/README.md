@@ -1,16 +1,16 @@
 ---
-id: AMPEL360-SPACE-TOURISM-OV-0001
-project: AMPEL360
-artifact: ASI-T2/PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/README.md
-llc: GENESIS
+artifact: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/README.md
+bridge: CB→QB→UE→FE→FWD→QS
+canonical_hash: TBD
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: 0.1.0
-release_date: 2025-09-24
-maintainer: "Robbbo-T / ASI-T Architecture Team"
-bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: MAL-EEM
+id: AMPEL360-SPACE-TOURISM-OV-0001
+llc: GENESIS
+maintainer: Robbbo-T / ASI-T Architecture Team
+project: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/README.md
+release_date: 2025-09-24
 utcs_mi: v5.0
-canonical_hash: "TBD"
+version: 0.1.0
 ---
 
 # AMPEL360_SPACE_TOURISM — Space Tourism Products

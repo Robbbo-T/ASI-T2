@@ -1,19 +1,22 @@
 ---
-id: ASIT2-AQUAOS-AIR-NAVSYS-COMP
-project: ASI-T2
-artifact: NAVSYS Navigation & Air Data (AQUA OS — Aircraft Extension)
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-23
-maintainer: EDI (Avionics), IIS (Integration)
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
-utcs_mi: |
-  quantum_boundaries: out-of-loop-only
-  dal_level: B
-  partition_type: application
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-AQUAOS-AIR-NAVSYS-COMP
+llc: SYSTEMS
+maintainer: EDI (Avionics), IIS (Integration)
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
+release_date: 2024-09-23
+utcs_mi: 'quantum_boundaries: out-of-loop-only
+
+  dal_level: B
+
+  partition_type: application
+
+  '
+version: 1.0
 ---
 
 # AQUA OS (Aircraft Extension) — NAVSYS Component Specification

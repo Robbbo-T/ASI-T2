@@ -1,21 +1,21 @@
 ---
-id: ASIT-PLUS-AAA-SPM-51-20-0001
-rev: 0
-project: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM
 artifact: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-51/51-20_Joints_Fasteners/SPM-51-20-0001_CompositeFastenerInstallation.md
-llc: PROCESS
-title: "Standard Practice Manual: Composite Fastener Installation"
-configuration: baseline
+bridge: CB→QB→UE→FE→FWD→QS
+canonical_hash: TBD
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: "1.0.0"
-release_date: 2025-09-26
-maintainer: "Structures Engineering Team"
-licenses:
-  docs: "CC-BY-4.0"
-bridge: "CB→QB→UE→FE→FWD→QS"
+configuration: baseline
 ethics_guard: MAL-EEM
+id: ASIT-PLUS-AAA-SPM-51-20-0001
+licenses:
+  docs: CC-BY-4.0
+llc: PROCESS
+maintainer: Structures Engineering Team
+project: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM
+release_date: 2025-09-26
+rev: 0
+title: 'Standard Practice Manual: Composite Fastener Installation'
 utcs_mi: v5.0
-canonical_hash: "TBD"
+version: 1.0.0
 ---
 
 # Standard Practice Manual: Composite Fastener Installation

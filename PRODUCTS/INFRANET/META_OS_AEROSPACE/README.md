@@ -1,20 +1,24 @@
 ---
-id: ASIT2-INFRANET-METAOS-README
-project: ASI-T2
-artifact: Meta-OS Aerospace/Defense — Operating System of Systems
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-24
-maintainer: OOO (OS), IIS (Integration), EDI (Avionics/Net)
+artifact: PRODUCTS/INFRANET/META_OS_AEROSPACE/README.md
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
-utcs_mi: |
-  component: Meta-OS Aerospace/Defense
-  level: Meta-systemic (DO-178C DAL-A/B, DO-326A, ISO-26262)
-  bridges: CB→QB→UE→FE→FWD→QS
-  status: BASELINED
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-INFRANET-METAOS-README
+llc: SYSTEMS
+maintainer: OOO (OS), IIS (Integration), EDI (Avionics/Net)
+project: PRODUCTS/INFRANET/META_OS_AEROSPACE/README.md
+release_date: 2024-09-24
+utcs_mi: 'component: Meta-OS Aerospace/Defense
+
+  level: Meta-systemic (DO-178C DAL-A/B, DO-326A, ISO-26262)
+
+  bridges: CB→QB→UE→FE→FWD→QS
+
+  status: BASELINED
+
+  '
+version: 1.0
 ---
 
 # Meta-OS Aerospace/Defense — Stack and Skeleton

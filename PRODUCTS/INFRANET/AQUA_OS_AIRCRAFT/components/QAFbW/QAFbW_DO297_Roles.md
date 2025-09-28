@@ -1,19 +1,23 @@
 ---
-id: ASIT2-AQUAOS-AIR-QAFBW-DO297
-project: ASI-T2
-artifact: QAFbW DO-297 Roles & Responsibilities
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-23
-maintainer: OOO (OS), LCC (Control Laws), EDI (Avionics/Net), IIS (Software), MEC (Actuation)
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
-utcs_mi: |
-  scope: DO-297_IMA_responsibilities
-  stakeholders: platform_supplier, application_supplier, system_integrator
-  lifecycle_coverage: full
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-AQUAOS-AIR-QAFBW-DO297
+llc: SYSTEMS
+maintainer: OOO (OS), LCC (Control Laws), EDI (Avionics/Net), IIS (Software), MEC
+  (Actuation)
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
+release_date: 2024-09-23
+utcs_mi: 'scope: DO-297_IMA_responsibilities
+
+  stakeholders: platform_supplier, application_supplier, system_integrator
+
+  lifecycle_coverage: full
+
+  '
+version: 1.0
 ---
 
 # QAFbW DO-297 Roles & Responsibilities (RACI Matrix)

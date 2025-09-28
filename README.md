@@ -208,9 +208,9 @@ Strategic product lines organized by operational characteristics:
 
           * [`AAA/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/) — Aerodynamics & Airframes
 
-            * [`ata/ATA-57/S1000D/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/S1000D/) — Technical documentation system
-            * [`cax/CAD/wing_baseline_model/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/) — Wing design models
-            * [`qox/CAD/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/qox/CAD/) — Quantum‑optimized design
+            * [`ata/ATA-57/S1000D/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/docs/S1000D/) — Technical documentation system
+            * [`cax/CAD/wing_baseline_model/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-52/cax/CAD/wing_baseline_model/) — Wing design models
+            * [`qox/CAD/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-52/qox/CAD/) — Quantum‑optimized design
           * [`AAP/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAP/) — Airport Adaptable Platforms
           * [`CCC/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/CCC/) — Cockpit, Cabin & Cargo
           * [`CQH/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/CQH/) — Cryogenics, Quantum & H₂

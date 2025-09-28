@@ -1,19 +1,22 @@
 ---
-id: ASIT2-BWB-Q100-LCC-ATA27-QAFBW-BINDING
-project: ASI-T2
-artifact: QAFbW BWB-Q100 Product Binding
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-23
-maintainer: LCC (Control Laws), EDI (Avionics Integration)
+artifact: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
-utcs_mi: |
-  binding_scope: BWB-Q100_product_specific
-  aqua_os_component: QAFbW_Control_Stack
-  ata_chapter: ATA-27_Flight_Controls
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-BWB-Q100-LCC-ATA27-QAFBW-BINDING
+llc: SYSTEMS
+maintainer: LCC (Control Laws), EDI (Avionics Integration)
+project: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100
+release_date: 2024-09-23
+utcs_mi: 'binding_scope: BWB-Q100_product_specific
+
+  aqua_os_component: QAFbW_Control_Stack
+
+  ata_chapter: ATA-27_Flight_Controls
+
+  '
+version: 1.0
 ---
 
 # QAFbW BWB-Q100 Product Binding

@@ -1,15 +1,15 @@
 ---
-id: ASIT2-AQUAOS-AIR-NETSTACK-TEST
-project: ASI-T2
-artifact: NET_STACK Deterministic Network Test Plan
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-23
-maintainer: EDI (Avionics/Net), OOO (OS)
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-AQUAOS-AIR-NETSTACK-TEST
+llc: SYSTEMS
+maintainer: EDI (Avionics/Net), OOO (OS)
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
+release_date: 2024-09-23
+version: 1.0
 ---
 
 # NET_STACK Deterministic Network Test Plan

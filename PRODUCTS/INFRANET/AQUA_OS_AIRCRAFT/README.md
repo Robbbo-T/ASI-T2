@@ -1,20 +1,24 @@
 ---
-id: ASIT2-INFRANET-AQUA-OS-AIRCRAFT
-project: ASI-T2
-artifact: AQUA OS Aircraft Extension
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-23
-maintainer: OOO (Operating Systems), EDI (Avionics Integration)
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/README.md
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
-utcs_mi: |
-  product_type: operating_system_extension
-  target_domain: aviation
-  certification_basis: DO-178C_DAL-A, DO-297_IMA, DO-326A/356A_security
-  quantum_integration: out-of-loop-assistive-services
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-INFRANET-AQUA-OS-AIRCRAFT
+llc: SYSTEMS
+maintainer: OOO (Operating Systems), EDI (Avionics Integration)
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/README.md
+release_date: 2024-09-23
+utcs_mi: 'product_type: operating_system_extension
+
+  target_domain: aviation
+
+  certification_basis: DO-178C_DAL-A, DO-297_IMA, DO-326A/356A_security
+
+  quantum_integration: out-of-loop-assistive-services
+
+  '
+version: 1.0
 ---
 
 # AQUA OS — Aircraft Extension

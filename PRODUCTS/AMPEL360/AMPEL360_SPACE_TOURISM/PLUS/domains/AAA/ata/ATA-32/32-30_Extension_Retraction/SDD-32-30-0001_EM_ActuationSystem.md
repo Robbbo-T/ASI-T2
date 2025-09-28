@@ -1,23 +1,23 @@
 ---
-id: ASIT-PLUS-AAA-SDD-32-30-0001
-rev: 0
-project: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM
 artifact: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-32/32-30_Extension_Retraction/SDD-32-30-0001_EM_ActuationSystem.md
-llc: SYSTEMS
-title: "System Design Document: Electromechanical Actuation System (Landing Gear)"
-configuration: baseline
+bridge: CB→QB→UE→FE→FWD→QS
+canonical_hash: TBD
 classification: INTERNAL–EVIDENCE-REQUIRED
-version: "1.0.0"
-release_date: 2025-09-26
-maintainer: "Landing Gear Systems Team"
-licenses:
-  docs: "CC-BY-4.0"
-bridge: "CB→QB→UE→FE→FWD→QS"
+configuration: baseline
 ethics_guard: MAL-EEM
-utcs_mi: v5.0
-canonical_hash: "TBD"
+id: ASIT-PLUS-AAA-SDD-32-30-0001
+licenses:
+  docs: CC-BY-4.0
+llc: SYSTEMS
+maintainer: Landing Gear Systems Team
+project: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM
 provenance:
-  canonical_hash: "sha256:TBD"
+  canonical_hash: sha256:TBD
+release_date: 2025-09-26
+rev: 0
+title: 'System Design Document: Electromechanical Actuation System (Landing Gear)'
+utcs_mi: v5.0
+version: 1.0.0
 ---
 
 # System Design Document: EM Actuation System

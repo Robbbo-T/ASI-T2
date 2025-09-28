@@ -1,15 +1,15 @@
 ---
-id: ASIT2-AQUAOS-AIR-A653PM-TEST
-project: ASI-T2
-artifact: A653_PM Partition Manager Test Plan
-llc: SYSTEMS
-classification: INTERNAL–EVIDENCE-REQUIRED
-version: 1.0
-release_date: 2024-09-23
-maintainer: OOO (OS), IIS (Integration)
+artifact: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
 bridge: CB→QB→UE→FE→FWD→QS
-ethics_guard: MAL-EEM
 canonical_hash: pending
+classification: INTERNAL–EVIDENCE-REQUIRED
+ethics_guard: MAL-EEM
+id: ASIT2-AQUAOS-AIR-A653PM-TEST
+llc: SYSTEMS
+maintainer: OOO (OS), IIS (Integration)
+project: PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/components
+release_date: 2024-09-23
+version: 1.0
 ---
 
 # A653_PM Partition Manager Test Plan
