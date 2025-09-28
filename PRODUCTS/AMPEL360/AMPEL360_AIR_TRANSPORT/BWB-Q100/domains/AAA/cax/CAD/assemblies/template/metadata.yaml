@@ -1,7 +1,7 @@
 # Assembly Metadata Template (airframes scope)
 assembly_id: ASM-XXX
 name: Assembly Name
-ata_chapter: ATA-57  # allowed: ATA-51/52/53/54/55/57
+ata_chapter: ATA-57  # allowed: ATA-51/52/53/54/55/56/57
 criticality: high    # high|medium|low
 maturity: P0         # P0|P1|P2|P3
 
