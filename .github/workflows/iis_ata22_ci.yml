@@ -25,4 +25,5 @@ jobs:
           python -m ruff check .
       - name: Tests
         run: |
+          cd domains/IIS/ata/ATA-22/software
           pytest -q
