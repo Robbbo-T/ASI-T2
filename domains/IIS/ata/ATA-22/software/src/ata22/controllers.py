@@ -8,10 +8,22 @@ class PID:
         self.prev_e = 0.0
 
     def step(self, err, dt):
-        self.i += err * dt * self.ki
+        # Compute derivative
         d = (err - self.prev_e) / dt if dt > 0 else 0.0
-        self.prev_e = err
-        u = self.kp * err + self.i + self.kd * d
+        # Predict next integral
+        i_next = self.i + err * dt * self.ki
+        # Compute unclamped output
+        u_unclamped = self.kp * err + i_next + self.kd * d
+        # Clamp output if limits are set
         if self.lo is not None and self.hi is not None:
-            u = clamp(u, self.lo, self.hi)
+            u = clamp(u_unclamped, self.lo, self.hi)
+        else:
+            u = u_unclamped
+        # Anti-windup: Only integrate if not saturated, or if error is driving output back toward unsaturated region
+        if (u == u_unclamped) or \
+           (u == self.lo and err > 0) or \
+           (u == self.hi and err < 0):
+            self.i = i_next
+        # Update previous error
+        self.prev_e = err
         return u
