@@ -1,0 +1,53 @@
+# Assembly Metadata Template (airframes scope)
+assembly_id: ASM-003
+name: Assembly Name
+ata_chapter: ATA-57  # allowed: ATA-51/52/53/54/55/57
+criticality: high    # high|medium|low
+maturity: P0         # P0|P1|P2|P3
+
+geometry:
+  cad_system: CATIA  # CATIA|NX|Fusion360
+  units: metric
+  coordinate_system: aircraft_ref
+
+structural:
+  material_family: composite   # aluminum|composite|titanium|steel
+  manufacturing_method: composite_layup  # machined|composite_layup|additive|formed
+  weight_kg: ~                 # fill when known
+
+interfaces:
+  mechanical:
+    - assembly: ASM-003
+      type: bolted             # bolted|bonded|welded
+      load_transfer: shear     # shear|tension|moment
+  systems: []                  # airframes-only: leave empty or mount/access for airframe items
+
+qox_optimization:
+  variables:
+    - name: rib_spacing
+      type: discrete
+      values: [600, 700, 800, 900, 1000]  # mm
+    - name: panel_breaks
+      type: integer
+      range: [3, 6]
+  objectives:
+    - weight_minimization
+    - manufacturing_cost
+    - stress_distribution
+
+validation:
+  fea_required: true
+  cfd_required: false
+  certification_tests:
+    - static_ultimate
+    - fatigue_spectrum
+
+linked_components:
+  # Example: control-surface YAMLs (relative to this folder)
+  # - ../wing_baseline_model/control_surfaces/elevons.yaml
+
+revision_history:
+  - version: 1.0
+    date: 2024-XX-XX
+    author: Team
+    changes: Initial release
