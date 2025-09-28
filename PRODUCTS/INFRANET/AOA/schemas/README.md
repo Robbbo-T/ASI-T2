@@ -1,6 +1,6 @@
 # AOA Data Schemas
 
-Schema definitions for data formats used in the INFRANET/AOA system.
+Schema definitions for data formats used in the PRODUCTS/INFRANET/AOA system.
 
 ## Schema Files
 

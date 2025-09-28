@@ -381,7 +381,7 @@ Project for \~100‑pax BWB with **Domain → Process → ATA** structure.
 **Next steps**
 
 1. Populate **AAA** and **PPP** with E2E pipelines (CAX→QOX→PAX→ATA).
-2. Publish **QAIM** (INFRANET/QAIM) with Qiskit/PennyLane notebooks and UTCS hooks.
+2. Publish **QAIM** (PRODUCTS/INFRANET/QAIM) with Qiskit/PennyLane notebooks and UTCS hooks.
 3. Complete fields and onboarding (quickstart + supply‑chain QUBO example).
 4. Demonstrate **MAL‑EEM** in practice (safety, bias/fairness checks).
 5. Publish **SBOMs** and UTCS/QS prototypes for a minimal component set.

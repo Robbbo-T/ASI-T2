@@ -1,6 +1,6 @@
 # AOA CLI Tools
 
-Command-line interface for the INFRANET/AOA App-of-Apps system.
+Command-line interface for the PRODUCTS/INFRANET/AOA App-of-Apps system.
 
 ## aoactl.py
 

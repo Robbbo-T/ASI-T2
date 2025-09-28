@@ -1,6 +1,6 @@
 # AOA Core System
 
-Core components of the INFRANET/AOA App-of-Apps system.
+Core components of the PRODUCTS/INFRANET/AOA App-of-Apps system.
 
 ## Components
 

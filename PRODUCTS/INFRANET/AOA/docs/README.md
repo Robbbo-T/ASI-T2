@@ -1,6 +1,6 @@
 # AOA Documentation
 
-Architecture decisions and technical documentation for the INFRANET/AOA system.
+Architecture decisions and technical documentation for the PRODUCTS/INFRANET/AOA system.
 
 ## Architecture Decision Records (ADRs)
 
