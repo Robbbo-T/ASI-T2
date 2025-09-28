@@ -1,8 +1,10 @@
 import yaml
 from ata22.mode_manager import ModeManager
+import pathlib
 
 def load_cfg():
-    with open("domains/IIS/ata/ATA-22/config/modes.yaml","r") as f:
+    config_path = pathlib.Path(__file__).parent.parent.parent / "config" / "modes.yaml"
+    with open(config_path, "r") as f:
         return yaml.safe_load(f)
 
 def test_engage_interlocks_ok():
