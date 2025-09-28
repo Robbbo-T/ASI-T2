@@ -1,0 +1,23 @@
+title: ATA-22 ← ATA-34 Sensors/FMS
+bus: AFDX
+rate_hz: 50
+messages:
+  - name: NAV_SOLUTION
+    fields:
+      - {name: lat_deg, type: float64}
+      - {name: lon_deg, type: float64}
+      - {name: track_deg, type: float32}
+      - {name: gs_mps, type: float32}
+      - {name: fms_lnav_path_valid, type: uint8}
+      - {name: fms_vnav_path_valid, type: uint8}
+  - name: AIRDATA_ATT
+    fields:
+      - {name: pitch_deg, type: float32}
+      - {name: roll_deg,  type: float32}
+      - {name: yaw_rate_dps, type: float32}
+      - {name: tas_mps, type: float32}
+      - {name: altitude_m, type: float32}
+      - {name: vs_mps, type: float32}
+    validity_flags:
+      - att_valid
+      - airdata_valid

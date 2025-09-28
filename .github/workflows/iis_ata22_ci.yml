@@ -1,0 +1,28 @@
+name: IIS ATA-22 — Build & Test
+on:
+  push:
+    paths:
+      - "domains/IIS/ata/ATA-22/**"
+      - ".github/workflows/iis_ata22_ci.yml"
+  pull_request:
+    paths:
+      - "domains/IIS/ata/ATA-22/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install
+        run: |
+          cd domains/IIS/ata/ATA-22/software
+          python -m pip install -e ".[dev]"
+      - name: Lint
+        run: |
+          cd domains/IIS/ata/ATA-22/software
+          python -m ruff check .
+      - name: Tests
+        run: |
+          pytest -q
