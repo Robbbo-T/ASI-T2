@@ -2,7 +2,7 @@ apiVersion: aoa.v1
 kind: Capability
 metadata:
   id: cap.infranet.compliance_report
-  owner: INFRANET/COMPLIANCE
+  owner: PRODUCTS/INFRANET/COMPLIANCE
 spec:
   summary: Environmental compliance reporting
   inputs:

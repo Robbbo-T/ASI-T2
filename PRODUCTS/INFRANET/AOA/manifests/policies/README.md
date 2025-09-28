@@ -50,5 +50,5 @@ deny[msg] {
 
 Use the AOA CLI to test policy compliance:
 ```bash
-python INFRANET/AOA/cli/aoactl.py policy test composition.yaml
+python PRODUCTS/INFRANET/AOA/cli/aoactl.py policy test composition.yaml
 ```

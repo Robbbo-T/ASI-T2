@@ -28,7 +28,7 @@ GAIA-SEA encompasses autonomous marine and oceanic systems designed for environm
 - **ENVIRONMENTS/PHYSICAL/CONTEXT/SEA/** — Surface and shallow water operations
 - **ENVIRONMENTS/PHYSICAL/CONTEXT/DEEP_SEA/** — Deep ocean and abyssal operations  
 - **FIELDS/EER/** — Environmental monitoring and remediation
-- **INFRANET/QAIM/** — Quantum optimization integration
+- **PRODUCTS/INFRANET/QAIM/** — Quantum optimization integration
 
 ## Ethical Framework
 
