@@ -21,6 +21,9 @@ canonical\_hash: pending
 
 ---
 
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/b006bc29-c043-4e84-ad62-e13896f68789" />
+
+
 ## 🧭 Quick Nav
 
 * [Purpose & Mission](#purpose--mission)
