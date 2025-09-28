@@ -1,0 +1,26 @@
+roll_hold:
+  Kp: 0.18
+  Ki: 0.02
+  Kd: 0.04
+  bank_limit_deg: 30
+
+heading_hold:
+  Kp: 0.03
+  Ki: 0.002
+  Kd: 0.01
+
+pitch_hold:
+  Kp: 0.20
+  Ki: 0.05
+  Kd: 0.04
+  pitch_limit_deg: 20
+
+altitude_hold:
+  Kp: 0.008
+  Ki: 0.0008
+  Kd: 0.002
+
+yaw_damper:
+  Kp: 0.3
+  Kd: 0.08
+  rate_limit_dps: 8

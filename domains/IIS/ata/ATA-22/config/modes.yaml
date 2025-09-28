@@ -1,0 +1,24 @@
+engage_interlocks:
+  min_ias_mps: 35
+  max_bank_deg: 25
+  max_pitch_deg: 20
+  sensors_required: [att_valid, airdata_valid]
+
+lateral_modes:
+  ROL: {priority: 10, capture_tolerance_deg: 1.5}
+  HDG: {priority: 20, capture_tolerance_deg: 3.0}
+  TRK: {priority: 20, capture_tolerance_deg: 3.0}
+  LNAV: {priority: 30, requires: [fms_lnav_path_valid]}
+
+vertical_modes:
+  PIT: {priority: 10, capture_tol_deg: 1.0}
+  ALT: {priority: 20, capture_tol_m: 15}
+  VS:  {priority: 20, capture_tol_mps: 0.1}
+  VNAV: {priority: 30, requires: [fms_vnav_path_valid]}
+
+disengage_reasons:
+  - manual
+  - trim_runaway
+  - sensor_invalid
+  - exceed_limits
+  - stick_force

@@ -1,0 +1,17 @@
+title: ATA-22 → ATA-27 Command Interface
+bus: AFDX # alt: ARINC429
+rate_hz: 50
+messages:
+  - name: AP_COMMANDS
+    fields:
+      - {name: roll_cmd_deg,      type: float32, range: [-30, 30]}
+      - {name: pitch_cmd_deg,     type: float32, range: [-20, 20]}
+      - {name: yaw_damper_cmd,    type: float32, range: [-10, 10], desc: yaw rate or spoiler differential proxy}
+      - {name: ap_engaged,        type: uint8,   enum: {0: disengaged, 1: engaged}}
+      - {name: fd_active,         type: uint8,   enum: {0: off, 1: on}}
+      - {name: priority_ch,       type: uint8,   desc: active FCC channel id}
+    integrity: CRC16
+    latency_budget_ms: 20
+  - name: AP_DISENGAGE
+    fields:
+      - {name: reason, type: uint8, enum: {0: manual, 1: trim_runaway, 2: sensor_invalid, 3: exceed_limits}}

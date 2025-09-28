@@ -1,0 +1,12 @@
+[project]
+name = "bwbq100-ata22"
+version = "0.1.0"
+description = "BWB-Q100 ATA-22 Autoflight"
+requires-python = ">=3.11"
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "mypy>=1.8", "ruff>=0.6.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

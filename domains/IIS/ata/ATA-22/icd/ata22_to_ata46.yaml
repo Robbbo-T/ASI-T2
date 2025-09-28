@@ -1,0 +1,11 @@
+title: ATA-22 → ATA-46 Annunciations
+bus: AFDX
+rate_hz: 10
+messages:
+  - name: AP_ANNUNCIATIONS
+    fields:
+      - {name: ap_engaged, type: uint8}
+      - {name: fd_mode_lat, type: string, allowed: [ROL, HDG, TRK, LNAV]}
+      - {name: fd_mode_vert, type: string, allowed: [PIT, ALT, VS, VNAV]}
+      - {name: yd_active, type: uint8}
+      - {name: cautions, type: string[]}  # e.g., ["AP TRIM", "AP OFF"]

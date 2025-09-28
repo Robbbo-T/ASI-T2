@@ -34,3 +34,7 @@ build/
 *.swp
 *.swo
 *~
+
+# Python testing and linting cache
+.pytest_cache/
+.ruff_cache/
