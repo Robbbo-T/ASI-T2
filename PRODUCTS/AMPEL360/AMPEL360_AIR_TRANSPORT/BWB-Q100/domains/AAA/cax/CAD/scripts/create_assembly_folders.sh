@@ -23,7 +23,7 @@ for i in "${IDS[@]}"; do
   fi
 
   # Minimal READMEs
-  : > "$dir/models/README.md"
+  touch "$dir/models/README.md"
   echo "# $asm_id Drawings" > "$dir/drawings/README.md"
   echo "# $asm_id Interface Control" > "$dir/icd/README.md"
 done
