@@ -1,0 +1,134 @@
+# BWB-Q100 Airframes Assembly Manifest
+# Scope: ATA-51/52/53/54/55/57 only (airframes)
+
+metadata:
+  name: BWB-Q100 Airframes Assembly Manifest
+  version: 1.0
+  scope: airframes_only
+  ata_chapters: [ATA-51, ATA-52, ATA-53, ATA-54, ATA-55, ATA-56, ATA-57]
+  generated: 2024-09-28
+
+assemblies_index:
+  - id: ASM-001
+    name: OML Surface Set
+    ata_chapter: ATA-57
+  - id: ASM-002
+    name: Centerbody Primary Box
+    ata_chapter: ATA-53
+  - id: ASM-003
+    name: Mid-Span Wing Box
+    ata_chapter: ATA-57
+  - id: ASM-004
+    name: Outboard Wing Box
+    ata_chapter: ATA-57
+  - id: ASM-005
+    name: Pressure Deck & Keel Beam
+    ata_chapter: ATA-53
+  - id: ASM-006
+    name: Leading-Edge Primary Structure
+    ata_chapter: ATA-57
+  - id: ASM-007
+    name: Trailing-Edge Primary Structure
+    ata_chapter: ATA-57
+  - id: ASM-008
+    name: Elevon/Flap Boxes
+    ata_chapter: ATA-57
+  - id: ASM-009
+    name: Spoiler/Airbrake Boxes
+    ata_chapter: ATA-57
+  - id: ASM-010
+    name: Trim/Tab Structure
+    ata_chapter: ATA-57
+  - id: ASM-012
+    name: Wing–Fuselage Mating Fittings
+    ata_chapter: ATA-53
+  - id: ASM-016
+    name: Pressure Bulkheads
+    ata_chapter: ATA-53
+  - id: ASM-017
+    name: Door Sills & Frames
+    ata_chapter: ATA-52
+  - id: ASM-018
+    name: Wing Carry-Through Spars
+    ata_chapter: ATA-57
+  - id: ASM-019
+    name: Pylon/Hardpoint Structure
+    ata_chapter: ATA-54
+  - id: ASM-026
+    name: Engine/Nacelle Attach Structure
+    ata_chapter: ATA-54
+  - id: ASM-027
+    name: Wingtip/Tip-Device Structure
+    ata_chapter: ATA-57
+  - id: ASM-028
+    name: Window Frames & Supports
+    ata_chapter: ATA-56
+  - id: ASM-031
+    name: Centerbody Transition Structure
+    ata_chapter: ATA-53
+  - id: ASM-032
+    name: Spanwise Blend Fairings
+    ata_chapter: ATA-57
+
+assembly_sequence:
+  phase_1:
+    - ASM-002  # Centerbody Primary Box
+    - ASM-005  # Pressure Deck & Keel Beam
+  phase_2:
+    - ASM-003  # Mid-Span Wing Box
+    - ASM-004  # Outboard Wing Box
+    - ASM-018  # Wing Carry-Through Spars
+  phase_3:
+    - ASM-006  # Leading-Edge Primary Structure
+    - ASM-007  # Trailing-Edge Primary Structure
+  phase_4:
+    - ASM-008  # Elevon/Flap Boxes
+    - ASM-009  # Spoiler/Airbrake Boxes
+    - ASM-010  # Trim/Tab Structure
+
+qox_variables:
+  ASM-003:
+    rib_spacing: [600, 700, 800, 900, 1000]
+    panel_configuration: discrete
+  ASM-004:
+    rib_spacing: [600, 700, 800, 900, 1000]
+    tip_device_configuration: discrete
+  ASM-008:
+    hinge_line_optimization: discrete
+    actuator_placement: discrete
+
+control_surface_mapping:
+  ASM-008:
+    surfaces:
+      - EL1_L
+      - EL1_R
+      - EL2_L
+      - EL2_R
+      - EL3_L
+      - EL3_R
+      - FLAP1_L
+      - FLAP1_R
+      - FLAP2_L
+      - FLAP2_R
+    config_files:
+      - wing_baseline_model/control_surfaces/elevons.yaml
+      - wing_baseline_model/control_surfaces/flaperons.yaml  # ← fixed name
+
+  ASM-009:
+    surfaces:
+      - SP1_L
+      - SP2_L
+      - SP3_L
+      - SP4_L
+      - SP1_R
+      - SP2_R
+      - SP3_R
+      - SP4_R
+    config_files:
+      - wing_baseline_model/control_surfaces/spoilers.yaml
+
+  ASM-010:
+    # Let tooling expand names directly from the config to avoid drift
+    surfaces_from: wing_baseline_model/control_surfaces/trim_surfaces.yaml
+    config_files:
+      - wing_baseline_model/control_surfaces/trim_surfaces.yaml

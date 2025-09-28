@@ -1,0 +1,33 @@
+name: Airframes — Validate Assemblies
+
+on:
+  push:
+    paths:
+      - "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/**"
+      - ".github/workflows/airframes_validate.yml"
+  pull_request:
+    paths:
+      - "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install pyyaml
+
+      - name: Create (ensure) assembly folders
+        run: |
+          cd PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100
+          bash domains/AAA/cax/CAD/scripts/create_assembly_folders.sh
+
+      - name: Validate assemblies & links
+        run: |
+          python PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/scripts/validate_assembly_links.py --base PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD
