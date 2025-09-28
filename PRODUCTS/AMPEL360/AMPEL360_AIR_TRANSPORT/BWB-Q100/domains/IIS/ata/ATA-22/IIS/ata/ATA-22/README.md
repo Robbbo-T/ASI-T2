@@ -27,7 +27,7 @@ Autopilot, Flight Director, Yaw Damper, and mode management for BWB-Q100. Scope 
 
 ## Build & test
 ```bash
-cd domains/IIS/ata/ATA-22/software
+cd PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/ata/ATA-22/IIS/ata/ATA-22/software
 python -m pip install -e ".[dev]"
 pytest -q
 ```

@@ -14,7 +14,7 @@ The `scaffold.sh` script creates the complete ATA-22 directory structure:
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
-BASE="domains/IIS/ata/ATA-22"
+BASE="PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/ata/ATA-22/IIS/ata/ATA-22"
 mkdir -p "$BASE"/{architecture,requirements/LLR,icd,config/gains,software/src/ata22,software/tests,sitl,qox}
 touch "$BASE/software/src/ata22/__init__.py"
 echo "✅ ATA-22 scaffold created at $BASE"
@@ -24,7 +24,7 @@ echo "✅ ATA-22 scaffold created at $BASE"
 
 ```bash
 # Create initial directory structure
-./domains/IIS/ata/ATA-22/scripts/scaffold.sh
+./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/ata/ATA-22/IIS/ata/ATA-22/scripts/scaffold.sh
 ```
 
 ## Development Workflow
