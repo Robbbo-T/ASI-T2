@@ -29,7 +29,7 @@ pytest -q
 pytest -v
 
 # Run specific test file
-pytest domains/IIS/ata/ATA-22/software/tests/test_mode_logic.py
+pytest PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/ata/ATA-22/software/tests/test_mode_logic.py
 
 # Run with coverage analysis
 pytest --cov=ata22 --cov-report=html
