@@ -1,0 +1,6 @@
+# AFDX Virtual Link Table - BWB-Q100 IMA
+# Format: VL_ID,Source_Partition,Sink_Partitions,BAG_ms,Max_L2_Bytes,Redundancy,QoS_Level
+VL-FBW-CMD,P-FBW,Actuation_GW,2,256,A/B,High
+VL-NAV-ATT,P-NAV,"P-FBW,P-DISP",8,512,A/B,Medium
+VL-MAINT-LOG,P-MAINT,Recorder,100,1500,A,Low
+# Additional VLs to be defined during detailed design phase
