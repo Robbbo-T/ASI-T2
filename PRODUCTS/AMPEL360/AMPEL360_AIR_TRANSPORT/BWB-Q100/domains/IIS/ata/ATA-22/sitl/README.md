@@ -38,13 +38,13 @@ The Software-in-the-Loop harness provides:
 
 ```bash
 # Run basic SITL demonstration
-python domains/IIS/ata/ATA-22/sitl/run_sitl.py
+python PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/ata/ATA-22/sitl/run_sitl.py
 
 # Run with specific test scenario
-python domains/IIS/ata/ATA-22/sitl/run_sitl.py --scenario approach
+python PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/ata/ATA-22/sitl/run_sitl.py --scenario approach
 
 # Run with failure injection
-python domains/IIS/ata/ATA-22/sitl/run_sitl.py --inject-failure sensor_invalid
+python PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/ata/ATA-22/sitl/run_sitl.py --inject-failure sensor_invalid
 ```
 
 ## Integration
