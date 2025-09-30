@@ -22,7 +22,7 @@ import subprocess
 
 # Standard directory structure from the problem statement
 STANDARD_STRUCTURE = {
-    'governance': ['change_control', 'approvals', 'baselines', 'risk_register'],
+    'governance': ['change_control', 'approvals', 'baselines', 'risk_management', 'audits'],
     'os': {
         'S1000D': {
             'dmodule': [],
@@ -229,6 +229,14 @@ def generate_readme(ata_dir: Path, ata_number: str) -> str:
     """Generate README.md content based on the standard template."""
     today = date.today().isoformat()
     
+    # Try to infer domain from path
+    domain = "DOMAIN"
+    path_parts = str(ata_dir).split('/')
+    if 'domains' in path_parts:
+        domain_idx = path_parts.index('domains') + 1
+        if domain_idx < len(path_parts):
+            domain = path_parts[domain_idx]
+    
     return f"""---
 id: ATA-{ata_number}-INDEX
 project: ASI-T2
@@ -241,73 +249,169 @@ language_default: en-US
 enterprise_code: IIS
 canonical_hash: pending
 ethics_guard: MAL-EEM
+canonical_domain: {domain}
 ---
 
 # ATA-{ata_number} System Documentation
 
-## Overview
+> **[CANONICAL]** `ATA-{ata_number}` folder owned by `{domain}` within **ASI-T2**. It is the **single source of truth** for this ATA chapter. Product trees (e.g., `PRODUCTS/AMPEL360/...`) must reference this location via **symlinks**.
 
-This directory contains comprehensive documentation for the ATA-{ata_number} system, including operating system specifications, manufacturing processes, and sustainment procedures. The structure follows S1000D standards and includes all necessary artifacts for certification, manufacturing, and lifecycle management.
+**Legend**
 
-## Directory Structure
+* **[CANONICAL]** → Primary ownership (this folder)
+* **[SHARED]** → Co-owned via overlays/variants, documented in `governance/cross_references.yaml`
 
-### Core Documentation
-- **[os/](./os/)**: Operating system documentation including S1000D data modules, design specifications, and test documentation
-- **[manufacturing/](./manufacturing/)**: Manufacturing processes, BOMs, quality control, and packaging procedures
-- **[sustainment/](./sustainment/)**: Service procedures, spare parts management, reliability tracking, and end-of-life handling
+**Ownership**
 
-### Supporting Documentation
-- **[governance/](./governance/)**: Change control, approvals, baselines, and risk management
-- **[assets/](./assets/)**: Shared assets including images, logos, and templates
-- **[scripts/](./scripts/)**: High-level scripts for build and QA processes
-- **[docs/](./docs/)**: General notes and whitepapers
+* `canonical_domain: {domain}`
+* `shared_domains: []` (if any, see registry `8-RESOURCES/ATA_CANONICAL/ATA_REGISTRY.yaml`)
 
-## Quick Navigation
+---
 
-| Section | Purpose | Key Files |
-|---------|---------|-----------|
-| [OS](./os/) | System design and operation | [README](./os/README.md), [Configuration](./os/configuration/) |
-| [Manufacturing](./manufacturing/) | Production and quality | [BOM](./manufacturing/bom/), [Process Plans](./manufacturing/process/) |
-| [Sustainment](./sustainment/) | Service and lifecycle management | [MRO](./sustainment/service_mro/), [Spares](./sustainment/spares_ipd/) |
-| [Governance](./governance/) | Project governance | [Change Control](./governance/change_control/), [Approvals](./governance/approvals/) |
+## 1) Directory Map (Standard)
 
-## Standards Compliance
+```
+README.md
+CONVENTIONS.md
+
+governance/
+  change_control/
+  baselines/
+  risk_management/
+  cross_references.yaml
+  audits/
+
+os/
+  S1000D/
+  design/
+    architecture/
+    icd/
+    diagrams/
+  configuration/
+    manifests/
+    schedule.xml
+  testing/
+  compliance/
+    certification/
+    verification/
+
+manufacturing/
+  bom/
+  process/
+  quality/
+  tooling/
+  test/
+  packaging/
+    manifests/
+
+sustainment/
+  service_mro/
+  spares/
+  reliability/
+  obsolescence/
+  cas_security/
+  recycling_disposal/
+    weee_rohs_reach/
+    data_sanitization/
+    manifests/
+
+assets/
+scripts/
+docs/
+```
+
+---
+
+## 2) Purpose & Scope per Area
+
+**governance/**
+
+* **change_control/**: PR/merge policy, versioning, semantic commits, UTCS anchors.
+* **baselines/**: Formal baselines (BL-0, BL-1…), signed hashes (QS), release notes.
+* **risk_management/**: Safety/cyber methods (e.g., ARP4761 FHA/FTA/FMEA, STRIDE/DREAD).
+* **cross_references.yaml**: Links to shared artifacts in other domains or products.
+* **audits/**: Internal/external audit reports, NCRs, corrective actions.
+
+**os/**
+
+* **S1000D/**: Technical documentation (data modules, DMRL, BREX, schemas, publications).
+* **design/**: Requirements (HLR/LLR), architecture diagrams, ICD specs.
+* **configuration/**: Static config files, security policies, manifests, ARINC 653 schedules.
+* **testing/**: Test cases, data, results, tools (integration & unit tests).
+* **compliance/**: DO-178C, DO-254, DO-297, ARINC653, ARP4754B evidence and verification.
+
+**manufacturing/**
+
+* **bom/**: Engineering BOM (EBOM), Manufacturing BOM (MBOM).
+* **process/**: Work instructions, PFMEA, control plans.
+* **quality/**: AS9102 FAIR, AS9145 PPAP, inspection plans.
+* **tooling/**: Fixtures, jigs, test equipment documentation.
+* **test/**: ICT, boundary scan, end-of-line test procedures.
+* **packaging/**: Labels, export compliance, packaging manifests.
+
+**sustainment/**
+
+* **service_mro/**: Maintenance, repair, overhaul procedures.
+* **spares/**: Illustrated Parts Data (IPD), spares management.
+* **reliability/**: MTBF, failure tracking, reliability growth.
+* **obsolescence/**: Component lifecycle, DMSMS tracking.
+* **cas_security/**: Continued Airworthiness & Security monitoring.
+* **recycling_disposal/**: WEEE/RoHS/REACH compliance, data sanitization, end-of-life manifests.
+
+---
+
+## 3) Standards Compliance
 
 This documentation package complies with:
-- **S1000D**: For technical documentation structure
-- **DO-178C**: For software certification
-- **DO-254**: For hardware certification
-- **DO-297**: For IMA development
-- **ARP4754B/ARP4761A**: For system safety assessment
-- **AS9100/AS9145**: For quality management and production part approval
-- **WEEE/RoHS/REACH**: For environmental compliance
 
-## Conventions
+* **S1000D**: Technical publication structure (data modules, DMRL, BREX)
+* **DO-178C**: Software considerations in airborne systems
+* **DO-254**: Hardware considerations in airborne systems
+* **DO-297**: Integrated Modular Avionics (IMA) development
+* **ARP4754B/ARP4761A**: System development and safety assessment
+* **AS9100/AS9145**: Quality management and PPAP
+* **WEEE/RoHS/REACH**: Environmental compliance
 
-See [CONVENTIONS.md](./CONVENTIONS.md) for detailed information on:
-- Naming conventions
-- Version control practices
-- Front-matter YAML structure
-- Hashing and signing procedures
+---
 
-## Getting Started
+## 4) Conventions
 
-1. Review the [CONVENTIONS.md](./CONVENTIONS.md) file for documentation standards
-2. Navigate to the specific section of interest (os/, manufacturing/, sustainment/)
-3. Refer to the README.md files in each section for detailed guidance
-4. Use the provided scripts in [scripts/](./scripts/) for automated processes
+See [CONVENTIONS.md](./CONVENTIONS.md) for:
 
-## Contact Information
+* Naming conventions (files, branches, commits)
+* Version control & branching strategy
+* Front-matter YAML requirements
+* Hashing, signing, and manifest procedures
+* Documentation standards (Markdown, S1000D)
 
-- **Maintainer**: IIS (Integrated Information Systems)
-- **Enterprise Code**: IIS
-- **Ethics Guard**: MAL-EEM
+---
 
-## Version History
+## 5) Getting Started
+
+1. **Review** [CONVENTIONS.md](./CONVENTIONS.md) for standards and workflows
+2. **Navigate** to area of interest: `os/`, `manufacturing/`, `sustainment/`, `governance/`
+3. **Check** `governance/cross_references.yaml` for dependencies on other ATAs or domains
+4. **Use scripts** in `scripts/` for validation, manifest generation, or automation
+5. **Reference** the canonical registry: `8-RESOURCES/ATA_CANONICAL/ATA_REGISTRY.yaml`
+
+---
+
+## 6) Contact & Ownership
+
+* **Canonical Domain**: {domain}
+* **Maintainer**: IIS (Integrated Information Systems)
+* **Enterprise Code**: IIS
+* **Ethics Guard**: MAL-EEM
+
+For cross-domain collaboration or shared ownership queries, see `governance/cross_references.yaml`.
+
+---
+
+## 7) Version History
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 0.1.0 | {today} | Initial standardized structure creation |
+| 0.1.0 | {today} | Initial standardized structure with canonical ownership |
 """
 
 
@@ -563,6 +667,46 @@ ethics_guard: MAL-EEM
 files: []
 """)
                 print(f"  Created: {manifest_file.relative_to(ata_dir)}")
+    
+    # 5b. Create governance/cross_references.yaml
+    print("\n5b. Creating governance cross-references file...")
+    cross_ref_file = ata_dir / 'governance' / 'cross_references.yaml'
+    if dry_run:
+        print(f"  [DRY-RUN] Would create: {cross_ref_file}")
+    else:
+        cross_ref_file.parent.mkdir(parents=True, exist_ok=True)
+        if not cross_ref_file.exists():
+            cross_ref_file.write_text(f"""---
+# Cross-References for ATA-{ata_number}
+# Lists dependencies on other ATAs, domains, or external artifacts
+
+shared_with_domains: []
+  # Example:
+  # - domain: PPP
+  #   reason: "Shared propulsion integration specs"
+  #   artifacts:
+  #     - os/design/icd/ATA{ata_number}_to_ATA70.yaml
+
+depends_on_atas: []
+  # Example:
+  # - ata: ATA-22
+  #   reason: "Flight control interface"
+  #   artifacts:
+  #     - os/design/icd/autoflight_interface.yaml
+
+referenced_by_products: []
+  # Example:
+  # - product: AMPEL360/BWB-Q100
+  #   symlink: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/{domain}/ata/ATA-{ata_number}
+  #   notes: "Primary product using this ATA"
+
+external_references: []
+  # Example:
+  # - type: standard
+  #   reference: "DO-297 Section 4.2"
+  #   description: "IMA responsibility matrix"
+""")
+            print(f"  Created: governance/cross_references.yaml")
     
     # 6. Clean non-standard items (careful!)
     print("\n6. Cleaning non-standard items...")
