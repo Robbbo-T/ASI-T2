@@ -548,7 +548,7 @@ def main():
     import sys
     
     if len(sys.argv) < 2:
-        print("Usage: python generate_figures.py <markdown_file>")
+        print("Usage: python generate_publication_figures.py <markdown_file>")
         sys.exit(1)
     
     md_file = sys.argv[1]
