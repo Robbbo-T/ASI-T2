@@ -110,7 +110,7 @@ S1000D-conformant documentation for the IMA operating system: description, desig
 
 | Document | Description | Link |
 |----------|-------------|------|
-| Test Environment | Hardware and software configuration | [📄 View](./testing/test_environment.md) |
+| Test Environment | Hardware and software configuration | [📄 View](./testing/test_results/test_environment.md) |
 
 ## ✅ Compliance Evidence (Markdown)
 
