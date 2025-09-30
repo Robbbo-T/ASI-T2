@@ -18,7 +18,20 @@ Publications are generated from S1000D data modules:
 2. Convert to Markdown format
 3. Add GitHub-compatible formatting
 4. Include hyperlinks to source DMs
-5. Validate against BREX rules
+5. Generate technical diagrams from figure placeholders
+6. Validate against BREX rules
+
+### Figure Generation
+
+Technical diagrams are automatically generated from text descriptions using the `generate_publication_figures.py` script:
+
+```bash
+# Generate figures for a publication
+python3 scripts/generate_publication_figures.py \
+  PRODUCTS/.../publications/PUB-A42-OS-GEN-00000-00.md
+```
+
+This creates blueprint-style technical diagrams in the `figures/` subdirectory and replaces placeholder text with image references.
 
 ## Benefits
 
