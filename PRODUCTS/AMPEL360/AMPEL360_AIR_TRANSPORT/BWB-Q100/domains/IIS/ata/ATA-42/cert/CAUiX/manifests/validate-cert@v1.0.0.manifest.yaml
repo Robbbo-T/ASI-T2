@@ -1,0 +1,17 @@
+---
+apiVersion: cauix.ampel360.com/v1
+kind: Manifest
+metadata:
+  name: validate-cert-manifest
+  version: v1.0.0
+  template: validate-cert@v1.0.0
+spec:
+  execution:
+    trigger: on_commit
+    inputs:
+      target_directory: ./evidence
+      rules_file: ./schemas/evidence_rules.yaml
+  outputs:
+    - name: validation_report
+      path: ./validation_report.json
+      retention: 365d

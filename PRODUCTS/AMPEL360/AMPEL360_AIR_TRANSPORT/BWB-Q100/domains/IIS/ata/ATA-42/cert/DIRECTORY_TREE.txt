@@ -1,0 +1,179 @@
+PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/ata/ATA-42/cert/
+├── README.md                                    # Enhanced with standards references
+├── IMPLEMENTATION_SUMMARY.md                    # Complete implementation documentation
+├── Makefile                                     # Validation framework
+├── .pre-commit-config.yaml                     # Git hooks configuration
+│
+├── schemas/
+│   ├── cert_plan.schema.json                   # JSON Schema for certification plans
+│   └── evidence_rules.yaml                     # Evidence tree validation rules
+│
+├── scripts/
+│   └── validate_evidence_tree.py               # Evidence validation script (executable)
+│
+├── plans/
+│   ├── certification_plan.yaml                 # Master certification plan (all standards)
+│   ├── do178c_plan.yaml                        # DO-178C Software plan
+│   ├── do254_plan.yaml                         # DO-254 Hardware plan
+│   └── security_plan.yaml                      # Security certification plan
+│
+├── procedures/
+│   ├── do178c_procedures.yaml                  # Software certification procedures
+│   ├── do254_procedures.yaml                   # Hardware certification procedures
+│   ├── do297_procedures.yaml                   # IMA certification procedures
+│   ├── do330_procedures.yaml                   # Tool qualification procedures
+│   ├── airworthiness_security.yaml             # Security procedures (DO-326A/356A/355)
+│   ├── arp4754b_procedures.yaml                # System development procedures
+│   ├── arp4761a_procedures.yaml                # Safety assessment procedures
+│   └── evidence_collection.yaml                # Evidence collection procedures
+│
+├── evidence/                                    # 70+ subdirectories organized by standard
+│   ├── DO-178C/
+│   │   ├── README.md
+│   │   ├── objectives/
+│   │   │   ├── software_planning/
+│   │   │   ├── software_requirements/
+│   │   │   ├── software_design/
+│   │   │   ├── software_code/
+│   │   │   ├── software_integration/
+│   │   │   ├── software_verification/
+│   │   │   ├── software_configuration_management/
+│   │   │   ├── software_quality_assurance/
+│   │   │   └── software_certification_liaison/
+│   │   ├── lifecycle_data/
+│   │   │   ├── reviews/
+│   │   │   ├── problem_reports/
+│   │   │   └── change_requests/
+│   │   └── tool_qualification/
+│   │
+│   ├── DO-254/
+│   │   ├── README.md
+│   │   ├── hardware_design/
+│   │   ├── hardware_verification/
+│   │   └── tool_qualification/
+│   │
+│   ├── DO-297/
+│   │   ├── README.md
+│   │   ├── ima_development/
+│   │   ├── partitioning/
+│   │   ├── roles_and_responsibilities/
+│   │   └── data_load/
+│   │
+│   ├── DO-330/
+│   │   ├── tool_qualification_plan/
+│   │   ├── qualification_records/
+│   │   └── tql_levels/
+│   │
+│   ├── DO-326A/
+│   │   ├── README.md
+│   │   ├── security_plan/
+│   │   ├── saha/                               # Security Airworthiness & Hazard Analysis
+│   │   └── tam/                                # Threat Assessment & Mitigations
+│   │
+│   ├── DO-356A/
+│   │   ├── penetration_testing/
+│   │   ├── vulnerability_analysis/
+│   │   └── security_methods/
+│   │
+│   ├── DO-355/
+│   │   ├── monitoring/
+│   │   ├── incident_response/
+│   │   └── continuing_airworthiness/
+│   │
+│   ├── ARP4754B/
+│   │   ├── aircraft_functions/
+│   │   ├── system_architecture/
+│   │   └── development_process/
+│   │
+│   ├── ARP4761A/
+│   │   ├── README.md
+│   │   ├── fha/                                # Functional Hazard Assessment
+│   │   ├── pssa/                               # Preliminary System Safety Assessment
+│   │   ├── ssa/                                # System Safety Assessment
+│   │   └── fdal_idal_mapping/                  # FDAL/IDAL mapping
+│   │
+│   └── Operational/
+│       ├── crew_alerting/
+│       └── operational_procedures/
+│
+├── references/
+│   ├── DO-178C.md                              # DO-178C standard summary
+│   ├── DO-254.md                               # DO-254 standard summary
+│   ├── DO-297.md                               # DO-297 IMA standard summary
+│   ├── DO-330.md                               # DO-330 tool qualification summary
+│   ├── ARP4754B.md                             # ARP4754B system development summary
+│   ├── ARP4761A.md                             # ARP4761A safety assessment summary
+│   ├── DO-326A_ED-202A.md                      # DO-326A/ED-202A security process summary
+│   ├── DO-356A_ED-203A.md                      # DO-356A/ED-203A security methods summary
+│   ├── DO-355_ED-204A.md                       # DO-355/ED-204A continuing airworthiness summary
+│   ├── AMC_20-115D.md                          # EASA AMC 20-115D summary
+│   ├── AMC_20-152A.md                          # EASA AMC 20-152A summary
+│   └── certification_guidelines.md             # Certification guidelines
+│
+├── descriptive/
+│   ├── certification_overview.md               # Overview of certification process
+│   ├── standards_mapping.md                    # Mapping of standards to requirements
+│   └── certification_strategy.md               # Overall certification strategy
+│
+├── reports/
+│   ├── final_report.md                         # Final certification report template
+│   ├── interim_reports/
+│   │   └── README.md
+│   ├── authority_findings/
+│   │   └── README.md
+│   └── compliance_status/
+│       └── README.md
+│
+├── S1000D/
+│   ├── dmodule/                                # Data modules directory
+│   ├── figures/                                # Illustrations and diagrams
+│   ├── schemas/
+│   │   └── 6.0/
+│   │       └── README.md                       # Instructions for S1000D schemas
+│   ├── dmrl/                                   # Data Management Requirements List
+│   ├── brex/                                   # Business Rules Exchange
+│   └── publications/
+│       ├── PUB-A42-CERT-GEN-00000-00.md       # General certification manual
+│       ├── PUB-A42-CERT-PLAN-00000-00.md      # Certification plan publication
+│       └── PUB-A42-CERT-RPT-00000-00.md       # Certification report publication
+│
+└── CAUiX/
+    ├── templates/
+    │   ├── index-cert@v1.0.0.yaml             # Indexing template
+    │   ├── validate-cert@v1.0.0.yaml          # Validation template
+    │   ├── generate-evidence@v1.0.0.yaml      # Evidence generation template
+    │   └── audit-trail@v1.0.0.yaml            # Audit trail template
+    └── manifests/
+        ├── index-cert@v1.0.0.manifest.yaml    # Indexing manifest
+        ├── validate-cert@v1.0.0.manifest.yaml # Validation manifest
+        └── generate-evidence@v1.0.0.manifest.yaml # Evidence generation manifest
+
+Statistics:
+- 76 directories
+- 56 files
+- 21 YAML files (plans and procedures)
+- 32 Markdown files (documentation and references)
+- 1 Python script (validation)
+- 1 JSON schema
+- 1 Makefile
+- 1 pre-commit config
+
+Standards Covered:
+✓ DO-178C / ED-12C   - Software Considerations (DAL A)
+✓ DO-254 / ED-80     - Electronic Hardware (DAL A)
+✓ DO-297 / ED-124    - IMA Development
+✓ DO-330 / ED-215    - Tool Qualification
+✓ ARP4754B / ED-79B  - System Development (2023)
+✓ ARP4761A / ED-135  - Safety Assessment (2023)
+✓ DO-326A / ED-202A  - Security Process
+✓ DO-356A / ED-203A  - Security Methods
+✓ DO-355 / ED-204A   - Continuing Airworthiness Security
+✓ AMC 20-115D        - EASA AMC for DO-178C
+✓ AMC 20-152A        - EASA AMC for DO-254
+
+Validation Framework:
+✓ make validate-all       - Run all validations
+✓ make validate-plans     - Validate YAML plans
+✓ make validate-evidence  - Validate evidence tree
+✓ make validate-s1000d    - Validate S1000D modules
+✓ make validate-md        - Validate Markdown files

@@ -1,0 +1,73 @@
+---
+title: "Evidence Collection Procedures"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Certification Team"
+canonical_hash: "pending"
+
+evidence_collection_procedures:
+  collection_process:
+    - procedure: "Evidence Identification"
+      steps:
+        - "Identify required evidence per standard"
+        - "Map evidence to certification objectives"
+        - "Establish evidence acceptance criteria"
+      deliverables:
+        - "Evidence Requirements Matrix"
+        - "Acceptance Criteria Document"
+
+    - procedure: "Evidence Generation"
+      steps:
+        - "Execute development activities"
+        - "Execute verification activities"
+        - "Document results and outputs"
+      deliverables:
+        - "Development Evidence"
+        - "Verification Evidence"
+
+    - procedure: "Evidence Review"
+      steps:
+        - "Review evidence for completeness"
+        - "Review evidence for compliance"
+        - "Document review findings"
+      deliverables:
+        - "Evidence Review Records"
+        - "Compliance Checklist"
+
+    - procedure: "Evidence Submission"
+      steps:
+        - "Organize evidence per authority requirements"
+        - "Prepare evidence packages"
+        - "Submit to certification authority"
+      deliverables:
+        - "Evidence Submission Package"
+        - "Submission Records"
+
+  evidence_management:
+    - procedure: "Evidence Traceability"
+      steps:
+        - "Establish traceability links"
+        - "Maintain traceability matrix"
+        - "Verify traceability completeness"
+      deliverables:
+        - "Traceability Matrix"
+        - "Traceability Reports"
+
+    - procedure: "Evidence Configuration Control"
+      steps:
+        - "Baseline evidence artifacts"
+        - "Control changes to evidence"
+        - "Maintain evidence history"
+      deliverables:
+        - "Evidence Configuration Index"
+        - "Change Records"
+
+  evidence_archival:
+    - procedure: "Evidence Archival and Retention"
+      steps:
+        - "Archive completed evidence"
+        - "Establish retention period"
+        - "Maintain evidence accessibility"
+      deliverables:
+        - "Archival Records"
+        - "Retention Schedule"

@@ -1,0 +1,40 @@
+---
+title: "DO-330 Tool Qualification Procedures"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Tool Qualification Team"
+canonical_hash: "pending"
+
+do330_procedures:
+  tool_identification:
+    - procedure: "Tool Qualification Level Determination"
+      steps:
+        - "Identify software tools"
+        - "Determine tool qualification level (TQL-1 to TQL-5)"
+        - "Document tool operational requirements"
+      deliverables:
+        - "Tool Identification List"
+        - "TQL Determination Rationale"
+      evidence_location: "evidence/DO-330/tql_levels/"
+
+  tool_qualification_planning:
+    - procedure: "Tool Qualification Plan Development"
+      steps:
+        - "Develop Tool Qualification Plan"
+        - "Define qualification strategy"
+        - "Establish acceptance criteria"
+      deliverables:
+        - "Tool Qualification Plan"
+        - "Tool Operational Requirements"
+      evidence_location: "evidence/DO-330/tool_qualification_plan/"
+
+  tool_qualification_execution:
+    - procedure: "Tool Qualification Data Generation"
+      steps:
+        - "Execute tool verification activities"
+        - "Generate qualification data"
+        - "Document tool conformity review"
+      deliverables:
+        - "Tool Qualification Data"
+        - "Tool Accomplishment Summary"
+      evidence_location: "evidence/DO-330/qualification_records/"

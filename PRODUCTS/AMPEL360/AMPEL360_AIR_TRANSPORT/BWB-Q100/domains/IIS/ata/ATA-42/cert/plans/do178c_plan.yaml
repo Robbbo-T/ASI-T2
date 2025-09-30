@@ -1,0 +1,24 @@
+---
+title: "DO-178C Software Development Plan"
+version: "1.0"
+date: "2025-09-30"
+standard: "DO-178C"
+
+software_development_plan:
+  scope: "BWB-Q100 IMA Software"
+  dal: "A"
+  lifecycle_model: "Modified Waterfall with Iterative Refinement"
+
+  planning_activities:
+    - Software Planning Process
+    - Software Development Process
+    - Software Verification Process
+    - Software Configuration Management Process
+    - Software Quality Assurance Process
+
+  deliverables:
+    - "Plan for Software Aspects of Certification (PSAC)"
+    - "Software Development Plan (SDP)"
+    - "Software Verification Plan (SVP)"
+    - "Software Configuration Management Plan (SCMP)"
+    - "Software Quality Assurance Plan (SQAP)"

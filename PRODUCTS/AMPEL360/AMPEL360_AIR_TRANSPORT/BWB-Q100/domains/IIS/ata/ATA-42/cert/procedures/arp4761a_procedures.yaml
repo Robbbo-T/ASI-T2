@@ -1,0 +1,55 @@
+---
+title: "ARP4761A Safety Assessment Procedures"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Safety Assessment Team"
+canonical_hash: "pending"
+
+arp4761a_procedures:
+  functional_hazard_assessment:
+    - procedure: "Functional Hazard Assessment (FHA)"
+      steps:
+        - "Identify aircraft functions"
+        - "Identify failure conditions"
+        - "Classify severity of failure conditions"
+        - "Assign Design Assurance Levels"
+      deliverables:
+        - "FHA Report"
+        - "Function-Failure Condition Matrix"
+      evidence_location: "evidence/ARP4761A/fha/"
+
+  preliminary_safety_assessment:
+    - procedure: "Preliminary System Safety Assessment (PSSA)"
+      steps:
+        - "Develop preliminary architecture"
+        - "Perform qualitative analysis"
+        - "Derive preliminary safety requirements"
+        - "Identify verification methods"
+      deliverables:
+        - "PSSA Report"
+        - "Preliminary Safety Requirements"
+      evidence_location: "evidence/ARP4761A/pssa/"
+
+  system_safety_assessment:
+    - procedure: "System Safety Assessment (SSA)"
+      steps:
+        - "Perform quantitative analysis"
+        - "Verify safety requirements"
+        - "Demonstrate compliance with certification requirements"
+        - "Document safety assessment"
+      deliverables:
+        - "SSA Report"
+        - "Fault Tree Analysis"
+        - "Failure Modes and Effects Analysis"
+      evidence_location: "evidence/ARP4761A/ssa/"
+
+  dal_mapping:
+    - procedure: "FDAL/IDAL Mapping"
+      steps:
+        - "Map Function DAL (FDAL) to items"
+        - "Determine Item DAL (IDAL)"
+        - "Justify DAL assignments"
+      deliverables:
+        - "FDAL/IDAL Mapping Document"
+        - "DAL Justification"
+      evidence_location: "evidence/ARP4761A/fdal_idal_mapping/"

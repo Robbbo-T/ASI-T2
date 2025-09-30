@@ -1,0 +1,33 @@
+---
+apiVersion: cauix.ampel360.com/v1
+kind: Template
+metadata:
+  name: generate-evidence
+  version: v1.0.0
+  description: "Evidence generation template"
+spec:
+  type: generation
+  inputs:
+    - name: standard
+      type: string
+      required: true
+    - name: objective
+      type: string
+      required: true
+    - name: source_data
+      type: path
+      required: true
+  operations:
+    - name: collect_data
+      action: aggregate_sources
+      parameters:
+        sources: "{{ inputs.source_data }}"
+    - name: format_evidence
+      action: format_document
+      parameters:
+        template: certification_evidence
+        standard: "{{ inputs.standard }}"
+    - name: generate_hash
+      action: calculate_hash
+      parameters:
+        algorithm: sha256

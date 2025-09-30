@@ -1,0 +1,131 @@
+---
+# Evidence Tree Validation Rules
+# Defines required directories and structure for certification evidence
+
+required_directories:
+  - DO-178C
+  - DO-254
+  - DO-297
+  - DO-330
+  - DO-326A
+  - DO-356A
+  - DO-355
+  - ARP4754B
+  - ARP4761A
+  - Operational
+
+deprecated_directories:
+  # List directories that should be removed or migrated
+  []
+
+standards:
+  DO-178C:
+    description: "Software Considerations in Airborne Systems"
+    required_subdirectories:
+      - objectives/software_planning
+      - objectives/software_requirements
+      - objectives/software_design
+      - objectives/software_code
+      - objectives/software_integration
+      - objectives/software_verification
+      - objectives/software_configuration_management
+      - objectives/software_quality_assurance
+      - objectives/software_certification_liaison
+      - lifecycle_data/reviews
+      - lifecycle_data/problem_reports
+      - lifecycle_data/change_requests
+      - tool_qualification
+    required_files:
+      - "*.pdf"
+      - "*.md"
+    
+  DO-254:
+    description: "Design Assurance Guidance for Airborne Electronic Hardware"
+    required_subdirectories:
+      - hardware_design
+      - hardware_verification
+      - tool_qualification
+    required_files:
+      - "*.pdf"
+      - "*.md"
+  
+  DO-297:
+    description: "Integrated Modular Avionics Development Guidance"
+    required_subdirectories:
+      - ima_development
+      - partitioning
+      - roles_and_responsibilities
+      - data_load
+    required_files:
+      - "*.pdf"
+      - "*.md"
+  
+  DO-330:
+    description: "Software Tool Qualification Considerations"
+    required_subdirectories:
+      - tool_qualification_plan
+      - qualification_records
+      - tql_levels
+    required_files:
+      - "*.pdf"
+      - "*.md"
+  
+  DO-326A:
+    description: "Airworthiness Security Process Specification"
+    required_subdirectories:
+      - security_plan
+      - saha
+      - tam
+    required_files:
+      - "*.pdf"
+      - "*.md"
+  
+  DO-356A:
+    description: "Airworthiness Security Methods and Considerations"
+    required_subdirectories:
+      - penetration_testing
+      - vulnerability_analysis
+      - security_methods
+    required_files:
+      - "*.pdf"
+      - "*.md"
+  
+  DO-355:
+    description: "Information Security Guidance for Continuing Airworthiness"
+    required_subdirectories:
+      - monitoring
+      - incident_response
+      - continuing_airworthiness
+    required_files:
+      - "*.pdf"
+      - "*.md"
+  
+  ARP4754B:
+    description: "Guidelines for Development of Civil Aircraft and Systems"
+    required_subdirectories:
+      - aircraft_functions
+      - system_architecture
+      - development_process
+    required_files:
+      - "*.pdf"
+      - "*.md"
+  
+  ARP4761A:
+    description: "Guidelines and Methods for Conducting Safety Assessment Process"
+    required_subdirectories:
+      - fha
+      - pssa
+      - ssa
+      - fdal_idal_mapping
+    required_files:
+      - "*.pdf"
+      - "*.md"
+  
+  Operational:
+    description: "Operational procedures and evidence"
+    required_subdirectories:
+      - crew_alerting
+      - operational_procedures
+    required_files:
+      - "*.pdf"
+      - "*.md"
