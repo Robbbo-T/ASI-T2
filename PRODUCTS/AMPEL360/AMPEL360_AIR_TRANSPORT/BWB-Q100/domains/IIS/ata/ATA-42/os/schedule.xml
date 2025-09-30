@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ARINC 653 Schedule Configuration - BWB-Q100 IMA
+     Baseline: 8 ms major frame; causal order NAV → FBW → SEC → DISP → MAINT.
+     Each partition executes every major frame.
+-->
+<ARINC653_Configuration>
+  <Module_Schedule>
+    <Major_Frame_ms>8</Major_Frame_ms>
+
+    <!-- Order enforces causal flow and aligns with AFDX Class-A (8 ms) -->
+    <Partition name="P-NAV"   start_ms="0" duration_ms="2"/>
+    <Partition name="P-FBW"   start_ms="2" duration_ms="2"/>
+    <Partition name="P-SEC"   start_ms="4" duration_ms="1"/>
+    <Partition name="P-DISP"  start_ms="5" duration_ms="2"/>
+    <Partition name="P-MAINT" start_ms="7" duration_ms="1"/>
+
+  </Module_Schedule>
+</ARINC653_Configuration>
