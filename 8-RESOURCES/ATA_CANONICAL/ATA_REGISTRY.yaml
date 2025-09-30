@@ -1,0 +1,248 @@
+# ATA Registry
+# Defines canonical ownership and shared domains for each ATA chapter
+
+ata_chapters:
+  # Airframe Systems (ATA 20-29)
+  - ata: "ATA-20"
+    title: "Standard Practices - Airframe"
+    canonical_domain: "AAA"
+    shared_domains: []
+    
+  - ata: "ATA-21"
+    title: "Air Conditioning"
+    canonical_domain: "EEE"
+    shared_domains: []
+    
+  - ata: "ATA-22"
+    title: "Auto Flight"
+    canonical_domain: "IIS"
+    shared_domains: []
+    
+  - ata: "ATA-23"
+    title: "Communications"
+    canonical_domain: "IIS"
+    shared_domains: []
+    
+  - ata: "ATA-24"
+    title: "Electrical Power"
+    canonical_domain: "EEE"
+    shared_domains: []
+    
+  - ata: "ATA-25"
+    title: "Equipment/Furnishings"
+    canonical_domain: "CCC"
+    shared_domains: []
+    
+  - ata: "ATA-26"
+    title: "Fire Protection"
+    canonical_domain: "EEE"
+    shared_domains: []
+    
+  - ata: "ATA-27"
+    title: "Flight Controls"
+    canonical_domain: "IIF"
+    shared_domains: []
+    
+  - ata: "ATA-28"
+    title: "Fuel"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-29"
+    title: "Hydraulic Power"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  # Structure (ATA 30-39)
+  - ata: "ATA-30"
+    title: "Ice and Rain Protection"
+    canonical_domain: "EEE"
+    shared_domains: []
+    
+  - ata: "ATA-31"
+    title: "Indicating/Recording Systems"
+    canonical_domain: "IIS"
+    shared_domains: []
+    
+  - ata: "ATA-32"
+    title: "Landing Gear"
+    canonical_domain: "MMM"
+    shared_domains: []
+    
+  - ata: "ATA-33"
+    title: "Lights"
+    canonical_domain: "EEE"
+    shared_domains: []
+    
+  - ata: "ATA-34"
+    title: "Navigation"
+    canonical_domain: "IIS"
+    shared_domains: []
+    
+  - ata: "ATA-35"
+    title: "Oxygen"
+    canonical_domain: "EEE"
+    shared_domains: []
+    
+  - ata: "ATA-36"
+    title: "Pneumatic"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-38"
+    title: "Water/Waste"
+    canonical_domain: "EEE"
+    shared_domains: []
+    
+  # Avionics/Systems (ATA 40-49)
+  - ata: "ATA-42"
+    title: "Integrated Modular Avionics"
+    canonical_domain: "IIS"
+    shared_domains: []
+    
+  - ata: "ATA-44"
+    title: "Cabin Systems"
+    canonical_domain: "CCC"
+    shared_domains: []
+    
+  - ata: "ATA-45"
+    title: "Central Maintenance System"
+    canonical_domain: "IIS"
+    shared_domains: ["OOO"]
+    
+  - ata: "ATA-46"
+    title: "Information Systems"
+    canonical_domain: "IIS"
+    shared_domains: ["OOO"]
+    
+  - ata: "ATA-49"
+    title: "Airborne Auxiliary Power"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  # Structures (ATA 50-59)
+  - ata: "ATA-51"
+    title: "Standard Practices - Structures"
+    canonical_domain: "AAA"
+    shared_domains: []
+    
+  - ata: "ATA-52"
+    title: "Doors"
+    canonical_domain: "AAA"
+    shared_domains: []
+    
+  - ata: "ATA-53"
+    title: "Fuselage"
+    canonical_domain: "AAA"
+    shared_domains: []
+    
+  - ata: "ATA-54"
+    title: "Nacelles/Pylons"
+    canonical_domain: "AAA"
+    shared_domains: []
+    
+  - ata: "ATA-55"
+    title: "Stabilizers"
+    canonical_domain: "AAA"
+    shared_domains: []
+    
+  - ata: "ATA-56"
+    title: "Windows"
+    canonical_domain: "AAA"
+    shared_domains: []
+    
+  - ata: "ATA-57"
+    title: "Wings"
+    canonical_domain: "AAA"
+    shared_domains: []
+    
+  # Propulsion (ATA 70-79)
+  - ata: "ATA-70"
+    title: "Standard Practices - Powerplant"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-71"
+    title: "Power Plant"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-72"
+    title: "Engine"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-73"
+    title: "Engine Fuel and Control"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-74"
+    title: "Ignition"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-75"
+    title: "Air"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-76"
+    title: "Engine Controls"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-77"
+    title: "Engine Indicating"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-78"
+    title: "Exhaust"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-79"
+    title: "Oil"
+    canonical_domain: "PPP"
+    shared_domains: []
+    
+  - ata: "ATA-80"
+    title: "Starting"
+    canonical_domain: "PPP"
+    shared_domains: []
+
+# Domain definitions
+domains:
+  - code: "AAA"
+    name: "Airframe & Structures"
+    primary_atas: ["ATA-20", "ATA-51", "ATA-52", "ATA-53", "ATA-54", "ATA-55", "ATA-56", "ATA-57"]
+    
+  - code: "CCC"
+    name: "Cabin & Cargo"
+    primary_atas: ["ATA-25", "ATA-44"]
+    
+  - code: "EEE"
+    name: "Electrical & Environmental"
+    primary_atas: ["ATA-21", "ATA-24", "ATA-26", "ATA-30", "ATA-33", "ATA-35", "ATA-38"]
+    
+  - code: "IIF"
+    name: "Integrated Flight Systems"
+    primary_atas: ["ATA-27"]
+    
+  - code: "IIS"
+    name: "Integrated Information Systems"
+    primary_atas: ["ATA-22", "ATA-23", "ATA-31", "ATA-34", "ATA-42", "ATA-45", "ATA-46"]
+    
+  - code: "MMM"
+    name: "Mechanisms & Actuation"
+    primary_atas: ["ATA-32"]
+    
+  - code: "OOO"
+    name: "Operations & Maintenance"
+    primary_atas: []
+    shared_atas: ["ATA-45", "ATA-46"]
+    
+  - code: "PPP"
+    name: "Propulsion & Power"
+    primary_atas: ["ATA-28", "ATA-29", "ATA-36", "ATA-49", "ATA-70", "ATA-71", "ATA-72", "ATA-73", "ATA-74", "ATA-75", "ATA-76", "ATA-77", "ATA-78", "ATA-79", "ATA-80"]

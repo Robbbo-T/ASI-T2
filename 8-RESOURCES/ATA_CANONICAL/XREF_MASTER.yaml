@@ -1,0 +1,112 @@
+# Cross-Reference Master Schema
+# Schema for governance/cross_references.yaml in canonical ATA folders
+
+$schema: "http://json-schema.org/draft-07/schema#"
+title: "ATA Cross-References Schema"
+description: "Schema for cross-domain ATA references (overlays/variants)"
+
+type: object
+required: ["xrefs"]
+properties:
+  xrefs:
+    type: array
+    description: "List of cross-references between ATA chapters"
+    items:
+      type: object
+      required: ["from", "to", "type", "reason"]
+      properties:
+        from:
+          type: object
+          description: "Source ATA chapter"
+          required: ["ata", "domain"]
+          properties:
+            ata:
+              type: string
+              pattern: "^ATA-[0-9]{2}$"
+              description: "ATA chapter number (e.g., ATA-42)"
+            domain:
+              type: string
+              pattern: "^[A-Z]{3}$"
+              description: "Domain code (3 uppercase letters)"
+        
+        to:
+          type: object
+          description: "Target ATA chapter or domain"
+          required: ["domain"]
+          properties:
+            ata:
+              type: string
+              pattern: "^ATA-[0-9]{2}$"
+              description: "ATA chapter number (optional if referencing entire domain)"
+            domain:
+              type: string
+              pattern: "^[A-Z]{3}$"
+              description: "Target domain code"
+        
+        type:
+          type: string
+          enum: ["overlay", "variant", "dependency", "reference"]
+          description: |
+            - overlay: Extends/overlays canonical with domain-specific content
+            - variant: Alternative implementation for specific context
+            - dependency: Functional dependency on other ATA
+            - reference: Informational reference only
+        
+        reason:
+          type: string
+          minLength: 10
+          maxLength: 500
+          description: "Short rationale for this cross-reference"
+        
+        artifacts:
+          type: array
+          description: "Optional list of specific artifact paths involved"
+          items:
+            type: string
+            description: "Relative path from repository root"
+        
+        bi_directional:
+          type: boolean
+          default: false
+          description: "Whether this reference should be documented in both directions"
+        
+        version:
+          type: string
+          description: "Version constraint (e.g., >=1.0.0)"
+        
+        status:
+          type: string
+          enum: ["active", "deprecated", "proposed"]
+          default: "active"
+          description: "Status of this cross-reference"
+        
+        metadata:
+          type: object
+          description: "Additional metadata"
+          properties:
+            created_date:
+              type: string
+              format: "date"
+            author:
+              type: string
+            review_date:
+              type: string
+              format: "date"
+            notes:
+              type: string
+
+# Example usage in canonical ATA folder's governance/cross_references.yaml:
+# xrefs:
+#   - from: 
+#       ata: ATA-42
+#       domain: IIS
+#     to:
+#       ata: ATA-45
+#       domain: IIS
+#     type: dependency
+#     reason: "IMA platform depends on CMS for health monitoring"
+#     artifacts:
+#       - 2-DOMAINS-LEVELS/IIS/ata/ATA-42/os/design/icd/cms_interface.yaml
+#     bi_directional: true
+#     version: ">=1.0.0"
+#     status: active

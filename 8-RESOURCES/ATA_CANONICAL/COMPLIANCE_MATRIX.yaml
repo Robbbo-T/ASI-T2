@@ -1,0 +1,237 @@
+# Compliance Matrix
+# Master compliance requirements for ATA chapters
+
+# This file defines the compliance obligations for each ATA chapter
+# Canonical ATAs inherit these requirements and add specifics in os/compliance/
+
+compliance_standards:
+  # Software Certification
+  - id: "DO-178C"
+    title: "Software Considerations in Airborne Systems and Equipment Certification"
+    authority: "RTCA/EUROCAE"
+    applies_to: ["software", "firmware"]
+    dal_levels: ["A", "B", "C", "D", "E"]
+    
+  - id: "DO-331"
+    title: "Model-Based Development and Verification Supplement to DO-178C"
+    authority: "RTCA/EUROCAE"
+    applies_to: ["model-based-development"]
+    
+  - id: "DO-330"
+    title: "Software Tool Qualification Considerations"
+    authority: "RTCA/EUROCAE"
+    applies_to: ["development-tools", "verification-tools"]
+    
+  - id: "DO-297"
+    title: "Integrated Modular Avionics Development Guidance and Certification Considerations"
+    authority: "RTCA"
+    applies_to: ["ima", "integrated-systems"]
+    
+  # Hardware Certification
+  - id: "DO-254"
+    title: "Design Assurance Guidance for Airborne Electronic Hardware"
+    authority: "RTCA/EUROCAE"
+    applies_to: ["hardware", "electronic-systems"]
+    dal_levels: ["A", "B", "C", "D", "E"]
+    
+  # System Safety
+  - id: "ARP4754A"
+    title: "Guidelines for Development of Civil Aircraft and Systems"
+    authority: "SAE"
+    applies_to: ["systems", "aircraft"]
+    
+  - id: "ARP4761"
+    title: "Guidelines and Methods for Conducting the Safety Assessment Process"
+    authority: "SAE"
+    applies_to: ["safety-assessment"]
+    methods: ["FHA", "PSSA", "SSA", "FTA", "FMEA", "CMA"]
+    
+  # Cybersecurity
+  - id: "DO-326A"
+    title: "Airworthiness Security Process Specification"
+    authority: "RTCA/EUROCAE"
+    applies_to: ["systems", "software", "hardware"]
+    
+  - id: "DO-356A"
+    title: "Airworthiness Security Methods and Considerations"
+    authority: "RTCA/EUROCAE"
+    applies_to: ["security-design", "security-verification"]
+    
+  # Airworthiness
+  - id: "CS-25"
+    title: "Certification Specifications for Large Aeroplanes"
+    authority: "EASA"
+    applies_to: ["airframe", "systems"]
+    
+  - id: "CS-E"
+    title: "Certification Specifications for Engines"
+    authority: "EASA"
+    applies_to: ["engines", "propulsion"]
+    
+  - id: "14-CFR-25"
+    title: "Airworthiness Standards: Transport Category Airplanes"
+    authority: "FAA"
+    applies_to: ["airframe", "systems"]
+    
+  # Communications Standards
+  - id: "ARINC-429"
+    title: "Mark 33 Digital Information Transfer System"
+    authority: "ARINC"
+    applies_to: ["avionics-buses"]
+    
+  - id: "ARINC-664"
+    title: "Aircraft Data Network"
+    authority: "ARINC"
+    applies_to: ["afdx", "ethernet"]
+    
+  - id: "ARINC-653"
+    title: "Avionics Application Software Standard Interface"
+    authority: "ARINC"
+    applies_to: ["ima", "partitioning"]
+    
+  - id: "ARINC-661"
+    title: "Cockpit Display System Interfaces to User Systems"
+    authority: "ARINC"
+    applies_to: ["displays", "hmi"]
+
+# ATA-specific compliance mappings
+ata_compliance:
+  # Avionics Systems
+  - ata: "ATA-22"
+    title: "Auto Flight"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "ARP4754A"
+      - "ARP4761"
+      - "DO-326A"
+      - "CS-25"
+    dal: "A"
+    notes: "Flight-critical autopilot system"
+    
+  - ata: "ATA-23"
+    title: "Communications"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "DO-326A"
+      - "CS-25"
+    dal: "C"
+    
+  - ata: "ATA-27"
+    title: "Flight Controls"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "ARP4754A"
+      - "ARP4761"
+      - "CS-25"
+    dal: "A"
+    notes: "Flight-critical control system"
+    
+  - ata: "ATA-31"
+    title: "Indicating/Recording Systems"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "CS-25"
+    dal: "C"
+    
+  - ata: "ATA-34"
+    title: "Navigation"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "ARP4754A"
+      - "DO-326A"
+      - "CS-25"
+    dal: "B"
+    
+  - ata: "ATA-42"
+    title: "Integrated Modular Avionics"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "DO-297"
+      - "DO-330"
+      - "ARP4754A"
+      - "ARP4761"
+      - "DO-326A"
+      - "DO-356A"
+      - "ARINC-653"
+      - "ARINC-664"
+      - "CS-25"
+    dal: "A"
+    notes: "Platform for multiple applications; highest assurance level"
+    
+  - ata: "ATA-45"
+    title: "Central Maintenance System"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "CS-25"
+    dal: "C"
+    
+  - ata: "ATA-46"
+    title: "Information Systems"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "DO-326A"
+      - "CS-25"
+    dal: "D"
+    
+  # Electrical Systems
+  - ata: "ATA-24"
+    title: "Electrical Power"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "ARP4754A"
+      - "CS-25"
+    dal: "B"
+    
+  # Structure
+  - ata: "ATA-32"
+    title: "Landing Gear"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "ARP4754A"
+      - "CS-25"
+    dal: "B"
+    
+  - ata: "ATA-53"
+    title: "Fuselage"
+    standards:
+      - "CS-25"
+      - "14-CFR-25"
+    notes: "Primarily structural certification"
+    
+  - ata: "ATA-57"
+    title: "Wings"
+    standards:
+      - "CS-25"
+      - "14-CFR-25"
+    notes: "Primarily structural certification"
+    
+  # Propulsion
+  - ata: "ATA-71"
+    title: "Power Plant"
+    standards:
+      - "CS-E"
+      - "CS-25"
+    
+  - ata: "ATA-72"
+    title: "Engine"
+    standards:
+      - "DO-178C"
+      - "DO-254"
+      - "CS-E"
+    dal: "A"
+    notes: "FADEC and engine control systems"
+
+# Notes:
+# - DAL (Design Assurance Level) ranges from A (most critical) to E (least critical)
+# - Individual ATAs may have additional standards in their canonical os/compliance/ folders
+# - Product-specific compliance requirements go in product trees, not canonical
