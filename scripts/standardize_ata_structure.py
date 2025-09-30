@@ -102,12 +102,78 @@ PRESERVE_PATTERNS = [
     'CONVENTIONS.md',   # Will be created
     'IMPLEMENTATION_SUMMARY.md',  # Keep if exists
     'schedule.xml',     # Legacy ARINC 653 schedule (keep in os/)
+    # Domain-specific directories to preserve
+    'architecture',     # Architecture docs
+    'requirements',     # Requirements
+    'software',         # Software artifacts
+    'config',           # Configuration (variant)
+    'icd',              # Interface Control Documents
+    'partitions',       # Partition definitions
+    'qox',              # Quality artifacts
+    'sitl',             # Software In The Loop
+    'scripts',          # Scripts (will be in standard structure too)
+    'tools',            # Tools (will be moved)
+    'contracts',        # Contract documents
+    'io',               # I/O definitions
+    'forms',            # Forms
+    # ATA subdirectories (section-level)
+    '20-',              # ATA-20 subsections
+    '21-',              # ATA-21 subsections
+    '22-',              # ATA-22 subsections
+    '23-',              # ATA-23 subsections
+    '24-',              # ATA-24 subsections
+    '25-',              # ATA-25 subsections
+    '26-',              # ATA-26 subsections
+    '27-',              # ATA-27 subsections
+    '28-',              # ATA-28 subsections
+    '29-',              # ATA-29 subsections
+    '30-',              # ATA-30 subsections
+    '31-',              # ATA-31 subsections
+    '32-',              # ATA-32 subsections
+    '33-',              # ATA-33 subsections
+    '34-',              # ATA-34 subsections
+    '35-',              # ATA-35 subsections
+    '36-',              # ATA-36 subsections
+    '37-',              # ATA-37 subsections
+    '38-',              # ATA-38 subsections
+    '39-',              # ATA-39 subsections
+    '40-',              # ATA-40 subsections
+    '41-',              # ATA-41 subsections
+    '42-',              # ATA-42 subsections
+    '43-',              # ATA-43 subsections
+    '44-',              # ATA-44 subsections
+    '45-',              # ATA-45 subsections
+    '46-',              # ATA-46 subsections
+    '47-',              # ATA-47 subsections
+    '48-',              # ATA-48 subsections
+    '49-',              # ATA-49 subsections
+    '50-',              # ATA-50 subsections
+    '51-',              # ATA-51 subsections
+    '52-',              # ATA-52 subsections
+    '53-',              # ATA-53 subsections
+    '54-',              # ATA-54 subsections
+    '55-',              # ATA-55 subsections
+    '56-',              # ATA-56 subsections
+    '57-',              # ATA-57 subsections
+    '70-',              # ATA-70 subsections
+    '71-',              # ATA-71 subsections
+    '72-',              # ATA-72 subsections
+    '73-',              # ATA-73 subsections
+    '74-',              # ATA-74 subsections
+    '75-',              # ATA-75 subsections
+    '76-',              # ATA-76 subsections
+    '77-',              # ATA-77 subsections
+    '78-',              # ATA-78 subsections
+    '79-',              # ATA-79 subsections
+    # File extensions to preserve
     '.xml',             # Keep XML files
     '.yaml',            # Keep YAML files
     '.yml',             # Keep YML files
     '.json',            # Keep JSON files
     '.xsd',             # Keep schema files
     '.conf',            # Keep configuration files
+    '.md',              # Keep markdown files
+    '.py',              # Keep Python files
 ]
 
 
@@ -499,10 +565,14 @@ files: []
                 print(f"  Created: {manifest_file.relative_to(ata_dir)}")
     
     # 6. Clean non-standard items (careful!)
-    # print("\n6. Cleaning non-standard items...")
-    # removed = clean_non_standard_items(ata_dir, dry_run)
-    # if removed:
-    #     print(f"  Removed {len(removed)} non-standard items")
+    print("\n6. Cleaning non-standard items...")
+    removed = clean_non_standard_items(ata_dir, dry_run)
+    if removed:
+        sample = ", ".join(removed[:10])
+        suffix = "..." if len(removed) > 10 else ""
+        print(f"  Removed {len(removed)} non-standard items: {sample}{suffix}")
+    else:
+        print(f"  No non-standard items to remove")
     
     print(f"\n✓ Completed standardization of {ata_dir.name}")
 
