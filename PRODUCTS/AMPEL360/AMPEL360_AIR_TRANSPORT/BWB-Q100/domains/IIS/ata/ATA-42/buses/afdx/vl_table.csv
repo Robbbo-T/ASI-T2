@@ -1,6 +1,11 @@
-# AFDX Virtual Link Table - BWB-Q100 IMA
-# Format: VL_ID,Source_Partition,Sink_Partitions,BAG_ms,Max_L2_Bytes,Redundancy,QoS_Level
-VL-FBW-CMD,P-FBW,Actuation_GW,2,256,A/B,High
-VL-NAV-ATT,P-NAV,"P-FBW,P-DISP",8,512,A/B,Medium
-VL-MAINT-LOG,P-MAINT,Recorder,100,1500,A,Low
-# Additional VLs to be defined during detailed design phase
+# AFDX Virtual Link Table — BWB-Q100 IMA
+# Columns:
+# VL_ID,Source_Partition,Sinks,TrafficClass,BAG_ms,Frames_per_BAG,Max_L2_Bytes,UDP_DstPort,Redundancy,Queue,QoS,BW_kbps_per_net,Notes
+# Notes:
+# - TrafficClass: A (1/2/4/8 ms) or B (16/32/64/128 ms)
+# - Max_L2_Bytes: Ethernet L2 bytes incl. headers/FCS (≤1518)
+# - Redundancy: A/B means dual network (both nets active)
+VL-FBW-CMD,P-FBW,Actuation_GW,A,2,1,256,49000,A/B,PRIO_7,High,1024,"FBW commands to actuation gateway"
+VL-NAV-ATT,P-NAV,"P-FBW|P-DISP",A,8,1,512,49100,A/B,PRIO_5,Medium,512,"Attitude/airspeed/altitude to FBW & displays"
+VL-MAINT-LOG,P-MAINT,Recorder,B,128,1,1500,49200,A,PRIO_2,Low,94,"ACMS log shipping"
+# Add more VLs below; one row per unidirectional VL. BW ≈ Frames_per_BAG*Max_L2_Bytes*8/BAG_ms (kbps)

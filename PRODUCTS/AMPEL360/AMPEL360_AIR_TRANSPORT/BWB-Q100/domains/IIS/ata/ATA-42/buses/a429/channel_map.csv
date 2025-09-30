@@ -1,5 +1,5 @@
 # ARINC 429 Channel Mapping - BWB-Q100 IMA
-# Format: Channel_ID,Rate_kHz,Labels,Producer,Consumer,Notes
-RX-1,12.5,"203,204",Sensors,P-FBW,Angle of Attack data
-TX-2,12.5,"312,320",P-NAV,Displays,Computed Airspeed and Altitude
+# Format: Channel_ID,Direction,Speed_kbps,Labels_octal,Producer,Consumer,Notes
+RX-1,RX,12.5,"203o,204o",Sensors,P-FBW,Angle of Attack data (L/R)
+TX-2,TX,12.5,"312o,320o",P-NAV,Displays,Computed Airspeed and Altitude
 # Additional channels to be defined during detailed design phase
