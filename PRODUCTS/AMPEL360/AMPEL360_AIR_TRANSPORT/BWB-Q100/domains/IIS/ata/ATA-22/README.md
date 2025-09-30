@@ -1,104 +1,79 @@
 ---
-id: ATA-22-OV-0001
-project: PRODUCTS/AMPEL360/BWB-Q100
-artifact: PRODUCTS/AMPEL360/BWB-Q100/domains/IIS/ata/22/README.md
-llc: SYSTEMS
-classification: "INTERNAL–EVIDENCE-REQUIRED"
-version: "0.2.0"
-release_date: 2025-09-27
-maintainer: "ASI-T Architecture Team"
-bridge: "CB→QB→UE→FE→FWD→QS"
+id: ATA-22-INDEX
+project: ASI-T2
+artifact: ATA-22 System
+classification: INTERNAL
+version: 0.1.0
+release_date: 2025-09-30
+maintainer: IIS (Integrated Information Systems)
+language_default: en-US
+enterprise_code: IIS
+canonical_hash: pending
 ethics_guard: MAL-EEM
-utcs_mi: v5.0
-canonical_hash: "TBD"
 ---
 
-# ATA-22 — Auto Flight (BWB-Q100)  
-**ES:** Publicaciones y evidencia para **ATA-22**.  
-**EN:** Publications and evidence for **ATA-22 (Auto Flight)**.
+# ATA-22 System Documentation
 
-> Scope: flight guidance, autopilot, autothrottle, autoland interfaces, mode logic, monitoring (BITE), and safety/ethics gates under **IIS** (Integrated Intelligence & Software).
+## Overview
 
----
+This directory contains comprehensive documentation for the ATA-22 system, including operating system specifications, manufacturing processes, and sustainment procedures. The structure follows S1000D standards and includes all necessary artifacts for certification, manufacturing, and lifecycle management.
 
-## 0) Path Root (TFA)
-`PRODUCTS/AMPEL360/BWB-Q100/domains/IIS/ata/22/`
+## Directory Structure
 
----
+### Core Documentation
+- **[os/](./os/)**: Operating system documentation including S1000D data modules, design specifications, and test documentation
+- **[manufacturing/](./manufacturing/)**: Manufacturing processes, BOMs, quality control, and packaging procedures
+- **[sustainment/](./sustainment/)**: Service procedures, spare parts management, reliability tracking, and end-of-life handling
 
-## 1) Directory Map
-```
-22/
-├── S1000D/
-│   ├── brex/                                  # BREX rules
-│   │   └── DMC-BWB1-A-00-00-00-00A-022A-D-EN-US.xml
-│   ├── dmrl/                                  # Data Module Requirements List
-│   │   └── DMRL-BWB1-A-22-00-00-00A-001A-D-EN-US.xml
-│   └── data_modules/
-│       ├── front_matter/                      # General/intro DMs
-│       ├── descriptive/                       # 040A Description
-│       ├── procedural/                        # 720A/721A Tasks (On-Aircraft/Shop)
-│       ├── fault/                             # 940A Fault Isolation
-│       └── illustrated_parts/                 # IPC/IPD if applicable
-├── tests/
-│   ├── ground/                                # ENG/APU power, taxi checks
-│   └── flight/                                # AFCS enroute/approach/autoland checks
-├── evidence/                                  # UTCS/QS proofs, log extracts
-└── references/                                # ARINC 653/429/664, AFDX, HMI, FMS, etc.
-```
+### Supporting Documentation
+- **[governance/](./governance/)**: Change control, approvals, baselines, and risk management
+- **[assets/](./assets/)**: Shared assets including images, logos, and templates
+- **[scripts/](./scripts/)**: High-level scripts for build and QA processes
+- **[docs/](./docs/)**: General notes and whitepapers
 
----
+## Quick Navigation
 
-## 2) System Breakdown (ATA-22)
-- **22-10** Autopilot (AP)
-- **22-11** Flight Director (FD)
-- **22-12** Autothrottle / Thrust Management (A/T)
-- **22-15** Altitude/Speed Alerting & Protections
-- **22-18** Autoland / Approach Capability (as applicable)
-- **22-20** AFCS Monitoring & BITE (Built-In Test)
-- **22-90** Interfaces (FMS, QAFbW, NAVSYS, HMI)
+| Section | Purpose | Key Files |
+|---------|---------|-----------|
+| [OS](./os/) | System design and operation | [README](./os/README.md), [Configuration](./os/configuration/) |
+| [Manufacturing](./manufacturing/) | Production and quality | [BOM](./manufacturing/bom/), [Process Plans](./manufacturing/process/) |
+| [Sustainment](./sustainment/) | Service and lifecycle management | [MRO](./sustainment/service_mro/), [Spares](./sustainment/spares_ipd/) |
+| [Governance](./governance/) | Project governance | [Change Control](./governance/change_control/), [Approvals](./governance/approvals/) |
 
-> Cross-domain links: `INFRANET/AQUA_OS_AIRCRAFT/components/QAFbW/`, `NAVSYS/`, `HMI_BRIDGE/`, `NET_STACK/`.
+## Standards Compliance
 
----
+This documentation package complies with:
+- **S1000D**: For technical documentation structure
+- **DO-178C**: For software certification
+- **DO-254**: For hardware certification
+- **DO-297**: For IMA development
+- **ARP4754B/ARP4761A**: For system safety assessment
+- **AS9100/AS9145**: For quality management and production part approval
+- **WEEE/RoHS/REACH**: For environmental compliance
 
-## 3) S1000D Conventions
-- **ModelIdentCode:** `BWB1` (program-local)
-- **Language:** `EN-US` primary (Spanish mirrors allowed)
-- **Info codes:** `020` General, `040` Description, `720/721` Procedures, `940` Faults
-- **BREX:** see `S1000D/brex/DMC-BWB1-A-00-00-00-00A-022A-D-EN-US.xml`
+## Conventions
 
----
+See [CONVENTIONS.md](./CONVENTIONS.md) for detailed information on:
+- Naming conventions
+- Version control practices
+- Front-matter YAML structure
+- Hashing and signing procedures
 
-## 4) Deliverables
-- Descriptive DMs: AFCS architecture, mode logic, protections
-- Procedural DMs: engagement checks, autoland preflight, go-around tests
-- Fault DMs: mode drops, sensor mis-compare, servo runaway
-- DMRL: authoritative list of required DMs with issue/lanes
-- UTCS/QS evidence: canonical hashes, signatures, test logs
-- Interface specs: A653 partitions, timing, A429 labels, A664 VLinks
+## Getting Started
 
----
+1. Review the [CONVENTIONS.md](./CONVENTIONS.md) file for documentation standards
+2. Navigate to the specific section of interest (os/, manufacturing/, sustainment/)
+3. Refer to the README.md files in each section for detailed guidance
+4. Use the provided scripts in [scripts/](./scripts/) for automated processes
 
-## 5) Safety, Ethics & Security
-- **MAL-EEM:** prioritise passenger/crew safety; bias-free mode naming; human factors in alerts
-- **Least privilege:** AFCS partitions with deterministic timing; read-only rootfs; signed images
-- **UTCS/QS:** all releases stamped with `canonical_hash` and cosign/in-toto attestations
+## Contact Information
 
----
+- **Maintainer**: IIS (Integrated Information Systems)
+- **Enterprise Code**: IIS
+- **Ethics Guard**: MAL-EEM
 
-## 6) CI Hooks
-```bash
-# Validate S1000D XML well-formedness (xmllint suggested locally)
-# (Your repo guards)
-python CAD/scripts/link_check.py . --json-report artifacts/link-ata22.json
-python CAD/scripts/naming_guard.py . --json-report artifacts/naming-ata22.json
-python CAD/scripts/validate_json.py CAD/schemas . --strict --junit artifacts/json-ata22.junit.xml
-```
+## Version History
 
----
-
-## 7) Changelog
-
-* **v0.2.0 (2025-09-27):** Full skeleton, BREX seed, DMRL seed, sample procedure/fault DMs, interfaces.
-* **v0.1.0 (2025-09-24):** Initial stub.
+| Version | Date | Changes |
+|---------|------|---------|
+| 0.1.0 | 2025-09-30 | Initial standardized structure creation |

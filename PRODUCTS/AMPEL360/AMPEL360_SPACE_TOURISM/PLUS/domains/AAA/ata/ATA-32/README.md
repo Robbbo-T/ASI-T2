@@ -1,76 +1,79 @@
 ---
-id: ASIT-PLUS-AAA-ATA32-OVERVIEW-0001
-rev: 0
-project: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM
-artifact: PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/ata/ATA-32/README.md
-llc: SYSTEMS
-title: "ATA-32 Landing Gear — AMPEL360 PLUS"
-configuration: baseline
-classification: "INTERNAL–EVIDENCE-REQUIRED"
-version: "0.1.0"
-release_date: 2025-09-26
-maintainer: "ASI-T Architecture Team"
-licenses:
-  docs: "CC-BY-4.0"
-bridge: "CB→QB→UE→FE→FWD→QS"
+id: ATA-32-INDEX
+project: ASI-T2
+artifact: ATA-32 System
+classification: INTERNAL
+version: 0.1.0
+release_date: 2025-09-30
+maintainer: IIS (Integrated Information Systems)
+language_default: en-US
+enterprise_code: IIS
+canonical_hash: pending
 ethics_guard: MAL-EEM
-utcs_mi: v5.0
-canonical_hash: "TBD"
-provenance:
-  policy_hash: "sha256:TBD"
-  model_sha: "sha256:TBD"
-  data_manifest_hash: "sha256:TBD"
-  operator_id: "UTCS:OP:copilot-gen"
 ---
 
-# ATA-32: Landing Gear (AMPEL360 PLUS)
+# ATA-32 System Documentation
 
-## 1. Scope and Applicability
-Standards, specifications, and evidence for the **landing gear system** of PLUS space tourism vehicle, adapted for runway landing after suborbital flight:
-- **Landing gear assemblies** (main and nose gear) including struts, wheels, brakes
-- **Retraction/extension systems** for space vehicle configuration
-- **Thermal protection integration** at gear bay interfaces
-- **Ground support equipment** interfaces and operations
+## Overview
 
-## 2. Index of Deliverables
+This directory contains comprehensive documentation for the ATA-32 system, including operating system specifications, manufacturing processes, and sustainment procedures. The structure follows S1000D standards and includes all necessary artifacts for certification, manufacturing, and lifecycle management.
 
-### 32-10: Landing Gear Structure
-> Primary structure, struts, attachment points, load distribution.
-- **[DS-32-10-0001](./32-10_Structure/DS-32-10-0001_LandingGearStructure.md)** - Design Spec: Landing Gear Primary Structure
+## Directory Structure
 
-### 32-20: Wheels, Tires & Brakes
-> Wheel assemblies, tire specifications, brake systems for space vehicle operations.
-- **[PS-32-20-0001](./32-20_Wheels_Brakes/PS-32-20-0001_BrakeSystemOperation.md)** - Process Spec: Brake System Operation & Maintenance
+### Core Documentation
+- **[os/](./os/)**: Operating system documentation including S1000D data modules, design specifications, and test documentation
+- **[manufacturing/](./manufacturing/)**: Manufacturing processes, BOMs, quality control, and packaging procedures
+- **[sustainment/](./sustainment/)**: Service procedures, spare parts management, reliability tracking, and end-of-life handling
 
-### 32-30: Extension/Retraction System
-> Electromechanical actuation, hydraulics backup, position indication.
-- **[SDD-32-30-0001](./32-30_Extension_Retraction/SDD-32-30-0001_EM_ActuationSystem.md)** - System Design: Electromechanical Actuation System
+### Supporting Documentation
+- **[governance/](./governance/)**: Change control, approvals, baselines, and risk management
+- **[assets/](./assets/)**: Shared assets including images, logos, and templates
+- **[scripts/](./scripts/)**: High-level scripts for build and QA processes
+- **[docs/](./docs/)**: General notes and whitepapers
 
-### 32-40: Gear Bay & Doors
-> Bay structure, door sealing, TPS integration, thermal protection.
-- **[DS-32-40-0001](./32-40_Bay_Doors/DS-32-40-0001_GearBayThermalProtection.md)** - Design Spec: Gear Bay Thermal Protection
+## Quick Navigation
 
-## 3. Space Tourism Adaptations
+| Section | Purpose | Key Files |
+|---------|---------|-----------|
+| [OS](./os/) | System design and operation | [README](./os/README.md), [Configuration](./os/configuration/) |
+| [Manufacturing](./manufacturing/) | Production and quality | [BOM](./manufacturing/bom/), [Process Plans](./manufacturing/process/) |
+| [Sustainment](./sustainment/) | Service and lifecycle management | [MRO](./sustainment/service_mro/), [Spares](./sustainment/spares_ipd/) |
+| [Governance](./governance/) | Project governance | [Change Control](./governance/change_control/), [Approvals](./governance/approvals/) |
 
-**Key adaptations for space vehicle operations:**
-- High-temperature gear bay interfaces for reentry environment
-- Extended gear cycle life for multiple daily operations
-- Integration with autonomous landing systems
-- Space-qualified materials and lubricants
-- Enhanced braking performance for autonomous landings
+## Standards Compliance
 
-## 4. Traceability and Compliance
+This documentation package complies with:
+- **S1000D**: For technical documentation structure
+- **DO-178C**: For software certification
+- **DO-254**: For hardware certification
+- **DO-297**: For IMA development
+- **ARP4754B/ARP4761A**: For system safety assessment
+- **AS9100/AS9145**: For quality management and production part approval
+- **WEEE/RoHS/REACH**: For environmental compliance
 
-All procedures defined herein are traceable to the requirements of the **FAA/AST (14 CFR Parts 450/460)** and other applicable authorities. Compliance evidence is managed via the UTCS/QS system and linked to each artifact revision.
+## Conventions
 
-## 5. Cross-References
+See [CONVENTIONS.md](./CONVENTIONS.md) for detailed information on:
+- Naming conventions
+- Version control practices
+- Front-matter YAML structure
+- Hashing and signing procedures
 
-**Related ATA Chapters:**
-- **ATA-20**: Standard Practices - Airframe (structural interfaces)
-- **ATA-53**: Fuselage (gear bay structural integration)
-- **ATA-27**: Flight Controls (landing system automation)
+## Getting Started
 
-**Related Domains:**
-- **MEC**: Mechanical actuation systems
-- **EEE**: Electrical power and control systems
-- **LCC**: Autonomous landing control systems
+1. Review the [CONVENTIONS.md](./CONVENTIONS.md) file for documentation standards
+2. Navigate to the specific section of interest (os/, manufacturing/, sustainment/)
+3. Refer to the README.md files in each section for detailed guidance
+4. Use the provided scripts in [scripts/](./scripts/) for automated processes
+
+## Contact Information
+
+- **Maintainer**: IIS (Integrated Information Systems)
+- **Enterprise Code**: IIS
+- **Ethics Guard**: MAL-EEM
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 0.1.0 | 2025-09-30 | Initial standardized structure creation |

@@ -1,0 +1,17 @@
+---
+id: ATA-27-MANIFEST
+project: ASI-T2
+artifact: ATA-27 Manifest
+classification: INTERNAL
+version: 0.1.0
+release_date: 2025-09-30
+maintainer: IIS (Integrated Information Systems)
+language_default: en-US
+enterprise_code: IIS
+canonical_hash: pending
+ethics_guard: MAL-EEM
+---
+
+# Manifest file for ATA-27
+# This file tracks configuration items and their hashes
+files: []
