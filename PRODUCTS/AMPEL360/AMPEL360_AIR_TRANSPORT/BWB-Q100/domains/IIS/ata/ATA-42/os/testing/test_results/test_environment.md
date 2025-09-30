@@ -163,4 +163,4 @@ Test bench maintenance schedule:
 
 - [Test Procedures](../S1000D/publications/PUB-A42-OS-TST-00000-00.md)
 - [Test Cases](./test_cases/)
-- [Test Results](./test_results/)
+- [Test Results](test_results/)
