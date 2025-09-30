@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../schemas/6.0/descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                subSystemCode="1" subSubSystemCode="1" assyCode="00"
+                disassyCode="00" disassyCodeVariant="A" infoCode="010"
+                infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2024" month="09" day="30"/>
+        <dmTitle>
+          <techName>IMA Operating System</techName>
+          <infoName>Architecture Specification</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus>
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IIS"/>
+      <originator enterpriseCode="IIS"/>
+      <applic>
+        <assert applicPropertyIdent="project" applicPropertyType="prodattr"
+                applicPropertyValues="BWB-Q100"/>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="9" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="022"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+  <content>
+    <description>
+      <levelledPara>
+        <title>Architecture Specification</title>
+        <para>This data module provides the detailed architecture specification for the 
+        AQUA-OS operating system, including the separation kernel design, partition 
+        scheduling mechanisms, and memory management architecture.</para>
+        <levelledPara>
+          <title>Separation Kernel Architecture</title>
+          <para>The separation kernel provides the foundation for partitioning:</para>
+          <para>- Hardware abstraction layer (HAL) for processor-specific features</para>
+          <para>- Memory management unit (MMU) configuration and protection</para>
+          <para>- Interrupt handling and vectoring</para>
+          <para>- Context switching between partitions</para>
+        </levelledPara>
+        <levelledPara>
+          <title>Partition Scheduling</title>
+          <para>The scheduler implements fixed-priority, cyclic scheduling:</para>
+          <para>- Major frame divided into partition windows</para>
+          <para>- Non-preemptive execution within windows</para>
+          <para>- Deterministic timing guarantees</para>
+          <para>- Configurable via XML schedule tables</para>
+        </levelledPara>
+        <levelledPara>
+          <title>Memory Management</title>
+          <para>Memory is statically allocated at system initialization:</para>
+          <para>- Partition memory regions defined in configuration</para>
+          <para>- MMU enforces inter-partition isolation</para>
+          <para>- No dynamic memory allocation in kernel</para>
+        </levelledPara>
+      </levelledPara>
+    </description>
+  </content>
+</dmodule>

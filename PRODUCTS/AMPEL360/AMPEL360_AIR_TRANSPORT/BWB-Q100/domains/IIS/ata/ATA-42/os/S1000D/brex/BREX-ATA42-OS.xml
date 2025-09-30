@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<brex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <identAndStatusSection>
+    <brexIdent>
+      <brexCode>BREX-ATA42-OS</brexCode>
+    </brexIdent>
+    <brexAddressItems>
+      <issueDate year="2024" month="09" day="30"/>
+      <brexTitle>Business Rules Exchange for ATA-42 OS Package</brexTitle>
+    </brexAddressItems>
+  </identAndStatusSection>
+  <content>
+    <contextRules>
+      <contextRule>
+        <contextRuleIdent>CR-001</contextRuleIdent>
+        <contextRuleTitle>All DMs must reference this BREX</contextRuleTitle>
+        <contextRuleDef>
+          <assert>Every data module must include a brexDmRef element</assert>
+        </contextRuleDef>
+      </contextRule>
+      <contextRule>
+        <contextRuleIdent>CR-002</contextRuleIdent>
+        <contextRuleTitle>Security classification required</contextRuleTitle>
+        <contextRuleDef>
+          <assert>Every data module must specify security classification</assert>
+        </contextRuleDef>
+      </contextRule>
+      <contextRule>
+        <contextRuleIdent>CR-003</contextRuleIdent>
+        <contextRuleTitle>Responsible party required</contextRuleTitle>
+        <contextRuleDef>
+          <assert>Every data module must specify responsible partner company</assert>
+        </contextRuleDef>
+      </contextRule>
+    </contextRules>
+  </content>
+</brex>

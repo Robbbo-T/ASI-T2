@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="tc_os_boot" version="1.0">
+  <metadata>
+    <title>OS Boot Sequence Test</title>
+    <description>Verify IMA OS completes boot sequence within specified time parameters</description>
+    <classification>INTERNAL–EVIDENCE-REQUIRED</classification>
+    <author>IIS Test Team</author>
+    <date>2024-09-30</date>
+  </metadata>
+  
+  <objective>
+    Verify the IMA OS completes the boot sequence within specified time parameters
+    and initializes all critical services successfully.
+  </objective>
+  
+  <testEnvironment>
+    <hardware>CPIOM Test Bench v2.1</hardware>
+    <osVersion>AQUA-OS v3.2.1</osVersion>
+    <testTools>Internal Test Suite v1.5</testTools>
+  </testEnvironment>
+  
+  <prerequisites>
+    <item>Test bench powered off</item>
+    <item>Valid OS image loaded</item>
+    <item>Serial console connected</item>
+    <item>Timing measurement tools calibrated</item>
+  </prerequisites>
+  
+  <procedure>
+    <step id="1">Power on CPIOM test bench</step>
+    <step id="2">Monitor boot sequence via serial console</step>
+    <step id="3">Record timestamps for key boot events</step>
+    <step id="4">Verify critical service initialization</step>
+    <step id="5">Check for error conditions</step>
+    <step id="6">Validate boot completion status</step>
+  </procedure>
+  
+  <expectedResults>
+    <result id="1">System boots without errors</result>
+    <result id="2">Boot completes within 5 seconds</result>
+    <result id="3">All critical services initialize</result>
+    <result id="4">No error messages logged</result>
+    <result id="5">System ready for partition loading</result>
+  </expectedResults>
+  
+  <passCriteria>
+    <criterion>Boot time ≤ 5.0 seconds</criterion>
+    <criterion>BIOS complete ≤ 1.5 seconds</criterion>
+    <criterion>Kernel init ≤ 3.0 seconds</criterion>
+    <criterion>All services started successfully</criterion>
+    <criterion>Zero critical errors</criterion>
+  </passCriteria>
+  
+  <traceability>
+    <requirement id="REQ-OS-001">Boot time requirement</requirement>
+    <requirement id="REQ-OS-010">Service initialization</requirement>
+    <requirement id="REQ-OS-015">Error handling</requirement>
+  </traceability>
+</testCase>

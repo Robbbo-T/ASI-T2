@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../schemas/6.0/descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                subSystemCode="2" subSubSystemCode="0" assyCode="00"
+                disassyCode="00" disassyCodeVariant="A" infoCode="030"
+                infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2024" month="09" day="30"/>
+        <dmTitle>
+          <techName>IMA Operating System</techName>
+          <infoName>Security Architecture</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus>
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IIS"/>
+      <originator enterpriseCode="IIS"/>
+      <applic>
+        <assert applicPropertyIdent="project" applicPropertyType="prodattr"
+                applicPropertyValues="BWB-Q100"/>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="9" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="022"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+  <content>
+    <description>
+      <levelledPara>
+        <title>Security Architecture</title>
+        <para>This data module describes the security architecture of the AQUA-OS operating 
+        system, including quantum-ready cryptographic protections, secure boot, and runtime 
+        security features compliant with DO-326A and ED-112A standards.</para>
+        <levelledPara>
+          <title>Security Objectives</title>
+          <para>The security architecture addresses:</para>
+          <para>- Protection against unauthorized access</para>
+          <para>- Data integrity and confidentiality</para>
+          <para>- Secure boot and attestation</para>
+          <para>- Quantum-ready cryptographic algorithms</para>
+          <para>- Runtime security monitoring</para>
+        </levelledPara>
+        <levelledPara>
+          <title>Cryptographic Services</title>
+          <para>The OS provides cryptographic services including:</para>
+          <para>- Quantum-resistant key exchange (Kyber)</para>
+          <para>- Digital signatures (Dilithium)</para>
+          <para>- Symmetric encryption (AES-256)</para>
+          <para>- Secure random number generation</para>
+          <para>- Cryptographic key management</para>
+        </levelledPara>
+        <levelledPara>
+          <title>Access Control</title>
+          <para>Multi-level access control mechanisms:</para>
+          <para>- Partition-level isolation enforced by MMU</para>
+          <para>- Role-based access control for system services</para>
+          <para>- Mandatory access control policies</para>
+          <para>- Audit logging of security-relevant events</para>
+        </levelledPara>
+      </levelledPara>
+    </description>
+  </content>
+</dmodule>

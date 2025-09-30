@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../schemas/6.0/descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                subSystemCode="1" subSubSystemCode="0" assyCode="00"
+                disassyCode="00" disassyCodeVariant="A" infoCode="010"
+                infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2024" month="09" day="30"/>
+        <dmTitle>
+          <techName>IMA Operating System</techName>
+          <infoName>Design Overview</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus>
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IIS"/>
+      <originator enterpriseCode="IIS"/>
+      <applic>
+        <assert applicPropertyIdent="project" applicPropertyType="prodattr"
+                applicPropertyValues="BWB-Q100"/>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="9" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="022"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+  <content>
+    <description>
+      <levelledPara>
+        <title>Operating System Design Overview</title>
+        <para>The AQUA-OS operating system implements a microkernel architecture with 
+        separation kernel capabilities. This design ensures that failures in one partition 
+        cannot affect other partitions, meeting the safety requirements for DAL-A systems.</para>
+        <levelledPara>
+          <title>Architectural Components</title>
+          <para>The OS consists of the following major components:</para>
+          <para>- Separation Kernel: Enforces time and space partitioning</para>
+          <para>- Partition Manager: Manages partition lifecycle and scheduling</para>
+          <para>- Communication Manager: Inter-partition communication services</para>
+          <para>- I/O Manager: Device drivers and I/O services</para>
+          <para>- Health Monitor: Fault detection and system health management</para>
+        </levelledPara>
+        <levelledPara>
+          <title>Design Principles</title>
+          <para>The design follows these key principles:</para>
+          <para>- Minimal trusted computing base</para>
+          <para>- Separation of concerns between kernel and partitions</para>
+          <para>- Deterministic behavior for real-time operations</para>
+          <para>- Formal verification of critical properties</para>
+        </levelledPara>
+      </levelledPara>
+    </description>
+  </content>
+</dmodule>

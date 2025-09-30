@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="tc_partition_isolation" version="1.0">
+  <metadata>
+    <title>Partition Isolation Test</title>
+    <description>Verify memory and CPU partitioning prevents cross-partition interference</description>
+    <classification>INTERNAL–EVIDENCE-REQUIRED</classification>
+    <author>IIS Test Team</author>
+    <date>2024-09-30</date>
+  </metadata>
+  
+  <objective>
+    Verify that memory and CPU partitioning mechanisms prevent one partition from
+    interfering with another partition's execution or memory.
+  </objective>
+  
+  <testEnvironment>
+    <hardware>CPIOM Test Bench v2.1</hardware>
+    <osVersion>AQUA-OS v3.2.1</osVersion>
+    <testPartitions>P-TEST-A, P-TEST-B</testPartitions>
+  </testEnvironment>
+  
+  <prerequisites>
+    <item>Test partitions loaded</item>
+    <item>MMU configured correctly</item>
+    <item>Health monitor active</item>
+    <item>Logging enabled</item>
+  </prerequisites>
+  
+  <procedure>
+    <step id="1">Load test partition A with memory access tests</step>
+    <step id="2">Load test partition B as target</step>
+    <step id="3">Attempt cross-partition memory read from A to B</step>
+    <step id="4">Verify MMU fault detection</step>
+    <step id="5">Attempt cross-partition memory write from A to B</step>
+    <step id="6">Verify MMU fault and partition halt</step>
+    <step id="7">Test CPU timing isolation with interference workload</step>
+    <step id="8">Verify timing determinism maintained</step>
+  </procedure>
+  
+  <expectedResults>
+    <result id="1">Cross-partition memory access blocked by MMU</result>
+    <result id="2">Memory faults detected immediately</result>
+    <result id="3">Offending partition halted by health monitor</result>
+    <result id="4">Target partition unaffected</result>
+    <result id="5">Timing determinism maintained</result>
+  </expectedResults>
+  
+  <passCriteria>
+    <criterion>No successful cross-partition memory access</criterion>
+    <criterion>All violations detected by MMU</criterion>
+    <criterion>Health monitor responds correctly</criterion>
+    <criterion>Timing jitter &lt; 1 microsecond</criterion>
+    <criterion>Target partition execution unaffected</criterion>
+  </passCriteria>
+  
+  <traceability>
+    <requirement id="REQ-OS-100">Partition isolation</requirement>
+    <requirement id="REQ-OS-101">MMU protection</requirement>
+    <requirement id="REQ-OS-102">Timing determinism</requirement>
+    <requirement id="REQ-OS-110">Health monitoring</requirement>
+  </traceability>
+</testCase>
