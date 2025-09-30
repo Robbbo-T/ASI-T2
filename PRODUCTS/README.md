@@ -194,9 +194,9 @@ This closed-loop process is applied consistently across all products to ensure t
     *   **AAP — Airport Adaptable Platforms**
     *   **CCC — Cockpit, Cabin & Cargo**
     *   **CQH — Cryogenics, Quantum & H₂**
-    *   **DDD — Digital & Data Defense**
+    *   **DDD — Drainage, Dehumidification & Drying**
     *   **EDI — Electronics & Digital Instruments**
-    *   **EEE — Ecological Efficient Electrification**
+    *   **EEE — Electrical, Hydraulic & Energy (EHR)**
     *   **EER — Environmental, Emissions & Remediation**
     *   **IIF — Industrial Infrastructure & Facilities**
     *   **IIS — Integrated Intelligence & Software**
