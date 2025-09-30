@@ -36,8 +36,8 @@ jobs:
               return 'Not a PR run';
             }
 
-            // Gather changed files in the PR (limit to first 500)
-            const FILE_LIMIT = 500;
+            // Gather changed files in the PR (limit to first 10,000)
+            const FILE_LIMIT = 10000;
             const files = await github.paginate(
               github.rest.pulls.listFiles,
               { owner, repo, pull_number: pr, per_page: 100 }
