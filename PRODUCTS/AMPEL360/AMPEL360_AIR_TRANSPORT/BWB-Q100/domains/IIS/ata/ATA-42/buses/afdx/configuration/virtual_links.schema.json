@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AFDX VL Config",
+  "type": "object",
+  "properties": {
+    "virtual_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["vl_id","source","destinations","bag_ms","max_frame_size_bytes","redundancy"],
+        "properties": {
+          "vl_id": {"type": "integer", "minimum": 1},
+          "name": {"type": "string"},
+          "source": {"type": "string"},
+          "destinations": {"type": "array","items":{"type":"string"},"minItems":1},
+          "bag_ms": {"type":"integer","minimum":1},
+          "max_frame_size_bytes": {"type":"integer","minimum":64,"maximum":1518},
+          "jitter_us": {"type":"integer","minimum":0},
+          "switch_queue": {"type":"integer","minimum":0,"maximum":7},
+          "redundancy": {"type":"string","enum":["A","B","A+B"]},
+          "description": {"type":"string"}
+        }
+      }
+    }
+  },
+  "required": ["virtual_links"]
+}

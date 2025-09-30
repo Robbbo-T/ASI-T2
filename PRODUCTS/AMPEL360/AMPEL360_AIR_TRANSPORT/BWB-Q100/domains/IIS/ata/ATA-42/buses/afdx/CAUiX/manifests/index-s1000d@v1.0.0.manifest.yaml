@@ -1,0 +1,52 @@
+---
+id: "CAUIX-MANIFEST-INDEX-S1000D-V1.0.0"
+name: "index-s1000d"
+version: "1.0.0"
+description: "Manifest for indexing S1000D artifacts in AFDX implementation"
+template_ref: "../templates/index-s1000d@v1.0.0.yaml"
+classification: "INTERNAL–EVIDENCE-REQUIRED"
+maintainer: "IIS Team"
+date: "2025-09-30"
+
+execution:
+  trigger: "on_s1000d_update"
+  frequency: "on_demand"
+  dependencies:
+    - "S1000D data modules"
+    - "Figures and multimedia"
+    - "DMRL and BREX files"
+
+inputs:
+  - path: "./S1000D/dmodule"
+    type: "xml"
+    pattern: "DMC-*.xml"
+  - path: "./S1000D/figures"
+    type: "image"
+    pattern: "ICN-*.png"
+  - path: "./S1000D/dmrl"
+    type: "xml"
+    pattern: "*.dmrlexchange.xml"
+  - path: "./S1000D/brex"
+    type: "xml"
+    pattern: "BREX-*.xml"
+
+outputs:
+  - path: "./S1000D/README.md"
+    type: "markdown"
+    description: "Generated index of S1000D artifacts"
+
+validation:
+  - check: "xml_well_formed"
+    scope: "all_xml_inputs"
+  - check: "naming_conventions"
+    scope: "all_files"
+  - check: "completeness"
+    scope: "required_artifacts"
+
+traceability:
+  utcs_mi: "v5.0"
+  ata_refs:
+    - "DMC-Q100-A-42-70-00-00A-010A-D-EN-US"
+    - "DMC-Q100-A-42-71-00-00A-010A-D-EN-US"
+
+ethics_guard: "MAL-EEM"

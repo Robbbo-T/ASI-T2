@@ -1,0 +1,36 @@
+---
+title: "Gateway Configuration for Domain Segregation"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Team"
+canonical_hash: "pending"
+
+# Gateway configuration for AFDX to CabinNet domain segregation
+gateway_config:
+  mode: "One-Way_Filter"
+  source_network: "AFDX"
+  destination_network: "CabinNet"
+  
+  # Whitelisted signals from AFDX to CabinNet
+  allowed_signals:
+    - signal_name: "Flight_Phase"
+      source_vl: 1001
+      max_frequency_hz: 1
+      description: "Current flight phase for IFE systems"
+    - signal_name: "Altitude"
+      source_vl: 1003
+      max_frequency_hz: 1
+      description: "Aircraft altitude for moving map"
+    - signal_name: "ETA"
+      source_vl: 1002
+      max_frequency_hz: 0.1
+      description: "Estimated time of arrival"
+  
+  # Security filtering rules
+  security_rules:
+    - rule: "No_Critical_Data"
+      description: "Block all DAL-A/B data except whitelisted signals"
+    - rule: "Rate_Limiting"
+      description: "Enforce frequency limits on all signals"
+    - rule: "No_Reverse_Flow"
+      description: "Block all data from CabinNet to AFDX"

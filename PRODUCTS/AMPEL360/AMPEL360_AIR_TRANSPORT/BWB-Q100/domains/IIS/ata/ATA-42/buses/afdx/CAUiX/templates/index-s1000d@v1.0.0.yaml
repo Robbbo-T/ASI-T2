@@ -1,0 +1,29 @@
+name: "index-s1000d"
+version: "1.0.0"
+description: "Index S1000D artifacts for AFDX bus implementation"
+input:
+  path: "./S1000D"
+  file_patterns:
+    - "dmodule/*.xml"
+    - "figures/*.png"
+    - "dmrl/*.xml"
+    - "brex/*.xml"
+output:
+  format: "markdown"
+  destination: "./S1000D/README.md"
+  template: |
+    # S1000D Artifacts Index
+    
+    ## Data Modules
+    {{#each dmodules}}
+    - [{{dmCode}}]({{path}}) - {{description}}
+    {{/each}}
+    
+    ## Figures
+    {{#each figures}}
+    - [{{icn}}]({{path}}) - {{description}}
+    {{/each}}
+    
+    ## Supporting Files
+    - [DMRL](./dmrl/ATA-42-AFDX.dmrlexchange.xml) - Data Management Requirements List
+    - [BREX](./brex/BREX-ATA42-AFDX.xml) - Business Rules Exchange

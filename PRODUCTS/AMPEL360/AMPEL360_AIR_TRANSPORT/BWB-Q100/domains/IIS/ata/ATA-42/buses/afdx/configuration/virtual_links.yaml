@@ -1,0 +1,73 @@
+---
+title: "AFDX Virtual Links Configuration for BWB-Q100"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Team"
+canonical_hash: "pending"
+
+virtual_links:
+  - vl_id: 1001
+    name: "Flight_Control_Data"
+    source: "FCC"
+    destinations: ["Actuator_Control","Display_System","Maintenance_System"]
+    bag_ms: 2
+    max_frame_size_bytes: 1518
+    jitter_us: 50
+    switch_queue: 7
+    redundancy: "A+B"
+    description: "Critical flight control data"
+    
+  - vl_id: 1002
+    name: "Navigation_Data"
+    source: "Navigation_System"
+    destinations: ["FCC","Display_System","Autopilot_System"]
+    bag_ms: 20
+    max_frame_size_bytes: 1518
+    jitter_us: 200
+    switch_queue: 6
+    redundancy: "A+B"
+    description: "Navigation data including position, velocity, and attitude"
+    
+  - vl_id: 1003
+    name: "Air_Data"
+    source: "Air_Data_Computer"
+    destinations: ["FCC","Engine_Control","Display_System"]
+    bag_ms: 10
+    max_frame_size_bytes: 1518
+    jitter_us: 100
+    switch_queue: 7
+    redundancy: "A+B"
+    description: "Air data including airspeed, altitude, and temperature"
+    
+  - vl_id: 1004
+    name: "Engine_Parameters"
+    source: "Engine_Control_Unit"
+    destinations: ["FCC","Display_System","Maintenance_System"]
+    bag_ms: 50
+    max_frame_size_bytes: 1518
+    jitter_us: 500
+    switch_queue: 5
+    redundancy: "A+B"
+    description: "Engine parameters including N1, N2, EGT, and fuel flow"
+    
+  - vl_id: 1005
+    name: "System_Status"
+    source: "System_Monitor"
+    destinations: ["Display_System","Maintenance_System","Ground_Station"]
+    bag_ms: 100
+    max_frame_size_bytes: 1518
+    jitter_us: 1000
+    switch_queue: 3
+    redundancy: "A"
+    description: "System status and health monitoring data"
+    
+  - vl_id: 1006
+    name: "Maintenance_Data"
+    source: "Maintenance_System"
+    destinations: ["Ground_Station","Display_System"]
+    bag_ms: 1000
+    max_frame_size_bytes: 1518
+    jitter_us: 5000
+    switch_queue: 2
+    redundancy: "A"
+    description: "Maintenance and diagnostic data"

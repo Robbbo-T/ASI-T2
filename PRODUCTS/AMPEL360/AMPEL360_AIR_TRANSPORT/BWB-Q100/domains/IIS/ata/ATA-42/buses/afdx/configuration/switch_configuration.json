@@ -1,0 +1,65 @@
+{
+  "title": "AFDX Switch Configuration for BWB-Q100",
+  "version": "1.0",
+  "date": "2025-09-30",
+  "maintainer": "IIS Team",
+  "canonical_hash": "pending",
+  "switches": [
+    {
+      "switch_id": "SW-A-1",
+      "network": "A",
+      "location": "Forward Equipment Bay",
+      "ports": 24,
+      "port_speed_mbps": 100,
+      "redundancy_partner": "SW-B-1",
+      "vlan_config": {
+        "management_vlan": 1,
+        "data_vlan": 10
+      },
+      "qos_queues": 8,
+      "buffer_size_kb": 2048
+    },
+    {
+      "switch_id": "SW-B-1",
+      "network": "B",
+      "location": "Forward Equipment Bay",
+      "ports": 24,
+      "port_speed_mbps": 100,
+      "redundancy_partner": "SW-A-1",
+      "vlan_config": {
+        "management_vlan": 1,
+        "data_vlan": 10
+      },
+      "qos_queues": 8,
+      "buffer_size_kb": 2048
+    },
+    {
+      "switch_id": "SW-A-2",
+      "network": "A",
+      "location": "Aft Equipment Bay",
+      "ports": 24,
+      "port_speed_mbps": 100,
+      "redundancy_partner": "SW-B-2",
+      "vlan_config": {
+        "management_vlan": 1,
+        "data_vlan": 10
+      },
+      "qos_queues": 8,
+      "buffer_size_kb": 2048
+    },
+    {
+      "switch_id": "SW-B-2",
+      "network": "B",
+      "location": "Aft Equipment Bay",
+      "ports": 24,
+      "port_speed_mbps": 100,
+      "redundancy_partner": "SW-A-2",
+      "vlan_config": {
+        "management_vlan": 1,
+        "data_vlan": 10
+      },
+      "qos_queues": 8,
+      "buffer_size_kb": 2048
+    }
+  ]
+}
