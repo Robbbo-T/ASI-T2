@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="tc_security_validation" version="1.0">
+  <metadata>
+    <title>Security Validation Test</title>
+    <description>Verify security controls and cryptographic functions</description>
+    <classification>INTERNAL–EVIDENCE-REQUIRED</classification>
+    <author>IIS Security Team</author>
+    <date>2024-09-30</date>
+  </metadata>
+  
+  <objective>
+    Verify that all security controls, cryptographic functions, and access control
+    mechanisms operate correctly and meet security requirements.
+  </objective>
+  
+  <testEnvironment>
+    <hardware>CPIOM Test Bench v2.1 with HSM</hardware>
+    <osVersion>AQUA-OS v3.2.1</osVersion>
+    <securityModule>P-SEC partition</securityModule>
+  </testEnvironment>
+  
+  <prerequisites>
+    <item>HSM initialized</item>
+    <item>Test keys loaded</item>
+    <item>Security partition loaded</item>
+    <item>Audit logging enabled</item>
+  </prerequisites>
+  
+  <procedure>
+    <step id="1">Verify secure boot chain</step>
+    <step id="2">Test Kyber-1024 key encapsulation</step>
+    <step id="3">Test Dilithium-5 digital signatures</step>
+    <step id="4">Test AES-256-GCM encryption/decryption</step>
+    <step id="5">Verify access control enforcement</step>
+    <step id="6">Test authentication mechanisms</step>
+    <step id="7">Verify audit logging completeness</step>
+    <step id="8">Test key management functions</step>
+  </procedure>
+  
+  <expectedResults>
+    <result id="1">Secure boot verifies all signatures</result>
+    <result id="2">Kyber operations produce correct results</result>
+    <result id="3">Dilithium signatures valid</result>
+    <result id="4">Encryption/decryption correct</result>
+    <result id="5">Access control prevents unauthorized access</result>
+    <result id="6">Authentication requires valid credentials</result>
+    <result id="7">All security events logged</result>
+    <result id="8">Key operations secure</result>
+  </expectedResults>
+  
+  <passCriteria>
+    <criterion>All cryptographic operations correct</criterion>
+    <criterion>Zero unauthorized access granted</criterion>
+    <criterion>100% of security events logged</criterion>
+    <criterion>Key management secure</criterion>
+    <criterion>Performance within requirements</criterion>
+  </passCriteria>
+  
+  <traceability>
+    <requirement id="REQ-SEC-001">Secure boot</requirement>
+    <requirement id="REQ-SEC-010">Quantum-ready crypto</requirement>
+    <requirement id="REQ-SEC-020">Access control</requirement>
+    <requirement id="REQ-SEC-030">Audit logging</requirement>
+  </traceability>
+</testCase>
