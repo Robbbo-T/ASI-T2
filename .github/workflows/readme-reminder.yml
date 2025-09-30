@@ -9,9 +9,7 @@ permissions:
   pull-requests: write
 
 env:
-  # 👇 Change to the user/bot you want to ping (without quotes is fine too)
   COPILOT_HANDLE: "@copilot"
-  # Recognized README file names (pipe-separated regex alternation)
   README_CANDIDATES: "README.md|README-PAGES.md|Readme.md|README"
 
 jobs:
@@ -31,33 +29,40 @@ jobs:
           script: |
             const path = require('path');
             const fs = require('fs');
-            const {owner, repo} = context.repo;
+            const { owner, repo } = context.repo;
             const pr = context.payload.pull_request?.number;
             if (!pr) {
               core.setOutput('result', 'Not a PR run');
               return 'Not a PR run';
             }
 
-            // 1) Gather changed files in the PR
+            // Gather changed files in the PR (limit to first 500)
+            const FILE_LIMIT = 500;
             const files = await github.paginate(
               github.rest.pulls.listFiles,
               { owner, repo, pull_number: pr, per_page: 100 }
             );
+            let limitedFiles = files;
+            let warning = '';
+            if (files.length > FILE_LIMIT) {
+              limitedFiles = files.slice(0, FILE_LIMIT);
+              warning = `⚠️ **Only the first ${FILE_LIMIT} changed files are analyzed due to workflow limits.**\n\n`;
+            }
 
             // Ignore some housekeeping areas by default
             const IGNORE_PREFIXES = ['.github', '.git', '_site', 'scripts', '.vscode', '.idea'];
 
             const touchedDirs = new Set();
             const changedByDir = {};
-            for (const f of files) {
-              const dir = path.posix.dirname(f.filename); // posix for GitHub paths
+            for (const f of limitedFiles) {
+              const dir = path.posix.dirname(f.filename);
               if (IGNORE_PREFIXES.some(p => dir === p || dir.startsWith(p + '/'))) continue;
               touchedDirs.add(dir);
               changedByDir[dir] = changedByDir[dir] || [];
               changedByDir[dir].push(f);
             }
 
-            // 2) Determine README status per folder
+            // Determine README status per folder
             const ws = process.env.GITHUB_WORKSPACE;
             const readmeRegex = new RegExp(`^(?:${process.env.README_CANDIDATES})$`, 'i');
 
@@ -85,21 +90,20 @@ jobs:
               if (!readme) status = 'MISSING';
               else if (nonReadmeChanged && !readmeChanged) status = 'NEEDS_UPDATE';
 
-              rows.push({dir, readme: readme || '-', status});
+              rows.push({ dir, readme: readme || '-', status });
             }
 
-            // 3) Build comment body
+            // Build comment body
             const repoUrl = context.payload.repository.html_url;
             const headSha = context.payload.pull_request.head.sha;
             const copilot = (process.env.COPILOT_HANDLE || '').trim() || '@copilot';
 
             const missing = rows.filter(r => r.status === 'MISSING');
             const needs = rows.filter(r => r.status === 'NEEDS_UPDATE');
-            const ok = rows.filter(r => r.status === 'OK');
 
             function linkToDir(d) { return `${repoUrl}/tree/${headSha}/${d}`; }
 
-            let body = `**📚 README review checklist** (ping ${copilot})\n\n`;
+            let body = warning + `**📚 README review checklist** (ping ${copilot})\n\n`;
             body += `Folders touched in this PR: **${rows.length}**\n\n`;
 
             if (missing.length) {
