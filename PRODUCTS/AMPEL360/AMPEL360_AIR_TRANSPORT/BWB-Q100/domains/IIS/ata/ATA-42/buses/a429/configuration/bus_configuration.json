@@ -1,0 +1,102 @@
+{
+  "title": "ARINC 429 Bus Configuration for BWB-Q100",
+  "version": "1.0",
+  "date": "2025-09-30",
+  "maintainer": "IIS Team",
+  "canonical_hash": "pending",
+  
+  "channels": [
+    {
+      "channel_id": "RX-1",
+      "direction": "RECEIVE",
+      "speed_kbps": 12.5,
+      "labels": ["203", "204"],
+      "producer": "Sensors",
+      "consumer": "P-FBW",
+      "description": "Angle of Attack data (L/R)",
+      "priority": "HIGH",
+      "redundancy": "DUAL"
+    },
+    {
+      "channel_id": "TX-2",
+      "direction": "TRANSMIT",
+      "speed_kbps": 12.5,
+      "labels": ["312", "320"],
+      "producer": "P-NAV",
+      "consumer": "Displays",
+      "description": "Computed Airspeed and Altitude",
+      "priority": "MEDIUM",
+      "redundancy": "DUAL"
+    },
+    {
+      "channel_id": "RX-2",
+      "direction": "RECEIVE",
+      "speed_kbps": 100,
+      "labels": ["010", "020", "030"],
+      "producer": "Air Data Computer",
+      "consumer": "P-FBW",
+      "description": "Air data parameters",
+      "priority": "HIGH",
+      "redundancy": "DUAL"
+    },
+    {
+      "channel_id": "TX-3",
+      "direction": "TRANSMIT",
+      "speed_kbps": 100,
+      "labels": ["210", "211"],
+      "producer": "Engine Control",
+      "consumer": "Displays, Maintenance",
+      "description": "Engine N1 speeds",
+      "priority": "MEDIUM",
+      "redundancy": "SINGLE"
+    }
+  ],
+  
+  "physical_parameters": {
+    "cable_type": "Twisted Shielded Pair",
+    "impedance_ohms": 75,
+    "max_cable_length_meters": 100,
+    "termination_ohms": 75,
+    "shield_connection": "Ground at receiver only"
+  },
+  
+  "electrical_parameters": {
+    "voltage_high_min": 5.0,
+    "voltage_high_max": 10.0,
+    "voltage_low_min": -10.0,
+    "voltage_low_max": -5.0,
+    "voltage_null_min": -0.5,
+    "voltage_null_max": 0.5,
+    "rise_time_max_us": 1.5,
+    "fall_time_max_us": 1.5
+  },
+  
+  "timing_parameters": {
+    "bit_time_100k_us": 10.0,
+    "bit_time_12k5_us": 80.0,
+    "bit_time_tolerance_percent": 1.0,
+    "sync_pattern_bits": 4,
+    "min_interword_gap_bits": 4
+  },
+  
+  "error_handling": {
+    "parity_check": "ENABLED",
+    "timeout_detection": "ENABLED",
+    "data_staleness_monitoring": "ENABLED",
+    "fault_logging": "ENABLED",
+    "redundancy_monitoring": "ENABLED"
+  },
+  
+  "update_rates": {
+    "flight_control_hz": 100,
+    "navigation_hz": 10,
+    "engine_data_hz": 5,
+    "maintenance_hz": 1
+  },
+  
+  "latency_requirements_ms": {
+    "critical_flight_control": 10,
+    "navigation": 50,
+    "maintenance": 200
+  }
+}

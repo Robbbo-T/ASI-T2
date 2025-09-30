@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCase xmlns="urn:test:case:schema"
+          id="tc_a429_error_handling"
+          version="1.0"
+          date="2025-09-30">
+  
+  <Metadata>
+    <Title>ARINC 429 Error Handling Test</Title>
+    <Description>Verify error detection and handling mechanisms</Description>
+    <TestLevel>Integration</TestLevel>
+    <Priority>Critical</Priority>
+    <Owner>IIS Test Team</Owner>
+  </Metadata>
+  
+  <Objective>
+    Verify that the ARINC 429 implementation correctly detects and handles
+    all error conditions as specified in parity_settings.yaml.
+  </Objective>
+  
+  <Prerequisites>
+    <Item>Error injection capability configured</Item>
+    <Item>Fault logging system operational</Item>
+    <Item>Redundant channels available for testing</Item>
+  </Prerequisites>
+  
+  <TestProcedure>
+    <Step id="1">
+      <Action>Inject 100 parity errors</Action>
+      <ExpectedResult>100% detection, words discarded, errors logged</ExpectedResult>
+    </Step>
+    
+    <Step id="2">
+      <Action>Inject 50 sync pattern errors</Action>
+      <ExpectedResult>100% detection, words discarded, errors logged</ExpectedResult>
+    </Step>
+    
+    <Step id="3">
+      <Action>Inject 30 timing errors</Action>
+      <ExpectedResult>100% detection, errors logged</ExpectedResult>
+    </Step>
+    
+    <Step id="4">
+      <Action>Test data staleness detection (stop updates)</Action>
+      <ExpectedResult>Staleness detected after 3× expected period</ExpectedResult>
+    </Step>
+    
+    <Step id="5">
+      <Action>Test SSM failure warning state</Action>
+      <ExpectedResult>Data flagged as invalid, logged</ExpectedResult>
+    </Step>
+    
+    <Step id="6">
+      <Action>Test SSM no computed data state</Action>
+      <ExpectedResult>Data flagged as invalid, logged</ExpectedResult>
+    </Step>
+    
+    <Step id="7">
+      <Action>Test range checking for out-of-range values</Action>
+      <ExpectedResult>Out-of-range values flagged and logged</ExpectedResult>
+    </Step>
+    
+    <Step id="8">
+      <Action>Test high error rate fault condition (>10 errors/sec)</Action>
+      <ExpectedResult>Fault reported to fault manager</ExpectedResult>
+    </Step>
+    
+    <Step id="9">
+      <Action>Test critical label staleness fault</Action>
+      <ExpectedResult>Critical fault reported for labels 001, 010, 020</ExpectedResult>
+    </Step>
+    
+    <Step id="10">
+      <Action>Test channel failure detection (no data for 1 sec)</Action>
+      <ExpectedResult>Critical fault reported to fault manager</ExpectedResult>
+    </Step>
+    
+    <Step id="11">
+      <Action>Test redundant channel comparison</Action>
+      <ExpectedResult>Disagreement detected, best quality selected</ExpectedResult>
+    </Step>
+    
+    <Step id="12">
+      <Action>Test automatic failover to redundant channel</Action>
+      <ExpectedResult>Failover completed within 20 ms</ExpectedResult>
+    </Step>
+    
+    <Step id="13">
+      <Action>Verify error counter increments</Action>
+      <ExpectedResult>Counters correctly incremented for each error type</ExpectedResult>
+    </Step>
+    
+    <Step id="14">
+      <Action>Test error recovery after errors stop</Action>
+      <ExpectedResult>Error flags cleared after 1 second of good data</ExpectedResult>
+    </Step>
+  </TestProcedure>
+  
+  <PassCriteria>
+    <Criterion>100% error detection rate for all injected errors</Criterion>
+    <Criterion>Errors correctly logged with proper format</Criterion>
+    <Criterion>Fault conditions correctly reported to fault manager</Criterion>
+    <Criterion>Staleness detected within tolerance</Criterion>
+    <Criterion>Redundant channel failover within 20 ms</Criterion>
+    <Criterion>Error counters accurately maintained</Criterion>
+  </PassCriteria>
+  
+  <TestData>
+    <DataFile>error_injection_patterns.csv</DataFile>
+    <DataFile>expected_responses.csv</DataFile>
+  </TestData>
+  
+  <Traceability>
+    <Requirement id="REQ-A429-020">Error detection</Requirement>
+    <Requirement id="REQ-A429-021">Error logging</Requirement>
+    <Requirement id="REQ-A429-022">Fault management</Requirement>
+    <Requirement id="REQ-A429-023">Redundancy management</Requirement>
+    <Requirement id="REQ-A429-024">Recovery mechanisms</Requirement>
+  </Traceability>
+  
+</TestCase>

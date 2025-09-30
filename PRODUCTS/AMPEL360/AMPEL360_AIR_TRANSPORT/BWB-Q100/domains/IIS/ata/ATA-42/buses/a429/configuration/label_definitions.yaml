@@ -1,0 +1,142 @@
+---
+title: "ARINC 429 Label Definitions for BWB-Q100"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Team"
+canonical_hash: "pending"
+
+# ARINC 429 Label Definitions for BWB-Q100 IMA System
+labels:
+  - label: 001
+    name: "Heading"
+    data_type: "BCD"
+    resolution: "0.1 degrees"
+    range: "0-359.9 degrees"
+    sdi: "00"
+    ssm: "N/A"
+    description: "Magnetic heading from navigation system"
+    source: "Navigation System"
+    destinations: ["Flight Control", "Display System"]
+    
+  - label: 010
+    name: "Airspeed"
+    data_type: "BNR"
+    resolution: "0.125 knots"
+    range: "0-1023.875 knots"
+    sdi: "00"
+    ssm: "N/A"
+    description: "Computed airspeed from air data computer"
+    source: "Air Data Computer"
+    destinations: ["Flight Control", "Engine Control", "Display System"]
+    
+  - label: 020
+    name: "Altitude"
+    data_type: "BNR"
+    resolution: "1 foot"
+    range: "-1000 to 65535 feet"
+    sdi: "00"
+    ssm: "N/A"
+    description: "Pressure altitude from air data computer"
+    source: "Air Data Computer"
+    destinations: ["Flight Control", "Display System", "Traffic Alert"]
+    
+  - label: 030
+    name: "Vertical Speed"
+    data_type: "BNR"
+    resolution: "64 feet/minute"
+    range: "-8192 to +8191 feet/minute"
+    sdi: "00"
+    ssm: "N/A"
+    description: "Vertical speed from air data computer"
+    source: "Air Data Computer"
+    destinations: ["Flight Control", "Display System"]
+    
+  - label: 170
+    name: "Fuel Quantity"
+    data_type: "BCD"
+    resolution: "0.1%"
+    range: "0-99.9%"
+    sdi: "00"
+    ssm: "N/A"
+    description: "Total fuel quantity as percentage of maximum"
+    source: "Fuel System"
+    destinations: ["Engine Control", "Display System", "Maintenance System"]
+    
+  - label: 210
+    name: "Engine N1"
+    data_type: "BNR"
+    resolution: "0.125%"
+    range: "0-127.875%"
+    sdi: "00"
+    ssm: "N/A"
+    description: "Engine N1 speed (left engine)"
+    source: "Engine Control"
+    destinations: ["Flight Control", "Display System", "Maintenance System"]
+    
+  - label: 211
+    name: "Engine N1"
+    data_type: "BNR"
+    resolution: "0.125%"
+    range: "0-127.875%"
+    sdi: "01"
+    ssm: "N/A"
+    description: "Engine N1 speed (right engine)"
+    source: "Engine Control"
+    destinations: ["Flight Control", "Display System", "Maintenance System"]
+    
+  - label: 250
+    name: "Flap Position"
+    data_type: "BNR"
+    resolution: "0.5 degrees"
+    range: "0-63.5 degrees"
+    sdi: "00"
+    ssm: "N/A"
+    description: "Flap position from flap control system"
+    source: "Flap Control"
+    destinations: ["Flight Control", "Display System"]
+    
+  - label: 273
+    name: "Autopilot Status"
+    data_type: "Discrete"
+    resolution: "N/A"
+    range: "N/A"
+    sdi: "00"
+    ssm: "N/A"
+    description: "Autopilot engagement status"
+    source: "Autopilot System"
+    destinations: ["Flight Control", "Display System", "Warning System"]
+    
+  - label: 365
+    name: "Wind Speed and Direction"
+    data_type: "BNR"
+    resolution: "0.5 knots / 0.5 degrees"
+    range: "0-511.5 knots / 0-359.5 degrees"
+    sdi: "00"
+    ssm: "N/A"
+    description: "Wind speed and direction from navigation system"
+    source: "Navigation System"
+    destinations: ["Flight Control", "Display System"]
+
+# Bus Configuration Parameters
+bus_config:
+  data_rate: "100 kbps"
+  parity: "Odd"
+  word_length: "32 bits"
+  sync_pattern: "High for 4 bit times"
+  encoding: "Bi-phase Mark"
+  voltage_levels:
+    high: "+5V to +10V"
+    low: "-5V to -10V"
+    null: "0V ±0.5V"
+  timing:
+    bit_time: "10 µs ±0.5 µs"
+    rise_time: "1.5 µs max"
+    fall_time: "1.5 µs max"
+    
+# Error Handling
+error_handling:
+  parity_errors: "Log and discard"
+  sync_errors: "Log and discard"
+  timing_errors: "Log and discard"
+  sdi_mismatches: "Log and process"
+  ssm_errors: "Log and flag"
