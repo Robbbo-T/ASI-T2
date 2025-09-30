@@ -207,7 +207,7 @@ Verify error detection, handling, and recovery mechanisms for ARINC 429 implemen
 
 1. **Minor**: Staleness detection average 3.05× expected period vs spec 3.0×
    - **Impact**: Low - still meets functional requirement
-   - **Resolution**: Adjust timer granularity in next release
+   - **Resolution**: Adjust timer resolution in next release
    
 2. **Observation**: Log rate limiter occasionally drops to 98 logs/sec
    - **Impact**: None - still within specification
