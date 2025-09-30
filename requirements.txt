@@ -20,6 +20,10 @@ defusedxml>=0.7.1
 # Optional: Enhanced XML parsing (fallback to stdlib xml.etree if not available)
 # lxml>=4.9.0  # Uncomment if high-performance XML parsing is needed
 
+# Figure Generation (for technical documentation)
+matplotlib>=3.7.0
+pillow>=10.0.0
+
 # Development and Testing (Optional)
 # pytest>=7.4.0  # Uncomment for testing framework
 # pytest-asyncio>=0.21.0  # Uncomment for async test support
