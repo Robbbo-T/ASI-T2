@@ -536,7 +536,7 @@ def update_markdown(md_file, generated_files, figures_rel_path):
     
     for placeholder, filename in generated_files:
         # Replace placeholder with image markdown
-        image_ref = f"![{placeholder['description'][:50]}...]({figures_rel_path}/{filename})"
+        image_ref = f"![{placeholder['description'][:DESCRIPTION_TRUNCATE_LENGTH]}...]({figures_rel_path}/{filename})"
         content = content.replace(placeholder['full_match'], image_ref, 1)
     
     # Write updated content
