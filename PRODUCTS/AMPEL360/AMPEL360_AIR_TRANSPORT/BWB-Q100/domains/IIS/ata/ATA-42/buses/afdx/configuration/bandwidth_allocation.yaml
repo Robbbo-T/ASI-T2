@@ -1,0 +1,44 @@
+---
+title: "AFDX Bandwidth Allocation for BWB-Q100"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Team"
+canonical_hash: "pending"
+
+bandwidth_allocation:
+  total_link_capacity_mbps: 100
+  reserved_capacity_mbps: 10
+  available_capacity_mbps: 90
+  
+  allocation_groups:
+    - group_name: "Flight_Critical"
+      priority: 7
+      max_allocation_mbps: 40
+      allocated_vls: [1001, 1002, 1003]
+      current_usage_mbps: 12.5
+      utilization_percent: 31.25
+      
+    - group_name: "Engine_Systems"
+      priority: 5
+      max_allocation_mbps: 20
+      allocated_vls: [1004]
+      current_usage_mbps: 2.4
+      utilization_percent: 12.0
+      
+    - group_name: "Monitoring"
+      priority: 3
+      max_allocation_mbps: 15
+      allocated_vls: [1005]
+      current_usage_mbps: 1.2
+      utilization_percent: 8.0
+      
+    - group_name: "Maintenance"
+      priority: 2
+      max_allocation_mbps: 15
+      allocated_vls: [1006]
+      current_usage_mbps: 0.12
+      utilization_percent: 0.8
+  
+  total_allocated_mbps: 16.22
+  total_utilization_percent: 18.02
+  headroom_mbps: 73.78

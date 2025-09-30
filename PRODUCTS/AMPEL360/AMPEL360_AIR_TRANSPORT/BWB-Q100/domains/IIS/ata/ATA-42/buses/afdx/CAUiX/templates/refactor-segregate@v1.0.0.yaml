@@ -1,0 +1,28 @@
+name: "refactor-segregate"
+version: "1.0.0"
+description: "Segregate passenger information to CabinNet"
+input:
+  path: "."
+  file_patterns:
+    - "configuration/virtual_links.yaml"
+output:
+  format: "yaml"
+  destination: "./refactor-plan.yaml"
+  template: |
+    refactor_plan:
+      passenger_info_vl:
+        current_location: "ATA-42/buses/afdx"
+        target_location: "ATA-46/CabinNet"
+        vl_id: 1007
+        action: "move"
+      gateway_config:
+        create: true
+        source: "ATA-42/buses/afdx"
+        destination: "ATA-46/CabinNet"
+        allowed_signals:
+          - "Flight_Phase"
+          - "Altitude"
+          - "ETA"
+      documentation_updates:
+        - "README.md"
+        - "S1000D/dmodule/DMC-Q100-A-42-71-00-00A-010A-D-EN-US.xml"

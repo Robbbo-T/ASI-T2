@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S1000D Data Module: General AFDX Description -->
+<!-- DMC-Q100-A-42-70-00-00A-010A-D-EN-US -->
+<dmodule>
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42" 
+                subSystemCode="7" subSubSystemCode="0" assyCode="00" 
+                disassyCode="00" disassyCodeVariant="A" infoCode="010" 
+                infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="09" day="30"/>
+        <dmTitle>
+          <techName>AFDX Bus System</techName>
+          <infoName>General Description</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IIS"/>
+      <originator enterpriseCode="IIS"/>
+      <applic>
+        <displayText>
+          <simplePara>BWB-Q100 Aircraft - All configurations</simplePara>
+        </displayText>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="7" subSubSystemCode="9" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="022"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+  
+  <content>
+    <description>
+      <levelledPara>
+        <title>AFDX Bus System Overview</title>
+        <para>
+          The Avionics Full-Duplex Switched Ethernet (AFDX) bus system provides
+          deterministic, high-speed data communication between avionics systems
+          in the BWB-Q100 aircraft. This data module describes the general
+          architecture and capabilities of the AFDX implementation.
+        </para>
+        
+        <levelledPara>
+          <title>System Architecture</title>
+          <para>
+            The AFDX network consists of dual-redundant networks (A and B),
+            four AFDX switches, and multiple end systems. Each network operates
+            independently at 100 Mbps using full-duplex switched Ethernet.
+          </para>
+        </levelledPara>
+        
+        <levelledPara>
+          <title>Virtual Links</title>
+          <para>
+            Communication occurs via Virtual Links (VLs), which are logical
+            unidirectional channels from one source to one or more destinations.
+            Six primary VLs are configured for flight-critical, navigation,
+            engine, and maintenance data.
+          </para>
+        </levelledPara>
+        
+        <levelledPara>
+          <title>Redundancy</title>
+          <para>
+            Critical data uses dual-active redundancy, with frames transmitted
+            on both networks simultaneously. The receiving system accepts the
+            first valid frame and discards duplicates.
+          </para>
+        </levelledPara>
+      </levelledPara>
+    </description>
+  </content>
+</dmodule>

@@ -1,0 +1,48 @@
+---
+title: "AFDX Redundancy Configuration for BWB-Q100"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Team"
+canonical_hash: "pending"
+
+redundancy_config:
+  mode: "Dual-Active"
+  health_check_interval_ms: 10
+  branch_loss_window_ms: 50
+  max_acceptable_loss_percent: 0.1
+  recovery_timeout_ms: 100
+  
+  network_branches:
+    - branch_id: "A"
+      primary_switch: "SW-A-1"
+      backup_switch: "SW-A-2"
+      health_status: "Active"
+      last_health_check: "2025-09-30T12:00:00Z"
+      
+    - branch_id: "B"
+      primary_switch: "SW-B-1"
+      backup_switch: "SW-B-2"
+      health_status: "Active"
+      last_health_check: "2025-09-30T12:00:00Z"
+  
+  failover_policies:
+    - policy_name: "Branch_A_Failure"
+      trigger: "Loss of frames on Branch A exceeds threshold"
+      action: "Continue on Branch B, raise alarm"
+      max_recovery_time_ms: 100
+      
+    - policy_name: "Branch_B_Failure"
+      trigger: "Loss of frames on Branch B exceeds threshold"
+      action: "Continue on Branch A, raise alarm"
+      max_recovery_time_ms: 100
+      
+    - policy_name: "Both_Branches_Degraded"
+      trigger: "Both branches show packet loss"
+      action: "Raise critical alarm, maintain best-effort service"
+      max_recovery_time_ms: 200
+  
+  monitoring:
+    frame_loss_threshold_percent: 0.1
+    jitter_threshold_us: 1000
+    latency_threshold_us: 2000
+    alarm_escalation_time_ms: 500

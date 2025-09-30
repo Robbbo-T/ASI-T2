@@ -1,0 +1,85 @@
+---
+id: "CAUIX-MANIFEST-VALIDATE-AFDX-V1.0.0"
+name: "validate-afdx"
+version: "1.0.0"
+description: "Manifest for validating AFDX configuration and documentation"
+template_ref: "../templates/validate-afdx@v1.0.0.yaml"
+classification: "INTERNAL–EVIDENCE-REQUIRED"
+maintainer: "IIS Team"
+date: "2025-09-30"
+
+execution:
+  trigger: "on_commit"
+  frequency: "continuous"
+  dependencies:
+    - "Configuration files"
+    - "S1000D data modules"
+    - "Test reports"
+    - "Compliance evidence"
+
+inputs:
+  - path: "./configuration"
+    type: "mixed"
+    patterns:
+      - "*.yaml"
+      - "*.json"
+  - path: "./S1000D/dmodule"
+    type: "xml"
+    pattern: "DMC-*.xml"
+  - path: "./testing/test_results"
+    type: "markdown"
+    pattern: "tr_*.md"
+  - path: "./compliance"
+    type: "markdown"
+    pattern: "*.md"
+
+outputs:
+  - path: "./validation-report.json"
+    type: "json"
+    description: "Comprehensive validation report"
+  - path: "./qs-evidence.json"
+    type: "json"
+    description: "QS evidence with canonical hashes"
+
+validation_checks:
+  schema_validation:
+    - file: "configuration/virtual_links.yaml"
+      schema: "configuration/virtual_links.schema.json"
+      required: true
+  
+  syntax_validation:
+    - type: "json"
+      files: "configuration/*.json"
+      required: true
+    - type: "yaml"
+      files: "configuration/*.yaml"
+      required: true
+  
+  semantic_validation:
+    - check: "bag_compliance"
+      files: "configuration/virtual_links.yaml"
+      rules:
+        - "BAG values in {1,2,4,8,16,32,64,128} ms"
+        - "Frame size 64-1518 bytes"
+    - check: "bandwidth_utilization"
+      files: "configuration/bandwidth_allocation.yaml"
+      rules:
+        - "Total utilization < 100%"
+        - "Headroom > 10%"
+  
+  completeness_validation:
+    - check: "required_files"
+      expected:
+        - "README.md"
+        - "Makefile"
+        - ".pre-commit-config.yaml"
+        - "configuration/virtual_links.yaml"
+        - "configuration/virtual_links.schema.json"
+
+traceability:
+  utcs_mi: "v5.0"
+  ata_refs:
+    - "DMC-Q100-A-42-72-00-00A-012A-D-EN-US"
+  validation_standard: "ARINC 664 Part 7"
+
+ethics_guard: "MAL-EEM"

@@ -1,0 +1,29 @@
+repos:
+- repo: https://github.com/adrienverge/yamllint
+  rev: v1.35.1
+  hooks:
+    - id: yamllint
+      files: \.(yaml|yml)$
+- repo: https://github.com/igorshubovych/markdownlint-cli
+  rev: v0.39.0
+  hooks:
+    - id: markdownlint
+      files: \.(md)$
+- repo: local
+  hooks:
+    - id: jsonschema-vl
+      name: JSON Schema validation for Virtual Links
+      entry: python3 -c "import sys; import json; import yaml; schema=json.load(open('configuration/virtual_links.schema.json')); data=yaml.safe_load(open('configuration/virtual_links.yaml')); sys.exit(0)"
+      language: system
+      files: ^configuration/virtual_links\.yaml$
+      pass_filenames: false
+    - id: json-syntax
+      name: JSON syntax validation
+      entry: python3 -m json.tool
+      language: system
+      files: \.json$
+    - id: yaml-syntax
+      name: YAML syntax validation
+      entry: python3 -c "import sys; import yaml; yaml.safe_load(sys.stdin)"
+      language: system
+      files: \.(yaml|yml)$
