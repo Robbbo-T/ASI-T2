@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<brex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <brexIdent>
+    <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+            subSystemCode="6" subSubSystemCode="9" assyCode="00"
+            disassyCode="00" disassyCodeVariant="A" infoCode="022"
+            infoCodeVariant="A" itemLocationCode="D"/>
+    <issueInfo issueNumber="001" inWork="00"/>
+  </brexIdent>
+  <brexTitle>BWB-Q100 ARINC 429 Business Rules</brexTitle>
+</brex>

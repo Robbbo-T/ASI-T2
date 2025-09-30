@@ -1,0 +1,192 @@
+---
+title: "ARINC 429 Parity and Error Handling Settings"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Team"
+canonical_hash: "pending"
+
+# Parity Configuration
+parity:
+  type: "ODD"
+  bit_position: 32
+  coverage: "ALL_32_BITS"
+  enable: true
+  description: "Odd parity covers all 32 bits of the ARINC 429 word"
+
+# Error Detection Settings
+error_detection:
+  parity_check:
+    enable: true
+    action_on_error: "DISCARD_AND_LOG"
+    log_level: "WARNING"
+    increment_counter: true
+    
+  sync_pattern_check:
+    enable: true
+    expected_duration: 4  # bit times
+    tolerance: 0.5        # bit times
+    action_on_error: "DISCARD_AND_LOG"
+    
+  timing_check:
+    enable: true
+    bit_time_tolerance: 1.0  # percent
+    action_on_error: "LOG_ONLY"
+    
+  data_staleness:
+    enable: true
+    timeout_factor: 3.0  # times expected update period
+    action_on_timeout: "FLAG_STALE"
+    
+  range_check:
+    enable: true
+    check_against_label_spec: true
+    action_on_error: "FLAG_AND_LOG"
+
+# Error Handling Actions
+error_actions:
+  discard_word:
+    description: "Discard the entire 32-bit word"
+    log: true
+    notify_fault_manager: false
+    
+  flag_data_invalid:
+    description: "Mark data as invalid but retain for analysis"
+    log: true
+    notify_fault_manager: false
+    
+  trigger_fault:
+    description: "Trigger fault if error rate exceeds threshold"
+    log: true
+    notify_fault_manager: true
+    threshold_errors_per_second: 10
+
+# Error Logging
+logging:
+  enable: true
+  log_destination: "MAINTENANCE_SYSTEM"
+  log_format: "TIMESTAMP | CHANNEL | LABEL | ERROR_TYPE | RAW_WORD"
+  max_log_rate_per_second: 100
+  
+  error_types:
+    - "PARITY_ERROR"
+    - "SYNC_ERROR"
+    - "TIMING_ERROR"
+    - "RANGE_ERROR"
+    - "STALENESS_TIMEOUT"
+    - "SSM_INVALID"
+
+# Error Counters
+counters:
+  reset_policy: "NEVER"  # Counters persist until manual reset
+  overflow_behavior: "SATURATE"  # Don't wrap around
+  
+  counter_types:
+    - name: "total_words_received"
+      description: "Total ARINC 429 words received"
+      
+    - name: "parity_errors"
+      description: "Number of parity errors detected"
+      
+    - name: "sync_errors"
+      description: "Number of sync pattern errors"
+      
+    - name: "timing_errors"
+      description: "Number of timing violations"
+      
+    - name: "stale_data_events"
+      description: "Number of data staleness detections"
+
+# Fault Management Integration
+fault_management:
+  enable: true
+  
+  fault_conditions:
+    - condition: "parity_error_rate_high"
+      threshold: "10 errors per second"
+      action: "REPORT_TO_FAULT_MANAGER"
+      severity: "MAJOR"
+      
+    - condition: "sync_error_rate_high"
+      threshold: "5 errors per second"
+      action: "REPORT_TO_FAULT_MANAGER"
+      severity: "MAJOR"
+      
+    - condition: "critical_label_stale"
+      labels: ["001", "010", "020"]  # Heading, Airspeed, Altitude
+      timeout: "100 ms"
+      action: "REPORT_TO_FAULT_MANAGER"
+      severity: "CRITICAL"
+      
+    - condition: "channel_failure"
+      criteria: "No valid data for 1 second"
+      action: "REPORT_TO_FAULT_MANAGER"
+      severity: "CRITICAL"
+
+# Redundancy Management
+redundancy:
+  enable: true
+  
+  dual_channel:
+    enable: true
+    comparison_tolerance: 2.0  # percent or 2 LSB, whichever is larger
+    disagreement_action: "SELECT_BEST_QUALITY"
+    
+  cross_channel_monitoring:
+    enable: true
+    monitor_interval: "10 ms"
+    
+  failover:
+    enable: true
+    automatic: true
+    failover_time_max: "20 ms"
+    reversion_policy: "MANUAL_ONLY"
+
+# SSM (Sign/Status Matrix) Handling
+ssm_handling:
+  enable: true
+  
+  valid_states:
+    - "00"  # Failure Warning
+    - "01"  # No Computed Data
+    - "10"  # Functional Test
+    - "11"  # Normal Operation
+    
+  actions:
+    failure_warning:
+      action: "FLAG_INVALID"
+      log: true
+      notify: true
+      
+    no_computed_data:
+      action: "FLAG_INVALID"
+      log: true
+      notify: false
+      
+    functional_test:
+      action: "FLAG_TEST_MODE"
+      log: true
+      notify: false
+      
+    normal_operation:
+      action: "ACCEPT_DATA"
+      log: false
+      notify: false
+
+# Recovery Mechanisms
+recovery:
+  enable: true
+  
+  automatic_recovery:
+    - trigger: "parity_errors_stopped"
+      wait_time: "1000 ms"
+      action: "CLEAR_ERROR_FLAGS"
+      
+    - trigger: "redundant_channel_available"
+      action: "SWITCH_TO_REDUNDANT"
+      
+  manual_recovery:
+    - action: "RESET_ERROR_COUNTERS"
+      authorization: "MAINTENANCE"
+      
+    - action: "RECONFIGURE_CHANNEL"
+      authorization: "ENGINEERING"

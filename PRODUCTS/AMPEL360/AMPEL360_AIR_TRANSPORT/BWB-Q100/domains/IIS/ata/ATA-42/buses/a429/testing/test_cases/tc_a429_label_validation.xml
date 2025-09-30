@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCase xmlns="urn:test:case:schema"
+          id="tc_a429_label_validation"
+          version="1.0"
+          date="2025-09-30">
+  
+  <Metadata>
+    <Title>ARINC 429 Label Validation Test</Title>
+    <Description>Verify label definitions and data encoding/decoding</Description>
+    <TestLevel>Integration</TestLevel>
+    <Priority>High</Priority>
+    <Owner>IIS Test Team</Owner>
+  </Metadata>
+  
+  <Objective>
+    Verify that all defined ARINC 429 labels are correctly encoded, transmitted,
+    received, and decoded according to specifications.
+  </Objective>
+  
+  <Prerequisites>
+    <Item>Label definitions loaded from label_definitions.yaml</Item>
+    <Item>Test data sets prepared for each label type</Item>
+    <Item>Protocol analyzer configured</Item>
+  </Prerequisites>
+  
+  <TestProcedure>
+    <Step id="1">
+      <Action>Test Label 001 (Heading) - BCD encoding</Action>
+      <ExpectedResult>Heading values 0-359.9° correctly encoded/decoded</ExpectedResult>
+    </Step>
+    
+    <Step id="2">
+      <Action>Test Label 010 (Airspeed) - BNR encoding</Action>
+      <ExpectedResult>Airspeed 0-1023.875 knots correctly encoded/decoded</ExpectedResult>
+    </Step>
+    
+    <Step id="3">
+      <Action>Test Label 020 (Altitude) - BNR encoding</Action>
+      <ExpectedResult>Altitude -1000 to 65535 feet correctly encoded/decoded</ExpectedResult>
+    </Step>
+    
+    <Step id="4">
+      <Action>Test Label 030 (Vertical Speed) - BNR encoding</Action>
+      <ExpectedResult>VS ±8192 fpm correctly encoded/decoded</ExpectedResult>
+    </Step>
+    
+    <Step id="5">
+      <Action>Test Label 170 (Fuel Quantity) - BCD encoding</Action>
+      <ExpectedResult>Fuel 0-99.9% correctly encoded/decoded</ExpectedResult>
+    </Step>
+    
+    <Step id="6">
+      <Action>Test Labels 210/211 (Engine N1) - BNR with SDI</Action>
+      <ExpectedResult>N1 0-127.875% correctly encoded/decoded with SDI 00/01</ExpectedResult>
+    </Step>
+    
+    <Step id="7">
+      <Action>Test Label 250 (Flap Position) - BNR encoding</Action>
+      <ExpectedResult>Flap position 0-63.5° correctly encoded/decoded</ExpectedResult>
+    </Step>
+    
+    <Step id="8">
+      <Action>Test Label 273 (Autopilot Status) - Discrete encoding</Action>
+      <ExpectedResult>Discrete bits correctly mapped to status fields</ExpectedResult>
+    </Step>
+    
+    <Step id="9">
+      <Action>Test Label 365 (Wind) - Combined BNR encoding</Action>
+      <ExpectedResult>Wind speed and direction correctly encoded/decoded</ExpectedResult>
+    </Step>
+    
+    <Step id="10">
+      <Action>Verify parity bit calculation for all labels</Action>
+      <ExpectedResult>Odd parity correctly calculated</ExpectedResult>
+    </Step>
+    
+    <Step id="11">
+      <Action>Verify SSM handling for all labels</Action>
+      <ExpectedResult>SSM states correctly interpreted</ExpectedResult>
+    </Step>
+    
+    <Step id="12">
+      <Action>Test boundary conditions for all labels</Action>
+      <ExpectedResult>Min/max values correctly handled</ExpectedResult>
+    </Step>
+  </TestProcedure>
+  
+  <PassCriteria>
+    <Criterion>All labels correctly encoded to ARINC 429 format</Criterion>
+    <Criterion>All labels correctly decoded from ARINC 429 format</Criterion>
+    <Criterion>Encoding/decoding accuracy within 1 LSB</Criterion>
+    <Criterion>Parity correctly calculated for 100% of test cases</Criterion>
+    <Criterion>SSM correctly interpreted for all states</Criterion>
+  </PassCriteria>
+  
+  <TestData>
+    <DataFile>label_test_vectors.csv</DataFile>
+    <DataFile>boundary_conditions.csv</DataFile>
+  </TestData>
+  
+  <Traceability>
+    <Requirement id="REQ-A429-010">Label encoding</Requirement>
+    <Requirement id="REQ-A429-011">Data format conversion</Requirement>
+    <Requirement id="REQ-A429-012">Parity calculation</Requirement>
+    <Requirement id="REQ-A429-013">SSM handling</Requirement>
+  </Traceability>
+  
+</TestCase>

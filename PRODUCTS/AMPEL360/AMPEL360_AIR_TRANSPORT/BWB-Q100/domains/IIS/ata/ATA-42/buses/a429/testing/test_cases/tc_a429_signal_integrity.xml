@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCase xmlns="urn:test:case:schema"
+          id="tc_a429_signal_integrity"
+          version="1.0"
+          date="2025-09-30">
+  
+  <Metadata>
+    <Title>ARINC 429 Signal Integrity Test</Title>
+    <Description>Verify signal integrity parameters meet ARINC 429 specifications</Description>
+    <TestLevel>Integration</TestLevel>
+    <Priority>Critical</Priority>
+    <Owner>IIS Test Team</Owner>
+  </Metadata>
+  
+  <Objective>
+    Verify that the ARINC 429 bus implementation meets all signal integrity requirements
+    as defined in ARINC 429 Mark 33 specification.
+  </Objective>
+  
+  <Prerequisites>
+    <Item>BWB-Q100 A429 Test Bench configured</Item>
+    <Item>Digital oscilloscope connected</Item>
+    <Item>Protocol analyzer configured</Item>
+    <Item>Test signal generator available</Item>
+  </Prerequisites>
+  
+  <TestProcedure>
+    <Step id="1">
+      <Action>Connect oscilloscope to ARINC 429 bus lines</Action>
+      <ExpectedResult>Clean signal visible on oscilloscope</ExpectedResult>
+    </Step>
+    
+    <Step id="2">
+      <Action>Measure voltage levels (High, Low, Null)</Action>
+      <ExpectedResult>
+        High: +5V to +10V
+        Low: -5V to -10V
+        Null: 0V ±0.5V
+      </ExpectedResult>
+    </Step>
+    
+    <Step id="3">
+      <Action>Measure bit timing at 100 kbps</Action>
+      <ExpectedResult>Bit time: 10 µs ±0.5 µs</ExpectedResult>
+    </Step>
+    
+    <Step id="4">
+      <Action>Measure rise and fall times</Action>
+      <ExpectedResult>
+        Rise time: ≤1.5 µs
+        Fall time: ≤1.5 µs
+      </ExpectedResult>
+    </Step>
+    
+    <Step id="5">
+      <Action>Verify sync pattern duration</Action>
+      <ExpectedResult>High for 4 bit times (40 µs ±2 µs)</ExpectedResult>
+    </Step>
+    
+    <Step id="6">
+      <Action>Verify bi-phase Mark encoding</Action>
+      <ExpectedResult>Correct encoding for test patterns</ExpectedResult>
+    </Step>
+    
+    <Step id="7">
+      <Action>Inject parity errors and verify detection</Action>
+      <ExpectedResult>100% detection rate, errors logged</ExpectedResult>
+    </Step>
+    
+    <Step id="8">
+      <Action>Inject sync pattern errors and verify detection</Action>
+      <ExpectedResult>100% detection rate, words discarded</ExpectedResult>
+    </Step>
+    
+    <Step id="9">
+      <Action>Inject timing errors and verify detection</Action>
+      <ExpectedResult>100% detection rate, errors logged</ExpectedResult>
+    </Step>
+  </TestProcedure>
+  
+  <PassCriteria>
+    <Criterion>All voltage levels within specification</Criterion>
+    <Criterion>All timing parameters within specification</Criterion>
+    <Criterion>100% error detection rate for injected errors</Criterion>
+    <Criterion>Signal quality meets DO-160G requirements</Criterion>
+  </PassCriteria>
+  
+  <TestData>
+    <DataFile>test_patterns.csv</DataFile>
+    <DataFile>expected_results.csv</DataFile>
+  </TestData>
+  
+  <Traceability>
+    <Requirement id="REQ-A429-001">Signal voltage levels</Requirement>
+    <Requirement id="REQ-A429-002">Timing parameters</Requirement>
+    <Requirement id="REQ-A429-003">Encoding method</Requirement>
+    <Requirement id="REQ-A429-004">Error detection</Requirement>
+  </Traceability>
+  
+</TestCase>
