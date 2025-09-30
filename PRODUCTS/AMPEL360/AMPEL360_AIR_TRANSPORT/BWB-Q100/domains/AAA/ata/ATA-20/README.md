@@ -18,6 +18,19 @@ ethics_guard: MAL-EEM
 
 This directory contains comprehensive documentation for the ATA-20 system, including operating system specifications, manufacturing processes, and sustainment procedures. The structure follows S1000D standards and includes all necessary artifacts for certification, manufacturing, and lifecycle management.
 
+## ATA-20 Standard Practices
+
+**ATA-20** defines mandatory program-wide standard practices for airframe systems, which must be followed throughout all phases of design, manufacturing, and maintenance. These practices ensure safety, reliability, and regulatory compliance. Key areas covered include:
+
+- **Documentation:** Requirements for technical documentation, drawings, and records to ensure traceability and compliance.
+- **Materials:** Approved materials, material handling, and substitution policies.
+- **Fastening and Bonding:** Standard methods for mechanical fastening, torque specifications, bonding, and electrical continuity.
+- **Sealing and Pressurization:** Procedures for sealing, pressurization, leak testing, and environmental protection.
+- **Corrosion Prevention:** Surface preparation, protective coatings, and inspection intervals.
+- **Identification and Marking:** Standardized labeling, part marking, and placarding.
+- **Workmanship:** General workmanship standards, cleanliness, and inspection criteria.
+
+All personnel must adhere to these practices. For detailed procedures and requirements, refer to the [ATA-20 Standard Practices Manual](./docs/ATA-20-Standard-Practices.md) and related documents in this directory.
 ## Directory Structure
 
 ### Core Documentation
