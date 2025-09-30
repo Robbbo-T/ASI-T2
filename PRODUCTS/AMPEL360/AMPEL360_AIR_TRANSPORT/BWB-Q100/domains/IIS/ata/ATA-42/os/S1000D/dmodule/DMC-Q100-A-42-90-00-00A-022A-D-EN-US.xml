@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../schemas/6.0/descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                subSystemCode="9" subSubSystemCode="0" assyCode="00"
+                disassyCode="00" disassyCodeVariant="A" infoCode="022"
+                infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2024" month="09" day="30"/>
+        <dmTitle>
+          <techName>IMA Operating System</techName>
+          <infoName>Compliance Documentation</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus>
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IIS"/>
+      <originator enterpriseCode="IIS"/>
+      <applic>
+        <assert applicPropertyIdent="project" applicPropertyType="prodattr"
+                applicPropertyValues="BWB-Q100"/>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="9" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="022"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+  <content>
+    <description>
+      <levelledPara>
+        <title>Compliance Documentation Index</title>
+        <para>This data module provides an index to all compliance documentation for the 
+        AQUA-OS operating system, including DO-178C, DO-330, and ED-112A evidence.</para>
+        <levelledPara>
+          <title>DO-178C Compliance</title>
+          <para>Software development compliance at DAL-A level:</para>
+          <para>- Software planning documents (PSAC, SDP, SVP, SCMP, SQA)</para>
+          <para>- Requirements traceability</para>
+          <para>- Verification coverage analysis</para>
+          <para>- Verification test results</para>
+        </levelledPara>
+        <levelledPara>
+          <title>DO-330 Tool Qualification</title>
+          <para>Development and verification tool qualification:</para>
+          <para>- Tool qualification plans</para>
+          <para>- Tool operational requirements</para>
+          <para>- Tool qualification data</para>
+        </levelledPara>
+        <levelledPara>
+          <title>ED-112A Security Compliance</title>
+          <para>Airborne system security compliance:</para>
+          <para>- Security risk assessment</para>
+          <para>- Security development assurance</para>
+          <para>- Security verification activities</para>
+        </levelledPara>
+      </levelledPara>
+    </description>
+  </content>
+</dmodule>

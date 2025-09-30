@@ -1,0 +1,180 @@
+# ARINC 653 Partition Configuration
+# BWB-Q100 AQUA-OS v3.2.1
+
+system:
+  name: "BWB-Q100-IMA"
+  version: "3.2.1"
+  major_frame_ns: 8000000  # 8ms
+  time_base: "TAI"         # International Atomic Time
+
+partitions:
+  - id: "P-NAV"
+    name: "Navigation"
+    dal: "DAL-B"
+    duration_ns: 2000000   # 2ms
+    offset_ns: 0
+    period_ns: 8000000     # Every major frame
+    cpu_percent: 20
+    memory:
+      code_base: "0x40000000"
+      code_size: "0x01000000"  # 16MB
+      data_base: "0x42000000"
+      data_size: "0x03000000"  # 48MB
+      stack_size: "0x00100000" # 1MB
+    ports:
+      sampling:
+        - name: "NAV_POSITION"
+          direction: "output"
+          size: 256
+          refresh_ns: 8000000
+        - name: "NAV_VELOCITY"
+          direction: "output"
+          size: 128
+          refresh_ns: 8000000
+        - name: "NAV_ATTITUDE"
+          direction: "output"
+          size: 192
+          refresh_ns: 8000000
+      queuing:
+        - name: "NAV_COMMANDS"
+          direction: "input"
+          size: 512
+          depth: 8
+
+  - id: "P-FBW"
+    name: "Fly-By-Wire Control"
+    dal: "DAL-A"
+    duration_ns: 2000000   # 2ms
+    offset_ns: 2000000
+    period_ns: 8000000
+    cpu_percent: 35
+    memory:
+      code_base: "0x50000000"
+      code_size: "0x02000000"  # 32MB
+      data_base: "0x52000000"
+      data_size: "0x04000000"  # 64MB
+      stack_size: "0x00200000" # 2MB
+    ports:
+      sampling:
+        - name: "NAV_ATTITUDE"
+          direction: "input"
+          size: 192
+          refresh_ns: 8000000
+        - name: "FBW_COMMANDS"
+          direction: "output"
+          size: 512
+          refresh_ns: 2000000
+      queuing:
+        - name: "FBW_STATUS"
+          direction: "output"
+          size: 256
+          depth: 16
+
+  - id: "P-SEC"
+    name: "Security Services"
+    dal: "DAL-B"
+    duration_ns: 1000000   # 1ms
+    offset_ns: 4000000
+    period_ns: 8000000
+    cpu_percent: 10
+    memory:
+      code_base: "0x60000000"
+      code_size: "0x01000000"  # 16MB
+      data_base: "0x62000000"
+      data_size: "0x02000000"  # 32MB
+      stack_size: "0x00100000" # 1MB
+    ports:
+      sampling:
+        - name: "SEC_STATUS"
+          direction: "output"
+          size: 128
+          refresh_ns: 8000000
+      queuing:
+        - name: "SEC_REQUESTS"
+          direction: "input"
+          size: 1024
+          depth: 4
+
+  - id: "P-DISP"
+    name: "Display Management"
+    dal: "DAL-C"
+    duration_ns: 2000000   # 2ms
+    offset_ns: 5000000
+    period_ns: 8000000
+    cpu_percent: 15
+    memory:
+      code_base: "0x70000000"
+      code_size: "0x02000000"  # 32MB
+      data_base: "0x72000000"
+      data_size: "0x04000000"  # 64MB (includes framebuffer)
+      stack_size: "0x00100000" # 1MB
+    ports:
+      sampling:
+        - name: "NAV_POSITION"
+          direction: "input"
+          size: 256
+          refresh_ns: 8000000
+        - name: "FBW_STATUS"
+          direction: "input"
+          size: 256
+          refresh_ns: 8000000
+
+  - id: "P-MAINT"
+    name: "Maintenance"
+    dal: "DAL-D"
+    duration_ns: 1000000   # 1ms
+    offset_ns: 7000000
+    period_ns: 8000000
+    cpu_percent: 10
+    memory:
+      code_base: "0x80000000"
+      code_size: "0x01000000"  # 16MB
+      data_base: "0x82000000"
+      data_size: "0x02000000"  # 32MB
+      stack_size: "0x00100000" # 1MB
+    ports:
+      queuing:
+        - name: "MAINT_LOGS"
+          direction: "input"
+          size: 4096
+          depth: 64
+        - name: "MAINT_COMMANDS"
+          direction: "output"
+          size: 512
+          depth: 4
+
+health_monitoring:
+  global:
+    watchdog_timeout_ms: 100
+    error_logging: true
+    
+  partition_errors:
+    - error: "WINDOW_OVERRUN"
+      action: "HALT_PARTITION"
+    - error: "ILLEGAL_INSTRUCTION"
+      action: "RESTART_PARTITION"
+    - error: "MEMORY_FAULT"
+      action: "HALT_PARTITION"
+    - error: "DIVIDE_BY_ZERO"
+      action: "RESTART_PARTITION"
+      
+  system_errors:
+    - error: "WATCHDOG_TIMEOUT"
+      action: "SWITCH_REDUNDANT"
+    - error: "HARDWARE_FAULT"
+      action: "SWITCH_REDUNDANT"
+
+validation:
+  constraints:
+    - "sum(partition.duration_ns) <= system.major_frame_ns"
+    - "all(partition.offset_ns + partition.duration_ns <= system.major_frame_ns)"
+    - "no_overlap(partitions)"
+    - "sum(partition.cpu_percent) <= 100"
+    - "all(partition.memory.code_base % 0x1000 == 0)"  # Page aligned
+
+metadata:
+  created: "2024-09-30"
+  author: "IIS Configuration Team"
+  version: "1.0"
+  classification: "INTERNAL–EVIDENCE-REQUIRED"
+  canonical_hash: "pending"

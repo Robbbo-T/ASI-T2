@@ -1,0 +1,66 @@
+{
+  "system": {
+    "name": "BWB-Q100-IMA",
+    "version": "3.2.1",
+    "classification": "INTERNAL–EVIDENCE-REQUIRED"
+  },
+  "cpu": {
+    "total_cores": 4,
+    "frequency_mhz": 1200,
+    "allocation": {
+      "P-NAV": {"cores": [0], "percent": 20},
+      "P-FBW": {"cores": [1, 2], "percent": 35},
+      "P-SEC": {"cores": [0], "percent": 10},
+      "P-DISP": {"cores": [3], "percent": 15},
+      "P-MAINT": {"cores": [3], "percent": 10},
+      "kernel": {"cores": [0, 1, 2, 3], "percent": 10}
+    }
+  },
+  "memory": {
+    "total_mb": 512,
+    "allocation": {
+      "P-NAV": {"ram_mb": 48, "code_mb": 16, "stack_mb": 1, "heap_mb": 31},
+      "P-FBW": {"ram_mb": 64, "code_mb": 32, "stack_mb": 2, "heap_mb": 30},
+      "P-SEC": {"ram_mb": 32, "code_mb": 16, "stack_mb": 1, "heap_mb": 15},
+      "P-DISP": {"ram_mb": 64, "code_mb": 32, "stack_mb": 1, "heap_mb": 31},
+      "P-MAINT": {"ram_mb": 32, "code_mb": 16, "stack_mb": 1, "heap_mb": 15},
+      "kernel": {"ram_mb": 128}
+    }
+  },
+  "io": {
+    "afdx": {
+      "interfaces": ["A", "B"],
+      "bandwidth_mbps": 100,
+      "allocation": {
+        "P-NAV": {"vl_count": 3, "bandwidth_mbps": 20},
+        "P-FBW": {"vl_count": 4, "bandwidth_mbps": 30},
+        "P-SEC": {"vl_count": 2, "bandwidth_mbps": 5},
+        "P-DISP": {"vl_count": 2, "bandwidth_mbps": 10},
+        "P-MAINT": {"vl_count": 1, "bandwidth_mbps": 5}
+      }
+    },
+    "arinc429": {
+      "channels": 8,
+      "allocation": {
+        "P-NAV": {"channels": [0, 1, 2]},
+        "P-FBW": {"channels": [3, 4, 5]},
+        "P-DISP": {"channels": [6, 7]}
+      }
+    }
+  },
+  "constraints": {
+    "cpu_total_percent": 100,
+    "memory_total_mb": 512,
+    "afdx_total_mbps": 100,
+    "validation": {
+      "cpu_sum": "sum(cpu.allocation.*.percent) <= 100",
+      "memory_sum": "sum(memory.allocation.*.ram_mb) <= memory.total_mb",
+      "afdx_sum": "sum(io.afdx.allocation.*.bandwidth_mbps) <= io.afdx.bandwidth_mbps"
+    }
+  },
+  "metadata": {
+    "created": "2024-09-30",
+    "author": "IIS Configuration Team",
+    "canonical_hash": "pending"
+  }
+}

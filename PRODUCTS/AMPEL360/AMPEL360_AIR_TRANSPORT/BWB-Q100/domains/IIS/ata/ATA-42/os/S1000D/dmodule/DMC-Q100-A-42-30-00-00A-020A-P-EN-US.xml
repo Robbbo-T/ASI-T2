@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../schemas/6.0/proced.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                subSystemCode="3" subSubSystemCode="0" assyCode="00"
+                disassyCode="00" disassyCodeVariant="A" infoCode="020"
+                infoCodeVariant="A" itemLocationCode="P"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2024" month="09" day="30"/>
+        <dmTitle>
+          <techName>IMA Operating System</techName>
+          <infoName>Integration Procedures</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus>
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IIS"/>
+      <originator enterpriseCode="IIS"/>
+      <applic>
+        <assert applicPropertyIdent="project" applicPropertyType="prodattr"
+                applicPropertyValues="BWB-Q100"/>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="9" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="022"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+  <content>
+    <procedure>
+      <preliminaryRqmts>
+        <reqCondGroup>
+          <noConds/>
+        </reqCondGroup>
+      </preliminaryRqmts>
+      <mainProcedure>
+        <proceduralStep>
+          <para>OS Integration Procedure</para>
+          <proceduralStep>
+            <para>Prepare the target hardware platform</para>
+          </proceduralStep>
+          <proceduralStep>
+            <para>Load the AQUA-OS kernel image</para>
+          </proceduralStep>
+          <proceduralStep>
+            <para>Configure partition schedule and memory maps</para>
+          </proceduralStep>
+          <proceduralStep>
+            <para>Load partition applications</para>
+          </proceduralStep>
+          <proceduralStep>
+            <para>Verify system configuration</para>
+          </proceduralStep>
+          <proceduralStep>
+            <para>Perform integration testing</para>
+          </proceduralStep>
+        </proceduralStep>
+      </mainProcedure>
+    </procedure>
+  </content>
+</dmodule>

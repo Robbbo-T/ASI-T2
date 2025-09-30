@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmrlExchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <identAndStatusSection>
+    <dmrlIdent>
+      <dmrlCode>ATA-42-OS</dmrlCode>
+    </dmrlIdent>
+    <dmrlAddressItems>
+      <issueDate year="2024" month="09" day="30"/>
+      <dmrlTitle>Data Management Requirements List for ATA-42 OS Package</dmrlTitle>
+    </dmrlAddressItems>
+  </identAndStatusSection>
+  <content>
+    <dmrl>
+      <dmrlEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="010"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+        <security securityClassification="01"/>
+        <responsiblePartnerCompany enterpriseCode="IIS"/>
+      </dmrlEntry>
+      <dmrlEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="1" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="010"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+        <security securityClassification="01"/>
+        <responsiblePartnerCompany enterpriseCode="IIS"/>
+      </dmrlEntry>
+      <dmrlEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="1" subSubSystemCode="1" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="010"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+        <security securityClassification="01"/>
+        <responsiblePartnerCompany enterpriseCode="IIS"/>
+      </dmrlEntry>
+      <dmrlEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="1" subSubSystemCode="2" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="012"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+        <security securityClassification="01"/>
+        <responsiblePartnerCompany enterpriseCode="IIS"/>
+      </dmrlEntry>
+      <dmrlEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="2" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="030"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+        <security securityClassification="01"/>
+        <responsiblePartnerCompany enterpriseCode="IIS"/>
+      </dmrlEntry>
+      <dmrlEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="3" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="020"
+                    infoCodeVariant="A" itemLocationCode="P"/>
+          </dmRefIdent>
+        </dmRef>
+        <security securityClassification="01"/>
+        <responsiblePartnerCompany enterpriseCode="IIS"/>
+      </dmrlEntry>
+      <dmrlEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="4" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="020"
+                    infoCodeVariant="A" itemLocationCode="P"/>
+          </dmRefIdent>
+        </dmRef>
+        <security securityClassification="01"/>
+        <responsiblePartnerCompany enterpriseCode="IIS"/>
+      </dmrlEntry>
+      <dmrlEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="9" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="022"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+        <security securityClassification="01"/>
+        <responsiblePartnerCompany enterpriseCode="IIS"/>
+      </dmrlEntry>
+    </dmrl>
+  </content>
+</dmrlExchange>
