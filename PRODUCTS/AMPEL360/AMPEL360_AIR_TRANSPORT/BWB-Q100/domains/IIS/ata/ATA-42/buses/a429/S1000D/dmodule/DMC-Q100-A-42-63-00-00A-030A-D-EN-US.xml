@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dmodule>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../schemas/6.0/descript.xsd">
+  
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="09" day="30"/>
+        <dmTitle>
+          <techName>A429 Security Implementation</techName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IIS"/>
+      <originator enterpriseCode="IIS"/>
+      <applic>
+        <displayText>
+          <simplePara>BWB-Q100 Aircraft - All variants</simplePara>
+        </displayText>
+      </applic>
+      <qualityAssurance>
+        <firstVerification verificationType="tabtop"/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+  
+  <content>
+    <description>
+      <para>
+        This data module contains information about: A429 Security Implementation
+      </para>
+      <para>
+        Refer to the corresponding markdown documentation for detailed information.
+      </para>
+    </description>
+  </content>
+</dmodule>

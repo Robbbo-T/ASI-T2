@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmrlExchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dmrl>
+    <dmrlIdent>
+      <dmrlCode dmrlType="s" yearOfDataIssue="2025" seqNumber="001"/>
+      <issueInfo issueNumber="001" inWork="00"/>
+    </dmrlIdent>
+    <dmrlEntry>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                  subSystemCode="6" subSubSystemCode="0" assyCode="00"
+                  disassyCode="00" disassyCodeVariant="A" infoCode="010"
+                  infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <entryTitle>General A429 Description</entryTitle>
+    </dmrlEntry>
+  </dmrl>
+</dmrlExchange>
