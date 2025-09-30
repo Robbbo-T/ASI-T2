@@ -24,6 +24,20 @@ python verify_installation.py
 python scripts/verify_structure.py  # Validate repository structure
 ```
 
+### Figure Generation
+
+The repository includes automated technical diagram generation for publications:
+
+* **`scripts/generate_publication_figures.py`** — Generates blueprint-style technical diagrams from text placeholders
+* **Dependencies:** matplotlib, pillow (included in `requirements.txt`)
+
+**Generate figures for a publication:**
+```bash
+python3 scripts/generate_publication_figures.py path/to/publication.md
+```
+
+This tool extracts `[FIGURE PLACEHOLDER: "..."]` descriptions and generates professional technical diagrams with a consistent blueprint aesthetic.
+
 ## How it works
 
 * The build script scans the repo, copies assets into `_site/`, and writes minimal HTML/JS to browse/view them.
