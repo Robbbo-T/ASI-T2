@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dmodule>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../schemas/6.0/descript.xsd">
+  
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                subSystemCode="6" subSubSystemCode="0" assyCode="00"
+                disassyCode="00" disassyCodeVariant="A" infoCode="010"
+                infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="09" day="30"/>
+        <dmTitle>
+          <techName>ARINC 429 Bus - General Description</techName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IIS"/>
+      <originator enterpriseCode="IIS"/>
+      <applic>
+        <displayText>
+          <simplePara>BWB-Q100 Aircraft - All variants</simplePara>
+        </displayText>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="Q100" systemDiffCode="A" systemCode="42"
+                    subSystemCode="6" subSubSystemCode="9" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A" infoCode="022"
+                    infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <firstVerification verificationType="tabtop"/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+  
+  <content>
+    <description>
+      <levelledPara>
+        <title>General A429 Description</title>
+        <para>
+          This data module provides a general description of the ARINC 429 bus implementation
+          in the BWB-Q100 Integrated Modular Avionics (IMA) system.
+        </para>
+        
+        <levelledPara>
+          <title>Purpose</title>
+          <para>
+            The ARINC 429 data bus provides reliable, unidirectional communication between
+            avionics systems. It is used for transmitting flight-critical data including:
+          </para>
+          <para>
+            <randomList>
+              <listItem><para>Air data parameters (airspeed, altitude, vertical speed)</para></listItem>
+              <listItem><para>Navigation information (heading, position, track)</para></listItem>
+              <listItem><para>Engine data (N1, N2, temperatures)</para></listItem>
+              <listItem><para>Flight control surface positions</para></listItem>
+              <listItem><para>System status information</para></listItem>
+            </randomList>
+          </para>
+        </levelledPara>
+        
+        <levelledPara>
+          <title>System Overview</title>
+          <para>
+            The BWB-Q100 implements 16 ARINC 429 channels (8 receive, 8 transmit) operating
+            at both low speed (12.5 kbps) and high speed (100 kbps).
+          </para>
+          <para>
+            For detailed architecture information, refer to data module 
+            DMC-Q100-A-42-61-00-00A-010A-D-EN-US (A429 Bus Architecture).
+          </para>
+        </levelledPara>
+        
+        <levelledPara>
+          <title>Standards Compliance</title>
+          <para>
+            This implementation complies with:
+          </para>
+          <para>
+            <randomList>
+              <listItem><para>ARINC Specification 429, Mark 33</para></listItem>
+              <listItem><para>DO-178C Level A (Software)</para></listItem>
+              <listItem><para>DO-254 Level A (Hardware)</para></listItem>
+              <listItem><para>DO-160G (Environmental)</para></listItem>
+            </randomList>
+          </para>
+        </levelledPara>
+        
+      </levelledPara>
+    </description>
+  </content>
+</dmodule>
