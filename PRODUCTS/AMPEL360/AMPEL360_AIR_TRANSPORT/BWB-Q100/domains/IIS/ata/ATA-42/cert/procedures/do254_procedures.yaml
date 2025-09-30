@@ -1,0 +1,63 @@
+---
+title: "DO-254 Hardware Certification Procedures"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Hardware Certification Team"
+canonical_hash: "pending"
+
+do254_procedures:
+  hardware_design_lifecycle:
+    - procedure: "Hardware Planning"
+      steps:
+        - "Create Plan for Hardware Aspects of Certification (PHAC)"
+        - "Define hardware development process"
+        - "Establish verification strategy"
+      deliverables:
+        - "PHAC Document"
+        - "Hardware Design Plan"
+        - "Hardware Verification Plan"
+      evidence_location: "evidence/DO-254/hardware_design/"
+
+    - procedure: "Hardware Requirements"
+      steps:
+        - "Capture hardware requirements"
+        - "Derive requirements from system"
+        - "Review and validate requirements"
+      deliverables:
+        - "Hardware Requirements Document"
+        - "Requirements Traceability"
+      evidence_location: "evidence/DO-254/hardware_design/"
+
+    - procedure: "Hardware Design"
+      steps:
+        - "Develop conceptual design"
+        - "Detailed design implementation"
+        - "FPGA/ASIC design"
+      deliverables:
+        - "Hardware Design Data"
+        - "HDL Source Code"
+        - "Design Traceability"
+      evidence_location: "evidence/DO-254/hardware_design/"
+
+  hardware_verification:
+    - procedure: "Hardware Verification"
+      steps:
+        - "Requirements-based testing"
+        - "Design verification"
+        - "Implementation verification"
+      deliverables:
+        - "Hardware Verification Procedures"
+        - "Hardware Verification Results"
+        - "Test Coverage Analysis"
+      evidence_location: "evidence/DO-254/hardware_verification/"
+
+  tool_qualification:
+    - procedure: "Hardware Tool Qualification"
+      steps:
+        - "Identify tools requiring qualification"
+        - "Develop tool qualification plans"
+        - "Perform tool qualification"
+      deliverables:
+        - "Tool Qualification Plans"
+        - "Tool Qualification Data"
+      evidence_location: "evidence/DO-254/tool_qualification/"

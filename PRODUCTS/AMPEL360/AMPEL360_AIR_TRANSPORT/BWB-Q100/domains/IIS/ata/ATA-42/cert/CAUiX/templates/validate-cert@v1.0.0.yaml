@@ -1,0 +1,31 @@
+---
+apiVersion: cauix.ampel360.com/v1
+kind: Template
+metadata:
+  name: validate-cert
+  version: v1.0.0
+  description: "Validation template for certification data"
+spec:
+  type: validation
+  inputs:
+    - name: target_directory
+      type: path
+      required: true
+    - name: rules_file
+      type: path
+      required: true
+  operations:
+    - name: load_rules
+      action: load_yaml
+      parameters:
+        path: "{{ inputs.rules_file }}"
+    - name: validate_structure
+      action: validate_tree
+      parameters:
+        root: "{{ inputs.target_directory }}"
+        rules: "{{ operations.load_rules.output }}"
+    - name: generate_report
+      action: create_report
+      parameters:
+        format: json
+        output: validation_report.json

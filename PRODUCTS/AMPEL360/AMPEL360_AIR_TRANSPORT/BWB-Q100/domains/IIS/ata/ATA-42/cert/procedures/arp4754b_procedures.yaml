@@ -1,0 +1,40 @@
+---
+title: "ARP4754B System Development Procedures"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS System Development Team"
+canonical_hash: "pending"
+
+arp4754b_procedures:
+  aircraft_functions:
+    - procedure: "Aircraft Function Development"
+      steps:
+        - "Define aircraft-level functions"
+        - "Allocate functions to systems"
+        - "Establish functional architecture"
+      deliverables:
+        - "Aircraft Function Definition"
+        - "Function Allocation Document"
+      evidence_location: "evidence/ARP4754B/aircraft_functions/"
+
+  system_architecture:
+    - procedure: "System Architecture Development"
+      steps:
+        - "Define system architecture"
+        - "Establish system boundaries"
+        - "Define interfaces"
+      deliverables:
+        - "System Architecture Document"
+        - "Interface Requirements"
+      evidence_location: "evidence/ARP4754B/system_architecture/"
+
+  development_process:
+    - procedure: "Development Assurance Process"
+      steps:
+        - "Plan development activities"
+        - "Implement development process"
+        - "Verify development outputs"
+      deliverables:
+        - "Plan for System Aspects of Certification"
+        - "System Development Assurance"
+      evidence_location: "evidence/ARP4754B/development_process/"

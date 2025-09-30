@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://asi-t2.ampel360.com/schemas/cert_plan.schema.json",
+  "title": "Certification Plan Schema",
+  "description": "JSON Schema for validating certification plans",
+  "type": "object",
+  "required": ["certification_plan"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the certification plan"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Version number (e.g., 1.0)"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the plan"
+    },
+    "maintainer": {
+      "type": "string",
+      "description": "Team or person responsible for maintaining the plan"
+    },
+    "canonical_hash": {
+      "type": "string",
+      "description": "Canonical hash for verification (pending initially)"
+    },
+    "certification_plan": {
+      "type": "object",
+      "required": ["system_name", "certification_level", "target_authorities", "standards", "objectives"],
+      "properties": {
+        "system_name": {
+          "type": "string",
+          "description": "Name of the system being certified"
+        },
+        "system_description": {
+          "type": "string",
+          "description": "Description of the system"
+        },
+        "certification_level": {
+          "type": "string",
+          "enum": ["DAL A", "DAL B", "DAL C", "DAL D", "DAL E"],
+          "description": "Design Assurance Level"
+        },
+        "target_authorities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["FAA", "EASA", "TCCA", "CAAC"]
+          },
+          "description": "Target certification authorities"
+        },
+        "certification_schedule": {
+          "type": "object",
+          "properties": {
+            "start_date": {
+              "type": "string",
+              "format": "date"
+            },
+            "planned_completion": {
+              "type": "string",
+              "format": "date"
+            },
+            "milestones": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["date", "milestone"],
+                "properties": {
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "milestone": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "standards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "description"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Standard name (e.g., DO-178C)"
+              },
+              "version": {
+                "type": "string",
+                "description": "Version of the standard"
+              },
+              "description": {
+                "type": "string",
+                "description": "Brief description of the standard"
+              },
+              "level": {
+                "type": "string",
+                "description": "Applicable level (e.g., DAL A, TQL)"
+              }
+            }
+          }
+        },
+        "objectives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["objective", "standard", "evidence_location"],
+            "properties": {
+              "objective": {
+                "type": "string",
+                "description": "Certification objective"
+              },
+              "standard": {
+                "type": "string",
+                "description": "Related standard"
+              },
+              "evidence_location": {
+                "type": "string",
+                "description": "Path to evidence"
+              },
+              "due_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Due date for objective"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

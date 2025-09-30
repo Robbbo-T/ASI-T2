@@ -1,0 +1,18 @@
+---
+apiVersion: cauix.ampel360.com/v1
+kind: Manifest
+metadata:
+  name: generate-evidence-manifest
+  version: v1.0.0
+  template: generate-evidence@v1.0.0
+spec:
+  execution:
+    trigger: manual
+    inputs:
+      standard: DO-178C
+      objective: software_planning
+      source_data: ./plans
+  outputs:
+    - name: evidence_package
+      path: ./evidence/DO-178C/objectives/software_planning/
+      retention: permanent

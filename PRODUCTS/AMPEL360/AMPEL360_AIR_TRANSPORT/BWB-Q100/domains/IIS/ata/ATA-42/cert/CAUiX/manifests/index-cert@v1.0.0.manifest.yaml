@@ -1,0 +1,23 @@
+---
+apiVersion: cauix.ampel360.com/v1
+kind: Manifest
+metadata:
+  name: index-cert-manifest
+  version: v1.0.0
+  template: index-cert@v1.0.0
+spec:
+  execution:
+    schedule: daily
+    inputs:
+      evidence_root: ./evidence
+      standards:
+        - DO-178C
+        - DO-254
+        - DO-297
+        - DO-330
+        - ARP4754B
+        - ARP4761A
+  outputs:
+    - name: evidence_index
+      path: ./evidence_index.json
+      retention: 90d

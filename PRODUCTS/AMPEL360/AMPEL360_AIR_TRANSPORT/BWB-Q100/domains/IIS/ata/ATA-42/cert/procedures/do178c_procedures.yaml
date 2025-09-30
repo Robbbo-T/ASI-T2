@@ -1,0 +1,144 @@
+---
+title: "DO-178C Software Certification Procedures"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS Software Certification Team"
+canonical_hash: "pending"
+
+# DO-178C Software Certification Procedures
+do178c_procedures:
+  software_planning:
+    - procedure: "Software Plan Development"
+      description: "Develop comprehensive software plans"
+      steps:
+        - "Create Plan for Software Aspects of Certification (PSAC)"
+        - "Create Software Development Plan (SDP)"
+        - "Create Software Verification Plan (SVP)"
+        - "Create Software Configuration Management Plan (SCMP)"
+        - "Create Software Quality Assurance Plan (SQAP)"
+      deliverables:
+        - "PSAC Document"
+        - "SDP Document"
+        - "SVP Document"
+        - "SCMP Document"
+        - "SQAP Document"
+      evidence_location: "evidence/DO-178C/objectives/software_planning/"
+
+  software_requirements:
+    - procedure: "Software Requirements Development"
+      description: "Develop and verify high-level and low-level requirements"
+      steps:
+        - "Develop high-level requirements (HLR)"
+        - "Trace HLR to system requirements"
+        - "Review HLR for accuracy and consistency"
+        - "Develop low-level requirements (LLR)"
+        - "Trace LLR to HLR"
+        - "Review LLR for accuracy and consistency"
+      deliverables:
+        - "Software Requirements Standards"
+        - "Software Requirements Data"
+        - "Software Design Standards"
+        - "Traceability Data"
+        - "Review Records"
+      evidence_location: "evidence/DO-178C/objectives/software_requirements/"
+
+  software_design:
+    - procedure: "Software Design Process"
+      description: "Design software architecture and detailed design"
+      steps:
+        - "Develop software architecture"
+        - "Develop detailed design"
+        - "Trace design to LLR"
+        - "Review design for accuracy and consistency"
+        - "Verify design against requirements"
+      deliverables:
+        - "Software Design Description"
+        - "Design Traceability Data"
+        - "Design Review Records"
+      evidence_location: "evidence/DO-178C/objectives/software_design/"
+
+  software_code:
+    - procedure: "Software Coding and Code Reviews"
+      description: "Implement and review source code"
+      steps:
+        - "Develop source code per coding standards"
+        - "Perform code reviews"
+        - "Trace source code to design"
+        - "Verify code against low-level requirements"
+      deliverables:
+        - "Software Code Standards"
+        - "Source Code"
+        - "Executable Object Code"
+        - "Code Review Records"
+      evidence_location: "evidence/DO-178C/objectives/software_code/"
+
+  software_integration:
+    - procedure: "Software Integration"
+      description: "Integrate software components and verify integration"
+      steps:
+        - "Integrate software components"
+        - "Perform integration testing"
+        - "Verify interfaces between components"
+        - "Document integration results"
+      deliverables:
+        - "Integration Test Procedures"
+        - "Integration Test Results"
+        - "Problem Reports"
+      evidence_location: "evidence/DO-178C/objectives/software_integration/"
+
+  software_verification:
+    - procedure: "Software Verification Process"
+      description: "Comprehensive verification of software"
+      steps:
+        - "Perform requirements-based testing"
+        - "Perform structural coverage analysis"
+        - "Review all verification results"
+        - "Verify traceability is complete"
+      deliverables:
+        - "Software Verification Cases and Procedures"
+        - "Software Verification Results"
+        - "Structural Coverage Analysis"
+        - "Software Life Cycle Environment Configuration Index"
+      evidence_location: "evidence/DO-178C/objectives/software_verification/"
+
+  configuration_management:
+    - procedure: "Software Configuration Management"
+      description: "Manage software configuration items"
+      steps:
+        - "Establish baseline"
+        - "Control changes"
+        - "Track problem reports"
+        - "Maintain configuration records"
+      deliverables:
+        - "Software Configuration Index"
+        - "Problem Reports"
+        - "Software Configuration Management Records"
+      evidence_location: "evidence/DO-178C/objectives/software_config_mgmt/"
+
+  quality_assurance:
+    - procedure: "Software Quality Assurance"
+      description: "Monitor software development and verification"
+      steps:
+        - "Perform process audits"
+        - "Review conformance to plans and standards"
+        - "Monitor problem reports"
+        - "Report quality issues"
+      deliverables:
+        - "Software Quality Assurance Records"
+        - "SQA Conformity Review"
+        - "Software Accomplishment Summary (SAS)"
+      evidence_location: "evidence/DO-178C/objectives/software_qa/"
+
+  certification_liaison:
+    - procedure: "Certification Liaison Process"
+      description: "Coordinate with certification authority"
+      steps:
+        - "Submit PSAC for approval"
+        - "Conduct Stage of Involvement (SOI) meetings"
+        - "Provide evidence to authority"
+        - "Address authority findings"
+      deliverables:
+        - "SOI Meeting Minutes"
+        - "Authority Correspondence"
+        - "Software Accomplishment Summary"
+      evidence_location: "evidence/DO-178C/objectives/software_cert_liaison/"

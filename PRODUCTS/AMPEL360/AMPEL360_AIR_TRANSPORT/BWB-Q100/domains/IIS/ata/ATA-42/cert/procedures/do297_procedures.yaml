@@ -1,0 +1,51 @@
+---
+title: "DO-297 IMA Certification Procedures"
+version: "1.0"
+date: "2025-09-30"
+maintainer: "IIS IMA Certification Team"
+canonical_hash: "pending"
+
+do297_procedures:
+  ima_development:
+    - procedure: "IMA Platform Development"
+      steps:
+        - "Define IMA architecture"
+        - "Establish partitioning strategy"
+        - "Develop resource management"
+      deliverables:
+        - "IMA Architecture Document"
+        - "Partitioning Design"
+      evidence_location: "evidence/DO-297/ima_development/"
+
+  partitioning:
+    - procedure: "Partition Isolation Verification"
+      steps:
+        - "Verify spatial partitioning"
+        - "Verify temporal partitioning"
+        - "Test partition boundaries"
+      deliverables:
+        - "Partition Verification Results"
+        - "Isolation Test Reports"
+      evidence_location: "evidence/DO-297/partitioning/"
+
+  roles_and_responsibilities:
+    - procedure: "IMA Responsibility Agreement"
+      steps:
+        - "Define integrator responsibilities"
+        - "Define supplier responsibilities"
+        - "Establish interface agreements"
+      deliverables:
+        - "Responsibility Agreement Document"
+        - "Interface Control Documents"
+      evidence_location: "evidence/DO-297/roles_and_responsibilities/"
+
+  data_load:
+    - procedure: "IMA Data Load Management"
+      steps:
+        - "Define data loading process"
+        - "Verify data integrity"
+        - "Validate configuration data"
+      deliverables:
+        - "Data Loading Procedures"
+        - "Configuration Verification Results"
+      evidence_location: "evidence/DO-297/data_load/"

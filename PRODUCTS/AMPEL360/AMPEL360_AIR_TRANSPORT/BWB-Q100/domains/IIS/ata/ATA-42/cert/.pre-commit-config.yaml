@@ -1,0 +1,42 @@
+repos:
+- repo: https://github.com/adrienverge/yamllint
+  rev: v1.35.1
+  hooks:
+    - id: yamllint
+      files: \.(yaml|yml)$
+      args: [--format, parsable, --strict]
+
+- repo: https://github.com/igorshubovych/markdownlint-cli
+  rev: v0.39.0
+  hooks:
+    - id: markdownlint
+      files: \.(md)$
+      args: [--disable, MD013, MD033, MD041]
+
+- repo: local
+  hooks:
+    - id: cert-plan-schema
+      name: Certification Plan Schema Validation
+      entry: python3 -m jsonschema -i plans/certification_plan.yaml schemas/cert_plan.schema.json
+      language: system
+      files: ^plans/certification_plan\.yaml$
+      pass_filenames: false
+
+    - id: evidence-tree
+      name: Evidence Tree Validation
+      entry: python3 scripts/validate_evidence_tree.py --root evidence --rules schemas/evidence_rules.yaml
+      language: system
+      files: ^evidence/
+      pass_filenames: false
+
+    - id: xmllint-s1000d-descriptive
+      name: XML validation for S1000D Descriptive DMs
+      entry: bash -c 'for f in "$@"; do xmllint --noout --schema S1000D/schemas/6.0/descript.xsd "$f" || exit 1; done' --
+      language: system
+      files: ^S1000D/dmodule/.*-D-EN-US\.xml$
+
+    - id: xmllint-s1000d-procedural
+      name: XML validation for S1000D Procedural DMs
+      entry: bash -c 'for f in "$@"; do xmllint --noout --schema S1000D/schemas/6.0/proced.xsd "$f" || exit 1; done' --
+      language: system
+      files: ^S1000D/dmodule/.*-P-EN-US\.xml$

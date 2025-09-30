@@ -1,0 +1,30 @@
+---
+apiVersion: cauix.ampel360.com/v1
+kind: Template
+metadata:
+  name: audit-trail
+  version: v1.0.0
+  description: "Audit trail template for certification activities"
+spec:
+  type: auditing
+  inputs:
+    - name: activity_type
+      type: string
+      required: true
+    - name: timestamp
+      type: datetime
+      required: true
+    - name: user
+      type: string
+      required: true
+  operations:
+    - name: log_activity
+      action: create_log_entry
+      parameters:
+        activity: "{{ inputs.activity_type }}"
+        timestamp: "{{ inputs.timestamp }}"
+        user: "{{ inputs.user }}"
+    - name: sign_entry
+      action: digital_signature
+      parameters:
+        method: x509

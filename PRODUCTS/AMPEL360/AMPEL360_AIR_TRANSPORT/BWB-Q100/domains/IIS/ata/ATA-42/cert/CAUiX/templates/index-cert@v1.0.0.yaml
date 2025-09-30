@@ -1,0 +1,27 @@
+---
+apiVersion: cauix.ampel360.com/v1
+kind: Template
+metadata:
+  name: index-cert
+  version: v1.0.0
+  description: "Indexing template for certification evidence"
+spec:
+  type: indexing
+  inputs:
+    - name: evidence_root
+      type: path
+      required: true
+    - name: standards
+      type: array
+      required: true
+  operations:
+    - name: scan_evidence
+      action: scan_directory
+      parameters:
+        path: "{{ inputs.evidence_root }}"
+        recursive: true
+    - name: generate_index
+      action: create_index
+      parameters:
+        format: json
+        output: evidence_index.json
