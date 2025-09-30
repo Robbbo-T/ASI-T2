@@ -155,7 +155,7 @@ Full qualification per DO-330:
 
 ### Status: ✅ **QUALIFIED**
 
-## Tool #4: Static Analyzer (TQL-5)
+## Tool #4: Static Analysis Tool (TQL-5)
 
 ### Tool Information
 - **Name**: Proprietary Static Analysis Tool
