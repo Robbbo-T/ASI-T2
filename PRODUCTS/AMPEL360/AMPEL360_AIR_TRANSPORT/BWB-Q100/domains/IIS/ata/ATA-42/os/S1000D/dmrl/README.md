@@ -1,6 +1,6 @@
-# DMRL (Data Management Requirements List)
+# DMRL (Data Module Requirements List)
 
-This directory contains the Data Management Requirements List for the ATA-42 OS package.
+This directory contains the Data Module Requirements List for the ATA-42 OS package.
 
 ## Purpose
 
