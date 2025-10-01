@@ -24,6 +24,21 @@ python verify_installation.py
 python scripts/verify_structure.py  # Validate repository structure
 ```
 
+### Optional Dependency Groups
+
+The project supports optional feature groups that can be installed as needed:
+
+* **`dev`** — Development and testing tools (pytest, httpx)
+* **`docs`** — Documentation generation (mkdocs, mkdocs-material)
+* **`xml`** — High-performance XML parsing (lxml)
+* **`optimization`** — MILP optimization framework (pyomo) for AQUA OS resource planning
+
+**Install with optional dependencies:**
+```bash
+pip install -e ".[optimization]"  # For AQUA MILP optimization module
+pip install -e ".[dev,docs]"      # Multiple groups
+```
+
 ### Figure Generation
 
 The repository includes automated technical diagram generation for publications:
@@ -119,6 +134,40 @@ Example published paths:
 * Raw XML: `/S1000D/dm/rootN/<subpath>/<file>.xml`
 
 *Basic `..` sanitization is applied to the `dm` query param.*
+
+## AQUA Optimization Module
+
+**Location**: `PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/optimization/`
+
+The repository includes a comprehensive Mixed Integer Linear Programming (MILP) optimization framework for hybrid classical-quantum resource planning in the AQUA OS Aircraft system.
+
+**Key components**:
+* **`aqua_milp_pyomo.py`** — Complete MILP model using Pyomo framework
+* **`test_aqua_milp.py`** — Automated test suite for model validation
+* **`README.md`** — Detailed documentation and usage guide
+
+**Features**:
+* Multi-criteria optimization (Cost, Emissions, Reliability, Synchronization)
+* Hybrid classical-quantum subsystem modeling
+* Linearized synchronization constraints (Big-M method)
+* Quantum quality certification (Fidelity/Latency thresholds)
+* UTCS-MI v5.0 compliant traceability with SHA-256 hashing
+* Automatic solver detection (CBC, GLPK, Gurobi, CPLEX)
+
+**Installation**:
+```bash
+pip install -e ".[optimization]"  # Install pyomo dependency
+sudo apt-get install glpk-utils   # Install GLPK solver (Linux)
+```
+
+**Usage**:
+```bash
+cd PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/optimization
+python aqua_milp_pyomo.py        # Run optimization
+python test_aqua_milp.py         # Run tests
+```
+
+See the module's README for detailed documentation and customization options.
 
 ## Local build & preview
 
