@@ -530,17 +530,22 @@ def generate_ata42_diagrams(md_file):
         generator = ATA42DiagramGenerator(output_dir)
         
         # Generate appropriate diagram based on filename
-        if 'ima_overview' in filename:
-            generator.generate_ima_overview(filename)
-        elif 'repo_layout' in filename:
-            generator.generate_repo_layout(filename)
-        elif 'apex_port_map' in filename:
-            generator.generate_apex_port_map(filename)
-        elif 'a653_schedule' in filename:
-            generator.generate_a653_schedule(filename)
-        elif 'compliance_matrix' in filename:
-            generator.generate_compliance_matrix(filename)
-        else:
+        # Use a dictionary to map diagram type keys to generator methods
+        diagram_generators = {
+            'ima_overview': generator.generate_ima_overview,
+            'repo_layout': generator.generate_repo_layout,
+            'apex_port_map': generator.generate_apex_port_map,
+            'a653_schedule': generator.generate_a653_schedule,
+            'compliance_matrix': generator.generate_compliance_matrix,
+        }
+
+        found = False
+        for key, method in diagram_generators.items():
+            if key in filename:
+                method(filename)
+                found = True
+                break
+        if not found:
             print(f"  Warning: No generator found for {filename}")
             continue
         
