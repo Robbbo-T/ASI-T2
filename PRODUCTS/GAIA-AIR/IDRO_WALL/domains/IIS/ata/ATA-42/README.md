@@ -1,4 +1,3 @@
-
 ---
 id: ASIT2-GAIA-AIR-IDROWALL-IIS-ATA42-0001
 rev: 2
@@ -15,6 +14,7 @@ ethics_guard: MAL-EEM
 utcs_mi: v5.0
 canonical_hash: "pending"
 ---
+
 # ATA-42 — Integrated Modular Avionics (IIS)
 
 IMA platform & software architecture for the **Information & Intelligence Systems (IIS)** domain in IDRO WALL. Defines **partitions**, **APEX interfaces**, **ARINC-653 schedule**, **safety/ethics boundaries** (MAL-EEM fail-closed), configuration artefacts, and evidence mapping to DO-178C/DO-297 and DO-326A/356A where applicable.
