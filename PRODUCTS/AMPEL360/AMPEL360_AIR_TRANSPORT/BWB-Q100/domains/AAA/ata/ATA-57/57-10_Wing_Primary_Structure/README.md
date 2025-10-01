@@ -115,11 +115,11 @@ Primary load-bearing structure: wingbox (skins, spars, ribs, stringers), wing-to
 
 Use canonical forms; do **not** duplicate in ATA-57:
 
-- Composite Fastening — `../../ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md`  
-- Adhesive Bonding — `../../ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md`  
-- Cabin Integrity / Leak Test — `../../ATA-20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md`  
-- Material Handling & OOC Log — `../../ATA-20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md`  
-- Bonding / EMI Continuity — `../../ATA-20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md`
+- Composite Fastening — `/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md`  
+- Adhesive Bonding — `/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md`  
+- Cabin Integrity / Leak Test — `/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md`  
+- Material Handling & OOC Log — `/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md`  
+- Bonding / EMI Continuity — `/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md`
 
 ---
 
