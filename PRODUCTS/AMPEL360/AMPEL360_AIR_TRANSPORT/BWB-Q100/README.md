@@ -65,6 +65,11 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   ├── CAD/
     │   │   ├── CAE/
     │   │   └── CFD/
+    │   ├── pax/
+    │   │   ├── OB/
+    │   │   ├── OFF/
+    │   │   ├── schemas/
+    │   │   └── scripts/
     │   └── ata/
     │       ├── ATA-20/
     │       ├── ATA-32/
@@ -84,6 +89,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── SCM/
     │   │   └── CIM/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-10/
     │       ├── ATA-12/
@@ -98,6 +104,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAD/
     │   │   └── VP/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-11/
     │       ├── ATA-25/
@@ -113,6 +120,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAE/
     │   │   └── CAI/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-04/
     │       ├── ATA-17/
@@ -130,6 +138,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAE/
     │   │   └── CAD/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-13/
     │       └── ATA-14/
@@ -141,6 +150,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAI/
     │   │   └── CASE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-23/
     │       ├── ATA-31/
@@ -158,6 +168,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAE/
     │   │   └── CAM/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-24/
     │       ├── ATA-28/
@@ -172,6 +183,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   └── PDM-PLM/
     │   ├── qox/
     │   │   └── KBE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-21/
     │       ├── ATA-31/
@@ -187,6 +199,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAM/
     │   │   └── CIM/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-20/
     │       └── ATA-51/
@@ -198,6 +211,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAI/
     │   │   └── KBE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-22/
     │       ├── ATA-42/
@@ -210,6 +224,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   └── CASE/
     │   ├── qox/
     │   │   └── CAI/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-22/
     │       ├── ATA-23/
@@ -224,6 +239,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── SCM/
     │   │   └── MRP-ERP/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-20/
     │       ├── ATA-51/
@@ -252,6 +268,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   └── VP/
     │   ├── qox/
     │   │   └── CAE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-21/
     │       ├── ATA-27/
@@ -269,6 +286,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   └── KBE/
     │   ├── qox/
     │   │   └── KBE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-45/
     │       └── ATA-46/
@@ -283,6 +301,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
         │   ├── CAD/
         │   ├── CAE/
         │   └── CFD/
+        ├── pax/
         └── ata/
             ├── ATA-28/
             ├── ATA-49/
