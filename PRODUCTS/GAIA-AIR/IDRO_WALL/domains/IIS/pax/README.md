@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # PAx — Packaging & Applications
 
-On-board (ARINC 653/IMA, A661, A664) y off-board (OCI/edge/cloud) con SBOM y QS.
+On-board (ARINC 653/IMA, A661, A664) and off-board (OCI/edge/cloud) with SBOM and QS.
