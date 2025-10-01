@@ -1,0 +1,70 @@
+cff-version: 1.2.0
+message: "If you use this software or reference this work, please cite it as below."
+type: software
+title: "ASI-T2: Artificial Super Intelligence Transponders for Aerospace Sustainable Industry Transition"
+abstract: "Complete aerospace/defense/space ecosystem implementing TFA (Top Federation Algorithm) architecture with MAL (Master Application Layer), UTCS (Universal Traceability & Configuration System), and MAL-EEM (Ethics & Empathy Module) guardrails. Includes AMPEL360 BWB aircraft, GAIA SPACE constellation, Defense Wall Swarm, and sustainable infrastructure for H₂/LH₂ aviation."
+authors:
+  - family-names: "Pelliccia"
+    given-names: "Amedeo"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    alias: "Robbbo-T"
+repository-code: "https://github.com/Robbbo-T/ASI-T2"
+url: "https://robbbo-t.github.io/ASI-T2/"
+license: "Proprietary"
+version: "0.1.0"
+date-released: "2025-01-01"
+keywords:
+  - aerospace
+  - aviation
+  - spacecraft
+  - defense-systems
+  - blended-wing-body
+  - digital-twin
+  - quantum-computing
+  - sustainability
+  - hydrogen-aviation
+  - space-tourism
+  - swarm-systems
+  - traceability
+  - provenance
+  - ethics-ai
+  - TFA
+  - MAL
+  - UTCS
+  - MAL-EEM
+  - ARP4754A
+  - DO-178C
+  - S1000D
+references:
+  - type: standard
+    title: "ARP4754A - Guidelines for Development of Civil Aircraft and Systems"
+    authors:
+      - name: "SAE International"
+    year: 2010
+  - type: standard
+    title: "ARP4761 - Guidelines and Methods for Conducting the Safety Assessment Process on Civil Airborne Systems and Equipment"
+    authors:
+      - name: "SAE International"
+    year: 1996
+  - type: standard
+    title: "DO-178C - Software Considerations in Airborne Systems and Equipment Certification"
+    authors:
+      - name: "RTCA"
+    year: 2011
+  - type: standard
+    title: "DO-254 - Design Assurance Guidance for Airborne Electronic Hardware"
+    authors:
+      - name: "RTCA"
+    year: 2000
+  - type: standard
+    title: "S1000D - International specification for technical publications"
+    authors:
+      - name: "ASD"
+    year: 2023
+contact:
+  - name: "Amedeo Pelliccia"
+    email: "contact-via-github@example.com"
+identifiers:
+  - type: doi
+    value: "TBD"
+    description: "DOI will be registered upon first major release"

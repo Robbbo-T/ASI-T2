@@ -1,0 +1,54 @@
+---
+product: GAIA_SPACE
+trl: 3
+maturity: "Concept → MVP (Sim) → SDR Bench (H1)"
+interfaces:
+  control_bus: "MAL.v1.control"
+  telemetry_bus: "MAL.v1.telemetry"
+  data_schema: "schemas/v1/gaia_space.json"
+  data_plane: "INFRA.DATA-PLANE.v1"
+standards_lite: ["space-systems-lite", "quality-lite"]
+artifacts: ["Mission-profiles", "Orbit-sim", "Payload-spec", "SBOM", "demos"]
+evidence:
+  doi: "TBD"
+  utcs_anchor: "TBD"
+  signed_tag: "v0.1.0"
+demos:
+  - name: "Orbit_Simulation_v1"
+    inputs: "inputs/mission_profiles/*.json"
+    outputs: "evidence/demos/Orbit_Sim_v1/"
+    metrics: ["orbital_accuracy", "downlink_rate", "power_budget"]
+horizons:
+  H0_0_90_days:
+    objectives:
+      - "Órbitas simuladas + payload simulado"
+      - "Downlink simulado → ingestión en Data Plane"
+      - "Perfiles de misión básicos"
+    deliverables:
+      - "Orbit propagator"
+      - "Simulated telemetry streams"
+      - "Data plane integration"
+  H1_3_9_months:
+    objectives:
+      - "Enlace real o SDR en banco"
+      - "Scheduler de misión"
+      - "Pipeline de datos completo"
+    deliverables:
+      - "SDR test bench"
+      - "Mission scheduler"
+      - "Data processing pipeline"
+  H2_9_24_months:
+    objectives:
+      - "Integración con constelación"
+      - "Operaciones multi-satélite"
+      - "Demos públicas"
+    deliverables:
+      - "Constellation ops"
+      - "Multi-satellite coordination"
+      - "Public demonstrations"
+constellation:
+  name: "GAIA SPACE Constellation"
+  mission_type: "Space Quantum Digitalisation"
+  satellites: "TBD"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: "MAL-EEM"

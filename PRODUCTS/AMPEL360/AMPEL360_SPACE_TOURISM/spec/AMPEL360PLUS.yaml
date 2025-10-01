@@ -1,0 +1,55 @@
+---
+product: AMPEL360PLUS_SPACE_TOURISM
+trl: 2
+maturity: "Concept → Visual Prototype (H0) → Safety Demo (H1)"
+interfaces:
+  control_bus: "MAL.v1.control"
+  telemetry_bus: "MAL.v1.telemetry"
+  data_schema: "schemas/v1/tourism.json"
+  safety_systems: "MAL.safety.v1"
+standards_lite: ["tourism-safety-lite", "quality-lite", "human-factors-lite"]
+artifacts: ["Concept-doc", "Cabin-mock", "Safety-reqs", "SBOM", "demos"]
+evidence:
+  doi: "TBD"
+  utcs_anchor: "TBD"
+  signed_tag: "v0.1.0"
+demos:
+  - name: "Cabin_Mockup_v1"
+    inputs: "inputs/cabin_design/*.json"
+    outputs: "evidence/demos/Cabin_v1/"
+    metrics: ["safety_compliance", "passenger_comfort", "emergency_response"]
+horizons:
+  H0_0_90_days:
+    objectives:
+      - "Prototipo visual + cabin mock"
+      - "Requisitos de seguridad tourism-safety lite"
+      - "Integración inicial con MAL"
+    deliverables:
+      - "Visual prototype"
+      - "Cabin mockup design"
+      - "Safety requirements doc"
+  H1_3_9_months:
+    objectives:
+      - "Simulación de experiencia de pasajero"
+      - "Safety case turismo espacial"
+      - "Integración con AMPEL360 BWB"
+    deliverables:
+      - "Passenger experience sim"
+      - "Tourism safety case"
+      - "BWB integration plan"
+  H2_9_24_months:
+    objectives:
+      - "Prototipo funcional completo"
+      - "Certificaciones preliminares"
+      - "Demo pública"
+    deliverables:
+      - "Functional prototype"
+      - "Preliminary certifications"
+      - "Public demonstration"
+tourism_specs:
+  capacity: "6-12 passengers"
+  mission_profile: "suborbital/low_orbit"
+  duration: "2-4 hours"
+  safety_level: "commercial_aviation_equivalent"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: "MAL-EEM"

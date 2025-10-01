@@ -1,0 +1,49 @@
+---
+product: AMPEL360_BWB
+trl: 4
+maturity: "MVP (SIL) → HIL (H1)"
+interfaces:
+  control_bus: "MAL.v1.control"
+  telemetry_bus: "MAL.v1.telemetry"
+  data_schema: "schemas/v1/ampel360.json"
+standards_lite: ["safety-lite", "quality-lite", "ARP4754A-lite", "ARP4761-lite"]
+artifacts: ["SRS", "SDD", "V&V-plan", "safety-case", "SBOM", "demos"]
+evidence:
+  doi: "TBD"
+  utcs_anchor: "TBD"
+  signed_tag: "v0.1.0"
+demos:
+  - name: "SIL_Envelope_v1"
+    inputs: "inputs/scenarios/*.json"
+    outputs: "evidence/demos/SIL_Envelope_v1/"
+    metrics: ["stability", "energy", "tracking_error"]
+horizons:
+  H0_0_90_days:
+    objectives:
+      - "Gemelo digital + SIL con control básico"
+      - "Aerodinámica inicial y telemetría"
+      - "SBOM + tests básicos + vídeo demo"
+    deliverables:
+      - "SIL logs firmados"
+      - "Demo video"
+      - "UTCS anchor"
+  H1_3_9_months:
+    objectives:
+      - "HIL (control HW-in-loop)"
+      - "Envolvente de vuelo ampliada"
+      - "Safety case ARP4754A/4761-lite"
+    deliverables:
+      - "HIL test reports"
+      - "Safety case v1"
+      - "2 validaciones externas"
+  H2_9_24_months:
+    objectives:
+      - "Integraciones cruzadas (aire ↔ espacio ↔ swarm)"
+      - "Campañas de V&V"
+      - "Demos públicas"
+    deliverables:
+      - "Integration test suite"
+      - "Public demonstrations"
+      - "Third-party audits"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: "MAL-EEM"

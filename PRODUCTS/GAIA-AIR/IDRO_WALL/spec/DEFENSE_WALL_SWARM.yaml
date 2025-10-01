@@ -1,0 +1,58 @@
+---
+product: DEFENSE_WALL_SWARM
+trl: 3
+maturity: "Concept → Multi-Agent Sim (H0) → Full Swarm (H1)"
+interfaces:
+  control_bus: "MAL.v1.control"
+  telemetry_bus: "MAL.v1.telemetry"
+  data_schema: "schemas/v1/swarm.json"
+  mission_rules: "MAL-EEM.mission_rules.v1"
+standards_lite: ["defense-systems-lite", "quality-lite", "MAL-EEM"]
+artifacts: ["Mission-rules", "Swarm-sim", "Anti-collision", "SBOM", "demos", "ethics-report"]
+evidence:
+  doi: "TBD"
+  utcs_anchor: "TBD"
+  signed_tag: "v0.1.0"
+demos:
+  - name: "Swarm_Multi_Agent_v1"
+    inputs: "inputs/scenarios/*.json"
+    outputs: "evidence/demos/Swarm_v1/"
+    metrics: ["coordination", "resilience", "collision_avoidance", "mission_success"]
+horizons:
+  H0_0_90_days:
+    objectives:
+      - "Simulación multi-agente (10-20 nodos)"
+      - "Reglas de misión básicas"
+      - "Anti-colisión básica"
+    deliverables:
+      - "Multi-agent simulator"
+      - "Mission rules engine"
+      - "Basic collision avoidance"
+  H1_3_9_months:
+    objectives:
+      - "50-100 nodos en simulación"
+      - "Resiliencia y redundancia"
+      - "Cumplimiento MAL-EEM completo"
+    deliverables:
+      - "Large-scale swarm sim"
+      - "Resilience testing"
+      - "MAL-EEM compliance report"
+  H2_9_24_months:
+    objectives:
+      - "Integración con GAIA AIR/SPACE"
+      - "Misiones coordinadas multi-dominio"
+      - "Demos públicas"
+    deliverables:
+      - "Cross-domain integration"
+      - "Coordinated missions"
+      - "Public demonstrations"
+swarm_config:
+  min_agents: 10
+  max_agents: 100
+  coordination_protocol: "distributed_consensus"
+  anti_collision: "predictive_avoidance"
+products_family:
+  - "GAIA AIR · IDRO-HYDROROBOT"
+  - "EU Defense Wall Swarm"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: "MAL-EEM"
