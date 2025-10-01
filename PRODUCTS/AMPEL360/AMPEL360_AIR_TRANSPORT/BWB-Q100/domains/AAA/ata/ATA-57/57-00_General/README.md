@@ -35,7 +35,7 @@ Supporting evidence, analysis results, and traceability documentation.
 
 ## Key References
 
-- **ATA-20 Standard Practices** — [`../../ATA-20/README.md`](../../ATA-20/README.md)
+- **ATA-20 Standard Practices** — [`../../20/README.md`](../../20/README.md)
 - **ATA-51 Structures** — Reference for general structural requirements
 - **CAX Design Data** — [`../../../cax/`](../../../cax/)
 
