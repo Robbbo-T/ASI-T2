@@ -41,11 +41,13 @@ Meta-application that composes, governs, and orchestrates capabilities across al
 - **Integration**: CLI tools, REST API, workflow automation
 
 #### [`AQUA_OS_AIRCRAFT/`](./AQUA_OS_AIRCRAFT/) — Aircraft Operating System
-Real-time operating system extension specifically designed for advanced aircraft systems with quantum-enhanced capabilities.
+Real-time operating system extension implementing the **AQUA (AVIONICS / ASTRIONICS QUANTUM UPDATING ARCHITECTURE)** — the TFA Quantum Updating Architecture layer for flight systems.
 
 - **Primary Domains**: AAA, IIS, EDI, LCC, EEE
 - **Key Components**: A653 partition management, QAFbW flight controls, UTCS quality system
 - **Certification**: DO-178C DAL-A, DO-297 IMA, DO-326A/356A security
+- **AQUA Capabilities**: CB→QB→UE→FE→FWD→QS bridge, CQU updates, cross-domain sync, MAL orchestration
+- **Architecture**: [AQUA Architecture Documentation](./AQUA_OS_AIRCRAFT/architecture/AQUA.md)
 
 #### [`QAIM/`](./QAIM/) — Quantum Aerospace Intelligence Model
 Core quantum-classical optimization and AI engine providing advanced decision-making capabilities across all aerospace domains.
