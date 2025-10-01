@@ -47,6 +47,14 @@ GAIA (Ground And Information Assurance) Air portfolio for unmanned aerial system
 * Collateral damage minimization
 * Dynamic Rules of Engagement compliance
 
+### IDRO_WALL
+**IDEALE DRONE WALL** - Distributed aerial defense and resilience infrastructure
+* Multi-use aerial mesh network (defense, energy, civil response)
+* H₂/electric hybrid drone swarm
+* Dynamic barrier formations (not physical wall)
+* European certification framework (CS-UAS, SORA, EDA)
+* Quantum-optimized coordination via QAIM-2
+
 ---
 
 ## Shared Architecture
