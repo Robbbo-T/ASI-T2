@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # ATA-42
 
-Publicaciones y evidencia para **ATA-42**.
+Publications and evidence for **ATA-42**.
