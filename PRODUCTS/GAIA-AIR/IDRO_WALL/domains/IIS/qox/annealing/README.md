@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # QOx/ANNEALING
 
-Optimización/cuántica **ANNEALING** detectada en el dominio.
+Quantum optimization **ANNEALING** detected in the domain.
