@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-20/control_surface.schema.json",
+  "title": "Control Surface",
+  "description": "Structural definition of a control surface panel (elevon, flaperon, spoiler, tab).",
+  "type": "object",
+  "required": ["version", "surface_id", "type", "effectivity_expr"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "surface_id": {
+      "type": "string",
+      "pattern": "^CS-[A-Z0-9_-]{3,}$"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["elevon", "flaperon", "spoiler", "tab"]
+    },
+    "geometry_ref": {
+      "type": "string",
+      "description": "CAD/PDM model reference"
+    },
+    "laminate_ref": {
+      "type": "string",
+      "pattern": "^LAM-[A-Z0-9_-]{3,}$"
+    },
+    "thickness_map_ref": {
+      "type": "string"
+    },
+    "hinge_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^HNG-[A-Z0-9_-]{3,}$"
+      }
+    },
+    "actuator_attachment_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^ACTF-[A-Z0-9_-]{3,}$"
+      }
+    },
+    "balance_weight_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^BLW-[A-Z0-9_-]{3,}$"
+      }
+    },
+    "surface_finish_class": {
+      "type": "string",
+      "enum": ["A", "B", "C"]
+    },
+    "acceptance_metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "./acceptance.metric.schema.json"
+      }
+    },
+    "effectivity_expr": {
+      "type": "string",
+      "description": "MSN/block/options expression"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

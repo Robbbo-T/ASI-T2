@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schemas/control_surface.schema.json",
+  "version": "1.0.0",
+  "surface_id": "CS-ELV-001",
+  "type": "elevon",
+  "geometry_ref": "pdm://BWB-Q100/CAD/ControlSurfaces/L_Elevon_v2.3.STEP",
+  "laminate_ref": "LAM-CS-ELV-STD",
+  "thickness_map_ref": "pdm://BWB-Q100/CAD/ControlSurfaces/L_Elevon_thickness_map_v2.1.xlsx",
+  "hinge_refs": [
+    "HNG-ELV-001",
+    "HNG-ELV-002",
+    "HNG-ELV-003"
+  ],
+  "actuator_attachment_refs": [
+    "ACTF-ELV-001"
+  ],
+  "balance_weight_refs": [
+    "BLW-ELV-001"
+  ],
+  "surface_finish_class": "B",
+  "acceptance_metrics": [
+    {
+      "version": "1.0.0",
+      "metric_id": "ACPT-CS-ELV-ALIGN",
+      "name": "Control Surface Alignment",
+      "description": "Maximum deviation from design position in neutral position",
+      "unit": "mm",
+      "target": 0.0,
+      "limit_lower": -0.5,
+      "limit_upper": 0.5,
+      "method_ref": "DMC-57-20-PR-ALIGN-001",
+      "evidence_refs": [
+        "evidence://alignment_measurements/CS-ELV-001_alignment.csv"
+      ],
+      "notes": "Measured with laser alignment tooling at three hinge points"
+    },
+    {
+      "version": "1.0.0",
+      "metric_id": "ACPT-CS-ELV-FINISH",
+      "name": "Surface Finish Roughness",
+      "description": "Average surface roughness (Ra) on aerodynamic surfaces",
+      "unit": "µm",
+      "target": 1.0,
+      "limit_lower": 0.0,
+      "limit_upper": 1.6,
+      "method_ref": "DMC-57-20-PR-FINISH-001",
+      "evidence_refs": [
+        "evidence://surface_finish/CS-ELV-001_finish_scan.csv"
+      ],
+      "notes": "Class B finish requirement per ATA-20-50"
+    }
+  ],
+  "effectivity_expr": "MSN001-999",
+  "notes": "Left elevon for BWB-Q100, standard configuration. Composite construction with carbon fiber/epoxy laminate. Three hinge points with ball bearing hinges. Single electromechanical actuator attachment. Mass balance weight installed at leading edge."
+}

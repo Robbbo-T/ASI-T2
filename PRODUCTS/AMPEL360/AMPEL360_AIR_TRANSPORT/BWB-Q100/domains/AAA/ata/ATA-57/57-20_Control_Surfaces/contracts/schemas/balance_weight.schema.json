@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-20/balance_weight.schema.json",
+  "title": "Balance Weight",
+  "description": "Mass balance definition and attachment details.",
+  "type": "object",
+  "required": ["version", "weight_id", "mass_kg", "attachment_method"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "weight_id": {
+      "type": "string",
+      "pattern": "^BLW-[A-Z0-9_-]{3,}$"
+    },
+    "mass_kg": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "location_ref": {
+      "type": "string",
+      "description": "Geometry or station reference"
+    },
+    "attachment_method": {
+      "type": "string"
+    },
+    "adjustment_range_g": {
+      "type": "number",
+      "minimum": 0
+    },
+    "acceptance_metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "./acceptance.metric.schema.json"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

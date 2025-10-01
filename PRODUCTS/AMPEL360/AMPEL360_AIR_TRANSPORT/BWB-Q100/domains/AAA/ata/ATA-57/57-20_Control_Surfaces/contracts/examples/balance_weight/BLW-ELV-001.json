@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schemas/balance_weight.schema.json",
+  "version": "1.0.0",
+  "weight_id": "BLW-ELV-001",
+  "mass_kg": 2.850,
+  "location_ref": "Station 325, leading edge horn balance cavity",
+  "attachment_method": "Bolted with adjustable shims, lock-wired per ATA-20-60",
+  "adjustment_range_g": 50.0,
+  "acceptance_metrics": [
+    {
+      "version": "1.0.0",
+      "metric_id": "ACPT-BLW-MASS",
+      "name": "Balance Weight Mass Accuracy",
+      "description": "Measured mass deviation from specified value",
+      "unit": "g",
+      "target": 2850.0,
+      "limit_lower": 2845.0,
+      "limit_upper": 2855.0,
+      "method_ref": "DMC-57-20-PR-BLW-INSTALL-001",
+      "evidence_refs": [
+        "evidence://balance_weight/BLW-ELV-001_weighing.pdf"
+      ],
+      "notes": "Measured on calibrated precision scale, includes all hardware"
+    },
+    {
+      "version": "1.0.0",
+      "metric_id": "ACPT-BLW-CG-LOC",
+      "name": "Balance Weight CG Location",
+      "description": "Center of gravity location relative to hinge line",
+      "unit": "mm",
+      "target": -125.0,
+      "limit_lower": -127.0,
+      "limit_upper": -123.0,
+      "method_ref": "DMC-57-20-PR-BLW-CG-001",
+      "evidence_refs": [
+        "evidence://balance_weight/BLW-ELV-001_cg_measurement.pdf"
+      ],
+      "notes": "Forward of hinge line (negative value). Measured on balance rig."
+    }
+  ],
+  "notes": "Leading edge mass balance weight for left elevon. Tungsten alloy construction. Installed in horn balance cavity with adjustable shims for fine-tuning. Provides static and dynamic balance to minimize flutter risk. Adjustment range allows ±25g fine-tuning during rigging."
+}
