@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.org/schemas/ata-57-10/joint.schema.json",
+  "$id": "https://ampel360.com/schemas/ata-57-10/joint.schema.json",
   "title": "Joint Definition",
   "description": "Definition of structural joints including mechanical, adhesive, and hybrid configurations.",
   "type": "object",
