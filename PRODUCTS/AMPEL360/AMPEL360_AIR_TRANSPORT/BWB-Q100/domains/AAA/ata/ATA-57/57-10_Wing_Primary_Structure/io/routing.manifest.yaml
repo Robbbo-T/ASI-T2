@@ -240,8 +240,7 @@ change_log:
     description: Initial baseline creation
     approval: TBD
 
----
-# Notes
+# Notes:
 # - All 'TBD' hashes must be computed and filled in during configuration freeze
 # - All 'planned' status items require completion before certification
 # - UTCS signatures require quantum-safe cryptographic sealing
