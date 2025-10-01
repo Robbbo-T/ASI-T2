@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software or reference this work, please cite it as below."
+title: "ASI-T2 Ecosystem: Master Whitepaper #1"
+authors:
+  - family-names: Pelliccia
+    given-names: Amedeo
+date-released: 2025-10-01
+version: 0.1.0
+doi: TBA
+url: https://github.com/Robbbo-T/ASI-T2
+repository-code: https://github.com/Robbbo-T/ASI-T2
+keywords:
+  - aerospace
+  - sustainable-aviation
+  - blended-wing-body
+  - quantum-optimization
+  - satellite-constellation
+  - autonomous-systems
+  - swarm-intelligence
+  - ethics-ai
+  - provenance
+  - traceability
+license: "Proprietary"
+abstract: >
+  ASI-T2 is a system-of-systems (SoS) integrating AMPEL360 BWB aircraft,
+  GAIA SPACE satellite constellation, GAIA AIR swarm systems, Digital Platform,
+  AMPEL 360PLUS space tourism, H₂/LH₂ Airport infrastructure, and Sustainable
+  anti-speculative Finance. The common backbone is MAL (Master Application Layer/Logic)
+  standardizing drivers, messaging, telemetry, health, logging and version/keys.
+  QS/UTCS provides end-to-end provenance from code to binaries with SBOMs, DOIs
+  and signed tags. The programme progresses through TFA V2 (CB→QB→UE/FE→FWD→QS)
+  with FCR-1/FCR-2 gates requiring verifiable evidence.
