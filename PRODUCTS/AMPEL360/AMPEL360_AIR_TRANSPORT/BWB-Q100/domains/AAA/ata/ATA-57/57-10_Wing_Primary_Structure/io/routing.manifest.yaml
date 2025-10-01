@@ -8,7 +8,7 @@ project: BWB-Q100
 domain: AAA
 chapter: ATA-57-10
 maintainer: ASI-T Architecture Team
-timestamp: 2025-01-01T00:00:00Z
+timestamp: TBD
 
 # Data sources (upstream dependencies)
 sources:
