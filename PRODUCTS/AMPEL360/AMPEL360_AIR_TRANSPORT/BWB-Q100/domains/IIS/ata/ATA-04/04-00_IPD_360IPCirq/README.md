@@ -349,11 +349,11 @@ All ATA-20 forms reside in the **AAA domain** under standard practices. The 360I
 
 | Form ID | Form Name | Canonical Path |
 |---------|-----------|----------------|
-| **FORM-QA-20-10-01** | Composite Fastening | `../../AAA/ata/ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md` |
-| **FORM-QA-20-10-02** | Adhesive Bonding | `../../AAA/ata/ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md` |
-| **FORM-QA-20-20-01** | Cabin Integrity / Leak Test | `../../AAA/ata/ATA-20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md` |
-| **FORM-QA-20-30-01** | Material Handling & OOC Log | `../../AAA/ata/ATA-20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md` |
-| **FORM-QA-20-40-01** | Bonding / EMI Continuity | `../../AAA/ata/ATA-20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md` |
+| **FORM-QA-20-10-01** | Composite Fastening | `../../../../AAA/ata/ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md` |
+| **FORM-QA-20-10-02** | Adhesive Bonding | `../../../../AAA/ata/ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md` |
+| **FORM-QA-20-20-01** | Cabin Integrity / Leak Test | `../../../../AAA/ata/ATA-20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md` |
+| **FORM-QA-20-30-01** | Material Handling & OOC Log | `../../../../AAA/ata/ATA-20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md` |
+| **FORM-QA-20-40-01** | Bonding / EMI Continuity | `../../../../AAA/ata/ATA-20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md` |
 
 ### Evidence Collection
 

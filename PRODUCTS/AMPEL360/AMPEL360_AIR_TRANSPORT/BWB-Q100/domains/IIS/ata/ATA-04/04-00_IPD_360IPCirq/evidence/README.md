@@ -13,19 +13,19 @@ This directory contains evidence file references and links to ATA-20 QA forms.
 All physical work must reference appropriate ATA-20 forms:
 
 1. **FORM-QA-20-10-01** — Composite Fastening
-   - Path: `../../../AAA/ata/ATA-20/20-10_Structural_Practices/forms/`
+   - Path: `../../../../AAA/ata/ATA-20/20-10_Structural_Practices/forms/`
 
 2. **FORM-QA-20-10-02** — Adhesive Bonding
-   - Path: `../../../AAA/ata/ATA-20/20-10_Structural_Practices/forms/`
+   - Path: `../../../../AAA/ata/ATA-20/20-10_Structural_Practices/forms/`
 
 3. **FORM-QA-20-20-01** — Cabin Integrity / Leak Test
-   - Path: `../../../AAA/ata/ATA-20/20-20_Sealing_and_Pressurization/forms/`
+   - Path: `../../../../AAA/ata/ATA-20/20-20_Sealing_and_Pressurization/forms/`
 
 4. **FORM-QA-20-30-01** — Material Handling & OOC Log
-   - Path: `../../../AAA/ata/ATA-20/20-30_Material_Handling/forms/`
+   - Path: `../../../../AAA/ata/ATA-20/20-30_Material_Handling/forms/`
 
 5. **FORM-QA-20-40-01** — Bonding / EMI Continuity
-   - Path: `../../../AAA/ata/ATA-20/20-40_Electrical_Bonding/forms/`
+   - Path: `../../../../AAA/ata/ATA-20/20-40_Electrical_Bonding/forms/`
 
 ## Evidence Types
 
