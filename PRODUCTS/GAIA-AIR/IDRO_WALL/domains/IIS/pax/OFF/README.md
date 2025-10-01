@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # PAx/OFF — Off-Board
 
-Términos detectados: DOCKER.
+Detected terms: DOCKER.
