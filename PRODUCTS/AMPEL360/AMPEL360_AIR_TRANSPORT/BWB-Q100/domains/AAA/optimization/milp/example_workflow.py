@@ -6,6 +6,7 @@ Demonstrates the complete AQUA MILP optimization workflow
 
 import sys
 import subprocess
+import shlex
 from pathlib import Path
 
 def run_command(cmd, description):
@@ -16,7 +17,8 @@ def run_command(cmd, description):
     print(f"$ {cmd}")
     print()
     
-    result = subprocess.run(cmd, shell=False, capture_output=True, text=True)
+    # Use shlex.split for safe command parsing without shell=True
+    result = subprocess.run(shlex.split(cmd), shell=False, capture_output=True, text=True)
     print(result.stdout)
     if result.stderr:
         print("STDERR:", result.stderr)
