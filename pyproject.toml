@@ -37,6 +37,9 @@ dependencies = [
     "PyYAML>=6.0",
     # XML Processing (Security-focused)
     "defusedxml>=0.7.1",
+    # Quantum Computing (for QUBO optimization in AQUA framework)
+    "pennylane>=0.33.0",
+    "numpy>=1.24.0",
 ]
 
 [project.optional-dependencies]
