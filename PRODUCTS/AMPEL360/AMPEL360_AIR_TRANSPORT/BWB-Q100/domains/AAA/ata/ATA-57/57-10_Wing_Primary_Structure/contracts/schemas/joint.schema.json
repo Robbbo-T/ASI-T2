@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-10/joint.schema.json",
+  "title": "Joint Definition",
+  "description": "Definition of structural joints including mechanical, adhesive, and hybrid configurations.",
+  "type": "object",
+  "required": ["joint_id", "type", "members", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version following semantic versioning"
+    },
+    "joint_id": {
+      "type": "string",
+      "pattern": "^JOINT-[A-Z0-9_-]{3,}$",
+      "description": "Unique joint identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["mechanical", "adhesive", "hybrid", "co-bond", "secondary-bond"],
+      "description": "Joint type classification"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable joint name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of joint purpose and configuration"
+    },
+    "members": {
+      "type": "array",
+      "minItems": 2,
+      "description": "Structural members being joined",
+      "items": {
+        "type": "object",
+        "required": ["member_id", "role"],
+        "properties": {
+          "member_id": {
+            "type": "string",
+            "description": "Reference to structural member (part number or ID)"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["primary", "secondary", "doubler", "strap", "splice"],
+            "description": "Role of member in joint"
+          },
+          "material": {
+            "type": "string",
+            "description": "Member material specification"
+          },
+          "thickness_mm": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Member thickness at joint in mm"
+          }
+        }
+      }
+    },
+    "mechanical_details": {
+      "type": "object",
+      "description": "Details for mechanical joints",
+      "properties": {
+        "fastener_set_ref": {
+          "type": "string",
+          "pattern": "^FAST-[A-Z0-9_-]{3,}$",
+          "description": "Reference to fastener set definition"
+        },
+        "fastener_count": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of fasteners in joint"
+        },
+        "fastener_pattern": {
+          "type": "string",
+          "description": "Description of fastener pattern (e.g., single-row, double-row, staggered)"
+        },
+        "pitch_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Fastener pitch (spacing) in mm"
+        },
+        "edge_distance_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Edge distance in mm"
+        },
+        "bearing_bypass_ratio": {
+          "type": "number",
+          "description": "Bearing to bypass load ratio"
+        }
+      }
+    },
+    "adhesive_details": {
+      "type": "object",
+      "description": "Details for adhesive or bonded joints",
+      "properties": {
+        "adhesive_code": {
+          "type": "string",
+          "description": "Adhesive specification (e.g., FM-300, EA-9394)"
+        },
+        "target_thickness_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Target bondline thickness in mm"
+        },
+        "thickness_tolerance_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Bondline thickness tolerance (±)"
+        },
+        "control_method": {
+          "type": "string",
+          "enum": ["scrim", "beads", "shims", "film"],
+          "description": "Method for controlling bondline thickness"
+        },
+        "surface_prep": {
+          "type": "string",
+          "description": "Surface preparation method (e.g., grit blast, peel ply, solvent wipe)"
+        },
+        "cure_profile_ref": {
+          "type": "string",
+          "description": "Reference to cure profile specification"
+        },
+        "pressure_kPa": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Cure pressure in kPa"
+        },
+        "vacuum_required": {
+          "type": "boolean",
+          "description": "Whether vacuum bagging is required"
+        }
+      }
+    },
+    "hybrid_details": {
+      "type": "object",
+      "description": "Details for hybrid joints (mechanical + adhesive)",
+      "properties": {
+        "fastener_set_ref": {
+          "type": "string",
+          "pattern": "^FAST-[A-Z0-9_-]{3,}$"
+        },
+        "adhesive_code": {
+          "type": "string"
+        },
+        "sequencing": {
+          "type": "string",
+          "enum": ["bond-first", "fastener-first", "simultaneous"],
+          "description": "Installation sequence"
+        },
+        "load_sharing": {
+          "type": "object",
+          "properties": {
+            "adhesive_percent": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Percentage of load carried by adhesive"
+            },
+            "fastener_percent": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Percentage of load carried by fasteners"
+            }
+          }
+        }
+      }
+    },
+    "load_class": {
+      "type": "string",
+      "enum": ["primary", "secondary", "tertiary"],
+      "description": "Structural load classification"
+    },
+    "load_capability": {
+      "type": "object",
+      "description": "Joint load capabilities",
+      "properties": {
+        "ultimate_tension_kN": {"type": "number", "minimum": 0},
+        "ultimate_compression_kN": {"type": "number", "minimum": 0},
+        "ultimate_shear_kN": {"type": "number", "minimum": 0},
+        "ultimate_moment_kNm": {"type": "number", "minimum": 0},
+        "limit_load_factor": {
+          "type": "number",
+          "minimum": 1.0,
+          "description": "Factor from limit to ultimate (typically 1.5)"
+        }
+      }
+    },
+    "environmental_class": {
+      "type": "string",
+      "enum": ["interior", "exterior", "fuel-wetted", "high-temp"],
+      "description": "Environmental exposure classification"
+    },
+    "acceptance": {
+      "type": "object",
+      "properties": {
+        "acceptance_metric_refs": {
+          "type": "array",
+          "description": "References to acceptance metrics",
+          "items": {
+            "type": "string",
+            "pattern": "^ACPT-[A-Z0-9_-]{3,}$"
+          }
+        },
+        "ndt_required": {
+          "type": "boolean",
+          "description": "Whether NDT is required"
+        },
+        "ndt_methods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["UT", "thermography", "tap-test", "X-ray", "visual"]
+          }
+        },
+        "coupon_required": {
+          "type": "boolean",
+          "description": "Whether witness coupons are required"
+        }
+      }
+    },
+    "fitting_refs": {
+      "type": "array",
+      "description": "References to fittings involved in this joint",
+      "items": {
+        "type": "string",
+        "pattern": "^FIT-[A-Z0-9_-]{3,}$"
+      }
+    },
+    "stress_report_ref": {
+      "type": "string",
+      "description": "Reference to stress analysis report"
+    },
+    "test_report_ref": {
+      "type": "string",
+      "description": "Reference to joint qualification test report"
+    },
+    "form_links": {
+      "type": "array",
+      "description": "Links to QA forms (ATA-20)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "form_id": {"type": "string"},
+          "form_name": {"type": "string"},
+          "path": {"type": "string"}
+        }
+      }
+    },
+    "effectivity": {
+      "type": "object",
+      "description": "Effectivity/applicability",
+      "properties": {
+        "start_msn": {"type": "string"},
+        "end_msn": {"type": "string"},
+        "options": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

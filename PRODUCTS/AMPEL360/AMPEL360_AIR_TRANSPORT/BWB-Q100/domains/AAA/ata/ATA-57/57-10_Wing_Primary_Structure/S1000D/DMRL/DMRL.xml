@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DMRL (Data Module Requirements List) for ATA-57-10 Wing Primary Structure -->
+<dmodule xmlns="http://www.s1000d.org/S1000D_5-0/xml_schema_flat/dmodule.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWB-Q100" systemDiffCode="A" systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="00D" infoCodeVariant="A" itemLocationCode="A"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="01" day="01"/>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus>
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="ASI-T"/>
+    </dmStatus>
+  </identAndStatusSection>
+  <content>
+    <description>
+      <levelledPara>
+        <title>DMRL for ATA-57-10 Wing Primary Structure</title>
+        <para>This Data Module Requirements List identifies all S1000D data modules required for the wing primary structure documentation, including procedural, descriptive, and illustrated parts data modules.</para>
+      </levelledPara>
+      <levelledPara>
+        <title>Referenced Data Modules</title>
+        <para>Data modules will be cataloged here as they are developed. Categories include:</para>
+        <randomList>
+          <listItem><para>PR - Procedural modules (maintenance, inspection, repair)</para></listItem>
+          <listItem><para>DS - Descriptive modules (structure descriptions, specifications)</para></listItem>
+          <listItem><para>IPD - Illustrated Parts Data (figures, part lists)</para></listItem>
+          <listItem><para>IR - Illustrated Repair procedures</para></listItem>
+        </randomList>
+      </levelledPara>
+    </description>
+  </content>
+</dmodule>

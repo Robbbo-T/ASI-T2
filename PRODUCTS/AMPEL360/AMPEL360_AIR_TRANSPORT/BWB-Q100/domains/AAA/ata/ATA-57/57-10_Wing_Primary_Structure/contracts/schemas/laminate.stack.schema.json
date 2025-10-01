@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-10/laminate.stack.schema.json",
+  "title": "Laminate Stack",
+  "description": "Definition of composite laminate layup specifications for structural panels.",
+  "type": "object",
+  "required": ["stack_id", "plies", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version following semantic versioning"
+    },
+    "stack_id": {
+      "type": "string",
+      "pattern": "^LAM-[A-Z0-9_-]{3,}$",
+      "description": "Unique laminate stack identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable laminate name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of laminate application"
+    },
+    "material_system": {
+      "type": "object",
+      "required": ["resin", "fiber"],
+      "properties": {
+        "resin": {
+          "type": "string",
+          "description": "Resin system specification (e.g., 8552, 977-3)"
+        },
+        "fiber": {
+          "type": "string",
+          "description": "Fiber type and specification (e.g., IM7, T800, AS4)"
+        },
+        "prepreg_spec": {
+          "type": "string",
+          "description": "Full prepreg specification"
+        },
+        "areal_weight_gsm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Areal weight in grams per square meter"
+        },
+        "cured_ply_thickness_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Nominal cured ply thickness in mm"
+        }
+      }
+    },
+    "plies": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Ordered list of plies from bottom to top",
+      "items": {
+        "type": "object",
+        "required": ["ply_number", "orientation_deg"],
+        "properties": {
+          "ply_number": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Sequential ply number (1 = bottom, n = top)"
+          },
+          "orientation_deg": {
+            "type": "number",
+            "description": "Fiber orientation in degrees (0 = reference direction)"
+          },
+          "material_code": {
+            "type": "string",
+            "description": "Material code if different from base material system"
+          },
+          "thickness_mm": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Ply thickness in mm (if non-standard)"
+          },
+          "ply_type": {
+            "type": "string",
+            "enum": ["structural", "barrier", "lightning-strike", "erosion-shield"],
+            "description": "Ply functional type"
+          },
+          "full_ply": {
+            "type": "boolean",
+            "description": "Whether ply extends over entire panel (false = partial ply)"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Special notes about this ply (e.g., taper, cutout)"
+          }
+        }
+      }
+    },
+    "total_thickness_mm": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total nominal laminate thickness in mm"
+    },
+    "fiber_volume_fraction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Fiber volume fraction (Vf)"
+    },
+    "symmetry": {
+      "type": "object",
+      "properties": {
+        "is_symmetric": {
+          "type": "boolean",
+          "description": "Whether layup is symmetric about midplane"
+        },
+        "is_balanced": {
+          "type": "boolean",
+          "description": "Whether layup is balanced (±θ plies)"
+        }
+      }
+    },
+    "ply_percentages": {
+      "type": "object",
+      "description": "Percentage of plies by orientation",
+      "properties": {
+        "zero_deg_percent": {"type": "number", "minimum": 0, "maximum": 100},
+        "plus_45_deg_percent": {"type": "number", "minimum": 0, "maximum": 100},
+        "minus_45_deg_percent": {"type": "number", "minimum": 0, "maximum": 100},
+        "ninety_deg_percent": {"type": "number", "minimum": 0, "maximum": 100}
+      }
+    },
+    "cure_profile": {
+      "type": "object",
+      "description": "Cure cycle parameters",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "description": "Reference to cure profile specification"
+        },
+        "temperature_C": {
+          "type": "number",
+          "description": "Cure temperature in Celsius"
+        },
+        "hold_time_min": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Hold time at cure temperature in minutes"
+        },
+        "pressure_kPa": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Cure pressure in kPa (autoclave or press)"
+        },
+        "vacuum_required": {
+          "type": "boolean",
+          "description": "Whether vacuum bagging is required"
+        },
+        "vacuum_kPa": {
+          "type": "number",
+          "description": "Vacuum level in kPa (if applicable)"
+        }
+      }
+    },
+    "allowables": {
+      "type": "object",
+      "description": "Material allowables for this laminate",
+      "properties": {
+        "basis": {
+          "type": "string",
+          "enum": ["A-basis", "B-basis", "S-basis"],
+          "description": "Statistical basis for allowables"
+        },
+        "tension_0_MPa": {"type": "number", "description": "0° tension strength"},
+        "compression_0_MPa": {"type": "number", "description": "0° compression strength"},
+        "shear_12_MPa": {"type": "number", "description": "In-plane shear strength"},
+        "test_report_ref": {
+          "type": "string",
+          "description": "Reference to coupon test report"
+        }
+      }
+    },
+    "quality_requirements": {
+      "type": "object",
+      "properties": {
+        "void_content_max_percent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Maximum allowable void content percentage"
+        },
+        "fiber_waviness_max": {
+          "type": "number",
+          "description": "Maximum fiber waviness (in degrees or mm/mm)"
+        },
+        "ndt_required": {
+          "type": "boolean",
+          "description": "Whether NDT is required"
+        },
+        "ndt_method": {
+          "type": "string",
+          "enum": ["UT", "thermography", "tap-test"],
+          "description": "Required NDT method"
+        },
+        "coupon_required": {
+          "type": "boolean",
+          "description": "Whether witness coupons are required"
+        }
+      }
+    },
+    "applications": {
+      "type": "array",
+      "description": "Structural applications of this laminate",
+      "items": {
+        "type": "string",
+        "description": "Application description (e.g., 'Upper skin WS 300-400')"
+      }
+    },
+    "drawing_ref": {
+      "type": "string",
+      "description": "Reference to engineering drawing"
+    },
+    "stress_report_ref": {
+      "type": "string",
+      "description": "Reference to stress analysis report"
+    },
+    "form_link": {
+      "type": "string",
+      "description": "Link to QA form (ATA-20-10-02) for bonding/layup"
+    },
+    "effectivity": {
+      "type": "object",
+      "description": "Effectivity/applicability",
+      "properties": {
+        "start_msn": {"type": "string"},
+        "end_msn": {"type": "string"},
+        "options": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

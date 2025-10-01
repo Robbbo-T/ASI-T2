@@ -1,0 +1,248 @@
+# UTCS/QS Routing Manifest for ATA-57-10 Wing Primary Structure
+# Defines inputs, outputs, sources, and traceability anchors for data flows
+
+id: UTCS-MI:v5.0:BWB-Q100:ATA-57:57-10
+version: "0.1.0"
+artifact: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/57-10_Wing_Primary_Structure/io/routing.manifest.yaml
+project: BWB-Q100
+domain: AAA
+chapter: ATA-57-10
+maintainer: ASI-T Architecture Team
+timestamp: 2025-01-01T00:00:00Z
+
+# Data sources (upstream dependencies)
+sources:
+  - name: ATA-20 Standard Practices
+    type: ATA
+    chapter: ATA-20
+    uri: ../../ATA-20/
+    description: Standard practices for fastening, bonding, sealing, material handling
+    required_forms:
+      - FORM-QA-20-10-01_Composite_Fastening
+      - FORM-QA-20-10-02_Adhesive_Bonding
+      - FORM-QA-20-20-01_Cabin_Integrity_Leak_Test
+      - FORM-QA-20-30-01_Material_Handling_OOC_Log
+      - FORM-QA-20-40-01_Bonding_EMI_Continuity
+
+  - name: ATA-53 Fuselage Structure
+    type: ATA
+    chapter: ATA-53
+    uri: ../../ATA-53/
+    description: Interface definitions for wing-to-fuselage attachments
+    icd_refs:
+      - ICD-57-10-53_Fuselage_Attachments
+
+  - name: ATA-57-20 Control Surfaces
+    type: ATA
+    chapter: ATA-57-20
+    uri: ../57-20_Control_Surfaces/
+    description: Interface definitions for hinge/actuator hard-points
+    icd_refs:
+      - ICD-57-10-57-20_Control_Surfaces
+
+  - name: ATA-57-50 Systems Provisions
+    type: ATA
+    chapter: ATA-57-50
+    uri: ../57-50_Systems_Provisions_Interfaces/
+    description: Interface definitions for systems routing and mounting
+    icd_refs:
+      - ICD-57-10-57-50_Systems_Provisions
+
+  - name: CAX Geometry
+    type: CAX
+    subdomain: CAD
+    uri: ../../../cax/CAD/WingBox_v*/
+    description: Wing geometry (OML, structural definitions, part models)
+    artifacts:
+      - geometry/STEP/*.stp
+      - geometry/IGES/*.igs
+      - metadata/*.cad.json
+
+  - name: CAX Analysis
+    type: CAX
+    subdomain: FEA
+    uri: ../../../cax/FEA/WingBoxLoads_v*/
+    description: FEA models, loads, stress results, margins
+    artifacts:
+      - models/*.fem
+      - results/*.op2
+      - reports/*.pdf
+
+# Data inputs (consumed by ATA-57-10 processes)
+inputs:
+  - artifact: Wing OML Definition
+    schema: cad_manifest.schema.json
+    uri: ../../../cax/CAD/WingBox_v1/geometry/metadata/BWB-Q100-WING-OML.cad.json
+    hash: sha256:TBD
+    description: Outer mold line geometry for wing structure
+
+  - artifact: Wing Loads Set
+    schema: loads.schema.json
+    uri: ../../../cax/FEA/WingBoxLoads_v1/loads/LS-57-10-001.json
+    hash: sha256:TBD
+    description: Design loads for wing primary structure
+
+  - artifact: Material Allowables
+    schema: allowables.schema.json
+    uri: ../../../cax/FEA/allowables/COMPOSITE-IM7-8552.json
+    hash: sha256:TBD
+    description: Material properties and allowables
+
+  - artifact: Joint Definitions
+    schema: joint.schema.json
+    uri: ./contracts/schemas/joint.schema.json
+    hash: sha256:TBD
+    description: Structural joint configurations
+
+  - artifact: Fastener Sets
+    schema: fastener.set.schema.json
+    uri: ./contracts/schemas/fastener.set.schema.json
+    hash: sha256:TBD
+    description: Fastener specifications
+
+  - artifact: Laminate Stacks
+    schema: laminate.stack.schema.json
+    uri: ./contracts/schemas/laminate.stack.schema.json
+    hash: sha256:TBD
+    description: Composite layup definitions
+
+  - artifact: Attachment Fittings
+    schema: attachment.fitting.schema.json
+    uri: ./contracts/schemas/attachment.fitting.schema.json
+    hash: sha256:TBD
+    description: Wing attach fitting specifications
+
+# Data outputs (produced by ATA-57-10 processes)
+outputs:
+  - artifact: Wing Structure BOM
+    schema: bom.schema.json
+    uri: ./outputs/BOM-57-10-v1.json
+    hash: sha256:TBD
+    description: Bill of materials for wing primary structure
+    status: planned
+
+  - artifact: S1000D Data Modules
+    schema: dmrl.schema.json
+    uri: ./S1000D/DMRL/DMRL.xml
+    hash: sha256:TBD
+    description: Technical documentation data modules
+    status: baseline
+
+  - artifact: Assembly Procedures
+    schema: procedure.schema.json
+    uri: ./S1000D/DMC/PR/
+    hash: sha256:TBD
+    description: Manufacturing and assembly procedures
+    status: in-work
+
+  - artifact: Inspection Plans
+    schema: inspection.schema.json
+    uri: ./evidence/ndt/
+    hash: sha256:TBD
+    description: NDT inspection plans and acceptance criteria
+    status: baseline
+
+# QOX optimization problems (if applicable)
+qox:
+  - problem: Fastener Layout Optimization
+    type: QUBO
+    uri: ../../../qox/opt/fastener_layout/PROB-57-10-FASTENER.qubo.json
+    description: Optimize fastener locations for minimum mass and maximum strength
+    status: planned
+    solver: quantum-annealer
+    result_uri: ../../../qox/opt/fastener_layout/RESULT-57-10-FASTENER.json
+
+  - problem: Ply Orientation Optimization
+    type: BQM
+    uri: ../../../qox/opt/ply_orientation/PROB-57-10-PLY.bqm.json
+    description: Optimize ply orientations for buckling resistance
+    status: planned
+    solver: hybrid-solver
+    result_uri: ../../../qox/opt/ply_orientation/RESULT-57-10-PLY.json
+
+# PAX deployment packages
+pax:
+  OB:  # On-Board packages
+    - package: Wing Structure Config Baseline
+      uri: ../../../pax/OB/manifests/wing-structure-baseline-v1.manifest.yaml
+      description: On-board configuration data for wing structure
+      status: planned
+      sbom_uri: ../../../pax/OB/sbom/wing-structure-baseline-v1.sbom.json
+
+  OFF:  # Off-Board packages
+    - package: Wing Assembly Instructions
+      uri: ../../../pax/OFF/oci/wing-assembly-v1/
+      description: Containerized assembly instructions and tooling
+      status: planned
+      oci_image: wing-assembly:v1.0.0
+
+# Evidence and traceability
+evidence:
+  - type: coupon-tests
+    description: Material characterization coupon test results
+    uri: ./evidence/coupons/index.md
+    records:
+      - id: CT-57-10-001
+        uri: ../../../cax/testing/coupons/CT-57-10-001/
+        hash: sha256:TBD
+
+  - type: ndt-results
+    description: Non-destructive testing inspection results
+    uri: ./evidence/ndt/index.md
+    records:
+      - id: NDT-57-10-001
+        uri: ./evidence/ndt/wing-skins-ut/
+        hash: sha256:TBD
+
+  - type: structural-tests
+    description: Structural test results (element, subcomponent, full-scale)
+    uri: ./evidence/tests/index.md
+    records:
+      - id: ST-57-10-001
+        uri: ../../../cax/testing/structural/ST-57-10-001/
+        hash: sha256:TBD
+
+  - type: stress-analysis
+    description: Stress analysis reports and FEA results
+    uri: ./compliance/stress/index.md
+    records:
+      - id: SR-57-10-001
+        uri: ../../../cax/FEA/stress/wingbox/SR-57-10-001/
+        hash: sha256:TBD
+
+  - type: qa-forms
+    description: Quality assurance forms and records
+    uri: ../../ATA-20/
+    forms:
+      - FORM-QA-20-10-01_Composite_Fastening
+      - FORM-QA-20-10-02_Adhesive_Bonding
+      - FORM-QA-20-40-01_Bonding_EMI_Continuity
+
+# UTCS/QS quantum-safe anchors
+utcs:
+  canonical_hash: TBD  # SHA-256 hash of complete artifact tree
+  sbom_uri: ./outputs/SBOM-57-10-v1.json
+  signer: ASI-T-PKI-AUTHORITY
+  signature: TBD  # Quantum-safe signature
+  timestamp: 2025-01-01T00:00:00Z
+  provenance:
+    - who: ASI-T Architecture Team
+      what: Initial baseline creation
+      when: 2025-01-01T00:00:00Z
+      where: PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/ata/ATA-57/57-10_Wing_Primary_Structure/
+      why: Establish configuration-controlled baseline for wing primary structure
+
+# Change control
+change_log:
+  - version: "0.1.0"
+    date: 2025-01-01
+    author: ASI-T Architecture Team
+    description: Initial baseline creation
+    approval: TBD
+
+---
+# Notes
+# - All 'TBD' hashes must be computed and filled in during configuration freeze
+# - All 'planned' status items require completion before certification
+# - UTCS signatures require quantum-safe cryptographic sealing
+# - Evidence bundles must link back to this manifest via canonical_hash
