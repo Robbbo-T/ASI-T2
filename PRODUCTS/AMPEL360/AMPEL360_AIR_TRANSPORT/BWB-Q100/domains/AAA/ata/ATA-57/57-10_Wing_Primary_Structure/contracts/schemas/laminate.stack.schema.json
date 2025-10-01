@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.org/schemas/ata-57-10/laminate.stack.schema.json",
+  "$id": "https://your-org-domain.com/schemas/ata-57-10/laminate.stack.schema.json",
   "title": "Laminate Stack",
   "description": "Definition of composite laminate layup specifications for structural panels.",
   "type": "object",
