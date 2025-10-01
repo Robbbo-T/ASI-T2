@@ -1,0 +1,30 @@
+# Baseline Index (ATA-42 IIS)
+
+Immutable snapshot index with paths, hashes, and metadata.
+
+## Format
+
+```yaml
+baselines:
+  - id: string                    # Unique baseline identifier (e.g., BL-ATA42-001)
+    version: string               # Baseline version (e.g., 1.0.0)
+    date: ISO8601                 # Baseline creation date
+    description: string           # Purpose/milestone description
+    status: Draft|Approved|Active|Superseded
+    approver: string              # Sign-off authority
+    utcs_ref: string             # QS/UTCS immutability anchor
+    artifacts:
+      - path: string              # Relative path to artifact
+        hash: sha256:...          # SHA-256 hash
+        size: integer             # File size in bytes
+    test_results:
+      - path: string              # Path to test report
+        hash: sha256:...
+    evidence:
+      - path: string              # Path to evidence bundle
+        hash: sha256:...
+```
+
+## Baseline History
+
+<!-- Add baseline entries below -->

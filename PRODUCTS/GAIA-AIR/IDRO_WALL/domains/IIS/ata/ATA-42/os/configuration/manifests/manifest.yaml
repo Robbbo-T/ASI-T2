@@ -1,0 +1,54 @@
+# Evidence Manifest (ATA-42 IIS)
+
+Configuration hashes, SBOM references, test results, approvals, and QS anchor.
+
+```yaml
+manifest:
+  id: "MANIFEST-ATA42-IIS-001"
+  version: "0.1.0"
+  date: "2025-10-01T00:00:00Z"
+  product: "GAIA-AIR/IDRO_WALL"
+  domain: "IIS"
+  ata_chapter: "ATA-42"
+  description: "Initial IMA configuration baseline"
+
+  configuration:
+    - artifact: "os/configuration/a653/partition.xml"
+      hash: "sha256:pending"
+      version: "0.1.0"
+      description: "ARINC-653 partition definitions"
+    
+    - artifact: "os/configuration/a653/schedule.xml"
+      hash: "sha256:pending"
+      version: "0.1.0"
+      description: "ARINC-653 temporal schedule"
+
+  sbom:
+    # Software Bill of Materials - to be populated
+    # - component: "RTOS-Core"
+    #   version: "x.y.z"
+    #   license: "Commercial"
+    #   supplier: "Vendor Name"
+    #   hash: "sha256:..."
+
+  testing:
+    # Test results - to be populated
+    # - test_report: "os/testing/results/partition_isolation_test.md"
+    #   hash: "sha256:..."
+    #   status: "PASS"
+    #   coverage: "100%"
+
+  approvals:
+    # Approvals - to be populated
+    # - approver: "J.Smith"
+    #   role: "System Lead"
+    #   date: "2025-10-01T00:00:00Z"
+    #   signature: "digital_signature_placeholder"
+
+  mal_eem:
+    guard_version: "pending"
+    policy_hash: "sha256:pending"
+
+  utcs_mi: "v5.0"
+  qs_anchor: "pending"
+```
