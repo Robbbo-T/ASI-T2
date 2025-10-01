@@ -16,7 +16,7 @@ def run_command(cmd, description):
     print(f"$ {cmd}")
     print()
     
-    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    result = subprocess.run(cmd, shell=False, capture_output=True, text=True)
     print(result.stdout)
     if result.stderr:
         print("STDERR:", result.stderr)
