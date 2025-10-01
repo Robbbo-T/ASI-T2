@@ -561,5 +561,3 @@ A **QS seal** is applied only when:
 
 
 *Part of the BWB-Q100 technical baseline. Subject to configuration control.*
-```
-```
