@@ -1,22 +1,18 @@
 # Approvals Register (ATA-42 IIS)
+# Structured approval and sign-off records for IMA configuration changes.
 
-Structured approval and sign-off records for IMA configuration changes.
+# Format:
+# approvals:
+#   - id: string                    # Unique approval identifier
+#     date: ISO8601                 # Approval date
+#     artifact: path                # Relative path to artifact
+#     artifact_hash: sha256:...     # SHA-256 hash of approved artifact
+#     decision: APPROVED|REJECTED|CONDITIONAL
+#     approver: string              # Name and role
+#     rationale: string             # Decision rationale
+#     conditions: list[string]      # If CONDITIONAL
+#     utcs_ref: string             # QS/UTCS anchor (optional)
 
-## Format
-
-```yaml
-approvals:
-  - id: string                    # Unique approval identifier
-    date: ISO8601                 # Approval date
-    artifact: path                # Relative path to artifact
-    artifact_hash: sha256:...     # SHA-256 hash of approved artifact
-    decision: APPROVED|REJECTED|CONDITIONAL
-    approver: string              # Name and role
-    rationale: string             # Decision rationale
-    conditions: list[string]      # If CONDITIONAL
-    utcs_ref: string             # QS/UTCS anchor (optional)
-```
-
-## Current Approvals
-
-<!-- Add approval entries below -->
+# Current Approvals
+# Add approval entries below
+approvals: []
