@@ -109,6 +109,36 @@ Structure validation is automated via `scripts/verify_structure.py` and CI workf
 
 ---
 
+## Documentation & Whitepapers
+
+### Master Whitepaper #1
+
+The repository includes comprehensive technical documentation in the **WHITEPAPERS/** directory:
+
+* **[Master Whitepaper #1](WHITEPAPERS/MASTER_WHITEPAPER_1.md)** — Complete system-of-systems specification covering:
+  - All 7 ecosystem products (AMPEL360 BWB, GAIA SPACE, GAIA AIR, Digital Platform, AMPEL 360PLUS, H₂/LH₂ Airport, Sustainable Finance)
+  - TFA V2 architecture (CB→QB→UE/FE→FWD→QS)
+  - MAL (Master Application Layer) specification
+  - Evidence & provenance pipeline (QS/UTCS)
+  - V&V and safety methodology
+  - Compliance and ethics (MAL-EEM)
+  - Roadmap with FCR-1/FCR-2 gates
+
+* **[Product Specification Template](WHITEPAPERS/schemas/PRODUCT_SPEC_TEMPLATE.yaml)** — Reusable YAML template for defining new products with MAL interfaces, standards tracking, and gate requirements
+
+### Sustainable Finance Framework
+
+The **FINANCE/** directory contains the anti-speculative economic design:
+
+* **[Finance Overview](FINANCE/README.md)** — Framework emphasizing service-aligned economics with SLO-based rewards, operational credits, and quadratic funding
+* **[Finance Principles](FINANCE/PRINCIPLES.md)** — Detailed mechanisms including demurrage, lock-ups, slashing, and treasury governance
+
+### Citation
+
+The repository includes **CITATION.cff** for proper academic citation (CFF 1.2.0 compliant).
+
+---
+
 ## CAD
 
 ### Where to put models
