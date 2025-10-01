@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-10/attachment.fitting.schema.json",
+  "title": "Attachment Fitting",
+  "description": "Definition of attachment fittings for wing-to-fuselage connections and system hard-points.",
+  "type": "object",
+  "required": ["fitting_id", "type", "material", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version following semantic versioning"
+    },
+    "fitting_id": {
+      "type": "string",
+      "pattern": "^FIT-[A-Z0-9_-]{3,}$",
+      "description": "Unique fitting identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["lug", "clevis", "tang", "hard-point", "bracket"],
+      "description": "Fitting type"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable fitting name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of fitting purpose and location"
+    },
+    "material": {
+      "type": "object",
+      "required": ["specification", "condition"],
+      "properties": {
+        "specification": {
+          "type": "string",
+          "description": "Material specification (e.g., AMS 4928 for Ti-6Al-4V)"
+        },
+        "condition": {
+          "type": "string",
+          "description": "Material condition (e.g., annealed, solution treated, aged)"
+        },
+        "strength_basis": {
+          "type": "string",
+          "enum": ["A-basis", "B-basis", "S-basis", "typical"],
+          "description": "Material strength basis"
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "cad_ref": {
+          "type": "string",
+          "description": "Reference to CAD model (part number or file)"
+        },
+        "drawing_ref": {
+          "type": "string",
+          "description": "Reference to engineering drawing"
+        },
+        "envelope": {
+          "type": "object",
+          "description": "Bounding box dimensions",
+          "properties": {
+            "length_mm": {"type": "number", "minimum": 0},
+            "width_mm": {"type": "number", "minimum": 0},
+            "height_mm": {"type": "number", "minimum": 0}
+          }
+        }
+      }
+    },
+    "load_capability": {
+      "type": "object",
+      "description": "Ultimate load capabilities",
+      "properties": {
+        "ultimate_tension_kN": {"type": "number", "minimum": 0},
+        "ultimate_compression_kN": {"type": "number", "minimum": 0},
+        "ultimate_shear_kN": {"type": "number", "minimum": 0},
+        "ultimate_moment_kNm": {"type": "number", "minimum": 0},
+        "limit_load_factor": {
+          "type": "number",
+          "minimum": 1.0,
+          "description": "Factor from limit to ultimate (typically 1.5)"
+        }
+      }
+    },
+    "bushings": {
+      "type": "array",
+      "description": "Bushings installed in fitting",
+      "items": {
+        "type": "object",
+        "required": ["bushing_id", "material", "bore_diameter_mm"],
+        "properties": {
+          "bushing_id": {
+            "type": "string",
+            "description": "Bushing identifier"
+          },
+          "material": {
+            "type": "string",
+            "description": "Bushing material (e.g., Steel 300M)"
+          },
+          "bore_diameter_mm": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Bore diameter in mm"
+          },
+          "length_mm": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Bushing length in mm"
+          },
+          "fit_class": {
+            "type": "string",
+            "description": "Fit class (e.g., Class 3, H7/g6)"
+          }
+        }
+      }
+    },
+    "pin_size": {
+      "type": "object",
+      "description": "Pin or bolt dimensions",
+      "properties": {
+        "diameter_mm": {"type": "number", "minimum": 0},
+        "material": {"type": "string", "description": "Pin material specification"},
+        "specification": {"type": "string", "description": "Pin part number or spec"}
+      }
+    },
+    "tolerance_class": {
+      "type": "string",
+      "description": "Dimensional tolerance class (e.g., ±0.1 mm, IT7)"
+    },
+    "surface_finish": {
+      "type": "object",
+      "properties": {
+        "ra_um": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Surface roughness Ra in micrometers"
+        },
+        "coating": {
+          "type": "string",
+          "description": "Surface coating or treatment (e.g., cadmium plating, anodize)"
+        }
+      }
+    },
+    "fasteners": {
+      "type": "array",
+      "description": "Fasteners attaching fitting to structure",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fastener_id": {"type": "string"},
+          "quantity": {"type": "integer", "minimum": 1},
+          "pattern": {"type": "string", "description": "Hole pattern description"}
+        }
+      }
+    },
+    "icd_ref": {
+      "type": "string",
+      "description": "Reference to Interface Control Document"
+    },
+    "joints": {
+      "type": "array",
+      "description": "References to joint definitions that use this fitting",
+      "items": {
+        "type": "string",
+        "pattern": "^JOINT-[A-Z0-9_-]{3,}$"
+      }
+    },
+    "stress_report_ref": {
+      "type": "string",
+      "description": "Reference to stress analysis report"
+    },
+    "test_report_ref": {
+      "type": "string",
+      "description": "Reference to structural test report (if tested)"
+    },
+    "effectivity": {
+      "type": "object",
+      "description": "Effectivity/applicability",
+      "properties": {
+        "start_msn": {"type": "string", "description": "Start manufacturing serial number"},
+        "end_msn": {"type": "string", "description": "End manufacturing serial number"},
+        "options": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Required option codes"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+---
+# Schema Version Manifest (CO-3.26)
+# Version pinning for all 360IPCirq JSON schemas
+
+id: "SCHEMA-MANIFEST-360IPCirq"
+version: "1.0.0"
+release_date: "2025-10-01"
+description: "Version pinning and integrity sealing for 360IPCirq schemas"
+
+schemas:
+  - schema_name: "ipd.item"
+    version: "1.0.0"
+    uri: "./ipd.item.schema.json"
+    checksum: "sha256:TBD"
+    description: "IPD Item/Callout schema (CO-3.2)"
+    status: "ACTIVE"
+    
+  - schema_name: "irq.tuple"
+    version: "1.0.0"
+    uri: "./irq.tuple.schema.json"
+    checksum: "sha256:TBD"
+    description: "IRQ Tuple schema (CO-3.18)"
+    status: "ACTIVE"
+    
+  - schema_name: "effectivity.rule"
+    version: "1.0.0"
+    uri: "./effectivity.rule.schema.json"
+    checksum: "sha256:TBD"
+    description: "Effectivity Rule schema (CO-3.16)"
+    status: "ACTIVE"
+    
+  - schema_name: "evidence.file"
+    version: "1.0.0"
+    uri: "./evidence.file.schema.json"
+    checksum: "sha256:TBD"
+    description: "Evidence File Reference schema (CO-3.23)"
+    status: "ACTIVE"
+
+validation_rules:
+  - rule: "All data objects must pass schema validation before acceptance"
+    enforcement: "MANDATORY"
+    
+  - rule: "Schema modifications require version increment"
+    enforcement: "MANDATORY"
+    
+  - rule: "Backward compatibility must be maintained for minor versions"
+    enforcement: "RECOMMENDED"
+    
+  - rule: "Breaking changes require major version increment"
+    enforcement: "MANDATORY"
+
+utcs_qis:
+  canonical_hash: "TBD"
+  sbom_uri: "TBD"
+  signer: "ASI-T:Schema-Authority"
+  timestamp: "2025-10-01T00:00:00Z"
+
+change_control:
+  change_notice: "CN-SCHEMA-360IPCirq-001"
+  approver: "ASI-T Architecture Team"
+  approval_date: "2025-10-01"
+  next_review: "2026-10-01"

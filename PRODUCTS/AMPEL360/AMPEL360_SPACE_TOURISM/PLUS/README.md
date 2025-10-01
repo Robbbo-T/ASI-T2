@@ -101,7 +101,7 @@ Following the AMPEL360 domain → process (CAx/QOx) → ATA pattern, PLUS implem
 * [AAA — Aerodynamics & Airframes](./domains/AAA/) — Space vehicle structures and reentry aerodynamics
 * [PPP — Propulsion & Fuel Systems](./domains/PPP/) — Sustainable space propulsion and fuel management
 * [CCC — Cockpit, Cabin & Cargo](./domains/CCC/) — Passenger experience and life support systems
-* [EEE — Ecological Efficient Electrification](./domains/EEE/) — Sustainable power systems
+* [EEE — Electrical, Hydraulic & Energy (EHR)](./domains/EEE/) — Power systems, hydraulics, and energy resources
 * [LCC — Linkages, Control & Communications](./domains/LCC/) — Flight control and communication systems
 * [MEC — Mechanical Systems Modules](./domains/MEC/) — Mechanical components and actuators
 * [IIS — Integrated Intelligence & Software](./domains/IIS/) — Autonomous systems and software

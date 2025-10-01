@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schemas/actuator_attachment.schema.json",
+  "version": "1.0.0",
+  "attachment_id": "ACTF-ELV-001",
+  "actuator_type": "electromechanical",
+  "interface_icd_ref": "ICD-57-20-27_Flight_Control_System.md",
+  "load_capacity_kN": 45.0,
+  "stroke_mm": 150.0,
+  "fastener_set_refs": [
+    "FST-ACTF-M12-TI"
+  ],
+  "preload_requirement": "Preload to 80% of proof load per ATA-20 standard practices",
+  "acceptance_metrics": [
+    {
+      "version": "1.0.0",
+      "metric_id": "ACPT-ACTF-PRELOAD",
+      "name": "Actuator Attachment Preload",
+      "description": "Bolt preload verification for actuator attachment",
+      "unit": "kN",
+      "target": 60.0,
+      "limit_lower": 54.0,
+      "limit_upper": 66.0,
+      "method_ref": "DMC-57-20-PR-ACTF-INSTALL-001",
+      "evidence_refs": [
+        "evidence://actuator_attachment/ACTF-ELV-001_preload_test.csv"
+      ],
+      "notes": "Measured with calibrated load cell during installation"
+    },
+    {
+      "version": "1.0.0",
+      "metric_id": "ACPT-ACTF-ALIGN",
+      "name": "Actuator Alignment",
+      "description": "Angular misalignment at actuator attachment point",
+      "unit": "deg",
+      "target": 0.0,
+      "limit_lower": -0.5,
+      "limit_upper": 0.5,
+      "method_ref": "DMC-57-20-PR-ACTF-ALIGN-001",
+      "evidence_refs": [
+        "evidence://actuator_attachment/ACTF-ELV-001_alignment.csv"
+      ],
+      "notes": "Measured with precision angle gauge and laser alignment"
+    }
+  ],
+  "notes": "Primary actuator attachment for left elevon. Electromechanical linear actuator with 45 kN capacity. Clevis-type attachment with spherical bearing to accommodate angular deflection. Titanium fitting with local reinforcement in control surface structure."
+}

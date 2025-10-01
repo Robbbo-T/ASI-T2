@@ -51,10 +51,10 @@ Target: autonomous H₂-fuel-cell UAV fleet optimized for **delivery efficiency*
 **Domains**
 - AAA — Aerodynamics & Airframes → [`./domains/AAA/`](./domains/AAA/)
 - PPP — Propulsion & Fuel Systems (H₂) → [`./domains/PPP/`](./domains/PPP/)
-- EEE — Electrification & Power → [`./domains/EEE/`](./domains/EEE/)
+- EEE — Electrical, Hydraulic & Energy → [`./domains/EEE/`](./domains/EEE/)
 - LCC — Linkages, Control & Comms → [`./domains/LCC/`](./domains/LCC/)
 - IIS — Integrated Intelligence & Software → [`./domains/IIS/`](./domains/IIS/)
-- DDD — Digital & Data Defense → [`./domains/DDD/`](./domains/DDD/)
+- DDD — Drainage, Dehumidification & Drying → [`./domains/DDD/`](./domains/DDD/)
 - CQH — Cryogenics, Quantum & H₂ → [`./domains/CQH/`](./domains/CQH/)
 
 **Processes (AAA examples)**

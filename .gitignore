@@ -39,5 +39,9 @@ build/
 .pytest_cache/
 .ruff_cache/
 
-# AQUA MILP optimization outputs (generated artifacts)
+# AQUA optimization outputs (generated artifacts)
+# Ignore any UTCS JSON solve outputs anywhere:
 **/aqua_pyomo_solve_utcs.json
+# And the specific planned UTCS output path:
+PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/optimization/aqua_pyomo_plan_utcs.json
+

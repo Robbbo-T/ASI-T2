@@ -1,0 +1,112 @@
+---
+# ASI-T2 Product Specification Template
+# Based on Master Whitepaper #1, Appendix A
+# This template should be instantiated for each product in the portfolio
+
+product: "<PRODUCT_NAME>"
+trl: "<TECHNOLOGY_READINESS_LEVEL>"  # 1-9
+maturity: "MVP (SIL) → HIL"  # Current and planned maturity
+
+interfaces:
+  control_bus: "MAL.v1.control"
+  telemetry_bus: "MAL.v1.telemetry"
+  data_schema: "schemas/v1/<product_name>.json"
+
+standards_lite:
+  - "ARP4754A"  # System development
+  - "ARP4761"   # Safety assessment
+  - "AS9100-lite"  # Quality management
+  # Add product-specific standards:
+  # - "DO-178C"  # Software (for airborne systems)
+  # - "DO-254"   # Hardware (for programmable logic)
+  # - "ECSS"     # European space standards
+
+artifacts:
+  - "SRS"  # System Requirements Specification
+  - "SDD"  # System Design Document
+  - "V&V-plan"  # Verification & Validation Plan
+  - "safety-case"  # Safety Case (lite)
+  - "SBOM"  # Software Bill of Materials
+  - "demos"  # Demo videos and logs
+
+evidence:
+  doi: "TBD"
+  utcs_anchor: "TBD"
+  signed_tag: "v0.1.0"
+
+demos:
+  - name: "SIL_<PRODUCT_NAME>_v1"
+    inputs: "inputs/scenarios/*.json"
+    outputs: "evidence/demos/SIL_<PRODUCT_NAME>_v1/"
+    metrics:
+      - "stability"
+      - "energy"
+      - "tracking_error"
+    # Add product-specific metrics:
+    # For BWB:
+    #   - "tracking_error"
+    #   - "energy_efficiency"
+    #   - "stability_margins"
+    # For GAIA:
+    #   - "downlink_latency"
+    #   - "packet_integrity"
+    #   - "mission_success_rate"
+    # For Swarm:
+    #   - "mean_pairwise_distance"
+    #   - "collision_count"
+    #   - "mission_completion_rate"
+
+# TFA V2 Bridge Status
+tfa_bridge:
+  CB: "Complete"  # Conceptual Baseline
+  QB: "In Progress"  # Qualified Baseline
+  UE: "Planned"  # User Evidence
+  FE: "Planned"  # Federation Entanglement
+  FWD: "Planned"  # Forward Design
+  QS: "Planned"  # Quantum Superposition State
+
+# Compliance & Ethics
+compliance:
+  mal_eem_compliant: true
+  export_control: "TBD"  # EU 2021/821, ITAR/EAR assessment
+  safety_critical: true
+  dal: "TBD"  # Design Assurance Level (A-E)
+
+# Dependencies
+dependencies:
+  - product: "INFRANET/QAIM"
+    interface: "MAL.v1.optimization"
+    version: "v1.0.0"
+  - product: "INFRANET/AQUA_OS"
+    interface: "MAL.v1.platform"
+    version: "v1.0.0"
+
+# Gates & Milestones
+gates:
+  FCR-1:  # Formal Checkpoint Review 1
+    status: "Pending"
+    requirements:
+      - "SBOM generated"
+      - "Demo videos/logs published"
+      - "DOI obtained"
+      - "Git tag signed"
+      - "UTCS anchor created"
+  FCR-2:  # Formal Checkpoint Review 2
+    status: "Pending"
+    requirements:
+      - "Reproducibility verified"
+      - "Coverage targets met"
+      - "Attestations generated"
+      - "2 external validations obtained"
+
+# Team & Contacts
+team:
+  product_owner: "TBD"
+  tech_lead: "TBD"
+  safety_engineer: "TBD"
+
+# Notes
+notes: |
+  This specification follows the Master Whitepaper #1 structure.
+  All fields marked TBD must be completed before FCR-1 gate.
+  Update version and signed_tag with each release.

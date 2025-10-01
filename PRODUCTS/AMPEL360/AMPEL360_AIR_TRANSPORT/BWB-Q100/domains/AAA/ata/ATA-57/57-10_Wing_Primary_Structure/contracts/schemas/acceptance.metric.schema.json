@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-10/acceptance.metric.schema.json",
+  "title": "Acceptance Metric",
+  "description": "Acceptance/inspection metric definition used across ATA-57-10 artifacts.",
+  "type": "object",
+  "required": ["metric_id", "name", "unit", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version following semantic versioning"
+    },
+    "metric_id": {
+      "type": "string",
+      "pattern": "^ACPT-[A-Z0-9_-]{3,}$",
+      "description": "Unique acceptance metric identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable metric name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of what is being measured"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measurement (e.g., mm, ohm, kPa/min, %)"
+    },
+    "target": {
+      "type": "number",
+      "description": "Target value for this metric"
+    },
+    "limit_lower": {
+      "type": "number",
+      "description": "Lower acceptance limit (if applicable)"
+    },
+    "limit_upper": {
+      "type": "number",
+      "description": "Upper acceptance limit (if applicable)"
+    },
+    "method_ref": {
+      "type": "string",
+      "description": "Reference to measurement/test procedure (e.g., S1000D DM code)"
+    },
+    "equipment": {
+      "type": "array",
+      "description": "Required measurement equipment",
+      "items": {
+        "type": "object",
+        "required": ["name", "calibration_required"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Equipment name or model"
+          },
+          "calibration_required": {
+            "type": "boolean",
+            "description": "Whether calibration is required"
+          },
+          "calibration_interval_days": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Calibration interval in days (if applicable)"
+          }
+        }
+      }
+    },
+    "acceptance_criteria": {
+      "type": "string",
+      "description": "Textual description of acceptance criteria"
+    },
+    "inspection_frequency": {
+      "type": "string",
+      "enum": ["100%", "sampling", "first-article", "periodic"],
+      "description": "Frequency of inspection"
+    },
+    "sample_size": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Sample size for sampling inspection"
+    },
+    "form_link": {
+      "type": "string",
+      "description": "Link to QA form (ATA-20) for recording results"
+    },
+    "evidence_required": {
+      "type": "boolean",
+      "description": "Whether evidence (photos, data) must be retained"
+    }
+  }
+}

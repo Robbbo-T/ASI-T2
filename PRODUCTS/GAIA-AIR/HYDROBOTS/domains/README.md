@@ -40,12 +40,12 @@ Each domain follows the **CAx (classical)** → **QOx (quantum)** → **PAx (pac
   - PAx (packaging) → [`./AAA/pax/`](./AAA/pax/)
   - Quality/Evidence → [`./AAA/quality/`](./AAA/quality/)
 - **LCC — Linkages, Control & Comms** → [`./LCC/`](./LCC/)
-- **EEE — Electrification & Power** → [`./EEE/`](./EEE/)
+- **EEE — Electrical, Hydraulic & Energy** → [`./EEE/`](./EEE/)
 - **PPP — Propulsion & Fuel Systems** → [`./PPP/`](./PPP/)
 - **CQH — Cryogenics, Quantum & H₂** → [`./CQH/`](./CQH/)
 - **IIS — Integrated Intelligence & Software** → [`./IIS/`](./IIS/)
 - **MEC — Mechanical Systems** → [`./MEC/`](./MEC/)
-- **DDD — Digital & Data Defense** → [`./DDD/`](./DDD/)
+- **DDD — Drainage, Dehumidification & Drying** → [`./DDD/`](./DDD/)
 
 > If a folder is not yet present, create it with a README that follows the **“Domain README pattern”** below.
 

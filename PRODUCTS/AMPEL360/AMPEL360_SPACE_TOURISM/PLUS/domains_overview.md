@@ -40,7 +40,7 @@ Space tourism adapted technical documentation following ATA structure:
 
 ### Passenger Experience & Safety
 - **[CCC — Cockpit, Cabin & Cargo](./CCC/)** — Passenger experience and life support systems
-- **[EEE — Ecological Efficient Electrification](./EEE/)** — Sustainable power systems
+- **[EEE — Electrical, Hydraulic & Energy (EHR)](./EEE/)** — Power systems, hydraulics, and energy resources
 
 ### Systems & Control
 - **[LCC — Linkages, Control & Communications](./LCC/)** — Flight control and communication systems

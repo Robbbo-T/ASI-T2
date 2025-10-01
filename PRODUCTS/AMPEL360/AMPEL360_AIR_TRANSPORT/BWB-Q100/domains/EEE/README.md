@@ -1,40 +1,43 @@
-# EEE — Ecological Efficient Electrification
+# EEE — Electrical, Hydraulic & Energy (EHR)
 
-Sustainable electrification systems, power management, and ecological efficiency optimization.
+Electrical power systems, hydraulic systems, fuel management, and energy resource distribution.
 
 ## Domain Overview
 
-**Core Focus**: Electric power systems, sustainable energy management, power distribution optimization, and electrical system efficiency.
+**Core Focus**: Electrical power systems, hydraulic power, fuel systems, pneumatic systems, and auxiliary power units. This domain encompasses EHR (Electrical, Hydraulic & Resources) systems critical for aircraft operation.
 
-**Key Systems**: Air Conditioning (ATA-21), Electrical Power (ATA-24), Equipment/Furnishings (ATA-30).
+**Key Systems**: Electrical Power (ATA-24), Fuel (ATA-28), Hydraulic Power (ATA-29), Pneumatic (ATA-36), APU (ATA-49).
 
 ## Process Organization
 
 ### CAx (Computer-Aided Processes)
-- **[CAE](./cax/CAE/)** — Electrical system analysis and optimization
-- **[CAD](./cax/CAD/)** — Power system design and layout
-- **[CAM](./cax/CAM/)** — Manufacturing processes for electrical components
-- **[PDM-PLM](./cax/PDM-PLM/)** — Electrical system lifecycle management
-- **[CAI](./cax/CAI/)** — AI-driven power management systems
+- **[CAE](./cax/CAE/)** — Electrical and hydraulic system analysis
+- **[CAD](./cax/CAD/)** — Power and fluid system design
+- **[CAM](./cax/CAM/)** — Manufacturing processes for electrical and hydraulic components
+- **[PDM-PLM](./cax/PDM-PLM/)** — Power system lifecycle management
+- **[CAI](./cax/CAI/)** — AI-driven power and resource management
 
 ### ATA Documentation
-- **[ATA-21](./ata/ATA-21/)** — Air Conditioning
 - **[ATA-24](./ata/ATA-24/)** — Electrical Power
-- **[ATA-30](./ata/ATA-30/)** — Ice and Rain Protection
+- **[ATA-28](./ata/ATA-28/)** — Fuel System
+- **[ATA-29](./ata/ATA-29/)** — Hydraulic Power
+- **[ATA-36](./ata/ATA-36/)** — Pneumatic
+- **[ATA-49](./ata/ATA-49/)** — Auxiliary Power Unit (APU)
 
 ## Key Optimization Targets
 
 ### Quantum-Enhanced CAx → QOx Applications
 1. **Power Distribution**: Quantum optimization of electrical network topology
-2. **Energy Management**: Quantum algorithms for optimal power allocation
-3. **Battery Systems**: Quantum-enhanced battery management and optimization
-4. **Grid Integration**: Quantum optimization for ground power integration
+2. **Hydraulic System Control**: Quantum algorithms for optimal fluid power management
+3. **Energy Management**: Quantum optimization for power allocation across systems
+4. **Fuel System Optimization**: Optimal fuel distribution and management
+5. **Integrated Resource Management**: Coordinated optimization of electrical, hydraulic, and fuel systems
 
 ### Sustainability Levers (SIM Integration)
-- **Energy Efficiency**: Optimized electrical systems reducing power losses
-- **Renewable Integration**: Integration of sustainable power sources
-- **Carbon Reduction**: Electric systems enabling reduced emissions
-- **Lifecycle Optimization**: Sustainable electrical component lifecycle management
+- **Energy Efficiency**: Optimized electrical and hydraulic systems reducing power losses
+- **Integrated Power Management**: Coordinated electrical, hydraulic, and pneumatic systems
+- **Resource Optimization**: Efficient fuel and energy resource utilization
+- **System Integration**: Harmonized power systems enabling reduced weight and complexity
 
 ---
 
