@@ -24,6 +24,28 @@ python verify_installation.py
 python scripts/verify_structure.py  # Validate repository structure
 ```
 
+### Quantum Computing Support
+
+The repository includes quantum optimization capabilities for QUBO (Quadratic Unconstrained Binary Optimization) problems:
+
+* **`pennylane >= 0.33.0`** — Quantum circuit simulation and QAOA/VQE algorithms
+* **`numpy >= 1.24.0`** — Numerical computations for quantum optimization
+
+**SICOCA QUBO Implementation** (`PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/qox/qubo/`):
+- Supply chain optimization for logistic lane selection
+- PennyLane integration for quantum algorithms (QAOA, VQE)
+- Compatible with D-Wave quantum annealers and classical solvers
+- Complete test suite and JSON artifacts for UTCS-MI traceability
+
+**Run SICOCA optimization:**
+```bash
+cd PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/qox/qubo
+python aqua_qubo_sicoca.py     # Execute QUBO model
+python test_aqua_qubo_sicoca.py  # Run test suite (5/5 tests)
+```
+
+See `PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/domains/AAA/qox/qubo/SICOCA_README.md` for detailed documentation.
+
 ### Figure Generation
 
 The repository includes automated technical diagram generation for publications:
