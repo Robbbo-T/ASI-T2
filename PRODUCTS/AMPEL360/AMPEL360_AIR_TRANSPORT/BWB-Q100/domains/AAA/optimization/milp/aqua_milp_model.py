@@ -6,7 +6,7 @@ from pyomo.environ import *
 import logging
 
 def build_model():
-    model = ConcreteModel()
+    model = AbstractModel()
 
     # ========================
     # Sets (Leídos del .dat)

@@ -3,7 +3,7 @@
 
 from pyomo.environ import *
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib
 import json
 import aqua_milp_model # Importa la estructura del modelo
@@ -60,13 +60,13 @@ def solve_aqua_milp(model_file, data_file):
 
     results_summary = {
         "ObjectiveValue": value(instance.OBJ),
-        "TotalEmissions": sum(instance.e_s[s].value*plan['x'][t][s] for s in S_list for t in T_list) + sum(instance.e_q[q].value*plan['q'][t][q] for q in Q_list for t in T_list),
+        "TotalEmissions": sum(value(instance.e_s[s])*plan['x'][t][s] for s in S_list for t in T_list) + sum(value(instance.e_q[q])*plan['q'][t][q] for q in Q_list for t in T_list),
         "TotalSyncDeviation": value(sum(instance.delta[t] for t in instance.T))
     }
     
     # Función simplificada de generación UTCS (simulación de trazabilidad)
     def generate_utcs_snapshot(plan, summary):
-        timestamp = datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')
+        timestamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
         base_id = f"UTCS-Avionics-IntegratedControl-MILP_Planner-v1.0-Operational-{timestamp}"
         short_hash = hashlib.sha256(base_id.encode('utf-8')).hexdigest()[:8]
         utcs_id = f"{base_id}-{short_hash}"

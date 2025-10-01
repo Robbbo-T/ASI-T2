@@ -92,12 +92,8 @@ def write_dat_file(filename="aqua_milp.dat"):
         # Parámetros indexados por Q y T
         def write_param_two_indices(param_name, data):
             f.write(f"\nparam {param_name} :=\n")
-            f.write(f"  [Q,T]: {' '.join(T_str)} :=\n")
-            for q in Q:
-                f.write(f"    {q}")
-                for t in T_list:
-                    f.write(f" {data[(q,t)]}")
-                f.write("\n")
+            for (q, t), val in data.items():
+                f.write(f"  {q} {t} {val}\n")
             f.write(";\n")
 
         write_param_two_indices('L', L)

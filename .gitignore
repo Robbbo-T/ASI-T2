@@ -38,3 +38,6 @@ build/
 # Python testing and linting cache
 .pytest_cache/
 .ruff_cache/
+
+# AQUA MILP optimization outputs (generated artifacts)
+**/aqua_pyomo_solve_utcs.json
