@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BREX (Business Rules Exchange) for ATA-57-10 Wing Primary Structure -->
+<brex xmlns="http://www.s1000d.org/S1000D_5-0/xml_schema_flat/brex.xsd">
+  <identAndStatusSection>
+    <brexIdent>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWB-Q100" systemDiffCode="A" systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="A"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <language languageIsoCode="en" countryIsoCode="US"/>
+      <issueInfo issueNumber="001" inWork="00"/>
+    </brexIdent>
+    <brexAddressItems>
+      <issueDate year="2025" month="01" day="01"/>
+    </brexAddressItems>
+  </identAndStatusSection>
+  <contextRules>
+    <contextRule id="BWB-Q100-57-10-CONTEXT">
+      <objectPath>//dmodule</objectPath>
+      <objectUse>mandatory</objectUse>
+      <objectValue>ATA-57-10 Wing Primary Structure</objectValue>
+    </contextRule>
+  </contextRules>
+  <structureRules>
+    <structureRule id="BWB-Q100-57-10-STRUCT">
+      <objectPath>//identAndStatusSection</objectPath>
+      <objectUse>mandatory</objectUse>
+    </structureRule>
+  </structureRules>
+  <notationRules>
+    <notationRule id="BWB-Q100-57-10-NOTATION">
+      <objectPath>//para</objectPath>
+      <objectUse>mandatory</objectUse>
+      <message>Paragraph content is required for all data modules.</message>
+    </notationRule>
+  </notationRules>
+</brex>
