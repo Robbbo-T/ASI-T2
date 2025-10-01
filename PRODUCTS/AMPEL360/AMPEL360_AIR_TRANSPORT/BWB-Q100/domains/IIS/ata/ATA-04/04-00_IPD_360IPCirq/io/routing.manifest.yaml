@@ -1,0 +1,280 @@
+---
+# Routing Manifest for 360IPCirq
+# Data flows, interfaces, and integration points
+
+id: "ROUTING-MANIFEST-360IPCirq"
+version: "1.0.0"
+release_date: "2025-10-01"
+description: "Routing and interface definitions for 360IPCirq system"
+
+# ============================================================================
+# UPSTREAM INPUTS
+# ============================================================================
+
+upstream:
+  - source_id: "PDM-PLM-IPC"
+    description: "Parts catalog data from PDM/PLM system"
+    transport: "Artifact sync"
+    path: "/pdm/ipc/parts/"
+    format: "S1000D XML"
+    schema_version: "S1000D-5.0"
+    cadence: "On-update"
+    owner: "PDM Team"
+    contract: "ICD-PDM-IPC-001"
+    
+  - source_id: "ENG-BOM"
+    description: "Engineering Bill of Materials"
+    transport: "REST API"
+    path: "/api/engineering/bom/"
+    format: "JSON v2.0"
+    schema_version: "bom-2.0"
+    cadence: "Daily 06:00 UTC"
+    owner: "Engineering Team"
+    contract: "ICD-ENG-BOM-001"
+    
+  - source_id: "MAINT-UNITS"
+    description: "Serialized unit tracking from maintenance"
+    transport: "Database sync"
+    path: "/maint/shop/units/"
+    format: "Database records"
+    schema_version: "maint-db-3.1"
+    cadence: "Real-time"
+    owner: "Maintenance Operations"
+    contract: "ICD-MAINT-UNITS-001"
+    
+  - source_id: "MRP-MATERIALS"
+    description: "Material availability and kitting"
+    transport: "REST API"
+    path: "/api/mrp/materials/"
+    format: "JSON v1.5"
+    schema_version: "mrp-1.5"
+    cadence: "Hourly"
+    owner: "Materials Planning"
+    contract: "ICD-MRP-MAT-001"
+    
+  - source_id: "QA-EVIDENCE"
+    description: "Quality assurance evidence packages"
+    transport: "File transfer"
+    path: "/qa/evidence/uploads/"
+    format: "Mixed (PDF, JSON, images)"
+    schema_version: "evidence-1.0"
+    cadence: "On-completion"
+    owner: "Quality Assurance"
+    contract: "ICD-QA-EVID-001"
+
+# ============================================================================
+# DOWNSTREAM OUTPUTS
+# ============================================================================
+
+downstream:
+  - consumer_id: "IETP-VIEWERS"
+    description: "Interactive Electronic Technical Publications"
+    transport: "Export package"
+    path: "/ietp/packages/"
+    format: "S1000D+SGML"
+    schema_version: "S1000D-5.0"
+    contract: "ICD-IETP-001"
+    owner: "Publications Team"
+    slo_minutes: 30
+    
+  - consumer_id: "MAINT-SYSTEMS"
+    description: "Maintenance management systems"
+    transport: "REST API"
+    path: "/api/ipc/query/"
+    format: "JSON v2.0"
+    schema_version: "ipc-query-2.0"
+    contract: "ICD-MAINT-001"
+    owner: "IT Systems"
+    slo_minutes: 5
+    
+  - consumer_id: "REPAIR-SHOPS"
+    description: "MRO repair shop portals"
+    transport: "Web portal"
+    path: "/portal/repair/tasks/"
+    format: "HTML5"
+    schema_version: "portal-ui-1.0"
+    contract: "ICD-REPAIR-001"
+    owner: "MRO Operations"
+    slo_minutes: 15
+    
+  - consumer_id: "SPARE-PARTS"
+    description: "Spare parts management system"
+    transport: "REST API"
+    path: "/api/spares/catalog/"
+    format: "JSON v2.0"
+    schema_version: "spares-2.0"
+    contract: "ICD-SPARES-001"
+    owner: "Supply Chain"
+    slo_minutes: 10
+    
+  - consumer_id: "TRAINING-SYSTEMS"
+    description: "Technician training and AR systems"
+    transport: "REST API"
+    path: "/api/training/procedures/"
+    format: "JSON v1.0"
+    schema_version: "training-1.0"
+    contract: "ICD-TRAIN-001"
+    owner: "Training Department"
+    slo_minutes: 60
+
+# ============================================================================
+# ENVIRONMENTS
+# ============================================================================
+
+environments:
+  dev:
+    path: "file:///dev/ata/04/"
+    cadence: "Ad hoc on PR"
+    validation: "Schema + syntax"
+    
+  stage:
+    path: "file:///stage/ata/04/"
+    cadence: "Nightly 02:00 UTC"
+    validation: "Full integration tests"
+    
+  prod:
+    path: "/pdm/ata/04/"
+    cadence: "Post-baseline release"
+    validation: "Full validation + QS seal"
+
+# ============================================================================
+# CONTROLS & RELIABILITY
+# ============================================================================
+
+controls:
+  classification: "INTERNAL–EVIDENCE-REQUIRED"
+  
+  access_control:
+    read: "IIS.contributors"
+    write: "ASI-T.arch"
+    approve: "ASI-T.arch,QA.leads"
+    
+  slo:
+    publish_time_minutes: 30
+    retry_count: 3
+    retry_backoff: "exponential"
+    
+  alerts:
+    channel: "#iis-ata04"
+    on_failure: true
+    on_degradation: true
+    escalation_minutes: 15
+    escalation_target: "@maintainer"
+    
+  change_control:
+    process: "Change Notice (CN)"
+    approval_required: "MRB"
+    documentation: "Mandatory"
+
+# ============================================================================
+# INTERFACES & CONTRACTS
+# ============================================================================
+
+interfaces:
+  api_version: "v2.0"
+  authentication: "OAuth2 + mTLS"
+  rate_limits:
+    default: "1000 req/hour"
+    burst: "100 req/minute"
+  
+  endpoints:
+    - name: "Query IPD Items"
+      path: "/api/v2/ipd/items"
+      methods: ["GET", "POST"]
+      schema: "ipd.item.schema.json"
+      auth_scope: "ipd:read"
+      
+    - name: "Query IRQ Tuples"
+      path: "/api/v2/irq/tuples"
+      methods: ["GET"]
+      schema: "irq.tuple.schema.json"
+      auth_scope: "irq:read"
+      
+    - name: "Check Effectivity"
+      path: "/api/v2/effectivity/check"
+      methods: ["POST"]
+      schema: "effectivity.rule.schema.json"
+      auth_scope: "eff:read"
+      
+    - name: "Submit Evidence"
+      path: "/api/v2/evidence/submit"
+      methods: ["POST"]
+      schema: "evidence.file.schema.json"
+      auth_scope: "evidence:write"
+
+# ============================================================================
+# DATA QUALITY & VALIDATION
+# ============================================================================
+
+data_quality:
+  validation_on_entry: true
+  schema_enforcement: "STRICT"
+  
+  quality_gates:
+    - gate: "Schema validation"
+      mandatory: true
+      
+    - gate: "Business rule validation"
+      mandatory: true
+      
+    - gate: "Effectivity check"
+      mandatory: true
+      
+    - gate: "IRQ constraint validation"
+      mandatory: true
+      
+    - gate: "Evidence completeness"
+      mandatory: true
+      
+    - gate: "QS seal verification"
+      mandatory: true
+
+# ============================================================================
+# MONITORING & METRICS
+# ============================================================================
+
+monitoring:
+  metrics:
+    - name: "api_request_count"
+      type: "counter"
+      
+    - name: "api_response_time"
+      type: "histogram"
+      
+    - name: "validation_failures"
+      type: "counter"
+      
+    - name: "evidence_submission_rate"
+      type: "gauge"
+      
+  health_checks:
+    - name: "database_connectivity"
+      interval_seconds: 60
+      
+    - name: "api_availability"
+      interval_seconds: 30
+      
+    - name: "schema_validity"
+      interval_seconds: 300
+
+# ============================================================================
+# UTCS/QS ANCHORING
+# ============================================================================
+
+utcs_qis:
+  canonical_hash: "TBD"
+  sbom_uri: "TBD"
+  signer: "ASI-T:Routing-Authority"
+  timestamp: "2025-10-01T00:00:00Z"
+  ethics_guard: "MAL-EEM"
+  bridge: "CB→QB→UE→FE→FWD→QS"
+
+# ============================================================================
+# CHANGE CONTROL
+# ============================================================================
+
+change_control:
+  change_notice: "CN-ROUTING-360IPCirq-001"
+  approver: "ASI-T Architecture Team"
+  approval_date: "2025-10-01"
+  next_review: "2026-10-01"
