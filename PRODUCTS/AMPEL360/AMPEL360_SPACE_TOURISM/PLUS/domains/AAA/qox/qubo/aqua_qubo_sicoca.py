@@ -63,24 +63,46 @@ class SICOCALaneProblem:
         penalty_conflict: Penalty weight for resource conflicts (B)
     """
     
-    def __init__(self):
-        # Problem parameters from Artefact C specification
-        self.n_lanes = 4
-        # Use regular Python lists to avoid numpy/tensor serialization issues
-        self.capacities = [40, 60, 70, 50]  # Cap_n for lanes 1-4
-        self.costs = [5, 8, 12, 7]  # C_n for lanes 1-4
-        self.demand = 100  # D
-        
-        # Conflicts: (lane_i, lane_j) pairs that cannot coexist
-        # Lane indices are 0-based: Lane 1 = index 0, etc.
-        self.conflicts = [(0, 2), (1, 3)]  # Lane 1-3 conflict, Lane 2-4 conflict
-        
-        # Weights
-        self.w_cost = 1.0  # Direct cost weight
-        self.penalty_demand = 5.0  # A: Demand satisfaction penalty
-        self.penalty_conflict = 10.0  # B: Conflict penalty
+    def __init__(
+        self,
+        n_lanes: int = 4,
+        capacities: List[int] = None,
+        costs: List[float] = None,
+        demand: int = 100,
+        conflicts: List[Tuple[int, int]] = None,
+        w_cost: float = 1.0,
+        penalty_demand: float = 5.0,
+        penalty_conflict: float = 10.0
+    ):
+        """
+        Initialize SICOCA Lane Selection Problem Data.
 
+        Args:
+            n_lanes (int): Number of logistic lanes.
+            capacities (List[int]): Capacity of each lane (units).
+            costs (List[float]): Operational cost of each lane (including CO2).
+            demand (int): Total demand to satisfy (units).
+            conflicts (List[Tuple[int, int]]): Pairs of lanes that cannot be used together.
+            w_cost (float): Weight for direct cost term.
+            penalty_demand (float): Penalty weight for demand satisfaction (A).
+            penalty_conflict (float): Penalty weight for resource conflicts (B).
+        """
+        # Set defaults if None provided
+        if capacities is None:
+            capacities = [40, 60, 70, 50]
+        if costs is None:
+            costs = [5, 8, 12, 7]
+        if conflicts is None:
+            conflicts = [(0, 2), (1, 3)]
 
+        self.n_lanes = n_lanes
+        self.capacities = capacities
+        self.costs = costs
+        self.demand = demand
+        self.conflicts = conflicts
+        self.w_cost = w_cost
+        self.penalty_demand = penalty_demand
+        self.penalty_conflict = penalty_conflict
 # ============================================================================
 # QUBO Matrix Construction
 # ============================================================================
