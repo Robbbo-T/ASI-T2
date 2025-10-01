@@ -54,13 +54,13 @@ Aerospace industry standard documentation structure:
 - **[LIB — Logistics, Inventory & Blockchain](./LIB/)** — Supply chain and traceability
 
 ### Advanced Technologies
-- **[CQH — Cryogenics, Quantum & H₂](./CQH/)** — Hydrogen fuel and quantum computing systems
-- **[DDD — Digital & Data Defense](./DDD/)** — Cybersecurity and data protection
+- **[CQH — Cryogenics, Quantum & H₂](./CQH/)** — Hydrogen fuel, quantum computing, and cryogenic systems
+- **[DDD — Drainage, Dehumidification & Drying](./DDD/)** — Environmental moisture control and protection
 - **[EDI — Electronics & Digital Instruments](./EDI/)** — Electronic systems and avionics
 - **[IIS — Integrated Intelligence & Software](./IIS/)** — AI integration and software systems
 
 ### Systems & Controls
-- **[EEE — Ecological Efficient Electrification](./EEE/)** — Sustainable electrical systems
+- **[EEE — Electrical, Hydraulic & Energy (EHR)](./EEE/)** — Power systems, hydraulics, and energy resources
 - **[EER — Environmental, Emissions & Remediation](./EER/)** — Environmental compliance and sustainability
 - **[LCC — Linkages, Control & Communications](./LCC/)** — Control systems and communications
 - **[MEC — Mechanical Systems Modules](./MEC/)** — Mechanical components and integration

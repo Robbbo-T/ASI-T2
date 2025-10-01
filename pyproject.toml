@@ -55,6 +55,9 @@ docs = [
 xml = [
     "lxml>=4.9.0",  # High-performance XML parsing
 ]
+optimization = [
+    "pyomo>=6.6.0",  # MILP/optimization modeling for AQUA OS
+]
 
 [project.urls]
 "Homepage" = "https://github.com/Robbbo-T/ASI-T2"

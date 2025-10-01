@@ -6,7 +6,7 @@ Cryogenic systems, quantum computing infrastructure, and hydrogen fuel systems f
 
 **Core Focus**: Hydrogen fuel systems, cryogenic storage, quantum computing hardware integration, and advanced cooling systems.
 
-**Key Systems**: Air Conditioning (ATA-21), Fire Protection (ATA-26), Fuel System (ATA-28), Pneumatic (ATA-36), Nitrogen Generation (ATA-47).
+**Key Systems**: Quantum Computing Systems (ATA-04), Cryogenic Cooling Systems (ATA-17), Air Conditioning (ATA-21), Fire Protection (ATA-26), Fuel System (ATA-28), Pneumatic (ATA-36), Nitrogen Generation (ATA-47).
 
 ## Process Organization
 
@@ -17,6 +17,8 @@ Cryogenic systems, quantum computing infrastructure, and hydrogen fuel systems f
 - **[CAT](./cax/CAT/)** — Testing protocols for hydrogen and cryogenic systems
 
 ### ATA Documentation
+- **[ATA-04](./ata/ATA-04/)** — Quantum Computing Systems
+- **[ATA-17](./ata/ATA-17/)** — Cryogenic Cooling Systems
 - **[ATA-21](./ata/ATA-21/)** — Air Conditioning
 - **[ATA-26](./ata/ATA-26/)** — Fire Protection
 - **[ATA-28](./ata/ATA-28/)** — Fuel System (Hydrogen)

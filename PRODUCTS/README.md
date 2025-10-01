@@ -72,6 +72,7 @@ Products are organized into three main product lines based on operational charac
 | **GAIA-AIR** |       |             |              |                 |             |
 |  | [`cyberdefense`](../FIELDS/cyberdefense/) | [`air`](../ENVIRONMENTS/air/) | [`HYDROBOTS`](./GAIA-AIR/HYDROBOTS/) | EEE, CQH, IIS, AAA | Hydrogen UAM retail (logistics, delivery, inspection) |
 |  | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`ETHICS-EMPATHY-UAV`](./GAIA-AIR/ETHICS-EMPATHY-UAV/) | IIS, OOO, LCC, EDI, DDD | Ethical SHARM (STOP HARMFUL) logic for defense |
+|  | [`defense`](../FIELDS/defense/) | [`air`](../ENVIRONMENTS/air/) | [`IDRO_WALL`](./GAIA-AIR/IDRO_WALL/) | IIS, LCC, EDI, DDD, CQH, AAA, EEE | IDEALE Drone Wall - distributed aerial defense & resilience |
 | **GAIA-SPACE** |       |             |              |                 |             |
 |  | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`SAT-CONSTELLATIONS`](./GAIA-SPACE/SAT-CONSTELLATIONS/) | DDD, IIS, EDI, LCC | Earth observation, communications & quantum satellites |
 |  | [`cyberdefense`](../FIELDS/cyberdefense/) | [`space`](../ENVIRONMENTS/space/) | [`ORBITAL-MACHINES`](./GAIA-SPACE/ORBITAL-MACHINES/) | IIS, MEC, AAA, LCC | Debris removal, assembly & servicing |
@@ -194,9 +195,9 @@ This closed-loop process is applied consistently across all products to ensure t
     *   **AAP — Airport Adaptable Platforms**
     *   **CCC — Cockpit, Cabin & Cargo**
     *   **CQH — Cryogenics, Quantum & H₂**
-    *   **DDD — Digital & Data Defense**
+    *   **DDD — Drainage, Dehumidification & Drying**
     *   **EDI — Electronics & Digital Instruments**
-    *   **EEE — Ecological Efficient Electrification**
+    *   **EEE — Electrical, Hydraulic & Energy (EHR)**
     *   **EER — Environmental, Emissions & Remediation**
     *   **IIF — Industrial Infrastructure & Facilities**
     *   **IIS — Integrated Intelligence & Software**
