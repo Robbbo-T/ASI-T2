@@ -57,40 +57,72 @@ Primary load-bearing structure: wingbox (skins, spars, ribs, stringers), wing-to
 ├── README.md
 ├── S1000D/                         # DMRL/BREX/DMs/IPD/IETP assets (controlled)
 │   ├── DMRL/
+│   │   ├── DMRL.xml
+│   │   └── README.md
 │   ├── BREX/
-│   ├── DMC/
-│   │   ├── PR/                     # Procedures (R/I, inspections, repairs)
-│   │   ├── DS/                     # Descriptive/structure data
-│   │   ├── IPD/                    # Illustrated Parts Data (figures/items)
-│   │   └── IR/                     # Illustrated Repairs (if applicable)
-│   └── pubs/
+│   │   ├── BREX.xml
+│   │   └── README.md
+│   ├── data_modules/
+│   │   ├── README.md
+│   │   ├── descriptive/            # Descriptive (040A) data modules
+│   │   │   ├── README.md
+│   │   │   ├── 57-10-10_Forward_Spar/
+│   │   │   ├── 57-10-20_Rear_Spar/
+│   │   │   ├── 57-10-30_Ribs/
+│   │   │   ├── 57-10-40_Skin_Panels/
+│   │   │   ├── 57-10-50_Stringers/
+│   │   │   └── 57-10-60_Attachments/
+│   │   ├── procedural/              # Procedural (520A, 720A) data modules
+│   │   │   ├── README.md
+│   │   │   ├── inspection/          # 520A inspection procedures
+│   │   │   ├── removal_installation/ # 720A R/I procedures
+│   │   │   └── repair/              # 520A repair procedures
+│   │   └── ipd/                     # Illustrated Parts Data (941A)
+│   │       ├── README.md
+│   │       ├── 57-10-10_Forward_Spar/
+│   │       ├── 57-10-20_Rear_Spar/
+│   │       ├── 57-10-30_Ribs/
+│   │       ├── 57-10-40_Skin_Panels/
+│   │       ├── 57-10-50_Stringers/
+│   │       └── 57-10-60_Attachments/
 ├── compliance/                     # Substantiation & regulatory evidence (indexes only)
 │   ├── allowables/
+│   │   ├── README.md
 │   │   └── index.md
 │   ├── loads/
+│   │   ├── README.md
 │   │   └── index.md
 │   └── stress/
+│       ├── README.md
 │       └── index.md
 ├── icd/                            # Interfaces with adjacent chapters/systems
+│   ├── README.md
 │   ├── ICD-57-10-53_Fuselage_Attachments.md
 │   ├── ICD-57-10-57-20_Control_Surfaces.md
 │   └── ICD-57-10-57-50_Systems_Provisions.md
 ├── evidence/                       # Links to results (no heavy data); UTCS/QS anchors
+│   ├── README.md
 │   ├── coupons/
+│   │   ├── README.md
 │   │   └── index.md
 │   ├── ndt/
+│   │   ├── README.md
 │   │   └── index.md
 │   └── tests/
+│       ├── README.md
 │       └── index.md
 ├── contracts/                      # JSON schemas/ICDs for manifests & acceptance
+│   ├── README.md
 │   ├── ICD-AAA-ATA-57-10.md
 │   └── schemas/
+│       ├── README.md
 │       ├── acceptance.metric.schema.json
 │       ├── attachment.fitting.schema.json
 │       ├── fastener.set.schema.json
 │       ├── joint.schema.json
 │       └── laminate.stack.schema.json
 └── io/
+    ├── README.md
     └── routing.manifest.yaml       # Inputs/outputs references (CAX/QOX/PAx/ATA linkage)
 ```
 
