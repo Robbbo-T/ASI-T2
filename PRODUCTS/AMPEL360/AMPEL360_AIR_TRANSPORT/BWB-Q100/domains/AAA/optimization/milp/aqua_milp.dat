@@ -1,0 +1,93 @@
+param L_max := 0.2;
+param F_min := 0.88;
+param B_CO2 := 10.0;
+param DELTA_MAX := 0.5;
+param R_MIN := 0.95;
+param w_c := 1.0;
+param w_e := 10.0;
+param w_r := 5.0;
+param lambda_sync := 50.0;
+param beta_reg := 1000.0;
+param BIG_D := 10.0;
+
+set S := motor_electrico motor_h2;
+set Q := qns_link qkd_comm;
+set T := 0 1 2 3 4 5;
+
+param cap_s :=
+  motor_electrico 100.0
+  motor_h2 80.0
+;
+
+param c_s :=
+  motor_electrico 2.0
+  motor_h2 3.5
+;
+
+param e_s :=
+  motor_electrico 0.1
+  motor_h2 0.02
+;
+
+param r_s :=
+  motor_electrico 0.98
+  motor_h2 0.95
+;
+
+param c_q :=
+  qns_link 5.0
+  qkd_comm 4.0
+;
+
+param e_q :=
+  qns_link 0.005
+  qkd_comm 0.004
+;
+
+param r_q :=
+  qns_link 0.9
+  qkd_comm 0.92
+;
+
+param alpha :=
+  motor_electrico 0.9
+  motor_h2 0.9
+;
+
+param gamma :=
+  qns_link 50.0
+  qkd_comm 10.0
+;
+
+param d :=
+  0 40.0
+  1 120.0
+  2 120.0
+  3 40.0
+  4 120.0
+  5 120.0
+;
+
+param L :=
+  [Q,T]: 0 1 2 3 4 5 :=
+    qns_link 0.05 0.07 0.09 0.11 0.05 0.07
+    qkd_comm 0.05 0.07 0.09 0.11 0.05 0.07
+;
+
+param F :=
+  [Q,T]: 0 1 2 3 4 5 :=
+    qns_link 0.99 0.99 0.99 0.99 0.89 0.99
+    qkd_comm 0.99 0.99 0.99 0.99 0.89 0.99
+;
+
+param phi_cl :=
+  [Q,T]: 0 1 2 3 4 5 :=
+    qns_link 0.0 0.1 0.2 0.30000000000000004 0.4 0.0
+    qkd_comm 0.0 0.1 0.2 0.30000000000000004 0.4 0.0
+;
+
+param phi_q :=
+  [Q,T]: 0 1 2 3 4 5 :=
+    qns_link 0.1 0.2 0.30000000000000004 0.4 0.0 0.1
+    qkd_comm 0.1 0.2 0.30000000000000004 0.4 0.0 0.1
+;
