@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # CAx/MBSE
 
-Entrada de proceso **MBSE** derivada del README de dominio.
+Process entry **MBSE** derived from domain README.
