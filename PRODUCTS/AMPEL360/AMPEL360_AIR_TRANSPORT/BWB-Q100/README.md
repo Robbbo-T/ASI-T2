@@ -65,6 +65,11 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   ├── CAD/
     │   │   ├── CAE/
     │   │   └── CFD/
+    │   ├── pax/
+    │   │   ├── OB/
+    │   │   ├── OFF/
+    │   │   ├── schemas/
+    │   │   └── scripts/
     │   └── ata/
     │       ├── ATA-20/
     │       ├── ATA-32/
@@ -84,6 +89,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── SCM/
     │   │   └── CIM/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-10/
     │       ├── ATA-12/
@@ -98,6 +104,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAD/
     │   │   └── VP/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-11/
     │       ├── ATA-25/
@@ -113,7 +120,10 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAE/
     │   │   └── CAI/
+    │   ├── pax/
     │   └── ata/
+    │       ├── ATA-04/
+    │       ├── ATA-17/
     │       ├── ATA-21/
     │       ├── ATA-26/
     │       ├── ATA-28/
@@ -121,19 +131,17 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │       └── ATA-47/
     ├── DDD/
     │   ├── cax/
-    │   │   ├── CAI/
-    │   │   ├── CASE/
-    │   │   ├── KBE/
+    │   │   ├── CAE/
+    │   │   ├── CAD/
+    │   │   ├── VP/
     │   │   └── PDM-PLM/
     │   ├── qox/
-    │   │   ├── CAI/
-    │   │   └── KBE/
+    │   │   ├── CAE/
+    │   │   └── CAD/
+    │   ├── pax/
     │   └── ata/
-    │       ├── ATA-23/
-    │       ├── ATA-31/
-    │       ├── ATA-42/
-    │       ├── ATA-45/
-    │       └── ATA-46/
+    │       ├── ATA-13/
+    │       └── ATA-14/
     ├── EDI/
     │   ├── cax/
     │   │   ├── CAI/
@@ -142,6 +150,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAI/
     │   │   └── CASE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-23/
     │       ├── ATA-31/
@@ -159,10 +168,13 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAE/
     │   │   └── CAM/
+    │   ├── pax/
     │   └── ata/
-    │       ├── ATA-21/
     │       ├── ATA-24/
-    │       └── ATA-30/
+    │       ├── ATA-28/
+    │       ├── ATA-29/
+    │       ├── ATA-36/
+    │       └── ATA-49/
     ├── EER/
     │   ├── cax/
     │   │   ├── KBE/
@@ -171,6 +183,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   └── PDM-PLM/
     │   ├── qox/
     │   │   └── KBE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-21/
     │       ├── ATA-31/
@@ -186,6 +199,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAM/
     │   │   └── CIM/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-20/
     │       └── ATA-51/
@@ -197,6 +211,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── CAI/
     │   │   └── KBE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-22/
     │       ├── ATA-42/
@@ -209,6 +224,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   └── CASE/
     │   ├── qox/
     │   │   └── CAI/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-22/
     │       ├── ATA-23/
@@ -223,6 +239,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   ├── qox/
     │   │   ├── SCM/
     │   │   └── MRP-ERP/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-20/
     │       ├── ATA-51/
@@ -251,6 +268,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   └── VP/
     │   ├── qox/
     │   │   └── CAE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-21/
     │       ├── ATA-27/
@@ -268,6 +286,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
     │   │   └── KBE/
     │   ├── qox/
     │   │   └── KBE/
+    │   ├── pax/
     │   └── ata/
     │       ├── ATA-45/
     │       └── ATA-46/
@@ -282,6 +301,7 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
         │   ├── CAD/
         │   ├── CAE/
         │   └── CFD/
+        ├── pax/
         └── ata/
             ├── ATA-28/
             ├── ATA-49/
@@ -305,9 +325,9 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
 * [AAP — Airport Adaptable Platforms](./domains/AAP/)
 * [CCC — Cockpit, Cabin & Cargo](./domains/CCC/)
 * [CQH — Cryogenics, Quantum & H₂](./domains/CQH/)
-* [DDD — Digital & Data Defense](./domains/DDD/)
+* [DDD — Drainage, Dehumidification & Drying](./domains/DDD/)
 * [EDI — Electronics & Digital Instruments](./domains/EDI/)
-* [EEE — Ecological Efficient Electrification](./domains/EEE/)
+* [EEE — Electrical, Hydraulic & Energy (EHR)](./domains/EEE/)
 * [EER — Environmental, Emissions & Remediation](./domains/EER/)
 * [IIF — Industrial Infrastructure & Facilities](./domains/IIF/)
 * [IIS — Integrated Intelligence & Software](./domains/IIS/)
@@ -326,10 +346,10 @@ Product_Line_AMPEL360/Model_BWB/variant-Q100/conf_000_baseline/MSN[0001-9999]
 | **AAA** | [CAD](./domains/AAA/cax/CAD/) · [CAE](./domains/AAA/cax/CAE/) · [CFD](./domains/AAA/cax/CFD/) · [VP](./domains/AAA/cax/VP/) · [PDM-PLM](./domains/AAA/cax/PDM-PLM/)     | [CAD](./domains/AAA/qox/CAD/) · [CAE](./domains/AAA/qox/CAE/) · [CFD](./domains/AAA/qox/CFD/) | [ATA-51](./domains/AAA/ata/ATA-51/) · [ATA-52](./domains/AAA/ata/ATA-52/) · [ATA-53](./domains/AAA/ata/ATA-53/) · [ATA-54](./domains/AAA/ata/ATA-54/) · [ATA-55](./domains/AAA/ata/ATA-55/) · [ATA-56](./domains/AAA/ata/ATA-56/) · [ATA-57](./domains/AAA/ata/ATA-57/) · [ATA-32](./domains/AAA/ata/ATA-32/) · [ATA-20](./domains/AAA/ata/ATA-20/) |
 | **AAP** | [SCM](./domains/AAP/cax/SCM/) · [MRP-ERP](./domains/AAP/cax/MRP-ERP/) · [CIM](./domains/AAP/cax/CIM/) · [CAPP](./domains/AAP/cax/CAPP/)                                 | [SCM](./domains/AAP/qox/SCM/) · [CIM](./domains/AAP/qox/CIM/)                                 | [ATA-10](./domains/AAP/ata/ATA-10/) · [ATA-12](./domains/AAP/ata/ATA-12/) · [ATA-28](./domains/AAP/ata/ATA-28/) · [ATA-35](./domains/AAP/ata/ATA-35/)                                                                                                                                                                                               |
 | **CCC** | [CAD](./domains/CCC/cax/CAD/) · [CAE](./domains/CCC/cax/CAE/) · [VP](./domains/CCC/cax/VP/) · [PDM-PLM](./domains/CCC/cax/PDM-PLM/)                                     | [CAD](./domains/CCC/qox/CAD/) · [VP](./domains/CCC/qox/VP/)                                   | [ATA-25](./domains/CCC/ata/ATA-25/) · [ATA-31](./domains/CCC/ata/ATA-31/) · [ATA-33](./domains/CCC/ata/ATA-33/) · [ATA-38](./domains/CCC/ata/ATA-38/) · [ATA-11](./domains/CCC/ata/ATA-11/)                                                                                                                                                         |
-| **CQH** | [CAE](./domains/CQH/cax/CAE/) · [CAI](./domains/CQH/cax/CAI/) · [VP](./domains/CQH/cax/VP/) · [CAT](./domains/CQH/cax/CAT/)                                             | [CAE](./domains/CQH/qox/CAE/) · [CAI](./domains/CQH/qox/CAI/)                                 | [ATA-28](./domains/CQH/ata/ATA-28/) · [ATA-21](./domains/CQH/ata/ATA-21/) · [ATA-26](./domains/CQH/ata/ATA-26/) · [ATA-36](./domains/CQH/ata/ATA-36/) · [ATA-47](./domains/CQH/ata/ATA-47/)                                                                                                                                                         |
-| **DDD** | [CAI](./domains/DDD/cax/CAI/) · [CASE](./domains/DDD/cax/CASE/) · [KBE](./domains/DDD/cax/KBE/) · [PDM-PLM](./domains/DDD/cax/PDM-PLM/)                                 | [CAI](./domains/DDD/qox/CAI/) · [KBE](./domains/DDD/qox/KBE/)                                 | [ATA-46](./domains/DDD/ata/ATA-46/) · [ATA-45](./domains/DDD/ata/ATA-45/) · [ATA-31](./domains/DDD/ata/ATA-31/) · [ATA-23](./domains/DDD/ata/ATA-23/) · [ATA-42](./domains/DDD/ata/ATA-42/)                                                                                                                                                         |
+| **CQH** | [CAE](./domains/CQH/cax/CAE/) · [CAI](./domains/CQH/cax/CAI/) · [VP](./domains/CQH/cax/VP/) · [CAT](./domains/CQH/cax/CAT/)                                             | [CAE](./domains/CQH/qox/CAE/) · [CAI](./domains/CQH/qox/CAI/)                                 | [ATA-04](./domains/CQH/ata/ATA-04/) · [ATA-17](./domains/CQH/ata/ATA-17/) · [ATA-21](./domains/CQH/ata/ATA-21/) · [ATA-26](./domains/CQH/ata/ATA-26/) · [ATA-28](./domains/CQH/ata/ATA-28/) · [ATA-36](./domains/CQH/ata/ATA-36/) · [ATA-47](./domains/CQH/ata/ATA-47/)                                                                                                                                                         |
+| **DDD** | [CAE](./domains/DDD/cax/CAE/) · [CAD](./domains/DDD/cax/CAD/) · [VP](./domains/DDD/cax/VP/) · [PDM-PLM](./domains/DDD/cax/PDM-PLM/)                                     | [CAE](./domains/DDD/qox/CAE/) · [CAD](./domains/DDD/qox/CAD/)                                 | [ATA-13](./domains/DDD/ata/ATA-13/) · [ATA-14](./domains/DDD/ata/ATA-14/)                                                                                                                                                                                                                                                                           |
 | **EDI** | [CAI](./domains/EDI/cax/CAI/) · [CASE](./domains/EDI/cax/CASE/) · [VP](./domains/EDI/cax/VP/)                                                                           | [CAI](./domains/EDI/qox/CAI/) · [CASE](./domains/EDI/qox/CASE/)                               | [ATA-31](./domains/EDI/ata/ATA-31/) · [ATA-23](./domains/EDI/ata/ATA-23/) · [ATA-34](./domains/EDI/ata/ATA-34/) · [ATA-46](./domains/EDI/ata/ATA-46/) · [ATA-42](./domains/EDI/ata/ATA-42/) · [ATA-33](./domains/EDI/ata/ATA-33/)                                                                                                                   |
-| **EEE** | [CAE](./domains/EEE/cax/CAE/) · [CAD](./domains/EEE/cax/CAD/) · [CAM](./domains/EEE/cax/CAM/) · [PDM-PLM](./domains/EEE/cax/PDM-PLM/) · [CAI](./domains/EEE/cax/CAI/)   | [CAE](./domains/EEE/qox/CAE/) · [CAM](./domains/EEE/qox/CAM/)                                 | [ATA-24](./domains/EEE/ata/ATA-24/) · [ATA-21](./domains/EEE/ata/ATA-21/) · [ATA-30](./domains/EEE/ata/ATA-30/)                                                                                                                                                                                                                                     |
+| **EEE** | [CAE](./domains/EEE/cax/CAE/) · [CAD](./domains/EEE/cax/CAD/) · [CAM](./domains/EEE/cax/CAM/) · [PDM-PLM](./domains/EEE/cax/PDM-PLM/) · [CAI](./domains/EEE/cax/CAI/)   | [CAE](./domains/EEE/qox/CAE/) · [CAM](./domains/EEE/qox/CAM/)                                 | [ATA-24](./domains/EEE/ata/ATA-24/) · [ATA-28](./domains/EEE/ata/ATA-28/) · [ATA-29](./domains/EEE/ata/ATA-29/) · [ATA-36](./domains/EEE/ata/ATA-36/) · [ATA-49](./domains/EEE/ata/ATA-49/)                                                                                                                                                         |
 | **EER** | [KBE](./domains/EER/cax/KBE/) · [VP](./domains/EER/cax/VP/) · [CASE](./domains/EER/cax/CASE/) · [PDM-PLM](./domains/EER/cax/PDM-PLM/)                                   | [KBE](./domains/EER/qox/KBE/)                                                                 | [ATA-21](./domains/EER/ata/ATA-21/) · [ATA-31](./domains/EER/ata/ATA-31/) · [ATA-38](./domains/EER/ata/ATA-38/) · [ATA-78](./domains/EER/ata/ATA-78/)                                                                                                                                                                                               |
 | **IIF** | [CAPP](./domains/IIF/cax/CAPP/) · [CAM](./domains/IIF/cax/CAM/) · [CIM](./domains/IIF/cax/CIM/) · [MRP-ERP](./domains/IIF/cax/MRP-ERP/) · [CAA](./domains/IIF/cax/CAA/) | [CAM](./domains/IIF/qox/CAM/) · [CIM](./domains/IIF/qox/CIM/)                                 | [ATA-20](./domains/IIF/ata/ATA-20/) · [ATA-51](./domains/IIF/ata/ATA-51/)                                                                                                                                                                                                                                                                           |
 | **IIS** | [CAI](./domains/IIS/cax/CAI/) · [CASE](./domains/IIS/cax/CASE/) · [KBE](./domains/IIS/cax/KBE/)                                                                         | [CAI](./domains/IIS/qox/CAI/) · [KBE](./domains/IIS/qox/KBE/)                                 | [ATA-46](./domains/IIS/ata/ATA-46/) · [ATA-42](./domains/IIS/ata/ATA-42/) · [ATA-22](./domains/IIS/ata/ATA-22/) · [ATA-45](./domains/IIS/ata/ATA-45/)                                                                                                                                                                                               |
@@ -859,9 +879,9 @@ Application: Materials design, catalyst optimization
 * **AAP — Airport Adaptable Platforms**
 * **CCC — Cockpit, Cabin & Cargo**
 * **CQH — Cryogenics, Quantum & H₂**
-* **DDD — Digital & Data Defense**
+* **DDD — Drainage, Dehumidification & Drying**
 * **EDI — Electronics & Digital Instruments**
-* **EEE — Ecological Efficient Electrification**
+* **EEE — Electrical, Hydraulic & Energy (EHR)**
 * **EER — Environmental, Emissions & Remediation**
 * **IIF — Industrial Infrastructure & Facilities**
 * **IIS — Integrated Intelligence & Software**

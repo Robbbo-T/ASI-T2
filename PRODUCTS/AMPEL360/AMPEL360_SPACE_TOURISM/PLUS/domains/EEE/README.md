@@ -1,12 +1,12 @@
-# EEE — Ecological Efficient Electrification
+# EEE — Electrical, Hydraulic & Energy (EHR)
 
-Power systems, electrical distribution, and energy management for the PLUS suborbital space tourism aircraft.
+Electrical power systems, hydraulic systems, fuel management, and energy resource distribution for the PLUS suborbital space tourism aircraft.
 
 ## Domain Overview
 
-**Core Focus**: Space-qualified electrical systems, sustainable power generation, energy storage, and electrical distribution optimized for space tourism missions.
+**Core Focus**: Space-qualified electrical systems, hydraulic power, fuel systems, energy storage, and integrated resource management optimized for space tourism missions.
 
-**Key Systems**: Power generation, battery systems, electrical distribution, power management, and sustainable energy systems.
+**Key Systems**: Electrical power generation, hydraulic power, fuel systems, battery systems, power management, and sustainable energy systems.
 
 ## Process Organization
 

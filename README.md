@@ -217,9 +217,9 @@ Strategic product lines organized by operational characteristics:
           * [`AAP/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAP/) — Airport Adaptable Platforms
           * [`CCC/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/CCC/) — Cockpit, Cabin & Cargo
           * [`CQH/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/CQH/) — Cryogenics, Quantum & H₂
-          * [`DDD/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/DDD/) — Digital & Data Defense
+          * [`DDD/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/DDD/) — Drainage, Dehumidification & Drying
           * [`EDI/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EDI/) — Electronics & Digital Instruments
-          * [`EEE/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EEE/) — Ecological Efficient Electrification
+          * [`EEE/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EEE/) — Electrical, Hydraulic & Energy (EHR)
           * [`EER/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EER/) — Environmental, Emissions & Remediation
           * [`IIF/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIF/) — Industrial Infrastructure & Facilities
           * [`IIS/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/) — Integrated Intelligence & Software
@@ -289,16 +289,17 @@ Each domain contains three processes:
 
 ### Domain Catalog (examples)
 
-| Code    | Description                        |
-| ------- | ---------------------------------- |
-| **AAA** | Aerodynamics & Airframes           |
-| **PPP** | Propulsion & Fuel Systems          |
-| **LCC** | Linkages, Control & Communications |
-| **DDD** | Digital & Data Defense             |
-| **IIS** | Integrated Intelligence & Software |
-| **CQH** | Cryogenics, Quantum & H₂           |
-| **MEC** | Mechanical Systems Modules         |
-| **…**   | (see `PRODUCTS/.../domains/`)      |
+| Code    | Description                         |
+| ------- | ----------------------------------- |
+| **AAA** | Aerodynamics & Airframes            |
+| **PPP** | Propulsion & Fuel Systems           |
+| **LCC** | Linkages, Control & Communications  |
+| **DDD** | Drainage, Dehumidification & Drying |
+| **EEE** | Electrical, Hydraulic & Energy (EHR)|
+| **IIS** | Integrated Intelligence & Software  |
+| **CQH** | Cryogenics, Quantum & H₂            |
+| **MEC** | Mechanical Systems Modules          |
+| **…**   | (see `PRODUCTS/.../domains/`)       |
 
 ---
 
