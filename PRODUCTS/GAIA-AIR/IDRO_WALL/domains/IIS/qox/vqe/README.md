@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # QOx/VQE
 
-Optimización/cuántica **VQE** detectada en el dominio.
+Quantum optimization **VQE** detected in the domain.
