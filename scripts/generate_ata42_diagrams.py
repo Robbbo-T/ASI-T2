@@ -462,22 +462,41 @@ class ATA42DiagramGenerator:
 def parse_copilot_image_placeholders(md_file):
     """Extract COPILOT:IMAGE placeholders from markdown file"""
     content = Path(md_file).read_text()
-    
-    # Pattern to match COPILOT:IMAGE blocks
-    pattern = r'<!-- COPILOT:IMAGE\s*\ntitle:\s*"([^"]+)"\s*\nsave_to:\s*"([^"]+)"\s*\nprompt:\s*"([^"]+)"(?:\s*\nnotes:\s*"([^"]+)")?\s*-->'
-    
-    matches = re.finditer(pattern, content, re.MULTILINE | re.DOTALL)
-    
+    lines = content.splitlines()
+
     placeholders = []
-    for match in matches:
-        placeholders.append({
-            'title': match.group(1),
-            'save_to': match.group(2),
-            'prompt': match.group(3),
-            'notes': match.group(4) if match.group(4) else None,
-            'line_num': content[:match.start()].count('\n') + 1
-        })
-    
+    in_block = False
+    block_lines = []
+    block_start_line = 0
+
+    for idx, line in enumerate(lines):
+        if not in_block and line.strip().startswith("<!-- COPILOT:IMAGE"):
+            in_block = True
+            block_lines = [line]
+            block_start_line = idx + 1  # 1-based line number
+        elif in_block:
+            block_lines.append(line)
+            if line.strip().endswith("-->"):
+                # Parse the block
+                block_text = "\n".join(block_lines)
+                # Extract fields using simple regexes or string search
+                import re
+                def extract_field(field, text):
+                    m = re.search(rf'{field}:\s*"([^"]+)"', text)
+                    return m.group(1) if m else None
+                title = extract_field("title", block_text)
+                save_to = extract_field("save_to", block_text)
+                prompt = extract_field("prompt", block_text)
+                notes = extract_field("notes", block_text)
+                placeholders.append({
+                    'title': title,
+                    'save_to': save_to,
+                    'prompt': prompt,
+                    'notes': notes,
+                    'line_num': block_start_line
+                })
+                in_block = False
+                block_lines = []
     return placeholders
 
 
