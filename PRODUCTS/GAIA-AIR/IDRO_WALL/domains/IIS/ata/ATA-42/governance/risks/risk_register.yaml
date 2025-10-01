@@ -1,0 +1,30 @@
+# Risk Register (ATA-42 IIS)
+# Structured risk tracking with likelihood, impact, owner, and mitigation status.
+
+# Format:
+# risks:
+#   - id: string                    # Unique risk identifier (e.g., RISK-ATA42-001)
+#     title: string                 # Brief risk description
+#     category: Safety|Security|Performance|Integration|Compliance
+#     likelihood: Critical|High|Medium|Low
+#     impact: Critical|High|Medium|Low
+#     level: Critical|High|Medium|Low  # Computed from L×I matrix
+#     owner: string                 # Person/team responsible
+#     status: Open|Mitigating|Closed
+#     mitigation: string            # Mitigation strategy
+#     target_date: ISO8601          # Target completion
+#     residual_risk: string         # Remaining risk after mitigation
+#     created: ISO8601
+#     updated: ISO8601
+
+# Risk Matrix:
+# | Likelihood \ Impact | Low | Medium | High | Critical |
+# |---------------------|-----|--------|------|----------|
+# | **Critical**        | Med | High   | Crit | Crit     |
+# | **High**           | Low | Med    | High | Crit     |
+# | **Medium**         | Low | Med    | Med  | High     |
+# | **Low**            | Low | Low    | Med  | Med      |
+
+# Active Risks
+# Add risk entries below
+risks: []
