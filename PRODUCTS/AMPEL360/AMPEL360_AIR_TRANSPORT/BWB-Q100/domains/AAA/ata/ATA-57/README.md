@@ -118,15 +118,15 @@ The following **ATA-20 forms** are mandatory where applicable in ATA-57 work.
 (Links point to the authoritative forms under ATA-20 by program pattern.)
 
 - **Composite Fastening** — `FORM-QA-20-10-01`  
-  [`../ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md`](../ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md)
+  [`../20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md`](../20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md)
 - **Adhesive Bonding** — `FORM-QA-20-10-02`  
-  [`../ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md`](../ATA-20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md)
+  [`../20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md`](../20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md)
 - **Cabin Integrity / Leak Test** — `FORM-QA-20-20-01`  
-  [`../ATA-20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md`](../ATA-20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md)
+  [`../20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md`](../20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md)
 - **Material Handling & OOC Log** — `FORM-QA-20-30-01`  
-  [`../ATA-20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md`](../ATA-20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md)
+  [`../20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md`](../20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md)
 - **Bonding / EMI Continuity** — `FORM-QA-20-40-01`  
-  [`../ATA-20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md`](../ATA-20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md)
+  [`../20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md`](../20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md)
 
 > Use the forms above; **do not duplicate** in ATA-57. Link evidence from the relevant `57-xx/evidence/` folder.
 
