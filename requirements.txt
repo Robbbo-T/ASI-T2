@@ -24,6 +24,10 @@ defusedxml>=0.7.1
 matplotlib>=3.7.0
 pillow>=10.0.0
 
+# Quantum Computing (for QUBO optimization in AQUA framework)
+pennylane>=0.33.0
+numpy>=1.24.0
+
 # Development and Testing (Optional)
 # pytest>=7.4.0  # Uncomment for testing framework
 # pytest-asyncio>=0.21.0  # Uncomment for async test support
