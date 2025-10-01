@@ -21,6 +21,19 @@ canonical_hash: pending
 
 The **Aircraft Quantum Underlaying Architecture Operating System (AQUA OS)** is a specialized extension of the core INFRANET operating system framework, designed specifically for aviation applications. It provides a reusable, platform-level foundation that aligns with modern Integrated Modular Avionics (IMA) principles under DO-297.
 
+## AQUA Architecture
+
+AQUA OS implements the **AQUA (AVIONICS / ASTRIONICS QUANTUM UPDATING ARCHITECTURE)** — the Quantum Updating Architecture layer of the TFA stack. AQUA provides real-time update, validation, and entanglement capabilities across the **CB→QB→UE→FE→FWD→QS** bridge for flight systems.
+
+For complete architectural details, see [**AQUA Architecture Documentation**](./architecture/AQUA.md).
+
+### Key AQUA Capabilities
+- **Continuous Quantum Updating (CQU)**: Real-time propagation of configuration, health, and mission data
+- **Cross-Domain Synchronization**: Unified integration of avionics and astrionics systems
+- **MAL Integration**: Master Application Layer orchestration of lifecycle, safety gates, and QS states
+- **FE Compliance**: Ethical, traceable update flows aligned with ICAO, ESA/NASA, and EU frameworks
+- **FWD Capability**: Distribution to OPTIMO-DT, GAIA Quantum SAT, and AMPEL360 BWB-Q100
+
 ## Key Features
 
 ### Core Operating System Services
