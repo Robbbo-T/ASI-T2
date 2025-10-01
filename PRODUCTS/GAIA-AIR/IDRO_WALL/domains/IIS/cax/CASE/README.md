@@ -14,4 +14,4 @@ canonical_hash: "TBD"
 ---
 # CAx/CASE
 
-Entrada de proceso **CASE** derivada del README de dominio.
+Process entry **CASE** derived from domain README.
