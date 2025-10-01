@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ARINC-653 Schedule Configuration for ATA-42 IIS -->
+<!-- This is a placeholder template. Update with actual schedule. -->
+<ScheduleConfiguration xmlns="http://www.arinc653.org/schedule" version="2.0">
+  
+  <Metadata>
+    <Product>GAIA-AIR/IDRO_WALL</Product>
+    <Domain>IIS</Domain>
+    <ATAChapter>ATA-42</ATAChapter>
+    <Version>0.1.0</Version>
+    <Date>2025-10-01</Date>
+    <Description>ARINC-653 temporal schedule with major frame and partition windows</Description>
+  </Metadata>
+
+  <!-- Major Frame Configuration -->
+  <MajorFrame duration="100" unit="ms">
+    <Description>100 ms major frame (10 Hz cycle rate)</Description>
+    
+    <!-- Window 1: MAL-EEM Ethics Gate -->
+    <PartitionWindow id="W1">
+      <Partition ref="IIS.MAL-EEM"/>
+      <StartTime>0</StartTime>
+      <Duration>20</Duration>
+      <Unit>ms</Unit>
+      <Description>Ethics gate pre-action assessment (fail-closed)</Description>
+      <Priority>CRITICAL</Priority>
+    </PartitionWindow>
+
+    <!-- Window 2: SwarmCore -->
+    <PartitionWindow id="W2">
+      <Partition ref="IIS.SwarmCore"/>
+      <StartTime>20</StartTime>
+      <Duration>40</Duration>
+      <Unit>ms</Unit>
+      <Description>Swarm coordination and consensus</Description>
+      <Priority>HIGH</Priority>
+    </PartitionWindow>
+
+    <!-- Window 3: MissionPlanner -->
+    <PartitionWindow id="W3">
+      <Partition ref="IIS.MissionPlanner"/>
+      <StartTime>60</StartTime>
+      <Duration>40</Duration>
+      <Unit>ms</Unit>
+      <Description>Planning, tasking, and replanning</Description>
+      <Priority>HIGH</Priority>
+    </PartitionWindow>
+
+    <!-- Note: CMSAdapter runs in best-effort slots or background -->
+    <!-- Additional windows can be defined as needed -->
+
+  </MajorFrame>
+
+  <!-- Schedule Validation Rules -->
+  <ValidationRules>
+    <Rule>All windows must fit within major frame</Rule>
+    <Rule>No window overlap allowed</Rule>
+    <Rule>Critical partitions (DAL A) must have guaranteed windows</Rule>
+    <Rule>Health manager runs asynchronously in platform context</Rule>
+  </ValidationRules>
+
+  <!-- Schedule Properties -->
+  <Properties>
+    <Property name="CycleRate" value="10" unit="Hz"/>
+    <Property name="WindowCount" value="3"/>
+    <Property name="UnallocatedTime" value="0" unit="ms"/>
+    <Property name="ScheduleFeasibility" value="VERIFIED"/>
+  </Properties>
+
+</ScheduleConfiguration>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DMRL (Data Module Requirements List) for ATA-57-20 Control Surfaces -->
+<dmrl xmlns="http://www.s1000d.org/S1000D_5-0/xml_schema_flat/dmrl.xsd">
+  <identAndStatusSection>
+    <dmrlIdent>
+      <dmCode modelIdentCode="BWB-Q100" systemDiffCode="A" systemCode="57" subSystemCode="2" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="014" infoCodeVariant="A" itemLocationCode="A"/>
+      <language languageIsoCode="en" countryIsoCode="US"/>
+      <issueInfo issueNumber="001" inWork="00"/>
+    </dmrlIdent>
+    <dmrlAddressItems>
+      <issueDate year="2025" month="01" day="01"/>
+    </dmrlAddressItems>
+  </identAndStatusSection>
+  <dmrlContent>
+    <!-- Add authoring/illustration/terminology constraints here -->
+  </dmrlContent>
+</dmrl>

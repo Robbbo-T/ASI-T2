@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-10/fastener.set.schema.json",
+  "title": "Fastener Set",
+  "description": "Definition of fastener specifications and installation parameters for structural joints.",
+  "type": "object",
+  "required": ["set_id", "fastener_code", "diameter_mm", "material", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version following semantic versioning"
+    },
+    "set_id": {
+      "type": "string",
+      "pattern": "^FAST-[A-Z0-9_-]{3,}$",
+      "description": "Unique fastener set identifier"
+    },
+    "fastener_code": {
+      "type": "string",
+      "description": "Fastener part number or specification (e.g., NAS1234-5D)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable fastener set name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of fastener application"
+    },
+    "diameter_mm": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Nominal fastener diameter in mm"
+    },
+    "grip_range": {
+      "type": "object",
+      "required": ["min_mm", "max_mm"],
+      "properties": {
+        "min_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Minimum grip length in mm"
+        },
+        "max_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Maximum grip length in mm"
+        }
+      }
+    },
+    "material": {
+      "type": "object",
+      "required": ["specification"],
+      "properties": {
+        "specification": {
+          "type": "string",
+          "description": "Material specification (e.g., A286 CRES, Titanium Ti-6Al-4V)"
+        },
+        "condition": {
+          "type": "string",
+          "description": "Material condition or heat treatment"
+        },
+        "strength_class": {
+          "type": "string",
+          "description": "Strength class (e.g., 125 ksi, 160 ksi)"
+        }
+      }
+    },
+    "finish": {
+      "type": "string",
+      "description": "Surface finish or coating (e.g., cadmium plated, dry film lubricant)"
+    },
+    "head_style": {
+      "type": "string",
+      "enum": ["countersunk", "protruding", "tension", "hex", "blind"],
+      "description": "Fastener head style"
+    },
+    "thread": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["UNF", "UNC", "metric", "none"],
+          "description": "Thread type"
+        },
+        "pitch": {
+          "type": "string",
+          "description": "Thread pitch (e.g., 32 TPI, 1.5 mm)"
+        }
+      }
+    },
+    "torque": {
+      "type": "object",
+      "description": "Installation torque requirements",
+      "properties": {
+        "torque_Nm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Installation torque in Newton-meters"
+        },
+        "tolerance_Nm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Torque tolerance (±)"
+        },
+        "angle_deg": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Turn-of-nut angle in degrees (if applicable)"
+        },
+        "lubrication": {
+          "type": "string",
+          "description": "Lubrication condition (e.g., dry, as-received, MIL-PRF-123)"
+        },
+        "method": {
+          "type": "string",
+          "enum": ["torque-only", "torque-angle", "tension", "preload"],
+          "description": "Installation method"
+        },
+        "procedure_ref": {
+          "type": "string",
+          "description": "Reference to installation procedure (e.g., ATA-20-10 or S1000D DM)"
+        }
+      }
+    },
+    "hole_preparation": {
+      "type": "object",
+      "description": "Hole preparation requirements",
+      "properties": {
+        "hole_class": {
+          "type": "string",
+          "enum": ["Class 1", "Class 2", "Class 3", "Class 4"],
+          "description": "Hole quality class per industry standard"
+        },
+        "diameter_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Drilled hole diameter in mm"
+        },
+        "tolerance_mm": {
+          "type": "number",
+          "description": "Hole diameter tolerance (±)"
+        },
+        "countersink": {
+          "type": "object",
+          "properties": {
+            "required": {
+              "type": "boolean",
+              "description": "Whether countersink is required"
+            },
+            "depth_mm": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Countersink depth in mm"
+            },
+            "angle_deg": {
+              "type": "number",
+              "description": "Countersink angle in degrees (typically 100°)"
+            },
+            "tolerance_mm": {
+              "type": "number",
+              "description": "Depth tolerance (±)"
+            }
+          }
+        },
+        "surface_finish": {
+          "type": "object",
+          "properties": {
+            "ra_um": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Surface roughness Ra in micrometers"
+            },
+            "no_fiber_breakout": {
+              "type": "boolean",
+              "description": "Whether fiber breakout is prohibited (composites)"
+            }
+          }
+        }
+      }
+    },
+    "installation": {
+      "type": "object",
+      "properties": {
+        "interference_fit": {
+          "type": "boolean",
+          "description": "Whether interference fit is required"
+        },
+        "sealant_required": {
+          "type": "boolean",
+          "description": "Whether sealant is required"
+        },
+        "sealant_spec": {
+          "type": "string",
+          "description": "Sealant specification (if required)"
+        },
+        "wet_installation": {
+          "type": "boolean",
+          "description": "Whether wet installation (in fuel tank) is required"
+        },
+        "witness_mark": {
+          "type": "boolean",
+          "description": "Whether witness mark is required"
+        },
+        "lockwire_required": {
+          "type": "boolean",
+          "description": "Whether safety lockwire is required"
+        }
+      }
+    },
+    "acceptance_criteria": {
+      "type": "object",
+      "properties": {
+        "flushness": {
+          "type": "object",
+          "properties": {
+            "min_mm": {"type": "number", "description": "Minimum head protrusion (negative for recessed)"},
+            "max_mm": {"type": "number", "description": "Maximum head protrusion"}
+          }
+        },
+        "visual_inspection": {
+          "type": "boolean",
+          "description": "Whether 100% visual inspection is required"
+        },
+        "inspection_percent": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percentage of fasteners to inspect"
+        }
+      }
+    },
+    "joint_references": {
+      "type": "array",
+      "description": "References to joints that use this fastener set",
+      "items": {
+        "type": "string",
+        "pattern": "^JOINT-[A-Z0-9_-]{3,}$"
+      }
+    },
+    "form_link": {
+      "type": "string",
+      "description": "Link to QA form (ATA-20-10-01) for recording installation"
+    },
+    "effectivity": {
+      "type": "object",
+      "description": "Effectivity/applicability",
+      "properties": {
+        "start_msn": {"type": "string"},
+        "end_msn": {"type": "string"},
+        "options": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

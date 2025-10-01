@@ -37,6 +37,9 @@ dependencies = [
     "PyYAML>=6.0",
     # XML Processing (Security-focused)
     "defusedxml>=0.7.1",
+    # Quantum Computing (for QUBO optimization in AQUA framework)
+    "pennylane>=0.33.0",
+    "numpy>=1.24.0",
 ]
 
 [project.optional-dependencies]
@@ -51,6 +54,9 @@ docs = [
 ]
 xml = [
     "lxml>=4.9.0",  # High-performance XML parsing
+]
+optimization = [
+    "pyomo>=6.6.0",  # MILP/optimization modeling for AQUA OS
 ]
 
 [project.urls]

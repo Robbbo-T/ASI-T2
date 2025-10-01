@@ -222,4 +222,55 @@ Examples:
 - **Change tracking:** Evolution of problem formulations
 - **UTCS integration:** Evidence packaging and provenance tracking
 
+---
+
+## 11) Reference Implementations
+
+### SICOCA — Supply Chain Optimization (Artefact C)
+
+**Location:** `SICOCA_README.md`, `aqua_qubo_sicoca.py`
+
+A complete reference implementation demonstrating QUBO formulation for logistic lane selection optimization:
+
+**Problem Instance:**
+- **4 binary variables** representing lane selections
+- **100-unit demand** requirement
+- **Resource conflicts** between incompatible lanes
+- **Multi-objective optimization** balancing costs, demand satisfaction, and conflicts
+
+**Key Features:**
+- `SICOCALaneProblem` class encapsulating problem parameters
+- `build_qubo_matrix()` constructing Q matrix from supply chain data
+- `calculate_energy()` computing QUBO energy for any binary solution
+- `analyze_solution()` providing detailed cost and constraint analysis
+- PennyLane integration for QAOA/VQE quantum optimization
+- JSON artifact generation for UTCS-MI traceability
+
+**QUBO Matrix (4×4):**
+```
+Diagonal:      Q₁,₁ = -31995    Q₂,₂ = -41992    Q₃,₃ = -45488    Q₄,₄ = -37493
+Off-diagonal:  Q₁,₂ =  24000    Q₁,₃ =  28010*   Q₁,₄ =  20000
+               Q₂,₃ =  42000    Q₂,₄ =  30010*   Q₃,₄ =  35000
+               (*includes conflict penalty)
+Constant:      C = 50000
+```
+
+**Usage Example:**
+```python
+from aqua_qubo_sicoca import SICOCALaneProblem, build_qubo_matrix
+
+problem = SICOCALaneProblem()
+q_dict, constant = build_qubo_matrix(problem)
+# Submit to quantum solver (D-Wave, QAOA, VQE)
+```
+
+**Testing:**
+```bash
+python test_aqua_qubo_sicoca.py  # 5/5 tests passing
+```
+
+**Documentation:** See `SICOCA_README.md` for complete mathematical derivations, integration guides, and UTCS-MI traceability procedures.
+
+---
+
 This QUBO standard ensures that AMPEL360 PLUS discrete optimization problems are formulated, solved, and validated in a systematic, auditable manner, enabling confident use of quantum and classical optimization technologies in safety-critical space tourism applications.

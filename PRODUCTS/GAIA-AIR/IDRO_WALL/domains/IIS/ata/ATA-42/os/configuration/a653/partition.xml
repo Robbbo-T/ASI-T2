@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ARINC-653 Partition Configuration for ATA-42 IIS -->
+<!-- This is a placeholder template. Update with actual configuration. -->
+<PartitionConfiguration xmlns="http://www.arinc653.org/partition" version="2.0">
+  
+  <Metadata>
+    <Product>GAIA-AIR/IDRO_WALL</Product>
+    <Domain>IIS</Domain>
+    <ATAChapter>ATA-42</ATAChapter>
+    <Version>0.1.0</Version>
+    <Date>2025-10-01</Date>
+    <Description>Partition definitions for IMA system</Description>
+  </Metadata>
+
+  <!-- Partition: IIS.SwarmCore (DAL B) -->
+  <Partition name="IIS.SwarmCore" id="1">
+    <Description>Swarm coordination and resilient consensus</Description>
+    <DAL>B</DAL>
+    <Resources>
+      <CPU percentage="5"/>
+      <Memory size="5120" unit="KB"/>
+    </Resources>
+    <APEXPorts>
+      <SamplingPort name="sync.state.v1" direction="DST" refreshPeriod="100ms"/>
+      <QueuingPort name="c2.swarm.v1" direction="SRC" messageSize="512" maxMessages="16"/>
+    </APEXPorts>
+    <HealthMonitoring enabled="true"/>
+  </Partition>
+
+  <!-- Partition: IIS.MAL-EEM (DAL A) -->
+  <Partition name="IIS.MAL-EEM" id="2">
+    <Description>Ethics gate with fail-closed pre-action assessment</Description>
+    <DAL>A</DAL>
+    <Resources>
+      <CPU percentage="3"/>
+      <Memory size="4096" unit="KB"/>
+    </Resources>
+    <APEXPorts>
+      <SamplingPort name="eth.rules.v1" direction="DST" refreshPeriod="100ms"/>
+      <QueuingPort name="eth.audit.v1" direction="SRC" messageSize="1024" maxMessages="32"/>
+    </APEXPorts>
+    <HealthMonitoring enabled="true"/>
+    <CriticalityLevel>HIGH</CriticalityLevel>
+  </Partition>
+
+  <!-- Partition: IIS.MissionPlanner (DAL B) -->
+  <Partition name="IIS.MissionPlanner" id="3">
+    <Description>Planning, tasking, and replanning</Description>
+    <DAL>B</DAL>
+    <Resources>
+      <CPU percentage="4"/>
+      <Memory size="4096" unit="KB"/>
+    </Resources>
+    <APEXPorts>
+      <SamplingPort name="sens.bus.v1" direction="DST" refreshPeriod="100ms"/>
+      <QueuingPort name="sens.task.v1" direction="SRC" messageSize="512" maxMessages="16"/>
+    </APEXPorts>
+    <HealthMonitoring enabled="true"/>
+  </Partition>
+
+  <!-- Partition: IIS.CMSAdapter (DAL C) -->
+  <Partition name="IIS.CMSAdapter" id="4">
+    <Description>Health/telemetry export to CMS</Description>
+    <DAL>C</DAL>
+    <Resources>
+      <CPU percentage="2"/>
+      <Memory size="2048" unit="KB"/>
+    </Resources>
+    <APEXPorts>
+      <QueuingPort name="cms.health.v1" direction="SRC" messageSize="256" maxMessages="8"/>
+      <QueuingPort name="cms.export.v1" direction="SRC" messageSize="512" maxMessages="8"/>
+    </APEXPorts>
+    <HealthMonitoring enabled="true"/>
+  </Partition>
+
+</PartitionConfiguration>

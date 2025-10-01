@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schemas/hinge.schema.json",
+  "version": "1.0.0",
+  "hinge_id": "HNG-ELV-002",
+  "hinge_type": "center",
+  "fitting_ref": "FTG-HNG-ELV-MID",
+  "bearing_type": "ball",
+  "torque_limit_Nm": 0.5,
+  "free_play_mm": 0.08,
+  "fastener_set_refs": [
+    "FST-HNG-M10-TI",
+    "FST-HNG-M8-TI"
+  ],
+  "acceptance_metrics": [
+    {
+      "version": "1.0.0",
+      "metric_id": "ACPT-HNG-FRICTION",
+      "name": "Hinge Friction Torque",
+      "description": "Maximum friction torque measured through full range of motion",
+      "unit": "Nm",
+      "target": 0.3,
+      "limit_lower": 0.0,
+      "limit_upper": 0.5,
+      "method_ref": "DMC-57-20-PR-HINGE-FRICTION-001",
+      "evidence_refs": [
+        "evidence://hinge_tests/HNG-ELV-002_friction_test.csv"
+      ],
+      "notes": "Measured at ambient temperature with calibrated torque wrench"
+    },
+    {
+      "version": "1.0.0",
+      "metric_id": "ACPT-HNG-FREEPLAY",
+      "name": "Hinge Free Play",
+      "description": "Maximum free play measured at hinge bearing",
+      "unit": "mm",
+      "target": 0.05,
+      "limit_lower": 0.0,
+      "limit_upper": 0.1,
+      "method_ref": "DMC-57-20-PR-HINGE-FREEPLAY-001",
+      "evidence_refs": [
+        "evidence://hinge_tests/HNG-ELV-002_freeplay_test.csv"
+      ],
+      "notes": "Measured with dial indicator at bearing center"
+    }
+  ],
+  "notes": "Mid-span hinge for left elevon. Center-type hinge with ball bearing. Titanium fittings with aluminum bronze bushing. Designed for ±30° deflection range."
+}
