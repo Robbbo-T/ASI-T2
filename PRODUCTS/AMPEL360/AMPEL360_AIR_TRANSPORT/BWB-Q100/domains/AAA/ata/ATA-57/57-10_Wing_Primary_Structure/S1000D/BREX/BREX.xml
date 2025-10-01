@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Business Rules Exchange for ATA-57-10 Wing Primary Structure -->
+<brex xmlns="http://www.s1000d.org/S1000D_5-0/xml_schema_brex.xsd">
+  <applic>ALL</applic>
+  <rules>
+    <!-- Add authoring/illustration/terminology constraints here -->
+  </rules>
+  <crossRefTable/>
+</brex>

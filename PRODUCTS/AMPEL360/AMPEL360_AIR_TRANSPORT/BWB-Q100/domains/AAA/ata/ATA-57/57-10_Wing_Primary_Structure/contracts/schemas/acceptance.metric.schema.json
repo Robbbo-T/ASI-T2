@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-10/acceptance.metric.schema.json",
+  "title": "Acceptance Metric",
+  "description": "Acceptance/inspection metric definition used across ATA-57-10 artifacts.",
+  "type": "object",
+  "required": ["metric_id", "name", "unit", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "metric_id": {
+      "type": "string",
+      "pattern": "ACPT-[A-Z0-9_-]{3,}"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "unit": {
+      "type": "string",
+      "description": "e.g., mm, ohm, kPa/min"
+    },
+    "target": {
+      "type": "number"
+    },
+    "limit_lower": {
+      "type": "number"
+    },
+    "limit_upper": {
+      "type": "number"
+    },
+    "method_ref": {
+      "type": "string",
+      "description": "Procedure or DM reference"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "File/path or DM reference"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

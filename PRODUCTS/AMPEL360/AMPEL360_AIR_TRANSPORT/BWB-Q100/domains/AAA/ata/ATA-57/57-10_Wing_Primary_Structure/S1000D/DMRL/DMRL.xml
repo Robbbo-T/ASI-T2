@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Data Module Requirements List for ATA-57-10 Wing Primary Structure -->
+<dmrl xmlns="http://www.s1000d.org/S1000D_5-0/xml_schema_dmrl.xsd">
+  <issueInfo>
+    <issueNumber>0</issueNumber>
+    <inWork>1</inWork>
+    <date>2025-09-24</date>
+  </issueInfo>
+  <dmrlEntryRefs/>
+</dmrl>

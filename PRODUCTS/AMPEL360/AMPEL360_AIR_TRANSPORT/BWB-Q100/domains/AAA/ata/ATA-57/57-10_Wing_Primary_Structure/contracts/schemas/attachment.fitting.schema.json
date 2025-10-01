@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-10/attachment.fitting.schema.json",
+  "title": "Attachment Fitting",
+  "description": "Wing primary fitting interface metadata (e.g., wing-to-fuselage).",
+  "type": "object",
+  "required": ["fitting_id", "interface", "material", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "fitting_id": {
+      "type": "string",
+      "pattern": "FTG-[A-Z0-9_-]{3,}"
+    },
+    "interface": {
+      "type": "string",
+      "enum": ["wing_box", "fuselage", "pylon", "control_surface"]
+    },
+    "material": {
+      "type": "string"
+    },
+    "process": {
+      "type": "string",
+      "description": "e.g., forged, machined, composite RTM"
+    },
+    "fastener_set_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "FST-[A-Z0-9_-]{3,}"
+      }
+    },
+    "allowables_ref": {
+      "type": "string"
+    },
+    "nstr": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Number of stringers engaged (if applicable)"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

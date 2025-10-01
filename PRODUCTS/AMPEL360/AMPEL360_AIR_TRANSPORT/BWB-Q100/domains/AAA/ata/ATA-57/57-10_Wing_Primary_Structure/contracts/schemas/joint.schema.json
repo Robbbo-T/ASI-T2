@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-10/joint.schema.json",
+  "title": "Primary Joint Definition",
+  "description": "Structural joint definition for ATA-57-10 (bolted, bonded, hybrid).",
+  "type": "object",
+  "required": ["joint_id", "joint_type", "members", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "joint_id": {
+      "type": "string",
+      "pattern": "JNT-[A-Z0-9_-]{3,}"
+    },
+    "joint_type": {
+      "type": "string",
+      "enum": ["bolted", "bonded", "hybrid"]
+    },
+    "members": {
+      "type": "object",
+      "required": ["member_a", "member_b"],
+      "properties": {
+        "member_a": {
+          "type": "string",
+          "description": "Part/laminate ID A"
+        },
+        "member_b": {
+          "type": "string",
+          "description": "Part/laminate ID B"
+        }
+      },
+      "additionalProperties": false
+    },
+    "attachment_fitting_ref": {
+      "type": "string",
+      "pattern": "FTG-[A-Z0-9_-]{3,}",
+      "description": "Reference to an attachment fitting (if applicable)."
+    },
+    "attachment_fitting": {
+      "$ref": "./attachment.fitting.schema.json",
+      "description": "Inline fitting object (optional; otherwise use attachment_fitting_ref)."
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "station": {
+          "type": "string"
+        },
+        "rib": {
+          "type": "string"
+        },
+        "spar": {
+          "type": "string"
+        },
+        "bay": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fastener_set_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "FST-[A-Z0-9_-]{3,}"
+      }
+    },
+    "bondline": {
+      "type": "object",
+      "properties": {
+        "adhesive_spec": {
+          "type": "string"
+        },
+        "target_thickness_mm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "scrim_or_spacer": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "design_loads": {
+      "type": "object",
+      "properties": {
+        "Nx_kN": {
+          "type": "number"
+        },
+        "Ny_kN": {
+          "type": "number"
+        },
+        "Mz_kNm": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "acceptance_metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "./acceptance.metric.schema.json"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

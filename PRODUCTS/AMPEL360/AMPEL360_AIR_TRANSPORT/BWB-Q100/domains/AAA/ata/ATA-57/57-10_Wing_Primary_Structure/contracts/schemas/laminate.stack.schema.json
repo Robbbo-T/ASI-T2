@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-10/laminate.stack.schema.json",
+  "title": "Laminate Stack",
+  "description": "Laminate definition for wing primary structure skins/ribs/spars.",
+  "type": "object",
+  "required": ["stack_id", "plies", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "stack_id": {
+      "type": "string",
+      "pattern": "LAM-[A-Z0-9_-]{3,}"
+    },
+    "material_system": {
+      "type": "string",
+      "description": "e.g., IM7/8552"
+    },
+    "plies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["seq", "orientation_deg", "thickness_mm"],
+        "properties": {
+          "seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "orientation_deg": {
+            "type": "number",
+            "enum": [-45, 0, 45, 90]
+          },
+          "thickness_mm": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "material_override": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "symmetry": {
+      "type": "boolean",
+      "default": true
+    },
+    "core": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["none", "foam", "honeycomb"]
+        },
+        "thickness_mm": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "allowables_ref": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

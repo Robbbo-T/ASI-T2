@@ -1,0 +1,48 @@
+# UTCS/QS Routing Manifest for ATA-57-10 Wing Primary Structure
+# UTCS-MI v5.0 compliant
+
+id: UTCS-MI:v5.0:BWB-Q100:ATA-57:57-10:<artifact-id>
+llc: SYSTEMS
+bridge: CB→QB→UE→FE→FWD→QS
+
+source:
+  repo_path: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/57-10_Wing_Primary_Structure
+  commit: <git-sha>
+
+inputs:
+  - path: ../../../../cax/CAD/wing_baseline_model
+    description: Wing OML and structural definitions
+    format: STEP/CAD
+  - path: ../../../../cax/CAE/structural/loads
+    description: Structural loads analysis results
+    format: FEA Results
+  - path: ../../../compliance/allowables
+    description: Material and joint allowables
+    format: Database/Reports
+
+outputs:
+  - type: report
+    path: compliance/stress
+    description: Stress analysis reports
+  - type: dm
+    path: S1000D/DMC
+    description: S1000D data modules
+  - type: evidence
+    path: evidence
+    description: Test and inspection evidence
+
+evidence:
+  coupons: evidence/coupons/index.md
+  ndt: evidence/ndt/index.md
+  tests: evidence/tests/index.md
+  ata_dm_refs:
+    - DMC-57-10-PR-XXXX-00
+    - DMC-57-10-DS-XXXX-00
+    - DMC-57-10-IPD-XXXX-00
+
+provenance:
+  sbom: ../../../pax/OFF/sbom/ata-57-10.spdx.json
+  signatures:
+    qs_anchor: sha256:TBD
+
+ethics_guard: MAL-EEM
