@@ -10,10 +10,10 @@ import sys
 import json
 from pathlib import Path
 
-# Add the parent directory to the path to import the module
-sys.path.insert(0, str(Path(__file__).parent))
+# Import the module using a relative import (requires __init__.py in the directory)
 
-from aqua_qubo_sicoca import (
+
+from .aqua_qubo_sicoca import (
     SICOCALaneProblem,
     build_qubo_matrix,
     calculate_energy,
