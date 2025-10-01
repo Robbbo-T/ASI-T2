@@ -206,179 +206,6 @@ This documentation applies to all BWB-Q100 aircraft unless otherwise specified i
         *   [README.md](./io/README.md)
         *   [routing.manifest.yaml](./io/routing.manifest.yaml) *(Data flow routing configuration)*
 
----
-
-## S1000D Data Modules
-
-This chapter is managed as a complete S1000D CSDB (Common Source Data Base) with **85 data modules**.
-
-- **Descriptive (040A):** 50 modules defining the "what" - technical specs, materials, and architecture.
-- **Inspection (520A):** 21 modules defining the "how" - procedures for visual and NDT inspection.
-- **Removal/Installation (720A):** 6 modules for maintenance tasks.
-- **Repair (520A):** 5 modules for standard repair procedures.
-- **IPD (941A):** 16 modules for the Illustrated Parts Catalog.
-
-> **See the complete, hyperlinkable [S1000D Data Module List](./S1000D_Data_Module_List.md) for a detailed index of every module.
-
----
-
-## Interfaces & Dependencies
-
-This chapter does not exist in isolation. It has critical interfaces with:
-
-- **[ATA-57-20 Control Surfaces](../57-20_Control_Surfaces/README.md):** Defines hinge & bracket locations, stiffness, and clearances.
-- **[ATA-53 Fuselage Structure](../53_Fuselage/README.md):** Defines center section & wing-to-body attachments.
-- **[ATA-57-50 Systems Provisions](../57-50_Systems_Provisions/README.md):** Defines actuator cutouts, cable/pipe penetrations, and system routing.
-
----
-
-## 360IPCirq (R/I → IPC Reusability Bridge)
-
-### Purpose
-The 360IPCirq bridge enables seamless tracking of parts removed for repair, maintenance, or replacement by linking procedural steps directly to part numbers in the IPD.
-
-### Implementation
-- Every **720A** R/I DM enumerates removal kits, torque sequences, sealants, and fittings
-- Uses the same item keys as **941A** IPD figures/items
-- Enables "removal for repair → IPC 360 reusability"
-
-### Key Benefits
-- Complete traceability from procedure to part number
-- Efficient inventory management
-- Simplified maintenance workflows
-- Reduced risk of part misidentification
-
-### Where to Find It
-- R/I procedures: [`S1000D/data_modules/procedural/removal_installation/`](S1000D/data_modules/procedural/removal_installation/)
-- IPD catalogs: [`S1000D/data_modules/ipd/`](S1000D/data_modules/ipd/)
-- Contract definitions: [`contracts/ICD-AAA-ATA-57-10.md`](contracts/ICD-AAA-ATA-57-10.md)
-
----
-
-## Mandatory Forms (ATA-20)
-
-We do not duplicate standard practice forms here. Instead, we link to the canonical sources in **ATA-20**:
-
-- [Composite Fastening](../../20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md)
-- [Adhesive Bonding](../../20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md)
-- [Cabin Integrity / Leak Test](../../20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md)
-- [Material Handling & OOC Log](../../20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md)
-- [Bonding / EMI Continuity](../../20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md)
-
----
-
-## Evidence & QS
-
-### Traceability System
-Every action, from material lot numbers to torque values, is indexed under `evidence/` and cross-referenced from the relevant data modules. 
-
-### Evidence Types
-- **Material Evidence:** Material certificates, lot numbers, OOC timers
-- **Process Evidence:** Torque values, sealant batches, process parameters
-- **Test Evidence:** NDT results, test reports, calibration records
-- **Inspection Evidence:** Visual inspection reports, photos, videos
-
-### QS Seal Application
-A **QS seal** is applied only when:
-- All applicable ATA-20 practices are followed
-- All acceptance metrics are fully evidenced and referenced
-- All validation checks pass
-- All required signatures are obtained
-
-### Evidence Management
-- Evidence is organized by type in subdirectories under `evidence/`
-- Each evidence file is indexed in the respective `index.md` file
-- Evidence is linked from data modules using standardized references
-- Evidence is version-controlled and archived with UTCS anchors
-
----
-
-## Validation & CI
-
-### S1000D Validation
-- All DMs must validate against [BREX rules](S1000D/BREX/BREX.xml)
-- All DMs must be listed in [DMRL](S1000D/DMRL/DMRL.xml)
-- All DMs must follow the corrected DMC pattern with 2-digit fields
-- All procedural DMs must reference appropriate ATA-20 forms
-
-### Schema Validation
-- JSON instances must pass validation against schemas in [contracts/schemas/](contracts/schemas/)
-- Schema validation is enforced in the CI pipeline
-- Schema changes require version updates and backward compatibility checks
-
-### CI Pipeline
-- **Purpose:** Ensures all documentation meets quality standards before release
-- **Trigger:** On every push and pull request to the repository
-- **Actions:**
-  - XML well-formedness checks
-  - BREX validation
-  - Schema validation
-  - Cross-reference integrity checks
-  - Evidence link verification
-- **Failure:** CI fails closed if any reference is missing or unverifiable
-- **Configuration:** See [`.github/workflows/s1000d-ci.yaml`](../../.github/workflows/s1000d-ci.yaml)
-
----
-
-## Change Control
-
-### Change Process
-1. **Change Request:** Submit a change request with detailed justification
-2. **Technical Review:** Engineering review for technical impact
-3. **M&P Approval:** Materials & Processes approval for material/process changes
-4. **MRB Approval:** Material Review Board approval for structural changes
-5. **Documentation Update:** Update all affected documentation
-6. **CI Validation:** Pass all CI checks
-7. **Release:** Create release tag and update manifests
-8. **QS Seal:** Apply QS seal to approved release
-
-### Documentation Updates
-- All changes are tracked in the DMRL
-- Version numbers follow semantic versioning
-- Change notices are documented in release notes
-- All changes require approval signatures
-
-### Release Management
-- Releases follow **PDM-PLM** change notices
-- Manifests and signatures are updated under `io/` and `evidence/`
-- Release notes are published with each release
-
----
-
-## Working with This Documentation
-
-### For Engineers
-1. **Finding Information:** Use the directory structure to locate relevant data modules
-2. **Understanding Standards:** Refer to [ATA-20](../../20/README.md) for standard practices
-3. **Validation:** Run local validation checks before committing changes
-4. **Traceability:** Ensure all evidence is properly linked and documented
-
-### For Maintenance Personnel
-1. **Procedures:** Follow step-by-step instructions in procedural DMs
-2. **Parts Identification:** Use IPD to identify correct parts and quantities
-3. **Inspection:** Follow inspection DMs for detailed procedures
-4. **Repair:** Follow repair DMs for standard repair procedures
-
-### For Quality Assurance
-1. **Compliance:** Verify all procedures follow ATA-20 standards
-2. **Evidence:** Ensure all evidence is properly documented and linked
-3. **Validation:** Run validation checks on all changes
-4. **Audits:** Participate in regular documentation audits
-
----
-
-## Troubleshooting
-
-### Common Issues
-- **Broken Links:** Check file paths and update as needed
-- **Validation Failures:** Check BREX rules and schema compliance
-- **Missing Evidence:** Ensure all evidence is properly documented
-- **Version Conflicts:** Resolve version conflicts in dependencies
-
-### Getting Help
-- Check [README.md](../README.md) for general help
-- Check [FAQ.md](../FAQ.md) for frequently asked questions
-- Contact the [ASI-T Architecture Team](mailto:asi-t-architecture@bwq100.com) for technical support
 
 ---
 
@@ -560,49 +387,178 @@ A **QS seal** is applied only when:
 
 ---
 
-## S1000D Data Modules (DMRL-driven)
+## S1000D Data Modules
 
-- **Information codes:**  
-  - **040A** Descriptive; **520A** Inspection/Repair Procedures; **720A** Removal/Installation; **941A** IPD.  
-- **Master list:** controlled in [`S1000D/DMRL/DMRL.xml`](S1000D/DMRL/DMRL.xml). Each DMC above is *seeded* by the DMRL and must validate against **BREX**.
+This chapter is managed as a complete S1000D CSDB (Common Source Data Base) with **85 data modules**.
 
-> **Estimated total:** ~85–90 DMs across descriptive, inspection, R/I, and IPD, per breakdown above.
+- **Descriptive (040A):** 50 modules defining the "what" - technical specs, materials, and architecture.
+- **Inspection (520A):** 21 modules defining the "how" - procedures for visual and NDT inspection.
+- **Removal/Installation (720A):** 6 modules for maintenance tasks.
+- **Repair (520A):** 5 modules for standard repair procedures.
+- **IPD (941A):** 16 modules for the Illustrated Parts Catalog.
+
+> **See the complete, hyperlinkable [S1000D Data Module List](./S1000D_Data_Module_List.md) for a detailed index of every module.
+
+---
+
+## Interfaces & Dependencies
+
+This chapter does not exist in isolation. It has critical interfaces with:
+
+- **[ATA-57-20 Control Surfaces](../57-20_Control_Surfaces/README.md):** Defines hinge & bracket locations, stiffness, and clearances.
+- **[ATA-53 Fuselage Structure](../53_Fuselage/README.md):** Defines center section & wing-to-body attachments.
+- **[ATA-57-50 Systems Provisions](../57-50_Systems_Provisions/README.md):** Defines actuator cutouts, cable/pipe penetrations, and system routing.
 
 ---
 
 ## 360IPCirq (R/I → IPC Reusability Bridge)
 
-- **Intent:** every **720A** R/I DM enumerates removal kits, torque sequences, sealants, and fittings **with the same item keys** used by **941A** IPD figures/items to enable **"removal for repair → IPC 360 reusability"**.  
-- **Where:** See [`S1000D/data_modules/procedural/removal_installation/`](S1000D/data_modules/procedural/removal_installation/) and corresponding [`S1000D/data_modules/ipd/`](S1000D/data_modules/ipd/).  
-- **Contracts:** The mapping keys and effectivity rules are defined in [`contracts/ICD-AAA-ATA-57-10.md`](contracts/ICD-AAA-ATA-57-10.md) and the JSON schemas under [`contracts/schemas/`](contracts/schemas/).
+### Purpose
+The 360IPCirq bridge enables seamless tracking of parts removed for repair, maintenance, or replacement by linking procedural steps directly to part numbers in the IPD.
+
+### Implementation
+- Every **720A** R/I DM enumerates removal kits, torque sequences, sealants, and fittings
+- Uses the same item keys as **941A** IPD figures/items
+- Enables "removal for repair → IPC 360 reusability"
+
+### Key Benefits
+- Complete traceability from procedure to part number
+- Efficient inventory management
+- Simplified maintenance workflows
+- Reduced risk of part misidentification
+
+### Where to Find It
+- R/I procedures: [`S1000D/data_modules/procedural/removal_installation/`](S1000D/data_modules/procedural/removal_installation/)
+- IPD catalogs: [`S1000D/data_modules/ipd/`](S1000D/data_modules/ipd/)
+- Contract definitions: [`contracts/ICD-AAA-ATA-57-10.md`](contracts/ICD-AAA-ATA-57-10.md)
+
+---
+
+## Mandatory Forms (ATA-20)
+
+We do not duplicate standard practice forms here. Instead, we link to the canonical sources in **ATA-20**:
+
+- [Composite Fastening](../../20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md)
+- [Adhesive Bonding](../../20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md)
+- [Cabin Integrity / Leak Test](../../20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md)
+- [Material Handling & OOC Log](../../20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md)
+- [Bonding / EMI Continuity](../../20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md)
 
 ---
 
 ## Evidence & QS
 
-- **Traceability:** material lots, OOC timers, torque values, sealant batches, NDT results, test coupons → indexed under [`evidence/`](evidence/) and cross-referenced from DMs.  
-- **QS seal:** applied only when *all* applicable ATA-20 practices and acceptance metrics (per [`contracts/schemas/acceptance.metric.schema.json`](contracts/schemas/acceptance.metric.schema.json) are fully evidenced and referenced.
+### Traceability System
+Every action, from material lot numbers to torque values, is indexed under `evidence/` and cross-referenced from the relevant data modules. 
+
+### Evidence Types
+- **Material Evidence:** Material certificates, lot numbers, OOC timers
+- **Process Evidence:** Torque values, sealant batches, process parameters
+- **Test Evidence:** NDT results, test reports, calibration records
+- **Inspection Evidence:** Visual inspection reports, photos, videos
+
+### QS Seal Application
+A **QS seal** is applied only when:
+- All applicable ATA-20 practices are followed
+- All acceptance metrics are fully evidenced and referenced
+- All validation checks pass
+- All required signatures are obtained
+
+### Evidence Management
+- Evidence is organized by type in subdirectories under `evidence/`
+- Each evidence file is indexed in the respective `index.md` file
+- Evidence is linked from data modules using standardized references
+- Evidence is version-controlled and archived with UTCS anchors
 
 ---
 
 ## Validation & CI
 
-- **S1000D validation:** BREX rules ([`S1000D/BREX/BREX.xml`](S1000D/BREX/BREX.xml)) applied on each DM; DMRL conformance required.  
-- **Schema validation:** JSON instances referenced by DMs must pass:
-  - [`contracts/schemas/laminate.stack.schema.json`](contracts/schemas/laminate.stack.schema.json)
-  - [`contracts/schemas/joint.schema.json`](contracts/schemas/joint.schema.json)
-  - [`contracts/schemas/fastener.set.schema.json`](contracts/schemas/fastener.set.schema.json)
-  - [`contracts/schemas/attachment.fitting.schema.json`](contracts/schemas/attachment.fitting.schema.json)
-  - [`contracts/schemas/acceptance.metric.schema.json`](contracts/schemas/acceptance.metric.schema.json)
-- **Routing manifest:** [`io/routing.manifest.yaml`](io/routing.manifest.yaml) records CAx/QOx/PAX inputs/outputs and UTCS/QS anchors. CI fails closed if any reference is missing or unverifiable.
+### S1000D Validation
+- All DMs must validate against [BREX rules](S1000D/BREX/BREX.xml)
+- All DMs must be listed in [DMRL](S1000D/DMRL/DMRL.xml)
+- All DMs must follow the corrected DMC pattern with 2-digit fields
+- All procedural DMs must reference appropriate ATA-20 forms
+
+### Schema Validation
+- JSON instances must pass validation against schemas in [contracts/schemas/](contracts/schemas/)
+- Schema validation is enforced in the CI pipeline
+- Schema changes require version updates and backward compatibility checks
+
+### CI Pipeline
+- **Purpose:** Ensures all documentation meets quality standards before release
+- **Trigger:** On every push and pull request to the repository
+- **Actions:**
+  - XML well-formedness checks
+  - BREX validation
+  - Schema validation
+  - Cross-reference integrity checks
+  - Evidence link verification
+- **Failure:** CI fails closed if any reference is missing or unverifiable
+- **Configuration:** See [`.github/workflows/s1000d-ci.yaml`](../../.github/workflows/s1000d-ci.yaml)
 
 ---
 
 ## Change Control
 
-Any deviation from ATA-20 or drawing/spec requires **M&P** and **MRB** approval and is recorded here. Releases follow **PDM-PLM** change notices; manifests and signatures are updated under `io/` and `evidence/`.
+### Change Process
+1. **Change Request:** Submit a change request with detailed justification
+2. **Technical Review:** Engineering review for technical impact
+3. **M&P Approval:** Materials & Processes approval for material/process changes
+4. **MRB Approval:** Material Review Board approval for structural changes
+5. **Documentation Update:** Update all affected documentation
+6. **CI Validation:** Pass all CI checks
+7. **Release:** Create release tag and update manifests
+8. **QS Seal:** Apply QS seal to approved release
+
+### Documentation Updates
+- All changes are tracked in the DMRL
+- Version numbers follow semantic versioning
+- Change notices are documented in release notes
+- All changes require approval signatures
+
+### Release Management
+- Releases follow **PDM-PLM** change notices
+- Manifests and signatures are updated under `io/` and `evidence/`
+- Release notes are published with each release
 
 ---
+
+## Working with This Documentation
+
+### For Engineers
+1. **Finding Information:** Use the directory structure to locate relevant data modules
+2. **Understanding Standards:** Refer to [ATA-20](../../20/README.md) for standard practices
+3. **Validation:** Run local validation checks before committing changes
+4. **Traceability:** Ensure all evidence is properly linked and documented
+
+### For Maintenance Personnel
+1. **Procedures:** Follow step-by-step instructions in procedural DMs
+2. **Parts Identification:** Use IPD to identify correct parts and quantities
+3. **Inspection:** Follow inspection DMs for detailed procedures
+4. **Repair:** Follow repair DMs for standard repair procedures
+
+### For Quality Assurance
+1. **Compliance:** Verify all procedures follow ATA-20 standards
+2. **Evidence:** Ensure all evidence is properly documented and linked
+3. **Validation:** Run validation checks on all changes
+4. **Audits:** Participate in regular documentation audits
+
+---
+
+## Troubleshooting
+
+### Common Issues
+- **Broken Links:** Check file paths and update as needed
+- **Validation Failures:** Check BREX rules and schema compliance
+- **Missing Evidence:** Ensure all evidence is properly documented
+- **Version Conflicts:** Resolve version conflicts in dependencies
+
+### Getting Help
+- Check [README.md](../README.md) for general help
+- Check [FAQ.md](../FAQ.md) for frequently asked questions
+- Contact the [ASI-T Architecture Team](mailto:asi-t-architecture@bwq100.com) for technical support
+
 
 *Part of the BWB-Q100 technical baseline. Subject to configuration control.*
 ```
