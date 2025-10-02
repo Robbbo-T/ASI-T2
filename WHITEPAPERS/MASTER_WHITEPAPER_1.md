@@ -27,7 +27,7 @@ doi: TBA
 
 ASI-T2 is a **system-of-systems (SoS)** spanning aircraft, space, multi-agent swarms, digital infrastructure, hydrogen-airport operations, and sustainable finance. From inception, it is engineered to be **verifiable, reproducible, and ethically governed**.
 
-The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that standardises drivers, messaging, telemetry, health, logging, and version/keys—coupled with **QS/UTCS** provenance (signed tags, SBOMs, DOIs, append-only evidence). Releases traverse the **TFA V2 bridge**:
+The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that standardizes drivers, messaging, telemetry, health, logging, and version/keys—coupled with **QS/UTCS** provenance (signed tags, SBOMs, DOIs, append-only evidence). Releases traverse the **TFA V2 bridge**:
 
 > **QS → FWD → UE → FE → CB → QB**  
 > (**QS** Primordial · **FWD** Prediction/Probability · **UE** Unit Element/Collapse · **FE** Federation Entanglement/Contracting · **CB** Classical Bit/Companion Binary · **QB** Bit Cubic [non-quantumised])
@@ -42,7 +42,7 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 
 ## 1. Introduction & Thesis
 
-**Thesis.** A single founder can iteratively deliver a multi-product aerospace & defence ecosystem **iff** they unify:  
+**Thesis.** A single founder can iteratively deliver a multi-product aerospace & defense ecosystem **iff** they unify:  
 (a) a **common architecture (MAL)**, (b) **traceable evidence (QS/UTCS)**, (c) **pragmatic standards & V&V**, and (d) **service-aligned finance**.
 
 **Objective.** Ship releases with **dated, independently auditable proofs** (tags, SBOMs, DOIs, logs) to substantiate uniqueness and non-replicability.
@@ -85,7 +85,7 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 
 > **Normative rule:** domain and layer codes **MUST** be ALL-CAPS under strict TFA path grammar.
 
-### 3.1 TFA Flow (Logical Foundation - the Nexus/Bridge)
+### 3.1 TFA Flow (Logical Foundation — the Nexus/Bridge)
 
 **QS → FWD → UE → FE → CB → QB**
 
@@ -94,10 +94,10 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 - **UE (Unit Element / Collapse).** Atomic unit where decisions/states **collapse** into execution.  
 - **FE (Federation Entanglement / Contracting).** Federated entanglement and **contracting** across systems/domains with explicit SLOs.  
 - **CB (Classical Bit / Companion Binary).** Deterministic, verifiable classical artifacts and binaries.  
-- **QB (Bit Cubic; non-quantumised).** Discrete 3D lifting of classical state (`CB × CB × CB`), **not** a qubit. It's the qubit logics apporoximation
-- **QC (Qubit Chip/Circuit, quantum computing/sensor)**
+- **QB (Bit Cubic; non-quantumised).** Discrete 3D lifting of classical state (`CB × CB × CB`), **not** a qubit; it is the **qubit-logic approximation** when discretization is required.  
+- **QC (Qubit / full-quantum domain).** Qubit chip/circuit/sensor context (tetrahedral continuum+) including **transposition time**, **projection time**, and **teleportation-relative delay/phase**.
 
-> **Important distinction:** **QB ≠ qubit.** *QB* is a **non-quantum** cubic bit; a **qubit** belongs to a *tetrahedral continuum+* and includes **transposition/projection time** and **teleportation-relative delay/phase** (see Glossary).
+> **Important distinction:** **QB ≠ qubit.** *QB* is a **non-quantum** cubic bit; a **qubit** belongs to a *tetrahedral continuum+* and carries temporal/phase parameters (see Glossary).
 
 ### 3.2 Bridge Grammar (ATA/S1000D + CAx/QOx/PAx)
 
@@ -119,8 +119,8 @@ domains/<DOMAIN_CODE>/ATA-XX/<XX-XX>_<DESCRIPTION>/S1000D/<LAYER>/<PACK>/<SUBPAC
 
 **Pack definitions (canonical):**  
 - **CAx — Computer-Aided *X*** (CAD/CAE/CAM/CAT/CFD…)  
-- **QOx — Quantum Optimizations** (variational/annealing/quantum-inspired optimisation, scheduling, routing)  
-- **PAx — Packaging & Assemblies** (incl. OB/OFF per ASI-T2 PAx conventions)
+- **QOx — Quantum Optimizations** (variational/annealing/quantum-inspired optimization; scheduling, routing, packing)  
+- **PAx — Packaging & Assemblies** *(orientation markers only: **OB = Onboard**, **OFF = Outboard*)*
 
 > **CI gate:** non-conforming paths **fail** FCR-1/FCR-2 per the SSoT (**ASI-T · Universal Injection Prompt v1**).
 
@@ -148,7 +148,7 @@ Common IO/messaging/telemetry/health/logging libraries; versioned contracts with
 - **Standards (lite):** ARP4754A/ARP4761; DO-178C C/D indicative.
 
 ### 4.2 GAIA SPACE (Constellation)
-- **Purpose:** space digitisation via missions/data/services.  
+- **Purpose:** space digitization via missions/data/services.  
 - **State (H0):** orbit + payload simulation; SDR/ground downlink bench at H1.  
 - **Evidence:** mission scheduler simulations; certified ingestion in Data Plane.
 
@@ -213,7 +213,7 @@ Automated **SIL → HIL** campaigns; safety-lite adoption of ARP4754A (systems) 
 
 ## 9. Risks & Mitigations (extract)
 
-- **SoS complexity** → MAL modularisation, contracts-first, progressive simulation.  
+- **SoS complexity** → MAL modularization, contracts-first, progressive simulation.  
 - **Compliance/export** → early reviews, design-to-comply, external counsel at gates.  
 - **Data security** → zero-trust posture, immutable logging, secret hygiene.  
 - **Finance/volatility** → demurrage, reserves, SLO-based slashing.  
@@ -327,111 +327,91 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 │                       └── README.md
 
 ```
-# Complete Canonical Acronym Glossary
 
-## Core TFA Flow & Quantum Terms
+### Appendix E — Complete Canonical Acronym Glossary
 
-* **QS** — *Primordial*. Origin and highest-priority reference of state.
-* **FWD** — *Prediction/Probability; forward wave dynamics*. Predictive/probabilistic evolution propagated from QS.
-* **UE** — *Unit Element / Collapse*. Atomic unit where decisions/states **collapse** into executable form.
-* **FE** — *Federation Entanglement / Contracting*. Federated entanglement and **contracting** with explicit SLOs.
-* **CB** — *Classical Bit / Companion Binary*. Deterministic, verifiable classical artifacts/binaries.
-* **QB** — *Bit Cubic (non-quantumised)*. Discrete 3D lifting of classical state (`CB × CB × CB`); **not** a qubit.
-* **QC** — *Full-quantum domain (qubit)*. Tetrahedral continuum+ (non-discrete).
-* **Qubit** — Quantum state in the **tetrahedral continuum+**, which **includes** transposition time, projection time, and teleportation-relative delay/phase (see TP₀, Δt₍TP₎, Δφ₍TP₎).
+#### Core TFA Flow & Quantum Terms
+- **QS** — *Primordial*. Origin and highest-priority reference of state.  
+- **FWD** — *Prediction/Probability; forward wave dynamics*. Predictive/probabilistic evolution propagated from QS.  
+- **UE** — *Unit Element / Collapse*. Atomic unit where decisions/states **collapse** into executable form.  
+- **FE** — *Federation Entanglement / Contracting*. Federated entanglement and **contracting** with explicit SLOs.  
+- **CB** — *Classical Bit / Companion Binary*. Deterministic, verifiable classical artifacts/binaries.  
+- **QB** — *Bit Cubic (non-quantumised)*. Discrete 3D lifting of classical state (`CB × CB × CB`); **not** a qubit.  
+- **QC / Qubit** — *Full-quantum domain*. Tetrahedral continuum+; includes **transposition time**, **projection time**, and **teleportation-relative delay/phase** (relative to **TP₀**).  
 
-## Packs & Engineering Constructs
+*Teleportation-relative parameters:*  
+- **TP₀ / TP0** — theoretical teleportation baseline.  
+- **Δt₍TP₎ = t_real − t_TP₀ ≥ 0** — causal delay vs TP₀.  
+- **Δφ₍TP₎ = (φ_real − φ_TP₀) mod 2π** — phase offset vs TP₀.  
+These parameters **propagate through FWD**, **collapse in UE**, and are **contracted in FE** via SLOs (e.g., `Δt₍TP₎ ≤ t_SLO`, `|Δφ₍TP₎| ≤ φ_SLO`).
 
-* **CAx** — *Computer-Aided X* (umbrella for CAD/CAE/CAM/CAT/CFD).
-* **QOx** — **Quantum Optimizations** (variational/annealing/quantum-inspired optimisation for design, routing, scheduling, packing).
-* **PAx** — *Packaging & Assemblies* (includes PAx-specific placement/assembly conventions, e.g., OB/OFF).
-* **CAD** — *Computer-Aided Design*.
-* **CAE** — *Computer-Aided Engineering*.
-* **CAM** — *Computer-Aided Manufacturing*.
-* **CAT** — *Computer-Aided Testing/Tooling* (as used within CAx umbrella).
-* **CFD** — *Computational Fluid Dynamics*.
-* **OB / OFF** — OnBoard/OutBoard
+#### Packs & Engineering Constructs
+- **CAx** — *Computer-Aided X* (umbrella for CAD/CAE/CAM/CAT/CFD).  
+- **QOx** — **Quantum Optimizations** (variational/annealing/quantum-inspired optimization for design, routing, scheduling, packing).  
+- **PAx** — *Packaging & Assemblies* (orientation markers **OB = Onboard**, **OFF = Outboard**).  
+- **CAD** — *Computer-Aided Design*.  
+- **CAE** — *Computer-Aided Engineering*.  
+- **CAM** — *Computer-Aided Manufacturing*.  
+- **CAT** — *Computer-Aided Testing/Tooling* (as used within CAx umbrella).  
+- **CFD** — *Computational Fluid Dynamics*.  
+- **OB / OFF** — **Onboard / Outboard**.
 
-## Standards, Safety & Compliance
+#### Standards, Safety & Compliance
+- **ALARP** — *As Low As Reasonably Practicable*.  
+- **ARP4754A** — Guidelines for civil aircraft/systems development.  
+- **ARP4761** — Guidelines for safety assessment processes.  
+- **AS9100** — Aerospace Quality Management System standard.  
+- **DO-178C** — Software considerations in airborne systems (safety levels C/D indicative in this draft).  
+- **DO-254** — Design assurance for airborne electronic hardware.  
+- **ECSS** — *European Cooperation for Space Standardization*.  
+- **ITAR / EAR** — *International Traffic in Arms Regulations* / *Export Administration Regulations*.  
+- **EU 2021/821** — EU dual-use export control regulation (assessment/control as applicable).
 
-* **ALARP** — *As Low As Reasonably Practicable*.
-* **ARP4754A** — Guidelines for civil aircraft/systems development.
-* **ARP4761** — Guidelines for safety assessment processes.
-* **AS9100** — Aerospace Quality Management System standard.
-* **DO-178C** — Software considerations in airborne systems (safety levels C/D indicative in this draft).
-* **DO-254** — Design assurance for airborne electronic hardware.
-* **ECSS** — *European Cooperation for Space Standardization*.
-* **ITAR / EAR** — *International Traffic in Arms Regulations* / *Export Administration Regulations*.
-* **EU 2021/821** — EU dual-use export control regulation (assessment/control as applicable).
+#### Development, Evidence & Ops
+- **CI/CD** — *Continuous Integration / Continuous Delivery*.  
+- **DOI** — *Digital Object Identifier*.  
+- **SBOM** — *Software Bill of Materials*.  
+- **SLSA** — *Supply-chain Levels for Software Artifacts* (attestations / in-toto-lite in this draft).  
+- **UTCS** — *Universal Traceability & Crypto Signatures* (artifact lineage, anchors, signatures).  
+- **SSoT** — *Single Source of Truth* (governs agents/automations; **ASI-T · Universal Injection Prompt (v1)**).  
+- **V&V** — *Verification & Validation*.  
+- **OTA** — *Over-The-Air* update.  
+- **QoS** — *Quality of Service*.  
+- **KPI** — *Key Performance Indicator*.  
+- **MTBF / MTTR / MTTD** — *Mean Time Between Failures* / *Mean Time To Repair* / *Mean Time To Detect*.  
+- **R&D** — *Research & Development*.  
+- **SLA / SLO** — *Service Level Agreement / Objective*.  
+- **API** — *Application Programming Interface*.  
+- **PLC** — *Programmable Logic Controller* (here: MAL as domain PLC).
 
-## Development, Evidence & Ops
+#### Simulation & Verification
+- **SIL / HIL** — *Software-in-the-Loop / Hardware-in-the-Loop* (digital twins, campaigns, coverage).  
+- **H0 / H1 / H2** — Program horizons/milestones as defined in the roadmap.
 
-* **CI/CD** — *Continuous Integration / Continuous Delivery*.
-* **DOI** — *Digital Object Identifier*.
-* **SBOM** — *Software Bill of Materials*.
-* **SLSA** — *Supply-chain Levels for Software Artifacts* (attestations / in-toto-lite in this draft).
-* **UTCS** — *Universal Traceability & Crypto Signatures* (artifact lineage, anchors, signatures).
-* **SSoT** — *Single Source of Truth* (governs agents/automations; **ASI-T · Universal Injection Prompt (v1)**).
-* **V&V** — *Verification & Validation*.
-* **OTA** — *Over-The-Air* update.
-* **QoS** — *Quality of Service*.
-* **KPI** — *Key Performance Indicator*.
-* **MTBF / MTTR / MTTD** — *Mean Time Between Failures* / *Mean Time To Repair* / *Mean Time To Detect*.
-* **R&D** — *Research & Development*.
-* **SLA / SLO** — *Service Level Agreement / Objective*.
-* **API** — *Application Programming Interface*.
-* **PLC** — *Programmable Logic Controller* (here: MAL as domain PLC).
+#### Aviation/Space Taxonomy & Docs
+- **ATA** — Air Transport Association chaptering system.  
+- **S1000D** — International spec for structured technical publications (Data Module Code, DMC).  
+- **DMC** — *Data Module Code*.  
+- **BWB** — *Blended-Wing-Body* (airframe configuration).  
+- **FCR-1 / FCR-2** — *Formal Checkpoint Review* gates 1 and 2.
 
-## Simulation & Verification
+#### Hydrogen & Energy
+- **H₂ / LH₂** — *Hydrogen / Liquid Hydrogen*.
 
-* **SIL / HIL** — *Software-in-the-Loop / Hardware-in-the-Loop* (digital twins, campaigns, coverage).
-* **H0 / H1 / H2** — Programme horizons/milestones as defined in the roadmap.
-
-## Aviation/Space Taxonomy & Docs
-
-* **ATA** — Air Transport Association chaptering system.
-* **S1000D** — International specification for structured technical publications (Data Module Code, DMC).
-* **DMC** — *Data Module Code* (S1000D metadata element).
-* **BWB** — *Blended-Wing-Body* (airframe configuration).
-* **FCR-1 / FCR-2** — *Formal Checkpoint Review* gates 1 and 2.
-
-## Hydrogen & Energy
-
-* **H₂ / LH₂** — *Hydrogen / Liquid Hydrogen*.
-
-## Domain Codes (TFA `domains/`)
-
-* **AAA** — *Airframes* *(ATA-57 S1000D; CAx, QOx, PAx)*
-* **AAP** — *Airport Adaptable Platforms*
-* **CCC** — *Cockpit, Cabin & Cargo*
-* **CQH** — *Cryogenics, Quantum & H₂*
-* **DDD** — *Drainage, Dehumidification & Drying*
-* **EDI** — *Electronics & Digital Instruments*
-* **EEE** — *Electrical, Hydraulic & Energy*
-* **EER** — *Environmental, Emissions & Remediation*
-* **IIF** — *Industrial Infrastructure & Facilities*
-* **IIS** — *Integrated Intelligence & Software* *(ATA-22, ATA-42)*
-* **LCC** — *Linkages, Control & Communications*
-* **LIB** — *Logistics, Inventory & Blockchain*
-* **MEC** — *Mechanical Systems Modules*
-* **OOO** — *OS, Ontologies & Office Interfaces*
-* **PPP** — *Propulsion & Fuel Systems*
-
-## Programme/Metadata Terms
-
-* **LLC** — *Lifecycle Level Context* (metadata field).
-* **MI** — Version tag used in `utcs_mi` (kept **as-is** per SSoT; semantics reside in SSoT).
-* **H0/H1/H2** — Programme phases (see roadmap).
-
-## Quantum-Timing References (non-normative note kept for clarity)
-
-* **TP₀ / TP0** — Theoretical teleportation baseline (reference).
-* **Δt₍TP₎** — Real delay vs. TP₀ (≥ 0).
-* **Δφ₍TP₎** — Phase offset vs. TP₀ (mod 2π).
-
-> Estos parámetros se **propagan en FWD**, **colapsan en UE** y se **contratan en FE** mediante SLOs. (El **qubit** pertenece al continuo; **QB** no es cuántico.)
-
----
-
-
-
+#### Domain Codes (TFA `domains/`)
+- **AAA** — *Airframes* *(ATA-57 S1000D; CAx, QOx, PAx)*  
+- **AAP** — *Airport Adaptable Platforms*  
+- **CCC** — *Cockpit, Cabin & Cargo*  
+- **CQH** — *Cryogenics, Quantum & H₂*  
+- **DDD** — *Drainage, Dehumidification & Drying*  
+- **EDI** — *Electronics & Digital Instruments*  
+- **EEE** — *Electrical, Hydraulic & Energy*  
+- **EER** — *Environmental, Emissions & Remediation*  
+- **IIF** — *Industrial Infrastructure & Facilities*  
+- **IIS** — *Integrated Intelligence & Software* *(ATA-22, ATA-42)*  
+- **LCC** — *Linkages, Control & Communications*  
+- **LIB** — *Logistics, Inventory & Blockchain*  
+- **MEC** — *Mechanical Systems Modules*  
+- **OOO** — *OS, Ontologies & Office Interfaces*  
+- **PPP** — *Propulsion & Fuel Systems*
+```
