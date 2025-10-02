@@ -39,10 +39,10 @@ canonical_hash: "TBD"
 
 This directory is the **single source of truth** for the BWB-Q100 wing primary structure. Here's how to use it:
 
-1. **Find a Procedure:** Need to inspect a forward spar? Navigate to [`S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/`](S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/).
-2. **Find a Part Number:** Looking for a specific fitting? Check the Illustrated Parts Data (IPD) in [`S1000D/data_modules/ipd/`](S1000D/data_modules/ipd/).
+1. **Find a Procedure:** Need to inspect a forward spar? Navigate to [`S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/`](./procedural/inspection/57-10-10_Forward_Spar/).
+2. **Find a Part Number:** Looking for a specific fitting? Check the Illustrated Parts Data (IPD) in [`S1000D/data_modules/ipd/`](./ipd/).
 3. **Understand the Structure:** See the [Directory Breakdown](#directory-breakdown) for a map of all folders and their purpose.
-4. **Validate Compliance:** All changes are validated by our CI pipeline against [BREX rules](S1000D/BREX/BREX.xml) and [JSON schemas](contracts/schemas/).
+4. **Validate Compliance:** All changes are validated by our CI pipeline against [BREX rules](../BREX/BREX.xml) and [JSON schemas](../../contracts/schemas/).
 
 ---
 
@@ -98,8 +98,8 @@ This documentation applies to all BWB-Q100 aircraft unless otherwise specified i
 - **No Heavy Data:** CAx/QOx data is referenced via [`io/routing.manifest.yaml`](io/routing.manifest.yaml) and S1000D cross-refs
 
 ### Compliance Requirements
-- All DMs must validate against [BREX rules](S1000D/BREX/BREX.xml)
-- All DMs must be listed in [DMRL](S1000D/DMRL/DMRL.xml)
+- All DMs must validate against [BREX rules](../BREX/BREX.xml)
+- All DMs must be listed in [DMRL](../DMRL/DMRL.xml)
 - All DMs must follow the corrected DMC pattern with 2-digit fields
 - All procedural DMs must reference appropriate ATA-20 forms
 
@@ -127,84 +127,84 @@ This documentation applies to all BWB-Q100 aircraft unless otherwise specified i
 
 ## Directory Tree
 
-*   [57-10_Wing_Primary_Structure/](./)
-    *   [S1000D/](./S1000D/)
-        *   [BREX/](./S1000D/BREX/)
-            *   [BREX.xml](./S1000D/BREX/BREX.xml) *(Business Rules Exchange - S1000D validation rules)*
-            *   [README.md](./S1000D/BREX/README.md)
-        *   [DMRL/](./S1000D/DMRL/)
-            *   [DMRL.xml](./S1000D/DMRL/DMRL.xml) *(Data Module Requirements List)*
-            *   [README.md](./S1000D/DMRL/README.md)
-        *   [data_modules/](./S1000D/data_modules/)
-            *   [descriptive/](./S1000D/data_modules/descriptive/)
-                *   [57-10-10_Forward_Spar/](./S1000D/data_modules/descriptive/57-10-10_Forward_Spar/)
-                *   [57-10-20_Rear_Spar/](./S1000D/data_modules/descriptive/57-10-20_Rear_Spar/)
-                *   [57-10-30_Ribs/](./S1000D/data_modules/descriptive/57-10-30_Ribs/)
-                *   [57-10-40_Skin_Panels/](./S1000D/data_modules/descriptive/57-10-40_Skin_Panels/)
-                *   [57-10-50_Stringers/](./S1000D/data_modules/descriptive/57-10-50_Stringers/)
-                *   [57-10-60_Attachments/](./S1000D/data_modules/descriptive/57-10-60_Attachments/)
-                *   [README.md](./S1000D/data_modules/descriptive/README.md)
-            *   [procedural/](./S1000D/data_modules/procedural/)
-                *   [inspection/](./S1000D/data_modules/procedural/inspection/)
-                    *   [57-10-10_Forward_Spar/](./S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/)
-                    *   [57-10-20_Rear_Spar/](./S1000D/data_modules/procedural/inspection/57-10-20_Rear_Spar/)
-                    *   [57-10-30_Ribs/](./S1000D/data_modules/procedural/inspection/57-10-30_Ribs/)
-                    *   [57-10-40_Skin_Panels/](./S1000D/data_modules/procedural/inspection/57-10-40_Skin_Panels/)
-                    *   [57-10-50_Stringers/](./S1000D/data_modules/procedural/inspection/57-10-50_Stringers/)
-                    *   [57-10-60_Attachments/](./S1000D/data_modules/procedural/inspection/57-10-60_Attachments/)
-                    *   [README.md](./S1000D/data_modules/procedural/inspection/README.md)
-                *   [removal_installation/](./S1000D/data_modules/procedural/removal_installation/)
-                *   [repair/](./S1000D/data_modules/procedural/repair/)
-                *   [README.md](./S1000D/data_modules/procedural/README.md)
-            *   [ipd/](./S1000D/data_modules/ipd/)
-                *   [57-10-10_Forward_Spar/](./S1000D/data_modules/ipd/57-10-10_Forward_Spar/)
-                *   [57-10-20_Rear_Spar/](./S1000D/data_modules/ipd/57-10-20_Rear_Spar/)
-                *   [57-10-30_Ribs/](./S1000D/data_modules/ipd/57-10-30_Ribs/)
-                *   [57-10-40_Skin_Panels/](./S1000D/data_modules/ipd/57-10-40_Skin_Panels/)
-                *   [57-10-50_Stringers/](./S1000D/data_modules/ipd/57-10-50_Stringers/)
-                *   [57-10-60_Attachments/](./S1000D/data_modules/ipd/57-10-60_Attachments/)
-                *   [README.md](./S1000D/data_modules/ipd/README.md)
-            *   [README.md](./S1000D/README.md)
-    *   [compliance/](./compliance/)
-        *   [allowables/](./compliance/allowables/)
-            *   [index.md](./compliance/allowables/index.md) *(Material allowables database index)*
-            *   [README.md](./compliance/allowables/README.md)
-        *   [loads/](./compliance/loads/)
-            *   [index.md](./compliance/loads/index.md) *(Design load cases, limit/ultimate loads)*
-            *   [README.md](./compliance/loads/README.md)
-        *   [stress/](./compliance/stress/)
-            *   [index.md](./compliance/stress/index.md) *(Stress analysis reports, margin of safety)*
-            *   [README.md](./compliance/stress/README.md)
-        *   [README.md](./compliance/README.md)
-    *   [contracts/](./contracts/)
-        *   [schemas/](./contracts/schemas/)
-            *   [acceptance.metric.schema.json](./contracts/schemas/acceptance.metric.schema.json) *(Acceptance criteria data structure)*
-            *   [attachment.fitting.schema.json](./contracts/schemas/attachment.fitting.schema.json) *(Fitting interface definition)*
-            *   [fastener.set.schema.json](./contracts/schemas/fastener.set.schema.json) *(Fastener specification format)*
-            *   [joint.schema.json](./contracts/schemas/joint.schema.json) *(Joint design parameters)*
-            *   [laminate.stack.schema.json](./contracts/schemas/laminate.stack.schema.json) *(Composite layup definition)*
-            *   [README.md](./contracts/schemas/README.md)
-        *   [ICD-AAA-ATA-57-10.md](./contracts/ICD-AAA-ATA-57-10.md) *(Master ICD for wing primary structure)*
-        *   [README.md](./contracts/README.md)
-    *   [evidence/](./evidence/)
-        *   [coupons/](./evidence/coupons/)
-            *   [index.md](./evidence/coupons/index.md) *(Coupon test results, material qualification)*
-            *   [README.md](./evidence/coupons/README.md)
-        *   [ndt/](./evidence/ndt/)
-            *   [index.md](./evidence/ndt/index.md) *(NDT reports, calibration records)*
-            *   [README.md](./evidence/ndt/README.md)
-        *   [tests/](./evidence/tests/)
-            *   [index.md](evidence/tests/index.md) *(Component tests, full-scale testing)*
-            *   [README.md](evidence/tests/README.md)
-        *   [README.md](./evidence/README.md)
-    *   [icd/](./icd/)
-        *   [ICD-57-10-53_Fuselage_Attachments.md](./icd/ICD-57-10-53_Fuselage_Attachments.md) *(Interface to ATA-53 fuselage structure)*
-        *   [ICD-57-10-57-20_Control_Surfaces.md](./icd/ICD-57-10-57-20_Control_Surfaces.md) *(Interface to ATA-57-20 control surfaces)*
-        *   [ICD-57-10-57-50_Systems_Provisions.md](./icd/ICD-57-10-57-50_Systems_Provisions.md) *(Interface to ATA-57-50 systems installations)*
-        *   [README.md](./icd/README.md)
-    *   [io/](./io/)
-        *   [README.md](./io/README.md)
-        *   [routing.manifest.yaml](./io/routing.manifest.yaml) *(Data flow routing configuration)*
+*   [57-10_Wing_Primary_Structure/](../../)
+    *   [S1000D/](../)
+        *   [BREX/](../BREX/)
+            *   [BREX.xml](../BREX/BREX.xml) *(Business Rules Exchange - S1000D validation rules)*
+            *   [README.md](../BREX/README.md)
+        *   [DMRL/](../DMRL/)
+            *   [DMRL.xml](../DMRL/DMRL.xml) *(Data Module Requirements List)*
+            *   [README.md](../DMRL/README.md)
+        *   [data_modules/](./)
+            *   [descriptive/](./descriptive/)
+                *   [57-10-10_Forward_Spar/](./descriptive/57-10-10_Forward_Spar/)
+                *   [57-10-20_Rear_Spar/](./descriptive/57-10-20_Rear_Spar/)
+                *   [57-10-30_Ribs/](./descriptive/57-10-30_Ribs/)
+                *   [57-10-40_Skin_Panels/](./descriptive/57-10-40_Skin_Panels/)
+                *   [57-10-50_Stringers/](./descriptive/57-10-50_Stringers/)
+                *   [57-10-60_Attachments/](./descriptive/57-10-60_Attachments/)
+                *   [README.md](./descriptive/README.md)
+            *   [procedural/](./procedural/)
+                *   [inspection/](./procedural/inspection/)
+                    *   [57-10-10_Forward_Spar/](./procedural/inspection/57-10-10_Forward_Spar/)
+                    *   [57-10-20_Rear_Spar/](./procedural/inspection/57-10-20_Rear_Spar/)
+                    *   [57-10-30_Ribs/](./procedural/inspection/57-10-30_Ribs/)
+                    *   [57-10-40_Skin_Panels/](./procedural/inspection/57-10-40_Skin_Panels/)
+                    *   [57-10-50_Stringers/](./procedural/inspection/57-10-50_Stringers/)
+                    *   [57-10-60_Attachments/](./procedural/inspection/57-10-60_Attachments/)
+                    *   [README.md](./procedural/inspection/README.md)
+                *   [removal_installation/](./procedural/removal_installation/)
+                *   [repair/](./procedural/repair/)
+                *   [README.md](./procedural/README.md)
+            *   [ipd/](./ipd/)
+                *   [57-10-10_Forward_Spar/](./ipd/57-10-10_Forward_Spar/)
+                *   [57-10-20_Rear_Spar/](./ipd/57-10-20_Rear_Spar/)
+                *   [57-10-30_Ribs/](./ipd/57-10-30_Ribs/)
+                *   [57-10-40_Skin_Panels/](./ipd/57-10-40_Skin_Panels/)
+                *   [57-10-50_Stringers/](./ipd/57-10-50_Stringers/)
+                *   [57-10-60_Attachments/](./ipd/57-10-60_Attachments/)
+                *   [README.md](./ipd/README.md)
+            *   [README.md](../README.md)
+    *   [compliance/](../../compliance/)
+        *   [allowables/](../../compliance/allowables/)
+            *   [index.md](../../compliance/allowables/index.md) *(Material allowables database index)*
+            *   [README.md](../../compliance/allowables/README.md)
+        *   [loads/](../../compliance/loads/)
+            *   [index.md](../../compliance/loads/index.md) *(Design load cases, limit/ultimate loads)*
+            *   [README.md](../../compliance/loads/README.md)
+        *   [stress/](../../compliance/stress/)
+            *   [index.md](../../compliance/stress/index.md) *(Stress analysis reports, margin of safety)*
+            *   [README.md](../../compliance/stress/README.md)
+        *   [README.md](../../compliance/README.md)
+    *   [contracts/](../../contracts/)
+        *   [schemas/](../../contracts/schemas/)
+            *   [acceptance.metric.schema.json](../../contracts/schemas/acceptance.metric.schema.json) *(Acceptance criteria data structure)*
+            *   [attachment.fitting.schema.json](../../contracts/schemas/attachment.fitting.schema.json) *(Fitting interface definition)*
+            *   [fastener.set.schema.json](../../contracts/schemas/fastener.set.schema.json) *(Fastener specification format)*
+            *   [joint.schema.json](../../contracts/schemas/joint.schema.json) *(Joint design parameters)*
+            *   [laminate.stack.schema.json](../../contracts/schemas/laminate.stack.schema.json) *(Composite layup definition)*
+            *   [README.md](../../contracts/schemas/README.md)
+        *   [ICD-AAA-ATA-57-10.md](../../contracts/ICD-AAA-ATA-57-10.md) *(Master ICD for wing primary structure)*
+        *   [README.md](../../contracts/README.md)
+    *   [evidence/](../../evidence/)
+        *   [coupons/](../../evidence/coupons/)
+            *   [index.md](../../evidence/coupons/index.md) *(Coupon test results, material qualification)*
+            *   [README.md](../../evidence/coupons/README.md)
+        *   [ndt/](../../evidence/ndt/)
+            *   [index.md](../../evidence/ndt/index.md) *(NDT reports, calibration records)*
+            *   [README.md](../../evidence/ndt/README.md)
+        *   [tests/](../../evidence/tests/)
+            *   [index.md](../../evidence/tests/index.md) *(Component tests, full-scale testing)*
+            *   [README.md](../../evidence/tests/README.md)
+        *   [README.md](../../evidence/README.md)
+    *   [icd/](../../icd/)
+        *   [ICD-57-10-53_Fuselage_Attachments.md](../../icd/ICD-57-10-53_Fuselage_Attachments.md) *(Interface to ATA-53 fuselage structure)*
+        *   [ICD-57-10-57-20_Control_Surfaces.md](../../icd/ICD-57-10-57-20_Control_Surfaces.md) *(Interface to ATA-57-20 control surfaces)*
+        *   [ICD-57-10-57-50_Systems_Provisions.md](../../icd/ICD-57-10-57-50_Systems_Provisions.md) *(Interface to ATA-57-50 systems installations)*
+        *   [README.md](../../icd/README.md)
+    *   [io/](../../io/)
+        *   [README.md](../../io/README.md)
+        *   [routing.manifest.yaml](../../io/routing.manifest.yaml) *(Data flow routing configuration)*
 
 
 ---
@@ -214,163 +214,163 @@ This documentation applies to all BWB-Q100 aircraft unless otherwise specified i
 ### Descriptive Modules (040A) - 50 Modules
 
 #### Forward Spar (10 Modules)
-- [DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml) - Forward Spar - General Description and Architecture
-- [DMC-BWQ1-A-57-10-10-01-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-01-00A-040A-D-EN-US.xml) - Forward Spar Inboard Section LH - Material, Geometry, Fastener Pattern
-- [DMC-BWQ1-A-57-10-10-02-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-02-00A-040A-D-EN-US.xml) - Forward Spar Inboard Section RH - Material, Geometry, Fastener Pattern
-- [DMC-BWQ1-A-57-10-10-03-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-03-00A-040A-D-EN-US.xml) - Forward Spar Mid Section LH - Splice Joints, Load Transfer
-- [DMC-BWQ1-A-57-10-10-04-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-04-00A-040A-D-EN-US.xml) - Forward Spar Mid Section RH - Splice Joints, Load Transfer
-- [DMC-BWQ1-A-57-10-10-05-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-05-00A-040A-D-EN-US.xml) - Forward Spar Outboard Section LH - Taper, Tip Attachment
-- [DMC-BWQ1-A-57-10-10-06-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-06-00A-040A-D-EN-US.xml) - Forward Spar Outboard Section RH - Taper, Tip Attachment
-- [DMC-BWQ1-A-57-10-10-07-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-07-00A-040A-D-EN-US.xml) - Forward Spar Upper Cap - Composite Layup, Stringer Runouts
-- [DMC-BWQ1-A-57-10-10-08-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-08-00A-040A-D-EN-US.xml) - Forward Spar Lower Cap - Composite Layup, Fuel Seal Interface
-- [DMC-BWQ1-A-57-10-10-09-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-09-00A-040A-D-EN-US.xml) - Forward Spar Web - Shear Panel, Stiffeners, Lightening Holes
+- [DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml) - Forward Spar - General Description and Architecture
+- [DMC-BWQ1-A-57-10-10-01-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-01-00A-040A-D-EN-US.xml) - Forward Spar Inboard Section LH - Material, Geometry, Fastener Pattern
+- [DMC-BWQ1-A-57-10-10-02-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-02-00A-040A-D-EN-US.xml) - Forward Spar Inboard Section RH - Material, Geometry, Fastener Pattern
+- [DMC-BWQ1-A-57-10-10-03-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-03-00A-040A-D-EN-US.xml) - Forward Spar Mid Section LH - Splice Joints, Load Transfer
+- [DMC-BWQ1-A-57-10-10-04-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-04-00A-040A-D-EN-US.xml) - Forward Spar Mid Section RH - Splice Joints, Load Transfer
+- [DMC-BWQ1-A-57-10-10-05-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-05-00A-040A-D-EN-US.xml) - Forward Spar Outboard Section LH - Taper, Tip Attachment
+- [DMC-BWQ1-A-57-10-10-06-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-06-00A-040A-D-EN-US.xml) - Forward Spar Outboard Section RH - Taper, Tip Attachment
+- [DMC-BWQ1-A-57-10-10-07-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-07-00A-040A-D-EN-US.xml) - Forward Spar Upper Cap - Composite Layup, Stringer Runouts
+- [DMC-BWQ1-A-57-10-10-08-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-08-00A-040A-D-EN-US.xml) - Forward Spar Lower Cap - Composite Layup, Fuel Seal Interface
+- [DMC-BWQ1-A-57-10-10-09-00A-040A-D-EN-US.xml](./descriptive/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-09-00A-040A-D-EN-US.xml) - Forward Spar Web - Shear Panel, Stiffeners, Lightening Holes
 
 #### Rear Spar (10 Modules)
-- [DMC-BWQ1-A-57-10-20-00-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-040A-D-EN-US.xml) - Rear Spar - General Description and Load Paths
-- [DMC-BWQ1-A-57-10-20-01-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-01-00A-040A-D-EN-US.xml) - Rear Spar Inboard Section LH - Landing Gear Beam Interface
-- [DMC-BWQ1-A-57-10-20-02-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-02-00A-040A-D-EN-US.xml) - Rear Spar Inboard Section RH - Landing Gear Beam Interface
-- [DMC-BWQ1-A-57-10-20-03-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-03-00A-040A-D-EN-US.xml) - Rear Spar Mid Section LH - Control Surface Hinge Locations
-- [DMC-BWQ1-A-57-10-20-04-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-04-00A-040A-D-EN-US.xml) - Rear Spar Mid Section RH - Control Surface Hinge Locations
-- [DMC-BWQ1-A-57-10-20-05-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-05-00A-040A-D-EN-US.xml) - Rear Spar Outboard Section LH - Aileron Support Structure
-- [DMC-BWQ1-A-57-10-20-06-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-06-00A-040A-D-EN-US.xml) - Rear Spar Outboard Section RH - Aileron Support Structure
-- [DMC-BWQ1-A-57-10-20-07-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-07-00A-040A-D-EN-US.xml) - Rear Spar Upper Cap - Tension Loads, Splice Design
-- [DMC-BWQ1-A-57-10-20-08-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-08-00A-040A-D-EN-US.xml) - Rear Spar Lower Cap - Compression Loads, Anti-Buckling
-- [DMC-BWQ1-A-57-10-20-09-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-09-00A-040A-D-EN-US.xml) - Rear Spar Web - Shear Transfer, Actuator Cutouts
+- [DMC-BWQ1-A-57-10-20-00-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-040A-D-EN-US.xml) - Rear Spar - General Description and Load Paths
+- [DMC-BWQ1-A-57-10-20-01-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-01-00A-040A-D-EN-US.xml) - Rear Spar Inboard Section LH - Landing Gear Beam Interface
+- [DMC-BWQ1-A-57-10-20-02-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-02-00A-040A-D-EN-US.xml) - Rear Spar Inboard Section RH - Landing Gear Beam Interface
+- [DMC-BWQ1-A-57-10-20-03-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-03-00A-040A-D-EN-US.xml) - Rear Spar Mid Section LH - Control Surface Hinge Locations
+- [DMC-BWQ1-A-57-10-20-04-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-04-00A-040A-D-EN-US.xml) - Rear Spar Mid Section RH - Control Surface Hinge Locations
+- [DMC-BWQ1-A-57-10-20-05-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-05-00A-040A-D-EN-US.xml) - Rear Spar Outboard Section LH - Aileron Support Structure
+- [DMC-BWQ1-A-57-10-20-06-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-06-00A-040A-D-EN-US.xml) - Rear Spar Outboard Section RH - Aileron Support Structure
+- [DMC-BWQ1-A-57-10-20-07-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-07-00A-040A-D-EN-US.xml) - Rear Spar Upper Cap - Tension Loads, Splice Design
+- [DMC-BWQ1-A-57-10-20-08-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-08-00A-040A-D-EN-US.xml) - Rear Spar Lower Cap - Compression Loads, Anti-Buckling
+- [DMC-BWQ1-A-57-10-20-09-00A-040A-D-EN-US.xml](./descriptive/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-09-00A-040A-D-EN-US.xml) - Rear Spar Web - Shear Transfer, Actuator Cutouts
 
 #### Ribs (7 Modules)
-- [DMC-BWQ1-A-57-10-30-00-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-00-00A-040A-D-EN-US.xml) - Ribs - General Description, Numbering System, Load Distribution
-- [DMC-BWQ1-A-57-10-30-01-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-01-00A-040A-D-EN-US.xml) - Main Ribs LH (RIB 1-10) - Heavy Ribs, Fuel Tank Boundaries
-- [DMC-BWQ1-A-57-10-30-02-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-02-00A-040A-D-EN-US.xml) - Main Ribs RH (RIB 1-10) - Heavy Ribs, Fuel Tank Boundaries
-- [DMC-BWQ1-A-57-10-30-03-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-03-00A-040A-D-EN-US.xml) - Intermediate Ribs LH - Stiffening, Skin Panel Support
-- [DMC-BWQ1-A-57-10-30-04-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-04-00A-040A-D-EN-US.xml) - Intermediate Ribs RH - Stiffening, Skin Panel Support
-- [DMC-BWQ1-A-57-10-30-05-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-05-00A-040A-D-EN-US.xml) - Auxiliary Ribs - Local Reinforcements, System Provisions
-- [DMC-BWQ1-A-57-10-30-06-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-06-00A-040A-D-EN-US.xml) - Rib Attachments/Fittings - Spar Clips, Flange Connections
+- [DMC-BWQ1-A-57-10-30-00-00A-040A-D-EN-US.xml](./descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-00-00A-040A-D-EN-US.xml) - Ribs - General Description, Numbering System, Load Distribution
+- [DMC-BWQ1-A-57-10-30-01-00A-040A-D-EN-US.xml](./descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-01-00A-040A-D-EN-US.xml) - Main Ribs LH (RIB 1-10) - Heavy Ribs, Fuel Tank Boundaries
+- [DMC-BWQ1-A-57-10-30-02-00A-040A-D-EN-US.xml](./descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-02-00A-040A-D-EN-US.xml) - Main Ribs RH (RIB 1-10) - Heavy Ribs, Fuel Tank Boundaries
+- [DMC-BWQ1-A-57-10-30-03-00A-040A-D-EN-US.xml](./descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-03-00A-040A-D-EN-US.xml) - Intermediate Ribs LH - Stiffening, Skin Panel Support
+- [DMC-BWQ1-A-57-10-30-04-00A-040A-D-EN-US.xml](./descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-04-00A-040A-D-EN-US.xml) - Intermediate Ribs RH - Stiffening, Skin Panel Support
+- [DMC-BWQ1-A-57-10-30-05-00A-040A-D-EN-US.xml](./descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-05-00A-040A-D-EN-US.xml) - Auxiliary Ribs - Local Reinforcements, System Provisions
+- [DMC-BWQ1-A-57-10-30-06-00A-040A-D-EN-US.xml](./descriptive/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-06-00A-040A-D-EN-US.xml) - Rib Attachments/Fittings - Spar Clips, Flange Connections
 
 #### Skin Panels (13 Modules)
-- [DMC-BWQ1-A-57-10-40-00-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-040A-D-EN-US.xml) - Skin Panels - General Description, Panel Layout, Access Doors
-- [DMC-BWQ1-A-57-10-40-01-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-01-00A-040A-D-EN-US.xml) - Upper Skin Inboard LH - Panel Boundaries, Thickness Schedule
-- [DMC-BWQ1-A-57-10-40-02-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-02-00A-040A-D-EN-US.xml) - Upper Skin Inboard RH - Panel Boundaries, Thickness Schedule
-- [DMC-BWQ1-A-57-10-40-03-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-03-00A-040A-D-EN-US.xml) - Upper Skin Mid LH - Splice Joints, Inspection Access
-- [DMC-BWQ1-A-57-10-40-04-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-04-00A-040A-D-EN-US.xml) - Upper Skin Mid RH - Splice Joints, Inspection Access
-- [DMC-BWQ1-A-57-10-40-05-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-05-00A-040A-D-EN-US.xml) - Upper Skin Outboard LH - Anti-icing Provisions, Lightning Protection
-- [DMC-BWQ1-A-57-10-40-06-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-06-00A-040A-D-EN-US.xml) - Upper Skin Outboard RH - Anti-icing Provisions, Lightning Protection
-- [DMC-BWQ1-A-57-10-40-07-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-07-00A-040A-D-EN-US.xml) - Lower Skin Inboard LH - Fuel Tank Sealing, Drain Provisions
-- [DMC-BWQ1-A-57-10-40-08-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-08-00A-040A-D-EN-US.xml) - Lower Skin Inboard RH - Fuel Tank Sealing, Drain Provisions
-- [DMC-BWQ1-A-57-10-40-09-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-09-00A-040A-D-EN-US.xml) - Lower Skin Mid LH - Landing Gear Door Interface
-- [DMC-BWQ1-A-57-10-40-10-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-10-00A-040A-D-EN-US.xml) - Lower Skin Mid RH - Landing Gear Door Interface
-- [DMC-BWQ1-A-57-10-40-11-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-11-00A-040A-D-EN-US.xml) - Lower Skin Outboard LH - Outer Wing Panel, Navigation Light
-- [DMC-BWQ1-A-57-10-40-12-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-12-00A-040A-D-EN-US.xml) - Lower Skin Outboard RH - Outer Wing Panel, Navigation Light
+- [DMC-BWQ1-A-57-10-40-00-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-040A-D-EN-US.xml) - Skin Panels - General Description, Panel Layout, Access Doors
+- [DMC-BWQ1-A-57-10-40-01-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-01-00A-040A-D-EN-US.xml) - Upper Skin Inboard LH - Panel Boundaries, Thickness Schedule
+- [DMC-BWQ1-A-57-10-40-02-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-02-00A-040A-D-EN-US.xml) - Upper Skin Inboard RH - Panel Boundaries, Thickness Schedule
+- [DMC-BWQ1-A-57-10-40-03-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-03-00A-040A-D-EN-US.xml) - Upper Skin Mid LH - Splice Joints, Inspection Access
+- [DMC-BWQ1-A-57-10-40-04-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-04-00A-040A-D-EN-US.xml) - Upper Skin Mid RH - Splice Joints, Inspection Access
+- [DMC-BWQ1-A-57-10-40-05-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-05-00A-040A-D-EN-US.xml) - Upper Skin Outboard LH - Anti-icing Provisions, Lightning Protection
+- [DMC-BWQ1-A-57-10-40-06-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-06-00A-040A-D-EN-US.xml) - Upper Skin Outboard RH - Anti-icing Provisions, Lightning Protection
+- [DMC-BWQ1-A-57-10-40-07-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-07-00A-040A-D-EN-US.xml) - Lower Skin Inboard LH - Fuel Tank Sealing, Drain Provisions
+- [DMC-BWQ1-A-57-10-40-08-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-08-00A-040A-D-EN-US.xml) - Lower Skin Inboard RH - Fuel Tank Sealing, Drain Provisions
+- [DMC-BWQ1-A-57-10-40-09-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-09-00A-040A-D-EN-US.xml) - Lower Skin Mid LH - Landing Gear Door Interface
+- [DMC-BWQ1-A-57-10-40-10-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-10-00A-040A-D-EN-US.xml) - Lower Skin Mid RH - Landing Gear Door Interface
+- [DMC-BWQ1-A-57-10-40-11-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-11-00A-040A-D-EN-US.xml) - Lower Skin Outboard LH - Outer Wing Panel, Navigation Light
+- [DMC-BWQ1-A-57-10-40-12-00A-040A-D-EN-US.xml](./descriptive/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-12-00A-040A-D-EN-US.xml) - Lower Skin Outboard RH - Outer Wing Panel, Navigation Light
 
 #### Stringers (5 Modules)
-- [DMC-BWQ1-A-57-10-50-00-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-00-00A-040A-D-EN-US.xml) - Stringers - General Description, Spanwise Arrangement
-- [DMC-BWQ1-A-57-10-50-01-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-01-00A-040A-D-EN-US.xml) - Upper Stringers LH - Compression Members, Section Properties
-- [DMC-BWQ1-A-57-10-50-02-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-02-00A-040A-D-EN-US.xml) - Upper Stringers RH - Compression Members, Section Properties
-- [DMC-BWQ1-A-57-10-50-03-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-03-00A-040A-D-EN-US.xml) - Lower Stringers LH - Tension Members, Splices
-- [DMC-BWQ1-A-57-10-50-04-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-04-00A-040A-D-EN-US.xml) - Lower Stringers RH - Tension Members, Splices
+- [DMC-BWQ1-A-57-10-50-00-00A-040A-D-EN-US.xml](./descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-00-00A-040A-D-EN-US.xml) - Stringers - General Description, Spanwise Arrangement
+- [DMC-BWQ1-A-57-10-50-01-00A-040A-D-EN-US.xml](./descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-01-00A-040A-D-EN-US.xml) - Upper Stringers LH - Compression Members, Section Properties
+- [DMC-BWQ1-A-57-10-50-02-00A-040A-D-EN-US.xml](./descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-02-00A-040A-D-EN-US.xml) - Upper Stringers RH - Compression Members, Section Properties
+- [DMC-BWQ1-A-57-10-50-03-00A-040A-D-EN-US.xml](./descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-03-00A-040A-D-EN-US.xml) - Lower Stringers LH - Tension Members, Splices
+- [DMC-BWQ1-A-57-10-50-04-00A-040A-D-EN-US.xml](./descriptive/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-04-00A-040A-D-EN-US.xml) - Lower Stringers RH - Tension Members, Splices
 
 #### Attachments (5 Modules)
-- [DMC-BWQ1-A-57-10-60-00-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-00-00A-040A-D-EN-US.xml) - Attachments - General Description, Fitting Design Philosophy
-- [DMC-BWQ1-A-57-10-60-01-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-01-00A-040A-D-EN-US.xml) - Wing-to-Fuselage Fittings - Center Section, Main Pins
-- [DMC-BWQ1-A-57-10-60-02-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-02-00A-040A-D-EN-US.xml) - Engine Mount Fittings - Thrust/Vertical Load Transfer
-- [DMC-BWQ1-A-57-10-60-03-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-03-00A-040A-D-EN-US.xml) - Landing Gear Beam Fittings - Main Gear Attachment Points
-- [DMC-BWQ1-A-57-10-60-04-00A-040A-D-EN-US.xml](S1000D/data_modules/descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-04-00A-040A-D-EN-US.xml) - Control Surface Hinge Fittings - Moment Transfer, Bushing Details
+- [DMC-BWQ1-A-57-10-60-00-00A-040A-D-EN-US.xml](./descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-00-00A-040A-D-EN-US.xml) - Attachments - General Description, Fitting Design Philosophy
+- [DMC-BWQ1-A-57-10-60-01-00A-040A-D-EN-US.xml](./descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-01-00A-040A-D-EN-US.xml) - Wing-to-Fuselage Fittings - Center Section, Main Pins
+- [DMC-BWQ1-A-57-10-60-02-00A-040A-D-EN-US.xml](./descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-02-00A-040A-D-EN-US.xml) - Engine Mount Fittings - Thrust/Vertical Load Transfer
+- [DMC-BWQ1-A-57-10-60-03-00A-040A-D-EN-US.xml](./descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-03-00A-040A-D-EN-US.xml) - Landing Gear Beam Fittings - Main Gear Attachment Points
+- [DMC-BWQ1-A-57-10-60-04-00A-040A-D-EN-US.xml](./descriptive/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-04-00A-040A-D-EN-US.xml) - Control Surface Hinge Fittings - Moment Transfer, Bushing Details
 
 ---
 
 ### Inspection Modules (520A) - 21 Modules
 
 #### Forward Spar Inspection (7 Modules)
-- [DMC-BWQ1-A-57-10-10-00-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-520A-D-EN-US.xml) - Forward Spar Inspection - Visual, NDT Methods, Intervals
-- [DMC-BWQ1-A-57-10-10-01-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-01-00A-520A-D-EN-US.xml) - Inboard Section LH Inspection - Critical Zones, Crack Initiation Sites
-- [DMC-BWQ1-A-57-10-10-02-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-02-00A-520A-D-EN-US.xml) - Inboard Section RH Inspection - Critical Zones, Crack Initiation Sites
-- [DMC-BWQ1-A-57-10-10-03-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-03-00A-520A-D-EN-US.xml) - Mid Section LH Inspection - Splice Joint Eddy Current
-- [DMC-BWQ1-A-57-10-10-04-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-04-00A-520A-D-EN-US.xml) - Mid Section RH Inspection - Splice Joint Eddy Current
-- [DMC-BWQ1-A-57-10-10-05-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-05-00A-520A-D-EN-US.xml) - Outboard Section LH Inspection - Tip Attachment Ultrasonic
-- [DMC-BWQ1-A-57-10-10-06-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-06-00A-520A-D-EN-US.xml) - Outboard Section RH Inspection - Tip Attachment Ultrasonic
+- [DMC-BWQ1-A-57-10-10-00-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-520A-D-EN-US.xml) - Forward Spar Inspection - Visual, NDT Methods, Intervals
+- [DMC-BWQ1-A-57-10-10-01-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-01-00A-520A-D-EN-US.xml) - Inboard Section LH Inspection - Critical Zones, Crack Initiation Sites
+- [DMC-BWQ1-A-57-10-10-02-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-02-00A-520A-D-EN-US.xml) - Inboard Section RH Inspection - Critical Zones, Crack Initiation Sites
+- [DMC-BWQ1-A-57-10-10-03-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-03-00A-520A-D-EN-US.xml) - Mid Section LH Inspection - Splice Joint Eddy Current
+- [DMC-BWQ1-A-57-10-10-04-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-04-00A-520A-D-EN-US.xml) - Mid Section RH Inspection - Splice Joint Eddy Current
+- [DMC-BWQ1-A-57-10-10-05-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-05-00A-520A-D-EN-US.xml) - Outboard Section LH Inspection - Tip Attachment Ultrasonic
+- [DMC-BWQ1-A-57-10-10-06-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-06-00A-520A-D-EN-US.xml) - Outboard Section RH Inspection - Tip Attachment Ultrasonic
 
 #### Rear Spar Inspection (5 Modules)
-- [DMC-BWQ1-A-57-10-20-00-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-520A-D-EN-US.xml) - Rear Spar Inspection - Visual, UT, Thermography Procedures
-- [DMC-BWQ1-A-57-10-20-01-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-01-00A-520A-D-EN-US.xml) - Inboard Section LH Inspection - Gear Beam Bolt Holes
-- [DMC-BWQ1-A-57-10-20-02-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-02-00A-520A-D-EN-US.xml) - Inboard Section RH Inspection - Gear Beam Bolt Holes
-- [DMC-BWQ1-A-57-10-20-03-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-03-00A-520A-D-EN-US.xml) - Mid Section LH Inspection - Hinge Fitting Integrity
-- [DMC-BWQ1-A-57-10-20-04-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-04-00A-520A-D-EN-US.xml) - Mid Section RH Inspection - Hinge Fitting Integrity
+- [DMC-BWQ1-A-57-10-20-00-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-520A-D-EN-US.xml) - Rear Spar Inspection - Visual, UT, Thermography Procedures
+- [DMC-BWQ1-A-57-10-20-01-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-01-00A-520A-D-EN-US.xml) - Inboard Section LH Inspection - Gear Beam Bolt Holes
+- [DMC-BWQ1-A-57-10-20-02-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-02-00A-520A-D-EN-US.xml) - Inboard Section RH Inspection - Gear Beam Bolt Holes
+- [DMC-BWQ1-A-57-10-20-03-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-03-00A-520A-D-EN-US.xml) - Mid Section LH Inspection - Hinge Fitting Integrity
+- [DMC-BWQ1-A-57-10-20-04-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-04-00A-520A-D-EN-US.xml) - Mid Section RH Inspection - Hinge Fitting Integrity
 
 #### Ribs Inspection (3 Modules)
-- [DMC-BWQ1-A-57-10-30-00-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-00-00A-520A-D-EN-US.xml) - Ribs Inspection - Visual, Tap Test, Access Requirements
-- [DMC-BWQ1-A-57-10-30-01-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-01-00A-520A-D-EN-US.xml) - Main Ribs Inspection - Corrosion Check, Fastener Condition
-- [DMC-BWQ1-A-57-10-30-02-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-02-00A-520A-D-EN-US.xml) - Intermediate Ribs Inspection - Web Buckling, Flange Cracks
+- [DMC-BWQ1-A-57-10-30-00-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-00-00A-520A-D-EN-US.xml) - Ribs Inspection - Visual, Tap Test, Access Requirements
+- [DMC-BWQ1-A-57-10-30-01-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-01-00A-520A-D-EN-US.xml) - Main Ribs Inspection - Corrosion Check, Fastener Condition
+- [DMC-BWQ1-A-57-10-30-02-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-02-00A-520A-D-EN-US.xml) - Intermediate Ribs Inspection - Web Buckling, Flange Cracks
 
 #### Skin Panels Inspection (3 Modules)
-- [DMC-BWQ1-A-57-10-40-00-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-520A-D-EN-US.xml) - Skin Panels Inspection - Surface Condition, Delamination Check
-- [DMC-BWQ1-A-57-10-40-01-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-01-00A-520A-D-EN-US.xml) - Upper Skin Inspection - Lightning Strike Damage, Erosion
-- [DMC-BWQ1-A-57-10-40-02-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-02-00A-520A-D-EN-US.xml) - Lower Skin Inspection - Impact Damage, Fuel Leak Evidence
+- [DMC-BWQ1-A-57-10-40-00-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-520A-D-EN-US.xml) - Skin Panels Inspection - Surface Condition, Delamination Check
+- [DMC-BWQ1-A-57-10-40-01-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-01-00A-520A-D-EN-US.xml) - Upper Skin Inspection - Lightning Strike Damage, Erosion
+- [DMC-BWQ1-A-57-10-40-02-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-02-00A-520A-D-EN-US.xml) - Lower Skin Inspection - Impact Damage, Fuel Leak Evidence
 
 #### Stringers Inspection (1 Module)
-- [DMC-BWQ1-A-57-10-50-00-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-00-00A-520A-D-EN-US.xml) - Stringers Inspection - Debond Detection, Runout Condition
+- [DMC-BWQ1-A-57-10-50-00-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-00-00A-520A-D-EN-US.xml) - Stringers Inspection - Debond Detection, Runout Condition
 
 #### Attachments Inspection (2 Modules)
-- [DMC-BWQ1-A-57-10-60-00-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-00-00A-520A-D-EN-US.xml) - Fittings Inspection - Visual, Dye Penetrant Schedule
-- [DMC-BWQ1-A-57-10-60-01-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/inspection/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-01-00A-520A-D-EN-US.xml) - Critical Fittings NDT - UT/MPI at Life Limits
+- [DMC-BWQ1-A-57-10-60-00-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-00-00A-520A-D-EN-US.xml) - Fittings Inspection - Visual, Dye Penetrant Schedule
+- [DMC-BWQ1-A-57-10-60-01-00A-520A-D-EN-US.xml](./procedural/inspection/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-01-00A-520A-D-EN-US.xml) - Critical Fittings NDT - UT/MPI at Life Limits
 
 ---
 
 ### Removal/Installation Modules (720A) - 6 Modules
 
 #### Forward Spar R/I (3 Modules)
-- [DMC-BWQ1-A-57-10-10-00-00A-720A-D-EN-US.xml](S1000D/data_modules/procedural/removal_installation/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-720A-D-EN-US.xml) - Forward Spar R/I - General Precautions, Tooling Requirements
-- [DMC-BWQ1-A-57-10-10-01-00A-720A-D-EN-US.xml](S1000D/data_modules/procedural/removal_installation/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-01-00A-720A-D-EN-US.xml) - Inboard Section LH R/I - Fuel Drain, Fastener Sequence
-- [DMC-BWQ1-A-57-10-10-02-00A-720A-D-EN-US.xml](S1000D/data_modules/procedural/removal_installation/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-02-00A-720A-D-EN-US.xml) - Inboard Section RH R/I - Fuel Drain, Fastener Sequence
+- [DMC-BWQ1-A-57-10-10-00-00A-720A-D-EN-US.xml](./procedural/removal_installation/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-720A-D-EN-US.xml) - Forward Spar R/I - General Precautions, Tooling Requirements
+- [DMC-BWQ1-A-57-10-10-01-00A-720A-D-EN-US.xml](./procedural/removal_installation/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-01-00A-720A-D-EN-US.xml) - Inboard Section LH R/I - Fuel Drain, Fastener Sequence
+- [DMC-BWQ1-A-57-10-10-02-00A-720A-D-EN-US.xml](./procedural/removal_installation/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-02-00A-720A-D-EN-US.xml) - Inboard Section RH R/I - Fuel Drain, Fastener Sequence
 
 #### Rear Spar R/I (2 Modules)
-- [DMC-BWQ1-A-57-10-20-00-00A-720A-D-EN-US.xml](S1000D/data_modules/procedural/removal_installation/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-720A-D-EN-US.xml) - Rear Spar R/I - Hinge Removal, Gear Beam Support
-- [DMC-BWQ1-A-57-10-20-01-00A-720A-D-EN-US.xml](S1000D/data_modules/procedural/removal_installation/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-01-00A-720A-D-EN-US.xml) - Inboard Section LH R/I - Heavy Lift Procedure
+- [DMC-BWQ1-A-57-10-20-00-00A-720A-D-EN-US.xml](./procedural/removal_installation/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-720A-D-EN-US.xml) - Rear Spar R/I - Hinge Removal, Gear Beam Support
+- [DMC-BWQ1-A-57-10-20-01-00A-720A-D-EN-US.xml](./procedural/removal_installation/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-01-00A-720A-D-EN-US.xml) - Inboard Section LH R/I - Heavy Lift Procedure
 
 #### Skin Panels R/I (1 Module)
-- [DMC-BWQ1-A-57-10-40-00-00A-720A-D-EN-US.xml](S1000D/data_modules/procedural/removal_installation/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-720A-D-EN-US.xml) - Skin Panel R/I - Sealing, Torque Values, Inspection Access
+- [DMC-BWQ1-A-57-10-40-00-00A-720A-D-EN-US.xml](./procedural/removal_installation/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-720A-D-EN-US.xml) - Skin Panel R/I - Sealing, Torque Values, Inspection Access
 
 ---
 
 ### Repair Modules (520A) - 5 Modules
 
 #### Forward Spar Repair (1 Module)
-- [DMC-BWQ1-A-57-10-10-00-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/repair/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-520A-D-EN-US.xml) - Forward Spar Repair - Allowable Damage Limits, Doubler Design
+- [DMC-BWQ1-A-57-10-10-00-00A-520A-D-EN-US.xml](./procedural/repair/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-520A-D-EN-US.xml) - Forward Spar Repair - Allowable Damage Limits, Doubler Design
 
 #### Rear Spar Repair (1 Module)
-- [DMC-BWQ1-A-57-10-20-00-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/repair/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-520A-D-EN-US.xml) - Rear Spar Repair - Composite Patch Procedures
+- [DMC-BWQ1-A-57-10-20-00-00A-520A-D-EN-US.xml](./procedural/repair/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-520A-D-EN-US.xml) - Rear Spar Repair - Composite Patch Procedures
 
 #### Skin Panels Repair (3 Modules)
-- [DMC-BWQ1-A-57-10-40-00-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/repair/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-520A-D-EN-US.xml) - Skin Panel Repair - Damage Categories, Repair Schemes
-- [DMC-BWQ1-A-57-10-40-01-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/repair/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-01-00A-520A-D-EN-US.xml) - Doubler Installation - Bonded, Bolted, Hybrid
-- [DMC-BWQ1-A-57-10-40-02-00A-520A-D-EN-US.xml](S1000D/data_modules/procedural/repair/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-02-00A-520A-D-EN-US.xml) - Panel Replacement - Full Panel Change, Sealing
+- [DMC-BWQ1-A-57-10-40-00-00A-520A-D-EN-US.xml](./procedural/repair/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-520A-D-EN-US.xml) - Skin Panel Repair - Damage Categories, Repair Schemes
+- [DMC-BWQ1-A-57-10-40-01-00A-520A-D-EN-US.xml](./procedural/repair/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-01-00A-520A-D-EN-US.xml) - Doubler Installation - Bonded, Bolted, Hybrid
+- [DMC-BWQ1-A-57-10-40-02-00A-520A-D-EN-US.xml](./procedural/repair/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-02-00A-520A-D-EN-US.xml) - Panel Replacement - Full Panel Change, Sealing
 
 ---
 
 ### IPD Modules (941A) - 16 Modules
 
 #### Forward Spar IPD (4 Modules)
-- [DMC-BWQ1-A-57-10-10-00-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-941A-D-EN-US.xml) - Forward Spar IPD - Parts Catalog, Applicability
-- [DMC-BWQ1-A-57-10-10-01-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-01-00A-941A-D-EN-US.xml) - Inboard Sections IPD - Part Numbers, Quantities
-- [DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml) - Mid Sections IPD - Splice Kit Components
-- [DMC-BWQ1-A-57-10-10-03-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-03-00A-941A-D-EN-US.xml) - Outboard Sections IPD - Tip Attachments
+- [DMC-BWQ1-A-57-10-10-00-00A-941A-D-EN-US.xml](./ipd/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-00-00A-941A-D-EN-US.xml) - Forward Spar IPD - Parts Catalog, Applicability
+- [DMC-BWQ1-A-57-10-10-01-00A-941A-D-EN-US.xml](./ipd/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-01-00A-941A-D-EN-US.xml) - Inboard Sections IPD - Part Numbers, Quantities
+- [DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml](./ipd/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml) - Mid Sections IPD - Splice Kit Components
+- [DMC-BWQ1-A-57-10-10-03-00A-941A-D-EN-US.xml](./ipd/57-10-10_Forward_Spar/DMC-BWQ1-A-57-10-10-03-00A-941A-D-EN-US.xml) - Outboard Sections IPD - Tip Attachments
 
 #### Rear Spar IPD (3 Modules)
-- [DMC-BWQ1-A-57-10-20-00-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-941A-D-EN-US.xml) - Rear Spar IPD - Parts Catalog, Hinge Kits
-- [DMC-BWQ1-A-57-10-20-01-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-01-00A-941A-D-EN-US.xml) - Inboard Sections IPD - Gear Beam Hardware
-- [DMC-BWQ1-A-57-10-20-02-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-02-00A-941A-D-EN-US.xml) - Mid Sections IPD - Control Surface Brackets
+- [DMC-BWQ1-A-57-10-20-00-00A-941A-D-EN-US.xml](./ipd/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-00-00A-941A-D-EN-US.xml) - Rear Spar IPD - Parts Catalog, Hinge Kits
+- [DMC-BWQ1-A-57-10-20-01-00A-941A-D-EN-US.xml](./ipd/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-01-00A-941A-D-EN-US.xml) - Inboard Sections IPD - Gear Beam Hardware
+- [DMC-BWQ1-A-57-10-20-02-00A-941A-D-EN-US.xml](./ipd/57-10-20_Rear_Spar/DMC-BWQ1-A-57-10-20-02-00A-941A-D-EN-US.xml) - Mid Sections IPD - Control Surface Brackets
 
 #### Ribs IPD (3 Modules)
-- [DMC-BWQ1-A-57-10-30-00-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-00-00A-941A-D-EN-US.xml) - Ribs IPD General - Part Numbers by Station
-- [DMC-BWQ1-A-57-10-30-01-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-01-00A-941A-D-EN-US.xml) - Main Ribs IPD - Heavy Rib Assemblies
-- [DMC-BWQ1-A-57-10-30-02-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-02-00A-941A-D-EN-US.xml) - Intermediate Ribs IPD - Standard Rib Kit
+- [DMC-BWQ1-A-57-10-30-00-00A-941A-D-EN-US.xml](./ipd/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-00-00A-941A-D-EN-US.xml) - Ribs IPD General - Part Numbers by Station
+- [DMC-BWQ1-A-57-10-30-01-00A-941A-D-EN-US.xml](./ipd/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-01-00A-941A-D-EN-US.xml) - Main Ribs IPD - Heavy Rib Assemblies
+- [DMC-BWQ1-A-57-10-30-02-00A-941A-D-EN-US.xml](./ipd/57-10-30_Ribs/DMC-BWQ1-A-57-10-30-02-00A-941A-D-EN-US.xml) - Intermediate Ribs IPD - Standard Rib Kit
 
 #### Skin Panels IPD (1 Module)
-- [DMC-BWQ1-A-57-10-40-00-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-941A-D-EN-US.xml) - Skin Panels IPD - Panel P/Ns, Fastener Kits
+- [DMC-BWQ1-A-57-10-40-00-00A-941A-D-EN-US.xml](./ipd/57-10-40_Skin_Panels/DMC-BWQ1-A-57-10-40-00-00A-941A-D-EN-US.xml) - Skin Panels IPD - Panel P/Ns, Fastener Kits
 
 #### Stringers IPD (1 Module)
-- [DMC-BWQ1-A-57-10-50-00-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-00-00A-941A-D-EN-US.xml) - Stringers IPD - Stringer Assemblies by Zone
+- [DMC-BWQ1-A-57-10-50-00-00A-941A-D-EN-US.xml](./ipd/57-10-50_Stringers/DMC-BWQ1-A-57-10-50-00-00A-941A-D-EN-US.xml) - Stringers IPD - Stringer Assemblies by Zone
 
 #### Attachments IPD (1 Module)
-- [DMC-BWQ1-A-57-10-60-00-00A-941A-D-EN-US.xml](S1000D/data_modules/ipd/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-00-00A-941A-D-EN-US.xml) - Fittings IPD - Critical Fitting P/Ns, Hardware
+- [DMC-BWQ1-A-57-10-60-00-00A-941A-D-EN-US.xml](./ipd/57-10-60_Attachments/DMC-BWQ1-A-57-10-60-00-00A-941A-D-EN-US.xml) - Fittings IPD - Critical Fitting P/Ns, Hardware
 
 ---
 
@@ -428,9 +428,9 @@ The 360IPCirq bridge enables seamless tracking of parts removed for repair, main
 - Reduced risk of part misidentification
 
 ### Where to Find It
-- R/I procedures: [`S1000D/data_modules/procedural/removal_installation/`](S1000D/data_modules/procedural/removal_installation/)
-- IPD catalogs: [`S1000D/data_modules/ipd/`](S1000D/data_modules/ipd/)
-- Contract definitions: [`contracts/ICD-AAA-ATA-57-10.md`](contracts/ICD-AAA-ATA-57-10.md)
+- R/I procedures: [`S1000D/data_modules/procedural/removal_installation/`](./procedural/removal_installation/)
+- IPD catalogs: [`S1000D/data_modules/ipd/`](./ipd/)
+- Contract definitions: [`contracts/ICD-AAA-ATA-57-10.md`](../../contracts/ICD-AAA-ATA-57-10.md)
 
 ---
 
@@ -475,13 +475,13 @@ A **QS seal** is applied only when:
 ## Validation & CI
 
 ### S1000D Validation
-- All DMs must validate against [BREX rules](S1000D/BREX/BREX.xml)
-- All DMs must be listed in [DMRL](S1000D/DMRL/DMRL.xml)
+- All DMs must validate against [BREX rules](../BREX/BREX.xml)
+- All DMs must be listed in [DMRL](../DMRL/DMRL.xml)
 - All DMs must follow the corrected DMC pattern with 2-digit fields
 - All procedural DMs must reference appropriate ATA-20 forms
 
 ### Schema Validation
-- JSON instances must pass validation against schemas in [contracts/schemas/](contracts/schemas/)
+- JSON instances must pass validation against schemas in [contracts/schemas/](../../contracts/schemas/)
 - Schema validation is enforced in the CI pipeline
 - Schema changes require version updates and backward compatibility checks
 
@@ -495,7 +495,7 @@ A **QS seal** is applied only when:
   - Cross-reference integrity checks
   - Evidence link verification
 - **Failure:** CI fails closed if any reference is missing or unverifiable
-- **Configuration:** See [`.github/workflows/s1000d-ci.yaml`](../../.github/workflows/s1000d-ci.yaml)
+- **Configuration:** See [`.github/workflows/struct-and-brex.yml`](../../../../../../../../../../../.github/workflows/struct-and-brex.yml)
 
 ---
 
@@ -561,5 +561,3 @@ A **QS seal** is applied only when:
 
 
 *Part of the BWB-Q100 technical baseline. Subject to configuration control.*
-```
-```
