@@ -52,6 +52,12 @@
       "rule": "Steps include applicability references",
       "status": "pass",
       "details": "All proceduralSteps include applicRef elements"
+    },
+    {
+      "id": "concluding-xref-520",
+      "rule": "Concluding requirements reference generic inspection (520) when applicable",
+      "status": "pass",
+      "details": "520 DM cross-reference present in concludingRqmts/refs"
     }
   ],
   
@@ -82,6 +88,14 @@
       "status": "referenced",
       "techName": "Generic Component",
       "infoName": "Illustrated Parts Data"
+    },
+    {
+      "target": "MOC-B-12-00-00-00-00A-520A-D-EN-US",
+      "role": "inspection",
+      "type": "dmRef",
+      "status": "referenced",
+      "techName": "Standard Inspection/Test",
+      "infoName": "Generic Procedure"
     }
   ],
   
@@ -159,7 +173,7 @@
     "requiredTools": 2,
     "consumables": 1,
     "spares": 1,
-    "crossRefs": 2,
+    "crossRefs": 3,
     "media": 1,
     "effectivityShells": 3
   },

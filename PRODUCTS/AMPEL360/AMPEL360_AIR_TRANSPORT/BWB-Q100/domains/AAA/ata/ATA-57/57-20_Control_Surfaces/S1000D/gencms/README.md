@@ -383,11 +383,11 @@ GenCMS automatically creates cross-references between:
 
 ## License
 
-Internal Use - ASI-T2 Project
+Internal Use
 
 ---
 
 ## Maintainer
 
-ASI-T Architecture Team  
+Technical Publications Team  
 Contact: See main repository README

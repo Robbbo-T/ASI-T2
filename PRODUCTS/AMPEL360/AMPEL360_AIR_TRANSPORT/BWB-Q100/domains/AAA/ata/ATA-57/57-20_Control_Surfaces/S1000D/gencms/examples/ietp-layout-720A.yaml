@@ -61,6 +61,7 @@ widgets:
     groupBy: infoCode
     icons:
       "040": "📄"
+      "520": "🧪"
       "941": "🔧"
 
   revisionBlock:

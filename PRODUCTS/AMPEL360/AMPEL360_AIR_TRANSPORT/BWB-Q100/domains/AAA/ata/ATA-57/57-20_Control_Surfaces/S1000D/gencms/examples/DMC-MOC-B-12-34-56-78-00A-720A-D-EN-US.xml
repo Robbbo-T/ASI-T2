@@ -138,6 +138,20 @@
         <closeRqmts>
           <inspection><para>Verify alignment and record results per maintenance records policy.</para></inspection>
         </closeRqmts>
+        <refs>
+          <!-- generic inspection procedure -->
+          <dmRef>
+            <dmRefIdent>
+              <dmCode modelIdentCode="MOC" systemDiffCode="B"
+                      systemCode="12" subSystemCode="00" subSubSystemCode="00"
+                      assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                      infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+            </dmRefIdent>
+            <dmRefAddress>
+              <dmTitle><techName>Standard Inspection/Test</techName><infoName>Generic Procedure</infoName></dmTitle>
+            </dmRefAddress>
+          </dmRef>
+        </refs>
       </concludingRqmts>
     </procedure>
   </content>

@@ -235,4 +235,4 @@ See [examples](../examples/) for complete implementations.
 
 **Version:** 1.0.0  
 **Standard:** S1000D Issue 6.0  
-**License:** Internal Use - ASI-T2 Project
+**License:** Internal Use
