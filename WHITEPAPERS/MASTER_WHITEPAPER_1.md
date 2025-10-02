@@ -396,20 +396,22 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 #### Hydrogen & Energy
 - **H₂ / LH₂** — *Hydrogen / Liquid Hydrogen*.
 
-#### Domain Codes (TFA `domains/`)
-- **AAA** — *Airframes* *(ATA-57 S1000D; CAx, QOx, PAx)*  
-- **AAP** — *Airport Adaptable Platforms*  
-- **CCC** — *Cockpit, Cabin & Cargo*  
-- **CQH** — *Cryogenics, Quantum & H₂*  
-- **DDD** — *Drainage, Dehumidification & Drying*  
-- **EDI** — *Electronics & Digital Instruments*  
-- **EEE** — *Electrical, Hydraulic & Energy*  
-- **EER** — *Environmental, Emissions & Remediation*  
-- **IIF** — *Industrial Infrastructure & Facilities*  
-- **IIS** — *Integrated Intelligence & Software* *(ATA-22, ATA-42)*  
-- **LCC** — *Linkages, Control & Communications*  
-- **LIB** — *Logistics, Inventory & Blockchain*  
-- **MEC** — *Mechanical Systems Modules*  
-- **OOO** — *OS, Ontologies & Office Interfaces*  
-- **PPP** — *Propulsion & Fuel Systems*
+#### **Domains (canonical)**
+
+* **AAA/** — Airframes, Aerodynamics & Airworthiness (safety & compliance)
+* **AAP/** — Airport Adaptable Platforms
+* **CCC/** — Cockpit, Cabin & Cargo
+* **CQH/** — Cryogenics, Quantum & H₂
+* **DDD/** — Drainage, Dehumidification & Drying
+* **EDI/** — Electronics & Digital Instruments
+* **EEE/** — Electrical, Endotransponders & Circulation
+* **EER/** — Environmental, Emissions & Remediation
+* **IIF/** — Industrial Infrastructure & Facilities
+* **IIS/** — Information & Intelligence Systems (cybersecurity, defense)
+* **LCC/** — Linkages, Control & Communications
+* **LIB/** — Logistics, Inventory & Blockchain
+* **MEC/** — Mechanical Systems Modules (hydraulics, landing gear…)
+* **OOO/** — OS, Ontologies & Office Interfaces
+* **PPP/** — Propulsion & Fuel Systems
+
 
