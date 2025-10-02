@@ -1,0 +1,174 @@
+{
+  "dmCodeString": "MOC-B-12-34-56-78-00A-720A-D-EN-US",
+  "infoCode": "720A",
+  "generatedAt": "2025-01-01T00:00:00Z",
+  "generatorVersion": "GenCMS 1.0.0",
+  
+  "checks": [
+    {
+      "id": "dmc-width",
+      "rule": "Fixed-width codes (2-digit fields)",
+      "status": "pass",
+      "details": "All dmCode fields conform to 2-digit standard"
+    },
+    {
+      "id": "title-brex",
+      "rule": "dmTitle includes techName and infoName",
+      "status": "pass",
+      "details": "Title contains 'Generic Component' (techName) and 'Removal and Installation' (infoName)"
+    },
+    {
+      "id": "safety-req",
+      "rule": "Procedural DM includes safetyRqmts",
+      "status": "pass",
+      "details": "Contains 1 warning, 1 caution, 1 note"
+    },
+    {
+      "id": "effectivity-shells",
+      "rule": "Effectivity shells present with cross-ref table",
+      "status": "pass",
+      "details": "3 applicability shells defined: APPL-ALL, APPL-LH, APPL-RH"
+    },
+    {
+      "id": "req-blocks",
+      "rule": "Prelim blocks for tools/consumables/refs",
+      "status": "pass",
+      "details": "preliminaryRqmts contains safetyRqmts, reqSupportEquips, reqConsumables, reqSpares, refs"
+    },
+    {
+      "id": "xrefs",
+      "rule": "Has sibling 040 and 941 dmRef entries",
+      "status": "pass",
+      "details": "Cross-references to descriptive (040A) and IPD (941A) modules present"
+    },
+    {
+      "id": "procedure-structure",
+      "rule": "Complete procedure structure (prelim, main, concluding)",
+      "status": "pass",
+      "details": "All three sections present with appropriate content"
+    },
+    {
+      "id": "step-applicability",
+      "rule": "Steps include applicability references",
+      "status": "pass",
+      "details": "All proceduralSteps include applicRef elements"
+    }
+  ],
+  
+  "effectivity": {
+    "shells": ["APPL-ALL", "APPL-LH", "APPL-RH"],
+    "usedIn": {
+      "tools": ["APPL-ALL", "APPL-LH"],
+      "steps": ["APPL-ALL", "APPL-LH"],
+      "spares": []
+    },
+    "ietpFilterEnabled": true,
+    "filterBehavior": "show-relevant-only"
+  },
+  
+  "crossReferences": [
+    {
+      "target": "MOC-B-12-34-56-78-00A-040A-D-EN-US",
+      "role": "descriptive",
+      "type": "dmRef",
+      "status": "referenced",
+      "techName": "Generic Component",
+      "infoName": "Description"
+    },
+    {
+      "target": "MOC-B-12-34-56-78-00A-941A-D-EN-US",
+      "role": "ipd",
+      "type": "dmRef",
+      "status": "referenced",
+      "techName": "Generic Component",
+      "infoName": "Illustrated Parts Data"
+    }
+  ],
+  
+  "media": [
+    {
+      "infoEntityIdent": "FIG-REMOVAL-OVERVIEW",
+      "status": "referenced",
+      "usage": "mainProcedure/proceduralStep[2]/figure",
+      "title": "Removal Overview",
+      "format": "graphic",
+      "resolution": "not-specified"
+    }
+  ],
+  
+  "requirements": {
+    "supportEquipment": [
+      {
+        "name": "Torque Wrench (digital)",
+        "quantity": "1",
+        "applicability": "APPL-ALL",
+        "criticality": "required"
+      },
+      {
+        "name": "Alignment Tool",
+        "quantity": "1",
+        "applicability": "APPL-LH",
+        "criticality": "required"
+      }
+    ],
+    "consumables": [
+      {
+        "name": "Threadlocker (medium strength)",
+        "quantity": "as required",
+        "applicability": "implicit-all"
+      }
+    ],
+    "spares": [
+      {
+        "csn": "GEN-ASSY-01",
+        "itemRef": "ITEM-0001",
+        "applicability": "implicit-all",
+        "linkedToIPD": true
+      }
+    ]
+  },
+  
+  "notes": [
+    "Populate torque table and any itemized kits if available.",
+    "Provide actual media files for referenced graphics at publish time.",
+    "Consider adding more detailed step-by-step instructions for complex procedures."
+  ],
+  
+  "warnings": [],
+  
+  "errors": [],
+  
+  "placeholders": [
+    {
+      "field": "torqueTable",
+      "reason": "no data in context",
+      "location": "preliminaryRqmts or mainProcedure",
+      "recommendation": "Add table with torque specifications if applicable"
+    },
+    {
+      "field": "graphic content",
+      "reason": "external file reference only",
+      "location": "FIG-REMOVAL-OVERVIEW",
+      "recommendation": "Provide actual graphic file at publication time"
+    }
+  ],
+  
+  "metrics": {
+    "totalSteps": 3,
+    "safetyItems": 3,
+    "requiredTools": 2,
+    "consumables": 1,
+    "spares": 1,
+    "crossRefs": 2,
+    "media": 1,
+    "effectivityShells": 3
+  },
+  
+  "validation": {
+    "schemaVersion": "S1000D Issue 6.0",
+    "brexCompliance": "pass",
+    "xmlWellFormed": true,
+    "allMandatoryFieldsPresent": true,
+    "recommendationsCount": 2
+  }
+}
