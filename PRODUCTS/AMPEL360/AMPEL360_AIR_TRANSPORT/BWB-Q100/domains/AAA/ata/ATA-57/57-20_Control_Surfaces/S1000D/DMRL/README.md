@@ -23,7 +23,7 @@ The DMRL includes:
    - `OPT-ICE`: Ice-protection option
    - `SIDE-LH` / `SIDE-RH`: Left/Right-hand sides
 
-3. **Data Module Requirements** (26 total requirements)
+3. **Data Module Requirements** (25 total requirements)
    - **System level (57-20-00)**: 5 DMs covering general descriptions, inspections, and IPD
    - **Elevons (57-20-10)**: 5 DMs for descriptions, inspections, repair, R/I, and IPD
    - **Flaperons (57-20-20)**: 5 DMs for descriptions, inspections, repair, R/I, and IPD
