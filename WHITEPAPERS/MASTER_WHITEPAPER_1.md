@@ -85,7 +85,7 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 
 > **Normative rule:** domain and layer codes **MUST** be ALL-CAPS under strict TFA path grammar.
 
-### 3.1 TFA Flow (Canonical)
+### 3.1 TFA Flow (Logical Foundation - the Nexus/Bridge)
 
 **QS → FWD → UE → FE → CB → QB**
 
@@ -94,7 +94,8 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 - **UE (Unit Element / Collapse).** Atomic unit where decisions/states **collapse** into execution.  
 - **FE (Federation Entanglement / Contracting).** Federated entanglement and **contracting** across systems/domains with explicit SLOs.  
 - **CB (Classical Bit / Companion Binary).** Deterministic, verifiable classical artifacts and binaries.  
-- **QB (Bit Cubic; non-quantumised).** Discrete 3D lifting of classical state (`CB × CB × CB`), **not** a qubit.
+- **QB (Bit Cubic; non-quantumised).** Discrete 3D lifting of classical state (`CB × CB × CB`), **not** a qubit. It's the qubit logics apporoximation
+- **QC (Qubit Chip, quantum compuing/sensor)**
 
 > **Important distinction:** **QB ≠ qubit.** *QB* is a **non-quantum** cubic bit; a **qubit** belongs to a *tetrahedral continuum+* and includes **transposition/projection time** and **teleportation-relative delay/phase** (see Glossary).
 
