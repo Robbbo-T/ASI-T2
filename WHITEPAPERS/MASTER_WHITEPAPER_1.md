@@ -433,6 +433,5 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 
 ---
 
-¿Quieres que **inserte este glosario** en tu whitepaper (sustituyendo/apéndice) y te lo entregue completo aquí mismo?
 
 
