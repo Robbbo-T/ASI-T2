@@ -95,7 +95,7 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 - **FE (Federation Entanglement / Contracting).** Federated entanglement and **contracting** across systems/domains with explicit SLOs.  
 - **CB (Classical Bit / Companion Binary).** Deterministic, verifiable classical artifacts and binaries.  
 - **QB (Bit Cubic; non-quantumised).** Discrete 3D lifting of classical state (`CB × CB × CB`), **not** a qubit. It's the qubit logics apporoximation
-- **QC (Qubit Chip, quantum compuing/sensor)**
+- **QC (Qubit Chip/Circuit, quantum computing/sensor)**
 
 > **Important distinction:** **QB ≠ qubit.** *QB* is a **non-quantum** cubic bit; a **qubit** belongs to a *tetrahedral continuum+* and includes **transposition/projection time** and **teleportation-relative delay/phase** (see Glossary).
 
