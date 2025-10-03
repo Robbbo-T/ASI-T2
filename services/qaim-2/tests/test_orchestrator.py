@@ -12,8 +12,6 @@ from pathlib import Path
 
 
 # Import orchestrator
-import sys
-sys.path.insert(0, str(Path(__file__).parent.parent))
 from core.qaim_orchestrator import QAIM2Orchestrator
 
 
