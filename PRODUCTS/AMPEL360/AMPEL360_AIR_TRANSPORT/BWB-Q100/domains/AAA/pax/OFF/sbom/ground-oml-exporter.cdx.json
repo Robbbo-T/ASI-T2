@@ -17,5 +17,22 @@
       "version": "0.1.0"
     }
   },
-  "components": []
+  "components": [],
+
+  "utcs_header": {
+    "id": "AAA-PAX-OFF-OCI-GROUND-OML-EXPORTER-SBOM",
+    "project": "AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100",
+    "artifact": "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/OFF/sbom/ground-oml-exporter.cdx.json",
+    "llc": "SYSTEMS",
+    "classification": "INTERNAL–EVIDENCE-REQUIRED",
+    "version": "0.1.0",
+    "release_date": "2025-01-23",
+    "maintainer": "ASI-T Avionics",
+    "bridge": "CB→QB→UE→FE→FWD→QS",
+    "ethics_guard": "MAL-EEM",
+    "utcs_mi": "v5.0"
+  },
+  "sbom_hash": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "utcs_signature": "signature-value-placeholder",
+  "security_policy_id": "policy-001"
 }
