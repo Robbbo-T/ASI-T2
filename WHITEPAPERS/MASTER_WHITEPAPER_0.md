@@ -255,59 +255,59 @@ opa eval -f pretty -d ASI_Policy.rego -I opa_test_input.json 'data.asi.policy.ap
 
 ## Glossary of Terms & Acronyms
 
-**AAA — Airframes, Aerodynamics & Airworthiness** — Domain covering structure, aero, loads, and airworthiness.
-**AAP — Airport Adaptable Platforms** — Domain for airport integration & ground infrastructure.
-**AC — Advisory Circular** — FAA/EASA interpretive guidance for regulations.
-**AC/AMC — Advisory Circular / Acceptable Means of Compliance** — FAA/EASA guidance on compliance.
-**AIMS — AI Management System** — e.g., ISO/IEC 42001.
-**AMPEL360** — Advanced Multi-Purpose Environmental Lifecycle 360 (BWB program). See **[PRODUCTS/AMPEL360](../PRODUCTS/AMPEL360/)**.
-**AP242 / QIF** — STEP AP242 visualization/geometry; QIF for quality metrology.
-**ARB / TSC** — Architecture Review Board / Technical Steering Committee.
-**ARP4754A / ARP4761A** — Systems development & safety assessment processes (aviation).
-**ATA / S1000D** — Aerospace technical data standards; S1000D for tech pubs.
-**BWB** — Blended Wing Body aircraft configuration.
-**CB→QB→UE→FE→FWD→QS** — TFA V2 bridge flow (see repo root README).
-**C2PA** — Content provenance standard for cryptographic sealing of media/data.
-**CS-25 / Part 25** — Large aeroplanes / transport category airworthiness rules.
-**CVS / EFVS / SVS** — Combined / Enhanced / Synthetic Vision Systems.
-**DAL (A–E)** — Design Assurance Levels for airborne software/hardware.
-**DMRL / BREX / DM** — S1000D: Data Module Requirements List, Business Rules EXchange, Data Module.
-**DO-160** — Environmental conditions & test procedures for airborne equipment.
-**DO-178C (+331/332/333)** — Airborne software (with model-based, OOT, and formal supplements).
-**DO-254** — Airborne electronic hardware process standard.
-**DO-297** — Integrated Modular Avionics development/partitioning.
-**DPF** — Data Protection Framework (EU–US).
-**EASA / FAA** — European Union Aviation Safety Agency / Federal Aviation Administration.
-**EER** — Environmental, Emissions & Remediation domain.
-**FTV** — Flight Test Vehicle.
-**GSN** — Goal Structuring Notation for safety cases.
-**HIL** — Hardware-in-the-Loop testing.
-**HITL** — Human-in-the-Loop approval.
-**IMA** — Integrated Modular Avionics.
-**INFRANET** — Cross-cutting infrastructure programs (e.g., QAIM, LH2 corridor).
-**ISO/IEC 23894** — Guidance on AI risk management.
-**ISO/IEC 42001** — AI management system standard (AIMS).
-**KPI** — Key Performance Indicator.
-**LCA / EPD** — Life-Cycle Assessment / Environmental Product Declaration.
-**LH₂** — Liquid Hydrogen.
-**MLEAP** — EASA multi-level learning assurance program/guidance.
-**MOC** — Means of Compliance (how you show conformity to a rule).
-**MCP** — Multicore Processor (assurance topic; see AMC 20-193).
-**ODA / DOA / POA** — FAA Organization Designation Authorization; EASA Design/Production Org Approvals.
-**OpenSSF** — Open Source Security Foundation.
-**OPA / Rego** — Open Policy Agent / its policy language.
-**PAX** — Provenance, Attestations, and eXchange (repo area for manifests, SBOMs, signatures).
-**PSAC / PHAC / PSCP** — Plan for Software/Hardware Aspects of Certification; Plan for Safety & Certification.
-**QS / UTCS** — Quality System / Universal Trust & Certification Substrate (repo constructs).
-**RAG** — Retrieval-Augmented Generation (context assembly).
-**SBAR** — Situation-Background-Assessment-Recommendation template.
-**SBOM** — Software Bill of Materials (SPDX, CycloneDX).
-**SLSA** — Supply-chain Levels for Software Artifacts (build provenance).
-**SOP** — Standard Operating Procedure.
-**SVS/EFVS/CVS** — Synthetic/Enhanced/Combined Vision Systems.
-**TIP** — Technical Implementation Procedures (FAA↔EASA validation framework).
-**UTCS** — Evidence/provenance substrate referenced by QS/CI.
-**V&V** — Verification & Validation.
+- **AAA** — *Airframes, Aerodynamics & Airworthiness* — Domain covering structure, aero, loads, and airworthiness.
+- **AAP** — *Airport Adaptable Platforms* — Domain for airport integration & ground infrastructure.
+- **AC** — *Advisory Circular* — FAA/EASA interpretive guidance for regulations.
+- **AC/AMC** — *Advisory Circular / Acceptable Means of Compliance* — FAA/EASA guidance on compliance.
+- **AIMS** — *AI Management System* — e.g., ISO/IEC 42001.
+- **AMPEL360** — *Advanced Multi-Purpose Environmental Lifecycle 360* (BWB program). See [PRODUCTS/AMPEL360](../PRODUCTS/AMPEL360/).
+- **AP242 / QIF** — *STEP AP242 visualization/geometry; QIF for quality metrology*.
+- **ARB / TSC** — *Architecture Review Board / Technical Steering Committee*.
+- **ARP4754A / ARP4761A** — *Systems development & safety assessment processes (aviation)*.
+- **ATA / S1000D** — *Aerospace technical data standards; S1000D for tech pubs*.
+- **BWB** — *Blended Wing Body* aircraft configuration.
+- **CB→QB→UE→FE→FWD→QS** — *TFA V2 bridge flow* (see repo root README).
+- **C2PA** — *Content provenance standard for cryptographic sealing of media/data*.
+- **CS-25 / Part 25** — *Large aeroplanes / transport category airworthiness rules*.
+- **CVS / EFVS / SVS** — *Combined / Enhanced / Synthetic Vision Systems*.
+- **DAL (A–E)** — *Design Assurance Levels for airborne software/hardware*.
+- **DMRL / BREX / DM** — *S1000D: Data Module Requirements List, Business Rules EXchange, Data Module*.
+- **DO-160** — *Environmental conditions & test procedures for airborne equipment*.
+- **DO-178C (+331/332/333)** — *Airborne software (with model-based, OOT, and formal supplements)*.
+- **DO-254** — *Airborne electronic hardware process standard*.
+- **DO-297** — *Integrated Modular Avionics development/partitioning*.
+- **DPF** — *Data Protection Framework (EU–US)*.
+- **EASA / FAA** — *European Union Aviation Safety Agency / Federal Aviation Administration*.
+- **EER** — *Environmental, Emissions & Remediation* domain.
+- **FTV** — *Flight Test Vehicle*.
+- **GSN** — *Goal Structuring Notation* for safety cases.
+- **HIL** — *Hardware-in-the-Loop* testing.
+- **HITL** — *Human-in-the-Loop* approval.
+- **IMA** — *Integrated Modular Avionics*.
+- **INFRANET** — *Cross-cutting infrastructure programs* (e.g., QAIM, LH2 corridor).
+- **ISO/IEC 23894** — *Guidance on AI risk management*.
+- **ISO/IEC 42001** — *AI management system standard (AIMS)*.
+- **KPI** — *Key Performance Indicator*.
+- **LCA / EPD** — *Life-Cycle Assessment / Environmental Product Declaration*.
+- **LH₂** — *Liquid Hydrogen*.
+- **MLEAP** — *EASA multi-level learning assurance program/guidance*.
+- **MOC** — *Means of Compliance (how you show conformity to a rule)*.
+- **MCP** — *Multicore Processor* (assurance topic; see AMC 20-193).
+- **ODA / DOA / POA** — *FAA Organization Designation Authorization; EASA Design/Production Org Approvals*.
+- **OpenSSF** — *Open Source Security Foundation*.
+- **OPA / Rego** — *Open Policy Agent / its policy language*.
+- **PAX** — *Provenance, Attestations, and eXchange* (repo area for manifests, SBOMs, signatures).
+- **PSAC / PHAC / PSCP** — *Plan for Software/Hardware Aspects of Certification; Plan for Safety & Certification*.
+- **QS / UTCS** — *Quality System / Universal Trust & Certification Substrate* (repo constructs).
+- **RAG** — *Retrieval-Augmented Generation* (context assembly).
+- **SBAR** — *Situation-Background-Assessment-Recommendation* template.
+- **SBOM** — *Software Bill of Materials* (SPDX, CycloneDX).
+- **SLSA** — *Supply-chain Levels for Software Artifacts* (build provenance).
+- **SOP** — *Standard Operating Procedure*.
+- **SVS/EFVS/CVS** — *Synthetic/Enhanced/Combined Vision Systems*.
+- **TIP** — *Technical Implementation Procedures* (FAA↔EASA validation framework).
+- **UTCS** — *Evidence/provenance substrate referenced by QS/CI*.
+- **V&V** — *Verification & Validation*.
 
 ---
 
