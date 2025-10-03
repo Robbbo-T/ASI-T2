@@ -85,7 +85,15 @@ class ClassicalSolverPool:
         Returns:
             SolverResult with status, solution, and metrics
         """
-        solver_name = params.get('solver', 'cb_cbc')
+        solver_name = params.get('solver')
+        if not solver_name:
+            # Prefer cb_cbc if available, else pick the first available solver
+            if 'cb_cbc' in self.solvers:
+                solver_name = 'cb_cbc'
+            elif self.solvers:
+                solver_name = next(iter(self.solvers))
+            else:
+                raise ValueError("No solvers are available in the pool")
         
         if solver_name not in self.solvers:
             raise ValueError(f"Solver {solver_name} not available")
