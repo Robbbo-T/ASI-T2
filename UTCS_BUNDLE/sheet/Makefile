@@ -7,7 +7,7 @@ BUNDLE_ID := utcs-bundle-bwb-q100-2025-10-03
 MANIFEST := manifest.utcs.yaml
 PYTHON := python3
 
-all: validate
+.DEFAULT_GOAL := help
 
 help:
 	@echo "UTCS v5.0 Bundle Makefile"
@@ -21,13 +21,15 @@ help:
 	@echo "  clean          - Remove generated files"
 	@echo "  help           - Show this help message"
 
+all: validate
+
 validate:
 	@echo "==> Validating UTCS bundle..."
-	$(PYTHON) sheet/ci/validate_utcs.py --manifest $(MANIFEST)
+	$(PYTHON) ci/validate_utcs.py --manifest ../$(MANIFEST)
 
 validate-full: validate
 	@echo "==> Running full validation with crosswalk checks..."
-	$(PYTHON) sheet/ci/validate_utcs.py --manifest $(MANIFEST) --check-crosswalk
+	$(PYTHON) ci/validate_utcs.py --manifest ../$(MANIFEST) --check-crosswalk
 
 sbom:
 	@echo "==> Generating SBOM..."
@@ -41,7 +43,7 @@ sbom:
 
 check: validate-full
 	@echo "==> Checking schemas..."
-	@for schema in content/schemas/*.json; do \
+	@for schema in ../content/schemas/*.json; do \
 		echo "Validating: $$schema"; \
 		jq '.' "$$schema" > /dev/null || exit 1; \
 	done
@@ -65,5 +67,3 @@ clean:
 	@rm -f ../bundles/$(BUNDLE_ID).tar.gz
 	@rm -f ../bundles/$(BUNDLE_ID).sha256
 	@echo "Clean complete."
-
-.DEFAULT_GOAL := help
