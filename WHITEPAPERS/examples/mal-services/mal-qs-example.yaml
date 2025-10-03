@@ -1,0 +1,81 @@
+---
+# MAL-QS Service Example Configuration
+# Primordial State Management for BWB-Q100 AAA Domain
+
+service_id: MAL-QS-BWB-Q100-AAA
+version: 0.1.0
+layer: QS
+description: Primordial state management service for BWB-Q100 aerodynamics domain
+
+topics:
+  subscribe:
+    - map/1/control/BWB-Q100/AAA/STATES/QS/QS
+  publish:
+    - map/1/log/BWB-Q100/AAA/STATES/QS/QS
+    - map/1/telemetry/BWB-Q100/AAA/STATES/QS/QS
+
+state_management:
+  snapshot_interval_s: 1.0
+  immutable: true
+  versioning:
+    scheme: merkle-tree
+    hash_algorithm: SHA-256
+  retention_policy:
+    duration_hours: 168  # 7 days
+    compression: true
+
+utcs:
+  require_signature: true
+  record_backend: true
+  bundle_format: UTCS-v5.0
+  evidence_fields:
+    - timestamp
+    - hash
+    - signature
+    - context
+    - content
+
+security:
+  eem_policy: MAL-EEM-v1
+  encryption:
+    at_rest: true
+    in_transit: true
+
+interfaces:
+  snapshot_state:
+    input:
+      scope: full
+    output:
+      state_hash: SHA-256
+      timestamp: ISO-8601
+      version: semver
+  query_state:
+    input:
+      version: optional
+      timestamp: optional
+    output:
+      state: object
+      metadata: object
+
+compliance:
+  standards:
+    - S1000D
+    - IEC-62443
+    - ISO-27001
+  audit_level: forensic
+
+# Deployment
+deployment:
+  profile: edge
+  replicas: 3
+  resources:
+    memory_mb: 512
+    cpu_cores: 0.5
+
+# Monitoring
+monitoring:
+  health_check_interval_s: 10
+  metrics:
+    - state_snapshots_per_second
+    - storage_utilization_percent
+    - signature_verification_time_ms

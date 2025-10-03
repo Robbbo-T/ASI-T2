@@ -239,6 +239,22 @@ def main() -> None:
                     continue
                 manifest_files.append(file)
 
+        # Filter out non-manifest files
+        def should_skip(path: Path) -> bool:
+            """Determine if file should be skipped from validation."""
+            # Skip schema files
+            if path.name.endswith('.schema.json'):
+                return True
+            # Skip SBOM files
+            if 'sbom' in path.parts and (path.suffix == '.json' or path.name.endswith('.spdx.json') or path.name.endswith('.cdx.json')):
+                return True
+            # Skip if in schemas directory
+            if 'schemas' in path.parts:
+                return True
+            return False
+
+        manifest_files = [mf for mf in manifest_files if not should_skip(mf)]
+
         all_passed = True
         for mf in manifest_files:
             try:

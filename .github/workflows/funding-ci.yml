@@ -1,0 +1,47 @@
+name: Funding config check
+
+on:
+  pull_request:
+    paths:
+      - ".github/FUNDING.yml"
+      - "FINANCE/**"
+  push:
+    branches:
+      - "main"
+      - "feat/**"
+    paths:
+      - ".github/FUNDING.yml"
+      - "FINANCE/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure FUNDING.yml exists
+        run: test -f .github/FUNDING.yml
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Validate FUNDING.yml structure and content
+        run: |
+          python3 - <<'PY'
+          import yaml, sys, re
+          doc=yaml.safe_load(open(".github/FUNDING.yml"))
+          assert isinstance(doc, dict), "FUNDING.yml must be a mapping"
+          gh = doc.get("github")
+          assert gh is None or isinstance(gh, list), "github must be a list or null"
+          if isinstance(gh, list):
+            assert "Robbbo-T" in gh, "Expected 'Robbbo-T' in github sponsors list"
+          print("FUNDING.yml OK")
+          PY
