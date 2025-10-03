@@ -1,0 +1,30 @@
+name: Funding config check
+on:
+  pull_request:
+    paths:
+      - ".github/FUNDING.yml"
+      - "FINANCE/**"
+  push:
+    branches: ["feat/**","main"]
+    paths:
+      - ".github/FUNDING.yml"
+      - "FINANCE/**"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check FUNDING.yml presence
+        run: test -f .github/FUNDING.yml
+      - name: Validate YAML & required fields
+        run: |
+          python3 - <<'PY'
+          import yaml, sys, re
+          doc=yaml.safe_load(open(".github/FUNDING.yml"))
+          assert isinstance(doc, dict), "FUNDING.yml must be a mapping"
+          gh = doc.get("github")
+          assert gh is None or isinstance(gh, list), "github must be a list or null"
+          if isinstance(gh, list):
+            assert "Robbbo-T" in gh, "Expected 'Robbbo-T' in github sponsors list"
+          print("FUNDING.yml OK")
+          PY
