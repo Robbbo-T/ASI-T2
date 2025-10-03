@@ -16,6 +16,40 @@ canonical_hash: pending
 
 This directory contains technical whitepapers, specifications, and templates that define the ASI-T2 ecosystem architecture, methodology, and governance.
 
+> **Start here:** **[Whitepaper #0 — TRUE_GENESIS-ASI](./whitepaper_0_TRUE_GENESIS-ASI.md)**
+
+---
+
+## Quick Links
+
+- **Whitepaper #0 — TRUE_GENESIS-ASI**
+  - Open: **[whitepaper_0_TRUE_GENESIS-ASI.md](./whitepaper_0_TRUE_GENESIS-ASI.md)**
+  - Deep links:
+    - [0. Definitions & Scope](./whitepaper_0_TRUE_GENESIS-ASI.md#0-definitions--scope)
+    - [1. First Principles](./whitepaper_0_TRUE_GENESIS-ASI.md#1-first-principles)
+    - [2. High-Level Architecture (three planes)](./whitepaper_0_TRUE_GENESIS-ASI.md#2-high-level-architecture-three-planes)
+    - [3. Capability Map (phased)](./whitepaper_0_TRUE_GENESIS-ASI.md#3-capability-map-phased)
+    - [4. Alignment & Constitutional Guardrails](./whitepaper_0_TRUE_GENESIS-ASI.md#4-alignment--constitutional-guardrails)
+    - [5. Safety Case (living)](./whitepaper_0_TRUE_GENESIS-ASI.md#5-safety-case-living)
+    - [6. Governance & Oversight](./whitepaper_0_TRUE_GENESIS-ASI.md#6-governance--oversight)
+    - [7. Security & Supply-Chain](./whitepaper_0_TRUE_GENESIS-ASI.md#7-security--supply-chain)
+    - [8. Deployment Levels & Authority Gating](./whitepaper_0_TRUE_GENESIS-ASI.md#8-deployment-levels--authority-gating)
+    - [9. Program Roadmap (first 24 months)](./whitepaper_0_TRUE_GENESIS-ASI.md#9-program-roadmap-first-24-months)
+    - [10. Risks & Mitigations](./whitepaper_0_TRUE_GENESIS-ASI.md#10-risks--mitigations-top-line)
+    - [11. Deliverables](./whitepaper_0_TRUE_GENESIS-ASI.md#11-deliverables-in-this-folder)
+    - [12. References](./whitepaper_0_TRUE_GENESIS-ASI.md#12-references-normative--informative)
+    - [Appendix A — Implementation Notes](./whitepaper_0_TRUE_GENESIS-ASI.md#appendix-a--implementation-notes)
+    - [Appendix B — Evidence-Weave Structure](./whitepaper_0_TRUE_GENESIS-ASI.md#appendix-b--evidence-weave-structure)
+    - [Appendix C — Evaluation & KPIs](./whitepaper_0_TRUE_GENESIS-ASI.md#appendix-c--evaluation--kpis)
+    - [Appendix D — Policy-as-Code Quickstart](./whitepaper_0_TRUE_GENESIS-ASI.md#appendix-d--policy-as-code-quickstart)
+    - [Appendix E — Governance Workflow](./whitepaper_0_TRUE_GENESIS-ASI.md#appendix-e--governance-workflow-amendments)
+    - [Glossary](./whitepaper_0_TRUE_GENESIS-ASI.md#glossary-of-terms--acronyms)
+  - Artifact bundle:
+    - [ASI_Constitution.yaml](./ASI_Constitution.yaml) · [ASI_Autonomy_Boundaries.md](./ASI_Autonomy_Boundaries.md) · [ASI_Policy.rego](./ASI_Policy.rego) · [ASI_GSN_Safety_Case.gsn](./ASI_GSN_Safety_Case.gsn) · [ASI_Architecture.puml](./ASI_Architecture.puml) · [ASI_Assurance_KPIs.csv](./ASI_Assurance_KPIs.csv) · [ASI_Threat_Register.csv](./ASI_Threat_Register.csv)
+
+- **Master Whitepaper #1:** [MASTER_WHITEPAPER_1.md](./MASTER_WHITEPAPER_1.md)
+- **Integration Whitepaper #2:** [MASTER_WHITEPAPER_2.md](./MASTER_WHITEPAPER_2.md)
+
 ---
 
 ## Master Whitepapers
