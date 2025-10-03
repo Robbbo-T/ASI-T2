@@ -7,18 +7,26 @@ classification: "INTERNAL–EVIDENCE-REQUIRED"
 version: "0.1.0"
 release_date: "2025-10-01"
 maintainer: "PMO-IDEALE"
-bridge: "CB→QB→UE→FE→FWD→QS"
+bridge: "CB→QB→UE→FE→TA→FWD→QS"
 ethics_guard: "MAL-EEM"
 canonical_hash: "pending"
 ---
 
 # Federated Europe Charters
 
-Charters and agreements for Federated Europe integration.
+Charters and agreements for Federated Europe integration and transatlantic cooperation.
 
 ## Overview
 
-Contains federated agreements, integration protocols, and collaboration frameworks.
+Contains federated agreements, integration protocols, and collaboration frameworks for both European integration and USA-Europe transatlantic partnership.
+
+## Key Documents
+
+### Transatlantic Cooperation
+- **[USA-Europe Transatlantic Cooperation Charter](./transatlantic_cooperation_charter.md)** — Comprehensive framework for Atlantic partnership across five domains
+
+### European Federation
+- Additional EU-specific charters and agreements (to be developed)
 
 ## Integration Points
 

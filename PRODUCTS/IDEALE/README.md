@@ -16,6 +16,8 @@ canonical_hash: "pending"
 
 Federated European capability mesh fusing **intelligence, defence, energy, aerospace, and logistics** into a single verifiable operating picture and decision pipeline.
 
+**🌉 Transatlantic Vision:** IDEALE-EU is architected as the foundational seed for a comprehensive USA-Europe transatlantic federation. See [Transatlantic Vision](./governance/transatlantic_vision.md) for the full strategic framework.
+
 ## 🎯 Purpose & Posture
 
 - **Purpose:** Federated capability mesh with a single, cryptographically attested COP and decision pipeline.
@@ -60,18 +62,21 @@ All IDEALE operations are:
 
 ## 🌉 Bridge Architecture
 
-**CB → QB → UE → FE → FWD → QS**
+**CB → QB → UE → FE → TA → FWD → QS**
 
 - **CB:** Capability Bridge (domain integration)
 - **QB:** Quantum Bridge (optimization layer)
 - **UE:** Unified Engineering (development)
 - **FE:** Federated Europe (deployment)
+- **TA:** Transatlantic (USA-EU coordination) *[Planned extension]*
 - **FWD:** Forward operations (edge/field)
 - **QS:** Quality Sealing (verification)
 
 ## 📚 Quick Links
 
 - [Governance](./governance/) — Charters, policies, compliance
+  - [**Transatlantic Vision**](./governance/transatlantic_vision.md) — USA-Europe federation framework
+  - [Transatlantic Cooperation Charter](./governance/FE_charters/transatlantic_cooperation_charter.md)
 - [Architecture](./architecture/) — System design, COP, integrations
 - [Domains](./domains/) — INTELLIGENCE, DEFENCE, ENERGY, AEROSPACE, LOGISTICS
 - [Standards](./standards/) — Safety, security, documentation standards
@@ -82,8 +87,12 @@ All IDEALE operations are:
 IDEALE leverages ASI-T2 meta-OS services:
 - **INFRANET:** Cross-cutting intelligence and infrastructure
 - **AMPEL360:** Aerospace integration patterns
+  - **BWB-Q100 domains:** AAA, AAP, CCC, CQH, DDD, EDI, EEE, EER, IIF, IIS, LCC, LIB, MEC, OOO, PPP
+  - Canonical layout: ata/, cax/, qox/, pax/ with S1000D, CAD/CAE/CFD, quantum optimization
 - **GAIA-AIR:** UAM and aerospace systems
 - **QAIM:** Quantum-classical optimization
+
+*See [Transatlantic Vision](./governance/transatlantic_vision.md) for how ASI-T2 enables USA-Europe federation.*
 
 ## 📝 Versioning
 

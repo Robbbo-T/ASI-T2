@@ -7,18 +7,39 @@ classification: "INTERNAL–EVIDENCE-REQUIRED"
 version: "0.1.0"
 release_date: "2025-10-01"
 maintainer: "PMO-IDEALE"
-bridge: "CB→QB→UE→FE→FWD→QS"
+bridge: "CB→QB→UE→FE→TA→FWD→QS"
 ethics_guard: "MAL-EEM"
 canonical_hash: "pending"
 ---
 
 # IDEALE Architecture
 
-System architecture for IDEALE capability mesh.
+System architecture for IDEALE capability mesh and transatlantic bridge.
 
 ## Overview
 
-Describes the overall system design, integration patterns, and technical architecture.
+Describes the overall system design, integration patterns, and technical architecture for both European operations and transatlantic USA-EU cooperation.
+
+## Core Architecture Documents
+
+### Bridge Architecture
+- **[Transatlantic Bridge (TA)](./transatlantic_bridge.md)** — Architecture for USA-Europe coordination layer
+
+### Domain Architectures
+- **[COP](./COP/)** — Common Operating Picture
+- **[Energy Corridor](./energy_corridor/)** — Energy infrastructure
+- **[Aerospace Stack](./aerospace_stack/)** — Aerospace integration
+- **[Logistics Mesh](./logistics_mesh/)** — Logistics network
+
+## Bridge Flow: CB→QB→UE→FE→TA→FWD→QS
+
+1. **CB (Capability Bridge):** Domain integration across Intelligence, Defence, Energy, Aerospace, Logistics
+2. **QB (Quantum Bridge):** Quantum-classical optimization layer
+3. **UE (Unified Engineering):** Development environment and tools
+4. **FE (Federated Europe):** European deployment and operations
+5. **TA (Transatlantic):** USA-EU coordination and capability exchange
+6. **FWD (Forward):** Edge/field operations globally
+7. **QS (Quality Sealing):** Cryptographic verification and attestation
 
 ## Integration Points
 
