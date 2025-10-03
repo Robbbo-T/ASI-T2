@@ -134,7 +134,7 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 
 ## Future Whitepapers (Planned)
 
-* **Whitepaper #2:** MAL (Master Application Layer) Technical Specification
+* **Whitepaper #2:** Integration Architecture: ASI‑T2 MAP ↔ TFA Ecosystem
 * **Whitepaper #3:** QS/UTCS Provenance and Evidence Framework
 * **Whitepaper #4:** QAIM-2 Quantum-Classical Optimization Architecture
 * **Whitepaper #5:** AMPEL360 BWB Certification Strategy
