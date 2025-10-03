@@ -23,6 +23,8 @@ canonical_hash: pending
 
 # ASI-T2
 
+[![Sponsor](https://img.shields.io/github/sponsors/Robbbo-T?style=social)](https://github.com/sponsors/Robbbo-T)
+
 ## ARTIFICIAL SUPER INTELLIGENCE TRANSPONDERS for AEROSPACE SUSTAINABLE INDUSTRY TRANSITION
 
 **Master portfolio** under strict **TFA** architecture. This README defines the **CAX·QOX·PAX·ATA operating contract**, the **UTCS/QS evidence model**, and provides a **hyperlinked index** to fields, environments, and products.

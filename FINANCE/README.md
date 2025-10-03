@@ -168,6 +168,7 @@ Service Delivery → Evidence Generation → SLO Verification → Reward Distrib
 
 * [Master Whitepaper #1](../WHITEPAPERS/MASTER_WHITEPAPER_1.md)
 * [PRINCIPLES.md](./PRINCIPLES.md) - Detailed economic principles
+* [SPONSORSHIP.md](./SPONSORSHIP.md) - Sponsorship and funding policy (IDEALE-EU, MAL-EEM)
 * [SLO_DEFINITIONS.md](./SLO_DEFINITIONS.md) - Service level objectives (TBD)
 * [GOVERNANCE.md](./GOVERNANCE.md) - Treasury governance procedures (TBD)
 
