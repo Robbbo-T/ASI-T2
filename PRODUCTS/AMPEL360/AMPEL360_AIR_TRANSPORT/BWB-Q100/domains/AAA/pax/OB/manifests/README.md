@@ -33,6 +33,14 @@ Manages Open Build packaging manifests including:
 - **Version manifests** - Component version tracking and compatibility matrices
 - **Configuration manifests** - Environment-specific parameter definitions
 
+### Example Manifests
+
+- **`partition.example.yaml`** - UTCS-MI v5.0 compliant partition manifest example
+  - Demonstrates required UTCS fields: `canonical_hash`, `sbom_hash`, `security_policy_id`
+  - Includes evidence section with canonical hash and SBOM hash references
+  - Shows proper SHA256 hash format (`sha256:[a-f0-9]{64}`)
+  - Reference implementation for on-board ARINC-653 partition packaging
+
 ## Integration
 
 OB manifests support:

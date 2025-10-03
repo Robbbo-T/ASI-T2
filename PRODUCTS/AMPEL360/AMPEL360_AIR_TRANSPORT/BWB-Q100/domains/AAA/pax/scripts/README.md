@@ -35,7 +35,22 @@ Provides automation for:
 
 ## Files
 
-- `validate_pax.py` - Python script for PAx package validation using JSON schema
+- **`validate_pax.py`** - PAx manifest validator with JSON schema compliance checking
+  - **Version:** Enhanced with intelligent file filtering (v1.1)
+  - **Features:**
+    - Validates manifests against `package.schema.json`
+    - Enforces UTCS/QS evidence fields and patterns
+    - Verifies referenced files exist (SBOM, signatures)
+    - **Excludes non-manifest files:** SBOM files (`.spdx.json`, `.cdx.json`), schema files (`.schema.json`), and files in `sbom/`, `schemas/`, `certificates/` directories
+    - Emits CI-friendly output with clear error messages
+  - **Usage:**
+    ```bash
+    # Validate specific manifest
+    python validate_pax.py manifest.yaml
+    
+    # Scan entire PAx directory
+    python validate_pax.py --schema schemas/package.schema.json --root .
+    ```
 
 ## Automation Integration
 

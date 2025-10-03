@@ -1,0 +1,112 @@
+id: ietp-generic-720
+dmCodeString: "MOC-B-12-34-56-78-00A-720A-D-EN-US"
+dmType: Procedure
+infoCode: "720"
+
+layout:
+  regions:
+    header: [breadcrumbs, title, effectivityFilter, securityBadge]
+    main:   [procedureStepper]
+    side:   [safetyAlerts, toolsList, materialsList, relatedContent]
+    footer: [revisionBlock]
+
+widgets:
+  effectivityFilter:
+    type: applicabilityFilter
+    source: "identAndStatusSection/dmStatus/applic"
+    shells: ["APPL-ALL","APPL-LH","APPL-RH"]
+    required: true
+
+  safetyAlerts:
+    type: safetyBlock
+    source: "content/procedure/preliminaryRqmts/safetyRqmts/*"
+    style: prominent
+    icons:
+      warning: "⚠️"
+      caution: "⚡"
+      note: "ℹ️"
+
+  toolsList:
+    type: requirementsTable
+    title: Required Support Equipment
+    source: "content/procedure/preliminaryRqmts/reqSupportEquips/reqSupportEquip"
+    columns: [name, quantity, applicability]
+    sortable: true
+    filterable: true
+
+  materialsList:
+    type: requirementsTable
+    title: Required Consumables
+    source: "content/procedure/preliminaryRqmts/reqConsumables/reqConsumable"
+    columns: [name, quantity]
+    sortable: false
+
+  procedureStepper:
+    type: stepper
+    source: "content/procedure/mainProcedure/proceduralStep"
+    showTitles: true
+    showStepNumbers: true
+    figureEmbedding: inline
+    navigation:
+      allowSkip: false
+      showProgress: true
+    safetyGate:
+      enabled: true
+      requireAcknowledgment: true
+
+  relatedContent:
+    type: linkList
+    title: Related Information
+    source: "content/procedure/preliminaryRqmts/refs/dmRef"
+    groupBy: infoCode
+    icons:
+      "040": "📄"
+      "520": "🧪"
+      "941": "🔧"
+
+  revisionBlock:
+    type: metadata
+    source: "identAndStatusSection/dmAddress"
+    fields:
+      - dmCode
+      - issueInfo
+      - security
+
+responsive:
+  desktop:
+    side: right
+    sideWidth: "320px"
+    navigation: full
+  
+  tablet:
+    side: tabs
+    sideWidth: "100%"
+    controls: touch
+    fontSize: "110%"
+  
+  gloves:
+    side: hidden
+    controls: large
+    theme: dark
+    fontSize: "150%"
+    buttonSize: "48px"
+
+accessibility:
+  keyboardNav: true
+  screenReaderOptimized: true
+  contrastMode: auto
+  focusIndicators: prominent
+  skipLinks: true
+
+i18n:
+  language: en-US
+  dateFormat: "YYYY-MM-DD"
+  numberFormat:
+    decimal: "."
+    thousands: ","
+  units: SI-primary
+
+theme:
+  default: light
+  options: [light, dark, high-contrast]
+  userPreference: true

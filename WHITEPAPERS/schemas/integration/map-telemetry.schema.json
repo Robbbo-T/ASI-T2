@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/integration/map-telemetry.schema.json",
+  "title": "ASI-T2 MAP Telemetry Contract",
+  "description": "MAP telemetry contract schema for streaming measurements and state updates",
+  "type": "object",
+  "required": ["message_id", "version", "contract", "timestamp", "payload"],
+  "properties": {
+    "message_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique message identifier (UUID v4)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Contract version (semantic versioning)"
+    },
+    "contract": {
+      "type": "string",
+      "const": "telemetry",
+      "description": "Contract type (must be 'telemetry')"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Message timestamp (ISO 8601 with timezone)"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Monotonic sequence number for ordering"
+    },
+    "topic": {
+      "type": "string",
+      "pattern": "^map/1/telemetry/[A-Z0-9_-]+/[A-Z]{3}/[A-Z0-9_]+/[A-Z]{2,3}/[A-Z]{2,3}$",
+      "description": "Full topic path"
+    },
+    "sender": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Sender identifier"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["service", "component", "sensor"],
+          "description": "Sender type"
+        },
+        "instance": {
+          "type": "string",
+          "description": "Instance identifier"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "required": ["data"],
+      "properties": {
+        "data": {
+          "type": "object",
+          "description": "Telemetry data payload"
+        },
+        "data_type": {
+          "type": "string",
+          "description": "Type of telemetry data"
+        },
+        "units": {
+          "type": "object",
+          "description": "Units for each measurement"
+        },
+        "quality": {
+          "type": "object",
+          "properties": {
+            "validity": {
+              "type": "string",
+              "enum": ["valid", "invalid", "stale", "unknown"],
+              "description": "Data validity status"
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Confidence level (0-1)"
+            },
+            "source_quality": {
+              "type": "string",
+              "enum": ["high", "medium", "low"],
+              "description": "Source data quality"
+            }
+          }
+        },
+        "statistics": {
+          "type": "object",
+          "properties": {
+            "mean": {"type": "number"},
+            "std_dev": {"type": "number"},
+            "min": {"type": "number"},
+            "max": {"type": "number"},
+            "count": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "signature": {
+          "type": "object",
+          "required": ["algorithm", "value", "key_id"],
+          "properties": {
+            "algorithm": {
+              "type": "string",
+              "enum": ["Ed25519", "ECDSA-P256"],
+              "description": "Signature algorithm"
+            },
+            "value": {
+              "type": "string",
+              "description": "Base64-encoded signature"
+            },
+            "key_id": {
+              "type": "string",
+              "description": "Signing key identifier"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "correlation_id": {
+          "type": "string",
+          "description": "Correlation ID linking to control commands"
+        },
+        "sample_rate_hz": {
+          "type": "number",
+          "description": "Data sampling rate in Hz"
+        },
+        "window_size": {
+          "type": "number",
+          "description": "Aggregation window size"
+        },
+        "context": {
+          "type": "object",
+          "description": "Additional context metadata"
+        }
+      }
+    },
+    "utcs": {
+      "type": "object",
+      "properties": {
+        "bundle_ref": {
+          "type": "string",
+          "description": "Reference to UTCS evidence bundle"
+        },
+        "hash": {
+          "type": "string",
+          "description": "Content hash (SHA-256)"
+        }
+      }
+    }
+  }
+}

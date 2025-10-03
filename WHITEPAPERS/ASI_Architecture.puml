@@ -1,0 +1,323 @@
+@startuml ASI_Architecture
+!define RECTANGLE class
+
+' ==============================================================================
+' ASI (Aerospace Supernational Intelligence) Architecture
+' Version: 0.1.0
+' Date: 2025-10-03
+' Classification: PUBLIC
+' ==============================================================================
+
+title ASI (Aerospace Supernational Intelligence) Architecture\nThree-Plane Design with Policy-as-Code Enforcement
+
+' Styling
+skinparam backgroundColor #FFFFFF
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+' Color scheme
+skinparam component {
+  BackgroundColor<<data>> #E1F5FE
+  BorderColor<<data>> #0277BD
+  BackgroundColor<<control>> #FFF9C4
+  BorderColor<<control>> #F57F17
+  BackgroundColor<<assurance>> #F3E5F5
+  BorderColor<<assurance>> #6A1B9A
+  BackgroundColor<<agent>> #C8E6C9
+  BorderColor<<agent>> #2E7D32
+  BackgroundColor<<external>> #FFECB3
+  BorderColor<<external>> #FF6F00
+  BackgroundColor<<governance>> #FFCCBC
+  BorderColor<<governance>> #BF360C
+}
+
+' ==============================================================================
+' EXTERNAL ACTORS
+' ==============================================================================
+
+actor "Aerospace Engineer" as engineer
+actor "Certification Authority\n(EASA/FAA)" as regulator
+actor "Domain Expert" as expert
+actor "System Administrator" as admin
+
+' ==============================================================================
+' GOVERNANCE LAYER
+' ==============================================================================
+
+package "Governance Layer" <<governance>> {
+  component "EU–US Council" as council
+  component "Technical Steering\nCommittee" as tsc
+  component "Independent\nAssurance Panel" as panel
+  
+  note right of council
+    **Responsibilities:**
+    - Strategic direction
+    - Policy amendments
+    - Major system approvals
+    - Quarterly reviews
+  end note
+}
+
+' ==============================================================================
+' ASI CORE SYSTEM
+' ==============================================================================
+
+package "ASI Core System" {
+
+  ' ----------------------------------------------------------------------------
+  ' CONTROL PLANE
+  ' ----------------------------------------------------------------------------
+  
+  package "Control Plane" <<control>> {
+    component "Query Router" as router
+    component "Policy Gatekeeper\n(OPA/Rego)" as opa
+    component "Export Control\nScreening" as export
+    component "Privacy Filter\n(GDPR)" as privacy
+    component "Human-in-the-Loop\nEscalation" as hitl
+    component "Authority Router" as auth_router
+    
+    note right of opa
+      **Enforces:**
+      - ASI_Constitution.yaml
+      - ASI_Policy.rego
+      - Authority boundaries
+      - Safety constraints
+    end note
+  }
+  
+  ' ----------------------------------------------------------------------------
+  ' ORCHESTRATOR OF EXPERTS
+  ' ----------------------------------------------------------------------------
+  
+  package "Orchestrator of Experts" <<agent>> {
+    component "Design Agent" as design
+    component "Certification Agent" as cert
+    component "Operations Agent" as ops
+    component "Sustainability Agent" as sustain
+    
+    note right of design
+      **Domain Agents:**
+      Each operates within
+      defined authority scope
+      with source attribution
+    end note
+  }
+  
+  ' ----------------------------------------------------------------------------
+  ' DATA PLANE
+  ' ----------------------------------------------------------------------------
+  
+  package "Data Plane" <<data>> {
+    component "AMPEL360\nDatasets" as ampel
+    component "GAIA\nKnowledge" as gaia
+    component "INFRANET\nOperational Data" as infranet
+    component "Regulatory\nDocuments" as regs
+    component "Historical\nEvidence" as history
+    
+    database "Vector Store\n(RAG)" as vectors
+    database "Graph Store\n(Knowledge)" as graph
+    
+    note right of ampel
+      **Provenance:**
+      - C2PA sealed
+      - SBOM tracked
+      - Version controlled
+    end note
+  }
+  
+  ' ----------------------------------------------------------------------------
+  ' ASSURANCE PLANE
+  ' ----------------------------------------------------------------------------
+  
+  package "Assurance Plane" <<assurance>> {
+    component "Safety Monitors" as safety_mon
+    component "Robustness\nEvaluation" as robustness
+    component "Alignment\nVerification" as alignment
+    component "Supply Chain\nAttestation (SLSA)" as slsa
+    component "Evidence\nValidator" as evidence_val
+    component "GSN Safety Case\nCompiler" as gsn
+    
+    database "Audit Logs\n(7+ years)" as audit_logs
+    database "KPI Dashboard" as kpi_dash
+    
+    note right of safety_mon
+      **Continuous Checks:**
+      - Output safety
+      - Confidence thresholds
+      - Consistency validation
+      - Boundary proximity
+    end note
+  }
+
+}
+
+' ==============================================================================
+' EXTERNAL SYSTEMS
+' ==============================================================================
+
+package "External Systems" <<external>> {
+  component "PDM/PLM\n(CAD/CAE Data)" as pdm
+  component "Certification\nManagement" as cert_mgmt
+  component "Test & Analysis\nResults" as test_results
+  component "Regulatory\nDatabases" as reg_db
+  component "Red Team\nAdversarial Suite" as redteam
+}
+
+' ==============================================================================
+' EVIDENCE WEAVE OUTPUT
+' ==============================================================================
+
+package "Evidence Weave Output" {
+  component "Recommendation\nPackage" as rec_pkg
+  component "Source\nAttribution" as sources
+  component "Regulatory\nMapping" as reg_map
+  component "Confidence &\nUncertainty" as confidence
+  component "Audit Trail" as audit_trail
+  
+  note right of rec_pkg
+    **Evidence Package:**
+    - Reasoning chain
+    - Multi-source references
+    - CS-25/14 CFR mapping
+    - Confidence scores
+    - Human review flags
+  end note
+}
+
+' ==============================================================================
+' RELATIONSHIPS - USER INTERACTIONS
+' ==============================================================================
+
+engineer --> router : "Query:\nBWB evacuation\nconfiguration?"
+regulator --> audit_logs : "Audit access"
+expert --> hitl : "Approve/Reject\nconsequential\ndecisions"
+admin --> opa : "Policy updates"
+
+council ..> opa : "Ratify\nConstitution"
+tsc ..> opa : "Approve policy\nchanges"
+panel ..> gsn : "Validate\nsafety case"
+
+' ==============================================================================
+' RELATIONSHIPS - CONTROL FLOW
+' ==============================================================================
+
+router --> opa : "1. Policy check"
+opa --> export : "2. Export control"
+export --> privacy : "3. Privacy check"
+privacy --> auth_router : "4. Route to\nauthorized agents"
+
+auth_router --> design : "Domain query"
+auth_router --> cert : "Domain query"
+auth_router --> ops : "Domain query"
+auth_router --> sustain : "Domain query"
+
+design --> safety_mon : "Output check"
+cert --> safety_mon : "Output check"
+ops --> safety_mon : "Output check"
+sustain --> safety_mon : "Output check"
+
+safety_mon --> hitl : "Consequential\ndecision escalation"
+hitl --> rec_pkg : "Approved\nrecommendation"
+
+' ==============================================================================
+' RELATIONSHIPS - DATA FLOW
+' ==============================================================================
+
+design --> vectors : "Retrieve context"
+cert --> regs : "Query regulations"
+ops --> history : "Query lessons learned"
+sustain --> gaia : "Query sustainability data"
+
+vectors --> ampel : "CAD/Analysis data"
+vectors --> gaia : "Space/Energy data"
+vectors --> infranet : "Operational data"
+graph --> regs : "Regulatory graph"
+
+pdm --> ampel : "Engineering data"
+cert_mgmt --> regs : "Certification docs"
+test_results --> history : "Test evidence"
+reg_db --> regs : "CS-25, 14 CFR, etc."
+
+' ==============================================================================
+' RELATIONSHIPS - ASSURANCE FLOW
+' ==============================================================================
+
+opa --> audit_logs : "Policy decisions"
+hitl --> audit_logs : "Human approvals"
+safety_mon --> audit_logs : "Safety alerts"
+
+robustness <-- redteam : "Adversarial tests"
+alignment --> evidence_val : "Evidence completeness"
+slsa --> evidence_val : "Artifact integrity"
+
+evidence_val --> gsn : "Evidence for\nsafety case"
+safety_mon --> gsn : "Safety monitor data"
+audit_logs --> gsn : "Compliance evidence"
+
+gsn --> kpi_dash : "KPI metrics"
+kpi_dash --> panel : "Quarterly reports"
+
+' ==============================================================================
+' RELATIONSHIPS - OUTPUT ASSEMBLY
+' ==============================================================================
+
+rec_pkg --> sources : "Evidence sources"
+rec_pkg --> reg_map : "Regulatory refs"
+rec_pkg --> confidence : "Confidence scores"
+rec_pkg --> audit_trail : "Decision provenance"
+
+rec_pkg --> engineer : "Evidence-backed\nrecommendation"
+
+' ==============================================================================
+' KEY DATA FLOWS (HIGHLIGHTED)
+' ==============================================================================
+
+note as N1
+  **Critical Enforcement Points:**
+  1. Policy Gatekeeper (OPA) - All requests filtered
+  2. Export Control - ITAR/EAR screening
+  3. Privacy Filter - GDPR compliance
+  4. Safety Monitors - Output validation
+  5. Human-in-the-Loop - Consequential decisions
+end note
+
+note as N2
+  **Authority Boundaries:**
+  ❌ No live control (architecturally isolated)
+  ❌ No cert modifications (read-only access)
+  ❌ No cert bypass (process enforcement)
+  ❌ No export violations (screening + authorization)
+  ✅ Advisory only (evidence-backed recommendations)
+end note
+
+note as N3
+  **Standards Compliance:**
+  - EU AI Act (high-risk classification)
+  - NIST AI RMF (Map-Measure-Manage-Govern)
+  - ISO/IEC 42001/23894 (AI management/risk)
+  - EASA AI guidance (MLEAP)
+  - DO-178C/DO-254 (airborne assurance)
+end note
+
+N1 -[hidden]- N2
+N2 -[hidden]- N3
+
+' ==============================================================================
+' SECURITY BOUNDARIES
+' ==============================================================================
+
+rectangle "Security Boundary\n(No Control System Access)" {
+  note as SecBound
+    ASI has NO network connectivity to:
+    - Flight control systems
+    - Certified software repositories (write access)
+    - Air traffic control
+    - Ground support equipment control
+  end note
+}
+
+SecBound -[hidden]- router
+
+@enduml

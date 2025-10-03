@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/integration/map-log.schema.json",
+  "title": "ASI-T2 MAP Log Contract",
+  "description": "MAP log contract schema for immutable audit logs and event records",
+  "type": "object",
+  "required": ["message_id", "version", "contract", "timestamp", "payload"],
+  "properties": {
+    "message_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique message identifier (UUID v4)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Contract version (semantic versioning)"
+    },
+    "contract": {
+      "type": "string",
+      "const": "log",
+      "description": "Contract type (must be 'log')"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Log entry timestamp (ISO 8601 with timezone)"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Monotonic sequence number for ordering"
+    },
+    "topic": {
+      "type": "string",
+      "pattern": "^map/1/log/[A-Z0-9_-]+(/[A-Z0-9_]+)*$",
+      "description": "Log topic path"
+    },
+    "sender": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Sender identifier"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["service", "component", "system"],
+          "description": "Sender type"
+        },
+        "instance": {
+          "type": "string",
+          "description": "Instance identifier"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "required": ["level", "message"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["trace", "debug", "info", "warn", "error", "fatal", "audit"],
+          "description": "Log level"
+        },
+        "message": {
+          "type": "string",
+          "description": "Log message"
+        },
+        "event_type": {
+          "type": "string",
+          "description": "Event type classification"
+        },
+        "event_id": {
+          "type": "string",
+          "description": "Event identifier"
+        },
+        "data": {
+          "type": "object",
+          "description": "Structured log data"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Error code"
+            },
+            "message": {
+              "type": "string",
+              "description": "Error message"
+            },
+            "stack": {
+              "type": "string",
+              "description": "Stack trace"
+            }
+          }
+        },
+        "actor": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Actor identifier (user/service)"
+            },
+            "type": {
+              "type": "string",
+              "enum": ["user", "service", "system"],
+              "description": "Actor type"
+            }
+          }
+        },
+        "action": {
+          "type": "string",
+          "description": "Action performed"
+        },
+        "resource": {
+          "type": "string",
+          "description": "Resource affected"
+        },
+        "result": {
+          "type": "string",
+          "enum": ["success", "failure", "denied", "error"],
+          "description": "Action result"
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "required": ["signature"],
+      "properties": {
+        "signature": {
+          "type": "object",
+          "required": ["algorithm", "value", "key_id"],
+          "properties": {
+            "algorithm": {
+              "type": "string",
+              "enum": ["Ed25519", "ECDSA-P256"],
+              "description": "Signature algorithm"
+            },
+            "value": {
+              "type": "string",
+              "description": "Base64-encoded signature"
+            },
+            "key_id": {
+              "type": "string",
+              "description": "Signing key identifier"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "correlation_id": {
+          "type": "string",
+          "description": "Correlation ID for tracing"
+        },
+        "trace_id": {
+          "type": "string",
+          "description": "Distributed tracing ID"
+        },
+        "span_id": {
+          "type": "string",
+          "description": "Span ID for tracing"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Log entry tags"
+        },
+        "context": {
+          "type": "object",
+          "description": "Additional context"
+        }
+      }
+    },
+    "utcs": {
+      "type": "object",
+      "required": ["immutable", "hash"],
+      "properties": {
+        "immutable": {
+          "type": "boolean",
+          "const": true,
+          "description": "Log entries are immutable"
+        },
+        "hash": {
+          "type": "string",
+          "description": "Content hash (SHA-256)"
+        },
+        "bundle_ref": {
+          "type": "string",
+          "description": "Reference to UTCS evidence bundle"
+        },
+        "chain_hash": {
+          "type": "string",
+          "description": "Hash chain linking to previous log entry"
+        }
+      }
+    },
+    "retention": {
+      "type": "object",
+      "properties": {
+        "duration_days": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Retention period in days"
+        },
+        "archival": {
+          "type": "boolean",
+          "description": "Whether to archive after retention period"
+        }
+      }
+    }
+  }
+}
