@@ -23,6 +23,7 @@ Defines policies, procedures, and compliance requirements for IDEALE operations,
 ## Core Documents
 
 ### Transatlantic Federation
+- **[USA-Europe Federation FAQ](./usa_eu_federation_faq.md)** — Quick answers to key questions about transatlantic vision
 - **[Transatlantic Vision](./transatlantic_vision.md)** — Strategic framework for USA-Europe federation
 - **[Transatlantic Cooperation Charter](./FE_charters/transatlantic_cooperation_charter.md)** — Governance, integration, and compliance for Atlantic partnership
 

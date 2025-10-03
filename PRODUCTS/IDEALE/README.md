@@ -75,6 +75,7 @@ All IDEALE operations are:
 ## 📚 Quick Links
 
 - [Governance](./governance/) — Charters, policies, compliance
+  - [**USA-Europe Federation FAQ**](./governance/usa_eu_federation_faq.md) — Quick answers to key questions
   - [**Transatlantic Vision**](./governance/transatlantic_vision.md) — USA-Europe federation framework
   - [Transatlantic Cooperation Charter](./governance/FE_charters/transatlantic_cooperation_charter.md)
 - [Architecture](./architecture/) — System design, COP, integrations
