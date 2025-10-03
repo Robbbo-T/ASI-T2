@@ -1,0 +1,72 @@
+---
+version: '1.0'
+deployment: edge
+bridge: 'CB→QB'
+description: Lightweight edge deployment for real-time local optimization
+
+pcan:
+  enabled: true
+  cache_size: 100
+  s1000d_aware: false
+  ata_mapping: false
+
+surrogate:
+  enabled: false  # Lightweight edge - no ML models
+
+strategy:
+  enabled: false  # Use default policy
+  default_solver: 'cb_cbc'
+  exploration_rate: 0.0
+
+arbitration:
+  enabled: true
+  algorithm: 'simple'
+  fallback: 'cb_glpk'
+
+translator:
+  enabled: true
+  formats:
+    - 'mip'
+    - 'sat'
+
+cb_solvers:
+  - name: 'cbc'
+    enabled: true
+    time_limit: 10
+    threads: 2
+  - name: 'glpk'
+    enabled: true
+    time_limit: 5
+    threads: 1
+
+qb_solvers:
+  enabled: false  # Not needed on edge
+
+qc_gateway:
+  enabled: false  # No QC on edge
+
+map:
+  enabled: true
+  broker: 'localhost:1883'
+  topics:
+    - 'map/1/telemetry'
+    - 'map/1/log'
+
+utcs:
+  enabled: true
+  version: 'v5.0'
+  evidence_path: '/var/lib/qaim-2/evidence'
+  signing_enabled: false
+
+ethics:
+  map_eem: true
+  mal_eem: true
+  audit_mode: 'basic'
+
+logging:
+  level: 'INFO'
+  output: '/var/log/qaim-2/qaim-2.log'
+
+resources:
+  memory_limit: '512M'
+  cpu_limit: 2

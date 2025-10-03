@@ -129,6 +129,28 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 | Version | Date | Changes |
 |---------|------|---------|
 | 0.1.0 | 2025-10-01 | Initial release: Master Whitepaper #1, product template, finance framework |
+| 0.1.0 | 2025-10-03 | Added: Master Whitepaper #4 (QAIM-2) with complete service implementation |
+
+---
+
+### [Master Whitepaper #4](./MASTER_WHITEPAPER_4.md)
+
+**Title:** QAIM-2: Quantum-Classical Optimization via AI Bridges
+
+**Author:** Amedeo Pelliccia  
+**Version:** v0.1.0 (2025-10-03)  
+**Status:** Public draft for technical review
+
+**Abstract:** QAIM-2 orchestrates classical (CB), cubic-bit (QB), and optional quantum (QC) resources through AI bridges, aligned with TFA V2 bridge (QS→FWD→UE→FE→CB→QB) over ASI-T2 MAP with UTCS v5.0 evidence. Provides AI-assisted solver selection, UTCS deterministic packaging, MAP-EEM/MAL-EEM ethical governance, and S1000D/ATA/DO-178C/ECSS alignment. Complete implementation includes bridges (PCAN, SM, SP, ARB, XFR) and solver pools (CB, QB, QC) with edge/site/hub deployment configurations.
+
+**Key Topics:**
+- AI bridges for solver selection (PCAN, SM, SP, ARB, XFR)
+- Classical solver pool (Gurobi, CBC, OR-Tools, GLPK)
+- Cubic-bit solvers (QB tensor, lifted relaxation)
+- Quantum computing gateway (QAOA, VQE, annealing)
+- UTCS v5.0 evidence generation
+- Edge/site/hub deployment configurations
+- ASI-T2 product integration (BWB-Q100, GAIA-SPACE/AIR, H₂-AIRPORT, BITFINANCE)
 
 ---
 
@@ -136,7 +158,6 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 
 * **Whitepaper #2:** Integration Architecture: ASI‑T2 MAP ↔ TFA Ecosystem
 * **Whitepaper #3:** QS/UTCS Provenance and Evidence Framework
-* **Whitepaper #4:** QAIM-2 Quantum-Classical Optimization Architecture
 * **Whitepaper #5:** AMPEL360 BWB Certification Strategy
 * **Whitepaper #6:** GAIA SPACE Mission Operations and Data Management
 * **Whitepaper #7:** GAIA AIR Swarm Coordination and Ethics
