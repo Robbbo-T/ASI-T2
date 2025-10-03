@@ -40,6 +40,7 @@ canonical_hash: pending
 - [Mandatory Traceability](#mandatory-traceability)
 - [Motivation](#motivation)
 - [IDEALE Framework](#ideale-framework)
+- [🌐 IDEALE-EU Federation](#-ideale-eu-federation)
 - [Repository Hyperlinked Index](#-repository-hyperlinked-index)
   - [Fields](#-fields)
   - [Environments](#-environments)
@@ -148,6 +149,79 @@ ethics_guard: MAL-EEM
   *Maps to:* domain **LIB** (Logistics, Inventory & Blockchain), **PAx** packaging (OB/OFF, SBOM, attestations), **UTCS/QS** evidence.
 * **Europe** — standards alignment, certification pathways, and ecosystem integration
   *Maps to:* CS-25, EASA processes, S1000D/IETP practices, and cross-member collaboration.
+
+---
+
+## 🌐 IDEALE-EU Federation
+
+ASI-T2 operates as the **technical foundation** for the **IDEALE-EU open federation**, a standards-first, compliance-aware collaboration framework for US-EU aerospace technical commons.
+
+### Federation Pillars
+
+**1. Regulatory Bridge (FAA ↔ EASA)**
+- Mutual recognition of certification artifacts (TC, STC, PC)
+- Digital twin validation aligned with bilateral safety framework
+- Type Inspection Procedures (TIP) and Material Acceptance Guidance (MAG) harmonization
+
+**2. Cybersecurity & NIS2 Compliance**
+- SLSA Level 3+ provenance for all releases
+- SBOM (SPDX/CycloneDX) mandatory for deliverables
+- Supply chain transparency via Sigstore attestations
+- Incident response aligned with EU NIS2 Directive
+
+**3. Data Privacy & Cross-Atlantic Transfers**
+- EU-U.S. Data Privacy Framework (DPF) for lawful data flows
+- GDPR compliance with privacy-by-design
+- Standard Contractual Clauses (SCCs) where applicable
+
+**4. Export Control & Data Classification**
+- **OPEN**: Public, no restrictions → GitHub public repos
+- **SHARED**: Federation members, NDA → Private repos
+- **RESTRICTED**: Vetted orgs, bilateral agreements → Off-repo with ACLs
+- **CONTROLLED**: Export-controlled (ITAR/EAR/Dual-Use) → Off-repo, hash references only
+
+**5. Multi-License Framework**
+- **Code**: Apache-2.0 (permissive, patent grant)
+- **Documentation**: CC-BY-4.0 (attribution, derivatives allowed)
+- **Hardware**: CERN-OHL-S-2.0 (strong reciprocal, prevents proprietization)
+- **AI/ML Models**: OpenRAIL (responsible AI with use restrictions)
+
+### Governance Documents
+
+- [**CHARTER.md**](./CHARTER.md) — Mission, principles, governance structure
+- [**GOVERNANCE.md**](./GOVERNANCE.md) — Council, TSCs, working groups, decision processes
+- [**ROADMAP.md**](./ROADMAP.md) — Phased development plan (2025-2028)
+- [**CODE_OF_CONDUCT.md**](./CODE_OF_CONDUCT.md) — Community conduct and ethics
+- [**CONTRIBUTING.md**](./CONTRIBUTING.md) — Contribution guidelines and workflows
+- [**SECURITY.md**](./SECURITY.md) — Vulnerability reporting and incident response
+- [**CODEOWNERS**](./CODEOWNERS) — Code ownership and review requirements
+
+### Compliance Policies
+
+- [**policies/DATA_CLASSIFICATION.md**](./policies/DATA_CLASSIFICATION.md) — OPEN/SHARED/RESTRICTED/CONTROLLED schema
+- [**policies/EXPORT_CONTROL.md**](./policies/EXPORT_CONTROL.md) — ITAR, EAR, EU Dual-Use compliance
+- [**policies/PRIVACY.md**](./policies/PRIVACY.md) — GDPR, DPF, data subject rights
+- [**policies/SECURITY.md**](./policies/SECURITY.md) — SLSA, SBOM, cryptography standards
+
+### Templates & Schemas
+
+- [**Shared/_templates/index.extracted.schema.json**](./Shared/_templates/index.extracted.schema.json) — Domain manifest JSON schema
+- [**Shared/_templates/README.product.md**](./Shared/_templates/README.product.md) — Product README template
+- [**Shared/_templates/CONTRIBUTING.template.md**](./Shared/_templates/CONTRIBUTING.template.md) — Domain contribution guide
+- [**Shared/_templates/S1000D_BREX.placeholder.xml**](./Shared/_templates/S1000D_BREX.placeholder.xml) — S1000D business rules
+
+### CI/CD Automation
+
+Federation compliance is enforced via GitHub Actions:
+- [**.github/workflows/validate-manifests.yml**](./.github/workflows/validate-manifests.yml) — Schema validation, classification checks
+- [**.github/workflows/sbom-attest.yml**](./.github/workflows/sbom-attest.yml) — SBOM generation, Sigstore signing
+- [**.github/workflows/s1000d-checks.yml**](./.github/workflows/s1000d-checks.yml) — S1000D XML validation
+- [**.github/workflows/struct-and-brex.yml**](./.github/workflows/struct-and-brex.yml) — Repository structure validation
+
+**Policy-as-code gates:**
+- FAIL builds if CONTROLLED content detected in public repos
+- REQUIRE export control review for RESTRICTED artifacts
+- WARN on missing classification or SBOM
 
 ---
 
