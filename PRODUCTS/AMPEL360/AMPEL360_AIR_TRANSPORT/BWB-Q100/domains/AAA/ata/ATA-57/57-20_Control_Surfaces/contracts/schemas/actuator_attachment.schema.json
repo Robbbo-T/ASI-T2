@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-20/actuator_attachment.schema.json",
+  "title": "Actuator Attachment",
+  "description": "Attachment fitting and load path for actuator interface.",
+  "type": "object",
+  "required": ["version", "attachment_id", "actuator_type", "load_capacity_kN"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "attachment_id": {
+      "type": "string",
+      "pattern": "^ACTF-[A-Z0-9_-]{3,}$"
+    },
+    "actuator_type": {
+      "type": "string",
+      "enum": ["hydraulic", "electromechanical"]
+    },
+    "interface_icd_ref": {
+      "type": "string",
+      "description": "ICD to ATA-27/29 reference"
+    },
+    "load_capacity_kN": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "stroke_mm": {
+      "type": "number",
+      "minimum": 0
+    },
+    "fastener_set_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^FST-[A-Z0-9_-]{3,}$"
+      }
+    },
+    "preload_requirement": {
+      "type": "string"
+    },
+    "acceptance_metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "./acceptance.metric.schema.json"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

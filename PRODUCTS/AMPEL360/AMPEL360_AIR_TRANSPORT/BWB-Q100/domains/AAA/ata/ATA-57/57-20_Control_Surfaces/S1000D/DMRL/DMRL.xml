@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmrl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- ===== Identification ===== -->
+  <dmrlIdent>
+    <dmrlNumber>DMRL-57-20-001</dmrlNumber>
+    <dmrlTitle>ATA-57-20 Control Surfaces — DMRL (slim)</dmrlTitle>
+    <issueInfo>
+      <issueNumber>001</issueNumber>
+      <inWork>00</inWork>
+    </issueInfo>
+  </dmrlIdent>
+
+  <!-- ===== Effectivity shells (reusable) ===== -->
+  <applic>
+    <applicIdent>
+      <!-- GLOBAL set -->
+      <applicId id="BWB-Q100-ALL" name="BWB-Q100 All MSNs" values="BWB-Q100-001-999"/>
+      <!-- Blocks (tweak ranges as needed) -->
+      <applicId id="BWB-Q100-BLOCK-001-050" name="Block 001–050" values="BWB-Q100-001-050"/>
+      <applicId id="BWB-Q100-BLOCK-051-999" name="Block 051–999" values="BWB-Q100-051-999"/>
+      <!-- Options (logical flags) -->
+      <applicId id="OPT-HS" name="High-speed option" values="OPT(HS)=true"/>
+      <applicId id="OPT-ICE" name="Ice-protection option" values="OPT(ICE)=true"/>
+      <!-- Sides (if you decide to scope DMs later) -->
+      <applicId id="SIDE-LH" name="Left-hand" values="SIDE=LH"/>
+      <applicId id="SIDE-RH" name="Right-hand" values="SIDE=RH"/>
+    </applicIdent>
+  </applic>
+
+  <!-- ===== DM Requirements ===== -->
+  <dmRequirements>
+
+    <!-- ===== System level (57-20-00) ===== -->
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="00"
+                  assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="00"
+                  assyCode="01" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="00"
+                  assyCode="02" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="00"
+                  assyCode="03" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="00"
+                  assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <!-- ===== Elevons (57-20-10) ===== -->
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="10"
+                  assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="10"
+                  assyCode="01" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>optional</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="10"
+                  assyCode="02" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <!-- Example: make repair DM block-scoped later -->
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="10"
+                  assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="720" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="20" subSubSystemCode="10"
+                  assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                  infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+        </dmRefIdent>
+      </dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <!-- ===== Flaperons (57-20-20) ===== -->
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="20"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="20"
+                assyCode="01" disassyCode="00" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>optional</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="20"
+                assyCode="02" disassyCode="00" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <!-- Option shell ready if actuator fit differs by option -->
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="20"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="720" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="20"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <!-- ===== Spoilers (57-20-30) ===== -->
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="30"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="30"
+                assyCode="01" disassyCode="00" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>optional</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="30"
+                assyCode="02" disassyCode="00" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="30"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="720" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="30"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <!-- ===== Tabs (57-20-40) ===== -->
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="40"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="40"
+                assyCode="01" disassyCode="00" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="40"
+                assyCode="02" disassyCode="00" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <!-- If balance differs by option, swap ALL -> OPT-HS or OPT-ICE later -->
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="40"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="720" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+    <dmRequirement>
+      <reqStatus>required</reqStatus>
+      <dmRef><dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="20" subSubSystemCode="40"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+      </dmRefIdent></dmRef>
+      <applic><logic><applicRef id="BWB-Q100-ALL"/></logic></applic>
+    </dmRequirement>
+
+  </dmRequirements>
+</dmrl>

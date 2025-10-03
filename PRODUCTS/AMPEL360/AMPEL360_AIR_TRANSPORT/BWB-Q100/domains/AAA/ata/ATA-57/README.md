@@ -1,159 +1,170 @@
-# ATA-57 — Wings
+---
+id: ATA-57-OV-0001
+project: PRODUCTS/AMPEL360/BWB-Q100
+artifact: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/README.md
+llc: SYSTEMS
+title: "ATA-57: Wings — BWB-Q100 (AAA Domain)"
+configuration: baseline
+classification: INTERNAL–EVIDENCE-REQUIRED
+version: "0.1.0"
+release_date: 2025-09-24
+maintainer: "ASI-T Architecture Team"
+licenses:
+  docs: "CC-BY-4.0"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: MAL-EEM
+utcs_mi: v5.0
+canonical_hash: "TBD"
+provenance:
+  policy_hash: "sha256:TBD"
+  model_sha: "sha256:TBD"
+  data_manifest_hash: "sha256:TBD"
+  operator_id: "UTCS:OP:copilot-gen"
+---
 
-Wing systems documentation, specifications, and certification evidence for BWB-Q100 blended wing body configuration.
+# ATA-57 — Wings (BWB-Q100)
 
-## Chapter Overview
+ATA-57 defines the **authoritative knowledge** for BWB-Q100 wings and integrated lifting surfaces.  
+**Golden rule:** knowledge lives in **ATA**; compute lives in **CAX/QOX**; deployables live in **PAX**.
 
-ATA Chapter 57 covers wing-related systems, structures, and components including wing box, control surfaces, high-lift systems, and wing-specific equipment integration.
+- **CAX (design/analysis):** [`../../cax/`](../../cax/)
+- **QOX (optimization):** [`../../qox/`](../../qox/)
+- **PAX (packages):** [`../../pax/`](../../pax/)
 
-**Primary Domain**: AAA (Aerodynamics & Airframes Architectures)  
-**Configuration**: BWB-Q100 Baseline (conf_000_baseline)  
-**Classification**: INTERNAL–EVIDENCE-REQUIRED
-
-## System Scope
-
-### 57-10-00 Wing Structure — General
-
-* **57-10-10** Wing box primary structure
-* **57-10-20** Wing skins, stringers, spars, ribs
-* **57-10-30** Wing/fuselage integration (blended structure)
-* **57-10-40** Wing-mounted equipment attachment fittings
-
-### 57-20-00 Wing Fuel System Interface
-
-* **57-20-10** Integral fuel tank integration in wing box
-* **57-20-20** Fuel line routing through wing structures
-* **57-20-30** Ventilation and inerting systems in wing section
-* **57-20-40** Wing-specific fuel measurement & management components
-
-### 57-30-00 Wing Control Surfaces
-
-* **57-30-10** Ailerons: structure, hinges, actuators
-* **57-30-20** Spoilers/speedbrakes
-* **57-30-30** Trailing edge control surface actuation systems
-* **57-30-40** Control surface load alleviation features
-
-### 57-40-00 Wing High-Lift Systems
-
-* **57-40-10** Leading edge slats
-* **57-40-20** Trailing edge flaps (single/double-slotted)
-* **57-40-30** Actuation and drive mechanisms
-* **57-40-40** High-lift system control and indication
-
-### 57-50-00 Wing Equipment Integration
-
-* **57-50-10** Wing-mounted antennas and sensor housings
-* **57-50-20** Navigation & communication equipment integration
-* **57-50-30** Wing lighting systems (nav, anti-collision, taxi)
-* **57-50-40** Ice detection/protection devices on wing
-
-## Design Requirements
-
-### Structural Requirements
-
-* **Load Cases**: Ultimate load factors per CS-25
-* **Fatigue Life**: ≥ 90,000 flight cycles
-* **Damage Tolerance**: Fail-safe design philosophy
-* **Materials**: CFRP primary structure, metallic/titanium fittings
-
-### Aerodynamic Requirements
-
-* **Design Cruise**: M0.78 @ FL390
-* **Buffet Margin**: ≥ 0.3g at cruise
-* **Stall Characteristics**: Predictable stall progression
-* **High-Lift Performance**: CLmax ≥ 2.8 with high-lift systems
-
-### BWB-Specific Requirements
-
-* **Integration**: Seamless wing-fuselage blending
-* **Structural Continuity**: Load path through center body
-* **Manufacturing**: Large integrated composite panels
-* **Access**: Inspection/maintenance access in blended wing
-
-## CAx/QOx Integration
-
-### Classical Analysis (CAx)
-
-* **CAD**: Wing geometry → `../../cax/CAD/wing_baseline_model/`
-* **CAE**: Structural analysis/sizing → `../../cax/CAE/wing_structural_analysis/`
-* **CFD**: Aerodynamic validation → `../../cax/CFD/wing_performance_validation/`
-
-### Quantum Optimization (QOx)
-
-* **Topology Optimization**: Rib/spar layouts
-
-  * Path: `../../qox/CAD/runs/20250120-wing_topology/`
-  * QS/UTCS: `a4f2d8e9...`
-* **Load Path Optimization**: Wing load distribution
-
-  * Path: `../../qox/CAE/runs/20250122-load_path_opt/`
-  * QS/UTCS: `b7e3f1a2...`
-
-## Certification Basis
-
-### Regulatory References
-
-* **CS-25.301** Load distribution & factor of safety
-* **CS-25.303** Factor of safety
-* **CS-25.305** Strength & deformation
-* **CS-25.571** Fatigue & damage tolerance
-
-### Test Requirements
-
-* **Static**: Ultimate load wing bending
-* **Fatigue**: Full-scale wing fatigue article
-* **Environmental**: Temp/moisture degradation
-* **Manufacturing**: Production conformity
-
-## Evidence Package
-
-### Design Evidence
-
-* [ ] Wing structural design report (CAE) — QS/UTCS: \_\_\_\_\_\_
-* [ ] Aerodynamic validation (CFD) — QS/UTCS: \_\_\_\_\_\_
-* [ ] Quantum optimization results — QS/UTCS: \_\_\_\_\_\_
-* [ ] Manufacturing process definition — QS/UTCS: \_\_\_\_\_\_
-* [ ] Material allowables — QS/UTCS: \_\_\_\_\_\_
-
-### Test Evidence
-
-* [ ] Coupon/element tests — QS/UTCS: \_\_\_\_\_\_
-* [ ] Subcomponent panels/joints — QS/UTCS: \_\_\_\_\_\_
-* [ ] Full-scale static/fatigue test — QS/UTCS: \_\_\_\_\_\_
-* [ ] Environmental tests — QS/UTCS: \_\_\_\_\_\_
-
-### Certification Evidence
-
-* [ ] Compliance matrix — QS/UTCS: \_\_\_\_\_\_
-* [ ] Certification test plans — QS/UTCS: \_\_\_\_\_\_
-* [ ] Type certificate data sheets — QS/UTCS: \_\_\_\_\_\_
-* [ ] Conformity procedures — QS/UTCS: \_\_\_\_\_\_
-
-## Sustainability Metrics (SIM)
-
-* **Weight Reduction**: −12% vs. baseline
-* **Drag Reduction**: −8% improved wing efficiency
-* **Fuel Burn**: −5% attributable to wing design
-* **Material Waste**: −15% composite scrap
-
-**Lifecycle:**
-
-* Manufacturing energy/wing assembly
-* Operational CO₂/fuel burn tracking
-* Maintenance burden predictions
-* End-of-Life recyclability & recovery
-
-## Revision History
-
-| Rev | Date | Description | QS/UTCS Reference |
-|-----|------|-------------|-------------------|
-| 0 | 2025-01-20 | Initial baseline configuration | `c9d4a1b7...` |
+> **Pattern compliance:** S1000D structures (**BREX/DMRL/DMC/ICN**) are **inside each 4-digit subchapter** (e.g., `57-10_.../S1000D/`), not at the chapter root.
 
 ---
 
-**Last Updated**: 2025-01-22  
-**Next Review**: 2025-04-22  
-**Approval**: ASI-T Architecture Team  
-**Classification**: INTERNAL–EVIDENCE-REQUIRED
+## 1) Scope & Applicability
 
-*Part of AAA Domain under BWB-Q100 Transport Civil × Air*
+- **Includes:** Wingbox (skins/spars/ribs), control surfaces (elevons/flaperons/spoilers), joints/attachments, fairings and access panels, structural provisions for routed systems, lightning/ESD **structural bonds**, pressurization interfaces on structure.
+- **Excludes:** Functional system behavior (ATA-22/27/28), propulsion (ATA-72/PPP). Structural **provisions** for these systems are covered here.
+- **Dependencies:** **ATA-20** (Standard Practices) and structural chapters (ATA-51/53/55) as applicable.
+
+---
+
+## 2) Directory Layout (ATA pattern)
+
+```
+ATA-57/
+├── 57-00_General/
+│   ├── S1000D/           # BREX/DMRL/DMC/ICN under the 4-digit folder
+│   ├── compliance/
+│   ├── icd/
+│   └── evidence/
+├── 57-10_Wing_Primary_Structure/
+│   ├── S1000D/
+│   ├── compliance/
+│   ├── icd/
+│   └── evidence/
+├── 57-20_Control_Surfaces/
+│   ├── S1000D/
+│   ├── compliance/
+│   ├── icd/
+│   └── evidence/
+├── 57-30_Joints_Fasteners_Bonding/
+│   ├── S1000D/
+│   ├── compliance/
+│   ├── icd/
+│   └── evidence/
+├── 57-40_Access_Panels_Fairings/
+│   ├── S1000D/
+│   ├── compliance/
+│   ├── icd/
+│   └── evidence/
+├── 57-50_Systems_Provisions_Interfaces/
+│   ├── S1000D/
+│   ├── compliance/
+│   ├── icd/
+│   └── evidence/
+├── 57-90_Repairs_Alterations/
+│   ├── S1000D/
+│   ├── compliance/
+│   ├── icd/
+│   └── evidence/
+├── contracts/             # schemas, ICDs, templates shared by 57-xx
+├── io/                    # routing manifests, CI I/O snapshots
+└── README.md              # this file
+```
+
+**Notes**
+- Put **S1000D** only **below the 4-digit level** (`57-xx_*`), not at root.
+- CI-generated annexes (figures, traces) live under each subchapter's `evidence/`.
+
+---
+
+## 3) Subchapter Index & Cross-Links
+
+- **57-00 General** → program rules, global assumptions, references to ATA-20  
+  `./57-00_General/`
+- **57-10 Wing Primary Structure** → wingbox, ribs/spars/skins, local substantiation  
+  `./57-10_Wing_Primary_Structure/`
+- **57-20 Control Surfaces** → elevons/flaperons/spoilers structure & hinges  
+  `./57-20_Control_Surfaces/`
+- **57-30 Joints, Fasteners & Bonding** → structural joints, composite/metal stackups  
+  `./57-30_Joints_Fasteners_Bonding/`
+- **57-40 Access Panels & Fairings** → covers, fairings, attachments  
+  `./57-40_Access_Panels_Fairings/`
+- **57-50 Systems Provisions & Interfaces** → brackets, conduits, cut-outs, lightning bonds  
+  `./57-50_Systems_Provisions_Interfaces/`
+- **57-90 Repairs & Alterations** → repair philosophy, allowable damage, S1000D DMs  
+  `./57-90_Repairs_Alterations/`
+
+---
+
+## 4) Standard Practices (ATA-20) — Mandatory Forms
+
+The following **ATA-20 forms** are mandatory where applicable in ATA-57 work.  
+(Links point to the authoritative forms under ATA-20 by program pattern.)
+
+- **Composite Fastening** — `FORM-QA-20-10-01`  
+  [`../20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md`](../20/20-10_Structural_Practices/forms/FORM-QA-20-10-01_Composite_Fastening.md)
+- **Adhesive Bonding** — `FORM-QA-20-10-02`  
+  [`../20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md`](../20/20-10_Structural_Practices/forms/FORM-QA-20-10-02_Adhesive_Bonding.md)
+- **Cabin Integrity / Leak Test** — `FORM-QA-20-20-01`  
+  [`../20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md`](../20/20-20_Sealing_and_Pressurization/forms/FORM-QA-20-20-01_Cabin_Integrity_Leak_Test.md)
+- **Material Handling & OOC Log** — `FORM-QA-20-30-01`  
+  [`../20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md`](../20/20-30_Material_Handling/forms/FORM-QA-20-30-01_Material_Handling_OOC_Log.md)
+- **Bonding / EMI Continuity** — `FORM-QA-20-40-01`  
+  [`../20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md`](../20/20-40_Electrical_Bonding/forms/FORM-QA-20-40-01_Bonding_EMI_Continuity.md)
+
+> Use the forms above; **do not duplicate** in ATA-57. Link evidence from the relevant `57-xx/evidence/` folder.
+
+---
+
+## 5) Routing, I/O & Controls
+
+**Upstream inputs (examples)**  
+| Source | Transport | Path | Format | Trigger |
+|---|---|---|---|---|
+| AAA/CAX/CAD (OML) | PDM-PLM | /pdm/cax/cad/oml/ | STEP/OML-v2.x | on-release |
+| AAA/CAE/Loads | PDM-PLM | /pdm/cae/loads/envelope/ | CSV/NPZ | post-analysis |
+| ATA-20 Practices | PDM-PLM | /pdm/ata/20/ | SPM/PS/MS | on-update |
+
+**Downstream outputs (examples)**  
+| Consumer | Transport | Path | Format | Contract |
+|---|---|---|---|---|
+| Manufacturing | PDM-PLM | /pdm/mfg/wing/ | Work Instr. | ICD-MFG-57 |
+| QA/NDT | API | https://qa.api/wing/ | JSON v1.0 | ICD-QA-57 |
+| Certification | PDM-PLM | /pdm/compliance/wing/ | Matrices/Reports | ICD-CERT-57 |
+
+- **Manifests:** `./io/routing.manifest.yaml`  
+- **Contracts/Schemas:** `./contracts/`  
+- **Controls:** Classification **INTERNAL–EVIDENCE-REQUIRED**; CI fail-closed for missing `artifact.manifest.yaml`, SBOM, UTCS/QS anchor.
+
+---
+
+## 6) Acceptance & Evidence (summary)
+
+- **Evidence lives in** each `57-xx/evidence/` (pressure traces, bond resistance, NDT results, torque/cure logs).  
+- **Acceptance criteria** live in S1000D DMCs within each `57-xx/S1000D/`.  
+- **QS Seal** applies only when ATA-20 practices and ATA-57 acceptance are fully evidenced and cross-referenced.
+
+---
+
+## 7) Change Control
+
+Deviations require **M&P approval** and MRB documentation. Releases are via PDM-PLM CN with **UTCS/QS** evidence.
+
+---
+*Part of the BWB-Q100 technical baseline. Subject to configuration control.*

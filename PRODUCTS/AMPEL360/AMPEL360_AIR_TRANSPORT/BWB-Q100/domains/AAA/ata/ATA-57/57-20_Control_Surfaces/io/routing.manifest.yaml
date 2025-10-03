@@ -1,0 +1,48 @@
+---
+id: UTCS-MI:v5.0:BWB-Q100:ATA-57:57-20:routing-manifest
+llc: SYSTEMS
+bridge: CB→QB→UE→FE→FWD→QS
+source:
+  repo_path: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/57-20_Control_Surfaces
+  commit: <git-sha>
+inputs:
+  - path: ../../../cax/CAD/ControlSurfaces_v*/
+    description: Model geometry, OML definitions, structural design
+  - path: ../../../cax/FEA/ControlSurfaceLoads_v*/
+    description: Structural loads analysis, stress margins, FEA results
+  - path: ../../../cax/CFD/ControlSurface_Aero_v*/
+    description: Aerodynamic loads, hinge moments, pressure distributions
+  - path: ../../../qox/opt/hinge_layout/
+    description: QUBO/BQM optimization runs for hinge positioning
+outputs:
+  - type: dm
+    path: S1000D/DMC
+    description: S1000D data modules (PR, DS, IPD, IR)
+  - type: report
+    path: compliance
+    description: Compliance reports and substantiation indexes
+  - type: icd
+    path: icd
+    description: Interface control documents
+  - type: schema
+    path: contracts/schemas
+    description: JSON schemas for control surface artifacts
+evidence:
+  hinge_tests:
+    path: evidence/hinge_tests_index.md
+    description: Hinge friction, torque, wear test results
+  fatigue:
+    path: evidence/fatigue_tests_index.md
+    description: Control surface fatigue test results
+  finish:
+    path: evidence/surface_finish_index.md
+    description: Surface finish and smoothness measurements
+  ata_dm_refs:
+    - DMC-57-20-PR-XXXX-00
+    - DMC-57-20-DS-XXXX-00
+provenance:
+  sbom: ../../../pax/OFF/sbom/ata-57-20.spdx.json
+  signatures:
+    qs_anchor: sha256:TBD
+ethics_guard: MAL-EEM
+---

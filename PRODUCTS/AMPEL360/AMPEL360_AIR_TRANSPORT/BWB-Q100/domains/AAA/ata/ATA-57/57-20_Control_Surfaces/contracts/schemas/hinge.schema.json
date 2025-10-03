@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ata-57-20/hinge.schema.json",
+  "title": "Hinge Assembly",
+  "description": "Hinge geometry and performance limits.",
+  "type": "object",
+  "required": ["version", "hinge_id", "hinge_type", "bearing_type"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "hinge_id": {
+      "type": "string",
+      "pattern": "^HNG-[A-Z0-9_-]{3,}$"
+    },
+    "hinge_type": {
+      "type": "string",
+      "enum": ["overhung", "underhung", "center", "special"]
+    },
+    "fitting_ref": {
+      "type": "string",
+      "pattern": "^FTG-[A-Z0-9_-]{3,}$"
+    },
+    "bearing_type": {
+      "type": "string",
+      "enum": ["ball", "roller", "sleeve"]
+    },
+    "torque_limit_Nm": {
+      "type": "number",
+      "minimum": 0
+    },
+    "free_play_mm": {
+      "type": "number",
+      "minimum": 0
+    },
+    "fastener_set_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^FST-[A-Z0-9_-]{3,}$"
+      }
+    },
+    "acceptance_metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "./acceptance.metric.schema.json"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

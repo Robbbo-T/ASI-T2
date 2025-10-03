@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://asi-t2.org/schemas/irq/tuple/v1.0.0",
+  "title": "IRQ Tuple Schema",
+  "description": "Schema for CO-3.18: Interchangeability/Replaceability Qualifier tuple",
+  "type": "object",
+  "required": [
+    "pair_id",
+    "from_PN",
+    "to_PN",
+    "class"
+  ],
+  "properties": {
+    "pair_id": {
+      "type": "string",
+      "description": "Unique identifier for this IRQ tuple",
+      "pattern": "^IRQ-[0-9]{6}$"
+    },
+    "from_PN": {
+      "type": "string",
+      "description": "Original/baseline part number",
+      "pattern": "^[A-Z0-9-]{5,20}$"
+    },
+    "to_PN": {
+      "type": "string",
+      "description": "Alternate/replacement part number",
+      "pattern": "^[A-Z0-9-]{5,20}$"
+    },
+    "class": {
+      "type": "string",
+      "description": "Interchangeability classification",
+      "enum": ["FULL", "BACKWARD", "FORWARD", "NONE"]
+    },
+    "constraints": {
+      "type": "object",
+      "description": "Constraints for using the alternate part",
+      "properties": {
+        "weight_delta_kg": {
+          "type": "number",
+          "description": "Weight difference in kg (positive = heavier)"
+        },
+        "software_version": {
+          "type": "string",
+          "description": "Required software version for compatibility",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "ata_chapter": {
+          "type": "string",
+          "description": "Applicable ATA chapter",
+          "pattern": "^ATA-[0-9]{2}$"
+        },
+        "maintenance_level": {
+          "type": "string",
+          "description": "Required maintenance facility level",
+          "enum": ["L1-LINE", "L2-BASE", "L3-DEPOT", "OEM"]
+        },
+        "performance_impact": {
+          "type": "string",
+          "description": "Performance impact description",
+          "maxLength": 500
+        },
+        "certification_note": {
+          "type": "string",
+          "description": "Certification or regulatory notes",
+          "maxLength": 500
+        }
+      }
+    },
+    "note": {
+      "type": "string",
+      "description": "Additional notes or special instructions",
+      "maxLength": 1000
+    },
+    "reason_code": {
+      "type": "string",
+      "description": "Reason for interchange relationship",
+      "enum": [
+        "OBSOLESCENCE",
+        "IMPROVEMENT",
+        "COST_REDUCTION",
+        "AVAILABILITY",
+        "REGULATORY",
+        "PERFORMANCE",
+        "RELIABILITY"
+      ]
+    },
+    "effective_date": {
+      "type": "string",
+      "description": "Date from which this interchange is effective",
+      "format": "date"
+    },
+    "expiration_date": {
+      "type": "string",
+      "description": "Date after which this interchange is no longer valid",
+      "format": "date"
+    },
+    "approval": {
+      "type": "object",
+      "description": "Approval information",
+      "required": ["approved_by", "approval_date"],
+      "properties": {
+        "approved_by": {
+          "type": "string",
+          "description": "Approver name/ID"
+        },
+        "approval_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "mrb_case": {
+          "type": "string",
+          "description": "MRB case number if applicable",
+          "pattern": "^MRB-[0-9]{6}$"
+        },
+        "deviation_number": {
+          "type": "string",
+          "description": "Deviation number if applicable",
+          "pattern": "^DEV-[0-9]{6}$"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata",
+      "properties": {
+        "created_by": {
+          "type": "string"
+        },
+        "created_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modified_by": {
+          "type": "string"
+        },
+        "modified_date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

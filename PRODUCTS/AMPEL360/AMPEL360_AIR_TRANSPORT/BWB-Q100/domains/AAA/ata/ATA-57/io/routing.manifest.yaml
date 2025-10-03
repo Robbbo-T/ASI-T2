@@ -1,0 +1,94 @@
+---
+# ATA-57 Routing Manifest
+# Defines upstream inputs and downstream outputs for Wings (BWB-Q100)
+
+manifest_version: "1.0"
+chapter: "ATA-57"
+title: "Wings — BWB-Q100"
+classification: "INTERNAL–EVIDENCE-REQUIRED"
+
+# Upstream Inputs
+inputs:
+  - id: "AAA-CAX-CAD-OML"
+    source: "AAA/CAX/CAD"
+    description: "Outer Mold Line geometry"
+    transport: "PDM-PLM"
+    path: "/pdm/cax/cad/oml/"
+    format: "STEP/OML-v2.x"
+    trigger: "on-release"
+    owner: "CAD Team"
+    
+  - id: "AAA-CAE-LOADS"
+    source: "AAA/CAE/Loads"
+    description: "Wing load envelope and analysis results"
+    transport: "PDM-PLM"
+    path: "/pdm/cae/loads/envelope/"
+    format: "CSV/NPZ"
+    trigger: "post-analysis"
+    owner: "CAE Team"
+    
+  - id: "ATA-20-PRACTICES"
+    source: "ATA-20"
+    description: "Standard practices for structures"
+    transport: "PDM-PLM"
+    path: "/pdm/ata/20/"
+    format: "SPM/PS/MS"
+    trigger: "on-update"
+    owner: "ATA Team"
+
+# Downstream Outputs
+outputs:
+  - id: "MFG-WING"
+    consumer: "Manufacturing"
+    description: "Wing manufacturing work instructions"
+    transport: "PDM-PLM"
+    path: "/pdm/mfg/wing/"
+    format: "Work Instructions"
+    contract: "ICD-MFG-57"
+    owner: "MFG Team"
+    
+  - id: "QA-NDT"
+    consumer: "QA/NDT"
+    description: "Quality assurance and NDT requirements"
+    transport: "API"
+    path: "https://qa.api/wing/"
+    format: "JSON v1.0"
+    contract: "ICD-QA-57"
+    owner: "QA Team"
+    
+  - id: "CERT-WING"
+    consumer: "Certification"
+    description: "Certification compliance matrices and reports"
+    transport: "PDM-PLM"
+    path: "/pdm/compliance/wing/"
+    format: "Matrices/Reports"
+    contract: "ICD-CERT-57"
+    owner: "Certification Team"
+
+# Controls
+controls:
+  classification: "INTERNAL–EVIDENCE-REQUIRED"
+  access_control:
+    read: "AAA.contributors"
+    write: "ASI-T.arch"
+  ci_checks:
+    - "artifact.manifest.yaml presence"
+    - "SBOM validation"
+    - "UTCS/QS anchor verification"
+  fail_closed: true
+
+# Cadence
+cadence:
+  dev: "file:///dev/ata/57/ (ad hoc on PR)"
+  stage: "file:///stage/ata/57/ (nightly 02:00 UTC)"
+  prod: "/pdm/ata/57/ (post-baseline release)"
+
+# Reliability
+reliability:
+  slo: "publish ≤ 30 min after upstream seal"
+  retries: 3
+  retry_strategy: "exponential backoff"
+  alerts:
+    channel: "#aaa-ata57"
+    escalation: "on-call @maintainer within 15 min"
+  change_route: "via CN; MRB approval required"
