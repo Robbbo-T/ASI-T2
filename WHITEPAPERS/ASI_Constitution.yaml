@@ -1,0 +1,352 @@
+---
+# ASI Constitution — Machine-Readable Governance
+# Version: 0.1.0
+# Release: 2025-10-03
+# Classification: PUBLIC
+# Maintainer: ASI-T Architecture Team
+
+metadata:
+  document_id: "ASI-CONST-001"
+  title: "ASI Constitution"
+  version: "0.1.0"
+  effective_date: "2025-10-03"
+  review_cycle: "quarterly"
+  classification: "PUBLIC"
+  approving_authority: "EU–US ASI Council"
+  related_documents:
+    - "whitepaper_0_TRUE_GENESIS-ASI.md"
+    - "ASI_Autonomy_Boundaries.md"
+    - "ASI_Policy.rego"
+    - "ASI_GSN_Safety_Case.gsn"
+
+# Core Principles — Foundational values that govern all ASI operations
+principles:
+  safety_first:
+    description: "No ASI recommendation or action may compromise aviation safety"
+    priority: 1
+    enforcement: "mandatory"
+    verification:
+      - "Safety monitors on all outputs"
+      - "Pre-deployment safety case review"
+      - "Continuous adversarial testing"
+      - "Incident response and root cause analysis"
+    
+  lawful_by_default:
+    description: "All ASI operations comply with applicable regulations and standards"
+    priority: 1
+    enforcement: "mandatory"
+    applicable_frameworks:
+      - "EU AI Act (Regulation (EU) 2024/1689)"
+      - "NIST AI RMF 1.0"
+      - "ISO/IEC 42001:2023 (AI Management Systems)"
+      - "ISO/IEC 23894:2023 (AI Risk Guidance)"
+      - "EASA AI Concept Papers"
+      - "FAA regulations and guidance"
+      - "DO-178C / DO-254 airworthiness standards"
+    verification:
+      - "Annual compliance audit"
+      - "Standards mapping documentation"
+      - "Regulatory engagement tracking"
+      - "Legal review of system changes"
+    
+  human_in_the_loop:
+    description: "Consequential decisions require affirmative human approval"
+    priority: 1
+    enforcement: "mandatory"
+    scope:
+      - "Safety-critical recommendations"
+      - "Certification basis changes"
+      - "Export control authorizations"
+      - "Policy amendments"
+      - "System configuration changes"
+    verification:
+      - "Audit logs of all human approvals"
+      - "Escalation trigger validation"
+      - "Human override capability testing"
+      - "Accountability chain documentation"
+    
+  transparency:
+    description: "All reasoning chains and data sources are auditable"
+    priority: 1
+    enforcement: "mandatory"
+    requirements:
+      - "Complete source attribution for all recommendations"
+      - "Policy decision justifications with rule references"
+      - "Public documentation of capabilities and limitations"
+      - "Quarterly transparency reports"
+    verification:
+      - "Evidence-weave completeness checks"
+      - "Audit trail integrity validation"
+      - "Public benchmark publication"
+      - "External auditor access to logs"
+    
+  privacy_preserving:
+    description: "Personal data protected per GDPR; data residency enforced"
+    priority: 1
+    enforcement: "mandatory"
+    requirements:
+      - "GDPR compliance (EU Regulation 2016/679)"
+      - "Data minimization and purpose limitation"
+      - "Geographic data residency controls"
+      - "Data subject rights (access, rectification, erasure)"
+    verification:
+      - "Privacy impact assessments"
+      - "Data flow mapping and validation"
+      - "Data residency enforcement testing"
+      - "GDPR compliance audits"
+    
+  export_compliant:
+    description: "ITAR/EAR controls via automated screening and authorization"
+    priority: 1
+    enforcement: "mandatory"
+    requirements:
+      - "US ITAR (22 CFR 120-130) compliance"
+      - "US EAR (15 CFR 730-774) compliance"
+      - "EU Dual-Use Regulation (428/2009) compliance"
+      - "Automated content screening"
+      - "Authorization workflows for controlled content"
+    verification:
+      - "Export control officer review"
+      - "Screening rule validation"
+      - "Authorization audit trails"
+      - "Training and awareness programs"
+
+# Authority Boundaries — Hard limits on ASI capabilities
+authority_boundaries:
+  no_live_control:
+    description: "ASI cannot command or control physical systems"
+    scope:
+      - "Aircraft flight control systems"
+      - "Vehicle propulsion and navigation"
+      - "Air traffic control systems"
+      - "Ground support equipment"
+      - "Test rigs and simulators (when operating live hardware)"
+    enforcement: "policy-as-code (OPA/Rego)"
+    violation_response: "immediate termination + incident report"
+    
+  no_certified_modifications:
+    description: "ASI cannot modify type-certified software or parameters"
+    scope:
+      - "Onboard flight software (OFP)"
+      - "Flight control laws and parameters"
+      - "Engine control software (FADEC)"
+      - "Avionics configuration databases"
+      - "Any software under DO-178C/DO-254 approval"
+    enforcement: "policy-as-code + access controls"
+    violation_response: "immediate termination + incident report + regulator notification"
+    
+  no_certification_bypass:
+    description: "ASI cannot bypass established certification processes"
+    scope:
+      - "Type certification (TC)"
+      - "Supplemental type certification (STC)"
+      - "Technical standard order authorization (TSOA)"
+      - "Design organization approval (DOA)"
+      - "Production organization approval (POA)"
+    enforcement: "policy-as-code + human oversight"
+    violation_response: "recommendation suppression + escalation"
+    
+  no_export_violations:
+    description: "ASI cannot provide unauthorized access to export-controlled content"
+    scope:
+      - "ITAR-controlled technical data (22 CFR 120.10)"
+      - "EAR-controlled technology (15 CFR Part 774 CCL)"
+      - "EU dual-use items (Annex I of Regulation 428/2009)"
+    enforcement: "policy-as-code + content screening + authorization gates"
+    violation_response: "access denial + audit log + export control officer notification"
+    
+  advisory_only:
+    description: "ASI operates exclusively in advisory mode"
+    scope:
+      - "Recommendations with evidence and confidence levels"
+      - "Risk and uncertainty highlighting"
+      - "Alternative options presentation"
+      - "Knowledge gap identification"
+    enforcement: "architecture + output filtering"
+    human_authority_retained:
+      - "Final decision-making"
+      - "Recommendation acceptance/rejection"
+      - "Action implementation"
+      - "Responsibility and accountability"
+
+# Governance Structure — Organizational oversight and accountability
+governance:
+  eu_us_council:
+    description: "Joint strategic oversight body"
+    composition:
+      - "EU representatives (4): aviation authorities, industry, research"
+      - "US representatives (4): FAA, industry, academia, policy"
+      - "Independent chair (1): rotates annually EU/US"
+    responsibilities:
+      - "Strategic direction and policy amendments"
+      - "Quarterly review of safety and assurance metrics"
+      - "Approval of major system updates and new capabilities"
+      - "Interface with regulatory authorities (EASA, FAA)"
+      - "Conflict resolution and dispute handling"
+    meeting_frequency: "quarterly (minimum)"
+    quorum: "6 of 9 members including chair"
+    voting: "simple majority; chair breaks ties"
+    
+  technical_steering_committee:
+    description: "Technical roadmap and architecture oversight"
+    composition:
+      - "Technical leads from ASI implementation team"
+      - "Domain experts (design, certification, operations, sustainability)"
+      - "Standards liaison representatives (ISO, NIST, RTCA, EUROCAE)"
+      - "Security and safety officers"
+    responsibilities:
+      - "Technical roadmap and architecture decisions"
+      - "Review and approval of policy changes (OPA/Rego)"
+      - "Oversight of red-team findings and remediation"
+      - "Standards development liaison"
+      - "Performance and KPI monitoring"
+    meeting_frequency: "monthly"
+    reporting: "to EU–US Council quarterly"
+    
+  independent_assurance_panel:
+    description: "External validation and assurance"
+    composition:
+      - "Independent auditors (aviation safety, AI assurance)"
+      - "Academic researchers (AI safety, formal methods)"
+      - "Red-team coordinators"
+    responsibilities:
+      - "External audit of safety cases and evidence"
+      - "Validation of assurance KPIs and metrics"
+      - "Red-team coordination and adversarial testing"
+      - "Public transparency reports (quarterly)"
+      - "Benchmarking and comparative evaluation"
+    meeting_frequency: "quarterly"
+    reporting: "public reports + EU–US Council briefings"
+    independence: "no financial or operational ties to ASI implementation"
+
+# Logging & Accountability — Audit trail requirements
+logging:
+  query_logging:
+    description: "Complete record of all ASI interactions"
+    content:
+      - "Query text and context"
+      - "User identity and authorization level"
+      - "Timestamp (UTC)"
+      - "Session identifier"
+      - "IP address and geolocation"
+    retention: "7 years (aviation regulatory requirement)"
+    access: "authorized auditors, regulators, incident investigators"
+    
+  response_logging:
+    description: "Complete record of all ASI outputs"
+    content:
+      - "Recommendation text and structured data"
+      - "Confidence scores and uncertainty quantification"
+      - "Reasoning chain and agent invocations"
+      - "Source attributions and evidence references"
+      - "Policy decisions and rule evaluations"
+    retention: "7 years"
+    access: "authorized auditors, regulators, incident investigators"
+    
+  policy_decision_logging:
+    description: "Record of all policy evaluations"
+    content:
+      - "Policy rule identifier"
+      - "Evaluation result (allow/deny)"
+      - "Justification and context"
+      - "Input data considered"
+      - "Override flag (if human override applied)"
+    retention: "10 years (export control compliance)"
+    access: "export control officers, auditors, regulators"
+    
+  human_approval_logging:
+    description: "Record of all human-in-the-loop decisions"
+    content:
+      - "Decision point description"
+      - "Approver identity and credentials"
+      - "Decision (approve/reject/defer)"
+      - "Justification and comments"
+      - "Timestamp"
+      - "ASI recommendation provided"
+    retention: "permanent (accountability requirement)"
+    access: "management, auditors, regulators, legal"
+    
+  incident_logging:
+    description: "Record of all safety incidents and boundary violations"
+    content:
+      - "Incident classification and severity"
+      - "Detection method and timestamp"
+      - "Root cause analysis"
+      - "Remediation actions"
+      - "Responsible parties"
+      - "Lessons learned and process improvements"
+    retention: "permanent"
+    access: "safety team, management, regulators"
+    reporting: "EU–US Council (immediate for severity 1-2)"
+
+# Amendment Process — How this constitution can be changed
+amendment_process:
+  proposal:
+    source:
+      - "EU–US Council members"
+      - "Technical Steering Committee (with Council sponsor)"
+      - "Independent Assurance Panel (safety-critical amendments)"
+    format: "written proposal with rationale and impact analysis"
+    
+  review:
+    steps:
+      - "Technical Steering Committee technical review (15 days)"
+      - "Public comment period for transparency-affecting changes (30 days)"
+      - "Legal review for regulatory compliance (15 days)"
+      - "Independent Assurance Panel safety review (15 days)"
+    
+  approval:
+    authority: "EU–US Council"
+    voting_threshold: "two-thirds majority (6 of 9 members)"
+    special_provisions:
+      - "Principles amendments: unanimous consent required"
+      - "Authority boundaries relaxation: unanimous consent + regulator approval"
+      - "Emergency amendments (safety-critical): simple majority + immediate implementation"
+    
+  implementation:
+    notice_period: "30 days (except emergency amendments)"
+    policy_as_code_updates: "coordinated with notice period"
+    documentation: "updated constitution published publicly"
+    training: "all ASI operators trained on changes before effective date"
+
+# Version Control and Change History
+change_history:
+  - version: "0.1.0"
+    date: "2025-10-03"
+    author: "ASI-T Architecture Team"
+    changes: "Initial constitution draft"
+    status: "pending_ratification"
+    approval_target: "2025-12-01"
+
+# Signatures and Attestations
+signatures:
+  prepared_by:
+    name: "ASI-T Architecture Team"
+    date: "2025-10-03"
+    role: "Document Preparation"
+  
+  pending_approval:
+    eu_us_council:
+      status: "pending_ratification"
+      target_date: "2025-12-01"
+      required_votes: "6 of 9"
+    
+    technical_steering_committee:
+      status: "technical_review_complete"
+      date: "pending"
+      recommendation: "pending"
+    
+    independent_assurance_panel:
+      status: "safety_review_pending"
+      date: "pending"
+      findings: "pending"
+
+# Related Artifacts
+related_artifacts:
+  policy_as_code: "ASI_Policy.rego"
+  human_readable_boundaries: "ASI_Autonomy_Boundaries.md"
+  safety_case: "ASI_GSN_Safety_Case.gsn"
+  architecture: "ASI_Architecture.puml"
+  kpis: "ASI_Assurance_KPIs.csv"
+  threat_register: "ASI_Threat_Register.csv"
+  whitepaper: "whitepaper_0_TRUE_GENESIS-ASI.md"

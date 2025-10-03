@@ -39,7 +39,7 @@ This directory contains technical whitepapers, specifications, and templates tha
 - Compliance and ethics (MAL-EEM)
 - Roadmap and gates (FCR-1/FCR-2)
 
-### [Integration Whitepaper #2](./INTEGRATION_WHITEPAPER_2.md)
+### [Integration Whitepaper #2](./MASTER_WHITEPAPER_2.md)
 
 **Title:** Integration Architecture: TFA MAP · TFA MAL · ASI-MAP (Definitive Clarification)
 
@@ -63,6 +63,45 @@ This directory contains technical whitepapers, specifications, and templates tha
 - [JSON Schemas](./schemas/integration/) - MAL and MAP contract schemas
 - [Examples](./examples/mal-services/) - Sample MAL service configurations
 - [Validators](../scripts/) - Topic hierarchy and bridge flow validation scripts
+
+### [Whitepaper #0 — TRUE_GENESIS-ASI](./whitepaper_0_TRUE_GENESIS-ASI.md)
+
+**Title:** Artificial Super-Intelligence (ASI) — Aerospace Supernational Intelligence
+
+**Version:** v0.1.0 (2025-10-03)  
+**Status:** Public - Pending EU-US Council ratification
+
+**Abstract:** Defines ASI as a federated, policy-as-code intelligence layer for joint EU-US governance in aerospace. ASI orchestrates domain AI agents (design, certification, operations, sustainability) within hard authority boundaries, generating evidence-backed, citable recommendations mapped to FAA/EASA regulatory contexts. The system operates under the principle: powerful where allowed, incapable where prohibited—with no live control, no uncertified modifications, and strict export/privacy enforcement.
+
+**Key Topics:**
+- Three-plane architecture (Data, Control, Assurance)
+- Orchestrator-of-Experts pattern
+- Authority boundaries and hard "no-go" actions
+- Evidence-weave system with full source attribution
+- Governance structure (EU-US Council, TSC, Independent Assurance Panel)
+- Compliance with EU AI Act, NIST AI RMF, ISO/IEC 42001/23894, EASA AI guidance
+- Safety case as data (GSN methodology)
+- 24-month roadmap with BWB and hydrogen demonstrators
+- Risk management and threat register
+- Supply chain provenance (SLSA, SPDX, C2PA)
+
+**Complete Artifact Package:**
+- [ASI_Constitution.yaml](./ASI_Constitution.yaml) - Machine-readable governance principles
+- [ASI_Autonomy_Boundaries.md](./ASI_Autonomy_Boundaries.md) - Human-readable authority limits
+- [ASI_Policy.rego](./ASI_Policy.rego) - Policy-as-code (Open Policy Agent)
+- [ASI_GSN_Safety_Case.gsn](./ASI_GSN_Safety_Case.gsn) - Goal Structuring Notation safety case
+- [ASI_Architecture.puml](./ASI_Architecture.puml) - PlantUML architecture diagram
+- [ASI_Assurance_KPIs.csv](./ASI_Assurance_KPIs.csv) - 40 key performance indicators
+- [ASI_Threat_Register.csv](./ASI_Threat_Register.csv) - 40 identified threats with mitigations
+
+**Standards Alignment:**
+- EU AI Act (Regulation (EU) 2024/1689)
+- NIST AI RMF 1.0 and Generative AI Profile
+- ISO/IEC 42001:2023 (AI Management Systems)
+- ISO/IEC 23894:2023 (AI Risk Guidance)
+- EASA AI Concept Papers and MLEAP
+- DO-178C/DO-254 airworthiness standards
+- SLSA (supply chain), SPDX/CycloneDX (SBOM), C2PA (provenance)
 
 ---
 
@@ -153,6 +192,7 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 0.3.0 | 2025-10-03 | Added Whitepaper #0 TRUE_GENESIS-ASI with complete governance and assurance package |
 | 0.2.0 | 2025-10-03 | Added Integration Whitepaper #2 with schemas, validators, and examples |
 | 0.1.0 | 2025-10-01 | Initial release: Master Whitepaper #1, product template, finance framework |
 
@@ -160,12 +200,12 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 
 ## Future Whitepapers (Planned)
 
-* **Whitepaper #3:** QS/UTCS Provenance and Evidence Framework
-* **Whitepaper #4:** QAIM-2 Quantum-Classical Optimization Architecture
-* **Whitepaper #5:** AMPEL360 BWB Certification Strategy
-* **Whitepaper #6:** GAIA SPACE Mission Operations and Data Management
-* **Whitepaper #7:** GAIA AIR Swarm Coordination and Ethics
-* **Whitepaper #8:** H₂/LH₂ Infrastructure Safety and Operations
+* **Whitepaper #1 (Active):** QS/UTCS Provenance and Evidence Framework
+* **Whitepaper #2 (Active):** QAIM-2 Quantum-Classical Optimization Architecture
+* **Whitepaper #3:** AMPEL360 BWB Certification Strategy
+* **Whitepaper #4:** GAIA SPACE Mission Operations and Data Management
+* **Whitepaper #5:** GAIA AIR Swarm Coordination and Ethics
+* **Whitepaper #6:** H₂/LH₂ Infrastructure Safety and Operations
 
 ---
 
@@ -197,6 +237,6 @@ All contributions must:
 
 ---
 
-*Last Updated: 2025-10-01*  
-*Version: 0.1.0*  
+*Last Updated: 2025-10-03*  
+*Version: 0.3.0*  
 *UTCS Anchor: TBD*
