@@ -182,17 +182,28 @@ class QAIM2Orchestrator:
         Returns:
             OptimizationResult with status, solution, and metrics
         """
+        def normalize_params(solver_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
+            # Always return a dict with at least 'solver_name', 'options', and 'metadata'
+            normalized = {
+                'solver_name': solver_name,
+                'options': params.get('options', {}),
+                'metadata': params.get('metadata', {})
+            }
+            # Merge in any other keys from params that aren't 'solver_name', 'options', or 'metadata'
+            for k, v in params.items():
+                if k not in normalized:
+                    normalized[k] = v
+            return normalized
+
         if isinstance(solver, str):
-            # Ensure params includes the solver name
-            params_with_solver = params.copy()
-            params_with_solver['solver_name'] = solver
+            params_normalized = normalize_params(solver, params)
             if solver.startswith('cb_'):
-                return await self.cb_pool.solve(problem, params_with_solver)
+                return await self.cb_pool.solve(problem, params_normalized)
             elif solver.startswith('qb_'):
-                return await self.qb_pool.solve(problem, params_with_solver)
+                return await self.qb_pool.solve(problem, params_normalized)
             elif solver.startswith('qc_'):
                 if self.qc_gateway:
-                    return await self.qc_gateway.solve(problem, params_with_solver)
+                    return await self.qc_gateway.solve(problem, params_normalized)
                 else:
                     raise ValueError("QC not enabled in configuration")
         
