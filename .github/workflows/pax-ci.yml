@@ -21,6 +21,6 @@ jobs:
       - run: pip install jsonschema pyyaml
       - name: Validate PAx manifests (product-scoped)
         run: |
-          python PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/scripts/validate_pax.py \
-            --schema PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/schemas/package.schema.json \
-            --root   PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax
+          python PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/pax/scripts/validate_pax.py \
+            --schema PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/pax/schemas/package.schema.json \
+            --root   PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/pax
