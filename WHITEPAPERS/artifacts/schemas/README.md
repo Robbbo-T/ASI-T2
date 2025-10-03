@@ -4,17 +4,35 @@ project: ASI-T2
 artifact: Product Specification Templates and Schemas
 llc: GENESIS
 classification: PUBLIC-DRAFT
-version: 0.1.0
-release_date: "2025-10-01"
+version: 0.3.0
+release_date: "2025-10-04"
 maintainer: "ASI-T Architecture Team"
-bridge: "CB→QB→UE→FE→FWD→QS"
+bridge: "CB→QB→QC→UE→FE→FWD→QS"
 ethics_guard: MAL-EEM
 canonical_hash: pending
 ---
 
 # Product Specification Schemas
 
-This directory contains templates and schemas for defining ASI-T2 products according to the Master Whitepaper #1 specifications.
+## Quick Reference: Universal Product Example
+
+**The Quantum Sensorial Skin** serves as the canonical worked example throughout this document. This universal product demonstrates how a single architectural approach adapts across all operational segments (AIR, SPACE, GROUND, SEA, DEFENSE) while maintaining common:
+
+- **Computational paradigms** (CB for deterministic processing, QB for optimization, QC where quantum advantage exists)
+- **Unit Elements** (SensorPatchUE, FusionNodeUE with standardized interfaces)
+- **Federation patterns** (distributed mesh with autonomous coordination)
+- **Temporal modeling** (anomaly prediction, root cause analysis)
+- **State management** (immutable provenance chains via UTCS)
+
+The example shows how deployment-specific configurations (sensor types, update rates, power constraints, regulatory standards) adapt to context while the core architecture remains constant. This universality is a key strength of the TFA V2 framework.
+
+See the [complete worked example](#worked-example--the-quantum-sensorial-skin-universal-product) below for full specification details.
+
+---
+
+## Purpose and Scope
+
+This directory provides standardized templates and schemas for defining ASI-T2 products within the TFA V2 architecture—spanning **computational paradigms** (CB/QB/QC), **compositional foundations** (UE), **coordination** (FE), **temporal modeling** (FWD), and **state management** (QS). Templates implement Master Whitepaper #1 guidance and apply across **AIR, SPACE, GROUND, DEFENSE, and CROSS**, with product-specific adaptations while maintaining architectural consistency.
 
 ---
 
@@ -171,6 +189,110 @@ Product specifications using this template can be found in:
 
 ---
 
+## Worked Example — The Quantum Sensorial Skin (Universal Product)
+
+### Overview
+
+The **Quantum Sensorial Skin** is a distributed sensor mesh that provides comprehensive environmental awareness across AIR, SPACE, GROUND, SEA, and DEFENSE applications. It demonstrates the full TFA V2 architecture stack with real-world complexity.
+
+### Product Metadata
+
+```yaml
+product: Quantum Sensorial Skin
+acronym: QSS
+trl: 4
+maturity: prototype
+segments: [AIR, SPACE, GROUND, SEA, DEFENSE]
+bridge_status:
+  CB: complete
+  QB: complete  
+  QC: in-progress
+  UE: complete
+  FE: complete
+  FWD: in-progress
+  QS: planned
+```
+
+### Computational Paradigms
+
+**CB (Classical Bit)**: Deterministic sensor fusion, data validation, and real-time alerting
+**QB (Quantum Bit)**: Optimization of sensor placement, power allocation, and sampling schedules  
+**QC (Quantum Computing)**: Pattern recognition in high-dimensional sensor data where quantum advantage exists
+
+### Unit Elements (UE)
+
+**SensorPatchUE**: Individual sensor cluster with local processing
+- Interfaces: power, data bus, sync signal
+- Autonomy: local anomaly detection, self-diagnostics
+- Standards: plug-and-play discovery, hot-swap capable
+
+**FusionNodeUE**: Regional data aggregator and decision point
+- Interfaces: multiple sensor patches, command/control, external systems
+- Autonomy: multi-sensor correlation, threat assessment
+- Standards: redundant paths, graceful degradation
+
+### Federation (FE)
+
+Distributed mesh topology with autonomous coordination:
+- Peer-to-peer synchronization between fusion nodes
+- Dynamic load balancing based on computational availability
+- Consensus protocols for distributed decision-making
+- Resilient to node failures and network partitions
+
+### Forward Modeling (FWD)
+
+Temporal prediction capabilities:
+- Anomaly prediction using historical patterns
+- Root cause analysis for system faults
+- Predictive maintenance scheduling
+- Environmental trend forecasting
+
+### Quantum State (QS)
+
+Immutable provenance and evidence chains:
+- UTCS v5.0 bundles for all sensor data
+- Cryptographic signatures on all decisions
+- Audit trails for regulatory compliance
+- Reproducible analysis from archived data
+
+### Deployment Adaptations
+
+**AIR**: Aircraft structural health monitoring
+- Sensors: strain gauges, accelerometers, temperature
+- Update rate: 1 kHz
+- Power: aircraft electrical system
+- Standards: DO-160, ARP4754A
+
+**SPACE**: Satellite constellation coordination  
+- Sensors: star trackers, sun sensors, IMU
+- Update rate: 10 Hz
+- Power: solar + battery
+- Standards: ECSS-E-ST-70C
+
+**GROUND**: Infrastructure monitoring
+- Sensors: seismic, acoustic, cameras
+- Update rate: 100 Hz  
+- Power: grid + backup
+- Standards: IEC 61508
+
+**DEFENSE**: Perimeter security
+- Sensors: radar, lidar, thermal, RF
+- Update rate: variable (1 Hz - 10 kHz)
+- Power: tactical generators
+- Standards: MIL-STD-882E
+
+### Key Insights
+
+1. **Architectural universality**: Same CB→QB→QC→UE→FE→FWD→QS flow applies across all domains
+2. **Deployment specificity**: Sensor types, rates, power, and standards adapt to context
+3. **Compositional flexibility**: UEs mix-and-match based on mission requirements
+4. **Evidence consistency**: UTCS provenance chains work identically across all deployments
+5. **Regulatory compliance**: Each deployment meets domain-specific certification requirements
+
+This example demonstrates that TFA V2 is not just a theoretical framework but a practical architecture that scales from small embedded systems to large distributed networks.
+
+---
+
 ## Support
 
 For questions or clarifications:
@@ -180,6 +302,6 @@ For questions or clarifications:
 
 ---
 
-*Last Updated: 2025-10-01*  
-*Version: 0.1.0*  
+*Last Updated: 2025-10-04*  
+*Version: 0.3.0*  
 *UTCS Anchor: TBD*
