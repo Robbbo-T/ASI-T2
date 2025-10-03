@@ -1,31 +1,37 @@
 ---
 id: ASIT2-WHITEPAPER-MASTER-1
 project: ASI-T2
-artifact: Master Whitepaper #1
+artifact: "Master Whitepaper #1"
 llc: GENESIS
 classification: PUBLIC-DRAFT
-version: 0.1.0
+version: "0.1.0"
 release_date: "2025-10-01"
 author: "Amedeo Pelliccia"
 maintainer: "ASI-T Architecture Team"
 bridge: "QS→FWD→UE→FE→CB→QB"
 ethics_guard: MAL-EEM
-utcs_mi: v5.0
+utcs_mi: "v5.0"
 framework: TFA-V2
 status: "Public draft for technical review"
 ssot: "ASI-T · Universal Injection Prompt (v1)"
-canonical_hash: pending
-doi: TBA
+canonical_hash: "pending"
+doi: "TBA"
+description: >
+  ASI-T2 is a system-of-systems (SoS) spanning aircraft, space,
+  and multi-agent swarms.
 ---
 
-# MASTER WHITEPAPER #1 · ASI-T2  
-**ASI-T2 Ecosystem: Aeronautics, Space, Swarm & Sustainable Finance under TFA V2**
+## MASTER WHITEPAPER 
+### **ASI-T2 Ecosystem: Aeronautics, Space, Swarm & Sustainable Finance under TFA V2**
+
+> **IDEALE-EU — Intelligence, Defense, Energy, Aerospace, Logistics, ESG (EU).**  
+> Guiding strategy, structure, threading, and evidence across foundational EU nodes.
 
 ---
 
 ## Executive Summary
 
-ASI-T2 is a **system-of-systems (SoS)** spanning aircraft, space, multi-agent swarms, digital infrastructure, hydrogen-airport operations, and sustainable finance. From inception, it is engineered to be **verifiable, reproducible, and ethically governed**.
+ASI-T2 is a **system-of-systems (SoS)** spanning aircraft, space, multi-agent swarms, digital infrastructure, hydrogen-airport operations, and sustainable finance. From inception, it is engineered to be **verifiable, reproducible, and ethically governed**, and aligned with **IDEALE-EU** as a cross-cutting strategy for EU-centric ESG outcomes and sovereign capabilities.
 
 The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that standardizes drivers, messaging, telemetry, health, logging, and version/keys—coupled with **QS/UTCS bundling**, where **UTCS = UiX Threading (Context/Content/Cache) & Structure/Style/Sheet**, alongside signed tags, SBOMs, and DOIs. Releases traverse the **TFA V2 bridge**:
 
@@ -36,14 +42,14 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 - **Verifiable integration.** Each increment ships with signed, reproducible evidence and deterministic packaging via **UTCS threading/bundling**.  
 - **Ethical guardrails.** **MAL-EEM** governs allowed uses, decision logging, and kill-switches.  
 - **Inimitability.** Architecture + evidence + governance make outcomes **hard to copy, easy to audit**.  
-- **Impact focus.** Quantified climate/energy, safety, and socio-economic value.
+- **Impact focus (IDEALE-EU).** Quantified climate/energy, safety, and socio-economic value with EU-aligned ESG guidance.
 
 ---
 
 ## 1. Introduction & Thesis
 
 **Thesis.** A single founder can iteratively deliver a multi-product aerospace & defense ecosystem **iff** they unify:  
-(a) a **common architecture (MAL)**, (b) **traceable packaging (QS/UTCS)**, (c) **pragmatic standards & V&V**, and (d) **service-aligned finance**.
+(a) a **common architecture (MAL)**, (b) **traceable packaging (QS/UTCS)**, (c) **pragmatic standards & V&V**, and (d) **service-aligned finance**, all guided by **IDEALE-EU** strategy for EU nodes.
 
 **Objective.** Ship releases with **dated, independently auditable proofs** (signed tags, SBOMs, DOIs, logs) to substantiate uniqueness and non-replicability.
 
@@ -56,33 +62,32 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 3) **GAIA AIR · IDRO-HYDROROBOT · EU Defense Wall Swarm** — multi-agent swarms (air/ground/aqueous) for cooperative, resilient missions.  
 4) **Digital Platform** — deterministic buses, observability, append-only storage with **UTCS threading/bundling** under **MAL-EEM** policy.  
 5) **AMPEL 360PLUS** — space-tourism functional demonstrators.  
-6) **H₂/LH₂ Airport** — logistics models, layouts, ALARP analysis, basic ops.  
+6) **H$_2$/LH$_2$ Airport** — logistics models, layouts, ALARP analysis, basic ops.  
 7) **Sustainable Finance** — anti-speculative design with demurrage/lock-ups, reserves, non-transferable operational credits, and quadratic funding.
 
 ---
 
 ## 3. TFA V2 Architecture
 
-### 3.0 Domain Taxonomy (15 Domains)
+### 3.0 Domains (canonical)
 
 `domains/` contains the canonical roots (ALL-CAPS codes mandatory):
 
-- AAA/ Airframes, Aerodynamics & Airworthiness (safety and compliance)
-- AAP/ Airport Adaptable Platforms
-- CCC/ Cockpit, Cabin & Cargo
-- CQH/ Cryogenics, Quantum & H₂
-- DDD/ Drainage, Dehumidification & Drying
-- EDI/ Electronics & Digital Instruments
-- EEE/ Electrical, Endotransponders & Circulation
-- EER/ Environmental, Emissions & Remediation
-- IIF/ Industrial Infrastructure & Facilities
-- IIS/ Information and Intelligence Systems (cybersecurity, defense)
-- LCC/ Linkages, Control & Communications
-- LIB/ Logistics, Inventory & Blockchain
-- MEC/ Mechanical Systems Modules (hydraulic, landing gear..)
-- OOO/ OS, Ontologies & Office Interfaces
-- PPP/ Propulsion & Fuel Systems
-
+- **AAA/** — Airframes, Aerodynamics & Airworthiness (safety & compliance)  
+- **AAP/** — Airport Adaptable Platforms  
+- **CCC/** — Cockpit, Cabin & Cargo  
+- **CQH/** — Cryogenics, Quantum & H$_2$  
+- **DDD/** — Drainage, Dehumidification & Drying  
+- **EDI/** — Electronics & Digital Instruments  
+- **EEE/** — Electrical, Endotransponders & Circulation  
+- **EER/** — Environmental, Emissions & Remediation  
+- **IIF/** — Industrial Infrastructure & Facilities  
+- **IIS/** — Information & Intelligence Systems (cybersecurity, defense)  
+- **LCC/** — Linkages, Control & Communications  
+- **LIB/** — Logistics, Inventory & Blockchain  
+- **MEC/** — Mechanical Systems Modules (hydraulics, landing gear…)  
+- **OOO/** — OS, Ontologies & Office Interfaces  
+- **PPP/** — Propulsion & Fuel Systems
 
 > **Normative rule:** domain and layer codes **MUST** be ALL-CAPS under strict TFA path grammar.
 
@@ -97,7 +102,7 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 - **CB (Classical Bit / Companion Binary).** Deterministic, verifiable classical artifacts and binaries.  
 - **QB (Bit Cubic; non-quantumised).** Discrete 3D lifting of classical state (`CB × CB × CB`), **not** a qubit; the **qubit-logic approximation** when discretization is required.
 
-> **Important distinction (non-normative).** A **qubit** lives in a **tetrahedral continuum+** and includes **transposition time**, **projection time**, and **teleportation-relative delay/phase** (relative to a theoretical baseline **TP₀**). Those parameters flow through **FWD**, collapse at **UE**, and are contracted in **FE** via SLOs. Qubits are **not** used in the TFA flow; **QB** is non-quantum.
+> **Important distinction (non-normative).** A **qubit** lives in a **tetrahedral continuum+** and includes **transposition time**, **projection time**, and **teleportation-relative delay/phase** (relative to a theoretical baseline **TP$_0$**). Those parameters flow through **FWD**, collapse at **UE**, and are contracted in **FE** via SLOs. Qubits are **not** used in the TFA flow; **QB** is non-quantum.
 
 ### 3.2 Bridge Grammar (ATA/S1000D + CAx/QOx/PAx)
 
@@ -120,7 +125,7 @@ domains/<DOMAIN_CODE>/ATA-XX/<XX-XX>_<DESCRIPTION>/S1000D/<LAYER>/<PACK>/<SUBPAC
 **Pack definitions (canonical):**  
 - **CAx — Computer-Aided *X*** (CAD/CAE/CAM/CAT/CFD, etc.).  
 - **QOx — Quantum Optimizations** (variational/annealing/quantum-inspired optimization; scheduling/routing/packing).  
-- **PAx — Packaging & Assemblies** *(orientation markers only: **OB = Onboard**, **OFF = Outboard**).*
+- **PAx — Packaging & Assemblies** *(orientation markers only: **ONB = Onboard**, **OUT = Outboard**).* 
 
 > **CI gate:** non-conforming paths **fail** FCR-1/FCR-2 per the SSoT (**ASI-T · Universal Injection Prompt v1**).
 
@@ -163,7 +168,7 @@ Deterministic pub/sub with QoS; versioned data products; mission timelines and a
 ### 4.5 AMPEL 360PLUS (Space Tourism)
 Cabin/safety-tourism demonstrators; reusable integration with AMPEL360.
 
-### 4.6 H₂/LH₂ Airport
+### 4.6 H$_2$/LH$_2$ Airport
 Refuelling/turnaround operations; capacity/flow model; preliminary layouts; ALARP risks.
 
 ### 4.7 Sustainable, Anti-Speculative Finance
@@ -193,7 +198,7 @@ Automated **SIL → HIL** campaigns; safety-lite adoption of ARP4754A (systems) 
 
 ## 7. Compliance, Ethics & Export
 
-**MAL-EEM** governs ethics & empathy guardrails, allowed uses, policy kill-switches, and decision logging. **AS9100-lite** for quality. Export/dual-use review under **EU 2021/821**; ITAR/EAR as applicable. Security: least privilege, key management, auditable trails.
+**MAL-EEM** governs ethics & empathy guardrails, allowed uses, policy kill-switches, and decision logging. **AS9100-lite** for quality. Export/dual-use review under **EU 2021/821**; ITAR/EAR as applicable. Security: least privilege, key management, auditable trails. **IDEALE-EU** provides the ESG-EU-aligned strategic frame for prioritization and disclosure.
 
 > This document does not provide weaponisation instructions nor facilitate harm. All experimentation adheres to MAL-EEM and applicable law.
 
@@ -201,10 +206,10 @@ Automated **SIL → HIL** campaigns; safety-lite adoption of ARP4754A (systems) 
 
 ## 8. Roadmap & Gates
 
-**H0 (0–90 days)**: MAL v1; AMPEL360 SIL; GAIA sim + ingestion; swarm 10–20; 360PLUS demo; H₂/LH₂ model; finance whitepaper.  
+**H0 (0–90 days)**: MAL v1; AMPEL360 SIL; GAIA sim + ingestion; swarm 10–20; 360PLUS demo; H$_2$/LH$_2$ model; finance whitepaper.  
 **Gate FCR-1**: SBOM + videos/logs + DOI + signed tag + **UTCS** bundle.
 
-**H1 (3–9 months)**: AMPEL360 HIL; SDR/ground for GAIA; swarm 50–100; observability; H₂ layouts; finance testnet.  
+**H1 (3–9 months)**: AMPEL360 HIL; SDR/ground for GAIA; swarm 50–100; observability; H$_2$ layouts; finance testnet.  
 **Gate FCR-2**: reproducibility, coverage, attestations, **two external validations**.
 
 **H2 (9–24 months)**: cross-integrations, third-party audits, public demos.
@@ -225,15 +230,17 @@ Automated **SIL → HIL** campaigns; safety-lite adoption of ARP4754A (systems) 
 
 - **SSoT:** *ASI-T · Universal Injection Prompt (v1)* governs agents/automations.  
 - **CI Gates:** FCR-1/FCR-2 (repo size, SBOM, signatures, tests).  
+- **IDEALE-EU alignment:** publish ESG-EU-oriented impact notes per release.  
 - **External contribution:** contributor license, code of conduct, MAL-EEM ethics review.
 
 ---
 
 ## 11. Impact & Metrics
 
-**Climate/Energy:** per-mission energy; BWB efficiency; H₂/LH₂ ratios; carbon payback.  
+**Climate/Energy:** per-mission energy; BWB efficiency; H$_2$/LH$_2$ ratios; carbon payback.  
 **Safety:** avoided incidents; mean time to detect; mission integrity.  
-**Socio-economic:** cost-per-service; accessibility; % funds to public-interest R&D.
+**Socio-economic:** cost-per-service; accessibility; % funds to public-interest R&D.  
+**IDEALE-EU disclosure:** EU-node relevance, resilience uplift, ESG-EU tags.
 
 ---
 
@@ -266,7 +273,7 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **GAIA:** downlink latency; packet integrity; mission success rate.  
 - **Swarm:** mean pairwise distance; collisions = 0; mission completion.  
 - **Platform:** bus latency p50/p95; uptime; MTTR.  
-- **H₂/LH₂:** turnaround time; boil-off losses; capacity/hour.  
+- **H$_2$/LH$_2$:** turnaround time; boil-off losses; capacity/hour.  
 - **Finance:** % funds to service/R&D; volatility threshold; SLO compliance.
 
 ### Appendix D — BWB-Q100 · First-Level TFA Structure (ATA-57-10 example)
@@ -338,15 +345,15 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **FE** — *Federation Entanglement / Contracting*. Federated entanglement and **contracting** with explicit SLOs.  
 - **CB** — *Classical Bit / Companion Binary*. Deterministic, verifiable classical artifacts/binaries.  
 - **QB** — *Bit Cubic (non-quantumised)*. Discrete 3D lifting of classical state (`CB×CB×CB`); **not** a qubit.  
-- **QC / Qubit** — *Full-quantum domain*. Tetrahedral continuum+; includes **transposition time**, **projection time**, and **teleportation-relative delay/phase** (relative to **TP₀**).  
-  - **TP₀ / TP0** — theoretical teleportation baseline.  
-  - **Δt₍TP₎ = t_real − t_TP₀ ≥ 0** — causal delay vs TP₀.  
-  - **Δφ₍TP₎ = (φ_real − φ_TP₀) mod 2π** — phase offset vs TP₀.
+- **QC / Qubit** — *Full-quantum domain*. Tetrahedral continuum+; includes **transposition time**, **projection time**, and **teleportation-relative delay/phase** (relative to **TP$_0$**).  
+  - **TP$_0$ / TP0** — theoretical teleportation baseline.  
+  - **Δt₍TP₎ = t_real − t_TP$_0$ ≥ 0** — causal delay vs TP$_0$.  
+  - **Δφ₍TP₎ = (φ_real − φ_TP$_0$) mod 2π** — phase offset vs TP$_0$.
 
 #### Packs & Engineering Constructs
 - **CAx** — *Computer-Aided X* (umbrella for CAD/CAE/CAM/CAT/CFD).  
 - **QOx** — **Quantum Optimizations** (variational/annealing/quantum-inspired optimization for design, routing, scheduling, packing).  
-- **PAx** — *Packaging & Assemblies* (orientation markers **OB = Onboard**, **OFF = Outboard**).  
+- **PAx** — *Packaging & Assemblies* (orientation markers **ONB = Onboard**, **OUT = Outboard**).   
 - **CAD** — *Computer-Aided Design*.  
 - **CAE** — *Computer-Aided Engineering*.  
 - **CAM** — *Computer-Aided Manufacturing*.  
@@ -380,7 +387,8 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **R&D** — *Research & Development*.  
 - **SLA / SLO** — *Service Level Agreement / Objective*.  
 - **API** — *Application Programming Interface*.  
-- **PLC** — *Programmable Logic Controller* (here: MAL as domain PLC).
+- **PLC** — *Programmable Logic Controller* (here: MAL as domain PLC).  
+- **IDEALE-EU** — *Intelligence, Defense, Energy, Aerospace, Logistics (ESG-EU).* Guiding strategy, structure, threading, and evidence across foundational EU nodes.
 
 #### Simulation & Verification
 - **SIL / HIL** — *Software-in-the-Loop / Hardware-in-the-Loop* (digital twins, campaigns, coverage).  
@@ -394,24 +402,11 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **FCR-1 / FCR-2** — *Formal Checkpoint Review* gates 1 and 2.
 
 #### Hydrogen & Energy
-- **H₂ / LH₂** — *Hydrogen / Liquid Hydrogen*.
+- **H$_2$ / LH$_2$** — *Hydrogen / Liquid Hydrogen*.
 
-#### **Domains (canonical)**
+#### Domains (reference)
+- **AAA/**, **AAP/**, **CCC/**, **CQH/**, **DDD/**, **EDI/**, **EEE/**, **EER/**, **IIF/**, **IIS/**, **LCC/**, **LIB/**, **MEC/**, **OOO/**, **PPP/**
+```
 
-* **AAA/** — Airframes, Aerodynamics & Airworthiness (safety & compliance)
-* **AAP/** — Airport Adaptable Platforms
-* **CCC/** — Cockpit, Cabin & Cargo
-* **CQH/** — Cryogenics, Quantum & H₂
-* **DDD/** — Drainage, Dehumidification & Drying
-* **EDI/** — Electronics & Digital Instruments
-* **EEE/** — Electrical, Endotransponders & Circulation
-* **EER/** — Environmental, Emissions & Remediation
-* **IIF/** — Industrial Infrastructure & Facilities
-* **IIS/** — Information & Intelligence Systems (cybersecurity, defense)
-* **LCC/** — Linkages, Control & Communications
-* **LIB/** — Logistics, Inventory & Blockchain
-* **MEC/** — Mechanical Systems Modules (hydraulics, landing gear…)
-* **OOO/** — OS, Ontologies & Office Interfaces
-* **PPP/** — Propulsion & Fuel Systems
 
 
