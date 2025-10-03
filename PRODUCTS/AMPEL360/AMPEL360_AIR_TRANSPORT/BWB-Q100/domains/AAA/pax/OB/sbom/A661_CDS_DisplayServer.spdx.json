@@ -6,6 +6,24 @@
   "documentNamespace": "https://asi-t.example/sbom/A661_CDS_DisplayServer",
   "creators": ["Tool: ASI-T PAx Generator"],
   "created": "2025-01-23T00:00:00Z",
+
+  "utcs_header": {
+    "id": "AAA-PAX-OB-PART-A661-0001-SBOM",
+    "project": "AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100",
+    "artifact": "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/OB/sbom/A661_CDS_DisplayServer.spdx.json",
+    "llc": "SYSTEMS",
+    "classification": "INTERNAL–EVIDENCE-REQUIRED",
+    "version": "0.1.0",
+    "release_date": "2025-01-23",
+    "maintainer": "ASI-T Avionics",
+    "bridge": "CB→QB→UE→FE→FWD→QS",
+    "ethics_guard": "MAL-EEM",
+    "utcs_mi": "v5.0",
+    "canonical_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "utcs_signature": "signature-value-placeholder",
+  "security_policy_id": "policy-001",
+
   "packages": [
     {
       "SPDXID": "SPDXRef-Package",
