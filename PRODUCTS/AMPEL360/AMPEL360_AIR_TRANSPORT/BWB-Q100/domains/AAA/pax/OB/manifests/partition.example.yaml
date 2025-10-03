@@ -14,6 +14,9 @@ canonical_hash: "sha256:abc123def45678901234567890123456789012345678901234567890
 ---
 package_name: "A661_CDS_DisplayServer"
 utcs_signature: "signature-value-placeholder"
+canonical_hash: "sha256:abc123def4567890123456789012345678901234567890123456789012345678"
+sbom_hash: "sha256:def4567890123456789012345678901234567890123456789012345678901234"
+security_policy_id: "policy-001"
 package:
   name: "A661_CDS_DisplayServer"
   kind: "OB-PARTITION"
@@ -45,8 +48,10 @@ security:
   constraints:
     hm_policy: "partition_hm_policy_v1"
 evidence:
+  canonical_hash: "sha256:abc123def4567890123456789012345678901234567890123456789012345678"
   sbom:
     path: "../../OB/sbom/A661_CDS_DisplayServer.spdx.json"
+    hash: "sha256:def4567890123456789012345678901234567890123456789012345678901234"
   signatures:
     - path: "../../OB/certificates/A661_CDS_DisplayServer.sig"
       type: "cosign"
