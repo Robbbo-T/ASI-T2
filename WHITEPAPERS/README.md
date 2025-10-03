@@ -94,8 +94,8 @@ This directory contains technical whitepapers, specifications, and templates tha
 - Standards alignment (S1000D/ATA, DO-178C, IEC 62443)
 
 **Artifacts:**
-- [JSON Schemas](./schemas/integration/) - MAL and MAP contract schemas
-- [Examples](./examples/mal-services/) - Sample MAL service configurations
+- [JSON Schemas](./artifacts/schemas/integration/) - MAL and MAP contract schemas
+- [Examples](./artifacts/examples/mal-services/) - Sample MAL service configurations
 - [Validators](../scripts/) - Topic hierarchy and bridge flow validation scripts
 
 ### [Whitepaper #0 — TRUE_GENESIS-ASI](./whitepaper_0_TRUE_GENESIS-ASI.md)
@@ -141,7 +141,7 @@ This directory contains technical whitepapers, specifications, and templates tha
 
 ## Templates & Schemas
 
-### [schemas/PRODUCT_SPEC_TEMPLATE.yaml](./schemas/PRODUCT_SPEC_TEMPLATE.yaml)
+### [artifacts/schemas/PRODUCT_SPEC_TEMPLATE.yaml](./artifacts/schemas/PRODUCT_SPEC_TEMPLATE.yaml)
 
 Template for product specifications following Master Whitepaper #1 guidelines. Use this template when defining new products or updating existing product documentation.
 
@@ -203,7 +203,7 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 ### For Implementers
 
 1. **Product Development:**
-   - Use [schemas/PRODUCT_SPEC_TEMPLATE.yaml](./schemas/PRODUCT_SPEC_TEMPLATE.yaml)
+   - Use [artifacts/schemas/PRODUCT_SPEC_TEMPLATE.yaml](./artifacts/schemas/PRODUCT_SPEC_TEMPLATE.yaml)
    - Ensure compliance with Master Whitepaper #1
    - Track TFA V2 bridge status
    - Generate evidence per Section 5 guidelines

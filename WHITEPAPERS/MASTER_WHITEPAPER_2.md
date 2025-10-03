@@ -310,7 +310,7 @@ Open draft under **responsible use**. Redistribution/modification MUST retain **
 
 ### JSON Schemas
 
-All schemas are located in `WHITEPAPERS/schemas/integration/`:
+All schemas are located in `WHITEPAPERS/artifacts/schemas/integration/`:
 
 **MAL Service Contracts:**
 * `mal-qs.schema.json` — MAL-QS (Primordial State) service contract
@@ -334,7 +334,7 @@ Located in `scripts/`:
 
 ### Example Implementations
 
-Sample MAL service implementations are provided in `WHITEPAPERS/examples/mal-services/`:
+Sample MAL service implementations are provided in `WHITEPAPERS/artifacts/examples/mal-services/`:
 * `mal-qs-example.yaml` — MAL-QS service configuration example
 * `mal-cb-example.yaml` — MAL-CB service configuration example
 * `mal-qb-example.yaml` — MAL-QB service configuration example

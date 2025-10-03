@@ -57,11 +57,11 @@ import yaml
 import json
 
 # Load schema
-with open('WHITEPAPERS/schemas/integration/mal-qs.schema.json') as f:
+with open('WHITEPAPERS/artifacts/schemas/integration/mal-qs.schema.json') as f:
     schema = json.load(f)
 
 # Load config
-with open('WHITEPAPERS/examples/mal-services/mal-qs-example.yaml') as f:
+with open('WHITEPAPERS/artifacts/examples/mal-services/mal-qs-example.yaml') as f:
     config = yaml.safe_load(f)
 
 # Validate
@@ -84,12 +84,12 @@ python scripts/validate_topic_hierarchy.py --batch topics.txt
 Validate bridge flow semantics:
 
 ```bash
-python scripts/validate_bridge_flow.py WHITEPAPERS/examples/mal-services/bridge-flow-example.yaml
+python scripts/validate_bridge_flow.py WHITEPAPERS/artifacts/examples/mal-services/bridge-flow-example.yaml
 ```
 
 ## Usage Examples
 
-See `WHITEPAPERS/examples/mal-services/` for complete service configuration examples:
+See `WHITEPAPERS/artifacts/examples/mal-services/` for complete service configuration examples:
 
 * `mal-qs-example.yaml` — QS state management service
 * `mal-cb-example.yaml` — CB classical solver service
@@ -145,8 +145,8 @@ When modifying schemas:
 
 ## References
 
-* [Integration Whitepaper #2](../INTEGRATION_WHITEPAPER_2.md)
-* [Master Whitepaper #1](../MASTER_WHITEPAPER_1.md)
+* [Integration Whitepaper #2](../../MASTER_WHITEPAPER_2.md)
+* [Master Whitepaper #1](../../MASTER_WHITEPAPER_1.md)
 * [JSON Schema Specification](https://json-schema.org/)
 * [UTCS v5.0 Documentation](../../README.md)
 

@@ -124,7 +124,7 @@ The repository includes comprehensive technical documentation in the **WHITEPAPE
   - Compliance and ethics (MAL-EEM)
   - Roadmap with FCR-1/FCR-2 gates
 
-* **[Product Specification Template](WHITEPAPERS/schemas/PRODUCT_SPEC_TEMPLATE.yaml)** — Reusable YAML template for defining new products with MAL interfaces, standards tracking, and gate requirements
+* **[Product Specification Template](WHITEPAPERS/artifacts/schemas/PRODUCT_SPEC_TEMPLATE.yaml)** — Reusable YAML template for defining new products with MAL interfaces, standards tracking, and gate requirements
 
 ### Sustainable Finance Framework
 

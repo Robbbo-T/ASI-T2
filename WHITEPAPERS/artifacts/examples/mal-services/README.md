@@ -19,9 +19,9 @@ Demonstrates:
 # Validate against schema
 python3 -c "
 import jsonschema, yaml, json
-with open('WHITEPAPERS/schemas/integration/mal-qs.schema.json') as f:
+with open('WHITEPAPERS/artifacts/schemas/integration/mal-qs.schema.json') as f:
     schema = json.load(f)
-with open('WHITEPAPERS/examples/mal-services/mal-qs-example.yaml') as f:
+with open('WHITEPAPERS/artifacts/examples/mal-services/mal-qs-example.yaml') as f:
     config = yaml.safe_load(f)
 jsonschema.validate(config, schema)
 print('✅ Valid MAL-QS configuration')
@@ -73,7 +73,7 @@ Demonstrates:
 
 **Validation:**
 ```bash
-python scripts/validate_bridge_flow.py WHITEPAPERS/examples/mal-services/bridge-flow-example.yaml
+python scripts/validate_bridge_flow.py WHITEPAPERS/artifacts/examples/mal-services/bridge-flow-example.yaml
 ```
 
 ## Bridge Semantics
@@ -156,11 +156,11 @@ python3 << 'EOF'
 import jsonschema, yaml, json
 
 # Load schema
-with open('WHITEPAPERS/schemas/integration/mal-cb.schema.json') as f:
+with open('WHITEPAPERS/artifacts/schemas/integration/mal-cb.schema.json') as f:
     schema = json.load(f)
 
 # Load config
-with open('WHITEPAPERS/examples/mal-services/mal-cb-example.yaml') as f:
+with open('WHITEPAPERS/artifacts/examples/mal-services/mal-cb-example.yaml') as f:
     config = yaml.safe_load(f)
 
 # Validate
@@ -244,13 +244,13 @@ EOF
 
 * [Integration Whitepaper #2](../INTEGRATION_WHITEPAPER_2.md)
 * [Integration Guide](../INTEGRATION_GUIDE.md)
-* [Schema Documentation](../schemas/integration/README.md)
+* [Schema Documentation](../../schemas/integration/README.md)
 * [Master Whitepaper #1](../MASTER_WHITEPAPER_1.md)
 
 ## Support
 
 * **Issues:** https://github.com/Robbbo-T/ASI-T2/issues
-* **Documentation:** WHITEPAPERS/INTEGRATION_GUIDE.md
+* **Documentation:** WHITEPAPERS/artifacts/INTEGRATION_GUIDE.md
 * **Maintainer:** ASI-T Architecture Team
 
 ---

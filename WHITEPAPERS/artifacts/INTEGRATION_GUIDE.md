@@ -32,7 +32,7 @@ python scripts/validate_topic_hierarchy.py --batch topics.txt
 Check that your bridge flow configuration is correct:
 
 ```bash
-python scripts/validate_bridge_flow.py WHITEPAPERS/examples/mal-services/bridge-flow-example.yaml
+python scripts/validate_bridge_flow.py WHITEPAPERS/artifacts/examples/mal-services/bridge-flow-example.yaml
 ```
 
 ### 3. Validate Service Configurations
@@ -48,11 +48,11 @@ import yaml
 import json
 
 # Load schema
-with open('WHITEPAPERS/schemas/integration/mal-qs.schema.json') as f:
+with open('WHITEPAPERS/artifacts/schemas/integration/mal-qs.schema.json') as f:
     schema = json.load(f)
 
 # Load config
-with open('WHITEPAPERS/examples/mal-services/mal-qs-example.yaml') as f:
+with open('WHITEPAPERS/artifacts/examples/mal-services/mal-qs-example.yaml') as f:
     config = yaml.safe_load(f)
 
 # Validate
@@ -197,7 +197,7 @@ Validate:
 python3 << 'EOF'
 import jsonschema, yaml, json
 
-with open('WHITEPAPERS/schemas/integration/mal-cb.schema.json') as f:
+with open('WHITEPAPERS/artifacts/schemas/integration/mal-cb.schema.json') as f:
     schema = json.load(f)
 
 with open('my-mal-cb-service.yaml') as f:
@@ -269,7 +269,7 @@ Validate:
 python3 << 'EOF'
 import jsonschema, json
 
-with open('WHITEPAPERS/schemas/integration/map-control.schema.json') as f:
+with open('WHITEPAPERS/artifacts/schemas/integration/map-control.schema.json') as f:
     schema = json.load(f)
 
 with open('control-message.json') as f:
@@ -377,7 +377,7 @@ QB solutions MUST:
 
 ## Examples
 
-See `WHITEPAPERS/examples/mal-services/` for complete examples:
+See `WHITEPAPERS/artifacts/examples/mal-services/` for complete examples:
 
 * `mal-qs-example.yaml` — QS state management
 * `mal-cb-example.yaml` — CB classical solver
@@ -386,9 +386,9 @@ See `WHITEPAPERS/examples/mal-services/` for complete examples:
 
 ## References
 
-* [Integration Whitepaper #2](WHITEPAPERS/INTEGRATION_WHITEPAPER_2.md)
-* [Master Whitepaper #1](WHITEPAPERS/MASTER_WHITEPAPER_1.md)
-* [Schema Directory](WHITEPAPERS/schemas/integration/)
+* [Integration Whitepaper #2](../MASTER_WHITEPAPER_2.md)
+* [Master Whitepaper #1](../MASTER_WHITEPAPER_1.md)
+* [Schema Directory](./schemas/integration/)
 * [JSON Schema Specification](https://json-schema.org/)
 
 ## Support

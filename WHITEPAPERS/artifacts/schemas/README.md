@@ -63,7 +63,7 @@ This directory contains templates and schemas for defining ASI-T2 products accor
 ### 1. Copy the Template
 
 ```bash
-cp WHITEPAPERS/schemas/PRODUCT_SPEC_TEMPLATE.yaml \
+cp WHITEPAPERS/artifacts/schemas/PRODUCT_SPEC_TEMPLATE.yaml \
    PRODUCTS/<PRODUCT_LINE>/<PRODUCT_NAME>/product_spec.yaml
 ```
 
