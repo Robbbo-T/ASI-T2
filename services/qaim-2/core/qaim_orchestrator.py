@@ -12,14 +12,29 @@ import uuid
 import hashlib
 import json
 
-from ..bridges.pcan import ProblemCanonicalizer
-from ..bridges.surrogate_models import SurrogateModels
-from ..bridges.strategy_policy import StrategyPolicy
-from ..bridges.arbitration import Arbitration
-from ..bridges.cross_framework import CrossFrameworkTranslator
-from ..solvers.cb_pool import ClassicalSolverPool
-from ..solvers.qb_pool import CubicBitSolverPool
-from ..solvers.qc_gateway import QuantumGateway
+# Import bridges and solvers
+try:
+    from ..bridges.pcan import ProblemCanonicalizer
+    from ..bridges.surrogate_models import SurrogateModels
+    from ..bridges.strategy_policy import StrategyPolicy
+    from ..bridges.arbitration import Arbitration
+    from ..bridges.cross_framework import CrossFrameworkTranslator
+    from ..solvers.cb_pool import ClassicalSolverPool
+    from ..solvers.qb_pool import CubicBitSolverPool
+    from ..solvers.qc_gateway import QuantumGateway
+except ImportError:
+    # Fallback for direct execution
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from bridges.pcan import ProblemCanonicalizer
+    from bridges.surrogate_models import SurrogateModels
+    from bridges.strategy_policy import StrategyPolicy
+    from bridges.arbitration import Arbitration
+    from bridges.cross_framework import CrossFrameworkTranslator
+    from solvers.cb_pool import ClassicalSolverPool
+    from solvers.qb_pool import CubicBitSolverPool
+    from solvers.qc_gateway import QuantumGateway
 
 
 class OptimizationResult:

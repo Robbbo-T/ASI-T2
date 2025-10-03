@@ -56,11 +56,19 @@ class ClassicalSolverPool:
         self.config = config
         self.solvers = {}
         
-        # Initialize available solvers
-        for solver_config in config.get('solvers', []):
-            if solver_config.get('enabled', True):
-                solver_name = solver_config.get('name')
-                self.solvers[f'cb_{solver_name}'] = solver_config
+        # Handle both list and dict config formats
+        if isinstance(config, list):
+            # Config is a list of solver configs
+            for solver_config in config:
+                if solver_config.get('enabled', True):
+                    solver_name = solver_config.get('name')
+                    self.solvers[f'cb_{solver_name}'] = solver_config
+        else:
+            # Config is a dict with 'solvers' key
+            for solver_config in config.get('solvers', []):
+                if solver_config.get('enabled', True):
+                    solver_name = solver_config.get('name')
+                    self.solvers[f'cb_{solver_name}'] = solver_config
     
     async def solve(
         self,
