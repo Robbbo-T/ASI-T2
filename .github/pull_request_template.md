@@ -1,5 +1,5 @@
 ## Title
-Funding: add .github/FUNDING.yml + Sponsorship policy (UTCS wired)
+_Replace this with the PR title_
 
 ## Summary
 - Add `.github/FUNDING.yml` with `github: ['Robbbo-T']` and custom fallback
