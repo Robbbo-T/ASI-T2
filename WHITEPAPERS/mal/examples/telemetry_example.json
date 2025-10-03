@@ -1,0 +1,38 @@
+{
+  "points": [
+    {
+      "k": "bus.latency.p50.ms",
+      "v": 3.9
+    },
+    {
+      "k": "wing.load.left.kN",
+      "v": 12.7,
+      "unit": "kN"
+    },
+    {
+      "k": "fuel.h2.temp.K",
+      "v": 20.1,
+      "unit": "K"
+    },
+    {
+      "k": "altitude.current.ft",
+      "v": 35000,
+      "unit": "ft"
+    },
+    {
+      "k": "speed.airspeed.kts",
+      "v": 452.3,
+      "unit": "kts"
+    }
+  ],
+  "tags": {
+    "sns": "57-10",
+    "unit": "SI",
+    "mission": "sim-H0-2025-10-03",
+    "phase": "cruise"
+  },
+  "aggregation": {
+    "window": "1s",
+    "method": "avg"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/mal/control/v1",
+  "title": "MAL Control v1",
+  "description": "MAL Control contract schema for deterministic command execution with idempotency guarantees",
+  "type": "object",
+  "required": ["cmd", "target", "idempKey"],
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Command identifier (e.g., 'set_mode', 'execute_maneuver')"
+    },
+    "target": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "description": "Target component identifier in hierarchical form (e.g., 'BWB-Q100.flight_ctl')"
+    },
+    "args": {
+      "type": "object",
+      "description": "Command-specific arguments as key-value pairs",
+      "additionalProperties": true
+    },
+    "idempKey": {
+      "type": "string",
+      "minLength": 8,
+      "description": "Idempotency key for ensuring command is executed exactly once"
+    },
+    "ttlMs": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 300000,
+      "description": "Time-to-live in milliseconds; command expires if not processed within this duration"
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10,
+      "default": 5,
+      "description": "Command priority (0=lowest, 10=highest)"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional metadata for tracing and debugging",
+      "properties": {
+        "source": {"type": "string"},
+        "traceId": {"type": "string"},
+        "spanId": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

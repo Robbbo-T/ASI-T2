@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/mal/health/v1",
+  "title": "MAL Health v1",
+  "description": "MAL Health contract schema for liveness and readiness checks",
+  "type": "object",
+  "required": ["alive", "ready"],
+  "properties": {
+    "alive": {
+      "type": "boolean",
+      "description": "Liveness indicator: true if process/service is running"
+    },
+    "ready": {
+      "type": "boolean",
+      "description": "Readiness indicator: true if service can accept requests"
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "Dependency health status for readiness checks",
+      "items": {
+        "type": "object",
+        "required": ["name", "status"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Dependency name or identifier"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["ok", "degraded", "failed", "unknown"],
+            "description": "Dependency health status"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Human-readable reason for non-ok status"
+          },
+          "lastCheck": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last check timestamp (ISO-8601)"
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Optional health metrics",
+      "properties": {
+        "uptimeSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Service uptime in seconds"
+        },
+        "memoryUsedMB": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Memory usage in megabytes"
+        },
+        "cpuUsagePercent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "CPU usage percentage"
+        },
+        "requestsPerSecond": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Current request rate"
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "Service version identifier"
+    }
+  },
+  "additionalProperties": false
+}

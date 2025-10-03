@@ -1,0 +1,86 @@
+---
+id: MAL-UTCS-MANIFEST-V1
+project: ASI-T2
+artifact: MAL UTCS Bundle Manifest
+version: 1.0.0
+release_date: "2025-10-03"
+maintainer: "ASI-T Architecture Team"
+bridge: "QS→FWD→UE→FE→CB→QB"
+ethics_guard: MAL-EEM
+utcs_mi: v5.0
+canonical_hash: pending
+---
+
+# MAL UTCS Bundle Manifest
+
+This manifest defines the UTCS (UiX Threading Context/Content/Cache & Structure/Style/Sheet) bundle for the MAL (Master Application Layer) technical specification.
+
+## Bundle Structure
+
+### Context (Narrative & Overview)
+Files that provide conceptual context and high-level understanding:
+- `../../MASTER_WHITEPAPER_2_MAL.md` - Complete MAL technical specification
+- `../docs/overview.md` - MAL architecture overview
+- `../docs/mal_deployment_guide.md` - Deployment guidance
+
+### Content (Schemas & Contracts)
+Core contract definitions and schemas:
+- `../../schemas/mal/mal.control.v1.json` - Control contract schema
+- `../../schemas/mal/mal.telemetry.v1.json` - Telemetry contract schema
+- `../../schemas/mal/mal.health.v1.json` - Health contract schema
+- `../../schemas/mal/mal.log.v1.json` - Logging contract schema
+
+### Cache (Examples & Artifacts)
+Pre-computed examples and reference implementations:
+- `../examples/control_example.json` - Control command example
+- `../examples/telemetry_example.json` - Telemetry payload example
+- `../examples/health_example.json` - Health check example
+- `../examples/log_example.json` - Log entry example
+
+### Structure (Organization & Grammar)
+Structural definitions and patterns:
+- `../docs/topic_grammar.md` - Topic naming and path conventions
+- `../docs/versioning_guide.md` - Schema versioning and compatibility rules
+- `../docs/message_envelope.md` - Message envelope specification
+
+### Style (Formatting & Presentation)
+Citation and formatting specifications:
+- `../style/mal.csl` - Citation Style Language for MAL references
+- `../style/bibliography.yaml` - Bibliography entries for MAL documentation
+
+### Sheet (Build & Automation)
+Build scripts and automation:
+- `../sheet/Makefile` - Build and validation targets
+- `../sheet/validate_schemas.sh` - Schema validation script
+- `../sheet/generate_docs.sh` - Documentation generation script
+
+## UTCS Compliance
+
+This bundle follows UTCS v5.0 threading model:
+- **Deterministic packaging**: All artifacts versioned and checksummed
+- **Reproducible builds**: Scripts generate identical outputs from sources
+- **Evidence trail**: SBOM, signatures, and provenance maintained
+- **Bridge alignment**: Content organized by TFA-V2 layers (QS→FWD→UE→FE→CB→QB)
+
+## Validation
+
+Validate this UTCS bundle:
+```bash
+cd /home/runner/work/ASI-T2/ASI-T2/WHITEPAPERS/mal/sheet
+make validate-utcs
+```
+
+## Usage
+
+To use this UTCS bundle in downstream projects:
+1. Reference the canonical manifest location
+2. Import required schemas from content/
+3. Follow structure/ guidelines for topic naming
+4. Use sheet/ scripts for validation
+
+## References
+
+- Master Whitepaper #1: ASI-T2 Ecosystem Overview
+- Master Whitepaper #2: MAL Technical Specification (this bundle)
+- UTCS v5.0 Specification
+- TFA-V2 Framework Documentation

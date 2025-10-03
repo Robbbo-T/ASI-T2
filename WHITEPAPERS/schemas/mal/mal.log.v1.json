@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/mal/log/v1",
+  "title": "MAL Log v1",
+  "description": "MAL Logging contract schema for structured log entries with flight-recorder support",
+  "type": "object",
+  "required": ["level", "message"],
+  "properties": {
+    "level": {
+      "type": "string",
+      "enum": ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"],
+      "description": "Log level"
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Log message text"
+    },
+    "context": {
+      "type": "object",
+      "description": "Structured context fields for filtering and analysis",
+      "additionalProperties": true
+    },
+    "error": {
+      "type": "object",
+      "description": "Error details for ERROR and FATAL levels",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Error type or class"
+        },
+        "code": {
+          "type": "string",
+          "description": "Error code (e.g., MAL-1001)"
+        },
+        "stack": {
+          "type": "string",
+          "description": "Stack trace"
+        },
+        "cause": {
+          "type": "string",
+          "description": "Root cause description"
+        }
+      }
+    },
+    "trace": {
+      "type": "object",
+      "description": "Distributed tracing identifiers",
+      "properties": {
+        "traceId": {
+          "type": "string",
+          "description": "Trace identifier"
+        },
+        "spanId": {
+          "type": "string",
+          "description": "Span identifier"
+        },
+        "parentSpanId": {
+          "type": "string",
+          "description": "Parent span identifier"
+        }
+      }
+    },
+    "flightRecorder": {
+      "type": "object",
+      "description": "Flight-recorder metadata for critical log segments",
+      "properties": {
+        "segmentId": {
+          "type": "string",
+          "description": "Segment identifier in hash chain"
+        },
+        "previousHash": {
+          "type": "string",
+          "description": "Hash of previous segment for chain integrity"
+        },
+        "signature": {
+          "type": "string",
+          "description": "Digital signature of this segment"
+        },
+        "sealed": {
+          "type": "boolean",
+          "description": "Whether segment is sealed and immutable"
+        }
+      }
+    },
+    "tags": {
+      "type": "object",
+      "description": "Key-value tags for categorization",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

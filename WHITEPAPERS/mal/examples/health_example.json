@@ -1,0 +1,29 @@
+{
+  "alive": true,
+  "ready": true,
+  "dependencies": [
+    {
+      "name": "database",
+      "status": "ok",
+      "lastCheck": "2025-10-03T09:12:10.000Z"
+    },
+    {
+      "name": "message_bus",
+      "status": "ok",
+      "lastCheck": "2025-10-03T09:12:10.500Z"
+    },
+    {
+      "name": "telemetry_ingest",
+      "status": "degraded",
+      "reason": "High latency detected (>100ms)",
+      "lastCheck": "2025-10-03T09:12:11.000Z"
+    }
+  ],
+  "metrics": {
+    "uptimeSeconds": 86420,
+    "memoryUsedMB": 256.7,
+    "cpuUsagePercent": 23.5,
+    "requestsPerSecond": 142.8
+  },
+  "version": "1.0.0"
+}

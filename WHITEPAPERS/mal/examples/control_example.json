@@ -1,0 +1,17 @@
+{
+  "cmd": "set_mode",
+  "target": "BWB-Q100.flight_ctl",
+  "args": {
+    "mode": "AUTO",
+    "altitude_target_ft": 35000,
+    "speed_target_kts": 450
+  },
+  "idempKey": "f1cf-a1b2-c3d4-b702",
+  "ttlMs": 3000,
+  "priority": 7,
+  "metadata": {
+    "source": "mission_planner",
+    "traceId": "550e8400-e29b-41d4-a716-446655440000",
+    "spanId": "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+  }
+}
