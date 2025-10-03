@@ -18,9 +18,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install jsonschema pyyaml
+          cache: "pip"
+      - run: python -m pip install --upgrade pip && python -m pip install jsonschema pyyaml
       - name: Validate PAx manifests (product-scoped)
         run: |
-          python PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/pax/scripts/validate_pax.py \
-            --schema PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/pax/schemas/package.schema.json \
-            --root   PRODUCTS/AMPEL360/BWB-Q100/domains/AAA/pax
+          python PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/scripts/validate_pax.py \
+            --schema PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/schemas/package.schema.json \
+            --root   PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax
