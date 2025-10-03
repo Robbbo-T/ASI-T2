@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Robbbo-T/ASI-T2/blob/main/Shared/_templates/index.extracted.schema.json",
+  "title": "IDEALE-EU Domain Manifest",
+  "description": "Schema for index.extracted.yaml files defining domain structure, classification, and compliance metadata",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "product",
+    "platform",
+    "domain",
+    "classification",
+    "standards",
+    "licenses",
+    "export_control",
+    "contacts"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version (semantic versioning)",
+      "examples": ["1.0.0"]
+    },
+    "product": {
+      "type": "string",
+      "description": "Product line identifier",
+      "examples": ["AMPEL360_AIR_TRANSPORT", "GAIA-AIR"]
+    },
+    "platform": {
+      "type": "string",
+      "description": "Platform or model identifier",
+      "examples": ["BWB-Q100", "ETHICS-EMPATHY-UAV", "AQUA-OS"]
+    },
+    "domain": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Three-letter domain code",
+      "examples": ["AAA", "IIS", "PPP", "LCC", "OOO"]
+    },
+    "classification": {
+      "type": "string",
+      "enum": ["OPEN", "SHARED", "RESTRICTED", "CONTROLLED"],
+      "description": "Data classification level per policies/DATA_CLASSIFICATION.md"
+    },
+    "standards": {
+      "type": "array",
+      "description": "Applicable standards and specifications",
+      "items": {
+        "type": "string"
+      },
+      "examples": [
+        ["S1000D", "SPDX", "CycloneDX", "STEP-AP242"]
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "description": "Domain artifacts with types and paths",
+      "items": {
+        "type": "object",
+        "required": ["type", "path"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Artifact type identifier",
+            "examples": ["s1000d:dmrl", "cax:cad", "sbom:spdx", "pax:package"]
+          },
+          "path": {
+            "type": "string",
+            "description": "Relative path to artifact from domain root"
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional artifact description"
+          },
+          "hash_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "SHA-256 hash for integrity verification"
+          }
+        }
+      }
+    },
+    "licenses": {
+      "type": "object",
+      "description": "License information per artifact type",
+      "required": ["code", "docs", "hardware"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Software license (SPDX identifier)",
+          "examples": ["Apache-2.0", "MIT", "GPL-3.0"]
+        },
+        "docs": {
+          "type": "string",
+          "description": "Documentation license",
+          "examples": ["CC-BY-4.0", "CC0-1.0"]
+        },
+        "hardware": {
+          "type": "string",
+          "description": "Hardware license",
+          "examples": ["CERN-OHL-S-2.0", "CERN-OHL-W-2.0", "CERN-OHL-P-2.0"]
+        },
+        "models": {
+          "type": "string",
+          "description": "AI/ML model license",
+          "examples": ["OpenRAIL-M", "CreativeML-OpenRAIL-M"]
+        }
+      }
+    },
+    "export_control": {
+      "type": "object",
+      "description": "Export control compliance metadata",
+      "required": ["itar", "ear", "eu_dual_use"],
+      "properties": {
+        "itar": {
+          "type": "boolean",
+          "description": "Subject to ITAR (International Traffic in Arms Regulations)"
+        },
+        "ear": {
+          "type": "string",
+          "description": "US Export Administration Regulations classification",
+          "examples": ["NLR", "EAR99", "9D004", "5D002"]
+        },
+        "ear_note": {
+          "type": "string",
+          "description": "Additional EAR context or reference"
+        },
+        "eu_dual_use": {
+          "type": "string",
+          "description": "EU Dual-Use Regulation category",
+          "examples": ["none", "1C010", "5A002", "9E991"]
+        },
+        "license_required": {
+          "type": "boolean",
+          "description": "Whether export license is required"
+        },
+        "license_exceptions": {
+          "type": "array",
+          "description": "Applicable license exceptions",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["TSU", "ENC"]]
+        }
+      }
+    },
+    "contacts": {
+      "type": "array",
+      "description": "Maintainer and contact information",
+      "items": {
+        "type": "string",
+        "format": "email"
+      },
+      "minItems": 1,
+      "examples": [["maintainers@ideale-eu.example", "bwb-q100-wg@ideale-eu.example"]]
+    },
+    "data_sharing": {
+      "type": "object",
+      "description": "Optional data sharing constraints (for SHARED classification)",
+      "properties": {
+        "nda_required": {
+          "type": "boolean",
+          "description": "Requires signed NDA"
+        },
+        "members_only": {
+          "type": "boolean",
+          "description": "Restricted to federation members"
+        },
+        "embargo_until": {
+          "type": "string",
+          "format": "date",
+          "description": "Embargo date (ISO 8601)"
+        }
+      }
+    },
+    "access_control": {
+      "type": "object",
+      "description": "Optional access control (for RESTRICTED classification)",
+      "properties": {
+        "agreement_type": {
+          "type": "string",
+          "description": "Required agreement type",
+          "examples": ["BPRA", "MTA", "DUA"]
+        },
+        "authorized_orgs": {
+          "type": "array",
+          "description": "List of authorized organizations",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expiration": {
+          "type": "string",
+          "format": "date",
+          "description": "Access expiration date (ISO 8601)"
+        },
+        "audit_required": {
+          "type": "boolean",
+          "description": "Whether audit logging is required"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Optional provenance and traceability metadata",
+      "properties": {
+        "sbom": {
+          "type": "string",
+          "description": "Path to SBOM (SPDX or CycloneDX)"
+        },
+        "signatures": {
+          "type": "object",
+          "description": "Cryptographic signatures",
+          "properties": {
+            "qs_anchor": {
+              "type": "string",
+              "description": "UTCS/QS anchor hash"
+            },
+            "gpg_fingerprint": {
+              "type": "string",
+              "description": "GPG key fingerprint"
+            },
+            "sigstore_bundle": {
+              "type": "string",
+              "description": "Path to Sigstore attestation bundle"
+            }
+          }
+        },
+        "utcs_mi": {
+          "type": "string",
+          "description": "UTCS Master Index version",
+          "examples": ["v5.0"]
+        },
+        "bridge": {
+          "type": "string",
+          "description": "Evidence bridge chain",
+          "examples": ["CB→QB→UE→FE→FWD→QS"]
+        }
+      }
+    },
+    "extracted": {
+      "type": "object",
+      "description": "Auto-extracted domain structure (legacy, for migration)",
+      "properties": {
+        "ATA": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "chapter": {"type": "string"},
+              "section": {"type": "string"}
+            }
+          }
+        },
+        "CAx": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "QOx": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "PAx": {
+          "type": "object",
+          "properties": {
+            "OB": {"type": "array"},
+            "OFF": {"type": "array"}
+          }
+        }
+      }
+    },
+    "brex": {
+      "type": "object",
+      "description": "BREX validation results (legacy, for migration)",
+      "properties": {
+        "ok": {"type": "boolean"},
+        "issues": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "warnings": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "generated": {
+      "type": "object",
+      "description": "Auto-generated statistics (legacy, for migration)",
+      "properties": {
+        "ata": {"type": "integer"},
+        "cax": {"type": "integer"},
+        "qox": {"type": "integer"},
+        "pax": {"type": "integer"},
+        "files": {"type": "integer"},
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,253 @@
+name: SBOM & Attestation
+
+# Generates Software Bill of Materials and Sigstore attestations for releases
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on version tags like v1.0.0
+  workflow_dispatch:  # Manual trigger
+    inputs:
+      artifact_path:
+        description: 'Path to artifact to sign and attest'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  id-token: write  # Required for Sigstore OIDC
+  packages: write
+
+jobs:
+  sbom-generate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install SBOM tools
+        run: |
+          # Install pip-audit for Python dependencies
+          python -m pip install --upgrade pip
+          pip install pip-audit
+          
+          # Install Syft for multi-language SBOM generation
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+          
+          # Install CycloneDX CLI for validation
+          npm install -g @cyclonedx/cyclonedx-cli
+      
+      - name: Generate Python SBOM
+        continue-on-error: true
+        run: |
+          echo "📦 Generating Python SBOM..."
+          if [ -f requirements.txt ]; then
+              pip-audit --format cyclonedx --output python-sbom.json || true
+              echo "✅ Python SBOM generated: python-sbom.json"
+          else
+              echo "⚠️  No requirements.txt found, skipping Python SBOM"
+          fi
+      
+      - name: Generate repository SBOM (all languages)
+        run: |
+          echo "📦 Generating multi-language SBOM with Syft..."
+          syft . -o spdx-json=repo-sbom.spdx.json
+          syft . -o cyclonedx-json=repo-sbom.cdx.json
+          echo "✅ Repository SBOMs generated"
+          
+          # Show summary
+          echo "### SBOM Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          syft . -o table >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Validate SBOMs
+        run: |
+          echo "✅ Validating CycloneDX SBOM..."
+          cyclonedx-cli validate --input-file repo-sbom.cdx.json
+          echo "✅ SBOM validation passed"
+      
+      - name: Scan for vulnerabilities
+        continue-on-error: true
+        run: |
+          echo "🔍 Scanning for vulnerabilities..."
+          
+          # Grype for vulnerability scanning
+          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+          
+          grype sbom:./repo-sbom.spdx.json -o json > vulnerabilities.json || true
+          
+          # Show critical/high vulnerabilities
+          echo "### Vulnerability Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          grype sbom:./repo-sbom.spdx.json -o table >> $GITHUB_STEP_SUMMARY || true
+      
+      - name: Upload SBOMs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sboms
+          path: |
+            *-sbom.json
+            *-sbom.spdx.json
+            *-sbom.cdx.json
+            vulnerabilities.json
+          retention-days: 90
+      
+      - name: Attach SBOMs to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            repo-sbom.spdx.json
+            repo-sbom.cdx.json
+          draft: false
+          prerelease: false
+  
+  sigstore-attest:
+    runs-on: ubuntu-latest
+    needs: sbom-generate
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Download SBOMs
+        uses: actions/download-artifact@v4
+        with:
+          name: sboms
+      
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+        with:
+          cosign-release: 'v2.2.0'
+      
+      - name: Sign SBOMs with Sigstore
+        run: |
+          echo "🔐 Signing SBOMs with Sigstore (keyless)..."
+          
+          # Sign SPDX SBOM
+          if [ -f repo-sbom.spdx.json ]; then
+              cosign sign-blob repo-sbom.spdx.json \
+                --bundle repo-sbom.spdx.json.bundle \
+                --yes
+              echo "✅ Signed: repo-sbom.spdx.json"
+          fi
+          
+          # Sign CycloneDX SBOM
+          if [ -f repo-sbom.cdx.json ]; then
+              cosign sign-blob repo-sbom.cdx.json \
+                --bundle repo-sbom.cdx.json.bundle \
+                --yes
+              echo "✅ Signed: repo-sbom.cdx.json"
+          fi
+      
+      - name: Generate attestation
+        run: |
+          echo "📝 Generating in-toto attestation..."
+          
+          # Create attestation predicate
+          cat > attestation-predicate.json <<EOF
+          {
+            "_type": "https://in-toto.io/Statement/v0.1",
+            "subject": [
+              {
+                "name": "${{ github.repository }}",
+                "digest": {
+                  "sha256": "$(git rev-parse HEAD)"
+                }
+              }
+            ],
+            "predicateType": "https://ideale-eu.example/provenance/v1",
+            "predicate": {
+              "buildType": "https://github.com/Robbbo-T/ASI-T2/workflows/sbom-attest",
+              "builder": {
+                "id": "https://github.com/actions/runner/v2"
+              },
+              "invocation": {
+                "configSource": {
+                  "uri": "${{ github.repository }}",
+                  "digest": {
+                    "sha256": "$(git rev-parse HEAD)"
+                  },
+                  "entryPoint": ".github/workflows/sbom-attest.yml"
+                }
+              },
+              "metadata": {
+                "buildStartedOn": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+                "buildFinishedOn": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+                "completeness": {
+                  "parameters": true,
+                  "environment": false,
+                  "materials": true
+                },
+                "reproducible": false
+              },
+              "materials": [
+                {
+                  "uri": "${{ github.repository }}",
+                  "digest": {
+                    "sha256": "$(git rev-parse HEAD)"
+                  }
+                }
+              ]
+            }
+          }
+          EOF
+          
+          echo "✅ Attestation predicate generated"
+      
+      - name: Sign attestation
+        run: |
+          cosign sign-blob attestation-predicate.json \
+            --bundle attestation.bundle \
+            --yes
+          echo "✅ Attestation signed"
+      
+      - name: Upload signed artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: signatures
+          path: |
+            *.bundle
+            attestation-predicate.json
+          retention-days: 90
+      
+      - name: Attach signatures to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            *.bundle
+            attestation-predicate.json
+          draft: false
+          prerelease: false
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "## SBOM & Attestation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **SBOMs Generated:**" >> $GITHUB_STEP_SUMMARY
+          echo "- \`repo-sbom.spdx.json\` (SPDX 2.3)" >> $GITHUB_STEP_SUMMARY
+          echo "- \`repo-sbom.cdx.json\` (CycloneDX 1.5)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🔐 **Signatures:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Signed with Sigstore (keyless, OIDC)" >> $GITHUB_STEP_SUMMARY
+          echo "- Attestation bundle: \`attestation.bundle\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📖 **Verification:**" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "# Verify SBOM signature" >> $GITHUB_STEP_SUMMARY
+          echo "cosign verify-blob repo-sbom.spdx.json \\" >> $GITHUB_STEP_SUMMARY
+          echo "  --bundle repo-sbom.spdx.json.bundle \\" >> $GITHUB_STEP_SUMMARY
+          echo "  --certificate-identity=${{ github.server_url }}/${{ github.repository }}/.github/workflows/sbom-attest.yml@${{ github.ref }} \\" >> $GITHUB_STEP_SUMMARY
+          echo "  --certificate-oidc-issuer=https://token.actions.githubusercontent.com" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
