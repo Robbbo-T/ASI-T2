@@ -68,8 +68,8 @@ Baseline wing geometry for BWB-Q100 configuration including wing box structure, 
 
 ## File Organization
 ```
-
 wing_baseline_model/
+├── artifact.manifest.yaml.example  # UTCS-MI v5.0 manifest template
 ├── master_model/
 ├── surface_geometry/
 ├── structural_layout/
@@ -77,7 +77,6 @@ wing_baseline_model/
 ├── high_lift_systems/
 ├── integration/
 └── documentation/
-
 ```
 
 ## CAx Integration
@@ -104,6 +103,21 @@ wing_baseline_model/
 - Assembly fit and clearance checking
 - System integration validation
 - Maintenance access verification
+
+## Artifact Manifest
+
+This CAD model includes an `artifact.manifest.yaml.example` demonstrating UTCS-MI v5.0 compliance for traceability:
+
+- **Purpose**: Template showing proper artifact documentation
+- **Usage**: Copy and customize for actual CAD model releases
+- **Key Fields**:
+  - Source tracking (repo path + commit)
+  - Input/output traceability
+  - ATA-57 data module references
+  - SBOM integration
+  - QS signature anchoring
+
+**See**: `artifact.manifest.yaml.example` for complete structure and [Mandatory Traceability](../../../../../../../../README.md#mandatory-traceability) documentation.
 
 ---
 

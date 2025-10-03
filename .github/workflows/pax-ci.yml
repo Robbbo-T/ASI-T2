@@ -15,11 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
+
       - run: python -m pip install --upgrade pip && python -m pip install jsonschema pyyaml
+
       - name: Validate PAx manifests (product-scoped)
         run: |
           python PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/scripts/validate_pax.py \

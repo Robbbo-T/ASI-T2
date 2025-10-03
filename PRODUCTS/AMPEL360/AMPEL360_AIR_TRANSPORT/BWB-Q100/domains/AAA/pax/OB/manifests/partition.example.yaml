@@ -13,10 +13,6 @@ utcs_header:
   canonical_hash: "sha256:abc123def456789012345678901234567890123456789012345678901234567890"
 
 package_name: "A661_CDS_DisplayServer"
-canonical_hash: "sha256:abc123def456789012345678901234567890123456789012345678901234567890"
-sbom_hash: "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-utcs_signature: "signature-value-placeholder"
-security_policy_id: "policy-001"
 
 package:
   name: "A661_CDS_DisplayServer"
