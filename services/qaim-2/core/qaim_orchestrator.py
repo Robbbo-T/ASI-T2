@@ -72,7 +72,8 @@ class QAIM2Orchestrator:
         self.translator = CrossFrameworkTranslator(config.get('translator', {}))
         self.cb_pool = ClassicalSolverPool(config.get('cb_solvers', {}))
         self.qb_pool = CubicBitSolverPool(config.get('qb_solvers', {}))
-        self.qc_gateway = QuantumGateway(config.get('qc_gateway', {})) if config.get('qc_enabled') else None
+        qc_gateway_cfg = config.get('qc_gateway', {})
+        self.qc_gateway = QuantumGateway(qc_gateway_cfg) if qc_gateway_cfg.get('enabled') else None
         
     async def optimize(
         self,
