@@ -182,13 +182,16 @@ class QAIM2Orchestrator:
             OptimizationResult with status, solution, and metrics
         """
         if isinstance(solver, str):
+            # Ensure params includes the solver name
+            params_with_solver = params.copy()
+            params_with_solver['solver_name'] = solver
             if solver.startswith('cb_'):
-                return await self.cb_pool.solve(problem, params)
+                return await self.cb_pool.solve(problem, params_with_solver)
             elif solver.startswith('qb_'):
-                return await self.qb_pool.solve(problem, params)
+                return await self.qb_pool.solve(problem, params_with_solver)
             elif solver.startswith('qc_'):
                 if self.qc_gateway:
-                    return await self.qc_gateway.solve(problem, params)
+                    return await self.qc_gateway.solve(problem, params_with_solver)
                 else:
                     raise ValueError("QC not enabled in configuration")
         
