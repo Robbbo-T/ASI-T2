@@ -1,0 +1,15 @@
+# FUNDING configuration for ASI-T2
+# Canon: IDEALE-EU (ESG-EU), MAL-EEM ethics, UTCS bundling.
+github: ['Robbbo-T']          # GitHub Sponsors owner (enable Sponsors on the org/user)
+patreon:
+open_collective:
+ko_fi:
+tidelift:
+community_bridge:
+liberapay:
+issuehunt:
+lfx_crowdfunding:
+polar:
+buy_me_a_coffee:
+thanks_dev:
+custom: ['https://github.com/sponsors/Robbbo-T']  # Fallback link
