@@ -16,12 +16,6 @@ services_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(services_dir))
 
 # Import from qaim-2 package (using underscore for Python import)
-import importlib.util
-spec = importlib.util.spec_from_file_location(
-    "qaim_2",
-    Path(__file__).parent / "core" / "qaim_orchestrator.py"
-)
-qaim_2 = importlib.util.module_from_spec(spec)
 
 # For simplicity, directly import the classes we need
 sys.path.insert(0, str(Path(__file__).parent))
