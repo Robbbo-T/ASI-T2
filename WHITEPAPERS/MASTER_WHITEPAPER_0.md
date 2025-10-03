@@ -288,5 +288,5 @@ opa eval -f pretty -d ASI_Policy.rego -I opa_test_input.json 'data.asi.policy.ap
 ---
 
 > **End of Whitepaper 0** · See [README index](./README.md) for the ASI-T2 whitepaper series and related artifacts.
-```
+
 
