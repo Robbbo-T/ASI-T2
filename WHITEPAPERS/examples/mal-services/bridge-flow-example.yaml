@@ -1,0 +1,107 @@
+---
+# Bridge Flow Configuration Example
+# TFA V2 Bridge Flow for BWB-Q100 System
+
+# Layer definitions
+layers:
+  QS:
+    description: Primordial state - origin/reference
+    role: state_management
+    properties:
+      - immutable
+      - versioned
+      - signed
+  
+  FWD:
+    description: Forward Wave Dynamics - prediction/probability
+    role: prediction
+    properties:
+      - probabilistic
+      - time_bounded
+      - confidence_scored
+  
+  UE:
+    description: Unit Element - atomic state decision and collapse
+    role: execution
+    properties:
+      - atomic
+      - deterministic
+      - timeout_bounded
+  
+  FE:
+    description: Federation Entanglement - inter-system coordination
+    role: coordination
+    properties:
+      - consensus_based
+      - slo_governed
+      - multi_party
+  
+  CB:
+    description: Classical Bit - deterministic computation
+    role: computation
+    properties:
+      - deterministic
+      - validated
+      - certified
+  
+  QB:
+    description: Bit Cubic (non-quantum) - discrete 3D optimization
+    role: advisory
+    properties:
+      - advisory_only
+      - safety_bounded
+      - fallback_required
+    safety:
+      max_age_s: 30
+      fallback: use_cb_solution
+      accept_predicates:
+        - min_separation_nm >= 5
+        - structural_margin >= 1.5
+
+# Flow definitions (directed edges)
+flows:
+  - from: QS
+    to: FWD
+    description: State feeds prediction models
+    
+  - from: FWD
+    to: UE
+    description: Predictions inform execution decisions
+    
+  - from: UE
+    to: FE
+    description: Execution results coordinate federation
+    
+  - from: FE
+    to: CB
+    description: Federation coordinates classical computation
+    
+  - from: CB
+    to: QB
+    description: Classical solver can leverage QB optimization (advisory)
+    
+  - from: FE
+    to: QB
+    description: Federation can request QB optimization (advisory)
+
+# UTCS configuration
+utcs:
+  require_signature: true
+  record_backend: true
+  bundle_format: UTCS-v5.0
+  evidence_fields:
+    - timestamp
+    - hash
+    - signature
+    - context
+
+# Bridge semantics validation
+validation:
+  check_acyclic: true
+  check_layer_order: true
+  check_qb_terminal: true  # QB must be terminal (advisory only)
+  check_utcs: true
+
+# Note: QB is advisory only and terminal.
+# QB solutions must be validated separately by CB through
+# control flow, not direct data flow in the bridge.

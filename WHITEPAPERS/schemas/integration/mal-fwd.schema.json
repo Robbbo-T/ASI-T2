@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/integration/mal-fwd.schema.json",
+  "title": "MAL-FWD Service Contract",
+  "description": "MAL-FWD (Forward Wave Dynamics) service contract schema for predictive/retrodictive propagation",
+  "type": "object",
+  "required": ["service_id", "version", "layer", "topics", "prediction", "utcs"],
+  "properties": {
+    "service_id": {
+      "type": "string",
+      "pattern": "^MAL-FWD-[A-Z0-9_-]{3,}$",
+      "description": "Unique MAL-FWD service identifier"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Service version following semantic versioning"
+    },
+    "layer": {
+      "type": "string",
+      "const": "FWD",
+      "description": "Bridge layer designation (must be FWD)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable service description"
+    },
+    "topics": {
+      "type": "object",
+      "required": ["subscribe", "publish"],
+      "properties": {
+        "subscribe": {
+          "type": "array",
+          "description": "Topics this service subscribes to",
+          "items": {
+            "type": "string",
+            "pattern": "^map/1/(control|telemetry)/[A-Z0-9_-]+/[A-Z]{3}/[A-Z0-9_]+/(QS|FWD)/(QS|FWD)$"
+          }
+        },
+        "publish": {
+          "type": "array",
+          "description": "Topics this service publishes to",
+          "items": {
+            "type": "string",
+            "pattern": "^map/1/(control|telemetry)/[A-Z0-9_-]+/[A-Z]{3}/WAVES/FWD/FWD$"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "prediction": {
+      "type": "object",
+      "required": ["type", "horizon_s", "update_rate_hz"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["nowcast", "forecast", "hindcast", "ensemble"],
+          "description": "Type of prediction/propagation"
+        },
+        "horizon_s": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 86400,
+          "description": "Prediction horizon in seconds"
+        },
+        "update_rate_hz": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 1000,
+          "description": "Update rate in Hz"
+        },
+        "confidence_bounds": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether to compute confidence bounds"
+            },
+            "method": {
+              "type": "string",
+              "enum": ["bootstrap", "bayesian", "monte-carlo"],
+              "description": "Method for computing confidence bounds"
+            },
+            "percentiles": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "description": "Percentiles to report (e.g., [5, 50, 95])"
+            }
+          }
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["model_id", "type"],
+            "properties": {
+              "model_id": {
+                "type": "string",
+                "description": "Unique model identifier"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["physics-based", "data-driven", "hybrid", "ensemble"],
+                "description": "Model type"
+              },
+              "version": {
+                "type": "string",
+                "pattern": "^\\d+\\.\\d+\\.\\d+$"
+              },
+              "checksum": {
+                "type": "string",
+                "description": "Model file checksum (SHA-256)"
+              }
+            }
+          }
+        }
+      }
+    },
+    "utcs": {
+      "type": "object",
+      "required": ["require_signature", "record_backend"],
+      "properties": {
+        "require_signature": {
+          "type": "boolean",
+          "description": "Require signatures on predictions"
+        },
+        "record_backend": {
+          "type": "boolean",
+          "description": "Record all predictions to backend"
+        },
+        "bundle_format": {
+          "type": "string",
+          "enum": ["UTCS-v5.0"],
+          "description": "UTCS bundle format version"
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "eem_policy": {
+          "type": "string",
+          "description": "Reference to MAL-EEM policy document"
+        }
+      }
+    },
+    "interfaces": {
+      "type": "object",
+      "properties": {
+        "request_nowcast": {
+          "type": "object",
+          "description": "Request immediate state nowcast",
+          "properties": {
+            "input": {
+              "type": "object",
+              "properties": {
+                "state_ref": {"type": "string"},
+                "horizon_s": {"type": "number"},
+                "confidence_level": {"type": "number", "minimum": 0, "maximum": 1}
+              }
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "prediction": {"type": "object"},
+                "confidence": {"type": "number"},
+                "timestamp": {"type": "string", "format": "date-time"}
+              }
+            }
+          }
+        },
+        "request_forecast": {
+          "type": "object",
+          "description": "Request future state forecast",
+          "properties": {
+            "input": {
+              "type": "object",
+              "properties": {
+                "state_ref": {"type": "string"},
+                "horizon_s": {"type": "number"},
+                "scenarios": {"type": "array", "items": {"type": "object"}}
+              }
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "predictions": {"type": "array"},
+                "ensemble_stats": {"type": "object"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "performance": {
+      "type": "object",
+      "properties": {
+        "max_latency_ms": {
+          "type": "number",
+          "minimum": 1,
+          "description": "Maximum allowable latency in milliseconds"
+        },
+        "throughput_req_s": {
+          "type": "number",
+          "minimum": 0.1,
+          "description": "Required throughput in requests per second"
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "properties": {
+        "standards": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["DO-178C", "ARP4754A", "IEC-62443"]
+          }
+        }
+      }
+    }
+  }
+}
