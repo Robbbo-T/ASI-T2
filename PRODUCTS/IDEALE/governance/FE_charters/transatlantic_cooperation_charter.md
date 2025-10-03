@@ -183,6 +183,6 @@ Charter amendments require:
 
 ---
 
-*Part of IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · Europe*
+*Part of IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · ESG*
 
 **Transatlantic Extension:** Bridging European and American capabilities for shared prosperity, security, and innovation.

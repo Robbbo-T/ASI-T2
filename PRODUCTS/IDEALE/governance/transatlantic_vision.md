@@ -233,6 +233,6 @@ We invite stakeholders from both sides of the Atlantic to:
 
 ---
 
-*IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · Europe*
+*IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · ESG*
 
 **Vision Extension:** From European capability mesh to transatlantic federation—stronger together.

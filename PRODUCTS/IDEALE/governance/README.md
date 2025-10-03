@@ -61,4 +61,4 @@ All changes must:
 
 ---
 
-*Part of IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · Europe*
+*Part of IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · ESG*

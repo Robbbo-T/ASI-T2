@@ -298,6 +298,6 @@ The Transatlantic Bridge (TA) architecture provides the technical foundation for
 
 ---
 
-*Part of IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · Europe*
+*Part of IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · ESG*
 
 **Transatlantic Bridge:** Connecting USA and European capabilities for a stronger, more secure future.

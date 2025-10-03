@@ -196,6 +196,6 @@ The BWB-Q100 (Blended Wing Body Quantum 100-passenger aircraft) serves as a **pr
 
 ---
 
-*Part of IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · Europe*
+*Part of IDEALE — Intelligence · Defence · Energy · Aerospace · Logistics · ESG*
 
 **Transatlantic Extension:** From vision to reality, one domain at a time.
