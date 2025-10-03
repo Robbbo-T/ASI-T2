@@ -1,10 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this software or reference this work, please cite it as below."
-title: "ASI-T2 Ecosystem: Master Whitepaper #1"
+title: "ASI-T2 Ecosystem with QS/UTCS v5.0 Provenance Framework"
 authors:
   - family-names: Pelliccia
     given-names: Amedeo
-date-released: 2025-10-01
+  - name: ASI-T Architecture Team
+date-released: 2025-10-03
 version: 0.1.0
 doi: TBA
 url: https://github.com/Robbbo-T/ASI-T2
@@ -20,6 +21,10 @@ keywords:
   - ethics-ai
   - provenance
   - traceability
+  - utcs
+  - evidence-framework
+  - s1000d
+  - ata-chapters
 license: "Proprietary"
 abstract: >
   ASI-T2 is a system-of-systems (SoS) integrating AMPEL360 BWB aircraft,
@@ -27,6 +32,18 @@ abstract: >
   AMPEL 360PLUS space tourism, H₂/LH₂ Airport infrastructure, and Sustainable
   anti-speculative Finance. The common backbone is MAL (Master Application Layer/Logic)
   standardizing drivers, messaging, telemetry, health, logging and version/keys.
-  QS/UTCS provides end-to-end provenance from code to binaries with SBOMs, DOIs
-  and signed tags. The programme progresses through TFA V2 (CB→QB→UE/FE→FWD→QS)
-  with FCR-1/FCR-2 gates requiring verifiable evidence.
+  QS/UTCS v5.0 provides the authoritative provenance spine with UiX Threading
+  (Context/Content/Cache & Structure/Style/Sheet) bundling model. Each release
+  includes verifiable evidence: signed tags, SBOMs (SPDX), DOIs, and immutable
+  ledgers. The programme progresses through TFA V2 bridge (QS→FWD→UE→FE→CB→QB)
+  with FCR-1/FCR-2 gates requiring auditable, reproducible, and ethically
+  governed releases per MAL-EEM/MAP-EEM.
+references:
+  - type: report
+    title: "Master Whitepaper #3: QS/UTCS Provenance & Evidence Framework"
+    authors:
+      - family-names: Pelliccia
+        given-names: Amedeo
+    year: 2025
+    version: 0.1.0
+    url: https://github.com/Robbbo-T/ASI-T2/blob/main/WHITEPAPERS/MASTER_WHITEPAPER_3_UTCS.md

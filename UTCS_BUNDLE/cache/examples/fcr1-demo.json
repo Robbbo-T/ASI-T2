@@ -1,0 +1,34 @@
+{
+  "example_id": "fcr1-demo",
+  "description": "FCR-1 gate demonstration - minimal UTCS bundle example",
+  "scenario": "First Capability Review (FCR-1)",
+  "program": "BWB-Q100",
+  "domain": "AAA",
+  "layer": "CB",
+  "timestamp_utc": "2025-10-03T09:30:00Z",
+  "evidence": {
+    "manifest": "manifest.utcs.yaml",
+    "sbom": "attestations/sbom.spdx.json",
+    "schemas": [
+      "content/schemas/utcs.manifest.v5.json",
+      "content/schemas/map.control.v1.json",
+      "content/schemas/map.telemetry.v1.json"
+    ],
+    "crosswalks": [
+      "structure/tfa_grammar.md",
+      "structure/topic_hierarchy.md"
+    ]
+  },
+  "validation_results": {
+    "schema_valid": true,
+    "hashes_valid": true,
+    "crosswalk_complete": true,
+    "ethics_guard_enabled": true
+  },
+  "notes": [
+    "This example demonstrates minimal UTCS v5.0 bundle structure",
+    "All required UiX sections are present: context, content, structure, style, sheet",
+    "Ethics guards (MAL-EEM, MAP-EEM) are configured",
+    "TFA bridge mapping is complete: QS→FWD→UE→FE→CB→QB"
+  ]
+}

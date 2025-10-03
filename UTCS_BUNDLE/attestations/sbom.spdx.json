@@ -1,0 +1,35 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "UTCS Bundle BWB-Q100",
+  "documentNamespace": "https://asi-t2.org/spdx/utcs-bundle-bwb-q100-2025-10-03",
+  "creationInfo": {
+    "created": "2025-10-03T09:30:00Z",
+    "creators": [
+      "Tool: placeholder-generator",
+      "Organization: ASI-T Architecture Team"
+    ],
+    "comment": "This is a placeholder SBOM. Run 'syft dir:. -o spdx-json' to generate a complete SBOM."
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-UTCS",
+      "name": "UTCS Bundle",
+      "versionInfo": "0.1.0",
+      "supplier": "Organization: ASI-T Architecture Team",
+      "downloadLocation": "https://github.com/Robbbo-T/ASI-T2",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "Proprietary",
+      "copyrightText": "Copyright (c) 2025 Amedeo Pelliccia and ASI-T Architecture Team"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-UTCS"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/utcs.manifest.v5.json",
+  "title": "UTCS v5.0 Manifest",
+  "description": "UiX Threading (Context/Content/Cache) & Structure/Style/Sheet - Deterministic bundle manifest for ASI-T2",
+  "type": "object",
+  "required": [
+    "bundle_id",
+    "schema",
+    "program",
+    "semver",
+    "created_utc",
+    "uix",
+    "hashes"
+  ],
+  "properties": {
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^utcs-bundle-[a-z0-9-]+$",
+      "description": "Unique bundle identifier following naming convention"
+    },
+    "schema": {
+      "const": "utcs.manifest.v5",
+      "description": "Schema version identifier"
+    },
+    "program": {
+      "type": "string",
+      "description": "Program identifier (e.g., BWB-Q100, GAIA-SAT, ARES-X)"
+    },
+    "bridge": {
+      "type": "string",
+      "pattern": "^QS→FWD→UE→FE→CB→QB$",
+      "description": "TFA bridge canonical flow"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version (MAJOR.MINOR.PATCH)"
+    },
+    "created_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Bundle creation timestamp in UTC (ISO 8601)"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "role"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethics_guard": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["MAL-EEM", "MAP-EEM"]
+      },
+      "description": "Ethics guards enforcing responsible use policies"
+    },
+    "ssot": {
+      "type": "string",
+      "description": "Single Source of Truth reference"
+    },
+    "ideale_eu": {
+      "type": "boolean",
+      "description": "IDEALE-EU ESG framework alignment flag"
+    },
+    "uix": {
+      "type": "object",
+      "required": ["context", "content", "structure", "style", "sheet"],
+      "properties": {
+        "context": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Narrative documents, whitepapers, overviews"
+        },
+        "content": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Schemas, code, contracts"
+        },
+        "cache": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Examples, test vectors, recordings, synthetic data"
+        },
+        "structure": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Directory grammar, topic & DMC mappings"
+        },
+        "style": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Citation styles, lints, legal headers"
+        },
+        "sheet": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Build scripts, CI jobs, reproducibility recipes"
+        }
+      }
+    },
+    "attestations": {
+      "type": "object",
+      "properties": {
+        "sbom": {
+          "type": "string",
+          "description": "Path to SBOM file (SPDX JSON format)"
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Paths to signature files"
+        },
+        "doi": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "type": "string",
+              "enum": ["datacite", "zenodo"]
+            },
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "hashes": {
+      "type": "object",
+      "required": ["algo", "files"],
+      "properties": {
+        "algo": {
+          "type": "string",
+          "enum": ["sha256"],
+          "description": "Hash algorithm used"
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "digest"],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$|^pending$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "compat": {
+      "type": "object",
+      "properties": {
+        "minor_floor": {
+          "type": "number",
+          "description": "Minimum compatible minor version"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "bridge_services": {
+      "type": "object",
+      "description": "TFA bridge service mappings",
+      "patternProperties": {
+        "^(QS|FWD|UE|FE|CB|QB)$": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "topics": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^map/\\d+/[^/]+/[^/]+/[^/]+/[^/]+/[^/]+/[^/]+$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "evidence_hooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["git", "ci", "build"]
+          }
+        }
+      }
+    }
+  }
+}

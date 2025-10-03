@@ -1,0 +1,111 @@
+# UTCS v5.0 Manifest (authoritative)
+# Bundle ID: utcs-bundle-bwb-q100-2025-10-03
+# Program: BWB-Q100 (Blended Wing Body - Quantum Optimization 100)
+# Bridge: QS→FWD→UE→FE→CB→QB
+
+bundle_id: utcs-bundle-bwb-q100-2025-10-03
+schema: utcs.manifest.v5
+program: BWB-Q100
+bridge: QS→FWD→UE→FE→CB→QB
+semver: 0.1.0
+created_utc: "2025-10-03T09:30:00Z"
+
+authors:
+  - name: Amedeo Pelliccia
+    role: Author
+  - name: ASI-T Architecture Team
+    role: Maintainer
+
+ethics_guard:
+  - MAL-EEM
+  - MAP-EEM
+
+ssot: ASI-T · Universal Injection Prompt (v1)
+ideale_eu: true
+
+uix:
+  context:
+    - context/MASTER_WHITEPAPER_1.md
+    - context/MASTER_WHITEPAPER_3_UTCS.md
+  content:
+    - content/schemas/map.control.v1.json
+    - content/schemas/map.telemetry.v1.json
+    - content/schemas/utcs.manifest.v5.json
+  cache:
+    - cache/examples/fcr1-demo.json
+  structure:
+    - structure/topic_hierarchy.md
+    - structure/tfa_grammar.md
+  style:
+    - style/citation.csl
+    - style/NOTICE
+  sheet:
+    - sheet/Makefile
+    - sheet/ci/validate_utcs.py
+
+attestations:
+  sbom: attestations/sbom.spdx.json
+  signatures:
+    - attestations/bundle.sig
+  doi:
+    provider: datacite
+    id: TBA
+
+hashes:
+  algo: sha256
+  files:
+    - path: content/schemas/map.control.v1.json
+      digest: pending
+    - path: content/schemas/map.telemetry.v1.json
+      digest: pending
+    - path: content/schemas/utcs.manifest.v5.json
+      digest: pending
+    - path: structure/tfa_grammar.md
+      digest: pending
+    - path: structure/topic_hierarchy.md
+      digest: pending
+
+compat:
+  minor_floor: 0.1
+  notes: "MINOR versions are wire-compatible. MAJOR may break with migrators."
+
+# TFA Bridge Mapping
+bridge_services:
+  QS:
+    description: "Primordial anchor and ordering of state"
+    topics:
+      - map/1/log/BWB-Q100/AAA/STATES/QS/QS
+  FWD:
+    description: "Forward Wave Dynamics - Prediction/Probability"
+    topics:
+      - map/1/telemetry/BWB-Q100/AAA/WAVES/FWD/FWD
+  UE:
+    description: "Unit Element / Collapse"
+    topics:
+      - map/1/control/BWB-Q100/AAA/UNITS/UE/UE
+  FE:
+    description: "Federation Entanglement / Contracting"
+    topics:
+      - map/1/control/BWB-Q100/AAA/FEDERATION/FE/FE
+  CB:
+    description: "Classical Bit / Companion Binary"
+    topics:
+      - map/1/control/BWB-Q100/AAA/SYSTEMS/SI/CB
+  QB:
+    description: "Bit Cubic (non-quantum)"
+    topics:
+      - map/1/advisory/BWB-Q100/AAA/CUBIC/QB/QB
+
+# Evidence hooks
+evidence_hooks:
+  - type: git
+    source: https://github.com/Robbbo-T/ASI-T2
+    commit: HEAD
+  - type: ci
+    provider: github-actions
+    workflow: utcs-validate
+  - type: build
+    reproducible: true
+    targets:
+      - clean
+      - all

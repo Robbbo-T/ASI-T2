@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/map.control.v1.json",
+  "title": "MAP Control Contract v1",
+  "description": "ASI-T2 MAP.v1.control - Deterministic commands with ack/nack, rate-limits, idempotency keys",
+  "type": "object",
+  "required": [
+    "contract",
+    "version",
+    "program",
+    "domain",
+    "command"
+  ],
+  "properties": {
+    "contract": {
+      "const": "MAP.v1.control",
+      "description": "Contract identifier"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version"
+    },
+    "program": {
+      "type": "string",
+      "description": "Program identifier (e.g., BWB-Q100)"
+    },
+    "domain": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Three-letter domain code (e.g., AAA, AAP)"
+    },
+    "command": {
+      "type": "object",
+      "required": ["type", "target", "params"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "set_mode",
+            "update_param",
+            "trigger_action",
+            "reset",
+            "calibrate",
+            "shutdown"
+          ],
+          "description": "Command type"
+        },
+        "target": {
+          "type": "string",
+          "description": "Target system or component"
+        },
+        "params": {
+          "type": "object",
+          "description": "Command-specific parameters"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{16,64}$",
+          "description": "Unique key for idempotent command execution"
+        },
+        "timeout_ms": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 30000,
+          "description": "Command timeout in milliseconds"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "timestamp_utc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Command timestamp in UTC"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Monotonic sequence number"
+        },
+        "source": {
+          "type": "string",
+          "description": "Command source identifier"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["low", "normal", "high", "critical"],
+          "default": "normal"
+        }
+      }
+    },
+    "rate_limits": {
+      "type": "object",
+      "properties": {
+        "max_per_second": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum commands per second"
+        },
+        "max_burst": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum burst size"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "utcs_hook": {
+          "type": "boolean",
+          "description": "Enable UTCS evidence capture"
+        },
+        "log_topic": {
+          "type": "string",
+          "pattern": "^map/1/log/",
+          "description": "MAP log topic for decision logging"
+        }
+      }
+    },
+    "ack": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "boolean",
+          "default": true
+        },
+        "timeout_ms": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 10000
+        }
+      }
+    }
+  }
+}
