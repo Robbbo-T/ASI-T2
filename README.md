@@ -326,19 +326,19 @@ See → [`PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/`](./PRODUCTS/INFRANET/AQUA_OS_AIRC
 │   │   ├── AMPEL360_AIR_TRANSPORT/
 │   │   │   └── BWB-Q100/
 │   │   │       └── domains/
-│   │   │           ├── AAA/        # Airframes (ATA-57 S1000D, CAD, QOx, PAx)
+│   │   │           ├── AAA/        # Airframes Aerodynamics and Airworthiness (Contains Material)
 │   │   │           ├── AAP/        # Airport Adaptable Platforms
 │   │   │           ├── CCC/        # Cockpit, Cabin & Cargo
 │   │   │           ├── CQH/        # Cryogenics, Quantum & H₂
 │   │   │           ├── DDD/        # Drainage, Dehumidification & Drying
 │   │   │           ├── EDI/        # Electronics & Digital Instruments
-│   │   │           ├── EEE/        # Electrical, Hydraulic & Energy
+│   │   │           ├── EEE/        # Renewable Energy, Harvesting & Circulation
 │   │   │           ├── EER/        # Environmental, Emissions & Remediation
 │   │   │           ├── IIF/        # Industrial Infrastructure & Facilities
-│   │   │           ├── IIS/        # Integrated Intelligence & Software (ATA-22, ATA-42)
-│   │   │           ├── LCC/        # Linkages, Control & Communications (planned)
-│   │   │           ├── LIB/        # Logistics, Inventory & Blockchain (planned)
-│   │   │           ├── MEC/        # Mechanical Systems Modules (planned)
+│   │   │           ├── IIS/        # Information Systems and Intelligence Softwares 
+│   │   │           ├── LCC/        # Linkages, Control & Communications 
+│   │   │           ├── LIB/        # Logistics, Inventory & Blockchain 
+│   │   │           ├── MEC/        # Mechanical Systems Modules 
 │   │   │           ├── OOO/        # OS, Ontologies & Office Interfaces (planned)
 │   │   │           └── PPP/        # Propulsion & Fuel Systems (planned)
 │   │   │
