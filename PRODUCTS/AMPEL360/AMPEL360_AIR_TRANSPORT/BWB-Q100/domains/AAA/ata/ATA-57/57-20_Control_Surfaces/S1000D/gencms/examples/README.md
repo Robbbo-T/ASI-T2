@@ -1,30 +1,39 @@
 # GenCMS Examples — InfoCode 720A (Removal/Installation)
 
+**Path:** `PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/57-20_Control_Surfaces/S1000D/gencms/examples/`  
 **Parent:** [../](../)
 
 ---
 
 ## Purpose
 
-This directory contains complete, working examples of GenCMS outputs for **InfoCode 720A** (Removal and Installation procedures). These examples demonstrate the full capabilities of the GenCMS system and serve as reference implementations for S1000D Issue 6.0 compliance.
+This directory contains **complete, working examples** of **GenCMS** outputs for **InfoCode 720A (Removal and Installation procedures)**. The goal is to provide **reference implementations** that are:
+
+- **S1000D Issue 6.0–compliant** (structure, nomenclature, and codification),
+
+- **IETP‑ready** (clear UI composition and responsiveness),
+
+- **Validation‑friendly** (XSD schema validation for XML, linting for YAML, and JSON schema checks),
+
+- **Auditable** (explicit cross‑references, effectivity, and pass/fail metrics suitable for CI).
 
 ---
 
-## Files
+## File Inventory
 
-### 1. DMC-MOC-B-12-34-56-78-00A-720A-D-EN-US.xml
+### 1) `DMC-MOC-B-12-34-56-78-00A-720A-D-EN-US.xml`
 
-**Type:** S1000D Issue 6.0 Data Module (XML)  
-**InfoCode:** 720A (Removal/Installation procedure)
+**Type:** S1000D Issue 6.0 **Data Module (XML)**  
+**InfoCode:** `720A` (Removal/Installation procedure)  
+**Scope:** Complete procedural DM with **preliminary requirements**, **main procedure (3 steps)**, and **concluding requirements**.
 
-**Description:**  
-Complete S1000D XML data module demonstrating proper structure for removal and installation procedures.
+#### Key Implementation Features
 
-**Key Features:**
-- Fixed-width dmCode fields (2-digit standard)
-- Complete identAndStatusSection with dmAddress and dmStatus
-- Three effectivity shells: APPL-ALL, APPL-LH, APPL-RH
-- Applicability cross-reference table
+- **Fixed‑width `dmCode` fields** (Issue 6.0 conventions).
+
+- **`identAndStatusSection`** with `dmAddress`/`dmStatus` (language, security class, issue info).
+
+- **Effectivity**: three shells (`APPL-ALL`, `APPL-LH`, `APPL-RH`) with applicability cross-reference table.
 - preliminaryRqmts with:
   - Safety requirements (warning, caution, note)
   - Required support equipment (2 items)
@@ -39,7 +48,7 @@ Complete S1000D XML data module demonstrating proper structure for removal and i
 - Applicability references throughout
 
 **Standards Compliance:**
-- ✅ S1000D Issue 6.0 XML schema
+- ✅ S1000D Issue 6.0 XML schema (**XSD-valid**)
 - ✅ Fixed-width dmCode fields
 - ✅ Safety requirements present
 - ✅ Cross-references to descriptive (040), inspection (520), and IPD (941)
@@ -192,7 +201,7 @@ python3 -c "import json; json.load(open('compliance-report-720A.json'))"
 ```
 
 **Results:**
-- ✅ XML: Well-formed with 3 cross-refs, 3 safety items, 3 effectivity shells
+- ✅ XML: Well-formed **and XSD-valid** with 3 cross-refs, 3 safety items, 3 effectivity shells
 - ✅ YAML: Valid with 4 regions, 6 widgets, 3 device profiles
 - ✅ JSON: Valid with 9/9 checks passed, 3 cross-refs
 

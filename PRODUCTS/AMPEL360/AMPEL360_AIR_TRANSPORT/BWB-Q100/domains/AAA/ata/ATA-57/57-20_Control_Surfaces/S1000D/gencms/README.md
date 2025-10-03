@@ -1,43 +1,61 @@
 # GenCMS — Generative Content Management System
 
 **Version:** 1.0.0  
-**Standard:** S1000D Issue 6.0  
-**Parent:** [../](../)
+**Standard:** S1000D Issue 6.0 (**XSD-first validation**)  
+**Path:** `PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/57-20_Control_Surfaces/S1000D/gencms/`  
+**Parent:** [../](../)  
+**License:** Internal   
+**Maintainer:** Technical Publications Team
 
 ---
 
-## Purpose
+## 1) Purpose & Scope
 
-GenCMS is a generative, interactive agent system that produces **IETP-ready** outputs (layout + content) conforming to **S1000D Issue 6.0** standards. It dynamically resolves the correct IETP layout pattern from context and parameters, then generates compliant S1000D XML, IETP layout manifests, and cross-reference/compliance summaries.
+**GenCMS** is a generative, interactive system that produces **IETP-ready** technical publications—combining **S1000D 6.0 XML Data Modules**, **IETP Layout Manifests (YAML)**, and **Compliance Summaries (JSON)**. It automatically selects the correct **layout archetype** by **infoCode family** (040/5xx/7xx/9xx), assembles cross-references, applies effectivity, and enforces **BREX** rules—while guaranteeing **XSD validation** against the official S1000D 6.0 schemas.
+
+**Core guarantees**
+
+- **Standards-based** S1000D 6.0 structure (namespaces, fixed-width codes, required sections).
+- **XSD-valid** XML (**mandatory**).
+- **Schematron/BREX** checks (**recommended**, project-specific).
+- **Consistent tri-artifact** emission: XML ↔ YAML ↔ JSON (self-consistent identifiers and metrics).
+- **IETP-ready UI** with accessibility and device profiles (desktop/tablet/gloves).
 
 ---
 
-## Directory Structure
+## 2) Directory Structure
 
 ```
 gencms/
-├── README.md                       # This file
-├── templates/                      # GenCMS prompt templates
-│   └── GENCMS_PROMPT_IETP_LAYOUT.md  # Main prompt template
-└── examples/                       # Example outputs
-    ├── DMC-MOC-B-12-34-56-78-00A-720A-D-EN-US.xml  # S1000D XML example (720A)
-    ├── ietp-layout-720A.yaml                        # IETP Layout Manifest
-    └── compliance-report-720A.json                  # Compliance Report
+├── README.md                             # This document
+├── templates/
+│   └── GENCMS_PROMPT_IETP_LAYOUT.md      # Prompt template: rules, layout patterns, XSD requirements
+└── examples/
+    ├── DMC-MOC-B-12-34-56-78-00A-720A-D-EN-US.xml   # 720A R/I example (XSD-valid)
+    ├── ietp-layout-720A.yaml                         # IETP manifest for 720A
+    └── compliance-report-720A.json                   # Validation report (9 checks)
 ```
 
 ---
 
-## Key Features
+## 3) Key Features
 
-### 1. Standards-Based
+### 1. XSD-First Validation
 
-- **S1000D Issue 6.0** compliant
+- **Mandatory XSD validation** against official S1000D Issue 6.0 schemas
+- XML must be well-formed **and** schema-valid before emission
+- Optional Schematron/BREX checks (project-specific rules)
+- Fail-safe: if validation fails, emit placeholders and error reports
+
+### 2. Standards-Based
+
+- **S1000D Issue 6.0** compliant structure and nomenclature
 - **BREX** (Business Rules Exchange) aware
 - **DMRL** (Data Module Requirements List) integration
 - Fixed-width dmCode fields (2 digits)
 - Proper effectivity shell management
 
-### 2. Layout Patterns by InfoCode
+### 3. Layout Patterns by InfoCode
 
 GenCMS automatically selects the appropriate IETP layout based on the infoCode:
 
@@ -48,21 +66,21 @@ GenCMS automatically selects the appropriate IETP layout based on the infoCode:
 | **7xx** (Removal/Installation) | Stepper + Kits | Safety alerts, tools, kits, torque table |
 | **9xx** (IPD) | Figure viewer + Callouts | Interactive figures, CSN groups, effectivity filter |
 
-### 3. Dynamic Effectivity Management
+### 4. Dynamic Effectivity Management
 
 - Reusable effectivity shells (e.g., APPL-ALL, APPL-LH, APPL-RH)
 - Applicability cross-reference tables
 - IETP filter widgets for user-driven effectivity selection
 - Effectivity applied to steps, tools, consumables, and spares
 
-### 4. Cross-Reference Intelligence
+### 5. Cross-Reference Intelligence
 
 - Automatic linking between descriptive (040), procedural (5xx/7xx), and IPD (9xx) modules
 - Standards and specification references
 - Media and figure references
 - IPD linkage for required spares
 
-### 5. Quality Assurance
+### 6. Quality Assurance
 
 - BREX validation with detailed compliance reports
 - Schema validation (S1000D 6.0)
