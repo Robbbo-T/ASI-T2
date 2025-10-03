@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or reference this work, please cite it as below."
-title: "ASI-T2 Ecosystem: Master Whitepaper #1"
+title: "ASI-T2 Ecosystem: Master Whitepaper Collection"
 authors:
   - family-names: Pelliccia
     given-names: Amedeo
@@ -20,6 +20,9 @@ keywords:
   - ethics-ai
   - provenance
   - traceability
+  - master-application-layer
+  - messaging-contracts
+  - utcs-bundling
 license: "Proprietary"
 abstract: >
   ASI-T2 is a system-of-systems (SoS) integrating AMPEL360 BWB aircraft,
@@ -30,3 +33,29 @@ abstract: >
   QS/UTCS provides end-to-end provenance from code to binaries with SBOMs, DOIs
   and signed tags. The programme progresses through TFA V2 (CB→QB→UE/FE→FWD→QS)
   with FCR-1/FCR-2 gates requiring verifiable evidence.
+references:
+  - type: report
+    title: "ASI-T2 Ecosystem: Master Whitepaper #1"
+    authors:
+      - family-names: Pelliccia
+        given-names: Amedeo
+    date-released: 2025-10-01
+    version: 0.1.0
+    doi: TBA
+    url: https://github.com/Robbbo-T/ASI-T2/blob/main/WHITEPAPERS/MASTER_WHITEPAPER_1.md
+    abstract: >
+      Comprehensive overview of the ASI-T2 ecosystem including architecture,
+      products, domains, and TFA-V2 framework.
+  - type: report
+    title: "MAL (Master Application Layer) Technical Specification"
+    authors:
+      - family-names: Pelliccia
+        given-names: Amedeo
+    date-released: 2025-10-03
+    version: 0.1.0
+    doi: TBA
+    url: https://github.com/Robbbo-T/ASI-T2/blob/main/WHITEPAPERS/MASTER_WHITEPAPER_2_MAL.md
+    abstract: >
+      Technical specification for MAL (Master Application Layer), defining
+      contracts for control, telemetry, health, and logging with UTCS bundling
+      support for deterministic, verifiable messaging across the ASI-T2 ecosystem.

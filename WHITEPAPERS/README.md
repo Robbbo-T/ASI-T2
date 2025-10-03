@@ -41,6 +41,30 @@ This directory contains technical whitepapers, specifications, and templates tha
 
 ---
 
+### [Master Whitepaper #2](./MASTER_WHITEPAPER_2_MAL.md)
+
+**Title:** MAL (Master Application Layer) · Technical Specification under TFA-V2 and UTCS Bundling
+
+**Author:** Amedeo Pelliccia  
+**Version:** v0.1.0 (2025-10-03)  
+**Status:** Public draft for technical review
+
+**Abstract:** Technical specification for MAL (Master Application Layer/Logic), the domain PLC for ASI-T2. Defines standardized contracts for control, telemetry, health, and logging with transport-agnostic messaging, schema versioning, policy-driven authorization (MAL-EEM), and evidence-native UTCS bundling. MAL powers AMPEL360 BWB-Q100 and Digital Platform CSDBs across the TFA-V2 bridge.
+
+**Key Topics:**
+- Four core contracts: Control, Telemetry, Health, Log
+- Versioning & compatibility (SemVer, migrators)
+- Topic & path grammar (bus-agnostic naming)
+- Security model (MAL-SEC): Zero-trust, Ed25519, X25519, MAL-EEM
+- Performance SLOs (H0 targets)
+- S1000D/ATA integration
+- UTCS bundling profile (Context/Content/Cache ↔ Structure/Style/Sheet)
+- JSON schemas, examples, and validation tools
+
+**UTCS Bundle:** Complete bundle available at `WHITEPAPERS/mal/` with schemas, docs, examples, and build tools.
+
+---
+
 ## Templates & Schemas
 
 ### [schemas/PRODUCT_SPEC_TEMPLATE.yaml](./schemas/PRODUCT_SPEC_TEMPLATE.yaml)
@@ -129,12 +153,12 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 | Version | Date | Changes |
 |---------|------|---------|
 | 0.1.0 | 2025-10-01 | Initial release: Master Whitepaper #1, product template, finance framework |
+| 0.2.0 | 2025-10-03 | Added Master Whitepaper #2 (MAL Technical Specification) with complete UTCS bundle |
 
 ---
 
 ## Future Whitepapers (Planned)
 
-* **Whitepaper #2:** MAL (Master Application Layer) Technical Specification
 * **Whitepaper #3:** QS/UTCS Provenance and Evidence Framework
 * **Whitepaper #4:** QAIM-2 Quantum-Classical Optimization Architecture
 * **Whitepaper #5:** AMPEL360 BWB Certification Strategy
@@ -172,6 +196,6 @@ All contributions must:
 
 ---
 
-*Last Updated: 2025-10-01*  
-*Version: 0.1.0*  
+*Last Updated: 2025-10-03*  
+*Version: 0.2.0*  
 *UTCS Anchor: TBD*
