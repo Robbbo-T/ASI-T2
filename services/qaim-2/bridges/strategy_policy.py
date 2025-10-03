@@ -162,8 +162,14 @@ class StrategyPolicy:
         
         # For small problems, use classical solvers
         if num_vars < 50:
-            return 'cb_gurobi' if 'gurobi' in self.config.get('available_solvers', []) else 'cb_cbc'
-        
+            cb_solvers = self.config.get('cb_solvers', {})
+            # cb_solvers may be a dict or a list; check accordingly
+            has_gurobi = False
+            if isinstance(cb_solvers, dict):
+                has_gurobi = 'cb_gurobi' in cb_solvers
+            elif isinstance(cb_solvers, list):
+                has_gurobi = 'cb_gurobi' in cb_solvers
+            return 'cb_gurobi' if has_gurobi else 'cb_cbc'
         # For medium problems, consider QB
         elif num_vars < 200:
             if num_cons / num_vars > 2.0:
