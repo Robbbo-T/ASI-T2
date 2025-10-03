@@ -1,0 +1,142 @@
+# IDEALE-EU Code Ownership
+
+# This file defines mandatory reviewers for pull requests affecting specific areas.
+# Syntax: <pattern> @owner1 @owner2 @team-name
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# =============================================================================
+# ROOT GOVERNANCE & POLICIES
+# =============================================================================
+
+# Charter, governance, and top-level structure require Council review
+/CHARTER.md                     @ideale-council
+/GOVERNANCE.md                  @ideale-council
+/CODE_OF_CONDUCT.md             @ideale-council
+/ROADMAP.md                     @ideale-council @air-tsc @sea-tsc @space-tsc @infranet-tsc
+/CODEOWNERS                     @ideale-council
+
+# License changes require legal review
+/LICENSES/                      @ideale-council @legal-team
+
+# Policy changes require Council and relevant TSC
+/policies/                      @ideale-council @export-control-officer
+/policies/EXPORT_CONTROL.md     @ideale-council @export-control-officer
+/policies/DATA_CLASSIFICATION.md @ideale-council @security-team
+/policies/PRIVACY.md            @ideale-council @privacy-officer
+/policies/SECURITY.md           @ideale-council @security-team
+
+# =============================================================================
+# CI/CD & INFRASTRUCTURE
+# =============================================================================
+
+# Workflow changes require INFRANET TSC
+/.github/workflows/             @infranet-tsc @ci-maintainers
+/.github/workflows/validate-manifests.yml @infranet-tsc @schema-maintainers
+/.github/workflows/sbom-attest.yml        @infranet-tsc @security-team
+/.github/workflows/s1000d-checks.yml      @air-tsc @s1000d-experts
+
+# Shared templates require TSC consensus
+/Shared/_templates/             @air-tsc @sea-tsc @space-tsc @infranet-tsc
+/Shared/_templates/index.extracted.schema.json @infranet-tsc @schema-maintainers
+
+# =============================================================================
+# PRODUCTS - AMPEL360 (AIR TRANSPORT)
+# =============================================================================
+
+# BWB-Q100 root and domain structure
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/  @air-tsc @bwb-q100-wg
+
+# Domain-specific owners
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/  @air-tsc @aerodynamics-experts
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAP/  @air-tsc @airport-integration-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/CCC/  @air-tsc @cabin-systems-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/CQH/  @infranet-tsc @hydrogen-experts @export-control-officer
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/DDD/  @air-tsc @systems-engineers
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EDI/  @infranet-tsc @electronics-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EEE/  @air-tsc @electrical-systems-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/EER/  @air-tsc @sustainability-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIF/  @infranet-tsc @manufacturing-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/IIS/  @infranet-tsc @software-architects @security-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/LCC/  @infranet-tsc @controls-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/LIB/  @infranet-tsc @supply-chain-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/MEC/  @air-tsc @mechanical-systems-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/OOO/  @infranet-tsc @ontology-team
+/PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/PPP/  @air-tsc @propulsion-team @export-control-officer
+
+# Space tourism aircraft
+/PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/  @space-tsc @plus-wg
+
+# =============================================================================
+# PRODUCTS - GAIA-AIR (UAM/UAV)
+# =============================================================================
+
+/PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/  @air-tsc @ethics-team @autonomy-experts
+/PRODUCTS/GAIA-AIR/HYDROBOTS/           @air-tsc @sea-tsc @hybrid-systems-team
+/PRODUCTS/GAIA-AIR/IDRO_WALL/           @air-tsc @aqua-os-wg
+
+# =============================================================================
+# PRODUCTS - GAIA-SEA (MARINE)
+# =============================================================================
+
+/PRODUCTS/GAIA-SEA/GAIA-SOUND/  @sea-tsc @marine-systems-team
+
+# =============================================================================
+# PRODUCTS - GAIA-SPACE (ORBITAL)
+# =============================================================================
+
+/PRODUCTS/GAIA-SPACE/ORBITAL-MACHINES/      @space-tsc @orbital-team
+/PRODUCTS/GAIA-SPACE/SAT-CONSTELLATIONS/    @space-tsc @satellite-team
+
+# =============================================================================
+# PRODUCTS - INFRANET (INFRASTRUCTURE)
+# =============================================================================
+
+/PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/  @infranet-tsc @aqua-os-wg @security-team
+/PRODUCTS/INFRANET/LH2_CORRIDOR/      @infranet-tsc @hydrogen-experts @export-control-officer
+/PRODUCTS/INFRANET/QAIM/              @infranet-tsc @qaim-wg @quantum-experts
+/PRODUCTS/INFRANET/AOA/               @infranet-tsc @aoa-wg
+
+# =============================================================================
+# FIELDS & ENVIRONMENTS
+# =============================================================================
+
+/FIELDS/                @air-tsc @sea-tsc @space-tsc @infranet-tsc
+/ENVIRONMENTS/          @air-tsc @sea-tsc @space-tsc @infranet-tsc
+
+# =============================================================================
+# SCRIPTS & TOOLING
+# =============================================================================
+
+/scripts/               @infranet-tsc @ci-maintainers
+/verify_installation.py @infranet-tsc
+
+# =============================================================================
+# DOCUMENTATION
+# =============================================================================
+
+/README.md              @ideale-council @air-tsc
+/CONTRIBUTING.md        @ideale-council
+/SECURITY.md            @ideale-council @security-team
+
+# =============================================================================
+# SENSITIVE PATTERNS (REQUIRE ELEVATED REVIEW)
+# =============================================================================
+
+# Any file containing export control markers
+**/*CONTROLLED*         @export-control-officer @ideale-council
+**/*ITAR*               @export-control-officer @ideale-council
+
+# Cryptographic implementations
+**/crypto/**            @security-team @export-control-officer
+**/security/**          @security-team
+
+# SBOM and attestation files
+**/sbom/**              @security-team @supply-chain-team
+**/signatures/**        @security-team
+
+# =============================================================================
+# DEFAULT REVIEWERS
+# =============================================================================
+
+# Fallback: all PRs require at least one TSC member review
+*  @air-tsc @sea-tsc @space-tsc @infranet-tsc
