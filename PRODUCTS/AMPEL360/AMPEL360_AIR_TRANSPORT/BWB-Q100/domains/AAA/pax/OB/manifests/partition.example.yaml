@@ -10,10 +10,13 @@ maintainer: "ASI-T Avionics"
 bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: MAL-EEM
 utcs_mi: v5.0
-canonical_hash: "sha256:abc123def456789012345678901234567890123456789012345678901234567890"
+canonical_hash: "sha256:abc123def4567890abcdef1234567890abcdef1234567890abcdef1234567890"
 ---
 package_name: "A661_CDS_DisplayServer"
+canonical_hash: "sha256:abc123def4567890abcdef1234567890abcdef1234567890abcdef1234567890"
+sbom_hash: "sha256:def4567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
 utcs_signature: "signature-value-placeholder"
+security_policy_id: "policy-001"
 package:
   name: "A661_CDS_DisplayServer"
   kind: "OB-PARTITION"
@@ -45,8 +48,10 @@ security:
   constraints:
     hm_policy: "partition_hm_policy_v1"
 evidence:
+  canonical_hash: "sha256:abc123def4567890abcdef1234567890abcdef1234567890abcdef1234567890"
   sbom:
     path: "../../OB/sbom/A661_CDS_DisplayServer.spdx.json"
+    hash: "sha256:def4567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
   signatures:
     - path: "../../OB/certificates/A661_CDS_DisplayServer.sig"
       type: "cosign"
