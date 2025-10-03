@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/integration/mal-ue.schema.json",
+  "title": "MAL-UE Service Contract",
+  "description": "MAL-UE (Unit Element / Collapse) service contract schema for atomic state decision and execution",
+  "type": "object",
+  "required": ["service_id", "version", "layer", "topics", "execution", "utcs"],
+  "properties": {
+    "service_id": {
+      "type": "string",
+      "pattern": "^MAL-UE-[A-Z0-9_-]{3,}$",
+      "description": "Unique MAL-UE service identifier"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Service version following semantic versioning"
+    },
+    "layer": {
+      "type": "string",
+      "const": "UE",
+      "description": "Bridge layer designation (must be UE)"
+    },
+    "topics": {
+      "type": "object",
+      "required": ["subscribe", "publish"],
+      "properties": {
+        "subscribe": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^map/1/control/[A-Z0-9_-]+/[A-Z]{3}/[A-Z0-9_]+/UE/UE$"
+          }
+        },
+        "publish": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^map/1/telemetry/[A-Z0-9_-]+/[A-Z]{3}/[A-Z0-9_]+/UE/UE$"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "required": ["atomicity", "timeout_s"],
+      "properties": {
+        "atomicity": {
+          "type": "string",
+          "enum": ["strict", "best-effort"],
+          "description": "Execution atomicity guarantee"
+        },
+        "timeout_s": {
+          "type": "number",
+          "minimum": 0.001,
+          "maximum": 60,
+          "description": "Maximum execution time in seconds"
+        },
+        "idempotency": {
+          "type": "boolean",
+          "description": "Whether operations are idempotent"
+        },
+        "rollback": {
+          "type": "boolean",
+          "description": "Support for rollback on failure"
+        }
+      }
+    },
+    "utcs": {
+      "type": "object",
+      "required": ["require_signature", "record_backend"],
+      "properties": {
+        "require_signature": {
+          "type": "boolean",
+          "description": "Require signatures on execution results"
+        },
+        "record_backend": {
+          "type": "boolean",
+          "description": "Record all executions to backend"
+        }
+      }
+    },
+    "interfaces": {
+      "type": "object",
+      "properties": {
+        "execute": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "object",
+              "properties": {
+                "command": {"type": "string"},
+                "parameters": {"type": "object"},
+                "idempotency_key": {"type": "string"}
+              }
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "result": {"type": "object"},
+                "status": {"type": "string", "enum": ["success", "failure", "timeout"]},
+                "timestamp": {"type": "string", "format": "date-time"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "properties": {
+        "standards": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["DO-178C", "IEC-62443"]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/integration/mal-cb.schema.json",
+  "title": "MAL-CB Service Contract",
+  "description": "MAL-CB (Classical Bit / Companion Binary) service contract schema for deterministic classical computation",
+  "type": "object",
+  "required": ["service_id", "version", "layer", "topics", "computation", "utcs"],
+  "properties": {
+    "service_id": {
+      "type": "string",
+      "pattern": "^MAL-CB-[A-Z0-9_-]{3,}$",
+      "description": "Unique MAL-CB service identifier"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Service version following semantic versioning"
+    },
+    "layer": {
+      "type": "string",
+      "const": "CB",
+      "description": "Bridge layer designation (must be CB)"
+    },
+    "topics": {
+      "type": "object",
+      "required": ["subscribe", "publish"],
+      "properties": {
+        "subscribe": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^map/1/control/[A-Z0-9_-]+/[A-Z]{3}/[A-Z0-9_]+/(SI|DI)/CB$"
+          }
+        },
+        "publish": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^map/1/telemetry/[A-Z0-9_-]+/[A-Z]{3}/SYSTEMS/SI/CB$"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "computation": {
+      "type": "object",
+      "required": ["deterministic", "validation"],
+      "properties": {
+        "deterministic": {
+          "type": "boolean",
+          "const": true,
+          "description": "Computation must be deterministic"
+        },
+        "validation": {
+          "type": "object",
+          "required": ["enabled", "method"],
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "const": true,
+              "description": "Enable result validation"
+            },
+            "method": {
+              "type": "string",
+              "enum": ["redundant-computation", "checksum", "proof-validation"],
+              "description": "Validation method"
+            }
+          }
+        },
+        "solvers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["solver_id", "type"],
+            "properties": {
+              "solver_id": {
+                "type": "string",
+                "description": "Unique solver identifier"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["linear", "nonlinear", "integer", "constraint", "symbolic"],
+                "description": "Solver type"
+              },
+              "version": {
+                "type": "string",
+                "pattern": "^\\d+\\.\\d+\\.\\d+$"
+              },
+              "certified": {
+                "type": "boolean",
+                "description": "Whether solver is certified (DO-178C/DO-330)"
+              }
+            }
+          }
+        },
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "track_convergence": {
+              "type": "boolean",
+              "description": "Track solver convergence metrics"
+            },
+            "track_accuracy": {
+              "type": "boolean",
+              "description": "Track solution accuracy"
+            },
+            "track_performance": {
+              "type": "boolean",
+              "description": "Track computational performance"
+            }
+          }
+        }
+      }
+    },
+    "utcs": {
+      "type": "object",
+      "required": ["require_signature", "record_backend"],
+      "properties": {
+        "require_signature": {
+          "type": "boolean",
+          "description": "Require signatures on solutions"
+        },
+        "record_backend": {
+          "type": "boolean",
+          "description": "Record all computations to backend"
+        },
+        "bundle_format": {
+          "type": "string",
+          "enum": ["UTCS-v5.0"],
+          "description": "UTCS bundle format version"
+        }
+      }
+    },
+    "interfaces": {
+      "type": "object",
+      "properties": {
+        "solve": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "object",
+              "properties": {
+                "problem_type": {"type": "string"},
+                "parameters": {"type": "object"},
+                "constraints": {"type": "object"},
+                "tolerance": {"type": "number"}
+              }
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "solution": {"type": "object"},
+                "status": {"type": "string", "enum": ["optimal", "feasible", "infeasible", "unbounded", "error"]},
+                "metrics": {"type": "object"},
+                "timestamp": {"type": "string", "format": "date-time"}
+              }
+            }
+          }
+        },
+        "validate": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "object",
+              "properties": {
+                "solution": {"type": "object"},
+                "problem": {"type": "object"}
+              }
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "valid": {"type": "boolean"},
+                "violations": {"type": "array"},
+                "timestamp": {"type": "string", "format": "date-time"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "performance": {
+      "type": "object",
+      "properties": {
+        "max_solution_time_s": {
+          "type": "number",
+          "minimum": 0.001,
+          "description": "Maximum time allowed for solution"
+        },
+        "memory_limit_mb": {
+          "type": "number",
+          "minimum": 1,
+          "description": "Memory limit in megabytes"
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "properties": {
+        "standards": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["DO-178C", "DO-330", "IEC-62443"]
+          }
+        },
+        "verification_level": {
+          "type": "string",
+          "enum": ["A", "B", "C", "D"],
+          "description": "DO-178C verification level"
+        }
+      }
+    }
+  }
+}

@@ -39,6 +39,31 @@ This directory contains technical whitepapers, specifications, and templates tha
 - Compliance and ethics (MAL-EEM)
 - Roadmap and gates (FCR-1/FCR-2)
 
+### [Integration Whitepaper #2](./INTEGRATION_WHITEPAPER_2.md)
+
+**Title:** Integration Architecture: TFA MAP · TFA MAL · ASI-MAP (Definitive Clarification)
+
+**Author:** Amedeo Pelliccia  
+**Version:** v0.1.0 (2025-10-03)  
+**Status:** Public draft for technical review
+
+**Abstract:** Clarifies and codifies the relationship between three complementary constructs: ASI-T2 MAP (Master Application Platform - communication infrastructure), TFA MAP (Master Application Program - per-domain services), and TFA MAL (Main Application Layer - per-bridge services). Defines topic hierarchy, wire grammar, bridge flow semantics (QS→FWD→UE→FE→CB→QB), and integration contracts.
+
+**Key Topics:**
+- Three-layer architecture (Platform/Program/Layer)
+- Bridge semantics (QS→FWD→UE→FE→CB→QB)
+- Topic hierarchy and wire grammar
+- MAL service contracts (JSON schemas)
+- MAP platform contracts (control/telemetry/health/log)
+- Security & ethics (MAP-EEM/MAL-EEM)
+- UTCS v5.0 evidence integration
+- Standards alignment (S1000D/ATA, DO-178C, IEC 62443)
+
+**Artifacts:**
+- [JSON Schemas](./schemas/integration/) - MAL and MAP contract schemas
+- [Examples](./examples/mal-services/) - Sample MAL service configurations
+- [Validators](../scripts/) - Topic hierarchy and bridge flow validation scripts
+
 ---
 
 ## Templates & Schemas
@@ -128,13 +153,13 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 0.2.0 | 2025-10-03 | Added Integration Whitepaper #2 with schemas, validators, and examples |
 | 0.1.0 | 2025-10-01 | Initial release: Master Whitepaper #1, product template, finance framework |
 
 ---
 
 ## Future Whitepapers (Planned)
 
-* **Whitepaper #2:** Integration Architecture: ASI‑T2 MAP ↔ TFA Ecosystem
 * **Whitepaper #3:** QS/UTCS Provenance and Evidence Framework
 * **Whitepaper #4:** QAIM-2 Quantum-Classical Optimization Architecture
 * **Whitepaper #5:** AMPEL360 BWB Certification Strategy

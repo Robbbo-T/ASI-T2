@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/integration/map-control.schema.json",
+  "title": "ASI-T2 MAP Control Contract",
+  "description": "MAP control contract schema for deterministic command and control messages",
+  "type": "object",
+  "required": ["message_id", "version", "contract", "timestamp", "payload"],
+  "properties": {
+    "message_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique message identifier (UUID v4)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Contract version (semantic versioning)"
+    },
+    "contract": {
+      "type": "string",
+      "const": "control",
+      "description": "Contract type (must be 'control')"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Message timestamp (ISO 8601 with timezone)"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Monotonic sequence number for ordering"
+    },
+    "topic": {
+      "type": "string",
+      "pattern": "^map/1/control/[A-Z0-9_-]+/[A-Z]{3}/[A-Z0-9_]+/[A-Z]{2,3}/[A-Z]{2,3}$",
+      "description": "Full topic path"
+    },
+    "sender": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Sender identifier"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["service", "component", "user"],
+          "description": "Sender type"
+        },
+        "instance": {
+          "type": "string",
+          "description": "Instance identifier for distributed services"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "required": ["command", "parameters"],
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "Command identifier"
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Command parameters"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "description": "Idempotency key for duplicate detection"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["critical", "high", "normal", "low"],
+          "default": "normal",
+          "description": "Message priority"
+        },
+        "timeout_ms": {
+          "type": "number",
+          "minimum": 1,
+          "description": "Command timeout in milliseconds"
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "required": ["signature"],
+      "properties": {
+        "signature": {
+          "type": "object",
+          "required": ["algorithm", "value", "key_id"],
+          "properties": {
+            "algorithm": {
+              "type": "string",
+              "enum": ["Ed25519", "ECDSA-P256"],
+              "description": "Signature algorithm"
+            },
+            "value": {
+              "type": "string",
+              "description": "Base64-encoded signature"
+            },
+            "key_id": {
+              "type": "string",
+              "description": "Signing key identifier"
+            }
+          }
+        },
+        "encryption": {
+          "type": "object",
+          "properties": {
+            "algorithm": {
+              "type": "string",
+              "enum": ["X25519-ChaCha20-Poly1305", "AES-256-GCM"],
+              "description": "Encryption algorithm"
+            },
+            "recipient_key_id": {
+              "type": "string",
+              "description": "Recipient public key identifier"
+            }
+          }
+        }
+      }
+    },
+    "ack": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether acknowledgment is required"
+        },
+        "timeout_ms": {
+          "type": "number",
+          "minimum": 100,
+          "description": "Acknowledgment timeout in milliseconds"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "correlation_id": {
+          "type": "string",
+          "description": "Correlation ID for request/response tracking"
+        },
+        "causation_id": {
+          "type": "string",
+          "description": "ID of message that caused this message"
+        },
+        "trace_id": {
+          "type": "string",
+          "description": "Distributed tracing ID"
+        },
+        "context": {
+          "type": "object",
+          "description": "Additional context metadata"
+        }
+      }
+    },
+    "utcs": {
+      "type": "object",
+      "properties": {
+        "bundle_ref": {
+          "type": "string",
+          "description": "Reference to UTCS evidence bundle"
+        },
+        "hash": {
+          "type": "string",
+          "description": "Content hash (SHA-256)"
+        }
+      }
+    }
+  }
+}
