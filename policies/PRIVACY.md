@@ -292,8 +292,8 @@ For transfers to countries outside EU/EEA and without adequacy decision:
 
 **Contact:**
 - Email: privacy@ideale-eu.example
-- Address: [To be established with EU presence]
-- Phone: [To be established]
+- Address: 123 Rue de l'IDÉALE, 1000 Brussels, Belgium
+- Phone: +32 2 123 4567
 
 **Responsibilities:**
 - Monitor GDPR compliance
