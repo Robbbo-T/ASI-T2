@@ -166,7 +166,7 @@ class TokenLedger:
                     "tx_id": "GENESIS-FOUNDER",
                     "type": "founder_allocation",
                     "timestamp": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
-                    "from": self.treasury_account,
+                    "from": "genesis",
                     "to": self.founder_account,
                     "amount_deg": founder_allocation_deg,
                     "amount_tt": self.deg_to_tt(founder_allocation_deg),
