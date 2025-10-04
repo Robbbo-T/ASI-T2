@@ -1,6 +1,6 @@
 # IIS · Information Systems and Intelligence Softwares
 
-**Description:** {DESC}
+**Description:** Software systems, AI/ML, and information management
 
 ## Structure
 
