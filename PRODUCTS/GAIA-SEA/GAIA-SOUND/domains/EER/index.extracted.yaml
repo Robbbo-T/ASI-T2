@@ -1,0 +1,40 @@
+schema_version: "1.0"
+product: "PRODUCTS/GAIA-SEA/GAIA-SOUND"
+domain: "EER"
+project: "PRODUCTS/GAIA-SEA/GAIA-SOUND"
+brex:
+  ok: false
+  issues:
+    - "missing:id"
+    - "missing:project"
+    - "missing:artifact"
+    - "missing:llc"
+    - "missing:classification"
+    - "missing:version"
+    - "missing:release_date"
+    - "missing:maintainer"
+    - "missing:bridge"
+    - "missing:ethics_guard"
+    - "missing:utcs_mi"
+    - "missing:canonical_hash"
+  warnings:
+
+extracted:
+  ATA:
+
+  CAx:
+    - "CAX"
+  QOx:
+    - "QUBO"
+  PAx:
+    OB:
+
+    OFF:
+
+generated:
+  ata: 0
+  cax: 0
+  qox: 0
+  pax: 0
+  files: 0
+timestamp: "2025-10-04T01:11:45.950104Z"

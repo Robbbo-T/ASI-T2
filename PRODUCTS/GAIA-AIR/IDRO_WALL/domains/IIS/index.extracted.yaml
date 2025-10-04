@@ -1,3 +1,5 @@
+schema_version: "1.0"
+product: "PRODUCTS/GAIA-AIR/IDRO_WALL"
 domain: "IIS"
 project: "PRODUCTS/GAIA-AIR/IDRO_WALL"
 brex:
@@ -29,9 +31,9 @@ extracted:
     OFF:
       - "DOCKER"
 generated:
-  ata: 2
-  cax: 3
-  qox: 6
-  pax: 1
-  files: 12
-timestamp: "2025-10-01T08:34:20.326740Z"
+  ata: 0
+  cax: 0
+  qox: 0
+  pax: 0
+  files: 0
+timestamp: "2025-10-04T01:11:45.948578Z"

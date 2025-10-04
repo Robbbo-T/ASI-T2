@@ -1,3 +1,5 @@
+schema_version: "1.0"
+product: "PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS"
 domain: "IIS"
 project: "PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM"
 brex:
@@ -39,9 +41,9 @@ extracted:
     OFF:
 
 generated:
-  ata: 4
-  cax: 2
+  ata: 0
+  cax: 0
   qox: 0
   pax: 0
-  files: 6
-timestamp: "2025-09-26T07:56:34.120009Z"
+  files: 0
+timestamp: "2025-10-04T01:11:45.930039Z"

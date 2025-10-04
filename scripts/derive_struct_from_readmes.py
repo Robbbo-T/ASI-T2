@@ -124,6 +124,24 @@ def infer_project_from_path(domain_dir: Path):
             pass
     return "UNKNOWN"
 
+def infer_product_from_path(domain_dir: Path):
+    """Extract full product path from domain directory path.
+    Returns path up to the product level (before /domains/)."""
+    parts = list(domain_dir.parts)
+    if "domains" in parts:
+        i = parts.index("domains")
+        # Find where PRODUCTS starts
+        if "PRODUCTS" in parts:
+            j = parts.index("PRODUCTS")
+            return "/".join(parts[j:i])
+        return "/".join(parts[:i])
+    if "PRODUCTS" in parts:
+        i = parts.index("PRODUCTS")
+        # Try to get up to 4 segments after PRODUCTS
+        segs = parts[i:i+4] if len(parts) > i+3 else parts[i:]
+        return "/".join(segs)
+    return "UNKNOWN"
+
 # ------------------------------ YAML mini-dumper ------------------------------
 
 def yaml_dump(obj) -> str:
@@ -264,6 +282,7 @@ def derive_for_domain(domain_dir: Path, force=False, dry=False, loglvl="INFO", b
 
     atas, cax, qox, pax_ob, pax_off = extract_signals(text)
     project = infer_project_from_path(domain_dir)
+    product = infer_product_from_path(domain_dir)
 
     created = {"ata":0,"cax":0,"qox":0,"pax":0,"files":0}
     wrote_any = False
@@ -348,6 +367,8 @@ def derive_for_domain(domain_dir: Path, force=False, dry=False, loglvl="INFO", b
 
     # Índice por dominio
     idx = {
+        "schema_version": "1.0",
+        "product": product,
         "domain": domain_dir.name,
         "project": project,
         "brex": {
