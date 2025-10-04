@@ -47,6 +47,15 @@ Defines composite laminate layups including:
 - Cure profiles and quality requirements
 - Allowables and applications
 
+### crack_event.schema.json
+Defines crack detection and characterization events from structural health monitoring including:
+- Event identification and timestamp
+- Location and component identification
+- Detection method and sensor characteristics
+- Crack characteristics (length, depth, growth rate)
+- Severity classification and recommended actions
+- Validation status and provenance
+
 ## Schema Features
 
 All schemas include:
