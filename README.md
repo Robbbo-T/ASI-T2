@@ -11,7 +11,7 @@ bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: MAL-EEM
 utcs_mi: v5.0
 framework: IDEALE.eu
-ideale_pillars:
+ideale.eu_pillars:
   - Intelligence
   - Defense
   - Energy
