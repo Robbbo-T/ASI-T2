@@ -40,14 +40,14 @@ def ok(name): return print("OK")
 
 def lint_file(p: pathlib.Path) -> bool:
     name = p.name
-    # Ubicación
+    # Location
     try:
         p.resolve().relative_to(pathlib.Path(ENFORCED_ROOT).resolve())
     except Exception:
         fail(p, f"Archivo fuera del árbol del dominio: {ENFORCED_ROOT}")
         return False
 
-    # Detección de árbol
+    # Directory detection
     s = str(p.as_posix())
     if "/PLM/" in s:
         if RE_CAX.match(name) or DM.match(name): return True
@@ -62,7 +62,7 @@ def lint_file(p: pathlib.Path) -> bool:
         if RE_DELS.match(name): return True
         fail(p, "DELs: nombre no conforme a Deliveries"); return False
 
-    # Ignorar policy/tests
+    # Ignore policy/tests
     if "/policy/" in s or "/tests/" in s: return True
 
     fail(p, "Ruta no clasificada (esperado PLM/QUANTUM_OA/PAx/DELs)")
