@@ -238,7 +238,7 @@ class TokenLedger:
             "amount_deg": amount_deg,
             "amount_tt": self.deg_to_tt(amount_deg),
             "sustain_fee_deg": sustain_fee_deg,
-            "sustain_fee_tt": self.deg_to_tt(sustain_fee_deg) if sustain_fee_deg > 0 else 0
+            "sustain_fee_tt": self.deg_to_tt(sustain_fee_deg)
         }
         self.ledger["transactions"].append(transaction)
         
