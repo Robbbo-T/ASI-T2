@@ -175,17 +175,17 @@ Product specifications using this template can be found in:
 ## Related Documentation
 
 ### Master Whitepaper
-* [Master Whitepaper #1](../MASTER_WHITEPAPER_1.md) - Complete technical specification
-* [Whitepaper Section 4](../MASTER_WHITEPAPER_1.md#4-products-vision-state-interfaces-evidence) - Product specifications
-* [Appendix A](../MASTER_WHITEPAPER_1.md#a-template-specproductyaml) - Template reference
+* [Master Whitepaper #1](../../MASTER_WHITEPAPER_1.md) - Complete technical specification
+* [Whitepaper Section 4](../../MASTER_WHITEPAPER_1.md#4-products-vision-state-interfaces-evidence) - Product specifications
+* [Appendix A](../../MASTER_WHITEPAPER_1.md#a-template-specproductyaml) - Template reference
 
 ### Standards & Compliance
-* [Section 6](../MASTER_WHITEPAPER_1.md#6-vv-and-safety) - V&V and safety methodology
-* [Section 7](../MASTER_WHITEPAPER_1.md#7-compliance-ethics--export) - Compliance and ethics
+* [Section 6](../../MASTER_WHITEPAPER_1.md#6-vv-and-safety) - V&V and safety methodology
+* [Section 7](../../MASTER_WHITEPAPER_1.md#7-compliance-ethics--export) - Compliance and ethics
 
 ### Evidence & Gates
-* [Section 5](../MASTER_WHITEPAPER_1.md#5-evidence--provenance-qsutcs) - Evidence pipeline
-* [Section 8](../MASTER_WHITEPAPER_1.md#8-roadmap--gates) - Roadmap and gates
+* [Section 5](../../MASTER_WHITEPAPER_1.md#5-evidence--provenance-qsutcs) - Evidence pipeline
+* [Section 8](../../MASTER_WHITEPAPER_1.md#8-roadmap--gates) - Roadmap and gates
 
 ---
 
