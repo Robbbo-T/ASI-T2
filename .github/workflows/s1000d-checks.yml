@@ -46,8 +46,21 @@ jobs:
           # Find all XML files in ata/ directories
           find . -path "*/ata/ATA-*/*.xml" -type f > s1000d-files.txt
           
-          # Exclude BREX and DMRL from validation (they are meta-files)
-          grep -v "BREX.xml" s1000d-files.txt | grep -v "DMRL.xml" > data-modules.txt || true
+          # Exclude files that are not S1000D data modules:
+          # - BREX files (use brexIdent, not dmIdent)
+          # - DMRL files (use dmrlIdent, not dmIdent)
+          # - Test case files (not S1000D format)
+          # - Configuration files like schedule.xml, partition.xml
+          # - Schema catalog files
+          grep -v "BREX" s1000d-files.txt | \
+            grep -v "brex" | \
+            grep -v "DMRL" | \
+            grep -v "dmrl" | \
+            grep -v "test_case" | \
+            grep -v "tc_" | \
+            grep -v "schedule.xml" | \
+            grep -v "partition.xml" | \
+            grep -v "catalog.xml" > data-modules.txt || true
           
           if [ -s data-modules.txt ]; then
               echo "Found $(wc -l < data-modules.txt) data modules"
@@ -230,15 +243,23 @@ jobs:
           echo "### Status" >> $GITHUB_STEP_SUMMARY
           echo "✅ Basic XML validation complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Notes" >> $GITHUB_STEP_SUMMARY
+          echo "### Excluded Files" >> $GITHUB_STEP_SUMMARY
+          echo "The following file types are excluded from data module validation:" >> $GITHUB_STEP_SUMMARY
+          echo "- BREX files (use brexIdent, not dmIdent)" >> $GITHUB_STEP_SUMMARY
+          echo "- DMRL files (use dmrlIdent, not dmIdent)" >> $GITHUB_STEP_SUMMARY
+          echo "- Test case files (not S1000D format)" >> $GITHUB_STEP_SUMMARY
+          echo "- Configuration files (schedule.xml, partition.xml)" >> $GITHUB_STEP_SUMMARY
+          echo "- Schema catalog files" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Validation Checks" >> $GITHUB_STEP_SUMMARY
           echo "This workflow performs basic S1000D validation:" >> $GITHUB_STEP_SUMMARY
           echo "- XML well-formedness" >> $GITHUB_STEP_SUMMARY
-          echo "- Required element presence" >> $GITHUB_STEP_SUMMARY
+          echo "- Required element presence (dmIdent for data modules)" >> $GITHUB_STEP_SUMMARY
           echo "- Security classification checks" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "For full S1000D conformance, consider:" >> $GITHUB_STEP_SUMMARY
           echo "- Commercial BREX validators (oXygen XML, Arbortext)" >> $GITHUB_STEP_SUMMARY
-          echo "- S1000D Issue 5.0 XSD schema validation" >> $GITHUB_STEP_SUMMARY
+          echo "- S1000D Issue 5.0/6.0 XSD schema validation" >> $GITHUB_STEP_SUMMARY
           echo "- Business rule validation against BREX" >> $GITHUB_STEP_SUMMARY
       
       - name: Placeholder for future enhancements
