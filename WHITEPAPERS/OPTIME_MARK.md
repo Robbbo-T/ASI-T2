@@ -88,7 +88,7 @@ optime_verification:
   level: L2
   date: 2025-10-04
   ci_job: "ci/optime-verify#1842"
-  redteam_report: "pax/OFF/attestations/optime_redteam_2025Q4.pdf"
+  redteam_report: "<path-to-redteam-report>/optime_redteam_2025Q4.pdf"
   perf_budget_p95_ms: 18
   reviewer: "ExampleAuditingCorp"
 ```
