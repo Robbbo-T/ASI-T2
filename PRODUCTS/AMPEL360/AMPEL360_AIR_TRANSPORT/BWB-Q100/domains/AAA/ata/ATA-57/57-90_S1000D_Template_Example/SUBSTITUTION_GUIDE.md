@@ -270,8 +270,8 @@ done
 cd ..
 
 cd PUB
-for f in *BWQ1-57-90-0*.xml; do
-  new_name=$(echo "$f" | sed "s/BWQ1/${NEW_MIC}/g" | sed "s/57-90-0/${NEW_SYS}-${NEW_SUBSYS}-${NEW_SUBSUBSYS}/g")
+for f in *BWQ1-A-57-90-00*.xml; do
+  new_name=$(echo "$f" | sed "s/BWQ1/${NEW_MIC}/g" | sed "s/57-90-00/${NEW_SYS}-${NEW_SUBSYS}-${NEW_SUBSUBSYS}/g")
   mv "$f" "$new_name"
   echo "Renamed: $f -> $new_name"
 done
