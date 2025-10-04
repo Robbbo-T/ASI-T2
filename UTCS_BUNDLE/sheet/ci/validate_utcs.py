@@ -35,7 +35,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 BUNDLE_ROOT = (SCRIPT_DIR / "../..").resolve()
 
 SCHEMA_V5_PATH = BUNDLE_ROOT / "content/schemas/utcs.manifest.v5.json"
-SHA256_PATTERN = re.compile(r"^[a-f0-9]{64}$", re.IGNORECASE)
+SHA256_PATTERN = re.compile(r"^[a-f0-9]{64}$")
 BRIDGE_PATTERN = re.compile(r"^QS→FWD→UE→FE→CB→QB$")
 SEMVER_PATTERN = re.compile(r"^\d+\.\d+\.\d+$")
 
