@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6-0/xml_schema_flat/procedural.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWBQ100" systemDiffCode="A"
+                systemCode="57" subSystemCode="10" subSubSystemCode="10"
+                assyCode="00" disassyCode="01" disassyCodeVariant="A"
+                infoCode="720" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <dmTitle>
+          <techName>Forward Spar (57-10-10)</techName>
+          <infoName>Removal/Installation — Access Panel with QSS Disconnect</infoName>
+        </dmTitle>
+        <security securityClassification="01-unclassified"/>
+        <responsiblePartnerCompany enterpriseCode="IDLEU">
+          <enterpriseName>IDEALE.eu</enterpriseName>
+        </responsiblePartnerCompany>
+        <originator enterpriseCode="IDLEU">
+          <enterpriseName>IDEALE.eu</enterpriseName>
+        </originator>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <applic id="APPL-BWBQ100-BASE-0001-9999"><assert/></applic>
+      <applicCrossRefTable>
+        <applicCrossRef applicPropertyIdent="APPL-BWBQ100-BASE-0001-9999">
+          <applicText>BWB Q100 — Baseline — MSN 0001–9999</applicText>
+        </applicCrossRef>
+      </applicCrossRefTable>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <procedure>
+      <preliminaryRqmts>
+        <safetyRqmts>
+          <warning><para>Do not apply excessive prying force; sealing surfaces can be damaged.</para></warning>
+          <caution><para>Protect adjacent structure and QSS leads when removing fasteners.</para></caution>
+          <note><para>Tag and retain removed hardware if re-use is permitted by standard practices.</para></note>
+        </safetyRqmts>
+
+        <reqSupportEquips>
+          <reqSupportEquip><name>Electric/pneumatic screwdriver with torque control</name><quantity>1</quantity></reqSupportEquip>
+          <reqSupportEquip><name>Sealant scraper (non-metallic)</name><quantity>1</quantity></reqSupportEquip>
+          <reqSupportEquip><name>Portable lighting</name><quantity>1</quantity></reqSupportEquip>
+        </reqSupportEquips>
+
+        <reqConsumables>
+          <reqConsumable><name>Approved sealant (panel perimeter)</name><quantity>as required</quantity></reqConsumable>
+          <reqConsumable><name>Cleaning solvent &amp; lint-free cloths</name><quantity>as required</quantity></reqConsumable>
+        </reqConsumables>
+
+        <reqSpares>
+          <reqSpare><name>Access panel fastener kit (per IPC)</name><quantity>1</quantity></reqSpare>
+        </reqSpares>
+
+        <refs>
+          <dmRef>
+            <dmRefIdent>
+              <dmCode modelIdentCode="BWBQ100" systemDiffCode="A"
+                      systemCode="57" subSystemCode="10" subSubSystemCode="10"
+                      assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                      infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+            </dmRefIdent>
+            <dmRefAddress>
+              <dmTitle><techName>Forward Spar</techName><infoName>Inspection — Access, QSS Methods, Intervals</infoName></dmTitle>
+            </dmRefAddress>
+          </dmRef>
+          <externalPubRef>
+            <pubRefIdent><pubRefId>STD-STRUCT-TORQUE</pubRefId></pubRefIdent>
+            <pubRefAddress><pubRefTitle>Standard Practices — Fastener Torque and Re-use</pubRefTitle></pubRefAddress>
+          </externalPubRef>
+        </refs>
+      </preliminaryRqmts>
+
+      <mainProcedure>
+        <proceduralStep>
+          <title>Removal</title>
+          <para>(1) Identify and mark the panel position relative to structure for alignment on installation.</para>
+          <para>(2) Remove fasteners around the perimeter in sequence.</para>
+          <para>(3) Support the panel during final fastener removal to prevent distortion or damage.</para>
+          <para>(4) Break any sealant bond carefully using a non-metallic scraper; lift the panel clear.</para>
+          <figure>
+            <title>Typical Access Panel — Removal Sequence</title>
+            <graphic infoEntityIdent="FIG-57-10-720-REMOVAL"/>
+          </figure>
+        </proceduralStep>
+
+        <proceduralStep>
+          <title>QSS Disconnect (if present)</title>
+          <para>(1) Label QSS connectors and note channel IDs.</para>
+          <para>(2) Disconnect QSS electrical/optical interfaces per local connector practice.</para>
+          <note><para>Persist connector mapping in maintenance records.</para></note>
+        </proceduralStep>
+
+        <proceduralStep>
+          <title>Installation</title>
+          <para>(1) Clean mating surfaces; remove old sealant and debris.</para>
+          <para>(2) Apply a thin, continuous bead of approved sealant to the panel perimeter.</para>
+          <para>(3) Position panel, align marks, insert fasteners finger-tight.</para>
+          <para>(4) Torque fasteners to the specified value in a criss-cross pattern. Refer to <externalPubRefRef>STD-STRUCT-TORQUE</externalPubRefRef>.</para>
+          <para>(5) Reconnect QSS connectors; verify continuity/optical loss as applicable.</para>
+          <figure>
+            <title>Typical Access Panel — Installation Sequence</title>
+            <graphic infoEntityIdent="FIG-57-10-720-INSTALL"/>
+          </figure>
+        </proceduralStep>
+      </mainProcedure>
+
+      <concludingRqmts>
+        <closeRqmts>
+          <inspection>
+            <para>Verify panel flushness and sealing; confirm QSS health status is nominal.</para>
+          </inspection>
+          <restore>
+            <para>Remove protective coverings; return structure to serviceable condition.</para>
+          </restore>
+        </closeRqmts>
+      </concludingRqmts>
+    </procedure>
+  </content>
+</dmodule>

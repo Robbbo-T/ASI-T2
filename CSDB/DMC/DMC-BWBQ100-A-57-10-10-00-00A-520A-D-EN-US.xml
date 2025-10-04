@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6-0/xml_schema_flat/procedural.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWBQ100" systemDiffCode="A"
+                systemCode="57" subSystemCode="10" subSubSystemCode="10"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <dmTitle>
+          <techName>Forward Spar (57-10-10)</techName>
+          <infoName>Inspection — Access, QSS Methods, Intervals</infoName>
+        </dmTitle>
+        <security securityClassification="01-unclassified"/>
+        <responsiblePartnerCompany enterpriseCode="IDLEU">
+          <enterpriseName>IDEALE.eu</enterpriseName>
+        </responsiblePartnerCompany>
+        <originator enterpriseCode="IDLEU">
+          <enterpriseName>IDEALE.eu</enterpriseName>
+        </originator>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <applic id="APPL-BWBQ100-BASE-0001-9999"><assert/></applic>
+      <applicCrossRefTable>
+        <applicCrossRef applicPropertyIdent="APPL-BWBQ100-BASE-0001-9999">
+          <applicText>BWB Q100 — Baseline — MSN 0001–9999</applicText>
+        </applicCrossRef>
+      </applicCrossRefTable>
+      <remarks>
+        <simplePara>TFA: tfa/bwbq100/qs/{strain|acoustic}/{FS-INB|FS-MID|FS-OUTB}</simplePara>
+        <simplePara>QSS es un producto de ingeniería de IDEALE.eu; este DM describe su uso en inspección.</simplePara>
+      </remarks>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <procedure>
+      <preliminaryRqmts>
+        <safetyRqmts>
+          <warning><para>De-energize any powered QSS interface before opening access.</para></warning>
+          <caution><para>Protect sensor leads and surface finish during inspection.</para></caution>
+          <note><para>Clean the inspection area; contaminants can mask indications.</para></note>
+        </safetyRqmts>
+
+        <reqSupportEquips>
+          <reqSupportEquip><name>Portable lighting</name><quantity>1</quantity></reqSupportEquip>
+          <reqSupportEquip><name>QSS diagnostics interface (TFA bridge)</name><quantity>1</quantity></reqSupportEquip>
+          <reqSupportEquip><name>Ultrasonic (5 MHz) / Eddy Current (HF)</name><quantity>1</quantity></reqSupportEquip>
+        </reqSupportEquips>
+
+        <reqConsumables>
+          <reqConsumable><name>Approved cleaning solvent &amp; lint-free cloths</name><quantity>as required</quantity></reqConsumable>
+        </reqConsumables>
+
+        <refs>
+          <dmRef>
+            <dmRefIdent>
+              <dmCode modelIdentCode="BWBQ100" systemDiffCode="A"
+                      systemCode="57" subSystemCode="10" subSubSystemCode="10"
+                      assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                      infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+            </dmRefIdent>
+            <dmRefAddress>
+              <dmTitle><techName>Forward Spar</techName><infoName>General Description — QSS</infoName></dmTitle>
+            </dmRefAddress>
+          </dmRef>
+          <externalPubRef>
+            <pubRefIdent><pubRefId>STD-STRUCT-INSPECT</pubRefId></pubRefIdent>
+            <pubRefAddress><pubRefTitle>Structural Inspection Standard Practices</pubRefTitle></pubRefAddress>
+          </externalPubRef>
+        </refs>
+      </preliminaryRqmts>
+
+      <mainProcedure>
+        <proceduralStep>
+          <title>Open Access and Connect QSS</title>
+          <para>Open forward-spar access points. Connect QSS diagnostics to the TFA topics for the target station.</para>
+        </proceduralStep>
+
+        <proceduralStep>
+          <title>General Visual Inspection (GVI)</title>
+          <para>Inspect caps, web, stiffeners, fastener lines, and around QSS bonds for cracks, fretting, sealant degradation, or coating damage.</para>
+        </proceduralStep>
+
+        <proceduralStep>
+          <title>QSS Health Check</title>
+          <para>Stream strain/acoustic data; verify baseline signatures are within limits. Flag deviations above configured thresholds.</para>
+          <note><para>Persist the data pack with UTCS signature and SHA-256 hash.</para></note>
+        </proceduralStep>
+
+        <proceduralStep>
+          <title>Detailed / NDT as Required</title>
+          <para>Escalate to UT/EC where QSS or visual cues indicate anomalies.</para>
+        </proceduralStep>
+
+        <proceduralStep>
+          <title>Intervals and Triggers</title>
+          <para>Use the approved maintenance program intervals; treat QSS anomaly flags as additional triggers.</para>
+        </proceduralStep>
+      </mainProcedure>
+
+      <concludingRqmts>
+        <closeRqmts>
+          <inspection><para>Record QSS status, anomaly IDs, UT/EC results, and locations.</para></inspection>
+          <restore><para>Close access, restore QSS connectors, clear faults.</para></restore>
+        </closeRqmts>
+      </concludingRqmts>
+    </procedure>
+  </content>
+</dmodule>

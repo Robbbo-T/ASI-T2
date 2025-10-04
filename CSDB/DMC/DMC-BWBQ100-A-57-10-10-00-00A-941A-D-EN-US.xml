@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ipd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6-0/xml_schema_flat/ipd.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWBQ100" systemDiffCode="A"
+                systemCode="57" subSystemCode="10" subSubSystemCode="10"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <dmTitle>
+          <techName>Forward Spar (57-10-10)</techName>
+          <infoName>Illustrated Parts — QSS Sensor Patch Kit</infoName>
+        </dmTitle>
+        <security securityClassification="01-unclassified"/>
+        <responsiblePartnerCompany enterpriseCode="IDLEU">
+          <enterpriseName>IDEALE.eu</enterpriseName>
+        </responsiblePartnerCompany>
+        <originator enterpriseCode="IDLEU">
+          <enterpriseName>IDEALE.eu</enterpriseName>
+        </originator>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <applic id="APPL-BWBQ100-BASE-0001-9999"><assert/></applic>
+      <applicCrossRefTable>
+        <applicCrossRef applicPropertyIdent="APPL-BWBQ100-BASE-0001-9999">
+          <applicText>BWB Q100 — Baseline — MSN 0001–9999</applicText>
+        </applicCrossRef>
+      </applicCrossRefTable>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <catalog>
+      <figure>
+        <title>QSS Patch Locations — Forward Spar</title>
+        <graphic infoEntityIdent="FIG-57-10-10-QSS-PATCHES"/>
+      </figure>
+      <spares>
+        <spare>
+          <catalogSeqNumber>FS-INB-01</catalogSeqNumber>
+          <descrForIllustration>QSS Patch — Inboard Station</descrForIllustration>
+          <partRef>
+            <partNumber>QSS-FS-INB-01</partNumber>
+            <itemIdentData manufacturerCode="IDLEU"/>
+          </partRef>
+          <qtyPerNextHigherAssy>1</qtyPerNextHigherAssy>
+        </spare>
+        <spare>
+          <catalogSeqNumber>FS-MID-01</catalogSeqNumber>
+          <descrForIllustration>QSS Patch — Mid Station</descrForIllustration>
+          <partRef>
+            <partNumber>QSS-FS-MID-01</partNumber>
+            <itemIdentData manufacturerCode="IDLEU"/>
+          </partRef>
+          <qtyPerNextHigherAssy>1</qtyPerNextHigherAssy>
+        </spare>
+        <spare>
+          <catalogSeqNumber>FS-OUTB-01</catalogSeqNumber>
+          <descrForIllustration>QSS Patch — Outboard Station</descrForIllustration>
+          <partRef>
+            <partNumber>QSS-FS-OUTB-01</partNumber>
+            <itemIdentData manufacturerCode="IDLEU"/>
+          </partRef>
+          <qtyPerNextHigherAssy>1</qtyPerNextHigherAssy>
+        </spare>
+        <spare>
+          <catalogSeqNumber>ADH-SET</catalogSeqNumber>
+          <descrForIllustration>Adhesive/Primer Set (QSS bonding)</descrForIllustration>
+          <partRef>
+            <partNumber>QSS-ADH-KIT-A</partNumber>
+            <itemIdentData manufacturerCode="IDLEU"/>
+          </partRef>
+          <qtyPerNextHigherAssy>1</qtyPerNextHigherAssy>
+        </spare>
+      </spares>
+    </catalog>
+  </content>
+</ipd>
