@@ -1,0 +1,152 @@
+name: Filename Policy
+
+# Validates S1000D DM and CAx filenames against ASI-T2 standards
+# - DM: S1000D Issue 5.0/6.0 naming convention
+# - CAx: CAD/CAE/CAM/CAV/CMP with ATA short-code 5710 (57-10)
+
+on:
+  pull_request:
+    paths:
+      - '**.xml'
+      - '**.step'
+      - '**.stp'
+      - '**.sldprt'
+      - '**.sldasm'
+      - '**.ipt'
+      - '**.iam'
+      - '**.dwg'
+      - '**.dxf'
+      - '**.pdf'
+      - '**.inp'
+      - '**.cdb'
+      - '**.cas'
+      - '**.dat'
+      - '**.fem'
+      - '**.nas'
+      - '**.nc'
+      - '**.eia'
+      - '**.apt'
+      - '**.cl'
+      - '**.cls'
+      - '**.qif'
+      - '**.dmis'
+      - '**.csv'
+      - '**.json'
+      - 'tools/lint_names.py'
+      - '.github/workflows/filename-policy.yml'
+  push:
+    branches: [main, 'copilot/**']
+    paths:
+      - 'tools/lint_names.py'
+      - '.github/workflows/filename-policy.yml'
+
+jobs:
+  lint-names:
+    name: Validate Filenames
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for PR diff
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Get changed files
+        id: changed-files
+        if: github.event_name == 'pull_request'
+        run: |
+          # Get list of changed files in PR
+          git fetch origin ${{ github.base_ref }}
+          changed_files=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -E '\.(xml|step|stp|sldprt|sldasm|ipt|iam|dwg|dxf|pdf|inp|cdb|cas|dat|fem|nas|nc|eia|apt|cl|cls|qif|dmis|csv|json)$' || true)
+          
+          if [ -n "$changed_files" ]; then
+            echo "Found changed CAx/DM files:"
+            echo "$changed_files"
+            echo "$changed_files" > changed-files.txt
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "No CAx/DM files changed"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Run filename linter (PR mode)
+        if: github.event_name == 'pull_request' && steps.changed-files.outputs.has_changes == 'true'
+        run: |
+          echo "🔍 Validating changed filenames..."
+          python3 -m pip install --upgrade pip
+          
+          # Run linter on changed files
+          if [ -f changed-files.txt ]; then
+            python3 tools/lint_names.py $(cat changed-files.txt)
+          fi
+      
+      - name: Run filename linter (full scan)
+        if: github.event_name == 'push'
+        run: |
+          echo "🔍 Validating all filenames..."
+          python3 -m pip install --upgrade pip
+          python3 tools/lint_names.py .
+      
+      - name: Generate summary
+        if: always()
+        run: |
+          echo "## Filename Policy Validation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            if [ "${{ steps.changed-files.outputs.has_changes }}" = "true" ]; then
+              file_count=$(cat changed-files.txt 2>/dev/null | wc -l || echo 0)
+              echo "- **Mode:** Pull Request (changed files only)" >> $GITHUB_STEP_SUMMARY
+              echo "- **Files checked:** $file_count" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "- **Mode:** Pull Request" >> $GITHUB_STEP_SUMMARY
+              echo "- **Result:** No CAx/DM files changed" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "- **Mode:** Full repository scan" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Supported Patterns" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**S1000D Data Modules:**" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "DMC-<MIC>-<SDC>-<SC>-<SSC>-<SSSC>-<AC><DAC>-<IC><ICV>-<ILC>-<LANG>-<COUNTRY>.xml" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**CAx Files (CAD/CAE/CAM/CAV/CMP):**" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "<DISC>-<MIC>-<DOMAIN><ATA>-<SCOPE>-<HAND?>-<EFFT?>-<LIFE?>-r<REV>.<EXT>" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Domains:**" >> $GITHUB_STEP_SUMMARY
+          echo "- **CAD:** ASSY, PRT, DRW, MBD" >> $GITHUB_STEP_SUMMARY
+          echo "- **CAE:** FEM, CFD, EMI" >> $GITHUB_STEP_SUMMARY
+          echo "- **CAM:** NC, APT, OPR, FIX, TOOL, SET (Manufacturing)" >> $GITHUB_STEP_SUMMARY
+          echo "- **CAV:** QIP, QIF, DMIS, MEAS, MSA, CERT (Quality V&V)" >> $GITHUB_STEP_SUMMARY
+          echo "- **CMP:** EPR, RECY, TREAT, DISP, MATREC (EoL/Recycling)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**ATA Code:** 57xx (e.g., 5710 for Wing Structure)" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Report status
+        if: always()
+        run: |
+          if [ ${{ job.status }} = "success" ]; then
+            echo "✅ All filenames comply with ASI-T2 standards"
+          else
+            echo "❌ Some filenames do not comply - see errors above"
+            echo ""
+            echo "Common issues:"
+            echo "  • Use 4-digit ATA code (5710), not 571 or 571010"
+            echo "  • SCOPE must be UPPERCASE kebab-case (A-Z, 0-9, -)"
+            echo "  • No leading/trailing/consecutive dashes in SCOPE"
+            echo "  • DISC must match domain (e.g., MBD is CAD, not CAE)"
+            echo ""
+            echo "For migration help, run:"
+            echo "  python3 scripts/migrate_ata_shortcode.py --dry-run ."
+          fi

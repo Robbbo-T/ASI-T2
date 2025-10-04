@@ -8,6 +8,12 @@ repos:
       - id: check-yaml
   - repo: local
     hooks:
+      - id: asi-t2-filename-policy
+        name: ASI-T2 filename policy (DM + CAx)
+        entry: python3 tools/lint_names.py
+        language: system
+        pass_filenames: true
+        files: '\.(xml|step|stp|sldprt|sldasm|ipt|iam|dwg|dxf|pdf|inp|cdb|cas|dat|fem|nas|nc|eia|apt|cl|cls|qif|dmis|csv|json)$'
       - id: structure-verify
         name: structure-verify
         entry: python3 scripts/verify_structure.py
