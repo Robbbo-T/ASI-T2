@@ -28,9 +28,14 @@
   },
   "pricing": {
     "cxp_publish_reward_tt": 3,
-    "cxp_publish_reward_deg": 1080,
+    "cxp_publish_reward_deg": 2592,
     "cxp_consume_cost_tt": 2,
-    "cxp_consume_cost_deg": 720
+    "cxp_consume_cost_deg": 2592
+  },
+  "legacy_pricing": {
+    "cxp_publish_reward_deg": 1080,
+    "cxp_consume_cost_deg": 720,
+    "note": "Legacy values retained for reference; not quantum-compliant with min_transfer_deg=2592"
   },
   "physics": {
     "model": "Landauer@CMB",
