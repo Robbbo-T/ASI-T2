@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xsi:noNamespaceSchemaLocation="s1000d/ipd.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode
+          modelIdentCode="BWQ1"
+          systemDiffCode="A"
+          systemCode="57"
+          subSystemCode="10"
+          subSubSystemCode="10"
+          assyCode="00"
+          disassyCode="01A"
+          infoCode="941"
+          infoCodeVariant="B"
+          itemLocationCode="D"/>
+        <language countryIsoCode="US" languageIsoCode="en"/>
+        <issueInfo issueNumber="001" inWork="00">
+          <issueDate year="2025" month="10" day="04"/>
+        </issueInfo>
+      </dmIdent>
+      <dmAddressItems>
+        <issueType>new</issueType>
+        <responsiblePartnerCompany enterpriseCode="IDEALE.eu">IDEALE.eu</responsiblePartnerCompany>
+        <originator enterpriseCode="IDEALE.eu">IDEALE.eu</originator>
+        <title>Illustrated Parts – Forward Spar (57-10-10) – Sheet 2 (Sectional, LH/RH)</title>
+        <security classification="01"/>
+        <qualityAssurance qaLevel="00"/>
+      </dmAddressItems>
+    </dmAddress>
+
+    <applic>
+      <displayText>BWBQ100 baseline (All MSN)</displayText>
+    </applic>
+
+    <refs>
+      <!-- Descriptive DM -->
+      <dmRef xlink:href="DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml" dmRefIdent="desc-040A">
+        <dmRefAddressItems>
+          <dmTitle>Forward Spar – General Description</dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <!-- First IPD sheet (sheet 1) -->
+      <dmRef xlink:href="DMC-BWQ1-A-57-10-10-00-00A-941A-D-EN-US.xml" dmRefIdent="ipd-sheet1">
+        <dmRefAddressItems>
+          <dmTitle>Illustrated Parts – Forward Spar (Sheet 1)</dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+    </refs>
+  </identAndStatusSection>
+
+  <content>
+    <illustratedPartsData>
+
+      <ipdStatus>
+        <catalogSeqNumberInfo>
+          <catalogSeqNumber>57-10-10 / Sheet 2</catalogSeqNumber>
+          <catalogSeqNumberTitle>Forward Spar – Sectional Views (LH/RH)</catalogSeqNumberTitle>
+        </catalogSeqNumberInfo>
+        <remarks>
+          <para>This sheet provides sectional, hand-specific views (LH/RH) and part listings for inboard (FS-INB), midspan (FS-MID), and outboard (FS-OUTB) regions. Use with Sheet 1 for overall assembly context.</para>
+        </remarks>
+      </ipdStatus>
+
+      <!-- ===== FIGURES ===== -->
+
+      <!-- Inboard LH/RH -->
+      <figure infoEntityIdent="fig-FS-INB-LH">
+        <title>Forward Spar – Inboard Section (LH)</title>
+        <graphic xlink:href="../graphics/ipd/FS_INB_LH_exploded.svg" xlink:title="FS INB LH"/>
+        <calloutList>
+          <callout><calloutId>1</calloutId><para>Upper Cap, LH (INB)</para></callout>
+          <callout><calloutId>2</calloutId><para>Lower Cap, LH (INB)</para></callout>
+          <callout><calloutId>3</calloutId><para>Web, Composite (INB)</para></callout>
+          <callout><calloutId>4</calloutId><para>Root Fitting LH</para></callout>
+          <callout><calloutId>5</calloutId><para>Rib Bracket (typ)</para></callout>
+          <callout><calloutId>6</calloutId><para>QSS Patch (optional)</para></callout>
+        </calloutList>
+      </figure>
+
+      <figure infoEntityIdent="fig-FS-INB-RH">
+        <title>Forward Spar – Inboard Section (RH)</title>
+        <graphic xlink:href="../graphics/ipd/FS_INB_RH_exploded.svg" xlink:title="FS INB RH"/>
+        <calloutList>
+          <callout><calloutId>1</calloutId><para>Upper Cap, RH (INB)</para></callout>
+          <callout><calloutId>2</calloutId><para>Lower Cap, RH (INB)</para></callout>
+          <callout><calloutId>3</calloutId><para>Web, Composite (INB)</para></callout>
+          <callout><calloutId>4</calloutId><para>Root Fitting RH</para></callout>
+          <callout><calloutId>5</calloutId><para>Rib Bracket (typ)</para></callout>
+          <callout><calloutId>6</calloutId><para>QSS Patch (optional)</para></callout>
+        </calloutList>
+      </figure>
+
+      <!-- Mid LH/RH -->
+      <figure infoEntityIdent="fig-FS-MID-LH">
+        <title>Forward Spar – Midspan (LH)</title>
+        <graphic xlink:href="../graphics/ipd/FS_MID_LH_exploded.svg" xlink:title="FS MID LH"/>
+        <calloutList>
+          <callout><calloutId>1</calloutId><para>Upper Cap, LH (MID)</para></callout>
+          <callout><calloutId>2</calloutId><para>Lower Cap, LH (MID)</para></callout>
+          <callout><calloutId>3</calloutId><para>Web, Composite (MID)</para></callout>
+          <callout><calloutId>4</calloutId><para>Shear Tie (typ)</para></callout>
+          <callout><calloutId>5</calloutId><para>Rib Bracket (typ)</para></callout>
+          <callout><calloutId>6</calloutId><para>QSS Patch (optional)</para></callout>
+        </calloutList>
+      </figure>
+
+      <figure infoEntityIdent="fig-FS-MID-RH">
+        <title>Forward Spar – Midspan (RH)</title>
+        <graphic xlink:href="../graphics/ipd/FS_MID_RH_exploded.svg" xlink:title="FS MID RH"/>
+        <calloutList>
+          <callout><calloutId>1</calloutId><para>Upper Cap, RH (MID)</para></callout>
+          <callout><calloutId>2</calloutId><para>Lower Cap, RH (MID)</para></callout>
+          <callout><calloutId>3</calloutId><para>Web, Composite (MID)</para></callout>
+          <callout><calloutId>4</calloutId><para>Shear Tie (typ)</para></callout>
+          <callout><calloutId>5</calloutId><para>Rib Bracket (typ)</para></callout>
+          <callout><calloutId>6</calloutId><para>QSS Patch (optional)</para></callout>
+        </calloutList>
+      </figure>
+
+      <!-- Outboard LH/RH -->
+      <figure infoEntityIdent="fig-FS-OUTB-LH">
+        <title>Forward Spar – Outboard (LH)</title>
+        <graphic xlink:href="../graphics/ipd/FS_OUTB_LH_exploded.svg" xlink:title="FS OUTB LH"/>
+        <calloutList>
+          <callout><calloutId>1</calloutId><para>Upper Cap, LH (OUTB)</para></callout>
+          <callout><calloutId>2</calloutId><para>Lower Cap, LH (OUTB)</para></callout>
+          <callout><calloutId>3</calloutId><para>Web, Composite (OUTB)</para></callout>
+          <callout><calloutId>4</calloutId><para>Rib Bracket (typ)</para></callout>
+          <callout><calloutId>5</calloutId><para>QSS Patch (optional)</para></callout>
+        </calloutList>
+      </figure>
+
+      <figure infoEntityIdent="fig-FS-OUTB-RH">
+        <title>Forward Spar – Outboard (RH)</title>
+        <graphic xlink:href="../graphics/ipd/FS_OUTB_RH_exploded.svg" xlink:title="FS OUTB RH"/>
+        <calloutList>
+          <callout><calloutId>1</calloutId><para>Upper Cap, RH (OUTB)</para></callout>
+          <callout><calloutId>2</calloutId><para>Lower Cap, RH (OUTB)</para></callout>
+          <callout><calloutId>3</calloutId><para>Web, Composite (OUTB)</para></callout>
+          <callout><calloutId>4</calloutId><para>Rib Bracket (typ)</para></callout>
+          <callout><calloutId>5</calloutId><para>QSS Patch (optional)</para></callout>
+        </calloutList>
+      </figure>
+
+      <!-- ===== PARTS GROUPS ===== -->
+
+      <ipd>
+        <!-- Inboard LH -->
+        <ipdGroup>
+          <groupTitle>FS-INB (LH)</groupTitle>
+          <applic>
+            <displayText>LH / FS-INB zone</displayText>
+          </applic>
+          <ipdItem>
+            <seqNumber>1</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-INB-LH" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-11-101</partNumber>
+              <itemName>Upper Cap, LH (INB, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+            <applic>
+              <displayText>LH / FS-INB</displayText>
+            </applic>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>2</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-INB-LH" calloutId="2"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-21-101</partNumber>
+              <itemName>Lower Cap, LH (INB, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+            <applic>
+              <displayText>LH / FS-INB</displayText>
+            </applic>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>3</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-INB-LH" calloutId="3"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-30-101</partNumber>
+              <itemName>Web, Composite (INB)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>4</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-INB-LH" calloutId="4"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-40-111</partNumber>
+              <itemName>Root Fitting, LH</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>6</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-INB-LH" calloutId="6"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-FS-KIT-01</partNumber>
+              <itemName>QSS Sensor Patch (Forward Spar, INB)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="kit">As req'd</quantityPerNextHigherAssy></quantities>
+            <remarks><para>Includes FBG, piezo grid and harness for INB zone.</para></remarks>
+          </ipdItem>
+        </ipdGroup>
+
+        <!-- Inboard RH -->
+        <ipdGroup>
+          <groupTitle>FS-INB (RH)</groupTitle>
+          <applic>
+            <displayText>RH / FS-INB zone</displayText>
+          </applic>
+          <ipdItem>
+            <seqNumber>1</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-INB-RH" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-12-101</partNumber>
+              <itemName>Upper Cap, RH (INB, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+            <applic>
+              <displayText>RH / FS-INB</displayText>
+            </applic>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>2</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-INB-RH" calloutId="2"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-22-101</partNumber>
+              <itemName>Lower Cap, RH (INB, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+            <applic>
+              <displayText>RH / FS-INB</displayText>
+            </applic>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>4</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-INB-RH" calloutId="4"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-40-112</partNumber>
+              <itemName>Root Fitting, RH</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+        </ipdGroup>
+
+        <!-- Mid LH -->
+        <ipdGroup>
+          <groupTitle>FS-MID (LH)</groupTitle>
+          <applic>
+            <displayText>LH / FS-MID zone</displayText>
+          </applic>
+          <ipdItem>
+            <seqNumber>1</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-MID-LH" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-11-201</partNumber>
+              <itemName>Upper Cap, LH (MID, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>2</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-MID-LH" calloutId="2"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-21-201</partNumber>
+              <itemName>Lower Cap, LH (MID, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>4</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-MID-LH" calloutId="4"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-50-2XX</partNumber>
+              <itemName>Shear Tie (MID, typ)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">As req'd</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+        </ipdGroup>
+
+        <!-- Mid RH -->
+        <ipdGroup>
+          <groupTitle>FS-MID (RH)</groupTitle>
+          <applic>
+            <displayText>RH / FS-MID zone</displayText>
+          </applic>
+          <ipdItem>
+            <seqNumber>1</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-MID-RH" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-12-201</partNumber>
+              <itemName>Upper Cap, RH (MID, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>2</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-MID-RH" calloutId="2"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-22-201</partNumber>
+              <itemName>Lower Cap, RH (MID, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>4</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-MID-RH" calloutId="4"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-50-2XY</partNumber>
+              <itemName>Shear Tie (MID, typ)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">As req'd</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+        </ipdGroup>
+
+        <!-- Outboard LH -->
+        <ipdGroup>
+          <groupTitle>FS-OUTB (LH)</groupTitle>
+          <applic>
+            <displayText>LH / FS-OUTB zone</displayText>
+          </applic>
+          <ipdItem>
+            <seqNumber>1</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-OUTB-LH" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-11-301</partNumber>
+              <itemName>Upper Cap, LH (OUTB, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>2</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-OUTB-LH" calloutId="2"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-21-301</partNumber>
+              <itemName>Lower Cap, LH (OUTB, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>5</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-OUTB-LH" calloutId="5"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-FS-KIT-03</partNumber>
+              <itemName>QSS Sensor Patch (Forward Spar, OUTB)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="kit">As req'd</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+        </ipdGroup>
+
+        <!-- Outboard RH -->
+        <ipdGroup>
+          <groupTitle>FS-OUTB (RH)</groupTitle>
+          <applic>
+            <displayText>RH / FS-OUTB zone</displayText>
+          </applic>
+          <ipdItem>
+            <seqNumber>1</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-OUTB-RH" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-12-301</partNumber>
+              <itemName>Upper Cap, RH (OUTB, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+          <ipdItem>
+            <seqNumber>2</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-OUTB-RH" calloutId="2"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-22-301</partNumber>
+              <itemName>Lower Cap, RH (OUTB, IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+          </ipdItem>
+        </ipdGroup>
+
+      </ipd>
+    </illustratedPartsData>
+  </content>
+</dmodule>

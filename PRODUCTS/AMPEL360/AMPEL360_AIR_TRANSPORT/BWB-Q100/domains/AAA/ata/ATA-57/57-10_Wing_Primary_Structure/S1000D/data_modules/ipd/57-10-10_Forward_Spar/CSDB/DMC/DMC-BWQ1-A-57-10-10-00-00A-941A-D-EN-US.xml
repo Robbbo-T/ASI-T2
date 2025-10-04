@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xsi:noNamespaceSchemaLocation="s1000d/ipd.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode
+          modelIdentCode="BWQ1"
+          systemDiffCode="A"
+          systemCode="57"
+          subSystemCode="10"
+          subSubSystemCode="10"
+          assyCode="00"
+          disassyCode="00A"
+          infoCode="941"
+          infoCodeVariant="A"
+          itemLocationCode="D"/>
+        <language countryIsoCode="US" languageIsoCode="en"/>
+        <issueInfo issueNumber="001" inWork="00">
+          <issueDate year="2025" month="10" day="04"/>
+        </issueInfo>
+      </dmIdent>
+      <dmAddressItems>
+        <issueType>new</issueType>
+        <responsiblePartnerCompany enterpriseCode="IDEALE.eu">IDEALE.eu</responsiblePartnerCompany>
+        <originator enterpriseCode="IDEALE.eu">IDEALE.eu</originator>
+        <title>Illustrated Parts – Forward Spar (57-10-10)</title>
+        <security classification="01"/>
+        <qualityAssurance qaLevel="00"/>
+      </dmAddressItems>
+    </dmAddress>
+
+    <applic>
+      <displayText>BWBQ100 baseline (All MSN)</displayText>
+    </applic>
+
+    <refs>
+      <!-- Descriptive DM for context -->
+      <dmRef xlink:href="DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml" dmRefIdent="desc-040A">
+        <dmRefAddressItems>
+          <dmTitle>Forward Spar – General Description</dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+    </refs>
+  </identAndStatusSection>
+
+  <content>
+    <illustratedPartsData>
+
+      <ipdStatus>
+        <catalogSeqNumberInfo>
+          <catalogSeqNumber>57-10-10</catalogSeqNumber>
+          <catalogSeqNumberTitle>Forward Spar</catalogSeqNumberTitle>
+        </catalogSeqNumberInfo>
+        <remarks>
+          <para>This IPD lists forward spar primary items, typical fasteners, and the optional Quantum Sensorial Skin (QSS) patch kit for structural monitoring.</para>
+        </remarks>
+      </ipdStatus>
+
+      <!-- Figure (exploded view) with callouts -->
+      <figure infoEntityIdent="fig-FS-1">
+        <title>Forward Spar Assembly – Exploded View</title>
+        <graphic xlink:href="../graphics/ipd/FS_exploded.svg" xlink:title="Forward Spar – Exploded"/>
+        <calloutList>
+          <callout>
+            <calloutId>1</calloutId>
+            <para>Forward Spar Assembly</para>
+          </callout>
+          <callout>
+            <calloutId>2</calloutId>
+            <para>Upper Cap, LH</para>
+          </callout>
+          <callout>
+            <calloutId>3</calloutId>
+            <para>Upper Cap, RH</para>
+          </callout>
+          <callout>
+            <calloutId>4</calloutId>
+            <para>Lower Cap, LH</para>
+          </callout>
+          <callout>
+            <calloutId>5</calloutId>
+            <para>Lower Cap, RH</para>
+          </callout>
+          <callout>
+            <calloutId>6</calloutId>
+            <para>Web, Composite</para>
+          </callout>
+          <callout>
+            <calloutId>7</calloutId>
+            <para>Root Fitting, Inboard</para>
+          </callout>
+          <callout>
+            <calloutId>8</calloutId>
+            <para>Shear Tie, Midspan (typical)</para>
+          </callout>
+          <callout>
+            <calloutId>9</calloutId>
+            <para>Attachment Bracket, Rib (typical)</para>
+          </callout>
+          <callout>
+            <calloutId>10</calloutId>
+            <para>Fastener Set (Hi-Lok/Washer/Nut), typical</para>
+          </callout>
+          <callout>
+            <calloutId>11</calloutId>
+            <para>QSS Sensor Patch Kit (optional)</para>
+          </callout>
+        </calloutList>
+      </figure>
+
+      <!-- Parts list -->
+      <ipd>
+        <ipdGroup>
+          <groupTitle>Forward Spar (57-10-10)</groupTitle>
+
+          <!-- 1 -->
+          <ipdItem>
+            <seqNumber>1</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-10-000</partNumber>
+              <itemName>Forward Spar Assembly</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy>
+            </quantities>
+            <applic>
+              <displayText>All</displayText>
+            </applic>
+            <remarks>
+              <para>Composite primary structure: IM7/8552 caps and web; includes fittings per item 7/8/9; fasteners not included.</para>
+            </remarks>
+          </ipdItem>
+
+          <!-- 2 -->
+          <ipdItem>
+            <seqNumber>2</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="2"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-11-001</partNumber>
+              <itemName>Upper Cap, LH (IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy>
+            </quantities>
+            <applic>
+              <displayText>LH only</displayText>
+            </applic>
+          </ipdItem>
+
+          <!-- 3 -->
+          <ipdItem>
+            <seqNumber>3</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="3"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-12-001</partNumber>
+              <itemName>Upper Cap, RH (IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy>
+            </quantities>
+            <applic>
+              <displayText>RH only</displayText>
+            </applic>
+          </ipdItem>
+
+          <!-- 4 -->
+          <ipdItem>
+            <seqNumber>4</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="4"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-21-001</partNumber>
+              <itemName>Lower Cap, LH (IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy>
+            </quantities>
+            <applic>
+              <displayText>LH only</displayText>
+            </applic>
+          </ipdItem>
+
+          <!-- 5 -->
+          <ipdItem>
+            <seqNumber>5</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="5"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-22-001</partNumber>
+              <itemName>Lower Cap, RH (IM7/8552)</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy>
+            </quantities>
+            <applic>
+              <displayText>RH only</displayText>
+            </applic>
+          </ipdItem>
+
+          <!-- 6 -->
+          <ipdItem>
+            <seqNumber>6</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="6"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-30-001</partNumber>
+              <itemName>Web, Composite</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy>
+            </quantities>
+          </ipdItem>
+
+          <!-- 7 -->
+          <ipdItem>
+            <seqNumber>7</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="7"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-40-001</partNumber>
+              <itemName>Root Fitting, Inboard</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">2</quantityPerNextHigherAssy>
+            </quantities>
+            <remarks>
+              <para>Metallic, corrosion-protected. For bore crack inspection, see 520A DM.</para>
+            </remarks>
+          </ipdItem>
+
+          <!-- 8 -->
+          <ipdItem>
+            <seqNumber>8</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="8"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-50-0XX</partNumber>
+              <itemName>Shear Tie, Midspan (typical)</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">As req'd</quantityPerNextHigherAssy>
+            </quantities>
+          </ipdItem>
+
+          <!-- 9 -->
+          <ipdItem>
+            <seqNumber>9</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="9"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>BWQ1-57-10-60-0XX</partNumber>
+              <itemName>Attachment Bracket, Rib (typical)</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">As req'd</quantityPerNextHigherAssy>
+            </quantities>
+          </ipdItem>
+
+          <!-- 10 -->
+          <ipdItem>
+            <seqNumber>10</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="10"/>
+            <itemIdentData>
+              <manufacturerCode>STD</manufacturerCode>
+              <partNumber>HL18-6-12</partNumber>
+              <itemName>Hi-Lok Fastener (typ)</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="ea">As req'd</quantityPerNextHigherAssy>
+            </quantities>
+            <alternatePart>
+              <manufacturerCode>STD</manufacturerCode>
+              <partNumber>HL20-6-12</partNumber>
+              <itemName>Alternate Hi-Lok</itemName>
+            </alternatePart>
+            <matingParts>
+              <matingPart>
+                <manufacturerCode>STD</manufacturerCode>
+                <partNumber>NAS1149D06</partNumber>
+                <itemName>Washer</itemName>
+              </matingPart>
+              <matingPart>
+                <manufacturerCode>STD</manufacturerCode>
+                <partNumber>MS21042-6</partNumber>
+                <itemName>Nut</itemName>
+              </matingPart>
+            </matingParts>
+          </ipdItem>
+
+          <!-- 11 -->
+          <ipdItem>
+            <seqNumber>11</seqNumber>
+            <figureRef infoEntityIdent="fig-FS-1" calloutId="11"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-FS-KIT-01</partNumber>
+              <itemName>QSS Sensor Patch Kit (Forward Spar)</itemName>
+            </itemIdentData>
+            <quantities>
+              <quantityPerNextHigherAssy uom="kit">As req'd</quantityPerNextHigherAssy>
+            </quantities>
+            <remarks>
+              <para>Includes FBG strain array, piezo grid, harness, controller bracket, adhesive and documentation.</para>
+            </remarks>
+          </ipdItem>
+
+        </ipdGroup>
+      </ipd>
+    </illustratedPartsData>
+  </content>
+</dmodule>
