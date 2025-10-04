@@ -1,5 +1,5 @@
 ---
-id: ASIT2-README
+id: ASIT2-README.md
 project: ASI-T2
 artifact: Repository Master README
 llc: GENESIS
@@ -10,22 +10,27 @@ maintainer: "ASI-T Architecture Team"
 bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: MAL-EEM
 utcs_mi: v5.0
-framework: IDEALE
+framework: IDEALE.eu
 ideale_pillars:
   - Intelligence
   - Defense
-  - Energy/Ecology
+  - Energy
   - Aerospace
   - Logistics
+  - ESG
   - Europe
 canonical_hash: pending
 ---
 
 # ASI-T2
 
+[![Sponsor](https://img.shields.io/github/sponsors/Robbbo-T?style=social)](https://github.com/sponsors/Robbbo-T)
+
 ## ARTIFICIAL SUPER INTELLIGENCE TRANSPONDERS for AEROSPACE SUSTAINABLE INDUSTRY TRANSITION
 
 **Master portfolio** under strict **TFA** architecture. This README defines the **CAX·QOX·PAX·ATA operating contract**, the **UTCS/QS evidence model**, and provides a **hyperlinked index** to fields, environments, and products.
+
+> **Classification:** `INTERNAL–EVIDENCE-REQUIRED` · Access and publication require **UTCS MI v5.0** anchors and **MAL-EEM** conformance.
 
 ---
 
@@ -51,6 +56,10 @@ canonical_hash: pending
 - [QAIM-2 — CAX ↔ QOx Bridge](#qaim-2--cax--qox-bridge)
 - [AQUA OS — INFRANET](#aqua-os-aircraft-extension--infranet)
 - [Standardized Structure (Minimum Viable Layout)](#standardized-structure-minimum-viable-layout)
+- [Compliance & Standards](#compliance--standards)
+- [CI/CD & Repo Hygiene](#cicd--repo-hygiene)
+- [Contributing](#contributing)
+- [Security, Ethics, and Licensing](#security-ethics-and-licensing)
 
 ---
 
@@ -64,7 +73,7 @@ The **ASI-T2** repository accelerates a sustainable aerospace transition by inte
 - **Regulatory documentation (ATA)** with **UTCS** traceability and **QS** sealing,
 - Ethical safeguards via **MAL-EEM** across all pipelines.
 
-This portfolio and development proposal is **built on the IDEALE algorithm** (Intelligence, Defense, Energy/Ecology, Aerospace, Logistics, Europe), guiding strategy, structure, and evidence across the stack.
+This portfolio and development proposal is built on the **IDEALE.eu** pillars (**Intelligence, Defense, Energy, Aerospace, Logistics, ESG, Europe**), guiding strategy, structure, and evidence across the stack.
 
 ---
 
@@ -134,18 +143,26 @@ ethics_guard: MAL-EEM
 
 ## IDEALE Framework
 
-**ASI-T2** is a portfolio and development proposal built on the **IDEALE algorithm**:
+**IDEALE.eu pillars and their repository mapping:**
 
 * **Intelligence** — analytics, AI/ML, quantum intelligence, decision support
-  *Maps to:* `FIELDS/intelligence/`, `FIELDS/quantum-intelligence/`, `PRODUCTS/INFRANET/QAIM/`, domain **IIS** (Integrated Intelligence & Software).
+  *Maps to:* [`FIELDS/intelligence/`](./FIELDS/intelligence/), [`FIELDS/quantum-intelligence/`](./FIELDS/quantum-intelligence/), [`PRODUCTS/INFRANET/QAIM/`](./PRODUCTS/INFRANET/QAIM/), domain **IIS**.
+
 * **Defense** — safety, security, resilience, dual-use governance
-  *Maps to:* `FIELDS/defense/`, `FIELDS/cyberdefense/`, `FIELDS/cybersecurity/`, `PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/`, **MAL-EEM** guardrails.
-* **Energy/Ecology** — efficiency, emissions, circularity, hydrogen corridors
-  *Maps to:* domains **EER** (Environmental, Emissions & Remediation) and **EEE** (Electrical, Hydraulic & Energy), `PRODUCTS/INFRANET/LH2_CORRIDOR/`, `PRODUCTS/GAIA-SEA/GAIA-SOUND/`.
+  *Maps to:* [`FIELDS/defense/`](./FIELDS/defense/), [`FIELDS/cyberdefense/`](./FIELDS/cyberdefense/), [`FIELDS/cybersecurity/`](./FIELDS/cybersecurity/), [`PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/`](./PRODUCTS/GAIA-AIR/ETHICS-EMPATHY-UAV/), **MAL-EEM** guardrails.
+
+* **Energy** — efficiency, emissions, propulsion energy systems, hydrogen corridors
+  *Maps to:* **EER** (Environmental, Emissions & Remediation) and **EEE** (Electrical, Hydraulic & Energy) domains, [`PRODUCTS/INFRANET/LH2_CORRIDOR/`](./PRODUCTS/INFRANET/LH2_CORRIDOR/), [`PRODUCTS/GAIA-SEA/GAIA-SOUND/`](./PRODUCTS/GAIA-SEA/GAIA-SOUND/).
+
 * **Aerospace** — certified transport and advanced platforms
-  *Maps to:* `PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/` (domains **AAA**, **PPP**, …), `AMPEL360_SPACE_TOURISM/PLUS/`.
+  *Maps to:* [`PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/) (domains **AAA**, **PPP**, …), [`AMPEL360_SPACE_TOURISM/PLUS/`](./PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS/).
+
 * **Logistics** — supply, maintenance, evidence, and software delivery chains
-  *Maps to:* domain **LIB** (Logistics, Inventory & Blockchain), **PAx** packaging (OB/OFF, SBOM, attestations), **UTCS/QS** evidence.
+  *Maps to:* domain **LIB**, **PAx** packaging (OB/OFF, SBOM, attestations), **UTCS/QS** evidence.
+
+* **ESG** — environmental, social, and governance accountability, reporting, and provenance
+  *Maps to:* **UTCS/QS** anchors, **SBOM**/**SLSA** (supply chain), **C2PA** (content provenance), sustainability artifacts (e.g., LCA/EPD) maintained under `ATA` and linked from `PAX`.
+
 * **Europe** — standards alignment, certification pathways, and ecosystem integration
   *Maps to:* CS-25, EASA processes, S1000D/IETP practices, and cross-member collaboration.
 
@@ -187,6 +204,7 @@ ethics_guard: MAL-EEM
       * **CAX**: [`cax/CAD/wing_baseline_model/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/cax/CAD/wing_baseline_model/)
       * **QOX**: [`qox/CAD/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/qox/CAD/)
       * **PAX**: [`pax/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/) → [`OB/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/OB/) · [`OFF/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/pax/OFF/)
+
     * Additional domains (present/underway):
       [`AAP/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAP/) ·
       [`CCC/`](./PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/CCC/) ·
@@ -245,16 +263,16 @@ Every **product** is organized into **domains**. Each domain contains **three pr
 **Domain catalog (examples)**
 
 | Code | Description                         |
-| ---- | ----------------------------------- |
-| AAA  | Aerodynamics & Airframes            |
-| PPP  | Propulsion & Fuel Systems           |
-| LCC  | Linkages, Control & Communications  |
-| DDD  | Drainage, Dehumidification & Drying |
-| EEE  | Electrical, Hydraulic & Energy      |
-| IIS  | Integrated Intelligence & Software  |
-| CQH  | Cryogenics, Quantum & H₂            |
-| MEC  | Mechanical Systems Modules          |
-| …    | (see `PRODUCTS/.../domains/`)       |
+| :--: | ----------------------------------- |
+|  AAA | Aerodynamics & Airframes            |
+|  PPP | Propulsion & Fuel Systems           |
+|  LCC | Linkages, Control & Communications  |
+|  DDD | Drainage, Dehumidification & Drying |
+|  EEE | Electrical, Hydraulic & Energy      |
+|  IIS | Integrated Intelligence & Software  |
+|  CQH | Cryogenics, Quantum & H₂            |
+|  MEC | Mechanical Systems Modules          |
+|   …  | (see `PRODUCTS/.../domains/`)       |
 
 ---
 
@@ -292,13 +310,13 @@ pax/
 5. **Gate (CI)** → quality checks, UTCS/QS anchors, **MAL-EEM** guard
 
 **Program KPIs (targets)**
-+5–15% fuel-efficiency · −10–20% emissions · −20–50% development time
+`+5–15%` fuel-efficiency · `−10–20%` emissions · `−20–50%` development time
 
 ---
 
 ## QAIM-2 — CAX ↔ QOx Bridge
 
-Classical CAx is sequential & siloed; **QAIM-2** integrates multi-disciplinary exploration with AI+Q hybrids and deterministic CB fallbacks (TRL<9 on QPUs).
+Classical CAx is sequential & siloed; **QAIM-2** integrates multi-disciplinary exploration with AI+Q hybrids and deterministic CB fallbacks (TRL < 9 on QPUs).
 See → [`FIELDS/cross/process_engineering/QAIM-2/`](./FIELDS/cross/process_engineering/QAIM-2/)
 
 ---
@@ -326,19 +344,19 @@ See → [`PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/`](./PRODUCTS/INFRANET/AQUA_OS_AIRC
 │   │   ├── AMPEL360_AIR_TRANSPORT/
 │   │   │   └── BWB-Q100/
 │   │   │       └── domains/
-│   │   │           ├── AAA/        # Airframes (ATA-57 S1000D, CAD, QOx, PAx)
+│   │   │           ├── AAA/        # Airframes Aerodynamics and Airworthiness (Contains Material)
 │   │   │           ├── AAP/        # Airport Adaptable Platforms
 │   │   │           ├── CCC/        # Cockpit, Cabin & Cargo
 │   │   │           ├── CQH/        # Cryogenics, Quantum & H₂
 │   │   │           ├── DDD/        # Drainage, Dehumidification & Drying
 │   │   │           ├── EDI/        # Electronics & Digital Instruments
-│   │   │           ├── EEE/        # Electrical, Hydraulic & Energy
+│   │   │           ├── EEE/        # Renewable Energy, Harvesting & Circulation
 │   │   │           ├── EER/        # Environmental, Emissions & Remediation
 │   │   │           ├── IIF/        # Industrial Infrastructure & Facilities
-│   │   │           ├── IIS/        # Integrated Intelligence & Software (ATA-22, ATA-42)
-│   │   │           ├── LCC/        # Linkages, Control & Communications (planned)
-│   │   │           ├── LIB/        # Logistics, Inventory & Blockchain (planned)
-│   │   │           ├── MEC/        # Mechanical Systems Modules (planned)
+│   │   │           ├── IIS/        # Information Systems and Intelligence Softwares
+│   │   │           ├── LCC/        # Linkages, Control & Communications
+│   │   │           ├── LIB/        # Logistics, Inventory & Blockchain
+│   │   │           ├── MEC/        # Mechanical Systems Modules
 │   │   │           ├── OOO/        # OS, Ontologies & Office Interfaces (planned)
 │   │   │           └── PPP/        # Propulsion & Fuel Systems (planned)
 │   │   │
@@ -363,6 +381,57 @@ See → [`PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/`](./PRODUCTS/INFRANET/AQUA_OS_AIRC
 └── .github/workflows/
 ```
 
+---
+
+## Compliance & Standards
+
+* **S1000D Issue 6.0** — XML **must validate** against official XSDs (XSD-first). BREX/Schematron recommended for project rules.
+* **CS-25 / 14 CFR** — certification matrices stored under `ATA`.
+* **DO-178C / DO-254 / ARP4754A / ARP4761** — process evidence and hazard analyses.
+* **SLSA / SBOM (SPDX or CycloneDX)** — supply chain integrity for PAx.
+* **UTCS/QS** — evidence anchoring, `canonical_hash`, and signatures across artifacts.
+* **MAL-EEM** — ethics, safety, and export-compliance guardrails.
+
+---
+
+## CI/CD & Repo Hygiene
+
+* **Pipelines:** [`.github/workflows/`](./.github/workflows/)
+
+  * XML XSD validation (S1000D 6.0)
+  * BREX/Schematron (if provided)
+  * YAML/JSON lint
+  * SBOM and signature checks (PAx)
+  * UTCS/QS anchor verification
+
+* **Fail-closed defaults:** missing `artifact.manifest.yaml`, invalid XSD, or absent SBOM **blocks the build**.
+
+---
+
+## Contributing
+
+1. Propose artifacts via **issue** with scope, UTCS plan, and ethics assessment.
+2. Fork/branch; place assets under the correct **domain/process** path.
+3. Include **`artifact.manifest.yaml`**, **SBOM**, and **QS** signatures.
+4. Ensure **XSD-valid** S1000D (for ATA) and pass CI.
+5. Open PR; attach evidence and reference ATA DMs.
+
+> Use `PRODUCTS/INFRANET/Shared/_templates/` where applicable.
+
+---
+
+## Security, Ethics, and Licensing
+
+* **Classification:** `INTERNAL–EVIDENCE-REQUIRED` — redistribution prohibited without written approval.
+* **Ethics:** all contributions must comply with **MAL-EEM**.
+* **Export Control:** contributors are responsible for screening; do not commit controlled technical data.
+* **License:** Internal Use (see repository-level policy).
+
+---
+
+```
+::contentReference[oaicite:0]{index=0}
+```
 
 
 

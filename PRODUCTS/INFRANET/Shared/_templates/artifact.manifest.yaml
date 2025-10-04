@@ -1,0 +1,34 @@
+# Artifact Manifest Template
+# This template defines the UTCS-MI v5.0 compliant manifest structure
+# for all computational artifacts in the ASI-T2 repository.
+#
+# Usage:
+#   1. Copy this template to your artifact directory
+#   2. Fill in all required fields (marked with <...>)
+#   3. Remove this header comment block
+#   4. Ensure SBOM and signatures are generated
+#   5. Pass through CI validation before publishing
+#
+# Required by: CAX, QOX, and PAX processes
+# Documentation: See README.md "Mandatory Traceability" section
+
+---
+id: UTCS-MI:v5.0:<PRODUCT>:<CAX|QOX|PAX>:<DOMAIN>:<ATA>:<artifact-id>
+llc: SYSTEMS
+bridge: CB→QB→UE→FE→FWD→QS
+source:
+  repo_path: <relative/path/to/artifact>
+  commit: <git-sha>
+inputs:
+  - path: <path/to/input>
+outputs:
+  - type: <mesh|report|package|run>
+    path: <path/to/output>
+evidence:
+  ata_dm_refs:
+    - <DMC-...-EN-US>
+provenance:
+  sbom: <path/to/spdx_or_cyclonedx.json>
+  signatures:
+    qs_anchor: <sha256>
+ethics_guard: MAL-EEM

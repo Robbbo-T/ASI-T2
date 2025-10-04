@@ -228,8 +228,32 @@ def main() -> None:
         # Accept both YAML and JSON; skip obvious non-manifests by quick heuristic
         patterns = ["**/*.yaml", "**/*.yml", "**/*.json"]
         manifest_files: List[Path] = []
+        root_path = Path(args.root)
         for pat in patterns:
-            manifest_files.extend(Path(args.root).rglob(pat))
+            for file in root_path.rglob(pat):
+                # Skip files in sbom/ and schemas/ directories
+                if any(part in ["sbom", "schemas", "certificates"] for part in file.parts):
+                    continue
+                # Skip files that are obviously not manifests
+                if file.name.endswith((".spdx.json", ".cdx.json", ".schema.json")):
+                    continue
+                manifest_files.append(file)
+
+        # Filter out non-manifest files
+        def should_skip(path: Path) -> bool:
+            """Determine if file should be skipped from validation."""
+            # Skip schema files
+            if path.name.endswith('.schema.json'):
+                return True
+            # Skip SBOM files
+            if 'sbom' in path.parts and (path.suffix == '.json' or path.name.endswith('.spdx.json') or path.name.endswith('.cdx.json')):
+                return True
+            # Skip if in schemas directory
+            if 'schemas' in path.parts:
+                return True
+            return False
+
+        manifest_files = [mf for mf in manifest_files if not should_skip(mf)]
 
         all_passed = True
         for mf in manifest_files:

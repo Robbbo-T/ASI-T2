@@ -4,8 +4,8 @@ project: ASI-T2
 artifact: Whitepapers Index
 llc: GENESIS
 classification: PUBLIC-DRAFT
-version: 0.1.0
-release_date: "2025-10-01"
+version: 0.3.0
+release_date: "2025-10-04"
 maintainer: "ASI-T Architecture Team"
 bridge: "CB→QB→UE→FE→FWD→QS"
 ethics_guard: MAL-EEM
@@ -15,6 +15,40 @@ canonical_hash: pending
 # ASI-T2 Whitepapers
 
 This directory contains technical whitepapers, specifications, and templates that define the ASI-T2 ecosystem architecture, methodology, and governance.
+
+> **Start here:** **[Whitepaper #0 — TRUE_GENESIS-ASI](./MASTER_WHITEPAPER_0.md)**
+
+---
+
+## Quick Links
+
+- **Whitepaper #0 — TRUE_GENESIS-ASI**
+  - Open: **[MASTER_WHITEPAPER_0.md](./MASTER_WHITEPAPER_0.md)**
+  - Deep links:
+    - [0. Definitions & Scope](./MASTER_WHITEPAPER_0.md#0-definitions--scope)
+    - [1. First Principles](./MASTER_WHITEPAPER_0.md#1-first-principles)
+    - [2. High-Level Architecture (three planes)](./MASTER_WHITEPAPER_0.md#2-high-level-architecture-three-planes)
+    - [3. Capability Map (phased)](./MASTER_WHITEPAPER_0.md#3-capability-map-phased)
+    - [4. Alignment & Constitutional Guardrails](./MASTER_WHITEPAPER_0.md#4-alignment--constitutional-guardrails)
+    - [5. Safety Case (living)](./MASTER_WHITEPAPER_0.md#5-safety-case-living)
+    - [6. Governance & Oversight](./MASTER_WHITEPAPER_0.md#6-governance--oversight)
+    - [7. Security & Supply-Chain](./MASTER_WHITEPAPER_0.md#7-security--supply-chain)
+    - [8. Deployment Levels & Authority Gating](./MASTER_WHITEPAPER_0.md#8-deployment-levels--authority-gating)
+    - [9. Program Roadmap (first 24 months)](./MASTER_WHITEPAPER_0.md#9-program-roadmap-first-24-months)
+    - [10. Risks & Mitigations](./MASTER_WHITEPAPER_0.md#10-risks--mitigations-top-line)
+    - [11. Deliverables](./MASTER_WHITEPAPER_0.md#11-deliverables-in-this-folder)
+    - [12. References](./MASTER_WHITEPAPER_0.md#12-references-normative--informative)
+    - [Appendix A — Implementation Notes](./MASTER_WHITEPAPER_0.md#appendix-a--implementation-notes)
+    - [Appendix B — Evidence-Weave Structure](./MASTER_WHITEPAPER_0.md#appendix-b--evidence-weave-structure)
+    - [Appendix C — Evaluation & KPIs](./MASTER_WHITEPAPER_0.md#appendix-c--evaluation--kpis)
+    - [Appendix D — Policy-as-Code Quickstart](./MASTER_WHITEPAPER_0.md#appendix-d--policy-as-code-quickstart)
+    - [Appendix E — Governance Workflow](./MASTER_WHITEPAPER_0.md#appendix-e--governance-workflow-amendments)
+    - [Glossary](./MASTER_WHITEPAPER_0.md#glossary-of-terms--acronyms)
+  - Artifact bundle:
+    - [ASI_Constitution.yaml](./ASI_Constitution.yaml) · [ASI_Autonomy_Boundaries.md](./ASI_Autonomy_Boundaries.md) · [ASI_Policy.rego](./ASI_Policy.rego) · [ASI_GSN_Safety_Case.gsn](./ASI_GSN_Safety_Case.gsn) · [ASI_Architecture.puml](./ASI_Architecture.puml) · [ASI_Assurance_KPIs.csv](./ASI_Assurance_KPIs.csv) · [ASI_Threat_Register.csv](./ASI_Threat_Register.csv)
+
+- **Master Whitepaper #1:** [MASTER_WHITEPAPER_1.md](./MASTER_WHITEPAPER_1.md)
+- **Integration Whitepaper #2:** [MASTER_WHITEPAPER_2.md](./MASTER_WHITEPAPER_2.md)
 
 ---
 
@@ -39,25 +73,30 @@ This directory contains technical whitepapers, specifications, and templates tha
 - Compliance and ethics (MAL-EEM)
 - Roadmap and gates (FCR-1/FCR-2)
 
-### [Master Whitepaper #3](./MASTER_WHITEPAPER_3_UTCS.md)
+### [Integration Whitepaper #2](./MASTER_WHITEPAPER_2.md)
 
-**Title:** QS/UTCS Provenance & Evidence Framework
+**Title:** Integration Architecture: TFA MAP · TFA MAL · ASI-MAP (Definitive Clarification)
 
 **Author:** Amedeo Pelliccia  
 **Version:** v0.1.0 (2025-10-03)  
 **Status:** Public draft for technical review
 
-**Abstract:** Complete specification of UTCS v5.0 (UiX Threading Context/Content/Cache & Structure/Style/Sheet), the authoritative provenance spine for the ASI-T2 ecosystem. Defines deterministic bundling model that binds all artifacts (docs, schemas, binaries, media, evidence) into auditable releases with signed tags, SBOMs, DOIs, and immutable ledgers across the TFA bridge (QS→FWD→UE→FE→CB→QB).
+**Abstract:** Clarifies and codifies the relationship between three complementary constructs: ASI-T2 MAP (Master Application Platform - communication infrastructure), TFA MAP (Master Application Program - per-domain services), and TFA MAL (Main Application Layer - per-bridge services). Defines topic hierarchy, wire grammar, bridge flow semantics (QS→FWD→UE→FE→CB→QB), and integration contracts.
 
 **Key Topics:**
-- UiX Threading model (Context/Content/Cache & Structure/Style/Sheet)
-- Bundle layout and manifest schema
-- Evidence plane and lifecycle (code, build, artifact, operational, standards)
-- S1000D/ATA mappings and topic grammar
-- Cryptography and policy (Ed25519, SHA-256, MAL-EEM/MAP-EEM)
-- Validation and CI requirements
-- IDEALE-EU ESG alignment
-- H0/H1/H2 roadmap
+- Three-layer architecture (Platform/Program/Layer)
+- Bridge semantics (QS→FWD→UE→FE→CB→QB)
+- Topic hierarchy and wire grammar
+- MAL service contracts (JSON schemas)
+- MAP platform contracts (control/telemetry/health/log)
+- Security & ethics (MAP-EEM/MAL-EEM)
+- UTCS v5.0 evidence integration
+- Standards alignment (S1000D/ATA, DO-178C, IEC 62443)
+
+**Artifacts:**
+- [JSON Schemas](./artifacts/schemas/integration/) - MAL and MAP contract schemas
+- [Examples](./artifacts/examples/mal-services/) - Sample MAL service configurations
+- [Validators](../scripts/) - Topic hierarchy and bridge flow validation scripts
 
 ---
 
@@ -146,17 +185,18 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 
 ## Version History
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 0.1.0 | 2025-10-01 | Initial release: Master Whitepaper #1, product template, finance framework |
-| 0.2.0 | 2025-10-03 | Added Master Whitepaper #3 (QS/UTCS Provenance & Evidence Framework) |
+| Version | Date       | Changes                                                                |
+|---------|------------|-------------------------------------------------------------------------|
+| 0.3.0   | 2025-10-04 | Added **Whitepaper #0 TRUE_GENESIS-ASI** and updated quick navigation  |
+| 0.2.0   | 2025-10-03 | Added **Integration Whitepaper #2** with schemas, validators, examples |
+| 0.1.0   | 2025-10-01 | Initial release: Master Whitepaper #1, product template, finance       |
 
 ---
 
 ## Future Whitepapers (Planned)
 
-* **Whitepaper #2:** Integration Architecture: ASI‑T2 MAP ↔ TFA Ecosystem
-* **Whitepaper #4:** QAIM-2 Quantum-Classical Optimization Architecture
+* **Whitepaper #3 (Planned):** QS/UTCS Provenance and Evidence Framework
+* **Whitepaper #4 (Active):** QAIM-2 Quantum-Classical Optimization Architecture
 * **Whitepaper #5:** AMPEL360 BWB Certification Strategy
 * **Whitepaper #6:** GAIA SPACE Mission Operations and Data Management
 * **Whitepaper #7:** GAIA AIR Swarm Coordination and Ethics
@@ -192,6 +232,6 @@ All contributions must:
 
 ---
 
-*Last Updated: 2025-10-01*  
-*Version: 0.1.0*  
+*Last Updated: 2025-10-04*  
+*Version: 0.3.0*  
 *UTCS Anchor: TBD*

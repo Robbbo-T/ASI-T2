@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/integration/mal-qs.schema.json",
+  "title": "MAL-QS Service Contract",
+  "description": "MAL-QS (Primordial State) service contract schema for TFA bridge layer",
+  "type": "object",
+  "required": ["service_id", "version", "layer", "topics", "state_management", "utcs"],
+  "properties": {
+    "service_id": {
+      "type": "string",
+      "pattern": "^MAL-QS-[A-Z0-9_-]{3,}$",
+      "description": "Unique MAL-QS service identifier"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Service version following semantic versioning"
+    },
+    "layer": {
+      "type": "string",
+      "const": "QS",
+      "description": "Bridge layer designation (must be QS)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable service description"
+    },
+    "topics": {
+      "type": "object",
+      "required": ["subscribe", "publish"],
+      "properties": {
+        "subscribe": {
+          "type": "array",
+          "description": "Topics this service subscribes to",
+          "items": {
+            "type": "string",
+            "pattern": "^map/1/(control|telemetry|health|log)/[A-Z0-9_-]+/[A-Z]{3}/[A-Z0-9_]+/[A-Z]{2,3}/QS$"
+          }
+        },
+        "publish": {
+          "type": "array",
+          "description": "Topics this service publishes to",
+          "items": {
+            "type": "string",
+            "pattern": "^map/1/(log|telemetry)/[A-Z0-9_-]+/[A-Z]{3}/STATES/QS/QS$"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "state_management": {
+      "type": "object",
+      "required": ["snapshot_interval_s", "immutable", "versioning"],
+      "properties": {
+        "snapshot_interval_s": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 3600,
+          "description": "Interval for state snapshots in seconds"
+        },
+        "immutable": {
+          "type": "boolean",
+          "description": "Whether state records are immutable",
+          "const": true
+        },
+        "versioning": {
+          "type": "object",
+          "required": ["scheme", "hash_algorithm"],
+          "properties": {
+            "scheme": {
+              "type": "string",
+              "enum": ["content-hash", "merkle-tree", "sequential"],
+              "description": "Versioning scheme for state tracking"
+            },
+            "hash_algorithm": {
+              "type": "string",
+              "enum": ["SHA-256", "SHA3-256", "BLAKE3"],
+              "description": "Hash algorithm for state fingerprinting"
+            }
+          }
+        },
+        "retention_policy": {
+          "type": "object",
+          "properties": {
+            "duration_hours": {
+              "type": "number",
+              "minimum": 1,
+              "description": "Retention duration in hours"
+            },
+            "compression": {
+              "type": "boolean",
+              "description": "Enable compression for archived states"
+            }
+          }
+        }
+      }
+    },
+    "utcs": {
+      "type": "object",
+      "required": ["require_signature", "record_backend", "bundle_format"],
+      "properties": {
+        "require_signature": {
+          "type": "boolean",
+          "const": true,
+          "description": "Require Ed25519 signatures on state records"
+        },
+        "record_backend": {
+          "type": "boolean",
+          "const": true,
+          "description": "Record all state changes to backend"
+        },
+        "bundle_format": {
+          "type": "string",
+          "enum": ["UTCS-v5.0"],
+          "description": "UTCS bundle format version"
+        },
+        "evidence_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["timestamp", "hash", "signature", "context", "content", "cache"]
+          },
+          "minItems": 3,
+          "description": "Required evidence fields in UTCS bundle"
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "eem_policy": {
+          "type": "string",
+          "description": "Reference to MAL-EEM policy document"
+        },
+        "encryption": {
+          "type": "object",
+          "properties": {
+            "at_rest": {
+              "type": "boolean",
+              "description": "Enable encryption at rest"
+            },
+            "in_transit": {
+              "type": "boolean",
+              "description": "Enable encryption in transit (TLS 1.3)"
+            }
+          }
+        }
+      }
+    },
+    "interfaces": {
+      "type": "object",
+      "properties": {
+        "snapshot_state": {
+          "type": "object",
+          "description": "Capture current state snapshot",
+          "properties": {
+            "input": {
+              "type": "object",
+              "properties": {
+                "scope": {
+                  "type": "string",
+                  "enum": ["full", "delta", "component"]
+                }
+              }
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "state_hash": {"type": "string"},
+                "timestamp": {"type": "string", "format": "date-time"},
+                "version": {"type": "string"}
+              }
+            }
+          }
+        },
+        "query_state": {
+          "type": "object",
+          "description": "Query historical state",
+          "properties": {
+            "input": {
+              "type": "object",
+              "properties": {
+                "version": {"type": "string"},
+                "timestamp": {"type": "string", "format": "date-time"}
+              }
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "state": {"type": "object"},
+                "metadata": {"type": "object"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "properties": {
+        "standards": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["S1000D", "DO-178C", "IEC-62443", "ISO-27001"]
+          }
+        },
+        "audit_level": {
+          "type": "string",
+          "enum": ["none", "basic", "detailed", "forensic"]
+        }
+      }
+    }
+  }
+}

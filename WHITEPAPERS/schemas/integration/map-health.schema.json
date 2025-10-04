@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/integration/map-health.schema.json",
+  "title": "ASI-T2 MAP Health Contract",
+  "description": "MAP health contract schema for service health and liveness monitoring",
+  "type": "object",
+  "required": ["message_id", "version", "contract", "timestamp", "payload"],
+  "properties": {
+    "message_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique message identifier (UUID v4)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Contract version (semantic versioning)"
+    },
+    "contract": {
+      "type": "string",
+      "const": "health",
+      "description": "Contract type (must be 'health')"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Health check timestamp (ISO 8601 with timezone)"
+    },
+    "topic": {
+      "type": "string",
+      "pattern": "^map/1/health/[A-Z0-9_-]+(/[A-Z0-9_]+)*$",
+      "description": "Health topic path"
+    },
+    "sender": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Service/component identifier"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["service", "component", "node"],
+          "description": "Sender type"
+        },
+        "instance": {
+          "type": "string",
+          "description": "Instance identifier"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Service version"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["healthy", "degraded", "unhealthy", "unknown"],
+          "description": "Overall health status"
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "status"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Health check name"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["pass", "fail", "warn"],
+                "description": "Check status"
+              },
+              "message": {
+                "type": "string",
+                "description": "Status message"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Check timestamp"
+              }
+            }
+          }
+        },
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "uptime_s": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Uptime in seconds"
+            },
+            "cpu_percent": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "CPU usage percentage"
+            },
+            "memory_mb": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Memory usage in MB"
+            },
+            "connections": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Active connection count"
+            },
+            "error_rate": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Error rate (errors per second)"
+            },
+            "latency_p99_ms": {
+              "type": "number",
+              "minimum": 0,
+              "description": "99th percentile latency in ms"
+            }
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Dependency name"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["available", "unavailable", "degraded"],
+                "description": "Dependency status"
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "node_id": {
+          "type": "string",
+          "description": "Node identifier"
+        },
+        "deployment": {
+          "type": "string",
+          "enum": ["edge", "site", "hub"],
+          "description": "Deployment profile"
+        },
+        "context": {
+          "type": "object",
+          "description": "Additional context"
+        }
+      }
+    }
+  }
+}

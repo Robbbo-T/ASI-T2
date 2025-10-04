@@ -1,0 +1,103 @@
+---
+# MAL-CB Service Example Configuration
+# Classical Bit Solver for BWB-Q100 AAA Domain
+
+service_id: MAL-CB-BWB-Q100-AAA
+version: 0.1.0
+layer: CB
+description: Classical deterministic solver service for aerodynamic optimization
+
+topics:
+  subscribe:
+    - map/1/control/BWB-Q100/AAA/SYSTEMS/SI/CB
+  publish:
+    - map/1/telemetry/BWB-Q100/AAA/SYSTEMS/SI/CB
+
+computation:
+  deterministic: true
+  validation:
+    enabled: true
+    method: redundant-computation
+  solvers:
+    - solver_id: IPOPT-3.14.0
+      type: nonlinear
+      version: 3.14.0
+      certified: false
+    - solver_id: CPLEX-22.1
+      type: linear
+      version: 22.1.0
+      certified: true
+  metrics:
+    track_convergence: true
+    track_accuracy: true
+    track_performance: true
+
+utcs:
+  require_signature: true
+  record_backend: true
+  bundle_format: UTCS-v5.0
+
+interfaces:
+  solve:
+    input:
+      problem_type: string
+      parameters: object
+      constraints: object
+      tolerance: 1e-6
+    output:
+      solution: object
+      status: optimal|feasible|infeasible|unbounded|error
+      metrics: object
+      timestamp: ISO-8601
+  validate:
+    input:
+      solution: object
+      problem: object
+    output:
+      valid: boolean
+      violations: array
+      timestamp: ISO-8601
+
+performance:
+  max_solution_time_s: 300
+  memory_limit_mb: 4096
+
+compliance:
+  standards:
+    - DO-178C
+    - DO-330
+    - IEC-62443
+  verification_level: C
+
+# Example optimization problem
+example_problem:
+  type: aerodynamic_optimization
+  objective: minimize_drag
+  variables:
+    - name: wing_sweep_deg
+      bounds: [20, 35]
+    - name: wing_twist_deg
+      bounds: [-5, 5]
+  constraints:
+    - type: lift_coefficient
+      min: 0.5
+      max: 1.2
+    - type: structural_margin
+      min: 1.5
+
+# Deployment
+deployment:
+  profile: site
+  replicas: 2
+  resources:
+    memory_mb: 8192
+    cpu_cores: 4
+
+# Monitoring
+monitoring:
+  health_check_interval_s: 30
+  metrics:
+    - solve_requests_per_minute
+    - average_solution_time_s
+    - convergence_rate_percent
+    - validation_failures_per_hour

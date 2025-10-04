@@ -1,0 +1,110 @@
+---
+# MAL-QB Service Example Configuration
+# Bit Cubic (non-quantum) Advisory Optimizer for BWB-Q100 AAA Domain
+
+service_id: MAL-QB-BWB-Q100-AAA
+version: 0.1.0
+layer: QB
+description: Quantum-inspired optimization service (advisory only, non-quantum)
+
+topics:
+  subscribe:
+    - map/1/control/BWB-Q100/AAA/QUBITS/QB/QB
+  publish:
+    - map/1/telemetry/BWB-Q100/AAA/QUBITS/QB/QB
+
+optimization:
+  role: advisory
+  method: QUBO
+  safety:
+    max_age_s: 30
+    fallback: use_cb_solution
+    accept_predicates:
+      - min_separation_nm >= 5
+      - structural_margin >= 1.5
+      - fuel_margin_kg >= 100
+      - time_to_conflict >= 300
+  solvers:
+    - solver_id: SimulatedAnnealing-v1
+      backend: simulator
+      parameters:
+        num_reads: 1000
+        chain_strength: 2.0
+        annealing_time_us: 20
+    - solver_id: QAOA-simulator
+      backend: quantum-inspired
+      parameters:
+        num_reads: 500
+        depth: 3
+
+utcs:
+  require_signature: true
+  record_backend: true
+  bundle_format: UTCS-v5.0
+
+interfaces:
+  optimize_qb:
+    input:
+      problem:
+        type: QUBO
+        size: 100
+        coefficients: object
+      constraints:
+        min_separation_nm: 5
+        structural_margin: 1.5
+      objective: minimize
+    output:
+      solutions: array
+      energies: array
+      status: optimal|feasible|timeout|error
+      predicates_satisfied: boolean
+      timestamp: ISO-8601
+
+safety_notes: |
+  QB is NON-QUANTUM and advisory only. All solutions must:
+  1. Pass accept_predicates validation
+  2. Be validated by CB layer before use
+  3. Have fallback to CB solution if rejected
+  4. Not be used directly in safety-critical systems
+  5. Age out after max_age_s seconds
+
+performance:
+  max_optimization_time_s: 60
+
+compliance:
+  standards:
+    - IEC-62443
+    - ISO-27001
+  certification_notes: QB is advisory and not subject to DO-178C certification
+
+# Example QUBO problem
+example_problem:
+  name: wing_panel_fastener_layout
+  description: Optimize fastener placement for minimum weight with structural constraints
+  qubo_matrix:
+    size: 64
+    objective: minimize_weight
+  constraints:
+    - type: edge_distance
+      min_mm: 20
+    - type: pitch
+      min_mm: 50
+      max_mm: 100
+
+# Deployment
+deployment:
+  profile: hub
+  replicas: 1
+  resources:
+    memory_mb: 2048
+    cpu_cores: 2
+
+# Monitoring
+monitoring:
+  health_check_interval_s: 60
+  metrics:
+    - optimization_requests_per_hour
+    - average_optimization_time_s
+    - solution_acceptance_rate_percent
+    - predicates_rejection_count
+    - fallback_invocation_count
