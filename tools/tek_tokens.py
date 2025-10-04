@@ -131,9 +131,9 @@ def compute_sustain_fee(cfg, op: str, amount_deg: int) -> int:
                 bps_val = tier["bps"]
                 if isinstance(bps_val, str):
                     # Convert "31.4" to 31.4 bps = 0.314%
-                    bps_float = float(bps_val)
-                    # Calculate fee: amount * (bps/10000), floored
-                    fee = int((amount_deg * bps_float) / 10000)
+                    bps_fraction = Fraction(bps_val)
+                    # Calculate fee: amount * (bps/10000), floored, using exact Fraction arithmetic
+                    fee = int((amount_deg * bps_fraction) // 10000)
                 else:
                     fee = (amount_deg * bps_val) // 10000
                 return fee
