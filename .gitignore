@@ -45,3 +45,9 @@ build/
 # And the specific planned UTCS output path:
 PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/optimization/aqua_pyomo_plan_utcs.json
 
+# Token ledger and badge (generated files - v3.14)
+finance/ledger.json
+finance/txlog.jsonl
+finance/txhead.json
+badges/
+
