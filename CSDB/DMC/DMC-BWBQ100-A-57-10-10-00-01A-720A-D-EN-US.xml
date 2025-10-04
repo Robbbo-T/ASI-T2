@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6-0/xml_schema_flat/procedural.xsd">
+         xsi:noNamespaceSchemaLocation="schemas/procedural.xsd">
   <identAndStatusSection>
     <dmAddress>
       <dmIdent>
