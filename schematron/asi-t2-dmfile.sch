@@ -63,8 +63,8 @@
         Common subcodes: 10 (Wing Structure), 20 (Wing Tips), 30 (Wing Trailing Edge), etc.
       -->
       <assert test="@subSystemCode castable as xs:integer and 
-                    number(@subSystemCode) >= 0 and 
-                    number(@subSystemCode) <= 99">
+                    number(@subSystemCode) &gt;= 0 and 
+                    number(@subSystemCode) &lt;= 99">
         ATA Chapter 57 subSystemCode must be a valid 2-digit number (00-99).
         Found: <value-of select="@subSystemCode"/>
       </assert>
