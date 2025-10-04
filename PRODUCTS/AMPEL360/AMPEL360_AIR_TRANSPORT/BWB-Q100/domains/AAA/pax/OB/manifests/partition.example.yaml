@@ -1,3 +1,26 @@
+# UTCS-MI v5.0 Compliant Partition Manifest Example
+# 
+# CANONICAL HASH MAINTENANCE:
+# The 'canonical_hash' field appears in three locations and must be kept synchronized:
+# 1. utcs_header.canonical_hash - Hash of the entire UTCS header section
+# 2. Root-level canonical_hash - Hash of the complete manifest (excluding UTCS header)
+# 3. evidence.canonical_hash - Copy of root-level canonical_hash for evidence tracking
+#
+# To update canonical_hash values after making changes:
+# 1. Temporarily set all canonical_hash fields to "TBD" or a placeholder
+# 2. Compute SHA256 hash of the normalized manifest content:
+#    - For utcs_header.canonical_hash: hash the UTCS header YAML section only
+#    - For root canonical_hash: hash the entire manifest excluding the UTCS header
+#    - For evidence.canonical_hash: use the same value as root canonical_hash
+# 3. Use: cat manifest.yaml | yq eval 'del(.utcs_header)' | sha256sum
+#    or similar tools to compute the hash of the canonical form
+# 4. Update all three canonical_hash fields with the computed SHA256 values
+#    Format: "sha256:<64 lowercase hex characters>"
+#
+# Note: The sbom_hash field should contain the actual SHA256 hash of the SBOM file
+# referenced in evidence.sbom.path. Compute it with: sha256sum <sbom-file>
+#
+---
 utcs_header:
   id: AAA-PAX-OB-PART-A661-0001
   project: AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100
@@ -10,9 +33,13 @@ utcs_header:
   bridge: "CB→QB→UE→FE→FWD→QS"
   ethics_guard: MAL-EEM
   utcs_mi: v5.0
-  canonical_hash: "sha256:abc123def456789012345678901234567890123456789012345678901234567890"
+  canonical_hash: "sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
 
 package_name: "A661_CDS_DisplayServer"
+canonical_hash: "sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+sbom_hash: "sha256:fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321"
+utcs_signature: "signature-A661-CDS-DisplayServer-v0.1.0"
+security_policy_id: "policy-001"
 
 package:
   name: "A661_CDS_DisplayServer"
@@ -47,10 +74,10 @@ security:
     hm_policy: "partition_hm_policy_v1"
 
 evidence:
-  canonical_hash: "sha256:abc123def456789012345678901234567890123456789012345678901234567890"
+  canonical_hash: "sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
   sbom:
     path: "../../OB/sbom/A661_CDS_DisplayServer.spdx.json"
-    hash: "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    hash: "sha256:fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321"
   signatures:
     - path: "../../OB/certificates/A661_CDS_DisplayServer.sig"
       type: "cosign"
