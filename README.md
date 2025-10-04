@@ -53,6 +53,7 @@ canonical_hash: pending
   - [Products Portfolio](#-products-portfolio)
   - [Dev & Ops](#-dev--ops)
 - [Product Architecture (Domain → Process → ATA)](#product-architecture-domain--process--ata)
+- [Root-Level Domain Architecture (ASI-T2 Standard)](#root-level-domain-architecture-asi-t2-standard)
 - [PAx — Packaging & Applications](#pax--packaging--applications)
 - [BWB-Q100 — Transport Civil × Air](#bwb-q100--transport-civil--air)
 - [QAIM-2 — CAX ↔ QOx Bridge](#qaim-2--cax--qox-bridge)
@@ -348,6 +349,114 @@ Every **product** is organized into **domains**. Each domain contains **three pr
 |  CQH | Cryogenics, Quantum & H₂            |
 |  MEC | Mechanical Systems Modules          |
 |   …  | (see `PRODUCTS/.../domains/`)       |
+
+---
+
+## Root-Level Domain Architecture (ASI-T2 Standard)
+
+The repository now includes a **standardized root-level domain architecture** at [`domains/`](./domains/) that implements uniform process portfolios across all canonical domains. This structure complements product-specific domains and provides a federation-wide reference implementation.
+
+### Domain Portfolio Structure
+
+Each domain follows a uniform 4-tier process portfolio:
+
+```
+domains/<CODE>/
+├── PLM/              # Product Lifecycle Management (CAx processes)
+│   ├── CAO/          # Computer Aided Kick-Off (CON/REQ/SYS)
+│   ├── CAD/          # Computer Aided Design (ASSY/PRT/DRW)
+│   ├── CAE/          # Computer Aided Engineering (FEM/CFD/MBD/EMI)
+│   ├── CAM/          # Computer Aided Manufacturing (NC/APT/OPR/FIX/TOOL/SET)
+│   ├── CAV/          # Quality Verification & Validation (QIP/QIF/DMIS/MEAS/MSA/CERT)
+│   ├── CAI/          # Computer Aided Installation & Integration (INS/INT/FIT)
+│   ├── CAS/          # Services in Operation (AMM/SRM/IPD/EIS)
+│   ├── CAP/          # Computer Aided Processes (PIPE/JOB/TESTSET/EVID/RPT)
+│   └── CMP/          # CAMPost - Services Post Operations (EoL/Recycling/ESG)
+├── QUANTUM_OA/       # Quantum Optimization & Approximation
+│   ├── QOX/          # Quantum Optimization (generic)
+│   ├── MILP/         # Mixed Integer Linear Programming
+│   ├── LP/           # Linear Programming
+│   ├── QP/           # Quadratic Programming
+│   ├── QUBO/         # Quadratic Unconstrained Binary Optimization
+│   ├── QAOA/         # Quantum Approximate Optimization Algorithm
+│   ├── SA/           # Simulated Annealing
+│   └── GA/           # Genetic Algorithms
+├── PAx/              # Packaging (OB/OFF artifacts, SBOM, manifests)
+├── DELs/             # Final Check & Deliveries (releases, checksums, signatures)
+├── policy/
+│   ├── lints/        # Naming convention validators
+│   └── schematron/   # S1000D validation rules
+└── tests/            # pytest test suites
+```
+
+### Canonical Domains (15 total)
+
+See [`domains.json`](./domains.json) for the complete catalog with descriptions:
+
+| Code | Domain Name | Description |
+|:----:|------------|-------------|
+| **AAA** | Airframes Aerodynamics and Airworthiness | Airframe structures, aerodynamic analysis, materials |
+| **AAP** | Airport Adaptable Platforms | Ground support equipment, airport infrastructure |
+| **CCC** | Cockpit, Cabin & Cargo | Flight deck, passenger cabin, cargo handling |
+| **CQH** | Cryogenics, Quantum & H₂ | Cryogenic systems, quantum integration, hydrogen fuel |
+| **DDD** | Drainage, Dehumidification & Drying | Environmental control, moisture management |
+| **EDI** | Electronics & Digital Instruments | Avionics, digital instruments, electronic systems |
+| **EEE** | Renewable Energy, Harvesting & Circulation | Energy generation, harvesting, distribution |
+| **EER** | Environmental, Emissions & Remediation | Environmental impact, emissions control |
+| **IIF** | Industrial Infrastructure & Facilities | Manufacturing facilities, industrial infrastructure |
+| **IIS** | Information Systems and Intelligence Softwares | Software, AI/ML, information management |
+| **LCC** | Linkages, Control & Communications | Control systems, communication networks |
+| **LIB** | Logistics, Inventory & Blockchain | Supply chain, inventory, blockchain traceability |
+| **MEC** | Mechanical Systems Modules | Mechanical systems, actuators, components |
+| **OOO** | OS, Ontologies & Office Interfaces | Operating systems, ontologies, office integration |
+| **PPP** | Propulsion & Fuel Systems | Propulsion systems, engines, fuel management |
+
+### Naming Conventions
+
+The domain architecture implements strict naming conventions enforced by automated linters:
+
+#### PLM (CAx++) Pattern
+```
+<DISC>-<MIC>-<DOMAIN><ATA>-<SCOPE>-<HAND?>-<EFFT?>-<LIFE?>-<CAP?>-r<REV>.<EXT>
+```
+**Example:** `ASSY-BWQ1-CAD5710-FWD-SPAR-GA-r012.step`
+
+#### QUANTUM_OA Pattern
+```
+<ALG>-<MIC>-QOA<ATA>-<SCOPE>-<DATASET?>-<STAGE?>-r<REV>.<EXT>
+```
+**Example:** `MILP-BWQ1-QOA5710-FWD-SPAR-OPT-DS-BENCH01-DEV-r003.lp`
+
+#### PAx Pattern
+```
+PAX-<MIC>-PKG<ATA>-<SCOPE>-<TYPE>-r<REV>.<EXT>
+```
+**Example:** `PAX-BWQ1-PKG5710-FWD-SPAR-DOCS-r001.zip`
+
+#### DELs Pattern
+```
+<DISC>-<MIC>-REL<ATA>-<SCOPE>-<TAG>-r<REV>.<EXT>
+```
+**Example:** `DLV-BWQ1-REL5710-FWD-SPAR-PKG-r001.zip`
+
+**ATA Default:** `5710` (parametrizable per product)
+
+### Policy Enforcement
+
+Each domain includes:
+- **Linter:** `policy/lints/lint_names.py` - Validates filenames based on tree location
+- **Schematron:** `policy/schematron/dmc-ata-align.sch` - Validates S1000D DMC alignment
+- **Tests:** `tests/test_lint_names.py` - pytest suite with 4 test cases per tree
+
+**CI Automation:** [`.github/workflows/domains-filename-policy.yml`](./.github/workflows/domains-filename-policy.yml) runs matrix validation across all 15 domains.
+
+### Domain READMEs
+
+Each domain has comprehensive documentation at `domains/<CODE>/README.md` including:
+- Complete CAx process definitions (CAO, CAD, CAE, CAM, CAV, CAI, CAS, CAP, CMP)
+- Naming pattern examples
+- Process boundaries and artifact types
+- Usage instructions and testing guidelines
 
 ---
 

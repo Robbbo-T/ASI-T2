@@ -1,0 +1,21 @@
+name: Domains Filename Policy (matrix)
+on:
+  pull_request: { paths: ['domains/**'] }
+  push: { paths: ['domains/**'] }
+
+jobs:
+  lint-all-domains:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        domain: [AAA, AAP, CCC, CQH, DDD, EDI, EEE, EER, IIF, IIS, LCC, LIB, MEC, OOO, PPP]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.x' }
+      - name: Lint ${{ matrix.domain }}
+        env:
+          ENFORCED_ROOT: domains/${{ matrix.domain }}
+        run: |
+          python3 domains/${{ matrix.domain }}/policy/lints/lint_names.py domains/${{ matrix.domain }}
