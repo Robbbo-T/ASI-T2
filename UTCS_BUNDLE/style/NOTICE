@@ -1,0 +1,66 @@
+ASI-T2 UTCS Bundle
+==================
+
+Copyright (c) 2025 Amedeo Pelliccia and ASI-T Architecture Team
+
+This UTCS bundle contains software, documentation, and evidence artifacts
+that are part of the ASI-T2 ecosystem.
+
+## Notice
+
+This bundle includes materials from the following sources:
+
+1. ASI-T2 Core Framework
+   - Copyright (c) 2025 Amedeo Pelliccia
+   - Licensed under Proprietary license with Responsible Use clause
+   
+2. TFA V2 Architecture
+   - Copyright (c) 2025 ASI-T Architecture Team
+   - Public draft for technical review
+
+3. UTCS v5.0 Framework
+   - Copyright (c) 2025 ASI-T Architecture Team
+   - Public draft specification
+
+## Ethics & Responsible Use
+
+This framework MUST NOT be used to facilitate weaponisation.
+Dual-use is controlled under MAL-EEM/MAP-EEM.
+
+All use must comply with:
+- EU 2021/821 dual-use regulations
+- ITAR/EAR where applicable
+- AS9100-lite quality controls
+- Least-privilege access principles
+- Immutable decision logging requirements
+
+## Attribution
+
+If you use this software or reference this work in research or
+commercial applications, please cite:
+
+    Pelliccia, A. (2025). QS/UTCS Provenance & Evidence Framework.
+    v0.1.0. DOI: TBA.
+
+Machine-readable metadata is available in CITATION.cff within this bundle.
+
+## Third-Party Components
+
+This bundle may include third-party software components subject to
+their own licenses. See attestations/sbom.spdx.json for a complete
+software bill of materials.
+
+## Contact
+
+For questions about this bundle or the ASI-T2 ecosystem:
+- GitHub: https://github.com/Robbbo-T/ASI-T2
+- Maintainer: ASI-T Architecture Team
+
+## Disclaimer
+
+This document does not provide weaponisation instructions nor facilitate
+harm. All experimentation adheres to MAL-EEM/MAP-EEM and applicable law.
+
+THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.

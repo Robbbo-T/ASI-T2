@@ -1,0 +1,78 @@
+name: UTCS · Evidence Validation
+on:
+  push:
+    branches:
+      - main
+      - 'copilot/**'
+    paths:
+      - 'UTCS_BUNDLE/**'
+      - '.github/workflows/utcs-validate.yml'
+  pull_request:
+    paths:
+      - 'UTCS_BUNDLE/**'
+      - '.github/workflows/utcs-validate.yml'
+
+jobs:
+  utcs-validate:
+    runs-on: ubuntu-latest
+    name: Validate UTCS Bundle
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install jsonschema PyYAML
+      
+      - name: Validate UTCS manifest
+        run: |
+          cd UTCS_BUNDLE
+          python sheet/ci/validate_utcs.py --manifest manifest.utcs.yaml
+      
+      - name: Validate UTCS manifest with crosswalk
+        run: |
+          cd UTCS_BUNDLE
+          python sheet/ci/validate_utcs.py --manifest manifest.utcs.yaml --check-crosswalk
+
+  sbom-verify:
+    runs-on: ubuntu-latest
+    name: Verify SBOM
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Check SBOM exists
+        run: |
+          if [ -f UTCS_BUNDLE/attestations/sbom.spdx.json ]; then
+            echo "✓ SBOM file found"
+          else
+            echo "⚠ SBOM file not found (expected for initial scaffolding)"
+            exit 0
+          fi
+      
+      - name: Validate SBOM JSON
+        if: hashFiles('UTCS_BUNDLE/attestations/sbom.spdx.json') != ''
+        run: |
+          jq '.' UTCS_BUNDLE/attestations/sbom.spdx.json > /dev/null
+          echo "✓ SBOM is valid JSON"
+
+  schema-validate:
+    runs-on: ubuntu-latest
+    name: Validate JSON Schemas
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Validate schema files
+        run: |
+          for schema in UTCS_BUNDLE/content/schemas/*.json; do
+            echo "Validating: $schema"
+            jq '.' "$schema" > /dev/null
+            echo "✓ $schema is valid JSON"
+          done

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-t2.org/schemas/map.telemetry.v1.json",
+  "title": "MAP Telemetry Contract v1",
+  "description": "ASI-T2 MAP.v1.telemetry - Per-product topics, timestamps, signatures, sequence numbers",
+  "type": "object",
+  "required": [
+    "contract",
+    "version",
+    "program",
+    "domain",
+    "telemetry"
+  ],
+  "properties": {
+    "contract": {
+      "const": "MAP.v1.telemetry",
+      "description": "Contract identifier"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version"
+    },
+    "program": {
+      "type": "string",
+      "description": "Program identifier (e.g., BWB-Q100)"
+    },
+    "domain": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Three-letter domain code (e.g., AAA, AAP)"
+    },
+    "telemetry": {
+      "type": "object",
+      "required": ["topic", "data", "timestamp_utc", "seq"],
+      "properties": {
+        "topic": {
+          "type": "string",
+          "pattern": "^map/1/telemetry/[^/]+/[^/]+/[^/]+/[^/]+/[^/]+$",
+          "description": "MAP telemetry topic path"
+        },
+        "data": {
+          "type": "object",
+          "description": "Telemetry payload (structure varies by topic)"
+        },
+        "timestamp_utc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Telemetry timestamp in UTC"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Monotonic sequence number"
+        },
+        "signature": {
+          "type": "string",
+          "description": "Ed25519 signature over canonical JSON (optional at H0)"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Telemetry source identifier"
+        },
+        "layer": {
+          "type": "string",
+          "enum": ["QS", "FWD", "UE", "FE", "CB", "QB"],
+          "description": "TFA bridge layer"
+        },
+        "component": {
+          "type": "string",
+          "description": "Component identifier"
+        },
+        "quality": {
+          "type": "string",
+          "enum": ["valid", "degraded", "invalid"],
+          "default": "valid",
+          "description": "Data quality indicator"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "utcs_hook": {
+          "type": "boolean",
+          "description": "Enable UTCS evidence capture"
+        },
+        "model_id": {
+          "type": "string",
+          "description": "Model identifier for MAL services"
+        },
+        "solver_id": {
+          "type": "string",
+          "description": "Solver identifier for optimization runs"
+        },
+        "seed": {
+          "type": "integer",
+          "description": "Random seed for reproducibility"
+        }
+      }
+    },
+    "compression": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false
+        },
+        "algorithm": {
+          "type": "string",
+          "enum": ["gzip", "zstd", "lz4"]
+        }
+      }
+    },
+    "sampling": {
+      "type": "object",
+      "properties": {
+        "rate_hz": {
+          "type": "number",
+          "minimum": 0.1,
+          "description": "Telemetry sampling rate in Hz"
+        },
+        "decimation": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Decimation factor for high-rate data"
+        }
+      }
+    }
+  }
+}
