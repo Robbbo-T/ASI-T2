@@ -1,0 +1,128 @@
+---
+version: '1.0'
+deployment: hub
+bridge: 'QS→FWD→UE→FE→CB→QB→QC'
+description: Full-featured hub deployment with all solvers including quantum
+
+pcan:
+  enabled: true
+  cache_size: 10000
+  s1000d_aware: true
+  ata_mapping: true
+
+surrogate:
+  enabled: true
+  models:
+    - type: 'gnn'
+      checkpoint: '/models/gnn-v1.2.pth'
+      device: 'cuda'
+    - type: 'gp'
+      kernel: 'rbf'
+    - type: 'transformer'
+      checkpoint: '/models/transformer-v2.0.pth'
+      device: 'cuda'
+
+strategy:
+  enabled: true
+  algorithm: 'thompson_sampling'
+  exploration_rate: 0.05
+  training_mode: 'online'
+
+arbitration:
+  enabled: true
+  algorithm: 'ucb1'
+  window_size: 1000
+  fallback: 'cb_cbc'
+
+translator:
+  enabled: true
+  formats:
+    - 'mip'
+    - 'sat'
+    - 'csp'
+    - 'qubo'
+    - 'qaoa'
+    - 'vqe'
+
+cb_solvers:
+  - name: 'gurobi'
+    enabled: true
+    license: '/opt/gurobi/gurobi.lic'
+    time_limit: 3600
+    threads: 32
+  - name: 'cbc'
+    enabled: true
+    time_limit: 1800
+    threads: 16
+  - name: 'ortools'
+    enabled: true
+    time_limit: 1800
+    threads: 16
+  - name: 'glpk'
+    enabled: true
+    time_limit: 600
+    threads: 4
+
+qb_solvers:
+  enabled: true
+  methods:
+    - 'tensor_decomposition'
+    - 'lifted_relaxation'
+  time_limit: 300
+  gpu_enabled: true
+
+qc_gateway:
+  enabled: true
+  providers:
+    - name: 'ibm_quantum'
+      backend: 'ibmq_qasm_simulator'
+      shots: 8192
+      token_file: '/keys/ibm_quantum_token'
+    - name: 'dwave'
+      solver: 'Advantage_system6.1'
+      num_reads: 1000
+      token_file: '/keys/dwave_token'
+  algorithms:
+    - 'qaoa'
+    - 'vqe'
+    - 'quantum_annealing'
+
+map:
+  enabled: true
+  broker: 'hub-broker:1883'
+  topics:
+    - 'map/1/control'
+    - 'map/1/telemetry'
+    - 'map/1/log'
+  qos: 2
+
+utcs:
+  enabled: true
+  version: 'v5.0'
+  evidence_path: '/data/qaim-2/evidence'
+  signing_enabled: true
+  signing_key: '/keys/qaim-2-hub-private.pem'
+  sbom_enabled: true
+
+ethics:
+  map_eem: true
+  mal_eem: true
+  audit_mode: 'strict'
+  review_required: true
+
+logging:
+  level: 'DEBUG'
+  output: '/var/log/qaim-2/qaim-2.log'
+  metrics_enabled: true
+  tracing_enabled: true
+
+monitoring:
+  prometheus_enabled: true
+  prometheus_port: 9090
+  grafana_dashboard: true
+
+resources:
+  memory_limit: '64G'
+  cpu_limit: 64
+  disk_limit: '1T'
+  gpu_count: 2

@@ -1,0 +1,263 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://asi-t2.eu/schemas/qaim-2/optimize_qb.v1.json",
+  "title": "QAIM-2 Optimization Request Schema v1",
+  "description": "Input schema for QAIM-2 optimization requests supporting CB, QB, and QC solvers",
+  "type": "object",
+  "required": ["problem_type", "objectives"],
+  "properties": {
+    "problem_type": {
+      "type": "string",
+      "description": "Type of optimization problem",
+      "enum": [
+        "vehicle_routing",
+        "scheduling",
+        "layout",
+        "assignment",
+        "portfolio",
+        "resource_allocation",
+        "path_planning",
+        "bin_packing",
+        "knapsack",
+        "tsp",
+        "vrp",
+        "job_shop",
+        "flow_shop",
+        "general_mip",
+        "general_qubo"
+      ]
+    },
+    "variables": {
+      "type": "array",
+      "description": "Decision variables",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Variable name"
+          },
+          "type": {
+            "type": "string",
+            "description": "Variable type",
+            "enum": ["binary", "integer", "continuous"],
+            "default": "continuous"
+          },
+          "lower_bound": {
+            "type": "number",
+            "description": "Lower bound",
+            "default": 0
+          },
+          "upper_bound": {
+            "type": ["number", "null"],
+            "description": "Upper bound (null for infinity)",
+            "default": null
+          },
+          "domain": {
+            "type": "string",
+            "description": "ASI-T2 domain (AAA, PPP, LCC, etc.)"
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "description": "Optimization constraints",
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Constraint type",
+            "enum": [
+              "capacity",
+              "time_window",
+              "precedence",
+              "resource",
+              "linear",
+              "quadratic",
+              "logical",
+              "custom"
+            ]
+          },
+          "expression": {
+            "type": "string",
+            "description": "Constraint expression in solver-specific format"
+          },
+          "sense": {
+            "type": "string",
+            "description": "Constraint sense",
+            "enum": ["<=", ">=", "="],
+            "default": "<="
+          },
+          "value": {
+            "type": "number",
+            "description": "Right-hand side value"
+          },
+          "rhs": {
+            "type": "number",
+            "description": "Alias for value (right-hand side)"
+          },
+          "unit": {
+            "type": "string",
+            "description": "Unit of measurement (kg, m, s, etc.)"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Additional constraint metadata"
+          }
+        }
+      }
+    },
+    "objectives": {
+      "type": "array",
+      "description": "Optimization objectives",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Objective name",
+            "examples": [
+              "minimize_distance",
+              "minimize_time",
+              "minimize_cost",
+              "maximize_profit",
+              "minimize_energy"
+            ]
+          },
+          "expression": {
+            "type": "string",
+            "description": "Objective expression"
+          },
+          "sense": {
+            "type": "string",
+            "description": "Optimization sense",
+            "enum": ["minimize", "maximize"],
+            "default": "minimize"
+          },
+          "weight": {
+            "type": "number",
+            "description": "Weight for multi-objective optimization",
+            "default": 1.0,
+            "minimum": 0,
+            "maximum": 1.0
+          }
+        }
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Solver-specific parameters",
+      "properties": {
+        "solver": {
+          "type": "string",
+          "description": "Preferred solver (auto for AI selection)",
+          "enum": [
+            "auto",
+            "cb_gurobi",
+            "cb_cbc",
+            "cb_ortools",
+            "cb_glpk",
+            "qb_tensor",
+            "qb_lifted",
+            "qc_qaoa",
+            "qc_vqe",
+            "qc_annealing"
+          ],
+          "default": "auto"
+        },
+        "time_limit": {
+          "type": "number",
+          "description": "Time limit in seconds",
+          "default": 60,
+          "minimum": 1,
+          "maximum": 3600
+        },
+        "gap_tolerance": {
+          "type": "number",
+          "description": "Gap tolerance (0.01 = 1%)",
+          "default": 0.01,
+          "minimum": 0,
+          "maximum": 1.0
+        },
+        "threads": {
+          "type": "integer",
+          "description": "Number of threads for classical solvers",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 64
+        },
+        "shots": {
+          "type": "integer",
+          "description": "Number of shots for quantum solvers",
+          "default": 8192,
+          "minimum": 100,
+          "maximum": 100000
+        },
+        "max_iterations": {
+          "type": "integer",
+          "description": "Maximum iterations for iterative solvers",
+          "default": 1000,
+          "minimum": 10,
+          "maximum": 100000
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Request metadata for traceability",
+      "properties": {
+        "domain": {
+          "type": "string",
+          "description": "ASI-T2 domain",
+          "enum": [
+            "AAA",
+            "PPP",
+            "EDI",
+            "LCC",
+            "IIS",
+            "OOO",
+            "SSS",
+            "CCC",
+            "MMM",
+            "EEE"
+          ]
+        },
+        "ata_chapter": {
+          "type": "string",
+          "description": "ATA chapter reference",
+          "pattern": "^ATA-[0-9]{2}$"
+        },
+        "s1000d_refs": {
+          "type": "array",
+          "description": "S1000D data module references",
+          "items": {
+            "type": "string"
+          }
+        },
+        "classification": {
+          "type": "string",
+          "description": "Security classification",
+          "enum": ["PUBLIC", "INTERNAL", "CONFIDENTIAL"],
+          "default": "INTERNAL"
+        },
+        "requester": {
+          "type": "string",
+          "description": "User or system requesting optimization"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Custom tags",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,252 @@
+name: S1000D Validation
+
+# Validates S1000D data modules against BREX rules and XML schemas
+
+on:
+  push:
+    branches: [main, 'copilot/**']
+    paths:
+      - '**/ata/ATA-**/*.xml'
+      - '**/ata/ATA-**/BREX.xml'
+      - '**/ata/ATA-**/DMRL.xml'
+      - '.github/workflows/s1000d-checks.yml'
+  pull_request:
+    paths:
+      - '**/ata/ATA-**/*.xml'
+      - '**/ata/ATA-**/BREX.xml'
+      - '**/ata/ATA-**/DMRL.xml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install lxml defusedxml
+          
+          # Install xmllint (libxml2-utils)
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils
+      
+      - name: Find S1000D data modules
+        id: find-dms
+        run: |
+          echo "🔍 Finding S1000D data modules..."
+          
+          # Find all XML files in ata/ directories
+          find . -path "*/ata/ATA-*/*.xml" -type f > s1000d-files.txt
+          
+          # Exclude BREX and DMRL from validation (they are meta-files)
+          grep -v "BREX.xml" s1000d-files.txt | grep -v "DMRL.xml" > data-modules.txt || true
+          
+          if [ -s data-modules.txt ]; then
+              echo "Found $(wc -l < data-modules.txt) data modules"
+              cat data-modules.txt
+              echo "count=$(wc -l < data-modules.txt)" >> $GITHUB_OUTPUT
+          else
+              echo "No data modules found"
+              echo "count=0" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Validate XML well-formedness
+        if: steps.find-dms.outputs.count > 0
+        run: |
+          echo "✅ Validating XML well-formedness..."
+          
+          errors=0
+          while IFS= read -r dm; do
+              echo "Checking: $dm"
+              if ! xmllint --noout "$dm" 2>&1; then
+                  echo "  ❌ FAILED: Not well-formed XML"
+                  errors=$((errors + 1))
+              else
+                  echo "  ✅ PASSED"
+              fi
+          done < data-modules.txt
+          
+          if [ $errors -gt 0 ]; then
+              echo "❌ $errors data module(s) failed well-formedness check"
+              exit 1
+          else
+              echo "✅ All data modules are well-formed"
+          fi
+      
+      - name: Check S1000D structure (basic)
+        if: steps.find-dms.outputs.count > 0
+        run: |
+          python - <<'EOF'
+          import sys
+          from pathlib import Path
+          from defusedxml import ElementTree as ET
+          
+          with open("data-modules.txt") as f:
+              data_modules = [line.strip() for line in f if line.strip()]
+          
+          errors = []
+          warnings = []
+          
+          for dm_path in data_modules:
+              print(f"\n🔍 Checking: {dm_path}")
+              
+              try:
+                  tree = ET.parse(dm_path)
+                  root = tree.getroot()
+                  
+                  # Check for required S1000D elements (basic)
+                  # This is a simplified check; full BREX validation would be more comprehensive
+                  
+                  # Check for identAndStatusSection
+                  if root.find(".//{http://www.s1000d.org/S1000D_5-0}identAndStatusSection") is None:
+                      if root.find(".//identAndStatusSection") is None:
+                          warnings.append(f"{dm_path}: Missing identAndStatusSection")
+                  
+                  # Check for dmIdent (data module identification)
+                  if root.find(".//{http://www.s1000d.org/S1000D_5-0}dmIdent") is None:
+                      if root.find(".//dmIdent") is None:
+                          errors.append(f"{dm_path}: Missing dmIdent (data module code)")
+                  
+                  # Check for security classification (IDEALE-EU requirement)
+                  security = root.find(".//{http://www.s1000d.org/S1000D_5-0}security")
+                  if security is None:
+                      security = root.find(".//security")
+                  if security is None:
+                      warnings.append(f"{dm_path}: Missing security classification")
+                  
+                  print(f"  ✅ Basic structure OK")
+              
+              except Exception as e:
+                  errors.append(f"{dm_path}: XML parsing error: {e}")
+                  print(f"  ❌ ERROR: {e}")
+          
+          if warnings:
+              print("\n⚠️  WARNINGS:")
+              for warning in warnings:
+                  print(f"  • {warning}")
+          
+          if errors:
+              print("\n❌ ERRORS:")
+              for error in errors:
+                  print(f"  • {error}")
+              sys.exit(1)
+          else:
+              print("\n✅ All data modules passed basic structure checks")
+          EOF
+      
+      - name: Find BREX files
+        id: find-brex
+        run: |
+          echo "🔍 Finding BREX files..."
+          find . -path "*/ata/ATA-*/BREX.xml" -type f > brex-files.txt || true
+          
+          if [ -s brex-files.txt ]; then
+              echo "Found $(wc -l < brex-files.txt) BREX files"
+              cat brex-files.txt
+              echo "count=$(wc -l < brex-files.txt)" >> $GITHUB_OUTPUT
+          else
+              echo "No BREX files found"
+              echo "count=0" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Validate BREX files
+        if: steps.find-brex.outputs.count > 0
+        run: |
+          echo "✅ Validating BREX files..."
+          
+          # For now, just check well-formedness
+          # Full BREX validation would require S1000D XSD schemas and a BREX validator
+          errors=0
+          while IFS= read -r brex; do
+              echo "Checking: $brex"
+              if ! xmllint --noout "$brex" 2>&1; then
+                  echo "  ❌ FAILED"
+                  errors=$((errors + 1))
+              else
+                  echo "  ✅ PASSED"
+              fi
+          done < brex-files.txt
+          
+          if [ $errors -gt 0 ]; then
+              echo "❌ $errors BREX file(s) failed validation"
+              exit 1
+          else
+              echo "✅ All BREX files are well-formed"
+          fi
+      
+      - name: Check DMRL files
+        run: |
+          echo "🔍 Checking for DMRL (Data Module Requirements List)..."
+          find . -path "*/ata/ATA-*/DMRL.xml" -type f > dmrl-files.txt || true
+          
+          if [ -s dmrl-files.txt ]; then
+              echo "Found $(wc -l < dmrl-files.txt) DMRL files"
+              
+              # Validate DMRL files
+              while IFS= read -r dmrl; do
+                  echo "Checking: $dmrl"
+                  xmllint --noout "$dmrl" 2>&1 || true
+              done < dmrl-files.txt
+          else
+              echo "⚠️  No DMRL files found (recommended for S1000D projects)"
+          fi
+      
+      - name: Generate report
+        if: always()
+        run: |
+          echo "## S1000D Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f data-modules.txt ]; then
+              dm_count=$(wc -l < data-modules.txt || echo 0)
+              echo "- **Data Modules:** $dm_count" >> $GITHUB_STEP_SUMMARY
+          else
+              echo "- **Data Modules:** 0" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ -f brex-files.txt ]; then
+              brex_count=$(wc -l < brex-files.txt || echo 0)
+              echo "- **BREX Files:** $brex_count" >> $GITHUB_STEP_SUMMARY
+          else
+              echo "- **BREX Files:** 0" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ -f dmrl-files.txt ]; then
+              dmrl_count=$(wc -l < dmrl-files.txt || echo 0)
+              echo "- **DMRL Files:** $dmrl_count" >> $GITHUB_STEP_SUMMARY
+          else
+              echo "- **DMRL Files:** 0" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Status" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Basic XML validation complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Notes" >> $GITHUB_STEP_SUMMARY
+          echo "This workflow performs basic S1000D validation:" >> $GITHUB_STEP_SUMMARY
+          echo "- XML well-formedness" >> $GITHUB_STEP_SUMMARY
+          echo "- Required element presence" >> $GITHUB_STEP_SUMMARY
+          echo "- Security classification checks" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "For full S1000D conformance, consider:" >> $GITHUB_STEP_SUMMARY
+          echo "- Commercial BREX validators (oXygen XML, Arbortext)" >> $GITHUB_STEP_SUMMARY
+          echo "- S1000D Issue 5.0 XSD schema validation" >> $GITHUB_STEP_SUMMARY
+          echo "- Business rule validation against BREX" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Placeholder for future enhancements
+        run: |
+          echo "📋 Future enhancements:"
+          echo "  • Download S1000D XSD schemas"
+          echo "  • Validate against specific S1000D issue (4.2, 5.0, etc.)"
+          echo "  • BREX rule checking"
+          echo "  • ICN (illustration) validation"
+          echo "  • Publication module (PM) assembly"
+          echo "  • IETP preview generation"

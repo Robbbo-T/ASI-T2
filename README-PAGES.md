@@ -9,6 +9,37 @@ This repository publishes a static site with:
 
 ---
 
+## IDEALE-EU Federation Updates
+
+This repository now includes complete **IDEALE-EU Federation Infrastructure** with governance, compliance policies, and standards framework:
+
+### New Top-Level Directories
+
+* **[LICENSES/](./LICENSES/README.md)** — Multi-license framework (Apache-2.0, CC-BY-4.0, CERN-OHL-S-2.0, OpenRAIL)
+* **[policies/](./policies/README.md)** — Compliance policies (classification, export control, privacy, security)
+* **[Shared/_templates/](./Shared/_templates/README.md)** — Reusable templates and schemas
+
+### New Governance Documents
+
+* **[CHARTER.md](./CHARTER.md)** — Federation mission and governance structure
+* **[GOVERNANCE.md](./GOVERNANCE.md)** — Decision-making and RFC process
+* **[ROADMAP.md](./ROADMAP.md)** — Development roadmap (2025-2028)
+* **[CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)** — Community standards
+* **[CODEOWNERS](./CODEOWNERS)** — Code ownership and review requirements
+* **[CONTRIBUTING.md](./CONTRIBUTING.md)** — Contribution guidelines
+* **[SECURITY.md](./SECURITY.md)** — Security policy and incident response
+* **[FEDERATION_QUICKSTART.md](./FEDERATION_QUICKSTART.md)** — Quick start guide for new contributors
+
+### CI/CD Workflows
+
+* **[.github/workflows/validate-manifests.yml](./.github/workflows/validate-manifests.yml)** — Schema validation and classification checks
+* **[.github/workflows/sbom-attest.yml](./.github/workflows/sbom-attest.yml)** — SBOM generation and Sigstore signing
+* **[.github/workflows/s1000d-checks.yml](./.github/workflows/s1000d-checks.yml)** — S1000D XML validation
+
+See [README.md](./README.md) for complete federation documentation.
+
+---
+
 ## Installation & Dependencies
 
 The repository includes comprehensive Python dependency management:

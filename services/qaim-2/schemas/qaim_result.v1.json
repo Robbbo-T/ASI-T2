@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://asi-t2.eu/schemas/qaim-2/qaim_result.v1.json",
+  "title": "QAIM-2 Result Schema v1",
+  "description": "Output schema for QAIM-2 optimization results with UTCS v5.0 evidence",
+  "type": "object",
+  "required": ["request_id", "solver", "status", "evidence"],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "description": "Unique request identifier (UUID)",
+      "format": "uuid"
+    },
+    "solver": {
+      "type": "string",
+      "description": "Solver used for optimization",
+      "examples": [
+        "cb_gurobi",
+        "cb_cbc",
+        "qb_tensor",
+        "qb_lifted",
+        "qc_qaoa"
+      ]
+    },
+    "solution": {
+      "type": ["object", "null"],
+      "description": "Solution variables and values",
+      "additionalProperties": true
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Performance metrics",
+      "properties": {
+        "objective_value": {
+          "type": ["number", "null"],
+          "description": "Objective function value"
+        },
+        "gap": {
+          "type": "number",
+          "description": "Optimality gap (0.0 - 1.0)",
+          "minimum": 0
+        },
+        "solve_time": {
+          "type": "number",
+          "description": "Total solve time in seconds",
+          "minimum": 0
+        },
+        "feasible": {
+          "type": "boolean",
+          "description": "Whether solution is feasible"
+        },
+        "iterations": {
+          "type": "integer",
+          "description": "Number of iterations (for iterative solvers)",
+          "minimum": 0
+        },
+        "shots": {
+          "type": "integer",
+          "description": "Number of shots (for quantum solvers)",
+          "minimum": 0
+        },
+        "quantum_time": {
+          "type": "number",
+          "description": "Quantum execution time in seconds",
+          "minimum": 0
+        },
+        "classical_time": {
+          "type": "number",
+          "description": "Classical processing time in seconds",
+          "minimum": 0
+        },
+        "error": {
+          "type": "string",
+          "description": "Error message if status is error"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "description": "UTCS v5.0 evidence bundle",
+      "required": ["version", "request_id", "timestamp", "provenance"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "UTCS version",
+          "const": "utcs-v5.0"
+        },
+        "request_id": {
+          "type": "string",
+          "description": "Request identifier (matches parent)",
+          "format": "uuid"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "ISO 8601 timestamp",
+          "format": "date-time"
+        },
+        "duration_ms": {
+          "type": "integer",
+          "description": "Total duration in milliseconds",
+          "minimum": 0
+        },
+        "input_hash": {
+          "type": "string",
+          "description": "SHA-256 hash of canonical input",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "solver": {
+          "type": "object",
+          "description": "Solver provenance",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Solver name"
+            },
+            "version": {
+              "type": "string",
+              "description": "Solver version"
+            },
+            "config": {
+              "type": "object",
+              "description": "Solver configuration"
+            }
+          }
+        },
+        "solution": {
+          "type": "object",
+          "description": "Solution evidence",
+          "properties": {
+            "status": {
+              "type": "string",
+              "description": "Solution status"
+            },
+            "objective_value": {
+              "type": ["number", "null"],
+              "description": "Objective value"
+            },
+            "gap": {
+              "type": "number",
+              "description": "Optimality gap"
+            },
+            "feasible": {
+              "type": "boolean",
+              "description": "Feasibility status"
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "description": "Provenance information",
+          "required": ["bridge", "ethics", "utcs_version"],
+          "properties": {
+            "bridge": {
+              "type": "string",
+              "description": "TFA V2 bridge pattern",
+              "const": "QS→FWD→UE→FE→CB→QB"
+            },
+            "ethics": {
+              "type": "string",
+              "description": "Ethics modules",
+              "pattern": "^MAP-EEM.*MAL-EEM$"
+            },
+            "utcs_version": {
+              "type": "string",
+              "description": "UTCS version",
+              "const": "v5.0"
+            },
+            "framework": {
+              "type": "string",
+              "description": "Framework identifier",
+              "const": "TFA-V2"
+            }
+          }
+        },
+        "signature": {
+          "type": "string",
+          "description": "Cryptographic signature (optional)"
+        },
+        "sbom": {
+          "type": "string",
+          "description": "Software Bill of Materials reference (optional)"
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "Overall status",
+      "enum": [
+        "optimal",
+        "feasible",
+        "infeasible",
+        "timeout",
+        "error",
+        "unknown"
+      ]
+    }
+  }
+}

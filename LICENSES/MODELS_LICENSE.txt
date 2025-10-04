@@ -1,0 +1,205 @@
+Open Responsible AI License (OpenRAIL)
+
+Version: OpenRAIL-M (Model)
+Date: 2022-08-01
+
+This license is based on the BigScience OpenRAIL-M license, adapted for
+IDEALE-EU AI/ML models.
+
+---
+
+PREAMBLE
+
+This License governs the use of the Model and any derivatives or applications
+thereof. The Model is subject to additional use restrictions as set forth in
+Attachment A ("Use Restrictions").
+
+The goal of this License is to promote open and responsible AI development. While
+the Model is made available under permissive terms, Users must comply with ethical
+use restrictions to prevent harmful applications.
+
+---
+
+SECTION I: DEFINITIONS
+
+1. "License" means the terms and conditions for use, reproduction, and distribution
+   as defined in this document.
+
+2. "Model" means the trained machine learning model, including weights, parameters,
+   architecture specifications, and associated documentation made available under
+   this License.
+
+3. "Derivative Models" means any model that is trained using the Model (including
+   fine-tuning, distillation, or other transfer learning techniques).
+
+4. "Application" means any software, system, or service that incorporates or uses
+   the Model to generate outputs.
+
+5. "Use Restrictions" means the restrictions on use set forth in Attachment A.
+
+6. "Harmful Use" means any use of the Model that violates the Use Restrictions.
+
+---
+
+SECTION II: GRANT OF LICENSE
+
+Subject to the terms and conditions of this License, including the Use Restrictions,
+Licensor hereby grants You a worldwide, royalty-free, non-exclusive, perpetual
+license to:
+
+a) Use the Model for research, development, and commercial purposes;
+b) Modify the Model (including fine-tuning and other adaptations);
+c) Create Derivative Models;
+d) Distribute the Model and Derivative Models; and
+e) Create Applications using the Model.
+
+---
+
+SECTION III: USE RESTRICTIONS (See Attachment A)
+
+You agree that You will not use the Model or Derivative Models, nor allow others
+to use them, for any Harmful Use as defined in Attachment A.
+
+If You distribute the Model or Derivative Models, You must:
+a) Include a copy of this License;
+b) Ensure that recipients are bound by the same Use Restrictions;
+c) Provide notice that the Model is subject to Use Restrictions.
+
+---
+
+SECTION IV: ATTRIBUTION
+
+You must give appropriate credit to the Licensor, provide a link to this License,
+and indicate if changes were made. You may do so in any reasonable manner, but not
+in any way that suggests the Licensor endorses You or Your use.
+
+---
+
+SECTION V: DISCLAIMER
+
+THE MODEL IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE LICENSOR BE LIABLE
+FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THE MODEL.
+
+---
+
+SECTION VI: TERMINATION
+
+This License automatically terminates if You violate any Use Restrictions. Upon
+termination, You must cease all use, distribution, and development of the Model
+and Derivative Models, and destroy all copies.
+
+---
+
+ATTACHMENT A: USE RESTRICTIONS
+
+The Model shall not be used for:
+
+1. **Illegal Activities**
+   - Any activity that violates applicable laws or regulations
+   - Circumventing export control restrictions
+   - Generating content that infringes intellectual property rights
+
+2. **Harmful Content Generation**
+   - Creating deepfakes or synthetic media intended to deceive
+   - Generating hate speech, harassment, or discriminatory content
+   - Producing content that incites violence or self-harm
+   - Creating child sexual abuse material (CSAM)
+
+3. **Safety-Critical Systems Without Certification**
+   - Deployment in aviation, space, or autonomous vehicles without:
+     * Appropriate certification (DO-178C, DO-254, etc.)
+     * Human oversight and fail-safe mechanisms
+     * Validation against safety requirements
+   - Use in medical diagnosis or treatment without regulatory approval
+
+4. **Privacy Violations**
+   - Unauthorized collection or processing of personal data
+   - De-anonymization or re-identification of individuals
+   - Surveillance without consent or legal authorization
+   - Biometric recognition for mass surveillance
+
+5. **Manipulation and Disinformation**
+   - Creating propaganda or disinformation campaigns
+   - Manipulating elections or democratic processes
+   - Impersonation without disclosure
+   - Astroturfing or fake grassroots campaigns
+
+6. **Autonomous Weapons**
+   - Lethal autonomous weapons systems (LAWS)
+   - Autonomous targeting or engagement without human control
+   - Weapons prohibited by international humanitarian law
+
+7. **Discrimination**
+   - Applications that discriminate based on protected characteristics
+     (race, ethnicity, gender, religion, disability, etc.)
+   - Biased decision-making in hiring, lending, housing, or criminal justice
+   - Social scoring systems that violate human rights
+
+8. **Exploitation**
+   - Fraudulent or deceptive practices
+   - Multi-level marketing or pyramid schemes
+   - Predatory lending or payday loan targeting
+   - Exploitation of vulnerable populations (children, elderly, disabled)
+
+---
+
+APPLICATION TO IDEALE-EU
+
+This license applies to all trained AI/ML models within the IDEALE-EU federation,
+including:
+- Neural networks (weights, parameters, architecture)
+- Classical ML models (decision trees, SVMs, etc.)
+- Optimization models (QUBO, BQM encodings)
+- Simulation models (CFD surrogates, digital twins)
+
+**Additional IDEALE-EU Requirements:**
+
+1. **Model Cards Required**
+   All distributed models must include a Model Card documenting:
+   - Intended use cases
+   - Training data characteristics
+   - Performance metrics (accuracy, bias, fairness)
+   - Limitations and failure modes
+   - Ethical considerations
+
+2. **Explainability**
+   Safety-critical models must provide:
+   - Feature importance scores
+   - Counterfactual explanations
+   - Uncertainty quantification
+   - Human-interpretable decision rationale
+
+3. **MAL-EEM Integration**
+   Models deployed in IDEALE-EU systems must integrate with the Multi-Agent Logic
+   with Ethics and Empathy Module (MAL-EEM) for real-time ethical oversight.
+
+4. **Traceability**
+   Models must include UTCS/QS provenance:
+   - Training data sources and lineage
+   - Hyperparameters and training logs
+   - Validation results and benchmarks
+   - Version history and updates
+
+---
+
+Copyright 2025 IDEALE-EU Contributors
+
+Licensed under OpenRAIL-M with IDEALE-EU additions
+Base license: https://www.licenses.ai/blog/2022/8/26/bigscience-open-rail-m-license
+
+For questions on responsible AI use in IDEALE-EU:
+- Email: ethics@ideale-eu.example
+- Policy: policies/SECURITY.md (AI/ML section)
+
+---
+
+EXPORT CONTROL NOTICE
+
+AI/ML models may be subject to export control:
+- US: EAR Category 3E001 (software for development of AI)
+- EU: Dual-Use Regulation, Category 4E001
+
+High-performance models (>10^12 parameters) may require export licenses (see US BIS Interim Final Rule, 15 CFR Parts 730, 734, 740, 772, and 774, and EU Dual-Use Regulation 2021/821; threshold based on current regulatory guidance as of 2023).
+Consult export-control@ideale-eu.example before distribution.

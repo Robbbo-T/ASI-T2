@@ -8,6 +8,33 @@ Primary responsibility for aerodynamic performance and structural airframe desig
 
 **Key Systems**: Wing structures (ATA-51-57), landing gear integration (ATA-32), airframe general (ATA-20).
 
+## Federation Compliance
+
+This domain follows IDEALE-EU Federation standards. See:
+
+- **[index.extracted.EXAMPLE.yaml](./index.extracted.EXAMPLE.yaml)** — Migration example showing federation schema v1.0.0 with required fields (classification, export_control, licenses, contacts)
+- **[index.extracted.yaml](./index.extracted.yaml)** — Current domain manifest (legacy format, will be migrated)
+
+**Required Federation Fields**:
+```yaml
+schema_version: "1.0.0"
+classification: "OPEN"           # or SHARED/RESTRICTED/CONTROLLED
+export_control:                  # ITAR/EAR/EU Dual-Use declarations
+  itar: false
+  ear: "NLR"
+  eu_dual_use: "none"
+licenses:                        # Multi-license framework
+  code: "Apache-2.0"
+  docs: "CC-BY-4.0"
+  hardware: "CERN-OHL-S-2.0"
+contacts:                        # Maintainer contacts
+  - "aaa-wg@ideale-eu.example"
+```
+
+See [Shared/_templates/index.extracted.schema.json](../../../../Shared/_templates/index.extracted.schema.json) for complete schema.
+
+---
+
 ## Process Organization
 
 ### CAx (Computer-Aided Processes)
