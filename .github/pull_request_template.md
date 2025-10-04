@@ -2,19 +2,21 @@
 _Replace this with the PR title_
 
 ## Summary
-- Add `.github/FUNDING.yml` with `github: ['Robbbo-T']` and custom fallback
-- Add `FINANCE/SPONSORSHIP.md` (IDEALE-EU, MAL-EEM, anti-speculative)
-- Wire funding docs into `utcs/manifest.yaml`
-- Add Sponsors badge to README
-- CI sanity check for FUNDING.yml
+_Brief description of changes_
 
 ## Canon checks
-- [x] Bridge QS→FWD→UE→FE→CB→QB unchanged
-- [x] UTCS phrasing intact
-- [x] QOx = Quantum Optimizations
-- [x] PAx orientation markers: OB/OFF only
-- [x] AMPEL360 remains commons (no app code)
+- [ ] Bridge QS→FWD→UE→FE→CB→QB unchanged
+- [ ] UTCS phrasing intact
+- [ ] QOx = Quantum Optimizations
+- [ ] PAx orientation markers: ONB/OUT only
+- [ ] AMPEL360 remains commons (no app code)
+
+## CXP (Context eXchange Points)
+- [ ] Update `UTCS/context.manifest.json` if applicable
+- [ ] Update `sbom/spdx.sbom.json` if dependencies changed
+- [ ] `cxp-publish` passes in CI ✅
 
 ## Evidence
-- [ ] CI `Funding config check` passes
-- [ ] UTCS bundle includes `FINANCE/SPONSORSHIP.md`
+- [ ] All CI checks pass
+- [ ] Documentation updated
+- [ ] Tests added/updated (if applicable)

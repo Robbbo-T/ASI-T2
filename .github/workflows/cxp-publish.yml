@@ -1,0 +1,51 @@
+name: CXP Publish
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Generate SBOM (SPDX)
+        uses: anchore/sbom-action@v0
+        with:
+          output-file: sbom/spdx.sbom.json
+          format: spdx-json
+      
+      - name: Stamp manifest
+        run: |
+          dt=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          jq \
+            --arg sha "${GITHUB_SHA}" \
+            --arg dt "$dt" \
+            '.provenance.hash=$sha | .provenance.generated_at=$dt' \
+            UTCS/context.manifest.json > UTCS/context.manifest.stamped.json
+          mv UTCS/context.manifest.stamped.json UTCS/context.manifest.json
+      
+      - name: Validate manifest (JSON Schema)
+        uses: cardinalby/schema-validator-action@v3
+        with:
+          schema: UTCS/context.schema.json
+          file: UTCS/context.manifest.json
+      
+      - name: TT reward (CXP publish)
+        run: |
+          python tools/tek_tokens.py auto --event cxp-publish \
+            --actor "${{ github.actor }}" --run-id "${{ github.run_id }}"
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: utcs-cxp
+          path: |
+            UTCS/context.manifest.json
+            UTCS/links.map.json
+            sbom/spdx.sbom.json

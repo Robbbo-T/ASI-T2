@@ -1,0 +1,21 @@
+name: "CXP: Context Request"
+description: Request or provide context across repositories.
+labels: ["cxp", "context"]
+body:
+  - type: input
+    id: source
+    attributes:
+      label: URL of remote UTCS manifest
+      placeholder: https://github.com/org/repo/raw/main/UTCS/context.manifest.json
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope (LLC)
+      description: program/system/subsystem/module/component
+  - type: textarea
+    id: intent
+    attributes:
+      label: Intent (QS/FE)
+      description: what problem it solves, expected federation
