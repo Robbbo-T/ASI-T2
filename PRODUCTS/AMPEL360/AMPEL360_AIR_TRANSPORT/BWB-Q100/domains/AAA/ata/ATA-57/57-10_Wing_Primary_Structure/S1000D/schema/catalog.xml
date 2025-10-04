@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML Catalog for S1000D Schema Resolution -->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="descriptive.xsd" uri="shims/descriptive.xsd"/>
+  <uri name="procedural.xsd" uri="shims/procedural.xsd"/>
+  <uri name="ipd.xsd" uri="shims/ipd.xsd"/>
+</catalog>
