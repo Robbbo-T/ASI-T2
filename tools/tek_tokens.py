@@ -74,9 +74,9 @@ class TokenLedger:
     def tt_to_deg(self, tt: float) -> int:
         """Convert TT to deg. Must result in integer deg."""
         deg = tt * TT_TO_DEG
-        if not deg.is_integer():
+        if abs(deg - round(deg)) >= 1e-10:
             raise ValueError(f"Invalid TT amount: {tt} TT does not convert to integer deg")
-        return int(deg)
+        return int(round(deg))
     
     def deg_to_tt(self, deg: int) -> float:
         """Convert deg to TT."""
