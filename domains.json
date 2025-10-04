@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "ata_short": "5710",
+  "domains": [
+    {
+      "code": "AAA",
+      "name": "Airframes Aerodynamics and Airworthiness",
+      "description": "Contains Material, airframe structures, aerodynamic analysis, and airworthiness certification"
+    },
+    {
+      "code": "AAP",
+      "name": "Airport Adaptable Platforms",
+      "description": "Ground support equipment and airport infrastructure integration"
+    },
+    {
+      "code": "CCC",
+      "name": "Cockpit, Cabin & Cargo",
+      "description": "Flight deck systems, passenger cabin, and cargo handling"
+    },
+    {
+      "code": "CQH",
+      "name": "Cryogenics, Quantum & H₂",
+      "description": "Cryogenic systems, quantum computing integration, and hydrogen fuel systems"
+    },
+    {
+      "code": "DDD",
+      "name": "Drainage, Dehumidification & Drying",
+      "description": "Environmental control, moisture management, and drainage systems"
+    },
+    {
+      "code": "EDI",
+      "name": "Electronics & Digital Instruments",
+      "description": "Avionics, digital instruments, and electronic systems"
+    },
+    {
+      "code": "EEE",
+      "name": "Renewable Energy, Harvesting & Circulation",
+      "description": "Energy generation, harvesting, and distribution systems"
+    },
+    {
+      "code": "EER",
+      "name": "Environmental, Emissions & Remediation",
+      "description": "Environmental impact, emissions control, and remediation technologies"
+    },
+    {
+      "code": "IIF",
+      "name": "Industrial Infrastructure & Facilities",
+      "description": "Manufacturing facilities and industrial infrastructure"
+    },
+    {
+      "code": "IIS",
+      "name": "Information Systems and Intelligence Softwares",
+      "description": "Software systems, AI/ML, and information management"
+    },
+    {
+      "code": "LCC",
+      "name": "Linkages, Control & Communications",
+      "description": "Control systems, communication networks, and mechanical linkages"
+    },
+    {
+      "code": "LIB",
+      "name": "Logistics, Inventory & Blockchain",
+      "description": "Supply chain, inventory management, and blockchain traceability"
+    },
+    {
+      "code": "MEC",
+      "name": "Mechanical Systems Modules",
+      "description": "Mechanical systems, actuators, and mechanical components"
+    },
+    {
+      "code": "OOO",
+      "name": "OS, Ontologies & Office Interfaces",
+      "description": "Operating systems, ontologies, and office integration interfaces"
+    },
+    {
+      "code": "PPP",
+      "name": "Propulsion & Fuel Systems",
+      "description": "Propulsion systems, engines, and fuel management"
+    }
+  ]
+}
