@@ -101,17 +101,30 @@ tfa/bwbq100/qs/acoustic/{FS-INB|FS-MID|FS-OUTB}
 To validate these modules against S1000D 6.0 schemas:
 
 ```bash
-# Descriptive modules
-xmllint --noout --schema http://www.s1000d.org/S1000D_6-0/xml_schema_flat/descriptive.xsd \
+# Preferred: Use local vendored schemas for reliability (recommended)
+xmllint --noout --schema ./schemas/descriptive.xsd \
+  DMC-BWBQ100-A-57-10-10-00-00A-040A-D-EN-US.xml
+
+# If local schemas are not available, use the official HTTPS schema URLs
+xmllint --noout --schema https://www.s1000d.org/S1000D_6-0/xml_schema_flat/descriptive.xsd \
   DMC-BWBQ100-A-57-10-10-00-00A-040A-D-EN-US.xml
 
 # Procedural modules
-xmllint --noout --schema http://www.s1000d.org/S1000D_6-0/xml_schema_flat/procedural.xsd \
+xmllint --noout --schema ./schemas/procedural.xsd \
+  DMC-BWBQ100-A-57-10-10-00-00A-520A-D-EN-US.xml \
+  DMC-BWBQ100-A-57-10-10-00-01A-720A-D-EN-US.xml
+
+# Or, using HTTPS:
+xmllint --noout --schema https://www.s1000d.org/S1000D_6-0/xml_schema_flat/procedural.xsd \
   DMC-BWBQ100-A-57-10-10-00-00A-520A-D-EN-US.xml \
   DMC-BWBQ100-A-57-10-10-00-01A-720A-D-EN-US.xml
 
 # IPD modules
-xmllint --noout --schema http://www.s1000d.org/S1000D_6-0/xml_schema_flat/ipd.xsd \
+xmllint --noout --schema ./schemas/ipd.xsd \
+  DMC-BWBQ100-A-57-10-10-00-00A-941A-D-EN-US.xml
+
+# Or, using HTTPS:
+xmllint --noout --schema https://www.s1000d.org/S1000D_6-0/xml_schema_flat/ipd.xsd \
   DMC-BWBQ100-A-57-10-10-00-00A-941A-D-EN-US.xml
 ```
 
