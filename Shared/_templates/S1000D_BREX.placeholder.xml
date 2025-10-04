@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  S1000D Business Rules Exchange (BREX) Template
+  
+  Purpose: Defines validation rules for S1000D data modules within IDEALE-EU
+  Standard: S1000D Issue 5.0
+  Classification: OPEN
+  
+  This is a placeholder/template. Actual BREX rules should be developed by
+  technical publications teams in consultation with certification authorities.
+-->
+<brexDmRef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_5-0/xml_schema_flat/brex.xsd">
+  
+  <!-- Identity -->
+  <dmRef>
+    <dmRefIdent>
+      <dmCode modelIdentCode="IDEALE" systemDiffCode="00" systemCode="000"
+              subSystemCode="0" subSubSystemCode="0" assyCode="00"
+              disassyCode="00" disassyCodeVariant="A" infoCode="022"
+              infoCodeVariant="A" itemLocationCode="D"/>
+      <language languageIsoCode="en" countryIsoCode="US"/>
+      <issueInfo issueNumber="001" inWork="00"/>
+    </dmRefIdent>
+    <dmRefAddressItems>
+      <dmTitle>
+        <techName>IDEALE-EU BREX Data Module</techName>
+        <infoName>Business Rules</infoName>
+      </dmTitle>
+    </dmRefAddressItems>
+  </dmRef>
+  
+  <!-- Context Rules: Which data modules this BREX applies to -->
+  <contextRules>
+    <!-- Apply to all data modules in this product -->
+    <contextRule id="ctx-001">
+      <contextRuleCode>applies-to-all</contextRuleCode>
+      <contextRuleValue>*</contextRuleValue>
+    </contextRule>
+    
+    <!-- Product-specific context -->
+    <contextRule id="ctx-product">
+      <contextRuleCode>product</contextRuleCode>
+      <contextRuleValue>{PRODUCT_CODE}</contextRuleValue>
+    </contextRule>
+    
+    <!-- Platform-specific context -->
+    <contextRule id="ctx-platform">
+      <contextRuleCode>platform</contextRuleCode>
+      <contextRuleValue>{PLATFORM_CODE}</contextRuleValue>
+    </contextRule>
+  </contextRules>
+  
+  <!-- Structure Rules: XML schema validation -->
+  <structureRules>
+    <!-- Rule: All DMs must validate against S1000D 5.0 schema -->
+    <structureRule id="str-001">
+      <structureRuleIdent>
+        <structureRuleCode>schema-validation</structureRuleCode>
+        <structureRuleVariant>01</structureRuleVariant>
+      </structureRuleIdent>
+      <structureRuleTitle>S1000D 5.0 Schema Compliance</structureRuleTitle>
+      <structureRuleType>required</structureRuleType>
+      <structureRuleSeverity>error</structureRuleSeverity>
+      <structureRuleTest>
+        <xpathTest>/descendant::*[@xsi:noNamespaceSchemaLocation='http://www.s1000d.org/S1000D_5-0/xml_schema_flat/*.xsd']</xpathTest>
+      </structureRuleTest>
+      <structureRuleMessage>Data module must validate against S1000D Issue 5.0 schema</structureRuleMessage>
+    </structureRule>
+    
+    <!-- Rule: DM Code must follow IDEALE-EU naming convention -->
+    <structureRule id="str-002">
+      <structureRuleIdent>
+        <structureRuleCode>dm-code-format</structureRuleCode>
+        <structureRuleVariant>01</structureRuleVariant>
+      </structureRuleIdent>
+      <structureRuleTitle>DM Code Naming Convention</structureRuleTitle>
+      <structureRuleType>required</structureRuleType>
+      <structureRuleSeverity>error</structureRuleSeverity>
+      <structureRuleTest>
+        <xpathTest>
+          starts-with(//dmIdent/dmCode/@modelIdentCode, 'IDEALE') or
+          starts-with(//dmIdent/dmCode/@modelIdentCode, 'BWB') or
+          starts-with(//dmIdent/dmCode/@modelIdentCode, 'AQUA') or
+          starts-with(//dmIdent/dmCode/@modelIdentCode, 'QAIM')
+        </xpathTest>
+      </structureRuleTest>
+      <structureRuleMessage>Model Ident Code must use approved IDEALE-EU prefix</structureRuleMessage>
+    </structureRule>
+  </structureRules>
+  
+  <!-- Business Rules: Content and metadata validation -->
+  <businessRules>
+    <!-- Rule: Classification marking required -->
+    <businessRule id="bus-001">
+      <businessRuleIdent>
+        <businessRuleCode>classification-required</businessRuleCode>
+        <businessRuleVariant>01</businessRuleVariant>
+      </businessRuleIdent>
+      <businessRuleTitle>Classification Marking</businessRuleTitle>
+      <businessRuleType>required</businessRuleType>
+      <businessRuleSeverity>error</businessRuleSeverity>
+      <businessRuleTest>
+        <xpathTest>//security/@securityClassification</xpathTest>
+      </businessRuleTest>
+      <businessRuleMessage>Data module must include security classification (01 OPEN, 02 SHARED, 03 RESTRICTED)</businessRuleMessage>
+    </businessRule>
+    
+    <!-- Rule: Export control marking required -->
+    <businessRule id="bus-002">
+      <businessRuleIdent>
+        <businessRuleCode>export-control-required</businessRuleCode>
+        <businessRuleVariant>01</businessRuleVariant>
+      </businessRuleIdent>
+      <businessRuleTitle>Export Control Marking</businessRuleTitle>
+      <businessRuleType>required</businessRuleType>
+      <businessRuleSeverity>warning</businessRuleSeverity>
+      <businessRuleTest>
+        <xpathTest>//dmStatus/exportControl</xpathTest>
+      </businessRuleTest>
+      <businessRuleMessage>Data module should include export control statement</businessRuleMessage>
+    </businessRule>
+    
+    <!-- Rule: Responsible partner organization required -->
+    <businessRule id="bus-003">
+      <businessRuleIdent>
+        <businessRuleCode>rpo-required</businessRuleCode>
+        <businessRuleVariant>01</businessRuleVariant>
+      </businessRuleIdent>
+      <businessRuleTitle>Responsible Partner Organization</businessRuleTitle>
+      <businessRuleType>required</businessRuleType>
+      <businessRuleSeverity>error</businessRuleSeverity>
+      <businessRuleTest>
+        <xpathTest>//responsiblePartnerCompany</xpathTest>
+      </businessRuleTest>
+      <businessRuleMessage>Data module must identify responsible partner organization</businessRuleMessage>
+    </businessRule>
+    
+    <!-- Rule: Quality assurance required -->
+    <businessRule id="bus-004">
+      <businessRuleIdent>
+        <businessRuleCode>qa-approval-required</businessRuleCode>
+        <businessRuleVariant>01</businessRuleVariant>
+      </businessRuleIdent>
+      <businessRuleTitle>Quality Assurance Approval</businessRuleTitle>
+      <businessRuleType>required</businessRuleType>
+      <businessRuleSeverity>error</businessRuleSeverity>
+      <businessRuleTest>
+        <xpathTest>//qualityAssurance/@verification='yes'</xpathTest>
+      </businessRuleTest>
+      <businessRuleMessage>Data module must include QA verification before publication</businessRuleMessage>
+    </businessRule>
+    
+    <!-- Rule: UTCS/QS provenance required for safety-critical -->
+    <businessRule id="bus-005">
+      <businessRuleIdent>
+        <businessRuleCode>utcs-provenance</businessRuleCode>
+        <businessRuleVariant>01</businessRuleVariant>
+      </businessRuleIdent>
+      <businessRuleTitle>UTCS/QS Provenance</businessRuleTitle>
+      <businessRuleType>conditional</businessRuleType>
+      <businessRuleSeverity>warning</businessRuleSeverity>
+      <businessRuleTest>
+        <xpathTest>
+          (//dmStatus/@applicPropertyIdent='safety-critical' and //provenanceInfo/@utcsVersion) or
+          not(//dmStatus/@applicPropertyIdent='safety-critical')
+        </xpathTest>
+      </businessRuleTest>
+      <businessRuleMessage>Safety-critical data modules should include UTCS/QS provenance metadata</businessRuleMessage>
+    </businessRule>
+  </businessRules>
+  
+  <!-- Notation Rules: Multimedia and graphics -->
+  <notationRules>
+    <!-- Rule: Graphics must be in approved formats -->
+    <notationRule id="not-001">
+      <notationRuleIdent>
+        <notationRuleCode>graphics-format</notationRuleCode>
+        <notationRuleVariant>01</notationRuleVariant>
+      </notationRuleIdent>
+      <notationRuleTitle>Approved Graphics Formats</notationRuleTitle>
+      <notationRuleType>required</notationRuleType>
+      <notationRuleSeverity>warning</notationRuleSeverity>
+      <notationRuleTest>
+        <xpathTest>
+          //graphic/@infoEntityIdent[ends-with(., '.cgm') or ends-with(., '.svg') or 
+          ends-with(., '.pdf') or ends-with(., '.png')]
+        </xpathTest>
+      </notationRuleTest>
+      <notationRuleMessage>Graphics should use CGM, SVG, PDF, or PNG formats for maximum interoperability</notationRuleMessage>
+    </notationRule>
+  </notationRules>
+  
+  <!-- Applicability Rules: Product/platform applicability -->
+  <applicabilityRules>
+    <!-- Rule: Applicability must be declared -->
+    <applicabilityRule id="app-001">
+      <applicabilityRuleIdent>
+        <applicabilityRuleCode>applicability-declared</applicabilityRuleCode>
+        <applicabilityRuleVariant>01</applicabilityRuleVariant>
+      </applicabilityRuleIdent>
+      <applicabilityRuleTitle>Applicability Declaration</applicabilityRuleTitle>
+      <applicabilityRuleType>required</applicabilityRuleType>
+      <applicabilityRuleSeverity>warning</applicabilityRuleSeverity>
+      <applicabilityRuleTest>
+        <xpathTest>//applic</xpathTest>
+      </applicabilityRuleTest>
+      <applicabilityRuleMessage>Data module should declare product/platform applicability</applicabilityRuleMessage>
+    </applicabilityRule>
+  </applicabilityRules>
+  
+  <!-- Supplemental Information -->
+  <remarks>
+    <simplePara>
+      This BREX is a template for IDEALE-EU S1000D data modules. It should be
+      customized for each product line (AMPEL360, GAIA-AIR, GAIA-SEA, GAIA-SPACE)
+      and adapted to meet specific certification requirements.
+    </simplePara>
+    <simplePara>
+      For detailed guidance on S1000D implementation, consult:
+      - S1000D Issue 5.0 Specification
+      - ATA iSpec 2200
+      - ASD S1000D User Forum
+    </simplePara>
+    <simplePara>
+      Classification codes:
+      - 01: OPEN (public)
+      - 02: SHARED (NDA members)
+      - 03: RESTRICTED (bilateral agreements)
+      - 04: CONTROLLED (off-repo, export-controlled)
+    </simplePara>
+  </remarks>
+  
+</brexDmRef>
