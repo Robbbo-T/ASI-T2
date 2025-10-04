@@ -397,7 +397,7 @@ license: MIT-Responsible-Use
 
 ---
 
-## Appendix D — Copilot Agent PR Prompt (UTCS packagent)
+## Appendix D — Copilot Agent PR Prompt (UTCS package)
 
 ```
 You are Copilot Agent. Open a PR that introduces UTCS v5.0 scaffolding.
