@@ -157,7 +157,7 @@
               },
               "digest": {
                 "type": "string",
-                "pattern": "^[a-f0-9]{64}$|^pending$"
+                "pattern": "^[A-Fa-f0-9]{64}$|^pending$"
               }
             }
           }
