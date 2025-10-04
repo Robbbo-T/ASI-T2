@@ -158,9 +158,9 @@ class TokenLedger:
                     "timestamp": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
                     "from": "genesis",
                     "to": self.treasury_account,
-                    "amount_deg": GENESIS_SUPPLY_DEG,
-                    "amount_tt": GENESIS_SUPPLY_TT,
-                    "description": "Initial mint of genesis supply"
+                    "amount_deg": treasury_initial_deg,
+                    "amount_tt": self.deg_to_tt(treasury_initial_deg),
+                    "description": "Initial mint of genesis supply (after founder allocation)"
                 },
                 {
                     "tx_id": "GENESIS-FOUNDER",
