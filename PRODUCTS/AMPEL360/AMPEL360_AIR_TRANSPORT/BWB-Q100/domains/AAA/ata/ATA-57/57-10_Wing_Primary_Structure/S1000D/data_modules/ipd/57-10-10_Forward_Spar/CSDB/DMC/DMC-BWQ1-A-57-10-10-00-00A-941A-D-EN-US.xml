@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:dc="http://www.purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/ipd.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="10"
+                disassyCode="00" disassyCodeVariant="A"
+                infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="10" day="04"/>
+        <dmTitle>
+          <techName>AMPEL360 BWB-Q100 Wing</techName>
+          <infoName>Forward Spar IPD – Master Assembly</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+
+      <applic>
+        <displayText>
+          <simplePara>Applies to AMPEL360 BWB-Q100 Forward Spar Assembly</simplePara>
+        </displayText>
+      </applic>
+
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <illustratedPartsCatalog>
+      <figure id="fig-0001">
+        <title>Forward Spar Assembly Overview</title>
+        <graphic infoEntityIdent="ICN-BWQ1-57-10-10-00-001"/>
+      </figure>
+
+      <catalogSeqNumber figureNumber="1" item="000">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-10-000">
+            <descrForPart>Forward Spar Assembly - Complete</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Complete forward spar assembly from BL0 to wing tip, including all sections</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <refs>
+            <dmRef>
+              <dmRefIdent>
+                <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                        systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="10"
+                        disassyCode="00" disassyCodeVariant="A"
+                        infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+              </dmRefIdent>
+              <dmRefAddressItems>
+                <dmTitle>
+                  <techName>AMPEL360 BWB-Q100 Wing</techName>
+                  <infoName>Forward Spar – General Description</infoName>
+                </dmTitle>
+              </dmRefAddressItems>
+            </dmRef>
+          </refs>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <!-- Reference to sub-assemblies -->
+      <catalogSeqNumber figureNumber="1" item="001">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-10-100">
+            <descrForPart>Forward Spar Inboard Assembly</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Inboard section assembly (BL0-BL160), includes caps, webs, fittings, fasteners, and QSS components</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <refs>
+            <dmRef>
+              <dmRefIdent>
+                <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                        systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="10"
+                        disassyCode="01" disassyCodeVariant="A"
+                        infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+              </dmRefIdent>
+              <dmRefAddressItems>
+                <dmTitle>
+                  <techName>AMPEL360 BWB-Q100 Wing</techName>
+                  <infoName>Forward Spar Inboard Sections IPD</infoName>
+                </dmTitle>
+              </dmRefAddressItems>
+            </dmRef>
+          </refs>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="1" item="002">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-10-200">
+            <descrForPart>Forward Spar Mid Assembly</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Mid section assembly (BL160-BL320), includes caps, webs, splice kits, fasteners, and QSS components</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <refs>
+            <dmRef>
+              <dmRefIdent>
+                <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                        systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="10"
+                        disassyCode="02" disassyCodeVariant="A"
+                        infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+              </dmRefIdent>
+              <dmRefAddressItems>
+                <dmTitle>
+                  <techName>AMPEL360 BWB-Q100 Wing</techName>
+                  <infoName>Forward Spar Mid Sections IPD</infoName>
+                </dmTitle>
+              </dmRefAddressItems>
+            </dmRef>
+          </refs>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="1" item="003">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-10-300">
+            <descrForPart>Forward Spar Outboard Assembly</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Outboard section assembly (BL240-BL400), includes caps, webs, tip fittings, fasteners, and QSS components</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <refs>
+            <dmRef>
+              <dmRefIdent>
+                <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                        systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="10"
+                        disassyCode="03" disassyCodeVariant="A"
+                        infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+              </dmRefIdent>
+              <dmRefAddressItems>
+                <dmTitle>
+                  <techName>AMPEL360 BWB-Q100 Wing</techName>
+                  <infoName>Forward Spar Outboard Sections IPD</infoName>
+                </dmTitle>
+              </dmRefAddressItems>
+            </dmRef>
+          </refs>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+    </illustratedPartsCatalog>
+  </content>
+</dmodule>
