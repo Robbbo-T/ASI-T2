@@ -1,0 +1,93 @@
+---
+version: '1.0'
+deployment: site
+bridge: 'FWD→UE→FE→CB→QB'
+description: Regional site deployment with mixed solver portfolio
+
+pcan:
+  enabled: true
+  cache_size: 5000
+  s1000d_aware: true
+  ata_mapping: true
+
+surrogate:
+  enabled: true
+  models:
+    - type: 'gp'
+      kernel: 'rbf'
+
+strategy:
+  enabled: true
+  algorithm: 'epsilon_greedy'
+  exploration_rate: 0.1
+  training_mode: 'offline'
+
+arbitration:
+  enabled: true
+  algorithm: 'ucb1'
+  window_size: 500
+  fallback: 'cb_cbc'
+
+translator:
+  enabled: true
+  formats:
+    - 'mip'
+    - 'sat'
+    - 'csp'
+    - 'qubo'
+
+cb_solvers:
+  - name: 'gurobi'
+    enabled: false  # Requires license
+  - name: 'cbc'
+    enabled: true
+    time_limit: 300
+    threads: 8
+  - name: 'ortools'
+    enabled: true
+    time_limit: 180
+    threads: 4
+  - name: 'glpk'
+    enabled: true
+    time_limit: 60
+    threads: 2
+
+qb_solvers:
+  enabled: true
+  methods:
+    - 'tensor_decomposition'
+    - 'lifted_relaxation'
+  time_limit: 200
+
+qc_gateway:
+  enabled: false  # Optional at site level
+
+map:
+  enabled: true
+  broker: 'site-broker:1883'
+  topics:
+    - 'map/1/control'
+    - 'map/1/telemetry'
+    - 'map/1/log'
+
+utcs:
+  enabled: true
+  version: 'v5.0'
+  evidence_path: '/data/qaim-2/evidence'
+  signing_enabled: true
+  signing_key: '/keys/qaim-2-site-private.pem'
+
+ethics:
+  map_eem: true
+  mal_eem: true
+  audit_mode: 'standard'
+
+logging:
+  level: 'INFO'
+  output: '/var/log/qaim-2/qaim-2.log'
+  metrics_enabled: true
+
+resources:
+  memory_limit: '4G'
+  cpu_limit: 16
+  disk_limit: '100G'
