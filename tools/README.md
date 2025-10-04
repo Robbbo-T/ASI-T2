@@ -1,201 +1,330 @@
-# Tools - Teknia Token CLI v3.1
+# Teknia Token CLI (`tek_tokens.py`) — v3.14
 
-This directory contains command-line tools for managing the ASI-T2 ecosystem.
+CLI for an integer `deg` ledger with exact `TT ⇄ deg`, **founder 5% at genesis**, **sustain fee tiered for transfers (π)** with **0.5% for reward/consume**, optional **Δθmin = 2592 deg** on transfers, and a **tx hash‑chain** plus **policy pin**.
 
-## Overview
+**Config selection:** pass `--config path/to/tokenomics.json` or set `TEKNIA_CONFIG` environment variable.
 
-### Teknia Token v3.1 Features
+## Features
 
-- **Quantum Transfer Enforcement**: Minimum 2592 deg (7.2 TT) per transfer
-- **Founder Allocation**: 5% (100M TT) allocated at genesis to FOUNDER account
-- **Sustain Fee**: 0.5% deducted from sender on all transfers
-- **Three-Account System**: TREASURY, FOUNDER, VAULT_SUSTAIN
-- **Transaction Logging**: SHA-256 hashed audit trail in `finance/ledger.log`
-- **Integer Precision**: All amounts in exact integer deg values
+### π-Tier Fee Schedule (v3.14)
 
-## tek_tokens.py
+Transfers use dynamic fees based on amount:
 
-The Teknia Token (TT) management CLI tool v3.1.
+| Amount (TT) | Amount (deg) | Fee % | BPS | Description |
+|-------------|--------------|-------|-----|-------------|
+| ≥ 7,200     | ≥ 2,592,000  | 3.14% | 314 | 1000× Δθmin |
+| ≥ 720       | ≥ 259,200    | 0.99% | 99  | 100× Δθmin |
+| ≥ 72        | ≥ 25,920     | 0.314%| 31.4| 10× Δθmin |
+| < 72        | < 25,920     | 0.5%  | 50  | Base fee |
 
-### Requirements
+**Reward/Consume operations always use 0.5% base fee.**
 
-- Python 3.8+
-- No additional dependencies
+### Policy Immutability
 
-### Commands
+- SHA-256 hash of policy section computed at `init`
+- Stored in `ledger.json` as `policy_hash`
+- `verify` command checks hash matches config
+- Prevents silent policy changes
 
-#### Initialize Ledger (v3.1)
+### Scope-Based Validation
+
+- **min_transfer_deg** (7.2 TT) enforced on `transfer` only
+- `reward` and `consume` have no minimum quantum
+- Configurable via `min_transfer_scope` in tokenomics config
+
+### Transaction Hash Chain
+
+- Each tx logged to `txlog.jsonl`
+- Chain: `TX_N_hash = SHA256(TX_{N-1}_hash + tx_data)`
+- Head stored in `txhead.json`
+- Enables efficient verification
+
+### EUR Valuation (Optional)
+
+Display parallel EUR values:
+
+```bash
+# Direct EUR/TT peg
+python tek_tokens.py --eur-per-tt 0.10 balance
+
+# Landauer@CMB energy pricing (EUR/kWh)
+python tek_tokens.py --eur-per-kwh 0.30 quote --op transfer --tt 720
+```
+
+## Commands
+
+### `init`
+Initialize ledger with genesis supply and founder allocation.
 
 ```bash
 python tek_tokens.py init
 ```
 
-**v3.1 Initialization:**
-- Mints 2,000,000,000 TT (720B deg) total supply
-- Allocates 5% (100M TT / 36B deg) to FOUNDER account
-- Allocates 95% (1.9B TT / 684B deg) to TREASURY account
-- Creates VAULT_SUSTAIN account (0 deg initially)
+Creates:
+- TREASURY: 1,900,000,000 TT (95%)
+- FOUNDER: 100,000,000 TT (5%)
+- VAULT_SUSTAIN: 0 TT (accumulates fees)
 
-**Output:**
-```
-✓ Ledger initialized (v3.1)
-✓ Genesis supply: 2,000,000,000 TT (720,000,000,000 deg)
-✓ Founder allocation (5%): 100,000,000.00 TT (36,000,000,000 deg)
-✓ Treasury balance: 1,900,000,000.00 TT (684,000,000,000 deg)
-✓ Sustain vault: 0 TT (0 deg)
-```
+Stores policy hash for verification.
 
-#### Check Balances
+### `balance`
+Show account balances.
 
 ```bash
 # All accounts
 python tek_tokens.py balance
 
 # Specific account
-python tek_tokens.py balance <account_name>
+python tek_tokens.py balance --account TREASURY
+python tek_tokens.py balance --account alice
+
+# With EUR
+python tek_tokens.py --eur-per-tt 0.10 balance
 ```
 
-**v3.1 Accounts:**
-- `TREASURY` - Main operational treasury (95% of genesis)
-- `FOUNDER` - Founder allocation (5% of genesis)
-- `VAULT_SUSTAIN` - Accumulates 0.5% fees from all transfers
-- `user/<username>` - User accounts (created on first transfer)
+### `transfer`
+Transfer tokens between accounts.
 
-#### Perform Transaction (v3.1)
+**Fee:** π-tier based on amount  
+**Min quantum:** 7.2 TT (2592 deg)
 
 ```bash
-python tek_tokens.py tx \
-  --type <transfer|cxp_publish_reward|cxp_consume_charge> \
-  --amount <amount> \
-  [--tokens] \
-  --from <source_account> \
-  --to <destination_account>
+# 72 TT → 0.314% fee (81 deg)
+python tek_tokens.py transfer --from TREASURY --to alice --tt 72
+
+# 720 TT → 0.99% fee (2,566 deg)
+python tek_tokens.py transfer --from TREASURY --to bob --tt 720
+
+# 7200 TT → 3.14% fee (81,388 deg)
+python tek_tokens.py transfer --from TREASURY --to charlie --tt 7200
 ```
 
-**Flags:**
-- `--tokens`: Amount is in TT (converts to deg). Without this flag, amount is in deg.
+### `reward`
+Reward tokens from TREASURY.
 
-**⚠️ v3.1 Requirements:**
-- Amount must be a multiple of 2592 deg (7.2 TT quantum)
-- Sender must have sufficient balance for transfer + 0.5% sustain fee
-- Fee is automatically deducted and sent to VAULT_SUSTAIN
-
-**Valid Examples:**
+**Fee:** 0.5% (base)  
+**Min quantum:** None
 
 ```bash
-# Transfer 7.2 TT (2592 deg = 1x quantum)
-python tek_tokens.py tx --type transfer --amount 7.2 --tokens --from TREASURY --to user/alice
-# Sender pays: 2604 deg (2592 + 12 fee)
-# Recipient gets: 2592 deg
-# Vault gets: 12 deg
+# 1 TT reward (allowed, no minimum)
+python tek_tokens.py reward --to alice --tt 1
 
-# Transfer 14.4 TT (5184 deg = 2x quantum)
-python tek_tokens.py tx --type transfer --amount 14.4 --tokens --from TREASURY --to user/bob
-
-# Transfer 72 TT (25920 deg = 10x quantum)
-python tek_tokens.py tx --type transfer --amount 72 --tokens --from TREASURY --to user/charlie
+# 72 TT reward (uses 0.5% fee, not 0.314% π-tier)
+python tek_tokens.py reward --to bob --tt 72
 ```
 
-**Invalid Examples (will be rejected):**
+### `consume`
+Consume tokens to TREASURY.
+
+**Fee:** 0.5% (base)  
+**Min quantum:** None
 
 ```bash
-# 1 TT = 360 deg (not multiple of 2592)
-python tek_tokens.py tx --type transfer --amount 1 --tokens --from TREASURY --to user/alice
-# ERROR: Not a multiple of min_transfer_deg
+# 2 TT consume
+python tek_tokens.py consume --from alice --tt 2
 
-# 0.1 TT = 36 deg (not multiple of 2592)
-python tek_tokens.py tx --type transfer --amount 0.1 --tokens --from TREASURY --to user/bob
-# ERROR: Not a multiple of min_transfer_deg
-
-# 3 TT = 1080 deg (not multiple of 2592)
-python tek_tokens.py tx --type transfer --amount 3 --tokens --from TREASURY --to user/charlie
-# ERROR: Not a multiple of min_transfer_deg
+# 50 TT consume
+python tek_tokens.py consume --from bob --tt 50
 ```
 
-#### Generate Verification Badge
+### `quote`
+Non-mutating fee/net estimation.
+
+```bash
+# Quote transfer (shows π-tier fee)
+python tek_tokens.py quote --op transfer --tt 720
+# Output:
+# Amount: 259,200 deg (720.00 TT)
+# Fee: 2,566 deg (7.13 TT)
+# Sender pays: 261,766 deg (727.13 TT)
+# Recipient gets: 259,200 deg (720.00 TT)
+
+# Quote reward (shows 0.5% base fee)
+python tek_tokens.py quote --op reward --tt 72
+# Fee: 129 deg (0.36 TT)
+
+# With EUR
+python tek_tokens.py --eur-per-tt 0.10 quote --op transfer --tt 720
+```
+
+### `verify`
+Verify ledger integrity.
 
 ```bash
 python tek_tokens.py verify
 ```
 
-Creates `finance/token_badge.json` for shields.io badges.
+Checks:
+- Policy hash matches config
+- Total supply = 720B deg
+- No negative balances
+- Transaction log integrity
 
-### Transaction Types
-
-- **transfer** - Generic token transfer
-- **cxp_publish_reward** - Reward for publishing content
-- **cxp_consume_charge** - Charge for consuming content
-
-**Note:** All transaction types are subject to quantum validation (2592 deg minimum) and 0.5% sustain fee.
-
-### Account Naming Conventions (v3.1)
-
-**System Accounts (uppercase):**
-- `TREASURY` - Main treasury account (95% of genesis)
-- `FOUNDER` - Founder allocation (5% of genesis)
-- `VAULT_SUSTAIN` - Sustainability vault (accumulates fees)
-
-**User Accounts:**
-- `user/<username>` - User accounts (e.g., `user/alice`)
-- `contract/<name>` - Smart contract accounts
-- `reserve/<purpose>` - Reserve accounts
-
-### Sustain Fee Calculation
-
-All transfers automatically deduct a 0.5% fee from the sender:
-
-```
-Fee = (amount_deg × 50) // 10000  (floor division)
-
-Examples:
-  2,592 deg → 12 deg fee
-  5,184 deg → 25 deg fee
-  25,920 deg → 129 deg fee
-```
-
-### Transaction Logging
-
-All transactions are logged to `finance/ledger.log` with:
-- Transaction ID
-- Timestamp (ISO 8601 UTC)
-- Source and destination accounts
-- Amount in deg
-- SHA-256 hash for audit trail
-
-Example log entry:
-```json
-{"id": "TX-000002", "timestamp": "2025-10-04T12:55:44Z", "src": "TREASURY", "dst": "user/alice", "deg": 2592, "hash": "cc4085562bd175e7"}
-```
-
-## test_tek_tokens.py
-
-Comprehensive test suite for Teknia Token v3.1.
-
-### Running Tests
+### `badge`
+Generate verification badge SVG.
 
 ```bash
-python test_tek_tokens.py
+# Default output: badges/tt-verified.svg
+python tek_tokens.py badge
+
+# Custom output
+python tek_tokens.py badge --out path/to/badge.svg
 ```
 
-### Test Coverage
+## Configuration
 
-- ✓ Ledger initialization with founder allocation
-- ✓ Quantum validation (2592 deg multiples)
-- ✓ Sustain fee calculation and collection
-- ✓ Balance integrity with fees
-- ✓ Invalid transfer rejections (1 deg, 360 deg, 36 deg, 18 deg, 1080 deg)
-- ✓ Transaction logging verification
-- ✓ Three-account initialization
+### Default (Hybrid)
+`finance/teknia.tokenomics.json`
+- π-tier fees for transfers
+- 0.5% for reward/consume
+- min_transfer_deg = 2592 (transfers only)
+- VAULT_SUSTAIN collects fees
 
-**Results:** 30 tests, 100% pass rate
+### No-Fee Variant
+`finance/teknia.tokenomics.nofee.json`
+- No sustain fees
+- No VAULT_SUSTAIN
+- min_transfer_deg still enforced for transfers
+- Useful for testing/internal systems
 
-## Documentation
+Select config:
 
-- **Complete Guide**: [docs/TOKENS.md](../docs/TOKENS.md)
-- **Finance README**: [finance/README.md](../finance/README.md)
-- **Tokenomics Config**: [finance/teknia.tokenomics.json](../finance/teknia.tokenomics.json)
+```bash
+# Environment variable
+export TEKNIA_CONFIG=finance/teknia.tokenomics.nofee.json
+python tek_tokens.py init
 
-## Version History
+# Or CLI flag
+python tek_tokens.py --config finance/teknia.tokenomics.nofee.json init
+```
 
-- **v3.1.0** - Quantum validation, founder allocation, sustain fees, transaction logging
-- **v1.0.0** - Initial release with 360-degree divisibility
+## Files
+
+### Committed (Git)
+- `finance/teknia.tokenomics.json` - v3.14 config (π-tiers)
+- `finance/teknia.tokenomics.nofee.json` - v3.14 no-fee variant
+
+### Not Committed (.gitignore)
+- `finance/ledger.json` - Account balances and metadata
+- `finance/txlog.jsonl` - Transaction log (JSONL)
+- `finance/txhead.json` - Hash chain head
+
+## Examples
+
+### Complete Workflow
+
+```bash
+# 1. Initialize
+python tek_tokens.py init
+
+# 2. Check initial balances
+python tek_tokens.py balance
+
+# 3. Transfer with π-tier fees
+python tek_tokens.py transfer --from TREASURY --to alice --tt 72
+python tek_tokens.py transfer --from TREASURY --to bob --tt 720
+
+# 4. Reward (no min quantum, 0.5% fee)
+python tek_tokens.py reward --to charlie --tt 10
+
+# 5. Consume
+python tek_tokens.py consume --from alice --tt 5
+
+# 6. Quote before large transfer
+python tek_tokens.py quote --op transfer --tt 7200
+
+# 7. Verify integrity
+python tek_tokens.py verify
+
+# 8. Generate badge
+python tek_tokens.py badge
+```
+
+### With EUR Valuation
+
+```bash
+# Direct peg: 1 TT = €0.10
+python tek_tokens.py --eur-per-tt 0.10 balance
+python tek_tokens.py --eur-per-tt 0.10 quote --op transfer --tt 720
+
+# Landauer@CMB: €0.30 per kWh
+python tek_tokens.py --eur-per-kwh 0.30 balance
+python tek_tokens.py --eur-per-kwh 0.30 quote --op transfer --tt 7200
+```
+
+## Testing
+
+### v3.14 Test Suite
+
+```bash
+python tools/test_tek_tokens_v314.py
+```
+
+Tests:
+- Initialization with policy hash
+- π-tier fee calculation (0.314%, 0.99%, 3.14%)
+- Reward/consume use base 0.5% fee
+- Min transfer scope (transfers only)
+- Quote command
+- Verify command
+- Badge generation
+- EUR valuation
+- Balance conservation
+
+### v3.1 Legacy Tests
+
+```bash
+python tools/test_tek_tokens.py
+```
+
+Note: v3.1 tests expect old CLI structure and flat 0.5% fees. Use v3.14 tests for current system.
+
+## Changelog
+
+### v3.14 (Current)
+- **π-tier fees**: 0.314%, 0.99%, 3.14% for transfers
+- **Scope-based validation**: min_transfer_deg on transfers only
+- **Policy immutability**: SHA-256 hash verification
+- **New CLI**: `transfer`, `reward`, `consume`, `quote`, `badge`
+- **EUR valuation**: `--eur-per-tt` and `--eur-per-kwh`
+- **Hash chain**: `txlog.jsonl` + `txhead.json`
+- **No-fee config**: `teknia.tokenomics.nofee.json`
+
+### v3.1 (Legacy)
+- Flat 0.5% fee for all operations
+- min_transfer_deg enforced on all operations
+- Old CLI: `tx --type <type>`
+- No policy hash
+- `ledger.log` instead of `txlog.jsonl`
+
+## Migration from v3.1 to v3.14
+
+If you have an existing v3.1 ledger:
+
+1. Backup current ledger:
+   ```bash
+   cp finance/ledger.json finance/ledger.v31.backup.json
+   cp finance/ledger.log finance/ledger.v31.backup.log
+   ```
+
+2. Re-initialize with v3.14:
+   ```bash
+   python tek_tokens.py init
+   ```
+
+3. Policy hash will be computed and stored automatically
+
+4. Old transaction log (`ledger.log`) is replaced by `txlog.jsonl` and `txhead.json`
+
+**Note:** Account balances are NOT automatically migrated. You'll need to manually replay transactions if needed.
+
+## Support
+
+- **Documentation**: `docs/TOKENS.md`
+- **Finance README**: `finance/README.md`
+- **Config examples**: `finance/teknia.tokenomics.json`, `finance/teknia.tokenomics.nofee.json`
+- **Tests**: `tools/test_tek_tokens_v314.py`
+
+---
+
+**Teknia Token v3.14** — *π-tier hybrid tokenomics with policy immutability*

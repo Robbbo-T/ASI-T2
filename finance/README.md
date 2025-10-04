@@ -1,197 +1,150 @@
-# Finance - Teknia Token System v3.1
+# Teknia Token Finance (v3.14)
 
-**Enterprise-Grade Token System with Mathematical Precision**
+- **Unit of account:** `deg` (integer only)
+- **Conversion:** `1 TT = 360 deg`
+- **Genesis supply:** `2,000,000,000 TT = 720,000,000,000 deg`
+- **Founder allocation (genesis):** **5%** to `FOUNDER` (floor in `deg`)
+- **Sustain fee:** **Transfers use π‑tiers** (0.314% ≥ 72 TT; 0.99% ≥ 720 TT; 3.14% ≥ 7,200 TT).  
+  `reward`/`consume` remain at **0.5%**. Sender pays; fees go to `VAULT_SUSTAIN` (floor in `deg`).
+- **Δθmin (policy):** `min_transfer_deg = 2592` (7.2 TT) — applies to **transfers** only (scope configurable).
+- **Treasury:** `TREASURY`
 
-This directory contains the Teknia Token (TT) configuration and ledger files with founder allocation, sustain fees, and quantum transfer enforcement.
+### Quick Start
+```bash
+# 0) (Optional) Choose config
+#    - Hybrid (fees + Δθmin): default at finance/teknia.tokenomics.json
+#    - No-fee variant: set TEKNIA_CONFIG=finance/teknia.tokenomics.nofee.json or use --config
+#    - (Optional) EUR display: add --eur-per-tt 0.10  or  --eur-per-kwh 0.30
 
-## Core Specifications
+# 1) Initialize the ledger (creates finance/ledger.json) with 5% founder allocation
+python3 tools/tek_tokens.py init
 
-- **Genesis Supply**: 2,000,000,000 TT (720,000,000,000 deg)
-- **Divisibility**: 360 degrees (deg) per TT
-- **Founder Allocation**: 5% (100M TT) to `FOUNDER` at genesis
-- **Sustain Fee**: 0.5% per operation to `VAULT_SUSTAIN` (from sender)
-- **Minimum Quantum**: 2592 deg (7.2 TT) per transfer
-- **Ledger Precision**: Integer deg units only
+# 2) Check balances (TT/deg and optional EUR)
+python3 tools/tek_tokens.py balance --account TREASURY
+python3 tools/tek_tokens.py balance --account FOUNDER
+python3 tools/tek_tokens.py balance --account VAULT_SUSTAIN
+
+# 3) Transfer 7.2 TT (2592 deg) from treasury to Alice
+# Fee (base tier for < 72 TT) = floor(2592 * 0.005) = 12 deg → VAULT_SUSTAIN
+# Alice receives net = 2592 - 12 = 2580 deg
+python3 tools/tek_tokens.py transfer --from TREASURY --to alice --tt 7.2
+
+# 4) Reward: 3 TT to creator (sustain fee applies to TREASURY at 0.5%)
+python3 tools/tek_tokens.py reward --to creator --tt 3
+
+# 5) Consume: charge 2 TT from creator (sustain fee applies to creator at 0.5%)
+python3 tools/tek_tokens.py consume --from creator --tt 2
+
+# 6) Verify ledger invariants + policy hash + tx hash-chain
+python3 tools/tek_tokens.py verify
+
+# 7) Quote (no mutation): fee/net (TT/deg and optional EUR)
+python3 tools/tek_tokens.py quote --op transfer --tt 72
+
+# 8) Generate verification badge SVG
+python3 tools/tek_tokens.py badge --out badges/tt-verified.svg
+```
+
+## π-Tier Fee Schedule (Transfers Only)
+
+| Amount (TT) | Amount (deg) | Tier BPS | Fee % | Description |
+|-------------|--------------|----------|-------|-------------|
+| ≥ 72        | ≥ 25,920     | 31.4     | 0.314% | 10× Δθmin |
+| ≥ 720       | ≥ 259,200    | 99       | 0.99%  | 100× Δθmin |
+| ≥ 7,200     | ≥ 2,592,000  | 314      | 3.14%  | 1000× Δθmin |
+| < 72        | < 25,920     | 50       | 0.5%   | Base fee |
+
+**Note:** `reward` and `consume` operations always use the base 0.5% fee, regardless of amount.
+
+## Commands
+
+### `init`
+Initialize ledger with genesis supply and 5% founder allocation. Stores policy hash for immutability verification.
+
+### `balance [--account <name>]`
+Show account balances. Omit `--account` to show all accounts.
+
+### `transfer --from <source> --to <dest> --tt <amount>`
+Transfer tokens between accounts. Uses π-tier fees. Requires amount to be multiple of 7.2 TT (2592 deg).
+
+### `reward --to <recipient> --tt <amount>`
+Reward tokens from TREASURY. Uses 0.5% base fee. No minimum quantum restriction.
+
+### `consume --from <source> --tt <amount>`
+Consume tokens to TREASURY. Uses 0.5% base fee. No minimum quantum restriction.
+
+### `quote --op <transfer|reward|consume> --tt <amount>`
+Non-mutating estimate of fees and net amounts. Useful for planning transactions.
+
+### `verify`
+Verify ledger integrity:
+- Policy hash matches config
+- Total supply equals genesis (720B deg)
+- No negative balances
+- Transaction log consistency
+
+### `badge [--out <file>]`
+Generate verification badge SVG showing treasury balance.
+
+## Configuration
+
+### Default Config (finance/teknia.tokenomics.json)
+- π-tier fees for transfers
+- 0.5% fee for reward/consume
+- Δθmin = 2592 deg (7.2 TT) for transfers
+- VAULT_SUSTAIN collects fees
+
+### No-Fee Config (finance/teknia.tokenomics.nofee.json)
+- No sustain fees
+- No VAULT_SUSTAIN
+- Δθmin still enforced for transfers
+- Useful for testing or internal systems
+
+Select config via:
+```bash
+# Environment variable
+export TEKNIA_CONFIG=finance/teknia.tokenomics.nofee.json
+python3 tools/tek_tokens.py init
+
+# Or CLI flag
+python3 tools/tek_tokens.py --config finance/teknia.tokenomics.nofee.json init
+```
+
+## EUR Valuation (Optional)
+
+Display parallel EUR values in output:
+
+```bash
+# Direct EUR per TT peg
+python3 tools/tek_tokens.py --eur-per-tt 0.10 balance
+
+# Landauer@CMB energy pricing (EUR per kWh)
+python3 tools/tek_tokens.py --eur-per-kwh 0.30 quote --op transfer --tt 720
+```
 
 ## Files
 
-- **teknia.tokenomics.json** - Token economics configuration v3.1 (committed to git)
-- **ledger.json** - Current token ledger with all accounts and transactions (not committed)
-- **ledger.log** - Append-only transaction log with cryptographic hashes (not committed)
-- **token_badge.json** - Generated badge for shields.io (not committed)
+- **teknia.tokenomics.json** - v3.14 config with π-tiers (committed)
+- **teknia.tokenomics.nofee.json** - v3.14 no-fee variant (committed)
+- **ledger.json** - Current account balances and metadata (not committed)
+- **txlog.jsonl** - Append-only transaction log with hash chain (not committed)
+- **txhead.json** - Latest transaction hash for chain verification (not committed)
 
-## Quick Start
+## Policy Immutability
 
-### Initialize the Ledger (First Time Only)
+At initialization, a SHA-256 hash of the policy section is computed and stored in `ledger.json`. The `verify` command checks that the current config policy hash matches the stored hash, preventing silent policy changes.
 
-```bash
-python tools/tek_tokens.py init
+## Transaction Hash Chain
+
+Each transaction is logged to `txlog.jsonl` and linked via hash chain:
+```
+TX_N_hash = SHA256(TX_{N-1}_hash + tx_id + timestamp + from + to + amount)
 ```
 
-This creates `ledger.json` with three accounts:
-- **TREASURY**: 1,900,000,000 TT (684B deg) - 95% of genesis
-- **FOUNDER**: 100,000,000 TT (36B deg) - 5% founder allocation
-- **VAULT_SUSTAIN**: 0 TT (0 deg) - Accumulates 0.5% fees
-
-### Check Balances
-
-```bash
-# Show all accounts
-python tools/tek_tokens.py balance
-
-# Show specific account
-python tools/tek_tokens.py balance TREASURY
-python tools/tek_tokens.py balance FOUNDER
-```
-
-### Make Transfers
-
-**Important**: All transfers must be multiples of 2592 deg (7.2 TT) and include a 0.5% sustain fee.
-
-```bash
-# Valid: 7.2 TT = 2592 deg (1x quantum)
-python tools/tek_tokens.py tx --type transfer --amount 7.2 --tokens \
-  --from TREASURY --to user/alice
-# Sender pays: 2604 deg (2592 + 12 fee)
-# Recipient gets: 2592 deg
-# Vault gets: 12 deg
-
-# Valid: 14.4 TT = 5184 deg (2x quantum)
-python tools/tek_tokens.py tx --type transfer --amount 14.4 --tokens \
-  --from TREASURY --to user/bob
-
-# Invalid: 1 TT = 360 deg (not a multiple of 2592)
-python tools/tek_tokens.py tx --type transfer --amount 1 --tokens \
-  --from TREASURY --to user/charlie
-# ERROR: Not a multiple of min_transfer_deg
-```
-
-### View Transaction Log
-
-```bash
-cat finance/ledger.log
-# One JSON object per line with full transaction details
-```
-
-### Generate Badge
-
-```bash
-python tools/tek_tokens.py verify
-```
-
-## Account Structure
-
-### Genesis Accounts (Created at Init)
-
-1. **TREASURY** - 684,000,000,000 deg (1,900,000,000 TT)
-   - Main operational treasury
-   - 95% of genesis supply
-   - Source for most transfers
-
-2. **FOUNDER** - 36,000,000,000 deg (100,000,000 TT)
-   - Founder allocation (5% of genesis)
-   - Fixed at initialization
-   - No vesting schedule
-
-3. **VAULT_SUSTAIN** - 0 deg initially
-   - Sustainability vault
-   - Accumulates 0.5% of all transfer amounts
-   - Grows with system usage
-
-### User Accounts (Created on First Transfer)
-
-- **user/\<username\>** - Individual user accounts
-- **contract/\<name\>** - Smart contract accounts
-- **reserve/\<purpose\>** - Reserve accounts
-
-## Enhanced Features v3.1
-
-### 1. Founder Allocation (5%)
-
-Automatically allocated during initialization:
-- **Amount**: 36,000,000,000 deg (100,000,000 TT)
-- **Calculation**: `(720B × 500) // 10000`
-- **Account**: `FOUNDER`
-- **Purpose**: Long-term alignment and sustainability
-
-### 2. Sustain Fee (0.5%)
-
-Applied to every transfer operation:
-- **Rate**: 50 basis points = 0.5%
-- **Calculation**: `(amount_deg × 50) // 10000` (floored)
-- **Paid by**: Sender (additional to transfer amount)
-- **Destination**: `VAULT_SUSTAIN` account
-
-**Examples:**
-```
-Transfer 2,592 deg → Fee: 12 deg
-Transfer 5,184 deg → Fee: 25 deg
-Transfer 25,920 deg → Fee: 129 deg
-```
-
-### 3. Quantum Transfer (Δθₘᵢn)
-
-All transfers must be multiples of the minimum quantum:
-- **Quantum**: 2592 deg = 7.2 TT
-- **Valid**: 2592, 5184, 7776, 10368, ... deg
-- **Invalid**: 1, 360, 1080, 1800, ... deg
-- **Physical basis**: Landauer@CMB thermodynamic framework
-
-### 4. Transaction Logging
-
-Complete audit trail in `ledger.log`:
-- **Format**: JSON lines (one per transaction)
-- **Fields**: `{id, timestamp, src, dst, deg, hash}`
-- **Hash**: SHA-256 (16 chars)
-- **Append-only**: Immutable history
-
-### 5. Physics Integration
-
-Aligned with TFA V2 Landauer@CMB model:
-- **T_CMB**: 2.7255 K
-- **k_B**: 1.380649 × 10⁻²³ J/K
-- **Energy mapping**: Discrete quantum correlation
-- **ΔTₘᵢn ↔ Δθₘᵢn**: Thermodynamic-informational duality
-
-## Validation Rules
-
-All operations validate:
-1. ✓ Integer arithmetic (no floating-point)
-2. ✓ Quantum compliance (`amount % 2592 == 0`)
-3. ✓ Balance sufficiency (including fee)
-4. ✓ Total supply conservation (720B deg)
-5. ✓ Non-negative balances
-6. ✓ Account existence
-7. ✓ Fee calculation correctness
-
-## Testing
-
-Run comprehensive test suite:
-```bash
-python tools/test_tek_tokens.py
-# 30+ tests, 100% pass rate
-```
-
-## Documentation
-
-- **Complete Guide**: [docs/TOKENS.md](../docs/TOKENS.md)
-- **CLI Tool**: `tools/tek_tokens.py`
-- **Test Suite**: `tools/test_tek_tokens.py`
-
-## Version History
-
-- **v3.1.0** - Founder allocation, sustain fees, enhanced validation
-- **v1.0.0** - Initial release with quantum validation
-
-## Notes
-
-- `ledger.json`, `ledger.log`, and `token_badge.json` are excluded from git via `.gitignore`
-- All amounts are stored as integer deg values
-- The CLI handles TT ↔ deg conversion automatically
-- Sustain fees are always floored (integer division)
-- Use `TREASURY` (uppercase) for the treasury account in v3.1
+The chain head is stored in `txhead.json` for efficient verification.
 
 ---
 
-**Teknia Token v3.1** - *Mathematical Precision Meets Physical Reality*
+**Version:** 3.14 (π-tier hybrid tokenomics)  
+**Previous:** 3.1 (flat 0.5% fee)
 
