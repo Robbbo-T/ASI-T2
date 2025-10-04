@@ -111,7 +111,7 @@ Structure validation is automated via `scripts/verify_structure.py` and CI workf
 
 ## Documentation & Whitepapers
 
-### Master Whitepaper #1
+### Master Whitepapers
 
 The repository includes comprehensive technical documentation in the **WHITEPAPERS/** directory:
 
@@ -124,7 +124,31 @@ The repository includes comprehensive technical documentation in the **WHITEPAPE
   - Compliance and ethics (MAL-EEM)
   - Roadmap with FCR-1/FCR-2 gates
 
+* **[Master Whitepaper #3](WHITEPAPERS/MASTER_WHITEPAPER_3_UTCS.md)** — QS/UTCS Provenance & Evidence Framework:
+  - UTCS v5.0 specification (UiX Threading model)
+  - Bundle layout and manifest schema
+  - Evidence plane and lifecycle
+  - S1000D/ATA mappings and topic grammar
+  - Cryptography and policy requirements
+  - Validation and CI infrastructure
+  - IDEALE-EU ESG alignment
+
 * **[Product Specification Template](WHITEPAPERS/schemas/PRODUCT_SPEC_TEMPLATE.yaml)** — Reusable YAML template for defining new products with MAL interfaces, standards tracking, and gate requirements
+
+### UTCS Bundle
+
+The **UTCS_BUNDLE/** directory contains the complete UTCS v5.0 scaffolding:
+
+* **manifest.utcs.yaml** — Canonical manifest for BWB-Q100 program
+* **context/** — Whitepapers and narrative documentation
+* **content/schemas/** — JSON schemas (manifest v5, MAP control, MAP telemetry)
+* **cache/examples/** — FCR-1 demonstration and test data
+* **structure/** — TFA grammar and MAP topic crosswalks
+* **style/** — Citation styles and legal notices
+* **sheet/** — Makefile, CI validation scripts
+* **attestations/** — SBOM and signature files
+
+See [UTCS_BUNDLE/README.md](UTCS_BUNDLE/README.md) for complete documentation.
 
 ### Sustainable Finance Framework
 

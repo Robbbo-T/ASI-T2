@@ -39,6 +39,26 @@ This directory contains technical whitepapers, specifications, and templates tha
 - Compliance and ethics (MAL-EEM)
 - Roadmap and gates (FCR-1/FCR-2)
 
+### [Master Whitepaper #3](./MASTER_WHITEPAPER_3_UTCS.md)
+
+**Title:** QS/UTCS Provenance & Evidence Framework
+
+**Author:** Amedeo Pelliccia  
+**Version:** v0.1.0 (2025-10-03)  
+**Status:** Public draft for technical review
+
+**Abstract:** Complete specification of UTCS v5.0 (UiX Threading Context/Content/Cache & Structure/Style/Sheet), the authoritative provenance spine for the ASI-T2 ecosystem. Defines deterministic bundling model that binds all artifacts (docs, schemas, binaries, media, evidence) into auditable releases with signed tags, SBOMs, DOIs, and immutable ledgers across the TFA bridge (QS→FWD→UE→FE→CB→QB).
+
+**Key Topics:**
+- UiX Threading model (Context/Content/Cache & Structure/Style/Sheet)
+- Bundle layout and manifest schema
+- Evidence plane and lifecycle (code, build, artifact, operational, standards)
+- S1000D/ATA mappings and topic grammar
+- Cryptography and policy (Ed25519, SHA-256, MAL-EEM/MAP-EEM)
+- Validation and CI requirements
+- IDEALE-EU ESG alignment
+- H0/H1/H2 roadmap
+
 ---
 
 ## Templates & Schemas
@@ -129,13 +149,13 @@ Template for product specifications following Master Whitepaper #1 guidelines. U
 | Version | Date | Changes |
 |---------|------|---------|
 | 0.1.0 | 2025-10-01 | Initial release: Master Whitepaper #1, product template, finance framework |
+| 0.2.0 | 2025-10-03 | Added Master Whitepaper #3 (QS/UTCS Provenance & Evidence Framework) |
 
 ---
 
 ## Future Whitepapers (Planned)
 
 * **Whitepaper #2:** Integration Architecture: ASI‑T2 MAP ↔ TFA Ecosystem
-* **Whitepaper #3:** QS/UTCS Provenance and Evidence Framework
 * **Whitepaper #4:** QAIM-2 Quantum-Classical Optimization Architecture
 * **Whitepaper #5:** AMPEL360 BWB Certification Strategy
 * **Whitepaper #6:** GAIA SPACE Mission Operations and Data Management
