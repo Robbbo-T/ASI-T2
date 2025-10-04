@@ -114,7 +114,8 @@ tfa/bwbq100/qs/acoustic/{FS-INB|FS-MID|FS-OUTB}
 All modules comply with:
 - **Standard:** S1000D Issue 6.0
 - **Schema Format:** XSD (not DTD)
-- **Schema Location:** http://www.s1000d.org/S1000D_6-0/xml_schema_flat/
+- **Schema Location:** https://www.s1000d.org/S1000D_6-0/xml_schema_flat/  
+  _(For reproducible builds/validation, prefer a project-local schema path such as `./schemas/S1000D_6-0/xml_schema_flat/`.)_
 - **Validation Status:** ✅ Well-formed XML confirmed
 
 ## Referenced Graphics
