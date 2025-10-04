@@ -5,14 +5,21 @@ on:
   schedule:
     - cron: '0 6 * * *'
   workflow_dispatch: {}
+permissions:
+  contents: read
 
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
+        with:
+          fetch-depth: 1
       
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@e797f83eb5946cedff3ea72a57c0b9d286b6cdce  # v6.0.0
         with:
           python-version: '3.x'
       
@@ -22,7 +29,7 @@ jobs:
       
       - name: Upload badge
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
           name: tt-badge
           path: finance/badges/tt-balance.json

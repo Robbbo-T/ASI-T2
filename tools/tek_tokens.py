@@ -58,14 +58,21 @@ def balances():
 
 def verify_chain():
     prev_id = "genesis"
+    prev_hash = "genesis"
     for tx in iter_ledger() or []:
+        # 1) continuity by id
         if tx.get("prev") != prev_id:
             return False, f"Prev mismatch at {tx.get('id')}: {tx.get('prev')} != {prev_id}"
+        # 2) continuity by hash
+        if tx.get("prev_hash") != prev_hash:
+            return False, f"Prev hash mismatch at {tx.get('id')}"
+        # 3) integrity of current record
         payload = {k: v for k, v in tx.items() if k != "hash"}
         h = sha256_of(payload)
         if h != tx.get("hash"):
             return False, f"Hash mismatch at {tx.get('id')}"
         prev_id = tx.get("id")
+        prev_hash = tx.get("hash")
     return True, "OK"
 
 def new_id():
@@ -76,11 +83,14 @@ def new_id():
     return f"ttx_{n:06d}"
 
 def tx_record(t_type, amount, frm, to, ref, memo):
-    pid = last_tx()["id"] if last_tx() else "genesis"
+    lt = last_tx()
+    pid = lt["id"] if lt else "genesis"
+    phash = lt["hash"] if lt else "genesis"
     rec = {
         "id": new_id(),
         "ts": now(),
         "prev": pid,
+        "prev_hash": phash,
         "type": t_type.upper(),
         "from": frm,
         "to": to,

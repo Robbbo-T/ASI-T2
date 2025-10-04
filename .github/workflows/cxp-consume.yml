@@ -5,31 +5,44 @@ on:
       source_url:
         description: "URL to remote UTCS/context.manifest.json"
         required: true
+permissions:
+  contents: read
 jobs:
   fetch-and-merge:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: cxp-consume-${{ github.ref }}
+      cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
+        with:
+          fetch-depth: 1
       
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@e797f83eb5946cedff3ea72a57c0b9d286b6cdce  # v6.0.0
         with:
           python-version: '3.x'
       
       - name: Fetch remote manifest
         run: |
-          curl -fsSL "$SOURCE_URL" -o /tmp/remote.manifest.json
+          set -euo pipefail
+          sudo apt-get update -y && sudo apt-get install -y jq ca-certificates
+          curl --proto '=https' --tlsv1.2 --retry 3 --fail --location "$SOURCE_URL" -o /tmp/remote.manifest.json
+          test -s /tmp/remote.manifest.json
         env:
           SOURCE_URL: ${{ github.event.inputs.source_url }}
       
       - name: Validate
-        uses: cardinalby/schema-validator-action@v3
+        uses: cardinalby/schema-validator-action@2166123eb256fa40baef7e22ab1379708425efc7  # v3.1.1
         with:
           schema: UTCS/context.schema.json
           file: /tmp/remote.manifest.json
       
       - name: Write inbound map
         run: |
+          set -euo pipefail
           jq '.inbound += [{"rel":"remote:cxp", "href": env.SOURCE_URL}]' UTCS/links.map.json > UTCS/links.map.next.json
           mv UTCS/links.map.next.json UTCS/links.map.json
       
@@ -39,7 +52,7 @@ jobs:
             --actor "${{ github.actor }}" --run-id "${{ github.run_id }}"
       
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
           name: inbound-cxp
           path: UTCS/links.map.json

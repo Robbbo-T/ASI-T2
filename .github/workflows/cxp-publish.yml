@@ -3,25 +3,35 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch: {}
+permissions:
+  contents: read
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: cxp-publish-${{ github.ref }}
+      cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
+        with:
+          fetch-depth: 1
       
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@e797f83eb5946cedff3ea72a57c0b9d286b6cdce  # v6.0.0
         with:
           python-version: '3.x'
       
       - name: Generate SBOM (SPDX)
-        uses: anchore/sbom-action@v0
+        uses: anchore/sbom-action@f8bdd1d8ac5e901a77a92f111440fdb1b593736b  # v0.20.6
         with:
           output-file: sbom/spdx.sbom.json
           format: spdx-json
       
       - name: Stamp manifest
         run: |
+          set -euo pipefail
           dt=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           jq \
             --arg sha "${GITHUB_SHA}" \
@@ -31,7 +41,7 @@ jobs:
           mv UTCS/context.manifest.stamped.json UTCS/context.manifest.json
       
       - name: Validate manifest (JSON Schema)
-        uses: cardinalby/schema-validator-action@v3
+        uses: cardinalby/schema-validator-action@2166123eb256fa40baef7e22ab1379708425efc7  # v3.1.1
         with:
           schema: UTCS/context.schema.json
           file: UTCS/context.manifest.json
@@ -42,7 +52,7 @@ jobs:
             --actor "${{ github.actor }}" --run-id "${{ github.run_id }}"
       
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
           name: utcs-cxp
           path: |
