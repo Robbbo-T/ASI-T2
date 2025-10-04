@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/ipd.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="9" subSubSystemCode="0"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00">
+          <issueDate year="2025" month="10" day="04"/>
+        </issueInfo>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="10" day="04"/>
+        <dmTitle>
+          <techName>Illustrated Parts</techName>
+          <infoName>57-90-00 Template Example</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+
+      <applic>
+        <displayText>
+          <simplePara>All MSN (baseline)</simplePara>
+        </displayText>
+      </applic>
+
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <illustratedPartsData>
+      <catalogSeqNumber>
+        <catalogSeqNumberRef>
+          <systemCode>57</systemCode>
+          <subSystemCode>90</subSystemCode>
+          <subSubSystemCode>00</subSubSystemCode>
+        </catalogSeqNumberRef>
+        <catalogSeqNumberValue>57-90-00</catalogSeqNumberValue>
+        <catalogSeqNumberTitle>57-90-00 Assembly</catalogSeqNumberTitle>
+      </catalogSeqNumber>
+
+      <figure id="fig-IPD-1">
+        <title>Assembly — Exploded View</title>
+        <graphic infoEntityIdent="ICN-BWQ1-57-90-00-901" xlink:href="../GFX/ipd_exploded.svg" xlink:title="Exploded View"/>
+      </figure>
+
+      <catalogSeqNumberGroup>
+        <catalogSeqNumber>
+          <catalogSeqNumberValue>57-90-00</catalogSeqNumberValue>
+        </catalogSeqNumber>
+        <itemGroup>
+          <itemSeqNumber>
+            <itemSeqNumberValue>001</itemSeqNumberValue>
+          </itemSeqNumber>
+          <item>
+            <itemIdentNumber>
+              <partNumber>BWQ1-57-90-00-000</partNumber>
+              <partNumberPreContent>MFR: IDEALE.eu</partNumberPreContent>
+            </itemIdentNumber>
+            <itemName>Main Assembly</itemName>
+            <quantity>
+              <quantityValue>1</quantityValue>
+              <quantityUnit>EA</quantityUnit>
+            </quantity>
+            <refs>
+              <figureRefGroup>
+                <figureRef figureRefIdent="fig-IPD-1">
+                  <figureItemRef calloutId="1"/>
+                </figureRef>
+              </figureRefGroup>
+            </refs>
+          </item>
+        </itemGroup>
+
+        <itemGroup>
+          <itemSeqNumber>
+            <itemSeqNumberValue>002</itemSeqNumberValue>
+          </itemSeqNumber>
+          <item>
+            <itemIdentNumber>
+              <partNumber>BWQ1-57-90-00-101</partNumber>
+              <partNumberPreContent>MFR: IDEALE.eu</partNumberPreContent>
+            </itemIdentNumber>
+            <itemName>Subcomponent A</itemName>
+            <quantity>
+              <quantityValue>1</quantityValue>
+              <quantityUnit>EA</quantityUnit>
+            </quantity>
+            <refs>
+              <figureRefGroup>
+                <figureRef figureRefIdent="fig-IPD-1">
+                  <figureItemRef calloutId="2"/>
+                </figureRef>
+              </figureRefGroup>
+            </refs>
+          </item>
+        </itemGroup>
+
+        <itemGroup>
+          <itemSeqNumber>
+            <itemSeqNumberValue>003</itemSeqNumberValue>
+          </itemSeqNumber>
+          <item>
+            <itemIdentNumber>
+              <partNumber>HL18-6-12</partNumber>
+              <partNumberPreContent>MFR: STD</partNumberPreContent>
+            </itemIdentNumber>
+            <itemName>Hi-Lok Fastener (typ)</itemName>
+            <quantity>
+              <quantityValue>As req'd</quantityValue>
+            </quantity>
+            <refs>
+              <figureRefGroup>
+                <figureRef figureRefIdent="fig-IPD-1">
+                  <figureItemRef calloutId="3"/>
+                </figureRef>
+              </figureRefGroup>
+            </refs>
+          </item>
+        </itemGroup>
+      </catalogSeqNumberGroup>
+
+    </illustratedPartsData>
+  </content>
+</dmodule>

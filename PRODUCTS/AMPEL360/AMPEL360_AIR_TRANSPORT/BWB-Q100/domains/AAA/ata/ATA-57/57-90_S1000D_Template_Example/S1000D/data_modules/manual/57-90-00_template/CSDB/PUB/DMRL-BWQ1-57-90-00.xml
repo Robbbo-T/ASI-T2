@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmrl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/dmrl.xsd">
+  <identAndStatusSection>
+    <dmrlAddress>
+      <dmrlIdent>
+        <dmrlCode modelIdentCode="BWQ1" systemDiffCode="A"
+                  systemCode="57" subSystemCode="9" subSubSystemCode="0"/>
+      </dmrlIdent>
+      <dmrlAddressItems>
+        <issueDate year="2025" month="10" day="04"/>
+        <dmrlTitle>Data Module Requirement List — 57-90-00</dmrlTitle>
+      </dmrlAddressItems>
+    </dmrlAddress>
+    <dmrlStatus>
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmrlStatus>
+  </identAndStatusSection>
+
+  <requirementList>
+    <requiredDm>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="9" subSubSystemCode="0"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+    </requiredDm>
+    <requiredDm>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="9" subSubSystemCode="0"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+    </requiredDm>
+    <requiredDm>
+      <dmRefIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="9" subSubSystemCode="0"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+      </dmRefIdent>
+    </requiredDm>
+  </requirementList>
+</dmrl>
