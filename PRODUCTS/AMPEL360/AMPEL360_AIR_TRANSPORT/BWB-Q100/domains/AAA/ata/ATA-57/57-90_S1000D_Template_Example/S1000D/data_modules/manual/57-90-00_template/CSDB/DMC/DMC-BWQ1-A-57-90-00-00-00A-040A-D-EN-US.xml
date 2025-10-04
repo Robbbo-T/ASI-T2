@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="9" subSubSystemCode="0"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00">
+          <issueDate year="2025" month="10" day="04"/>
+        </issueInfo>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="10" day="04"/>
+        <dmTitle>
+          <techName>57-90-00 Template Example</techName>
+          <infoName>General Description &amp; Architecture</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+
+      <applic>
+        <displayText>
+          <simplePara>All MSN (baseline)</simplePara>
+        </displayText>
+      </applic>
+
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <description>
+      <levelledPara>
+        <title>Overall Configuration and Function</title>
+        <para><emphasis>Purpose and operating context:</emphasis> Provide a comprehensive description of the system or component purpose, its role within the aircraft, and how it operates. Include major functions and operational scenarios.</para>
+        <para><emphasis>Major interfaces:</emphasis> Describe key interfaces with other systems, structures, or components. Include mechanical, electrical, hydraulic, or data interfaces as applicable.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Load Paths and Structural Philosophy</title>
+        <para><emphasis>Primary load paths:</emphasis> Describe how loads are transmitted through the structure. Include bending, shear, torsion, and compression/tension considerations.</para>
+        <para><emphasis>Design philosophy:</emphasis> Explain the structural design approach including fail-safe features, redundancy, damage tolerance, and maintenance accessibility.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Materials</title>
+        <para><emphasis>Material specifications:</emphasis> List primary materials used and their specifications. Include rationale for material selection based on strength, weight, corrosion resistance, and other factors.</para>
+        <para>Example materials:</para>
+        <para>- Aluminum alloys (e.g., AA2024-T3, AA7075-T6)</para>
+        <para>- Composite materials (e.g., CFRP laminates)</para>
+        <para>- Titanium or steel fittings</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Section Breakdown and Stations</title>
+        <para><emphasis>Zones and stationing:</emphasis> Identify major sections, zones, or regions. Provide station numbers, frame locations, or other positional references using the aircraft coordinate system.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Interfaces</title>
+        <para><emphasis>Upstream/downstream interfaces:</emphasis> Enumerate connections to adjacent structures, systems routing, attachment points, and access provisions.</para>
+      </levelledPara>
+
+      <figure>
+        <title>System Overview</title>
+        <graphic infoEntityIdent="ICN-BWQ1-57-90-00-001" xlink:href="../GFX/fig_overview.svg" xlink:title="Overview Diagram"/>
+      </figure>
+    </description>
+  </content>
+</dmodule>
