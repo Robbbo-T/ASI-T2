@@ -79,13 +79,21 @@ def load_ledger(cfg):
         return json.load(f)
 
 def save_ledger(cfg, data):
-    """Save ledger to disk atomically."""
+    """Save ledger to disk atomically, with error handling to prevent corruption."""
     lp = ledger_path(cfg)
     lp.parent.mkdir(parents=True, exist_ok=True)
     tmp = lp.with_suffix(".json.tmp")
-    with tmp.open("w") as f:
-        json.dump(data, f, indent=2, sort_keys=True)
-    tmp.replace(lp)
+    try:
+        with tmp.open("w") as f:
+            json.dump(data, f, indent=2, sort_keys=True)
+        tmp.replace(lp)
+    except Exception as e:
+        if tmp.exists():
+            try:
+                tmp.unlink()
+            except Exception:
+                pass  # Ignore errors during cleanup
+        raise
 
 def tt_to_deg_exact(tt_str: str, deg_per_tt: int) -> int:
     """Convert TT to deg using exact fraction arithmetic."""
