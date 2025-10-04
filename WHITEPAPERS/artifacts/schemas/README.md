@@ -81,10 +81,8 @@ This directory provides standardized templates and schemas for defining ASI-T2 p
 ### 1. Copy the Template
 
 ```bash
-cp WHITEPAPERS/artifacts/schemas/PRODUCT_SPEC_TEMPLATE.yaml \
+cp ARTIFACTS/schemas/PRODUCT_SPEC_TEMPLATE.yaml \
    PRODUCTS/<PRODUCT_LINE>/<PRODUCT_NAME>/product_spec.yaml
-```
-
 ### 2. Fill in Product Details
 
 Edit the copied file and replace placeholders:
