@@ -115,7 +115,7 @@
       "properties": {
         "itar": {
           "type": "boolean",
-          "description": "Subject to ITAR (International Traffic in Arms Regulations)"
+          "description": "Subject to ITAR (International Traffic in Arms Regulations). Note: `true` values are not allowed in public repositories according to the CONTROLLED classification policy."
         },
         "ear": {
           "type": "string",
