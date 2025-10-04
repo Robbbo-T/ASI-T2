@@ -8,26 +8,15 @@
     "unit": "deg",
     "ledger_file": "finance/ledger.json",
     "treasury_account": "TREASURY",
-    "founder_account": "FOUNDER",
-    "sustain_vault": "VAULT_SUSTAIN"
+    "founder_account": "FOUNDER"
   },
   "policy": {
     "divisibility": "360 deg per 1 TT",
     "supply_model": "fixed",
     "rounding": "reject-non-integer-deg",
     "founder_allocation_bps": 500,
-    "sustain_fee_bps": 50,
-    "fee_rounding": "floor-deg",
     "min_transfer_deg": 2592,
     "min_transfer_scope": ["transfer"],
-    "sustain_fee_tiers": {
-      "scope": ["transfer"],
-      "schedule": [
-        { "min_deg": 25920,   "bps": "31.4", "label": "≥ 10× Δθmin (72 TT)" },
-        { "min_deg": 259200,  "bps": "99",   "label": "≥ 100× Δθmin (720 TT)" },
-        { "min_deg": 2592000, "bps": "314",  "label": "≥ 1000× Δθmin (7,200 TT)" }
-      ]
-    },
     "validation": [
       "sum(balances) == total_supply_deg",
       "all amounts integer in deg",
