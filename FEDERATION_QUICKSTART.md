@@ -30,7 +30,7 @@ Welcome to the IDEALE-EU open federation! This guide helps you navigate the gove
 ### I want to...
 
 **Contribute Code**
-1. Sign [CLA](link-to-cla) (required)
+1. Sign CLA (required) – The CLA signing service is not yet live. Please contact a project admin for instructions or check back soon.
 2. Read [CONTRIBUTING.md](./CONTRIBUTING.md)
 3. Fork repo, create branch, submit PR
 4. Ensure CI passes (validate-manifests, sbom-attest)
