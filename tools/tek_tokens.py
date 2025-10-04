@@ -98,9 +98,9 @@ def save_ledger(cfg, data):
 def tt_to_deg_exact(tt_str: str, deg_per_tt: int) -> int:
     """Convert TT to deg using exact fraction arithmetic."""
     try:
-        frac = Fraction(str(tt_str))
-    except Exception:
-        raise AmountError("Invalid TT amount format")
+        frac = Fraction(tt_str)
+    except Exception as e:
+        raise AmountError("Invalid TT amount format") from e
     deg = frac * deg_per_tt
     if deg.denominator != 1:
         raise AmountError(f"{tt_str} TT does not map to integer deg with {deg_per_tt}/TT")
