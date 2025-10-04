@@ -84,7 +84,7 @@ def _safe_parse_xml(xml_input: Union[str, Path, bytes]) -> Tuple[Optional[Elemen
     """Safely parse XML with detailed error reporting."""
     try:
         if isinstance(xml_input, (str, Path)) and Path(str(xml_input)).exists():
-            tree = ET.parse(str(xml_input))
+            tree = defusedxml.etree.ElementTree.parse(str(xml_input))
             return tree.getroot(), None
         elif isinstance(xml_input, (str, bytes)):
             return ET.fromstring(xml_input), None
