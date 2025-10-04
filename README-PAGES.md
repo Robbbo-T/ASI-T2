@@ -1,5 +1,5 @@
 # GitHub Pages — CAD & S1000D
- [Teknia Token v3.14](badges/tt-verified.svg)
+[Teknia Token v3.14](badges/tt-verified.svg)
 
 This repository publishes a static site with:
 
