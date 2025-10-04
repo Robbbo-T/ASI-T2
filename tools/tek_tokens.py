@@ -500,7 +500,7 @@ def badge_cmd(args):
   </text>
 </svg>'''
     
-    out_path = Path(args.out) if args.out else REPO_ROOT / "badges" / "tt-verified.svg"
+    out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open('w') as f:
         f.write(svg)
@@ -557,7 +557,8 @@ def main():
     
     # badge
     badge_parser = subparsers.add_parser('badge', help='Generate verification badge SVG')
-    badge_parser.add_argument('--out', help='Output file path (default: badges/tt-verified.svg)')
+    badge_parser.add_argument('--out', default='badges/tt-verified.svg', 
+                             help='Output file path (default: badges/tt-verified.svg)')
     
     args = parser.parse_args()
     

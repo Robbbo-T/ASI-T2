@@ -57,24 +57,19 @@ This repository includes the **Teknia Token (TT)** system v3.14, a novel token i
 python tools/tek_tokens.py init
 
 # Check balances (with optional EUR valuation)
-python tools/tek_tokens.py balance
+python tools/tek_tokens.py balance --account TREASURY
 python tools/tek_tokens.py --eur-per-tt 0.10 balance --account TREASURY
 
-# Transfer with π-tier fees
+# Transfer with π-tier fees (must be multiple of 7.2 TT)
 python tools/tek_tokens.py transfer --from TREASURY --to alice --tt 72
 # → Uses 0.314% fee (81 deg)
 
-# Reward (always 0.5% fee, no min quantum)
-python tools/tek_tokens.py reward --to bob --tt 10
-
-# Quote before transfer (non-mutating)
+# Quote (non-mutating)
 python tools/tek_tokens.py quote --op transfer --tt 720
 
-# Verify ledger integrity + policy hash
+# Verify & generate badge (SVG)
 python tools/tek_tokens.py verify
-
-# Generate verification badge
-python tools/tek_tokens.py badge
+python tools/tek_tokens.py badge --out badges/tt-verified.svg
 ```
 
 ### CI Workflow

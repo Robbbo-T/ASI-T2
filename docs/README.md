@@ -85,17 +85,17 @@ python tools/tek_tokens.py init
 
 # Transfer 720 TT (uses 0.99% π-tier fee)
 python tools/tek_tokens.py transfer --from TREASURY --to alice --tt 720
-# → Fee: 2,566 deg (0.99%)
+# → Fee: 2566 deg (0.99%)
 
 # Reward 72 TT (uses 0.5% base fee, not 0.314% π-tier)
 python tools/tek_tokens.py reward --to bob --tt 72
-# → Fee: 129 deg (0.5%)
 
 # Quote with EUR valuation
 python tools/tek_tokens.py --eur-per-tt 0.10 quote --op transfer --tt 7200
 
-# Verify integrity
+# Verify integrity & generate badge
 python tools/tek_tokens.py verify
+python tools/tek_tokens.py badge --out badges/tt-verified.svg
 ```
 
 See [TOKENS.md](TOKENS.md) for complete documentation.

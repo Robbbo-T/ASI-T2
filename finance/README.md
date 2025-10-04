@@ -25,7 +25,7 @@ python3 tools/tek_tokens.py balance --account FOUNDER
 python3 tools/tek_tokens.py balance --account VAULT_SUSTAIN
 
 # 3) Transfer 7.2 TT (2592 deg) from treasury to Alice
-# Fee (base) = floor(2592 * 0.005) = 12 deg → VAULT_SUSTAIN
+# Fee (base tier for < 72 TT) = floor(2592 * 0.005) = 12 deg → VAULT_SUSTAIN
 # Alice receives net = 2592 - 12 = 2580 deg
 python3 tools/tek_tokens.py transfer --from TREASURY --to alice --tt 7.2
 
@@ -35,7 +35,7 @@ python3 tools/tek_tokens.py reward --to creator --tt 3
 # 5) Consume: charge 2 TT from creator (sustain fee applies to creator at 0.5%)
 python3 tools/tek_tokens.py consume --from creator --tt 2
 
-# 6) Verify ledger invariants + policy pin + tx hash-chain
+# 6) Verify ledger invariants + policy hash + tx hash-chain
 python3 tools/tek_tokens.py verify
 
 # 7) Quote (no mutation): fee/net (TT/deg and optional EUR)

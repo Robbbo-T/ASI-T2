@@ -397,15 +397,7 @@ python tools/tek_tokens.py balance
 
 # 7. Generate verification badge
 python tools/tek_tokens.py verify
-# Output: ✓ Badge generated at finance/token_badge.json
-```
-
-### Treasury Badge in README
-
-Add to your README.md:
-
-```markdown
-![TT Balance](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Robbbo-T/ASI-T2/main/finance/token_badge.json)
+python tools/tek_tokens.py badge --out badges/tt-verified.svg
 ```
 
 ## Configuration Files
@@ -418,7 +410,7 @@ Contains:
 - Token specifications (name, symbol, supply)
 - Divisibility rules (360 deg per TT)
 - **Policy settings including min_transfer_deg (2592 deg)**
-- Pricing structure for CXP operations
+- π-tier fee schedule for transfers
 - Account definitions
 - Validation rules
 
@@ -427,6 +419,15 @@ Key policy section:
 "policy": {
   "deg_per_tt": 360,
   "min_transfer_deg": 2592,
+  "min_transfer_scope": ["transfer"],
+  "sustain_fee_tiers": {
+    "scope": ["transfer"],
+    "schedule": [
+      { "min_deg": 25920, "bps": "31.4", "label": "≥ 10× Δθmin (72 TT)" },
+      { "min_deg": 259200, "bps": "99", "label": "≥ 100× Δθmin (720 TT)" },
+      { "min_deg": 2592000, "bps": "314", "label": "≥ 1000× Δθmin (7,200 TT)" }
+    ]
+  },
   "rounding": "reject-non-integer-deg",
   "validation": [
     "sum(balances) == total_supply_deg",
@@ -443,31 +444,27 @@ Location: `finance/ledger.json`
 
 Contains:
 - All account balances (in deg)
-- Complete transaction history
+- Policy hash for immutability verification
 - Metadata (timestamps, version, totals)
 
-### Transaction Log File
+### Transaction Log Files
 
-Location: `finance/ledger.log`
+Location: `finance/txlog.jsonl` and `finance/txhead.json`
 
 Contains:
-- Append-only log of all transactions
-- Each line is a JSON object with transaction details
-- Fields: id, timestamp, src, dst, deg, hash
+- `txlog.jsonl` - Append-only JSONL log of all transactions
+- `txhead.json` - Hash chain head for efficient verification
+- Each transaction linked via SHA-256 hash chain
 - Used for auditing and traceability
-
-Example log entry:
-```json
-{"id": "TX-000001", "timestamp": "2024-01-01T12:00:00Z", "src": "treasury", "dst": "user/alice", "deg": 2592, "hash": "a1b2c3d4e5f6g7h8"}
-```
 
 ### Badge File
 
-Location: `finance/token_badge.json`
+Location: `badges/tt-verified.svg`
 
-Contains:
-- Shields.io compatible badge definition
-- Treasury balance
+Generated SVG badge showing treasury balance. Create with:
+```bash
+python tools/tek_tokens.py badge --out badges/tt-verified.svg
+```
 - System statistics
 
 ## Security Considerations
