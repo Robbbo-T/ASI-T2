@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/proced.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="50"
+                disassyCode="01" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="002" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="10" day="04"/>
+        <dmTitle>
+          <techName>AMPEL360 BWB-Q100 Wing</techName>
+          <infoName>QSS — Quantum Spar State Readout and Inspection</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="changed">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+
+      <applic>
+        <displayText>
+          <simplePara>Applicable when configuration AAA-57-QSS-FS is installed.</simplePara>
+        </displayText>
+      </applic>
+
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+
+      <!-- External schema registration -->
+      <externalPubRef id="SCHEMA-CRACK-EVENT-57-10"
+                      xlink:href="../../../../contracts/schemas/crack_event.schema.json"
+                      xlink:show="new" xlink:actuate="onRequest">
+        <title>ATA-57-10 Crack Event JSON Schema (Draft 2020-12)</title>
+      </externalPubRef>
+
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <proced>
+      <preliminaryRqmts>
+        <reqCond>
+          <noWarnFault/>
+          <reqPersons>
+            <persCategory>Structures Technician</persCategory>
+            <persCategory>Avionics Technician</persCategory>
+          </reqPersons>
+          <supportEquipDescrGroup>
+            <supportEquipDescrRef>
+              <name>QSS Controller Maintenance Terminal</name>
+            </supportEquipDescrRef>
+          </supportEquipDescrGroup>
+          <reqTechInfo>
+            <techInfo>
+              <para>Event payloads created during this procedure must validate against the
+                <xref xrefType="external" internalRefIdRef="SCHEMA-CRACK-EVENT-57-10">Crack Event Schema</xref>.
+              </para>
+            </techInfo>
+            <dmRef>
+              <dmRefIdent>
+                <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                        systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="50"
+                        disassyCode="00" disassyCodeVariant="A"
+                        infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+              </dmRefIdent>
+              <dmTitle>Quantum Spar Sensing System — Description and Principles</dmTitle>
+            </dmRef>
+          </reqTechInfo>
+          <safetyRqmts>
+            <warning>
+              <warningAndCautionPara>Observe EMI/ESD precautions. Maintain fuel-wet bay sealing integrity when opening access panels.</warningAndCautionPara>
+            </warning>
+          </safetyRqmts>
+        </reqCond>
+      </preliminaryRqmts>
+
+      <mainProcedure>
+        <procedStep>
+          <para>Open scheduled access panels for QSS zones on the forward spar (FS-INB, FS-MID, FS-OUTB) per aircraft access list.</para>
+        </procedStep>
+        <procedStep>
+          <para>Connect the maintenance terminal to the QSS controller node and power ON.</para>
+        </procedStep>
+        <procedStep>
+          <para>Select <emphasis>Quantum Spar State Readout</emphasis>. Ensure aircraft is in the required load state (fuel level and jacking as specified).</para>
+        </procedStep>
+        <procedStep>
+          <para>Acquire data in <emphasis>Amplification</emphasis> mode for 60&#160;s. Save anomalies as draft events.</para>
+        </procedStep>
+        <procedStep>
+          <para>Switch to <emphasis>Discretization</emphasis> mode. Confirm quantized load-path states match expected signatures; capture deviations as events.</para>
+        </procedStep>
+        <procedStep>
+          <para>For each anomaly, create a payload conforming to the
+            <xref xrefType="external" internalRefIdRef="SCHEMA-CRACK-EVENT-57-10">Crack Event Schema</xref>,
+            including station, subcomponent, QSS mode, and provenance.</para>
+        </procedStep>
+        <procedStep>
+          <para>Sync events to the health database. If severity is <emphasis>high</emphasis> or <emphasis>critical</emphasis>, apply restrictions and route for immediate inspection.</para>
+        </procedStep>
+      </mainProcedure>
+
+      <closeRqmts>
+        <returnToService>
+          <para>Verify no active QSS fault codes; close access panels; record inspection and any events in the logbook.</para>
+        </returnToService>
+      </closeRqmts>
+    </proced>
+  </content>
+</dmodule>
