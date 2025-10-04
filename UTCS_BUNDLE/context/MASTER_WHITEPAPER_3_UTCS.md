@@ -52,20 +52,20 @@ The key words **MUST**, **SHOULD**, and **MAY** are to be interpreted as normati
 ## 1. Conceptual Model
 
 ```mermaid
-graph LR
-  QS[QS · Primordial State] --> FWD[FWD · Forward Wave Dynamics]
-  FWD --> UE[UE · Unit Element / Collapse]
-  UE --> FE[FE · Federation Entanglement / Contracting]
-  FE --> CB[CB · Classical Bit]
-  CB --> QB[QB · Bit Cubic (non‑quantum)]
+flowchart LR
+  QS["QS · Primordial State"] --> FWD["FWD · Forward Wave Dynamics"]
+  FWD --> UE["UE · Unit Element / Collapse"]
+  UE --> FE["FE · Federation Entanglement / Contracting"]
+  FE --> CB["CB · Classical Bit"]
+  CB --> QB["QB · Bit Cubic (non‑quantum)"]
 
-  subgraph UTCS v5.0
-  C[Context]:::ctx
-  T[Content]:::ctx
-  H[Cache]:::ctx
-  S[Structure]:::sty
-  Y[Style]:::sty
-  X[Sheet]:::sty
+  subgraph UTCS_v5_0 [UTCS v5.0]
+    C[Context]:::ctx
+    T[Content]:::ctx
+    H[Cache]:::ctx
+    S[Structure]:::sty
+    Y[Style]:::sty
+    X[Sheet]:::sty
   end
 
   C -.threads.-> S
@@ -73,6 +73,7 @@ graph LR
   H -.threads.-> S
   S --> |binds| Y
   S --> |binds| X
+
   classDef ctx fill:#eef,stroke:#66c;
   classDef sty fill:#efe,stroke:#6c6;
 ```
