@@ -26,5 +26,16 @@
     "all_amounts_in_integers": true,
     "precision_note": "All ledger entries are stored as integer deg values. No fractional deg allowed.",
     "conversion_note": "1 TT = 360 deg exactly. Valid TT amounts must result in integer deg values."
+  },
+  "policy": {
+    "deg_per_tt": 360,
+    "min_transfer_deg": 2592,
+    "rounding": "reject-non-integer-deg",
+    "validation": [
+      "sum(balances) == total_supply_deg",
+      "all amounts integer in deg",
+      "no negative balances",
+      "amount_deg % min_transfer_deg == 0"
+    ]
   }
 }

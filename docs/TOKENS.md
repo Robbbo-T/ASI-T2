@@ -36,6 +36,26 @@ All ledger entries are stored as **integer deg values**. No fractional deg units
 - Deterministic transaction outcomes
 - Simple verification and auditing
 
+### Minimum Transfer Quantum (Δθₘᵢn)
+
+The token system enforces a **minimum transfer quantum** of **2592 deg (7.2 TT)** to ensure operational integrity:
+
+- **min_transfer_deg**: 2592 deg = 7.2 TT
+- All transfers must be exact multiples of 2592 deg
+- This quantum represents the minimum operational gradient for token flow
+- Enforces the TFA (Thermodynamic Field Approach) correlation: Δθₘᵢn ↔ ΔTₘᵢn
+
+**Valid Transfer Examples:**
+- ✓ 2592 deg (7.2 TT) - 1x quantum
+- ✓ 5184 deg (14.4 TT) - 2x quantum
+- ✓ 25920 deg (72 TT) - 10x quantum
+
+**Invalid Transfer Examples:**
+- ✗ 1 deg - Not a multiple of 2592
+- ✗ 360 deg (1 TT) - Not a multiple of 2592
+- ✗ 36 deg (0.1 TT) - Not a multiple of 2592
+- ✗ 1080 deg (3 TT) - Not a multiple of 2592
+
 ### Pricing Structure
 
 The tokenomics configuration defines standard pricing for CXP (Content Exchange Protocol) operations:
@@ -173,19 +193,27 @@ The ledger is stored in `finance/ledger.json` with the following structure:
 
 ### Valid Amounts
 
-An amount is valid if it results in an integer number of deg:
+An amount is valid if it satisfies two conditions:
+1. Results in an integer number of deg
+2. Is an exact multiple of min_transfer_deg (2592 deg)
 
 ```python
 def is_valid_tt_amount(tt: float) -> bool:
     deg = tt * 360
-    return deg.is_integer()
+    # Must be integer deg
+    if not deg.is_integer():
+        return False
+    # Must be multiple of min_transfer_deg
+    return int(deg) % 2592 == 0
 ```
 
 Examples:
-- ✓ 1.0 TT → 360 deg
-- ✓ 0.5 TT → 180 deg
-- ✓ 0.25 TT → 90 deg
-- ✓ 7.2 TT → 2592 deg
+- ✓ 7.2 TT → 2592 deg (1x quantum)
+- ✓ 14.4 TT → 5184 deg (2x quantum)
+- ✓ 72 TT → 25920 deg (10x quantum)
+- ✗ 1.0 TT → 360 deg (not multiple of 2592)
+- ✗ 0.5 TT → 180 deg (not multiple of 2592)
+- ✗ 0.1 TT → 36 deg (not multiple of 2592)
 - ✗ 0.33 TT → 118.8 deg (not integer)
 - ✗ 1.001 TT → 360.36 deg (not integer)
 
@@ -196,6 +224,7 @@ All transactions must satisfy:
 2. Source account has sufficient balance
 3. Amount is a positive integer (in deg)
 4. Amount is ≤ source account balance
+5. **Amount is an exact multiple of min_transfer_deg (2592 deg)**
 
 ## Examples
 
@@ -248,9 +277,25 @@ Location: `finance/teknia.tokenomics.json`
 Contains:
 - Token specifications (name, symbol, supply)
 - Divisibility rules (360 deg per TT)
+- **Policy settings including min_transfer_deg (2592 deg)**
 - Pricing structure for CXP operations
 - Account definitions
 - Validation rules
+
+Key policy section:
+```json
+"policy": {
+  "deg_per_tt": 360,
+  "min_transfer_deg": 2592,
+  "rounding": "reject-non-integer-deg",
+  "validation": [
+    "sum(balances) == total_supply_deg",
+    "all amounts integer in deg",
+    "no negative balances",
+    "amount_deg % min_transfer_deg == 0"
+  ]
+}
+```
 
 ### Ledger File
 
@@ -260,6 +305,21 @@ Contains:
 - All account balances (in deg)
 - Complete transaction history
 - Metadata (timestamps, version, totals)
+
+### Transaction Log File
+
+Location: `finance/ledger.log`
+
+Contains:
+- Append-only log of all transactions
+- Each line is a JSON object with transaction details
+- Fields: id, timestamp, src, dst, deg, hash
+- Used for auditing and traceability
+
+Example log entry:
+```json
+{"id": "TX-000001", "timestamp": "2024-01-01T12:00:00Z", "src": "treasury", "dst": "user/alice", "deg": 2592, "hash": "a1b2c3d4e5f6g7h8"}
+```
 
 ### Badge File
 
@@ -276,6 +336,8 @@ Contains:
 2. **Balance Verification**: Total distributed tokens always equals genesis supply
 3. **Transaction History**: Immutable transaction log for auditing
 4. **Account Validation**: All transfers validate source account existence and balance
+5. **Quantum Transfer Enforcement**: All transfers must be exact multiples of min_transfer_deg (2592 deg)
+6. **Append-Only Logging**: Transaction log file provides cryptographic audit trail with hashes
 
 ## CI/CD Integration
 

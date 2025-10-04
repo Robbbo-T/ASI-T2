@@ -30,6 +30,7 @@ REPO_ROOT = Path(__file__).parent.parent
 TOKENOMICS_FILE = REPO_ROOT / "finance" / "teknia.tokenomics.json"
 LEDGER_FILE = REPO_ROOT / "finance" / "ledger.json"
 BADGE_FILE = REPO_ROOT / "finance" / "token_badge.json"
+LEDGER_LOG_FILE = REPO_ROOT / "finance" / "ledger.log"
 
 
 class TokenLedger:
@@ -38,6 +39,7 @@ class TokenLedger:
     def __init__(self):
         self.ledger = self._load_ledger()
         self.tokenomics = self._load_tokenomics()
+        self.min_transfer_deg = self.tokenomics.get("policy", {}).get("min_transfer_deg", 2592)
     
     def _load_tokenomics(self) -> Dict:
         """Load tokenomics configuration."""
@@ -70,6 +72,30 @@ class TokenLedger:
         with open(LEDGER_FILE, 'w') as f:
             json.dump(self.ledger, f, indent=2)
         print(f"Ledger saved to {LEDGER_FILE}")
+    
+    def _log_transaction(self, tx_id: str, tx_type: str, from_account: str, to_account: str, 
+                        amount_deg: int, tx_hash: str = None):
+        """Append transaction to ledger.log for auditing."""
+        timestamp = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+        if tx_hash is None:
+            # Generate simple hash from transaction data
+            import hashlib
+            tx_data = f"{tx_id}:{timestamp}:{from_account}:{to_account}:{amount_deg}"
+            tx_hash = hashlib.sha256(tx_data.encode()).hexdigest()[:16]
+        
+        log_entry = {
+            "id": tx_id,
+            "timestamp": timestamp,
+            "src": from_account,
+            "dst": to_account,
+            "deg": amount_deg,
+            "hash": tx_hash
+        }
+        
+        # Append to log file
+        LEDGER_LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(LEDGER_LOG_FILE, 'a') as f:
+            f.write(json.dumps(log_entry) + '\n')
     
     def tt_to_deg(self, tt: float) -> int:
         """Convert TT to deg. Must result in integer deg."""
@@ -131,6 +157,14 @@ class TokenLedger:
     
     def transfer(self, from_account: str, to_account: str, amount_deg: int, tx_type: str = "transfer"):
         """Transfer tokens between accounts."""
+        # Validate min_transfer_deg quantum
+        if amount_deg % self.min_transfer_deg != 0:
+            raise ValueError(
+                f"Invalid transfer amount: {amount_deg} deg is not a multiple of "
+                f"min_transfer_deg ({self.min_transfer_deg} deg = {self.deg_to_tt(self.min_transfer_deg):.2f} TT). "
+                f"Transfer amount must be a multiple of the minimum quantum."
+            )
+        
         # Validate from account exists and has sufficient balance
         if from_account not in self.ledger["accounts"]:
             raise ValueError(f"Account '{from_account}' does not exist")
@@ -163,6 +197,9 @@ class TokenLedger:
             "amount_tt": self.deg_to_tt(amount_deg),
         }
         self.ledger["transactions"].append(transaction)
+        
+        # Log transaction to ledger.log
+        self._log_transaction(tx_id, tx_type, from_account, to_account, amount_deg)
         
         self._save_ledger()
         print(f"✓ Transaction {tx_id} completed")
