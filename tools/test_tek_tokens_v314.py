@@ -4,6 +4,7 @@ Test suite for Teknia Token CLI v3.14 with π-tier fees, policy hash,
 and enhanced features.
 """
 
+import re
 import json
 import sys
 import os
@@ -87,6 +88,16 @@ class TestTokenLedgerV314:
             print(f"  ✗ {message}")
             self.tests_failed += 1
     
+    # --- helpers for robust stdout checks ---
+    @staticmethod
+    def _has_number_with_unit(text: str, value: int, unit: str = "deg") -> bool:
+        """
+        True if 'text' contains the integer 'value' followed by 'unit', with or without
+        thousands separators (e.g., '2,566 deg' or '2566 deg').
+        """
+        pattern = rf"(?:\b{value:,}\s*{unit}\b|\b{value}\s*{unit}\b)"
+        return re.search(pattern, text) is not None
+    
     def run_cli(self, *args):
         """Run CLI command and return result."""
         cmd = [sys.executable, str(REPO_ROOT / "tools" / "tek_tokens.py")] + list(args)
@@ -139,13 +150,13 @@ class TestTokenLedgerV314:
         # Test 720 TT transfer (should use 0.99% tier)
         result = self.run_cli("transfer", "--from", "TREASURY", "--to", "bob", "--tt", "720")
         self.assert_true(result.returncode == 0, "720 TT transfer succeeded")
-        self.assert_true("2,566 deg" in result.stdout or "2566 deg" in result.stdout, 
+        self.assert_true(self._has_number_with_unit(result.stdout, 2566, "deg"),
                         "Fee is 2566 deg (0.99% of 259200)")
         
         # Test 7200 TT transfer (should use 3.14% tier)
         result = self.run_cli("transfer", "--from", "TREASURY", "--to", "charlie", "--tt", "7200")
         self.assert_true(result.returncode == 0, "7200 TT transfer succeeded")
-        self.assert_true("81,388 deg" in result.stdout or "81388 deg" in result.stdout,
+        self.assert_true(self._has_number_with_unit(result.stdout, 81388, "deg"),
                         "Fee is 81388 deg (3.14% of 2592000)")
     
     def test_reward_base_fee(self):
@@ -184,7 +195,7 @@ class TestTokenLedgerV314:
         # Quote for 720 TT transfer
         result = self.run_cli("quote", "--op", "transfer", "--tt", "720")
         self.assert_true(result.returncode == 0, "Quote command succeeded")
-        self.assert_true("2,566 deg" in result.stdout or "2566 deg" in result.stdout,
+        self.assert_true(self._has_number_with_unit(result.stdout, 2566, "deg"),
                         "Quote shows correct fee (0.99% tier)")
         self.assert_true("Sender pays:" in result.stdout, "Quote shows sender cost")
         self.assert_true("Recipient gets:" in result.stdout, "Quote shows recipient amount")
