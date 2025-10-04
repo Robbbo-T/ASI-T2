@@ -4,10 +4,17 @@ This directory contains comprehensive documentation for the ASI-T2 ecosystem.
 
 ## Contents
 
-### Token System
+### Token System v3.1
 
-- **[TOKENS.md](TOKENS.md)** - Complete documentation for the Teknia Token (TT) system
-  - Token specifications (2B TT supply, 360-degree divisibility)
+- **[TOKENS.md](TOKENS.md)** - Complete documentation for the Teknia Token (TT) system v3.1
+  - Token specifications (2B TT genesis supply, 360-degree divisibility)
+  - **v3.1 Features:**
+    - Quantum transfer enforcement (2592 deg = 7.2 TT minimum)
+    - Founder allocation (5% at genesis = 100M TT)
+    - Sustain fee (0.5% per operation)
+    - Three-account structure (TREASURY, FOUNDER, VAULT_SUSTAIN)
+    - Transaction logging with SHA-256 hashing
+    - Landauer@CMB physics integration
   - CLI tool usage and examples
   - Ledger structure and validation rules
   - CXP (Content Exchange Protocol) operations
