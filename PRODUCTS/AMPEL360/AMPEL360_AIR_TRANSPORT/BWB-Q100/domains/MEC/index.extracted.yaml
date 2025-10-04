@@ -1,5 +1,7 @@
+schema_version: "1.0"
+product: "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100"
 domain: "MEC"
-project: "PRODUCTS/AMPEL360/BWB-Q100"
+project: "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT"
 brex:
   ok: false
   issues:
@@ -50,9 +52,9 @@ extracted:
     OFF:
 
 generated:
-  ata: 8
-  cax: 6
+  ata: 0
+  cax: 0
   qox: 0
   pax: 0
-  files: 14
-timestamp: "2025-09-24T08:50:22.691539Z"
+  files: 0
+timestamp: "2025-10-04T01:11:45.912034Z"

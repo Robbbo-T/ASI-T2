@@ -1,0 +1,46 @@
+schema_version: "1.0"
+product: "PRODUCTS/GAIA-AIR/HYDROBOTS"
+domain: "AAA"
+project: "PRODUCTS/GAIA-AIR/HYDROBOTS"
+brex:
+  ok: true
+  issues:
+
+  warnings:
+
+extracted:
+  ATA:
+    -
+      chapter: "20"
+    -
+      chapter: "27"
+    -
+      chapter: "51"
+    -
+      chapter: "53"
+    -
+      chapter: "57"
+  CAx:
+    - "CAD"
+    - "CAE"
+    - "CAX"
+    - "CFD"
+    - "PDM-PLM-PLM"
+    - "VP"
+  QOx:
+    - "ANNEALING"
+    - "BQM"
+    - "QAOA"
+    - "QUBO"
+  PAx:
+    OB:
+
+    OFF:
+      - "OCI"
+generated:
+  ata: 0
+  cax: 0
+  qox: 0
+  pax: 0
+  files: 0
+timestamp: "2025-10-04T01:11:45.944172Z"

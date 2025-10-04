@@ -1,5 +1,7 @@
+schema_version: "1.0"
+product: "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100"
 domain: "DDD"
-project: "PRODUCTS/AMPEL360/BWB-Q100"
+project: "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT"
 brex:
   ok: false
   issues:
@@ -20,31 +22,26 @@ brex:
 extracted:
   ATA:
     -
-      chapter: "23"
+      chapter: "13"
     -
-      chapter: "31"
-    -
-      chapter: "42"
-    -
-      chapter: "45"
-    -
-      chapter: "46"
+      chapter: "14"
   CAx:
-    - "CAI"
-    - "CASE"
+    - "CAD"
+    - "CAE"
     - "CAX"
     - "PDM-PLM-PLM"
+    - "VP"
   QOx:
 
   PAx:
     OB:
-      - "INTEGRITY"
+
     OFF:
 
 generated:
-  ata: 5
-  cax: 4
+  ata: 0
+  cax: 0
   qox: 0
-  pax: 1
-  files: 10
-timestamp: "2025-09-24T08:50:22.661088Z"
+  pax: 0
+  files: 0
+timestamp: "2025-10-04T01:11:45.891124Z"

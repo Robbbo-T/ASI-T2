@@ -1,3 +1,5 @@
+schema_version: "1.0"
+product: "PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM/PLUS"
 domain: "CCC"
 project: "PRODUCTS/AMPEL360/AMPEL360_SPACE_TOURISM"
 brex:
@@ -48,9 +50,9 @@ extracted:
     OFF:
 
 generated:
-  ata: 6
-  cax: 5
-  qox: 4
+  ata: 0
+  cax: 0
+  qox: 0
   pax: 0
-  files: 15
-timestamp: "2025-09-26T07:56:34.112690Z"
+  files: 0
+timestamp: "2025-10-04T01:11:45.924967Z"
