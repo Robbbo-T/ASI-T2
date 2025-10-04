@@ -92,7 +92,7 @@ jobs:
               tokenomics = json.load(f)
           
           total_distributed = sum(ledger['accounts'].values())
-          expected_supply = tokenomics['conversion']['total_genesis_supply_deg']
+          expected_supply = tokenomics['token']['genesis_supply_tt'] * tokenomics['token']['deg_per_tt']
           
           print(f"Total distributed: {total_distributed:,} deg")
           print(f"Genesis supply: {expected_supply:,} deg")
