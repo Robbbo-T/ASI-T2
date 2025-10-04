@@ -734,7 +734,7 @@ def transform_xml_to_md_streaming(
         if isinstance(xml_input, (str, Path)) and Path(str(xml_input)).exists():
             xml.sax.parse(str(xml_input), md_handler)
         elif isinstance(xml_input, str):
-            xml.sax.parseString(xml_input, md_handler)
+            xml.sax.parseString(xml_input.encode("utf-8"), md_handler)
         else:
             raise XMLParseError("Invalid input for streaming mode")
     finally:
