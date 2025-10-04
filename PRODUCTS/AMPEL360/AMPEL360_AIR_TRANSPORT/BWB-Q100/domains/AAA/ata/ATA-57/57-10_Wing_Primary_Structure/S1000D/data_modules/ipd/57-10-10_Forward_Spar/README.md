@@ -26,6 +26,11 @@ This directory contains Illustrated Parts Data (941A) for forward spar assemblie
 - Fastener kits by zone
 - Splice hardware kits
 
+## Schema References
+
+- **IPD schema**: `../../../schema/shims/ipd.xsd`
+- **Schema catalog**: `../../../schema/catalog.xml`
+
 ---
 
 *Part of ATA-57-10 IPD documentation*

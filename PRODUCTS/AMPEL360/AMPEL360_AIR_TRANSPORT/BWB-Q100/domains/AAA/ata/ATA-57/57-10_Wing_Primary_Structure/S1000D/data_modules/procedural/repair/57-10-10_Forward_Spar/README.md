@@ -19,6 +19,11 @@ This directory contains repair procedural data modules (520A) for forward spar s
 
 Refer to `../../../../contracts/schemas/acceptance.metric.schema.json` for allowable limits before repair required.
 
+## Schema References
+
+- **Procedural schema**: `../../../../schema/shims/procedural.xsd`
+- **Schema catalog**: `../../../../schema/catalog.xml`
+
 ---
 
 *Part of ATA-57-10 procedural repair documentation*
