@@ -25,6 +25,7 @@ canonical_hash: pending
 # ASI-T2
 
 [![Sponsor](https://img.shields.io/github/sponsors/Robbbo-T?style=social)](https://github.com/sponsors/Robbbo-T)
+[![OPTIME](https://img.shields.io/badge/OPTIME-L2_verified-0e7c86)](./WHITEPAPERS/OPTIME_MARK.md)
 
 ## ARTIFICIAL SUPER INTELLIGENCE TRANSPONDERS for AEROSPACE SUSTAINABLE INDUSTRY TRANSITION
 
