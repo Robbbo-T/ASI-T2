@@ -1,0 +1,19 @@
+{
+  "$id": "https://utcs.schema/cxp/v1",
+  "type": "object",
+  "required": ["version", "repo", "canon", "interfaces", "provenance"],
+  "properties": {
+    "version": { "type": "string" },
+    "repo": {
+      "type": "object",
+      "required": ["name", "url"],
+      "properties": {
+        "name": { "type": "string" },
+        "url":  { "type": "string", "format": "uri" }
+      }
+    },
+    "canon": { "type": "object" },
+    "interfaces": { "type": "object" },
+    "provenance": { "type": "object" }
+  }
+}

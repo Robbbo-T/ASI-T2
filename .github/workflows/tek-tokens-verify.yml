@@ -1,0 +1,28 @@
+name: TeknIA Tokens · Verify & Badge
+on:
+  push:
+    paths: ['finance/**', 'tools/tek_tokens.py']
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Verify ledger & write badge
+        run: |
+          python tools/tek_tokens.py verify
+      
+      - name: Upload badge
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tt-badge
+          path: finance/badges/tt-balance.json

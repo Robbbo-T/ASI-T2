@@ -436,6 +436,50 @@ Active contributors are recognized through:
 
 ---
 
+## CXP (Context eXchange Points)
+
+### When to Update CXP Artifacts
+
+Update CXP artifacts when your changes:
+- Modify repository interfaces or contracts
+- Add/remove dependencies
+- Change architecture or domain structure
+- Update documentation structure
+
+### Required Updates
+
+**1. UTCS Manifest** (`UTCS/context.manifest.json`):
+- Add new exports in `interfaces.exports`
+- Update dependencies in `dependencies.external`
+- Increment version if interfaces change
+
+**2. SBOM** (`sbom/spdx.sbom.json`):
+- Regenerate when dependencies change
+- CI handles this automatically via `cxp-publish` workflow
+
+**3. Documentation**:
+- Update `docs/ARCHITECTURE.md` for structural changes
+- Update `docs/INTERFACES.md` for interface changes
+
+### CXP Workflow Integration
+
+The `cxp-publish` workflow runs automatically on push to main:
+1. Generates SBOM with anchore/sbom-action
+2. Stamps manifest with commit hash and timestamp
+3. Validates manifest against schema
+4. Credits TeknIA Tokens (TT) for publication
+5. Uploads artifacts
+
+### TeknIA TOKENS (TT)
+
+CXP events automatically update the TT ledger:
+- **Publishing context**: +3 TT reward (if `auto.reward_on_publish=true`)
+- **Consuming context**: -2 TT cost (if `auto.charge_on_consume=true`)
+
+Check balance: `python tools/tek_tokens.py balance`
+
+---
+
 ## Questions?
 
 - **General**: discussions@ideale-eu.example
@@ -443,10 +487,11 @@ Active contributors are recognized through:
 - **Legal/IP**: legal@ideale-eu.example
 - **Security**: security@ideale-eu.example
 - **Conduct**: conduct@ideale-eu.example
+- **CXP/UTCS**: See [docs/INTERFACES.md](docs/INTERFACES.md)
 
 ---
 
 **Thank you for contributing to a more sustainable, collaborative aerospace future!**
 
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 **Last Updated:** 2025-01-01

@@ -26,12 +26,17 @@ canonical_hash: pending
 
 [![Sponsor](https://img.shields.io/github/sponsors/Robbbo-T?style=social)](https://github.com/sponsors/Robbbo-T)
 [![OPTIME](https://img.shields.io/badge/OPTIME-L2_verified-0e7c86)](./WHITEPAPERS/OPTIME_MARK.md)
+[![CXP Publish](https://img.shields.io/github/actions/workflow/status/Robbbo-T/ASI-T2/cxp-publish.yml?label=CXP%20Publish)](https://github.com/Robbbo-T/ASI-T2/actions/workflows/cxp-publish.yml)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX-blue)](sbom/spdx.sbom.json)
+[![Canon](https://img.shields.io/badge/Canon-GENESIS-critical)](docs/GENESIS.md)
 
 ## ARTIFICIAL SUPER INTELLIGENCE TRANSPONDERS for AEROSPACE SUSTAINABLE INDUSTRY TRANSITION
 
 **Master portfolio** under strict **TFA** architecture. This README defines the **CAX·QOX·PAX·ATA operating contract**, the **UTCS/QS evidence model**, and provides a **hyperlinked index** to fields, environments, and products.
 
 > **Classification:** `INTERNAL–EVIDENCE-REQUIRED` · Access and publication require **UTCS MI v5.0** anchors and **MAL-EEM** conformance.
+> 
+> Repository aligned with **IDEALE-EU**, traced under **QS→FWD→UE→FE→CB→QB** and **UTCS**.
 
 ---
 

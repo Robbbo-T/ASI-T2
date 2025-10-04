@@ -1,0 +1,24 @@
+{
+  "currency": "TT",
+  "name": "TeknIA TOKENS",
+  "precision": 3,
+  "initial_mint": 10000,
+  "holders": ["treasury"],
+  "domains": ["AAA","AAP","CCC","CQH","DDD","EDI","EEE","EER","IIF","IIS","LCC","LIB","MEC","OOO","PPP"],
+  "allocation": "equal",
+  "auto": {
+    "charge_on_publish": false,
+    "charge_on_consume": true,
+    "reward_on_publish": true
+  },
+  "prices": {
+    "cxp_publish_reward": 3,
+    "cxp_consume_cost": 2
+  },
+  "badges": {
+    "enabled": true,
+    "path": "finance/badges/tt-balance.json",
+    "label": "TeknIA TT",
+    "color": "blue"
+  }
+}

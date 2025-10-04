@@ -1,0 +1,10 @@
+{
+  "outbound": [
+    { "rel": "cxp-manifest",  "href": "UTCS/context.manifest.json" },
+    { "rel": "architecture",  "href": "docs/ARCHITECTURE.md" },
+    { "rel": "genesis",       "href": "docs/GENESIS.md" }
+  ],
+  "inbound": [
+    { "rel": "upstream:GENESIS", "href": "https://github.com/org/repo/docs/GENESIS.md" }
+  ]
+}
