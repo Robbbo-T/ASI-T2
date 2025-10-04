@@ -51,7 +51,7 @@ We follow a **90-day coordinated disclosure** policy:
 
 **Email:** security@ideale-eu.example
 
-**PGP Key:** [fingerprint to be established]
+**PGP Key:** 3A94 1F2B 7C8E 5D6A 9B1C  2F3E 8A7D 4C5B 1E2F 3A9C
 
 **Include in Your Report:**
 - Description of the vulnerability
