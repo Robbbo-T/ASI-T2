@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Test suite for Teknia Token CLI with min_transfer_deg validation
+Test suite for Teknia Token CLI v3.1 with min_transfer_deg validation,
+founder allocation, and sustain fees
 """
 
 import json
@@ -86,18 +87,30 @@ class TestTokenLedger:
             return False
     
     def test_initialization(self):
-        """Test ledger initialization."""
-        print("\nTest 1: Ledger Initialization")
+        """Test ledger initialization with founder allocation."""
+        print("\nTest 1: Ledger Initialization (v3.1)")
         ledger = TokenLedger()
         ledger.initialize()
         
+        # Calculate expected values
+        founder_allocation = (GENESIS_SUPPLY_DEG * 500) // 10000  # 5%
+        treasury_balance = GENESIS_SUPPLY_DEG - founder_allocation
+        
         self.assert_true(
-            ledger.get_balance("treasury") == GENESIS_SUPPLY_DEG,
-            "Treasury has correct genesis supply"
+            ledger.get_balance("FOUNDER") == founder_allocation,
+            f"Founder has correct allocation (5%): {founder_allocation} deg"
         )
         self.assert_true(
-            len(ledger.ledger["transactions"]) == 1,
-            "Genesis transaction recorded"
+            ledger.get_balance("TREASURY") == treasury_balance,
+            f"Treasury has correct balance (95%): {treasury_balance} deg"
+        )
+        self.assert_true(
+            ledger.get_balance("VAULT_SUSTAIN") == 0,
+            "Sustain vault initialized to 0"
+        )
+        self.assert_true(
+            len(ledger.ledger["transactions"]) == 2,
+            "Genesis mint and founder allocation transactions recorded"
         )
     
     def test_min_transfer_deg_loading(self):
@@ -115,8 +128,8 @@ class TestTokenLedger:
         )
     
     def test_valid_transfer_multiples(self):
-        """Test valid transfers that are multiples of min_transfer_deg."""
-        print("\nTest 3: Valid Transfer Multiples")
+        """Test valid transfers that are multiples of min_transfer_deg with sustain fee."""
+        print("\nTest 3: Valid Transfer Multiples (with sustain fee)")
         ledger = TokenLedger()
         
         # Make sure ledger is initialized
@@ -125,21 +138,29 @@ class TestTokenLedger:
         
         # Test 1x min_transfer_deg (2592 deg = 7.2 TT)
         try:
-            ledger.transfer("treasury", "user/alice", 2592, "transfer")
+            initial_vault = ledger.get_balance("VAULT_SUSTAIN")
+            ledger.transfer("TREASURY", "user/alice", 2592, "transfer")
             self.assert_true(True, "Transfer of 2592 deg (1x quantum) succeeded")
+            # Verify sustain fee collected (0.5% of 2592 = 12.96, floor to 12)
+            expected_fee = (2592 * 50) // 10000
+            actual_vault = ledger.get_balance("VAULT_SUSTAIN")
+            self.assert_true(
+                actual_vault == initial_vault + expected_fee,
+                f"Sustain fee collected: {expected_fee} deg"
+            )
         except Exception as e:
             self.assert_true(False, f"Transfer of 2592 deg failed: {e}")
         
         # Test 2x min_transfer_deg (5184 deg = 14.4 TT)
         try:
-            ledger.transfer("treasury", "user/bob", 5184, "transfer")
+            ledger.transfer("TREASURY", "user/bob", 5184, "transfer")
             self.assert_true(True, "Transfer of 5184 deg (2x quantum) succeeded")
         except Exception as e:
             self.assert_true(False, f"Transfer of 5184 deg failed: {e}")
         
         # Test 10x min_transfer_deg (25920 deg = 72 TT)
         try:
-            ledger.transfer("treasury", "user/charlie", 25920, "transfer")
+            ledger.transfer("TREASURY", "user/charlie", 25920, "transfer")
             self.assert_true(True, "Transfer of 25920 deg (10x quantum) succeeded")
         except Exception as e:
             self.assert_true(False, f"Transfer of 25920 deg failed: {e}")
@@ -157,7 +178,7 @@ class TestTokenLedger:
         result = self.assert_raises(
             ValueError,
             ledger.transfer,
-            "treasury", "user/alice", 1, "transfer"
+            "TREASURY", "user/alice", 1, "transfer"
         )
         self.assert_true(result, "Transfer of 1 deg rejected")
         
@@ -165,7 +186,7 @@ class TestTokenLedger:
         result = self.assert_raises(
             ValueError,
             ledger.transfer,
-            "treasury", "user/alice", 360, "transfer"
+            "TREASURY", "user/alice", 360, "transfer"
         )
         self.assert_true(result, "Transfer of 360 deg (1 TT) rejected")
         
@@ -173,7 +194,7 @@ class TestTokenLedger:
         result = self.assert_raises(
             ValueError,
             ledger.transfer,
-            "treasury", "user/alice", 36, "transfer"
+            "TREASURY", "user/alice", 36, "transfer"
         )
         self.assert_true(result, "Transfer of 36 deg (0.1 TT) rejected")
         
@@ -181,7 +202,7 @@ class TestTokenLedger:
         result = self.assert_raises(
             ValueError,
             ledger.transfer,
-            "treasury", "user/alice", 18, "transfer"
+            "TREASURY", "user/alice", 18, "transfer"
         )
         self.assert_true(result, "Transfer of 18 deg (0.05 TT) rejected")
         
@@ -189,7 +210,7 @@ class TestTokenLedger:
         result = self.assert_raises(
             ValueError,
             ledger.transfer,
-            "treasury", "user/alice", 1080, "transfer"
+            "TREASURY", "user/alice", 1080, "transfer"
         )
         self.assert_true(result, "Transfer of 1080 deg (3 TT) rejected")
     
@@ -205,7 +226,7 @@ class TestTokenLedger:
             ledger.initialize()
         
         # Perform a valid transfer
-        ledger.transfer("treasury", "user/alice", 2592, "transfer")
+        ledger.transfer("TREASURY", "user/alice", 2592, "transfer")
         
         # Check log file exists
         self.assert_true(
@@ -259,9 +280,9 @@ class TestTokenLedger:
             ledger.initialize()
         
         # Perform several transfers
-        ledger.transfer("treasury", "user/alice", 2592, "transfer")
-        ledger.transfer("treasury", "user/bob", 5184, "transfer")
-        ledger.transfer("treasury", "user/charlie", 25920, "transfer")
+        ledger.transfer("TREASURY", "user/alice", 2592, "transfer")
+        ledger.transfer("TREASURY", "user/bob", 5184, "transfer")
+        ledger.transfer("TREASURY", "user/charlie", 25920, "transfer")
         
         # Sum all balances
         total_balance = sum(ledger.ledger["accounts"].values())
@@ -282,21 +303,21 @@ class TestTokenLedger:
         
         # Test transfer
         try:
-            ledger.transfer("treasury", "user/alice", 2592, "transfer")
+            ledger.transfer("TREASURY", "user/alice", 2592, "transfer")
             self.assert_true(True, "Transfer transaction succeeded")
         except Exception as e:
             self.assert_true(False, f"Transfer transaction failed: {e}")
         
         # Test reward
         try:
-            ledger.transfer("treasury", "user/bob", 2592, "cxp_publish_reward")
+            ledger.transfer("TREASURY", "user/bob", 2592, "cxp_publish_reward")
             self.assert_true(True, "Reward transaction succeeded")
         except Exception as e:
             self.assert_true(False, f"Reward transaction failed: {e}")
         
         # Test consume/charge
         try:
-            ledger.transfer("user/alice", "treasury", 2592, "cxp_consume_charge")
+            ledger.transfer("user/alice", "TREASURY", 2592, "cxp_consume_charge")
             self.assert_true(True, "Consume/charge transaction succeeded")
         except Exception as e:
             self.assert_true(False, f"Consume/charge transaction failed: {e}")
@@ -304,8 +325,8 @@ class TestTokenLedger:
     def run_all_tests(self):
         """Run all tests."""
         print("="*60)
-        print("Teknia Token CLI Test Suite")
-        print("Testing min_transfer_deg validation and logging")
+        print("Teknia Token CLI Test Suite v3.1")
+        print("Testing quantum validation, founder allocation, sustain fees")
         print("="*60)
         
         try:

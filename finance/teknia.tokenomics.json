@@ -1,12 +1,30 @@
 {
-  "token_name": "Teknia Token",
-  "token_symbol": "TT",
-  "initial_mint_tokens": 2000000000,
-  "token_divisibility": 360,
-  "description": "Teknia Token with 360-degree divisibility. Each TT token can be divided into 360 deg units.",
-  "conversion": {
-    "1_TT_to_deg": 360,
-    "total_genesis_supply_deg": 720000000000
+  "token": {
+    "name": "Teknia Token",
+    "symbol": "TT",
+    "genesis_supply_tt": 2000000000,
+    "deg_per_tt": 360,
+    "unit": "deg",
+    "ledger_file": "finance/ledger.json",
+    "treasury_account": "TREASURY",
+    "founder_account": "FOUNDER",
+    "sustain_vault": "VAULT_SUSTAIN",
+    "version": "3.1.0"
+  },
+  "policy": {
+    "divisibility": "360 deg per 1 TT",
+    "supply_model": "fixed",
+    "rounding": "reject-non-integer-deg",
+    "founder_allocation_bps": 500,
+    "sustain_fee_bps": 50,
+    "fee_rounding": "floor-deg",
+    "min_transfer_deg": 2592,
+    "validation": [
+      "sum(balances) == total_supply_deg",
+      "all amounts integer in deg",
+      "no negative balances",
+      "amount_deg % min_transfer_deg == 0"
+    ]
   },
   "pricing": {
     "cxp_publish_reward_tt": 3,
@@ -14,28 +32,16 @@
     "cxp_consume_cost_tt": 2,
     "cxp_consume_cost_deg": 720
   },
-  "accounts": {
-    "treasury": {
-      "description": "Central treasury account receiving initial mint",
-      "initial_balance_tt": 2000000000,
-      "initial_balance_deg": 720000000000
-    }
+  "physics": {
+    "model": "Landauer@CMB",
+    "T_CMB_K": 2.7255,
+    "k_B_J_per_K": 1.380649e-23,
+    "ln2": 0.6931471805599453
   },
-  "rules": {
-    "minimum_unit": "deg",
-    "all_amounts_in_integers": true,
-    "precision_note": "All ledger entries are stored as integer deg values. No fractional deg allowed.",
-    "conversion_note": "1 TT = 360 deg exactly. Valid TT amounts must result in integer deg values."
-  },
-  "policy": {
-    "deg_per_tt": 360,
-    "min_transfer_deg": 2592,
-    "rounding": "reject-non-integer-deg",
-    "validation": [
-      "sum(balances) == total_supply_deg",
-      "all amounts integer in deg",
-      "no negative balances",
-      "amount_deg % min_transfer_deg == 0"
-    ]
+  "metadata": {
+    "created": "2024-01-01T00:00:00Z",
+    "version": "3.1.0",
+    "audit_trail": true,
+    "hash_algorithm": "sha256"
   }
 }

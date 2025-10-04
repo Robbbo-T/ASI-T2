@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
-Teknia Token (TT) CLI - Token Management System
+Teknia Token (TT) CLI - Token Management System v3.1
 
 Genesis Supply: 2,000,000,000 TT
 Divisibility: 360 deg per TT
 Ledger: Integer-based in deg units
+Founder Allocation: 5% at genesis
+Sustain Fee: 0.5% per operation (from sender)
 
 Usage:
     python tek_tokens.py init                           # Initialize ledger
@@ -39,7 +41,18 @@ class TokenLedger:
     def __init__(self):
         self.ledger = self._load_ledger()
         self.tokenomics = self._load_tokenomics()
-        self.min_transfer_deg = self.tokenomics.get("policy", {}).get("min_transfer_deg", 2592)
+        
+        # Load policy settings
+        policy = self.tokenomics.get("policy", {})
+        self.min_transfer_deg = policy.get("min_transfer_deg", 2592)
+        self.founder_allocation_bps = policy.get("founder_allocation_bps", 500)  # 5%
+        self.sustain_fee_bps = policy.get("sustain_fee_bps", 50)  # 0.5%
+        
+        # Load account names
+        token_config = self.tokenomics.get("token", {})
+        self.treasury_account = token_config.get("treasury_account", "TREASURY")
+        self.founder_account = token_config.get("founder_account", "FOUNDER")
+        self.sustain_vault = token_config.get("sustain_vault", "VAULT_SUSTAIN")
     
     def _load_tokenomics(self) -> Dict:
         """Load tokenomics configuration."""
@@ -117,7 +130,7 @@ class TokenLedger:
         return self.deg_to_tt(self.get_balance(account))
     
     def initialize(self):
-        """Initialize the ledger with genesis supply to treasury."""
+        """Initialize the ledger with genesis supply, founder allocation, and treasury."""
         if self.ledger["accounts"]:
             print("Warning: Ledger already initialized. Accounts exist:")
             for account, balance in self.ledger["accounts"].items():
@@ -127,21 +140,39 @@ class TokenLedger:
                 print("Initialization cancelled.")
                 return
         
-        # Reset ledger
+        # Calculate founder allocation (5% = 500 bps, floor)
+        founder_allocation_deg = (GENESIS_SUPPLY_DEG * self.founder_allocation_bps) // 10000
+        treasury_initial_deg = GENESIS_SUPPLY_DEG - founder_allocation_deg
+        
+        # Reset ledger with three accounts
         self.ledger = {
             "accounts": {
-                "treasury": GENESIS_SUPPLY_DEG
+                self.treasury_account: treasury_initial_deg,
+                self.founder_account: founder_allocation_deg,
+                self.sustain_vault: 0
             },
-            "transactions": [{
-                "tx_id": "GENESIS-MINT",
-                "type": "mint",
-                "timestamp": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
-                "from": "genesis",
-                "to": "treasury",
-                "amount_deg": GENESIS_SUPPLY_DEG,
-                "amount_tt": GENESIS_SUPPLY_TT,
-                "description": "Initial mint of genesis supply"
-            }],
+            "transactions": [
+                {
+                    "tx_id": "GENESIS-MINT",
+                    "type": "mint",
+                    "timestamp": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
+                    "from": "genesis",
+                    "to": self.treasury_account,
+                    "amount_deg": GENESIS_SUPPLY_DEG,
+                    "amount_tt": GENESIS_SUPPLY_TT,
+                    "description": "Initial mint of genesis supply"
+                },
+                {
+                    "tx_id": "GENESIS-FOUNDER",
+                    "type": "founder_allocation",
+                    "timestamp": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
+                    "from": self.treasury_account,
+                    "to": self.founder_account,
+                    "amount_deg": founder_allocation_deg,
+                    "amount_tt": self.deg_to_tt(founder_allocation_deg),
+                    "description": f"Founder allocation: {self.founder_allocation_bps} bps of genesis supply"
+                }
+            ],
             "metadata": {
                 "created_at": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
                 "last_updated": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
@@ -152,11 +183,14 @@ class TokenLedger:
         }
         
         self._save_ledger()
-        print(f"✓ Ledger initialized")
-        print(f"✓ Minted {GENESIS_SUPPLY_TT:,} TT ({GENESIS_SUPPLY_DEG:,} deg) to treasury")
+        print(f"✓ Ledger initialized (v3.1)")
+        print(f"✓ Genesis supply: {GENESIS_SUPPLY_TT:,} TT ({GENESIS_SUPPLY_DEG:,} deg)")
+        print(f"✓ Founder allocation (5%): {self.deg_to_tt(founder_allocation_deg):,.2f} TT ({founder_allocation_deg:,} deg)")
+        print(f"✓ Treasury balance: {self.deg_to_tt(treasury_initial_deg):,.2f} TT ({treasury_initial_deg:,} deg)")
+        print(f"✓ Sustain vault: 0 TT (0 deg)")
     
     def transfer(self, from_account: str, to_account: str, amount_deg: int, tx_type: str = "transfer"):
-        """Transfer tokens between accounts."""
+        """Transfer tokens between accounts with 0.5% sustain fee."""
         # Validate min_transfer_deg quantum
         if amount_deg % self.min_transfer_deg != 0:
             raise ValueError(
@@ -165,25 +199,33 @@ class TokenLedger:
                 f"Transfer amount must be a multiple of the minimum quantum."
             )
         
+        # Calculate sustain fee (0.5% = 50 bps, floor)
+        sustain_fee_deg = (amount_deg * self.sustain_fee_bps) // 10000
+        total_deduction_deg = amount_deg + sustain_fee_deg
+        
         # Validate from account exists and has sufficient balance
         if from_account not in self.ledger["accounts"]:
             raise ValueError(f"Account '{from_account}' does not exist")
         
         from_balance = self.ledger["accounts"][from_account]
-        if from_balance < amount_deg:
+        if from_balance < total_deduction_deg:
             raise ValueError(
                 f"Insufficient balance in '{from_account}': "
                 f"has {from_balance} deg ({self.deg_to_tt(from_balance):.2f} TT), "
-                f"needs {amount_deg} deg ({self.deg_to_tt(amount_deg):.2f} TT)"
+                f"needs {total_deduction_deg} deg ({self.deg_to_tt(total_deduction_deg):.2f} TT) "
+                f"[{amount_deg} transfer + {sustain_fee_deg} sustain fee]"
             )
         
-        # Ensure to_account exists
+        # Ensure to_account and sustain_vault exist
         if to_account not in self.ledger["accounts"]:
             self.ledger["accounts"][to_account] = 0
+        if self.sustain_vault not in self.ledger["accounts"]:
+            self.ledger["accounts"][self.sustain_vault] = 0
         
-        # Perform transfer
-        self.ledger["accounts"][from_account] -= amount_deg
+        # Perform transfer and fee collection
+        self.ledger["accounts"][from_account] -= total_deduction_deg
         self.ledger["accounts"][to_account] += amount_deg
+        self.ledger["accounts"][self.sustain_vault] += sustain_fee_deg
         
         # Record transaction
         tx_id = f"TX-{len(self.ledger['transactions']) + 1:06d}"
@@ -195,6 +237,8 @@ class TokenLedger:
             "to": to_account,
             "amount_deg": amount_deg,
             "amount_tt": self.deg_to_tt(amount_deg),
+            "sustain_fee_deg": sustain_fee_deg,
+            "sustain_fee_tt": self.deg_to_tt(sustain_fee_deg) if sustain_fee_deg > 0 else 0
         }
         self.ledger["transactions"].append(transaction)
         
@@ -207,6 +251,8 @@ class TokenLedger:
         print(f"  From: {from_account} (new balance: {self.ledger['accounts'][from_account]} deg / {self.get_balance_tt(from_account):.2f} TT)")
         print(f"  To: {to_account} (new balance: {self.ledger['accounts'][to_account]} deg / {self.get_balance_tt(to_account):.2f} TT)")
         print(f"  Amount: {amount_deg} deg ({self.deg_to_tt(amount_deg):.2f} TT)")
+        if sustain_fee_deg > 0:
+            print(f"  Sustain Fee: {sustain_fee_deg} deg ({self.deg_to_tt(sustain_fee_deg):.6f} TT) → {self.sustain_vault}")
     
     def show_balance(self, account: Optional[str] = None):
         """Display account balances."""

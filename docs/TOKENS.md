@@ -1,17 +1,26 @@
-# Teknia Token (TT) - Documentation
+# Teknia Token (TT) - Documentation v3.1
 
 ## Overview
 
-**Teknia Token (TT)** is the native token of the ASI-T2 ecosystem with unique 360-degree divisibility.
+**Teknia Token (TT)** is the native token of the ASI-T2 ecosystem with unique 360-degree divisibility, founder allocation, and sustainability mechanisms.
 
 ### Key Specifications
 
 - **Token Name**: Teknia Token
 - **Token Symbol**: TT
+- **Version**: 3.1.0
 - **Genesis Supply**: 2,000,000,000 TT (2 billion)
 - **Divisibility**: 360 degrees (deg) per 1 TT
 - **Total Genesis Supply**: 720,000,000,000 deg (720 billion)
 - **Ledger Precision**: Integer deg units only
+- **Founder Allocation**: 5% (100M TT / 36B deg) at genesis
+- **Sustain Fee**: 0.5% per operation (from sender, floored)
+
+### Account Structure
+
+- **TREASURY**: Main treasury (95% of genesis = 1.9B TT)
+- **FOUNDER**: Founder allocation (5% of genesis = 100M TT)
+- **VAULT_SUSTAIN**: Sustainability vault (accumulates 0.5% fees)
 
 ## Token Economics
 
@@ -56,18 +65,44 @@ The token system enforces a **minimum transfer quantum** of **2592 deg (7.2 TT)*
 - ✗ 36 deg (0.1 TT) - Not a multiple of 2592
 - ✗ 1080 deg (3 TT) - Not a multiple of 2592
 
+### Sustain Fee Mechanism
+
+Every token transfer automatically deducts a **0.5% sustain fee** from the sender:
+
+- **Fee Rate**: 50 basis points (bps) = 0.5%
+- **Fee Calculation**: `(amount_deg * 50) // 10000` (integer floor division)
+- **Fee Destination**: `VAULT_SUSTAIN` account
+- **Total Deduction**: `transfer_amount + sustain_fee`
+
+**Example:**
+- Transfer 2592 deg (7.2 TT)
+- Sustain fee: (2592 × 50) ÷ 10000 = 12.96 → **12 deg** (floored)
+- Total deducted from sender: 2604 deg
+- Recipient receives: 2592 deg
+- Vault receives: 12 deg
+
+### Founder Allocation
+
+At genesis initialization:
+- **5% allocation** (500 bps) to `FOUNDER` account
+- Calculated as: `(720B deg × 500) ÷ 10000 = 36B deg` (100M TT)
+- Remaining **95%** to `TREASURY` account: 684B deg (1.9B TT)
+- Floor division ensures exact integer amounts
+
 ### Pricing Structure
 
 The tokenomics configuration defines standard pricing for CXP (Content Exchange Protocol) operations:
 
-| Operation | Cost/Reward (TT) | Cost/Reward (deg) |
-|-----------|------------------|-------------------|
-| CXP Publish Reward | 3 TT | 1,080 deg |
-| CXP Consume Cost | 2 TT | 720 deg |
+| Operation | Cost/Reward (TT) | Cost/Reward (deg) | With 0.5% Fee |
+|-----------|------------------|-------------------|---------------|
+| CXP Publish Reward | 3 TT | 1,080 deg | N/A (not quantum multiple) |
+| CXP Consume Cost | 2 TT | 720 deg | N/A (not quantum multiple) |
 
-## CLI Tool: `tek_tokens.py`
+**Note**: The pricing structure values (1080 deg, 720 deg) are **not** multiples of min_transfer_deg (2592). Use quantum-compliant amounts for actual transfers.
 
-The `tek_tokens.py` CLI tool manages the token ledger with integer deg precision.
+## CLI Tool: `tek_tokens.py` v3.1
+
+The `tek_tokens.py` CLI tool manages the token ledger with integer deg precision, founder allocation, and sustain fees.
 
 ### Installation
 
