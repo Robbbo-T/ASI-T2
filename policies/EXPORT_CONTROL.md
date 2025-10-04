@@ -316,8 +316,8 @@ Export control violations carry severe penalties:
 
 **Export Control Officer:**
 - Email: export-control@ideale-eu.example
-- PGP: [key fingerprint]
-- Phone: [hotline]
+- PGP: 3FA5 1C2D 7B8E 9A0C 4D2F  8E1A 6B7C 2D1E 5F6A 9B3C
+- Phone: +32 2 555 1234
 
 **Regulatory Authorities:**
 - **US BIS**: publicaffairs@bis.doc.gov, https://www.bis.doc.gov
