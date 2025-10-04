@@ -13,7 +13,7 @@
       <dmAddressItems>
         <issueDate year="2025" month="09" day="30"/>
         <dmTitle>
-          <techName>Label Definitions & Configuration</techName>
+          <techName>Label Definitions &amp; Configuration</techName>
         </dmTitle>
       </dmAddressItems>
     </dmAddress>
@@ -35,7 +35,7 @@
   <content>
     <description>
       <para>
-        This data module contains information about: Label Definitions & Configuration
+        This data module contains information about: Label Definitions &amp; Configuration
       </para>
       <para>
         Refer to the corresponding markdown documentation for detailed information.

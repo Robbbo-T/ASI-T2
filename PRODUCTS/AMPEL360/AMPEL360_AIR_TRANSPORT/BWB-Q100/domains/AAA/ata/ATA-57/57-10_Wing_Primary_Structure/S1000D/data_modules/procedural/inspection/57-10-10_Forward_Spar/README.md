@@ -108,6 +108,9 @@ All inspection results documented in:
 
 ## References
 
+- **Schema Files**:
+  - Procedural schema: `../../../../schema/shims/procedural.xsd`
+  - Schema catalog: `../../../../schema/catalog.xml`
 - **Descriptive module**: `../../descriptive/57-10-10_Forward_Spar/`
 - **Acceptance criteria**: `../../../../contracts/schemas/acceptance.metric.schema.json`
 - **Evidence storage**: `../../../../evidence/ndt/`

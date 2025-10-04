@@ -28,6 +28,11 @@ This directory contains R/I procedural data modules (720A) for forward spar stru
 
 All consumables and tools reference IPD part numbers for IPC reusability.
 
+## Schema References
+
+- **Procedural schema**: `../../../../schema/shims/procedural.xsd`
+- **Schema catalog**: `../../../../schema/catalog.xml`
+
 ---
 
 *Part of ATA-57-10 procedural R/I documentation*

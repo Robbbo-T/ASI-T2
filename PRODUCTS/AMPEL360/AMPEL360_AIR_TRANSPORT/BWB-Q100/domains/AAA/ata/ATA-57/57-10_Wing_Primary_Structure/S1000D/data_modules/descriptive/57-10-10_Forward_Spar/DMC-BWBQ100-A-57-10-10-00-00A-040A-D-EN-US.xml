@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../../schema/shims/descriptive.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWBQ100" systemDiffCode="A"
+                systemCode="57" subSystemCode="10" subSubSystemCode="10"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <dmTitle>
+          <techName>Forward Spar (57-10-10)</techName>
+          <infoName>General Description — Sensor-Integrated (QSS)</infoName>
+        </dmTitle>
+        <security securityClassification="01-unclassified"/>
+        <responsiblePartnerCompany enterpriseCode="IDLEU"><enterpriseName>IDEALE.eu</enterpriseName></responsiblePartnerCompany>
+        <originator enterpriseCode="IDLEU"><enterpriseName>IDEALE.eu</enterpriseName></originator>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <applic id="APPL-BWBQ100-BASE-0001-9999"><assert/></applic>
+      <applicCrossRefTable>
+        <applicCrossRef applicPropertyIdent="APPL-BWBQ100-BASE-0001-9999">
+          <applicText>BWB Q100 — Baseline — MSN 0001–9999</applicText>
+        </applicCrossRef>
+      </applicCrossRefTable>
+      <remarks>
+        <simplePara>AAA/TFA: Station Envelope {FS-INB, FS-MID, FS-OUTB}; CV/CE/CC bound to 57-10-10.</simplePara>
+        <simplePara>QSS (Quantum Sensorial Skin) es un producto de ingeniería de IDEALE.eu. Provenance: owner=IDEALE.eu, UTCS-signature-v2 por vuelo, SHA-256 pack hash.</simplePara>
+      </remarks>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <description>
+      <para>The forward spar comprises upper/lower caps and a web providing the primary bending and shear path for the wing box. This configuration is instrumented with a Quantum Sensorial Skin (QSS) mesh for continuous structural health monitoring.</para>
+
+      <levelledPara level="1">
+        <title>Sensor Deployment</title>
+        <para>QSS patches are installed at inboard, mid, and outboard stations. Each patch publishes strain/acoustic (and, where applicable, temperature) on the TFA bus.</para>
+        <list>
+          <listItem><para>QSS-FS-INB-01 — strain/acoustic/temp (500 Hz nominal, 2 kHz burst)</para></listItem>
+          <listItem><para>QSS-FS-MID-01 — strain/acoustic (500 Hz)</para></listItem>
+          <listItem><para>QSS-FS-OUTB-01 — strain (200 Hz)</para></listItem>
+        </list>
+      </levelledPara>
+
+      <levelledPara level="1">
+        <title>Materials and Layup</title>
+        <para>Layup schedules, ply orientations, and drop-offs are governed by the program laminate schema.</para>
+        <refs>
+          <externalPubRef>
+            <pubRefIdent><pubRefId>LAYUP-FS-V1</pubRefId></pubRefIdent>
+            <pubRefAddress><pubRefTitle>Forward Spar Layup Schema v1</pubRefTitle></pubRefAddress>
+          </externalPubRef>
+        </refs>
+      </levelledPara>
+
+      <refs>
+        <externalPubRef><pubRefIdent><pubRefId>QSS-FS-INB-01</pubRefId></pubRefIdent><pubRefAddress><pubRefTitle>QSS Patch — Inboard Station</pubRefTitle></pubRefAddress></externalPubRef>
+        <externalPubRef><pubRefIdent><pubRefId>QSS-FS-MID-01</pubRefId></pubRefIdent><pubRefAddress><pubRefTitle>QSS Patch — Mid Station</pubRefTitle></pubRefAddress></externalPubRef>
+        <externalPubRef><pubRefIdent><pubRefId>QSS-FS-OUTB-01</pubRefId></pubRefIdent><pubRefAddress><pubRefTitle>QSS Patch — Outboard Station</pubRefTitle></pubRefAddress></externalPubRef>
+      </refs>
+    </description>
+  </content>
+</dmodule>

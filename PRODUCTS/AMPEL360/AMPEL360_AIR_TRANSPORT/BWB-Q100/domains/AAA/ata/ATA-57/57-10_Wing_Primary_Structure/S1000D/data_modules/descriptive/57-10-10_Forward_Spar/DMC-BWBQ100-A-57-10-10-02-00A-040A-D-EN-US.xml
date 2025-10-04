@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../../schema/shims/descriptive.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWBQ100" systemDiffCode="A"
+                systemCode="57" subSystemCode="10" subSubSystemCode="10"
+                assyCode="02" disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <dmTitle><techName>Forward Spar — Inboard Section RH</techName><infoName>Description</infoName></dmTitle>
+        <security securityClassification="01-unclassified"/>
+        <responsiblePartnerCompany enterpriseCode="IDLEU"><enterpriseName>IDEALE.eu</enterpriseName></responsiblePartnerCompany>
+        <originator enterpriseCode="IDLEU"><enterpriseName>IDEALE.eu</enterpriseName></originator>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <applic id="APPL-BWBQ100-BASE-0001-9999"><assert/></applic>
+      <applicCrossRefTable><applicCrossRef applicPropertyIdent="APPL-BWBQ100-BASE-0001-9999"><applicText>BWB Q100 — Baseline — MSN 0001–9999</applicText></applicCrossRef></applicCrossRefTable>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <description>
+      <para>RH inboard bay geometry, attachments, and QSS routing specific to station FS-INB (right-hand).</para>
+      <refs>
+        <dmRef>
+          <dmRefIdent><dmCode modelIdentCode="BWBQ100" systemDiffCode="A" systemCode="57" subSystemCode="10" subSubSystemCode="10" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/></dmRefIdent>
+          <dmRefAddress><dmTitle><techName>Forward Spar (57-10-10)</techName><infoName>General Description — QSS</infoName></dmTitle></dmRefAddress>
+        </dmRef>
+      </refs>
+    </description>
+  </content>
+</dmodule>

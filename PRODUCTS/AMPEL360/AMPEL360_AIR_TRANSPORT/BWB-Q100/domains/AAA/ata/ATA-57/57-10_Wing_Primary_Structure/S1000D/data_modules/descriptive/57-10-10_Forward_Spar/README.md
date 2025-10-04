@@ -8,7 +8,38 @@ The forward spar is the primary load-bearing member running spanwise along the f
 
 ## Data Modules
 
-### DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml
+### BWBQ100 Series (QSS-Integrated)
+
+These modules describe the sensor-integrated forward spar configuration with Quantum Sensorial Skin (QSS) instrumentation:
+
+#### DMC-BWBQ100-A-57-10-10-00-00A-040A-D-EN-US.xml
+**Forward Spar — General Description — Sensor-Integrated (QSS)**
+- QSS sensor deployment at inboard, mid, and outboard stations
+- TFA bus integration for strain/acoustic/temperature monitoring
+- Layup schedules and material specifications
+- Enterprise: IDEALE.eu (enterpriseCode="IDLEU")
+- Applicability: BWB Q100 Baseline — MSN 0001–9999
+
+#### DMC-BWBQ100-A-57-10-10-01-00A-040A-D-EN-US.xml
+**Forward Spar — Inboard Section LH**
+- LH inboard bay geometry and attachments
+- QSS routing specific to station FS-INB
+- References general description module (00-00A)
+
+#### DMC-BWBQ100-A-57-10-10-02-00A-040A-D-EN-US.xml
+**Forward Spar — Inboard Section RH**
+- RH inboard bay geometry and attachments
+- QSS routing specific to station FS-INB (right-hand)
+- References general description module (00-00A)
+
+**assyCode Convention:**
+- `00` = General description
+- `01` = Left-hand (LH) section
+- `02` = Right-hand (RH) section
+
+### BWQ1 Series (Standard)
+
+#### DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml
 **Forward Spar - General Description & Architecture**
 - Overall spar configuration and function
 - Load paths and structural philosophy
@@ -78,6 +109,9 @@ The forward spar is the primary load-bearing member running spanwise along the f
 
 ## References
 
+- **Schema Files**: 
+  - Descriptive schema: `../../../schema/shims/descriptive.xsd`
+  - Schema catalog: `../../../schema/catalog.xml`
 - **Procedural Modules**: 
   - Inspection: `../../procedural/inspection/57-10-10_Forward_Spar/`
   - R/I: `../../procedural/removal_installation/57-10-10_Forward_Spar/`
