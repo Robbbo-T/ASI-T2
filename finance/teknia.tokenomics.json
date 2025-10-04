@@ -1,0 +1,30 @@
+{
+  "token_name": "Teknia Token",
+  "token_symbol": "TT",
+  "initial_mint_tokens": 2000000000,
+  "token_divisibility": 360,
+  "description": "Teknia Token with 360-degree divisibility. Each TT token can be divided into 360 deg units.",
+  "conversion": {
+    "1_TT_to_deg": 360,
+    "total_genesis_supply_deg": 720000000000
+  },
+  "pricing": {
+    "cxp_publish_reward_tt": 3,
+    "cxp_publish_reward_deg": 1080,
+    "cxp_consume_cost_tt": 2,
+    "cxp_consume_cost_deg": 720
+  },
+  "accounts": {
+    "treasury": {
+      "description": "Central treasury account receiving initial mint",
+      "initial_balance_tt": 2000000000,
+      "initial_balance_deg": 720000000000
+    }
+  },
+  "rules": {
+    "minimum_unit": "deg",
+    "all_amounts_in_integers": true,
+    "precision_note": "All ledger entries are stored as integer deg values. No fractional deg allowed.",
+    "conversion_note": "1 TT = 360 deg exactly. Valid TT amounts must result in integer deg values."
+  }
+}

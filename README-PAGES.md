@@ -9,6 +9,54 @@ This repository publishes a static site with:
 
 ---
 
+## Teknia Token (TT) System
+
+This repository includes the **Teknia Token (TT)** system, a novel token implementation with 360-degree divisibility:
+
+### Token Directories
+
+* **[finance/](./finance/README.md)** — Token economics configuration and ledger management
+  - `teknia.tokenomics.json` — Genesis supply (2B TT), divisibility rules (360 deg/TT), CXP pricing
+  - `ledger.json` — Token ledger with integer deg precision (generated, not in git)
+  - `token_badge.json` — Shields.io verification badge (generated, not in git)
+* **[tools/](./tools/README.md)** — CLI tool for token management
+  - `tek_tokens.py` — Full-featured CLI: init, balance, transfer, verify
+* **[docs/](./docs/README.md)** — Comprehensive documentation
+  - `TOKENS.md` — Complete token system documentation (8.8KB)
+
+### Token Specifications
+
+* **Token Name:** Teknia Token (TT)
+* **Genesis Supply:** 2,000,000,000 TT (2 billion)
+* **Divisibility:** 360 degrees (deg) per 1 TT
+* **Total Supply:** 720,000,000,000 deg (720 billion)
+* **Ledger:** Integer-based (deg units only, no fractions)
+
+### Quick Start
+
+```bash
+# Initialize ledger (first time only)
+python tools/tek_tokens.py init
+
+# Check balances
+python tools/tek_tokens.py balance
+
+# Transfer tokens
+python tools/tek_tokens.py tx --type transfer --amount 1 --tokens \
+  --from treasury --to user/alice
+
+# Generate verification badge
+python tools/tek_tokens.py verify
+```
+
+### CI Workflow
+
+* **[.github/workflows/tek-tokens-verify.yml](./.github/workflows/tek-tokens-verify.yml)** — Automated token system verification
+
+See [docs/TOKENS.md](./docs/TOKENS.md) for complete documentation.
+
+---
+
 ## IDEALE-EU Federation Updates
 
 This repository now includes complete **IDEALE-EU Federation Infrastructure** with governance, compliance policies, and standards framework:
