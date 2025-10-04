@@ -9,44 +9,72 @@ This repository publishes a static site with:
 
 ---
 
-## Teknia Token (TT) System
+## Teknia Token (TT) System v3.14
 
-This repository includes the **Teknia Token (TT)** system, a novel token implementation with 360-degree divisibility:
+This repository includes the **Teknia Token (TT)** system v3.14, a novel token implementation with 360-degree divisibility and π-tier hybrid tokenomics:
 
 ### Token Directories
 
 * **[finance/](./finance/README.md)** — Token economics configuration and ledger management
-  - `teknia.tokenomics.json` — Genesis supply (2B TT), divisibility rules (360 deg/TT), CXP pricing
-  - `ledger.json` — Token ledger with integer deg precision (generated, not in git)
-  - `token_badge.json` — Shields.io verification badge (generated, not in git)
-* **[tools/](./tools/README.md)** — CLI tool for token management
-  - `tek_tokens.py` — Full-featured CLI: init, balance, transfer, verify
+  - `teknia.tokenomics.json` — v3.14 config with π-tier fees (0.314%, 0.99%, 3.14%)
+  - `teknia.tokenomics.nofee.json` — No-fee variant for testing/internal use
+  - `ledger.json` — Token ledger with policy hash verification (generated, not in git)
+  - `txlog.jsonl` / `txhead.json` — Transaction hash chain (generated, not in git)
+* **[tools/](./tools/README.md)** — CLI tool for token management v3.14
+  - `tek_tokens.py` — Full-featured CLI: init, transfer, reward, consume, quote, verify, badge
+  - `test_tek_tokens_v314.py` — Comprehensive test suite (35 tests)
 * **[docs/](./docs/README.md)** — Comprehensive documentation
-  - `TOKENS.md` — Complete token system documentation (8.8KB)
+  - `TOKENS.md` — Complete token system documentation v3.14
 
-### Token Specifications
+### Token Specifications v3.14
 
 * **Token Name:** Teknia Token (TT)
+* **Version:** 3.14 (π-tier hybrid tokenomics)
 * **Genesis Supply:** 2,000,000,000 TT (2 billion)
 * **Divisibility:** 360 degrees (deg) per 1 TT
 * **Total Supply:** 720,000,000,000 deg (720 billion)
 * **Ledger:** Integer-based (deg units only, no fractions)
+* **Fees:** π-tier for transfers (0.314%/0.99%/3.14%); 0.5% for reward/consume
+* **Policy Immutability:** SHA-256 hash verification
 
-### Quick Start
+### Key Features v3.14
+
+* **π-Tier Fee Schedule:** Dynamic fees for transfers based on amount
+  - ≥ 7,200 TT: 3.14% fee
+  - ≥ 720 TT: 0.99% fee  
+  - ≥ 72 TT: 0.314% fee
+  - < 72 TT: 0.5% base fee
+* **Scope-Based Validation:** Min quantum (7.2 TT) enforced on transfers only
+* **Policy Hash:** Prevents silent configuration changes after initialization
+* **EUR Valuation:** Optional `--eur-per-tt` or `--eur-per-kwh` display
+* **Transaction Hash Chain:** Cryptographic integrity via `txlog.jsonl` + `txhead.json`
+* **Dual Configs:** Hybrid (fees) and no-fee variants
+
+### Quick Start v3.14
 
 ```bash
-# Initialize ledger (first time only)
+# Initialize ledger with v3.14 (first time only)
 python tools/tek_tokens.py init
 
-# Check balances
+# Check balances (with optional EUR valuation)
 python tools/tek_tokens.py balance
+python tools/tek_tokens.py --eur-per-tt 0.10 balance --account TREASURY
 
-# Transfer tokens
-python tools/tek_tokens.py tx --type transfer --amount 1 --tokens \
-  --from treasury --to user/alice
+# Transfer with π-tier fees
+python tools/tek_tokens.py transfer --from TREASURY --to alice --tt 72
+# → Uses 0.314% fee (81 deg)
+
+# Reward (always 0.5% fee, no min quantum)
+python tools/tek_tokens.py reward --to bob --tt 10
+
+# Quote before transfer (non-mutating)
+python tools/tek_tokens.py quote --op transfer --tt 720
+
+# Verify ledger integrity + policy hash
+python tools/tek_tokens.py verify
 
 # Generate verification badge
-python tools/tek_tokens.py verify
+python tools/tek_tokens.py badge
 ```
 
 ### CI Workflow
