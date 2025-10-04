@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xsi:noNamespaceSchemaLocation="s1000d/procedural.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode
+          modelIdentCode="BWQ1"
+          systemDiffCode="A"
+          systemCode="57"
+          subSystemCode="10"
+          subSubSystemCode="10"
+          assyCode="00"
+          disassyCode="00A"
+          infoCode="520"
+          infoCodeVariant="A"
+          itemLocationCode="D"/>
+        <language countryIsoCode="US" languageIsoCode="en"/>
+        <issueInfo issueNumber="001" inWork="00">
+          <issueDate year="2025" month="10" day="04"/>
+        </issueInfo>
+      </dmIdent>
+      <dmAddressItems>
+        <issueType>new</issueType>
+        <responsiblePartnerCompany enterpriseCode="IDEALE.eu">IDEALE.eu</responsiblePartnerCompany>
+        <originator enterpriseCode="IDEALE.eu">IDEALE.eu</originator>
+        <title>Forward Spar Inspection - Visual, NDT methods, intervals</title>
+        <security classification="01"/>
+        <qualityAssurance qaLevel="00"/>
+      </dmAddressItems>
+    </dmAddress>
+    <applic>
+      <displayText>BWBQ100 baseline (Forward Spar)</displayText>
+    </applic>
+    <refs>
+      <!-- Descriptive context for the forward spar -->
+      <dmRef xlink:href="DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml" dmRefIdent="fs-desc-040A">
+        <dmRefAddressItems>
+          <dmTitle>Forward Spar - General Description</dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <!-- QSS / crack event schema (external publication reference) -->
+      <externalPubRef externalPubRefId="crackSchema01">
+        <publicationTitle>ATA-57-10 Crack Event Schema (JSON)</publicationTitle>
+        <pubMediaType>application/json</pubMediaType>
+        <language countryIsoCode="US" languageIsoCode="en"/>
+        <uri>PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/ata/ATA-57/57-10_Wing_Primary_Structure/contracts/schemas/crack_event.schema.json</uri>
+      </externalPubRef>
+    </refs>
+  </identAndStatusSection>
+  <content>
+    <procedure>
+      <preliminaryRqmts>
+        <reqCond>
+          <condType>aircraft-on-ground</condType>
+          <para>Aircraft electrically safe and chocked. Hydraulic and pneumatic systems depressurized.</para>
+        </reqCond>
+        <accessRqmts>
+          <accessItem>
+            <zoneRef>FS-INB</zoneRef>
+            <accessDesc>Open access panels 57-10-01 through 57-10-05; remove fairing segment FS-INB-A as required.</accessDesc>
+          </accessItem>
+          <accessItem>
+            <zoneRef>FS-MID</zoneRef>
+            <accessDesc>Open access panels 57-10-11/-12; remove closeout panel FS-MID-B.</accessDesc>
+          </accessItem>
+          <accessItem>
+            <zoneRef>FS-OUTB</zoneRef>
+            <accessDesc>Open access panel 57-10-21; remove wingtip closeout as necessary.</accessDesc>
+          </accessItem>
+        </accessRqmts>
+        <reqSupportEquips>
+          <supportEquip>
+            <name>Maintenance stands / platforms</name>
+            <qty>As required</qty>
+          </supportEquip>
+          <supportEquip>
+            <name>Lighting kit (portable LED)</name>
+            <qty>1</qty>
+          </supportEquip>
+        </reqSupportEquips>
+        <reqTools>
+          <tool>
+            <name>Inspection mirror set and flexible borescope (≥ 4 mm)</name>
+            <use>Visual access to concealed areas</use>
+          </tool>
+          <tool>
+            <name>Ultrasonic phased-array flaw detector with 5–10 MHz probes</name>
+            <use>Composite web/cap delamination and disbond detection</use>
+          </tool>
+          <tool>
+            <name>Eddy-current instrument with pencil probes (100 kHz–1 MHz)</name>
+            <use>Metallic fittings/fastener bore inspection</use>
+          </tool>
+          <tool>
+            <name>Infrared thermography camera (NETD ≤ 50 mK)</name>
+            <use>Near-surface disbonds in composite skins/caps</use>
+          </tool>
+          <tool>
+            <name>Reference standards / calibration blocks</name>
+            <use>NDT setup and verification</use>
+          </tool>
+          <tool>
+            <name>Approved UT couplant; developer/cleaner (as applicable)</name>
+            <use>NDT operations</use>
+          </tool>
+        </reqTools>
+        <reqSafety>
+          <warning id="wrn-chem">Use approved PPE. Handle chemicals/couplants per SDS.</warning>
+          <caution id="ctn-comp">Composite structure is susceptible to tool-mark damage. Do not pry on edges.</caution>
+          <note id="note-qss">If equipped with QSS, capture anomalies as events conforming to <xref xrefType="externalpubref" externalPubRefId="crackSchema01"/>.</note>
+        </reqSafety>
+        <reqTechInfo>
+          <reqPubRef>
+            <dmRef xlink:href="DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml" dmRefIdent="need-040A"/>
+          </reqPubRef>
+          <reqPubRef>
+            <externalPubRefRef externalPubRefId="crackSchema01"/>
+          </reqPubRef>
+        </reqTechInfo>
+      </preliminaryRqmts>
+      <description>
+        <para>Apply a damage-tolerant, evidence-driven inspection philosophy. Perform visual examination of accessible forward spar surfaces and interfaces first. Use NDT selectively based on material, access and indication type. Record all findings with position (station, LH/RH), dimensions, and images. For aircraft with Quantum Sensorial Skin (QSS), reconcile indications with QSS events (<xref xrefType="externalpubref" externalPubRefId="crackSchema01"/>).</para>
+      </description>
+      <mainProcedure>
+        <proceduralStep>
+          <para><emphasis>Inspection zones and access</emphasis></para>
+          <steps>
+            <step><para>Verify required accesses are prepared per <accessRef>FS-INB/FS-MID/FS-OUTB</accessRef>.</para></step>
+            <step><para>Clean inspection areas. Remove contaminants that can mask indications.</para></step>
+            <step><para>Ensure lighting ≥ 1000 lux for visual tasks.</para></step>
+          </steps>
+        </proceduralStep>
+        <proceduralStep>
+          <para><emphasis>Visual inspection criteria</emphasis></para>
+          <steps>
+            <step><para>Scan cap edges, ply drop-offs, web-to-rib interfaces, and fastener lines for: cracks, fiber breakage, impact marks, resin star-cracks, crushed core, loose/broken fasteners, fretting or corrosion on metallic fittings.</para></step>
+            <step><para>Reject if any through-thickness crack, open delamination &gt; 6 mm, crushed core &gt; 10 mm dia, or fastener looseness is detected. Record as finding.</para></step>
+            <step><para>For marginal indications, mark and proceed to NDT selection.</para></step>
+          </steps>
+        </proceduralStep>
+        <proceduralStep>
+          <para><emphasis>NDT method selection</emphasis></para>
+          <para>Select the method that maximizes POD and minimizes intrusiveness for the material and access condition.</para>
+          <table>
+            <tgroup cols="4">
+              <colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><colspec colname="c4"/>
+              <thead>
+                <row>
+                  <entry>Area/Material</entry>
+                  <entry>Indication</entry>
+                  <entry>Preferred Method</entry>
+                  <entry>Alternate</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>Composite caps (IM7/8552)</entry>
+                  <entry>Delamination/disbond</entry>
+                  <entry>UT phased-array</entry>
+                  <entry>Thermography (near-surface)</entry>
+                </row>
+                <row>
+                  <entry>Composite web</entry>
+                  <entry>Impact damage / core crush</entry>
+                  <entry>UT (pulse-echo)</entry>
+                  <entry>Thermography</entry>
+                </row>
+                <row>
+                  <entry>Metallic fittings/fasteners</entry>
+                  <entry>Crack at bore/edge</entry>
+                  <entry>Eddy current</entry>
+                  <entry>UT angle beam</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </proceduralStep>
+        <proceduralStep>
+          <para><emphasis>Ultrasonic testing (UT)</emphasis></para>
+          <steps>
+            <step><para>Verify calibration against reference standard (same laminate/couplant). Document setup.</para></step>
+            <step><para>Scan grid ≤ 10 mm over suspect area; increase density around echoes &gt; 6 dB above baseline.</para></step>
+            <step><para>Characterize indication size (A-scan/B-scan as available). Record length and estimated depth.</para></step>
+            <step><para>Acceptance: No rejectable delamination per structural limits. If in doubt, escalate to Engineering.</para></step>
+          </steps>
+        </proceduralStep>
+        <proceduralStep>
+          <para><emphasis>Eddy-current (EC)</emphasis></para>
+          <steps>
+            <step><para>Apply to metallic fittings/fastener bores only. Calibrate on crack notch standard.</para></step>
+            <step><para>Probe along fastener row and bore edges at recommended frequency. Mark indications.</para></step>
+            <step><para>Acceptance: No eddy-current response characteristic of a surface/subsurface crack. Size as feasible.</para></step>
+          </steps>
+        </proceduralStep>
+        <proceduralStep>
+          <para><emphasis>Active thermography</emphasis></para>
+          <steps>
+            <step><para>Heat-pulse or lock-in method per equipment capability; limit ΔT ≤ 10 °C to protect resin system.</para></step>
+            <step><para>Inspect phase/contrast images for near-surface disbonds. Validate with UT if ambiguous.</para></step>
+          </steps>
+        </proceduralStep>
+        <proceduralStep>
+          <para><emphasis>Intervals per MPD</emphasis></para>
+          <para>Unless superseded by an approved program, comply with MPD-derived intervals:</para>
+          <table>
+            <tgroup cols="3">
+              <colspec colname="z"/><colspec colname="task"/><colspec colname="int"/>
+              <thead>
+                <row>
+                  <entry>Zone</entry>
+                  <entry>Task</entry>
+                  <entry>Interval</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row><entry>FS-INB</entry><entry>Detailed Visual (DV)</entry><entry>600 FH / 6 mo (whichever first)</entry></row>
+                <row><entry>FS-MID</entry><entry>General Visual (GV)</entry><entry>1200 FH / 12 mo</entry></row>
+                <row><entry>FS-OUTB</entry><entry>Thermography (if equipped)</entry><entry>2400 FH / 24 mo</entry></row>
+                <row><entry>All</entry><entry>NDT on-condition (triggered)</entry><entry>Upon indication / hard landing / bird strike</entry></row>
+              </tbody>
+            </tgroup>
+          </table>
+          <note>If QSS indicates a crack/disbond event, create a record compliant with <xref xrefType="externalpubref" externalPubRefId="crackSchema01"/> and accomplish NDT in the reported vicinity.</note>
+        </proceduralStep>
+      </mainProcedure>
+      <closeRqmts>
+        <para>Remove NDT couplant and restore protective coatings if disturbed. Reinstall all panels/fairings. Make an entry in the maintenance records.</para>
+      </closeRqmts>
+    </procedure>
+  </content>
+</dmodule>
