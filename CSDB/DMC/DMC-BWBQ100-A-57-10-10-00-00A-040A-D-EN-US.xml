@@ -35,7 +35,7 @@
       </applicCrossRefTable>
       <remarks>
         <simplePara>AAA/TFA: Station Envelope {FS-INB, FS-MID, FS-OUTB}; CV/CE/CC bound to 57-10-10.</simplePara>
-        <simplePara>QSS (Quantum Sensorial Skin) es un producto de ingeniería de IDEALE.eu.
+        <simplePara>QSS (Quantum Sensorial Skin) is an engineering product of IDEALE.eu.
         Provenance: owner=IDEALE.eu, UTCS-signature-v2 per flight, SHA-256 pack hash.</simplePara>
       </remarks>
     </dmStatus>
