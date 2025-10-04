@@ -68,7 +68,7 @@
                       infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
             </dmRefIdent>
             <dmRefAddress>
-              <dmTitle><techName>Forward Spar</techName><infoName>General Description — QSS</infoName></dmTitle>
+              <dmTitle><techName>Forward Spar</techName><infoName>General Description — Sensor-Integrated (QSS)</infoName></dmTitle>
             </dmRefAddress>
           </dmRef>
           <externalPubRef>
