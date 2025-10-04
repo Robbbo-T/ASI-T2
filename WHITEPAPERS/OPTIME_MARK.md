@@ -56,7 +56,7 @@ package asi.optime
 default allow := false
 default deny := true
 
-risk := input.meta.risk  # "informational" | "consequential"
+risk := input.meta.risk  # "informational" | "consequential_action"
 evidence_ok { input.evidence.summary; input.evidence.sources }
 qs_ok       { input.qs.capture == true }
 
