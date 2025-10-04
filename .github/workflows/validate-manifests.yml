@@ -165,7 +165,7 @@ jobs:
           echo "🔍 Checking for CONTROLLED content in public repository..."
           
           # Search for CONTROLLED markers in manifest files
-          if grep -r "classification.*CONTROLLED" --include="*.yaml" --include="*.json" .; then
+          if grep -rP "classification.*\bCONTROLLED\b" --include="*.yaml" --include="*.json" .; then
               echo "❌ ERROR: CONTROLLED content detected in repository"
               echo "CONTROLLED artifacts must be stored off-repo and referenced by hash only."
               echo "See policies/DATA_CLASSIFICATION.md and policies/EXPORT_CONTROL.md"
