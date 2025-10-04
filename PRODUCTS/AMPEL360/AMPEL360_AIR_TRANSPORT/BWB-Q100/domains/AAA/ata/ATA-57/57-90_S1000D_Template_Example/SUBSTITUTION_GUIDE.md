@@ -244,7 +244,7 @@ find . -type f -name "*.xml" -exec sed -i \
   -e "s/BWQ1/${NEW_MIC}/g" \
   -e "s/systemCode=\"57\"/systemCode=\"${NEW_SYS}\"/g" \
   -e "s/subSystemCode=\"90\"/subSystemCode=\"${NEW_SUBSYS}\"/g" \
-  -e "s/subSubSystemCode=\"0\"/subSubSystemCode=\"${NEW_SUBSUBSYS}\"/g" \
+  -e "s/subSubSystemCode=\"00\"/subSubSystemCode=\"${NEW_SUBSUBSYS}\"/g" \
   -e "s/IDEALE\\.eu/${NEW_ENTERPRISE}/g" \
   -e "s/57-90-00/${NEW_SYS}-${NEW_SUBSYS}-${NEW_SUBSUBSYS}/g" \
   -e "s/year=\"2025\"/year=\"${NEW_DATE_Y}\"/g" \
