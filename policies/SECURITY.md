@@ -107,13 +107,14 @@ cyclonedx-cli validate --input-file sbom.json
 **Signing Artifacts:**
 ```bash
 # Sign with Sigstore (OIDC-based, no long-term keys)
-cosign sign <artifact>
+cosign sign dist/app-v1.2.3.tar.gz
 
-# Verify
+# Verify (replace the identity with your GitHub Actions workflow identity)
 cosign verify \
-  --certificate-identity=<expected-identity> \
+  --certificate-identity="https://github.com/ideale-eu/project/.github/workflows/release.yml@refs/tags/v1.2.3" \
   --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
-  <artifact>
+  dist/app-v1.2.3.tar.gz
+#   ^ identity format: https://github.com/<org>/<repo>/.github/workflows/<workflow_file>@refs/tags/<tag>
 ```
 
 **In-toto Attestation:**
