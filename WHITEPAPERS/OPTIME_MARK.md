@@ -90,7 +90,7 @@ optime_verification:
   ci_job: "ci/optime-verify#1842"
   redteam_report: "pax/OFF/attestations/optime_redteam_2025Q4.pdf"
   perf_budget_p95_ms: 18
-  reviewer: "IndependentAeroConsulting"
+  reviewer: "ExampleAuditingCorp"
 ```
 
 ---
