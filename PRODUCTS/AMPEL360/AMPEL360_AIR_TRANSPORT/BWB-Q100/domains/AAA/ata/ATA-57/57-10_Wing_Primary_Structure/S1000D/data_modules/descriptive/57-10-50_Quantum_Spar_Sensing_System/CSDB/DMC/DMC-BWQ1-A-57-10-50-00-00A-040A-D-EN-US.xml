@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:dc="http://www.purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="50"
+                disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="002" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="10" day="04"/>
+        <dmTitle>
+          <techName>AMPEL360 BWB-Q100 Wing</techName>
+          <infoName>Quantum Spar Sensing System (QSS) — Description and Principles</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="changed">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+
+      <applic>
+        <displayText>
+          <simplePara>Applicable when QSS is installed on the forward spar (config option AAA-57-QSS-FS).</simplePara>
+        </displayText>
+      </applic>
+
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+
+      <!-- External schema registration -->
+      <externalPubRef id="SCHEMA-CRACK-EVENT-57-10"
+                      xlink:href="../../../contracts/schemas/crack_event.schema.json"
+                      xlink:show="new" xlink:actuate="onRequest">
+        <title>ATA-57-10 Crack Event JSON Schema (Draft 2020-12)</title>
+      </externalPubRef>
+
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <description>
+
+      <levelledPara>
+        <title>System Overview</title>
+        <para><emphasis>Quantum Sensorial Skin (QSS)</emphasis> is formed by <emphasis>Quantum Spar Sensors in a Quantum Superposition Setting</emphasis>. For the wing forward spar box it operates as a <emphasis>Quantum Spar Setting</emphasis>, embedding a high-density array along primary load paths to interrogate lattice stress, bond integrity, and micro-void formation.</para>
+        <para>QSS supports <emphasis>amplification</emphasis> (weak-signal enhancement) and <emphasis>discretization</emphasis> (collapse to quantized health states) modes, selectable by configuration or runtime logic.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Architecture</title>
+        <para>Elements: (1) quantum spare sensor arrays (N+2 redundancy in critical zones), (2) superposition engine (coherence, shielding/thermal control), (3) amplification/discretization module with adaptive thresholds, and (4) controller node interfacing to the aircraft data backbone.</para>
+        <para>Deployment: embedded in composite layups and at reinforced metallic joints; typical depth ≤5&#160;mm; shielded optical/electrical feed-throughs; lightning protection maintained.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Data and Schemas</title>
+        <para>Crack detection payloads must validate against:
+          <xref xrefType="external" internalRefIdRef="SCHEMA-CRACK-EVENT-57-10">Crack Event Schema</xref>.
+          The schema defines event identity, location model, detection method (incl. QSS quantum fields), severity, actions, validation, provenance and attachments.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Related Data Modules</title>
+        <para>Forward Spar overview:
+          <xref xrefType="dm" xlink:href="DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml#identAndStatusSection/dmAddress/dmIdent"/>.</para>
+      </levelledPara>
+
+    </description>
+  </content>
+</dmodule>

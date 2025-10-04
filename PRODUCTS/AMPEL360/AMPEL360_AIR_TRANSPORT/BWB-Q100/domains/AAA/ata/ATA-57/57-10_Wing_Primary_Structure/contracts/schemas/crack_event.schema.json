@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://your-org-domain.com/schemas/ata-57-10/crack_event.schema.json",
+  "title": "Crack Event",
+  "description": "Definition of crack detection and characterization event from structural health monitoring sensors.",
+  "type": "object",
+  "required": ["event_id", "timestamp", "location", "detection_method", "severity"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version following semantic versioning"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^CRACK-[A-Z0-9_-]{8,}$",
+      "description": "Unique crack event identifier"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of crack detection"
+    },
+    "location": {
+      "type": "object",
+      "required": ["component", "station"],
+      "properties": {
+        "component": {
+          "type": "string",
+          "enum": ["forward_spar", "rear_spar", "rib", "skin", "stringer"],
+          "description": "Primary structural component"
+        },
+        "subcomponent": {
+          "type": "string",
+          "enum": ["upper_cap", "lower_cap", "web", "flange", "stiffener"],
+          "description": "Subcomponent within primary structure"
+        },
+        "station": {
+          "type": "string",
+          "description": "Wing station or spanwise location (e.g., 'FS-INB', 'WS-300')"
+        },
+        "coordinates_mm": {
+          "type": "object",
+          "properties": {
+            "x": {"type": "number"},
+            "y": {"type": "number"},
+            "z": {"type": "number"}
+          },
+          "description": "3D coordinates in component reference frame"
+        },
+        "side": {
+          "type": "string",
+          "enum": ["LH", "RH"],
+          "description": "Left-hand or right-hand side"
+        }
+      }
+    },
+    "detection_method": {
+      "type": "object",
+      "required": ["sensor_type", "sensor_id"],
+      "properties": {
+        "sensor_type": {
+          "type": "string",
+          "enum": ["acoustic_emission", "ultrasonic", "eddy_current", "strain_gauge", "visual"],
+          "description": "Type of sensor that detected the crack"
+        },
+        "sensor_id": {
+          "type": "string",
+          "description": "Unique identifier of the detecting sensor"
+        },
+        "signal_characteristics": {
+          "type": "object",
+          "properties": {
+            "amplitude": {"type": "number", "description": "Signal amplitude"},
+            "frequency_hz": {"type": "number", "description": "Dominant frequency"},
+            "duration_ms": {"type": "number", "description": "Event duration"},
+            "energy": {"type": "number", "description": "Acoustic energy or signal energy"}
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Detection confidence (0-1)"
+        }
+      }
+    },
+    "crack_characteristics": {
+      "type": "object",
+      "properties": {
+        "length_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Estimated crack length in millimeters"
+        },
+        "depth_mm": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Estimated crack depth in millimeters"
+        },
+        "orientation_deg": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 360,
+          "description": "Crack orientation relative to reference direction"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["surface", "subsurface", "through-thickness", "delamination"],
+          "description": "Type of crack or damage"
+        },
+        "growth_rate_mm_per_flight": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Estimated crack growth rate"
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["mode_I", "mode_II", "mode_III", "mixed"],
+          "description": "Crack opening mode"
+        }
+      }
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["info", "low", "medium", "high", "critical"],
+      "description": "Severity classification of the crack event"
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "flight_hours": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Cumulative flight hours at detection"
+        },
+        "flight_cycles": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Cumulative flight cycles at detection"
+        },
+        "load_condition": {
+          "type": "string",
+          "description": "Load condition during detection (e.g., 'cruise', 'maneuver', 'ground')"
+        },
+        "environmental_conditions": {
+          "type": "object",
+          "properties": {
+            "temperature_C": {"type": "number"},
+            "humidity_percent": {"type": "number", "minimum": 0, "maximum": 100},
+            "pressure_kPa": {"type": "number"}
+          }
+        }
+      }
+    },
+    "recommended_action": {
+      "type": "object",
+      "properties": {
+        "action_type": {
+          "type": "string",
+          "enum": ["monitor", "inspect", "repair", "replace", "ground_aircraft"],
+          "description": "Recommended action type"
+        },
+        "urgency": {
+          "type": "string",
+          "enum": ["immediate", "next_flight", "within_7_days", "next_inspection", "routine"],
+          "description": "Action urgency"
+        },
+        "inspection_method": {
+          "type": "string",
+          "enum": ["visual", "NDT_ultrasonic", "NDT_eddy_current", "borescope", "teardown"],
+          "description": "Recommended inspection method"
+        },
+        "restrictions": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Flight restrictions or limitations"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "validated": {
+          "type": "boolean",
+          "description": "Whether crack has been validated by inspection"
+        },
+        "validation_method": {
+          "type": "string",
+          "description": "Method used to validate detection"
+        },
+        "validation_timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of validation"
+        },
+        "validated_by": {
+          "type": "string",
+          "description": "Person or system that performed validation"
+        },
+        "false_positive": {
+          "type": "boolean",
+          "description": "Whether event was determined to be false positive"
+        }
+      }
+    },
+    "related_events": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^CRACK-[A-Z0-9_-]{8,}$"
+      },
+      "description": "IDs of related crack events (e.g., same crack growing)"
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "data_source": {
+          "type": "string",
+          "description": "Source system or sensor network"
+        },
+        "processing_pipeline": {
+          "type": "string",
+          "description": "Data processing pipeline version"
+        },
+        "utcs_anchor": {
+          "type": "string",
+          "description": "UTCS anchor hash for provenance"
+        },
+        "signature": {
+          "type": "string",
+          "description": "Cryptographic signature"
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or observations"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["image", "video", "waveform", "report", "cad"],
+            "description": "Type of attachment"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL or path to attachment"
+          },
+          "description": {
+            "type": "string",
+            "description": "Attachment description"
+          }
+        }
+      },
+      "description": "Supporting files and data"
+    }
+  }
+}

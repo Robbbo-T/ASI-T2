@@ -1,0 +1,438 @@
+# Path: PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100/domains/AAA/product_spec.yaml
+# BWB-Q100 Forward Spar with Quantum Sensorial Skin Integration
+# TFA V2 Bridge: CB→QB→QC→UE→FE→FWD→QS
+
+product: BWB_Q100_FORWARD_SPAR_ASSEMBLY
+description: >
+  Wing forward spar primary structure with integrated Quantum Sensorial Skin
+  for continuous structural health monitoring. Spans inboard-to-outboard stations
+  with composite layup (IM7/8552), instrumented with strain/acoustic/thermal sensors.
+
+classification: INTERNAL-TECHNICAL
+version: 1.0.0
+release_date: 2025-10-04
+maintainer: AMPEL360 Structures Team
+
+# ATA Chapter Mapping
+ata_reference:
+  chapter: "57"
+  section: "10"
+  subsection: "10"
+  name: "Wing Primary Structure - Forward Spar"
+  full_code: "57-10-10"
+
+# Aircraft Applicability
+applicability:
+  model: BWBQ100
+  variant: baseline
+  effectivity:
+    msn_start: "0001"
+    msn_end: "9999"
+    appl_id: APPL-BWBQ100-BASE-0001-9999
+
+# TRL and Maturity
+trl: 6  # System demonstration in relevant environment
+maturity:
+  tfa_bridge: [CB, QB, UE, FE, FWD, QS]
+  status:
+    CB: operational        # Classical structural analysis
+    QB: prototype          # Layup optimization algorithms
+    UE: complete           # Module interfaces defined
+    FE: active             # Wing-level coordination
+    FWD: deployed          # Fatigue prediction models
+    QS: operational        # Sensor data provenance
+
+# Domain Classification
+domains:
+  primary: AAA  # Aerodynamics and Airframes Architectures
+  federated:
+    - MMM  # Mechanical and Material Modules (composite layup)
+    - IIS  # Integrated Intelligence Software (sensor fusion)
+    - EEE  # Ecological Efficient Electrification (sensor power)
+
+# TFA Component Hierarchy
+tfa_hierarchy:
+  SE: ["FS-INB", "FS-MID", "FS-OUTB"]  # Station Envelopes
+  CV: "Wing Assembly"                   # Component Vendor level
+  CE: "Primary Structure"               # Component Equipment
+  CC: "Forward Spar"                    # Component Cell
+  CI: ["Upper Cap", "Lower Cap", "Web"] # Component Item
+
+# Bridge Span Declarations
+bridge_spans:
+  - name: StructuralAnalysis
+    spans: [CB, FWD]
+    rationale: >
+      Classical finite element analysis (CB) establishes baseline stress/strain
+      distributions and load paths. Future Wave Dynamics (FWD) predicts fatigue
+      life progression and damage accumulation based on flight spectra.
+    tools: [Nastran, Abaqus, Fatigue_Life_Predictor]
+    
+  - name: LayupOptimization
+    spans: [CB, QB, UE]
+    rationale: >
+      Baseline layup via classical laminate theory (CB). Quantum-inspired
+      optimization (QB) explores ply orientations and drop-off sequences to
+      minimize weight while meeting strength requirements. Unit Element (UE)
+      modules standardize cap/web interfaces.
+    tools: [Composite_Optimizer_QB, Laminate_Schema_Generator]
+    
+  - name: SensorIntegration
+    spans: [UE, FE, QS]
+    rationale: >
+      Quantum Sensorial Skin patches are Unit Elements (UE) with standardized
+      interfaces. Federation (FE) coordinates sensor data across wing structure.
+      Quantum State (QS) provides immutable provenance for all sensor readings.
+    tools: [QSS_Patch_Manager, TFA_Telemetry_Bus, UTCS_Anchoring]
+
+# MAL Service Integration
+mal_services:
+  - name: MAL.v1.control
+    version: ">=1.4.0 <2.0.0"
+    purpose: Configuration updates for sensor thresholds and sampling rates
+  - name: MAL.v1.telemetry
+    version: ">=1.4.0 <2.0.0"
+    purpose: Real-time strain/acoustic/thermal data streaming
+  - name: MAL.FE
+    capabilities: [state_sync, distributed_fusion]
+    purpose: Wing-level sensor coordination with ribs/skins/rear_spar
+  - name: MAL.FWD
+    capabilities: [fatigue_forecasting, damage_backcasting]
+    purpose: Predict crack initiation and trace anomalies to root causes
+  - name: MAL.QS
+    capabilities: [hash_chain, utcs_anchor, selective_disclosure]
+    purpose: Cryptographic provenance for sensor data and material certs
+
+# Unit Element Contracts
+ue_contracts:
+  - name: ForwardSparCapUE
+    description: Upper or lower composite cap with embedded FBG strain sensors
+    inputs:
+      - name: material_layup
+        type: laminate_stack
+        schema: schemas/laminate_stack.schema.json
+      - name: station_geometry
+        type: geometry
+        units: [mm]
+    outputs:
+      - name: strain_telemetry
+        type: float[]
+        rate_hz: 500
+        topic: "tfa/bwbq100/qs/strain/{station}/cap"
+      - name: health_status
+        type: enum[OK, DEGRADED, FAULT]
+    timing:
+      latency: "≤10ms p99"
+    errors:
+      - FBG_FAILURE: "Fiber Bragg Grating sensor broken"
+      - DELAMINATION_DETECTED: "Ultrasonic signature shows layup separation"
+    versions: ["1.0.0"]
+    
+  - name: ForwardSparWebUE
+    description: Composite web with piezoelectric acoustic emission sensors
+    inputs:
+      - name: web_thickness_schedule
+        type: array
+      - name: stiffener_pattern
+        type: geometry
+    outputs:
+      - name: acoustic_telemetry
+        type: float[]
+        rate_hz: 2000  # High-frequency burst mode
+        topic: "tfa/bwbq100/qs/acoustic/{station}/web"
+      - name: crack_detections
+        type: array
+        schema: schemas/crack_event.schema.json
+    timing:
+      latency: "≤5ms p99"
+    errors:
+      - PIEZO_SATURATION: "Acoustic overload"
+      - CRACK_PROPAGATION: "Growing defect detected"
+    versions: ["1.0.0"]
+
+# Quantum Sensorial Skin Deployment
+quantum_sensorial_skin:
+  deployment_zones:
+    - id: QSS-FS-INB-01
+      station: FS-INB
+      span_range: "0-20%"
+      modalities: [strain, acoustic, temperature]
+      sensor_tech:
+        strain: "Fiber Bragg Grating (FBG) embedded in cap"
+        acoustic: "Piezoelectric grid on web surface"
+        temperature: "Thermal couple array (9 points)"
+      sampling:
+        nominal_hz: 500
+        burst_hz: 2000
+        trigger: acoustic_threshold_exceeded
+      power: "28V DC aircraft bus, <5W per patch"
+      
+    - id: QSS-FS-MID-01
+      station: FS-MID
+      span_range: "20-70%"
+      modalities: [strain, acoustic]
+      sensor_tech:
+        strain: "FBG array (12 channels)"
+        acoustic: "Piezoelectric grid (16 elements)"
+      sampling:
+        nominal_hz: 500
+      power: "28V DC, <3W"
+      
+    - id: QSS-FS-OUTB-01
+      station: FS-OUTB
+      span_range: "70-100%"
+      modalities: [strain]
+      sensor_tech:
+        strain: "FBG array (6 channels)"
+      sampling:
+        nominal_hz: 200  # Reduced rate for lower loads
+      power: "28V DC, <2W"
+      
+  telemetry_architecture:
+    protocol: MQTT_over_TLS
+    topics:
+      strain: "tfa/bwbq100/qs/strain/{station}"
+      acoustic: "tfa/bwbq100/qs/acoustic/{station}"
+      temperature: "tfa/bwbq100/qs/temp/{station}"
+    qos: at_least_once
+    retention: "7 days operational, 90 days compressed, permanent for anomalies"
+    
+  provenance:
+    owner: "QS-LAB-001"
+    contact: "quantum.sensors@asi-t2.eu"
+    hash_algorithm: SHA256
+    signing: UTCS-signature-v2-ed25519
+    anchor_frequency: per_flight
+    data_format: "HDF5 with metadata"
+
+# Federation Relationships
+fe_relationships:
+  architecture: wing_structure_mesh
+  partners:
+    - product: BWB_Q100_REAR_SPAR
+      code: "57-10-20"
+      relationship: load_path_coordination
+      sync_cadence_ms: 100
+    - product: BWB_Q100_RIBS
+      code: "57-10-30"
+      relationship: attachment_monitoring
+      sync_cadence_ms: 500
+    - product: BWB_Q100_SKINS
+      code: "57-10-40"
+      relationship: surface_strain_correlation
+      sync_cadence_ms: 100
+  conflict_resolution:
+    policy: deterministic_priority
+    priority_order: [safety_threshold, structural_limit, performance_optimization]
+    escalation: engineering_review  # No automatic override of structural limits
+
+# Future Wave Dynamics Models
+fwd_models:
+  horizons:
+    immediate: "current_flight"
+    short: "10_flights"
+    medium: "100_flights" 
+    long: "design_lifetime"  # 90,000 flights
+  uncertainty:
+    method: monte_carlo_with_measured_spectra
+    ensembles: 1000
+    confidence_levels: [0.5, 0.9, 0.95, 0.99]
+  fatigue_prediction:
+    algorithm: Miner_sum_with_crack_growth
+    inputs: [flight_spectrum, material_SN_curves, stress_concentrations]
+    outputs: [damage_index, remaining_life, inspection_recommendations]
+  backcasting:
+    enabled: true
+    retention: mission_lifetime
+    use_cases:
+      - crack_origin_identification
+      - overload_event_reconstruction
+      - maintenance_effectiveness_assessment
+
+# Quantum State Provenance
+qs_provenance:
+  snapshot_events:
+    - sensor_activation
+    - anomaly_detection
+    - threshold_exceedance
+    - inspection_performed
+    - repair_completed
+    - material_certificate_issued
+  cadence: on_event
+  compression: lz4_for_high_frequency_data
+  anchor:
+    provider: UTCS
+    network: aerospace_production
+    cost_allocation: AAA_domain
+  retention_policy:
+    operational: "7d high-resolution"
+    compressed: "90d downsampled"
+    regulatory: "design_life + 10y"
+    anomalies: permanent
+    material_certs: permanent
+  access_controls:
+    - role: maintenance_engineer
+      permissions: [read, query]
+    - role: structures_engineer
+      permissions: [read, query, export, analysis]
+    - role: accident_investigator
+      permissions: [read, query, export, verify_chain, reconstruct]
+    - role: certification_authority
+      permissions: [read, verify_chain, audit]
+
+# Standards Compliance
+standards:
+  structural:
+    - CS-25.305  # Strength and deformation
+    - CS-25.571  # Damage tolerance and fatigue
+    - CS-25.613  # Material strength properties
+  manufacturing:
+    - AIMS-03-01-002  # Composite fiber placement
+    - AIMS-05-02-001  # Laminate inspection
+  software:
+    - standard: DO-178C
+      dal: D  # Non-flight-critical monitoring
+      components: [sensor_data_acquisition, telemetry_processing]
+  hardware:
+    - standard: DO-160G
+      environmental_categories:
+        temperature: A1  # High temp zones
+        vibration: U    # Curve U
+        humidity: B     # Standard
+  quality:
+    - AS9100D
+    - NADCAP_Composites
+  ai_ethics:
+    - EU_AI_Act  # For anomaly detection algorithms
+    - ISO_IEC_42001
+
+# Performance Metrics
+performance_metrics:
+  structural:
+    - name: ultimate_load_margin
+      target: "≥1.5"
+      verification: static_test
+    - name: fatigue_life
+      target: "≥90000 flights"
+      verification: full_scale_fatigue_test
+  sensor:
+    - name: strain_measurement_accuracy
+      target: "±50 microstrain"
+      verification: calibration_lab
+    - name: crack_detection_probability
+      target: "≥0.95 for cracks >5mm"
+      verification: coupon_testing
+    - name: false_positive_rate
+      target: "≤0.01 per flight"
+      verification: fleet_data_analysis
+  data_quality:
+    - name: telemetry_availability
+      target: "≥99.9%"
+    - name: provenance_coverage
+      target: "100%"
+
+# S1000D Data Module Deliverables
+s1000d_deliverables:
+  csdb_path: "CSDB/DMC/"
+  descriptive:
+    - dmc: "DMC-BWBQ100-A-57-10-10-00-00A-040A-D-EN-US.xml"
+      title: "Forward Spar - General Description with QSS"
+      info_code: "040A"
+    - dmc: "DMC-BWBQ100-A-57-10-10-01-00A-040A-D-EN-US.xml"
+      title: "Forward Spar Inboard Section LH"
+    - dmc: "DMC-BWBQ100-A-57-10-10-02-00A-040A-D-EN-US.xml"
+      title: "Forward Spar Inboard Section RH"
+  procedural:
+    - dmc: "DMC-BWBQ100-A-57-10-10-00-00A-520A-D-EN-US.xml"
+      title: "Inspection - Access, QSS Methods, Intervals"
+      info_code: "520A"
+    - dmc: "DMC-BWBQ100-A-57-10-10-00-00A-720A-D-EN-US.xml"
+      title: "Removal/Installation with QSS Disconnect"
+      info_code: "720A"
+    - dmc: "DMC-BWBQ100-A-57-10-10-00-00A-510A-D-EN-US.xml"
+      title: "Repair - Composite Damage with Sensor Preservation"
+      info_code: "510A"
+  ipd:
+    - dmc: "DMC-BWBQ100-A-57-10-10-00-00A-941A-D-EN-US.xml"
+      title: "Illustrated Parts - QSS Sensor Patch Kit"
+      info_code: "941A"
+  validation:
+    xsd_version: "S1000D Issue 6.0"
+    schemas: 
+      - descriptive.xsd
+      - procedural.xsd
+      - ipd.xsd
+
+# Integration Schema Reference
+integration_schema: "INTEGRATION/ata57x_tfa_mapping.yaml"
+
+# Dependencies
+dependencies:
+  internal_products:
+    - BWB_Q100_REAR_SPAR
+    - BWB_Q100_WING_RIBS
+    - BWB_Q100_WING_SKINS
+  libraries:
+    - name: composite_analysis_lib
+      version: "^5.2.0"
+      repo: internal
+    - name: sensor_fusion_core
+      version: ">=4.0.0"
+      repo: internal
+  external:
+    - name: HDF5
+      version: "1.14.0"
+      license: BSD-3-Clause
+      purpose: Sensor data storage format
+    - name: paho-mqtt
+      version: "1.6.1"
+      license: EPL-2.0
+      purpose: Telemetry messaging
+
+# Certification Gates
+fcr:
+  fcr1:
+    sbom:
+      format: CycloneDX
+      location: "pax/OFF/sbom/forward_spar_sbom.json"
+    signed_tag: "git tag -s v1.0.0"
+    doi: "pending_zenodo"
+    demo_evidence:
+      - "Full-scale spar test with QSS monitoring"
+      - "Flight test correlation (ground test vs flight)"
+    utcs_anchor: "pending"
+    
+  fcr2:
+    reproducibility:
+      layup_process: "documented in manufacturing procedures"
+      sensor_installation: "calibration certificates + installation records"
+    coverage:
+      structural_analysis: "100% design envelope"
+      sensor_coverage: "≥95% critical areas"
+    attestations:
+      level: SLSA_L2
+      artifacts: "pax/OFF/attestations/"
+    external_validations:
+      required: 2
+      obtained: 1
+      validators:
+        - org: Certification_Authority_EASA
+          scope: structural_substantiation
+          status: in_progress
+
+# Team
+team:
+  lead: 
+  email: 
+  domain_experts:
+    - name: 
+      domain: AAA
+      focus: Composite structures analysis
+    - name: 
+      domain: IIS
+      focus: Sensor fusion and health monitoring
+  reviewers:
+    - org: EASA
+      scope: CS-25_compliance
+    - org: Independent_Structures_Lab
+      scope: fatigue_substantiation

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:dc="http://www.purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="10"
+                disassyCode="00" disassyCodeVariant="A"
+                infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="004" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="10" day="04"/>
+        <dmTitle>
+          <techName>AMPEL360 BWB-Q100 Wing</techName>
+          <infoName>Forward Spar – General Description &amp; Architecture</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="changed">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+
+      <applic>
+        <displayText>
+          <simplePara>Applies to AMPEL360 BWB-Q100 configuration (all LCNs) unless otherwise stated.</simplePara>
+        </displayText>
+      </applic>
+
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+
+      <!-- Optional: external schema reference for SHM payloads -->
+      <externalPubRef id="SCHEMA-CRACK-EVENT-57-10"
+                      xlink:href="../../../contracts/schemas/crack_event.schema.json"
+                      xlink:show="new" xlink:actuate="onRequest">
+        <title>ATA-57-10 Crack Event JSON Schema (Draft 2020-12)</title>
+      </externalPubRef>
+
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <description>
+
+      <levelledPara>
+        <title>Overall Spar Configuration and Function</title>
+        <para>The forward wing spar is the primary front load-carrying member of the BWB-Q100 wing box. It runs continuously from butt line BL0 to the wing tip and, together with the aft spar, upper and lower covers, and ribs, forms the closed torque box.</para>
+        <para>Functions include: (1) providing continuous paths for bending and shear loads; (2) interfaces for control-surface hinge fittings and systems routing; and (3) sealed bays for fuel containment in applicable zones.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Load Paths and Structural Philosophy</title>
+        <para>Primary loads include upward bending from lift, torsion from control-surface activity, and local reactions (pylon, landing gear if installed). Axial tension/compression is carried mainly by spar caps; webs react shear.</para>
+        <para>Design philosophy is fail-safe and damage-tolerant with multiple load paths, crack-arrest features, and scheduled inspection access for condition-based maintenance.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Material Specifications</title>
+        <para>Spar caps: Al-Li alloy (e.g., AA2198-T8) or CFRP unidirectional laminates per configuration control.</para>
+        <para>Web panels: stiffened aluminum plate (e.g., AA2050-T84) or CFRP laminate with co-cured stringers; local doublers at cutouts and fittings.</para>
+        <para>Fittings/attachments: titanium or corrosion-resistant steel as required for bearing, galvanic compatibility, and fireworthiness.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Section Breakdown and Station Locations</title>
+        <para>The spar is partitioned into inboard, center, and outboard sections (FS-INB, FS-MID, FS-OUTB). Station numbering increases from the fuselage datum. Typical bay pitch is 380–520&#160;mm inboard and 300–380&#160;mm outboard; exact values per master geometry.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Interface Definitions</title>
+        <para>Wing covers attach via continuous cap splices and shear ties; wet bays use sealed faying surfaces. Systems route through reinforced web lightening holes with bonded grommets and chafe protection. Fire stops and shut-off valve hard points are provided inboard as required.</para>
+        <para><emphasis>Quantum Sensorial Skin (QSS)</emphasis> installation: QSS is formed by <emphasis>Quantum Spare Sensors in a Quantum Superposition Setting</emphasis>. On the wing forward spar box these operate as a <emphasis>Quantum Spar Setting</emphasis>. The aim is to <emphasis>amplify</emphasis> weak structural signals or <emphasis>discretize</emphasis> continuous fields into quantized health states as needed. Mechanical interfaces include bonded carriers on webs/caps, shielded feed-throughs, and a local controller node. Event payloads produced by QSS inspections must conform to the
+          <xref xrefType="external" internalRefIdRef="SCHEMA-CRACK-EVENT-57-10">Crack Event Schema</xref>.</para>
+        <para>See also: <xref xrefType="dm" xlink:href="DMC-BWQ1-A-57-10-50-00-00A-040A-D-EN-US.xml#identAndStatusSection/dmAddress/dmIdent"/>.</para>
+      </levelledPara>
+
+      <levelledPara>
+        <title>Terms and Definitions</title>
+        <defList>
+          <defItem>
+            <defTerm>QSS</defTerm>
+            <defDef>Quantum Sensorial Skin — formed by <emphasis>Quantum Spar Sensors in Quantum Superposition Setting</emphasis>; on the forward spar, configured as a <emphasis>Quantum Spar Setting</emphasis>.</defDef>
+          </defItem>
+          <defItem>
+            <defTerm>Amplification Mode</defTerm>
+            <defDef>Enhances weak signals while maintaining coherence to detect early-stage damage.</defDef>
+          </defItem>
+          <defItem>
+            <defTerm>Discretization Mode</defTerm>
+            <defDef>Collapses sensed fields into quantized states for robust, low-bandwidth health reporting.</defDef>
+          </defItem>
+        </defList>
+      </levelledPara>
+
+    </description>
+  </content>
+</dmodule>
