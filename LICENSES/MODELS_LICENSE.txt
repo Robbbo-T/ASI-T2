@@ -201,5 +201,5 @@ AI/ML models may be subject to export control:
 - US: EAR Category 3E001 (software for development of AI)
 - EU: Dual-Use Regulation, Category 4E001
 
-High-performance models (>10^12 parameters) may require export licenses.
+High-performance models (>10^12 parameters) may require export licenses (see US BIS Interim Final Rule, 15 CFR Parts 730, 734, 740, 772, and 774, and EU Dual-Use Regulation 2021/821; threshold based on current regulatory guidance as of 2023).
 Consult export-control@ideale-eu.example before distribution.
