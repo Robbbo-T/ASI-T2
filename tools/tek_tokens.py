@@ -197,7 +197,11 @@ class TokenLedger:
     def generate_badge(self):
         """Generate a verification badge JSON."""
         total_distributed = sum(self.ledger["accounts"].values())
-        treasury_balance = self.get_balance("treasury")
+        if "treasury" in self.ledger["accounts"]:
+            treasury_balance = self.get_balance("treasury")
+        else:
+            print("Warning: 'treasury' account not found in ledger. Setting treasury balance to 0.")
+            treasury_balance = 0
         
         badge = {
             "schemaVersion": 1,
