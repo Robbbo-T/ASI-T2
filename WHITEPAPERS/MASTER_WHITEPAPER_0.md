@@ -8,6 +8,8 @@ release_date: "2025-10-03"
 classification: PUBLIC
 maintainer: "ASI-T Architecture Team"
 framework: "IDEALE-EU (Intelligence, Defense, Energy, Aerospace, Logistics, ESG · Europe)"
+marks:
+  - OPTIME
 standards:
   - "EU AI Act (Regulation (EU) 2024/1689)"
   - "NIST AI RMF 1.0"
@@ -132,6 +134,7 @@ Diagram: **[ASI_Architecture.puml](./ASI_Architecture.puml)**.
   - **TSC:** architecture/roadmap, policy reviews, red-team remediation, standards liaison.  
   - **Independent Assurance Panel:** external audits, transparency reports.  
 - **Standards integration:** EU AI Act, NIST AI RMF (+ GenAI), ISO/IEC 42001/23894, EASA AI guidance/MLEAP.
+- **OPTIME mark** certifies that instruction execution paths are gated by policy-as-code, emit evidence, require HITL where consequential, and are sealed via QS/UTCS with measured overhead.
 
 ---
 

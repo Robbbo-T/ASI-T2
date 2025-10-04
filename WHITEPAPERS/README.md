@@ -54,6 +54,10 @@ This directory contains technical whitepapers, specifications, and templates tha
 | **8** | H₂ Infrastructure | 📋 Planned H2 | - | Roadmap item |
 | **9** | Sustainable Finance | 📋 Planned H2 | - | Roadmap item |
 
+### Marks
+
+- **OPTIME Mark (assurance profile):** [OPTIME_MARK.md](./OPTIME_MARK.md)
+
 ---
 
 ## Completed Whitepapers
