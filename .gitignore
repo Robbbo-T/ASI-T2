@@ -54,6 +54,10 @@ finance/txlog.jsonl
 finance/txhead.json
 badges/
 
+# IEF HUELLΔ generated artifacts
+evidence/passports/
+verification/
+
 # ------------------------------
 # End of canonical ignore list
 # ------------------------------
