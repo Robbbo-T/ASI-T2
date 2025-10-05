@@ -1,33 +1,42 @@
 {
   "version": "3.14",
+
   "token": {
     "name": "Teknia Token",
     "symbol": "TT",
-    "genesis_supply_tt": 2000000000,
     "deg_per_tt": 360,
     "unit": "deg",
-    "ledger_file": "finance/ledger.json",
+
+    "genesis_supply_tt": 2000000000,
+
     "treasury_account": "TREASURY",
     "founder_account": "FOUNDER",
-    "sustain_vault": "VAULT_SUSTAIN"
+    "sustain_vault": "VAULT_SUSTAIN",
+    "ledger_file": "finance/ledger.json"
   },
+
   "policy": {
     "divisibility": "360 deg per 1 TT",
     "supply_model": "fixed",
     "rounding": "reject-non-integer-deg",
+
     "founder_allocation_bps": 500,
+
     "sustain_fee_bps": 50,
     "fee_rounding": "floor-deg",
+
     "min_transfer_deg": 2592,
     "min_transfer_scope": ["transfer"],
+
     "sustain_fee_tiers": {
       "scope": ["transfer"],
       "schedule": [
-        { "min_deg": 25920,   "bps": "31.4", "label": "≥ 10× Δθmin (72 TT)" },
-        { "min_deg": 259200,  "bps": "99",   "label": "≥ 100× Δθmin (720 TT)" },
-        { "min_deg": 2592000, "bps": "314",  "label": "≥ 1000× Δθmin (7,200 TT)" }
+        { "min_deg": 25920,   "bps": "31.4", "label": "≥ 10× Δθmin = 72 TT" },
+        { "min_deg": 259200,  "bps": "99",   "label": "≥ 100× Δθmin = 720 TT" },
+        { "min_deg": 2592000, "bps": "314",  "label": "≥ 1000× Δθmin = 7,200 TT" }
       ]
     },
+
     "validation": [
       "sum(balances) == total_supply_deg",
       "all amounts integer in deg",
@@ -35,6 +44,35 @@
       "amount_deg % min_transfer_deg == 0"
     ]
   },
+
+  "economics": {
+    "display_precision_tt": 3
+  },
+
+  "governance": {
+    "holders": ["TREASURY"],
+    "domains": ["AAA","AAP","CCC","CQH","DDD","EDI","EEE","EER","IIF","IIS","LCC","LIB","MEC","OOO","PPP"],
+    "allocation": "equal"
+  },
+
+  "auto": {
+    "charge_on_publish": false,
+    "charge_on_consume": true,
+    "reward_on_publish": true
+  },
+
+  "prices": {
+    "cxp_publish_reward_tt": 3,
+    "cxp_consume_cost_tt": 2
+  },
+
+  "badges": {
+    "enabled": true,
+    "path": "finance/badges/tt-balance.json",
+    "label": "Teknia TT",
+    "color": "blue"
+  },
+
   "physics": {
     "model": "Landauer@CMB",
     "T_CMB_K": 2.7255,

@@ -1,10 +1,28 @@
-# IDEALE.eu — Intelligence • Defense • Energy • Aerospace • Logistics • ESG
+---
+id: ASIT2-README.md
+project: ASI-T2
+artifact: Repository Master README
+llc: GENESIS
+classification: INTERNAL–EVIDENCE-REQUIRED
+version: 1.0.6
+release_date: "2025-10-01"
+maintainer: "ASI-T Architecture Team"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: MAL-EEM
+utcs_mi: v5.0
+framework: IDEALE.eu
+ideale_pillars:
+  - Intelligence
+  - Defense
+  - Energy
+  - Aerospace
+  - Logistics
+  - ESG
+  - Europe
+canonical_hash: pending
+---
 
-[![CI · Evidence Verify](https://github.com/Robbbo-T/IDEALE-IEF/actions/workflows/verify.yml/badge.svg)](https://github.com/Robbbo-T/IDEALE-IEF/actions/workflows/verify.yml)
-[![SPDX 2.3](https://img.shields.io/badge/SBOM-SPDX_2.3-informational)](https://spdx.dev/specifications/)
-![UTCS v5.0](https://img.shields.io/badge/UTCS-v5.0-blue)
-![Policy-Pinned Verify](https://img.shields.io/badge/Verify-policy--pinned-success)
-![Trust Mark · Pilot](https://img.shields.io/badge/IDEALE_Trust_Mark-pilot-lightgrey)
+# IDEALE.eu — Intelligence • Defense • Energy • Aerospace • Logistics • ESG
 
 [**IDEALE.eu**](https://ideale.eu) is a federated **brand & standards** program for **verifiable critical systems**. We prioritize **evidence over assertions** and publish portable formats and vendor‑neutral CI hooks.
 

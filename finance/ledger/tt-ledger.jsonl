@@ -1,0 +1,1 @@
+{"id": "ttx_000001", "ts": "2025-10-04T22:48:25Z", "prev": "genesis", "prev_hash": "genesis", "type": "MINT", "from": "mint", "to": "treasury", "amount": 10000, "unit": "TT", "ref": {"event": "init", "run_id": 0, "pr": 0}, "memo": "genesis mint", "hash": "6e3b96bd93a4797dec1dbce581ec1c18b9049f26e6578fd7b4c1b4e422979000"}

@@ -1,0 +1,43 @@
+{
+  "$schema": "./context.schema.json",
+  "version": "1.0.0",
+  "repo": {
+    "name": "ASI-T2",
+    "url": "https://github.com/Robbbo-T/ASI-T2",
+    "license": "Apache-2.0",
+    "topics": ["tfa", "aerospace", "utcs", "sustainability", "qs", "fe"]
+  },
+  "canon": {
+    "GENESIS": "docs/GENESIS.md",
+    "FLOW": "QS→FWD→UE→FE→CB→QB",
+    "UTCS": "UiX Threading Context/Content/Cache and Structure/Style/Sheet",
+    "PAx": ["ONB", "OUT"],
+    "DOMAINS": ["AAA", "AAP", "CCC", "CQH", "DDD", "EDI", "EEE", "EER", "IIF", "IIS", "LCC", "LIB", "MEC", "OOO", "PPP"]
+  },
+  "llc": {
+    "definition": "Lifecycle Level Context",
+    "layers": ["program", "system", "subsystem", "module", "component"]
+  },
+  "interfaces": {
+    "exports": [
+      { "name": "cxp:architecture", "path": "docs/ARCHITECTURE.md", "format": "markdown" },
+      { "name": "cxp:interfaces",  "path": "docs/INTERFACES.md",   "format": "markdown" },
+      { "name": "cxp:sbom",         "path": "sbom/spdx.sbom.json",  "format": "spdx-json" }
+    ],
+    "imports": [
+      { "name": "cxp:upstream-context", "source": "url|git", "expect": ["utcs.manifest", "sbom", "arch"] }
+    ]
+  },
+  "dependencies": {
+    "internal": ["modules/*"],
+    "external": [
+      { "name": "X-Repo-A", "url": "https://github.com/org/X-Repo-A", "type": "git-subtree", "role": "FE" }
+    ]
+  },
+  "provenance": {
+    "schema": "UTCS-CXP:v1",
+    "hash": "${GIT_COMMIT}",
+    "generated_at": "${ISO_DATETIME}",
+    "generator": "gh-action://cxp-publish@v1"
+  }
+}
