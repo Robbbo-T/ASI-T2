@@ -181,7 +181,18 @@ def main():
             parts = Path(p).parts
             if len(parts) >= 4 and parts[0] == "events":
                 domain = parts[1]
-                serial = parts[3] if parts[2] else "ASSET"
+                # Try to extract serial from the path
+                # If parts[3] looks like a file (has extension), use parts[2] as serial
+                # Otherwise, use parts[3] as serial
+                if len(parts) >= 5:
+                    # events/DOMAIN/MIC/SERIAL/file.json
+                    serial = parts[3]
+                elif len(parts) == 4 and not parts[3].endswith('.json'):
+                    # events/DOMAIN/MIC/SERIAL (folder, no file yet)
+                    serial = parts[3]
+                else:
+                    # events/DOMAIN/SERIAL/file.json or events/DOMAIN/MIC
+                    serial = parts[2] if len(parts) >= 3 else "ASSET"
                 out_dir = out_root / domain / serial
                 break
         if out_dir is None:
