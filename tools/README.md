@@ -1,209 +1,333 @@
-# ASI-T2 Filename Policy Tools
 
-This directory contains tools for enforcing standardized filename conventions across S1000D Data Modules (DM) and CAx engineering files.
+# Teknia Token CLI (`tek_tokens.py`) — v3.14
 
-## Overview
+CLI for an integer `deg` ledger with exact `TT ⇄ deg`, **founder 5% at genesis**, **sustain fee tiered for transfers (π)** with **0.5% for reward/consume**, optional **Δθmin = 2592 deg** on transfers, and a **tx hash‑chain** plus **policy pin**.
 
-The ASI-T2 project standardizes on:
-- **ATA short-code**: 5710 (4-digit form representing ATA 57-10, Wing Structure)
-- **S1000D DM**: Issue 5.0/6.0 naming convention
-- **CAx domains**: CAD, CAE, CAM, CAV, CMP
+**Config selection:** pass `--config path/to/tokenomics.json` or set `TEKNIA_CONFIG` environment variable.
 
-## Tools
+## Features
 
-### lint_names.py
+### π-Tier Fee Schedule (v3.14)
 
-Validates filenames against ASI-T2 standards with actionable error messages.
+Transfers use dynamic fees based on amount:
 
-**Usage:**
-```bash
-# Check specific files
-python3 tools/lint_names.py file1.step file2.xml
+| Amount (TT) | Amount (deg) | Fee % | BPS | Description |
+|-------------|--------------|-------|-----|-------------|
+| ≥ 7,200     | ≥ 2,592,000  | 3.14% | 314 | 1000× Δθmin |
+| ≥ 720       | ≥ 259,200    | 0.99% | 99  | 100× Δθmin |
+| ≥ 72        | ≥ 25,920     | 0.314%| 31.4| 10× Δθmin |
+| < 72        | < 25,920     | 0.5%  | 50  | Base fee |
 
-# Check directory recursively
-python3 tools/lint_names.py .
+**Reward/Consume operations always use 0.5% base fee.**
 
-# Check specific path
-python3 tools/lint_names.py PRODUCTS/AMPEL360/
-```
+### Policy Immutability
 
-**Supported Patterns:**
+- SHA-256 hash of policy section computed at `init`
+- Stored in `ledger.json` as `policy_hash`
+- `verify` command checks hash matches config
+- Prevents silent policy changes
 
-#### S1000D Data Modules
-```
-DMC-<MIC>-<SDC>-<SC>-<SSC>-<SSSC>-<AC><DAC>-<IC><ICV>-<ILC>-<LANG>-<COUNTRY>.xml
-```
+### Scope-Based Validation
 
-Example: `DMC-BWQ1-A-57-10-10-00A-040A-D-EN-US.xml`
+- **min_transfer_deg** (7.2 TT) enforced on `transfer` only
+- `reward` and `consume` have no minimum quantum
+- Configurable via `min_transfer_scope` in tokenomics config
 
-#### CAx Engineering Files
-```
-<DISC>-<MIC>-<DOMAIN><ATA>-<SCOPE>-<HAND?>-<EFFT?>-<LIFE?>-r<REV>.<EXT>
-```
+### Transaction Hash Chain
 
-Examples:
-```
-ASSY-BWQ1-CAD5710-FWD-SPAR-GA-r012.step
-PRT-BWQ1-CAD5710-UPPER-CAP-LH-r007.sldprt
-FEM-BWQ1-CAE5710-FS-BOX-STAT-r006.inp
-NC-BWQ1-CAM5710-FWD-SPAR-OP10-MILL-r003.nc
-QIP-BWQ1-CAV5710-FWD-SPAR-DIM-PLAN-r006.pdf
-EPR-BWQ1-CMP5710-FWD-SPAR-EOL-PLAN-r001.pdf
-```
+- Each tx logged to `txlog.jsonl`
+- Chain: `TX_N_hash = SHA256(TX_{N-1}_hash + tx_data)`
+- Head stored in `txhead.json`
+- Enables efficient verification
 
-**Domain/DISC Mapping:**
+### EUR Valuation (Optional)
 
-| Domain | Purpose | Object Types (DISC) |
-|--------|---------|---------------------|
-| CAD | Design | ASSY, PRT, DRW, MBD |
-| CAE | Analysis | FEM, CFD, EMI |
-| CAM | Manufacturing | NC, APT, OPR, FIX, TOOL, SET |
-| CAV | Quality V&V/Certification | QIP, QIF, DMIS, MEAS, MSA, CERT |
-| CMP | EoL/Recycling | EPR, RECY, TREAT, DISP, MATREC |
-
-**Field Definitions:**
-
-- **DISC**: Object type (see table above)
-- **MIC**: Model Identification Code (3-4 chars, e.g., BWQ1, Q100)
-- **DOMAIN**: CAD, CAE, CAM, CAV, or CMP
-- **ATA**: 4-digit ATA code (57xx, e.g., 5710)
-- **SCOPE**: UPPERCASE kebab-case descriptor (A-Z, 0-9, -)
-- **HAND** (optional): LH, RH, or CEN (Left/Right/Center)
-- **EFFT** (optional): Effectivity (e.g., APPL-BWBQ100-0001-0999, E0001-0999)
-- **LIFE** (optional): Lifecycle tag (GA, STAT, UL, FAT, DTA, CERT, VNV, QC, EOL)
-- **REV**: 3-digit revision (e.g., r012)
-- **EXT**: File extension (domain-specific)
-
-**Validation Features:**
-
-✅ S1000D DMC pattern compliance  
-✅ CAx pattern compliance (all domains)  
-✅ SCOPE kebab-case rules (no leading/trailing/consecutive dashes)  
-✅ Domain/DISC consistency checks  
-✅ Domain/extension validation  
-✅ Helpful error messages for common mistakes  
-✅ Legacy code detection (571, 571010)  
-✅ Optional UTCS sidecar validation  
-
-**Exit Codes:**
-- `0` - All files compliant
-- `1` - Non-compliant files found
-
-## Migration Script
-
-See [../scripts/migrate_ata_shortcode.py](../scripts/migrate_ata_shortcode.py) for migrating legacy 571/571010 codes to 5710.
-
-## Schematron Validation
-
-See [../schematron/asi-t2-dmfile.sch](../schematron/asi-t2-dmfile.sch) for BREX/CSDB validation rules.
-
-## CI/CD Integration
-
-### Pre-commit Hook
-
-The filename policy is enforced via pre-commit hook:
+Display parallel EUR values:
 
 ```bash
-# Install pre-commit
-pip install pre-commit
+# Direct EUR/TT peg
+python tek_tokens.py --eur-per-tt 0.10 balance
 
-# Install hooks
-pre-commit install
-
-# Run manually
-pre-commit run asi-t2-filename-policy --all-files
+# Landauer@CMB energy pricing (EUR/kWh)
+python tek_tokens.py --eur-per-kwh 0.30 quote --op transfer --tt 720
 ```
 
-See [../.pre-commit-config.yaml](../.pre-commit-config.yaml)
+## Commands
 
-### GitHub Actions
+### `init`
+Initialize ledger with genesis supply and founder allocation.
 
-Automatic validation on pull requests and pushes:
-
-See [../.github/workflows/filename-policy.yml](../.github/workflows/filename-policy.yml)
-
-## QSS Prefix Convention
-
-For quick filtering of quality/repair items, use QSS- prefix in SCOPE:
-
-```
-PRT-BWQ1-CAD5710-QSS-PATCH-FS-INB-LH-r002.sldprt
-ASSY-BWQ1-CAD5710-QSS-PATCH-KIT-GA-r004.step
-FEM-BWQ1-CAE5710-QSS-PATCH-LOCAL-STAT-r001.inp
+```bash
+python tek_tokens.py init
 ```
 
-## Optional JSON Sidecar
+Creates:
+- TREASURY: 1,900,000,000 TT (95%)
+- FOUNDER: 100,000,000 TT (5%)
+- VAULT_SUSTAIN: 0 TT (accumulates fees)
 
-CAx files can have optional JSON sidecars with metadata:
+Stores policy hash for verification.
 
-```json
-{
-  "dmRefs": [
-    "DMC-BWQ1-A-57-10-10-00A-040A-D-EN-US.xml",
-    "DMC-BWQ1-A-57-10-10-00A-520A-D-EN-US.xml"
-  ],
-  "utcsAnchor": "sha256:abc123...",
-  "effectivity": "APPL-BWBQ100-0001-0999",
-  "loadsCase": "STAT-UL-1.5g",
-  
-  "cam": {
-    "machine": "HERMLE-C42",
-    "controller": "Heidenhain iTNC",
-    "post": "UGPost 4.2"
-  },
-  
-  "cav": {
-    "metrology": "CMM Zeiss ACCURA",
-    "program": "DMIS r002",
-    "qifVersion": "3.0"
-  },
-  
-  "eol": {
-    "treatmentCode": "RECY-AL",
-    "recyclateFraction": 0.98
-  }
-}
+### `balance`
+Show account balances.
+
+```bash
+# All accounts
+python tek_tokens.py balance
+
+# Specific account
+python tek_tokens.py balance --account TREASURY
+python tek_tokens.py balance --account alice
+
+# With EUR
+python tek_tokens.py --eur-per-tt 0.10 balance
 ```
 
-The linter validates `utcsAnchor` SHA256 checksums if present.
+### `transfer`
+Transfer tokens between accounts.
 
-## Common Errors
+**Fee:** π-tier based on amount  
+**Min quantum:** 7.2 TT (2592 deg)
 
-### Use short ATA (5710), not long (571010)
-**Old:** `ASSY-BWQ1-CAD571010-FWD-SPAR-r001.step`  
-**New:** `ASSY-BWQ1-CAD5710-FWD-SPAR-r001.step`
+```bash
+# 72 TT → 0.314% fee (81 deg)
+python tek_tokens.py transfer --from TREASURY --to alice --tt 72
 
-### Use 4-digit ATA (57xx), not very short (571)
-**Old:** `ASSY-BWQ1-CAD571-FWD-SPAR-r001.step`  
-**New:** `ASSY-BWQ1-CAD5710-FWD-SPAR-r001.step`
+# 720 TT → 0.99% fee (2,566 deg)
+python tek_tokens.py transfer --from TREASURY --to bob --tt 720
 
-### SCOPE must not start/end with '-'
-**Bad:** `ASSY-BWQ1-CAD5710--FWD-SPAR-r001.step`  
-**Good:** `ASSY-BWQ1-CAD5710-FWD-SPAR-r001.step`
-
-### DISC must match domain
-**Bad:** `MBD-BWQ1-CAE5710-PART-r001.dat` (MBD is CAD, not CAE)  
-**Good:** `MBD-BWQ1-CAD5710-PART-r001.dat`
-
-## Rollout Notes
-
-The linter currently accepts any 57xx ATA code. To enforce 5710 only during rollout, uncomment this line in `lint_names.py`:
-
-```python
-# if ata != '5710':
-#     fail(name, "ATA must be 5710 during rollout")
-#     ok = False
+# 7200 TT → 3.14% fee (81,388 deg)
+python tek_tokens.py transfer --from TREASURY --to charlie --tt 7200
 ```
 
-## References
+### `reward`
+Reward tokens from TREASURY.
 
-- S1000D Issue 5.0/6.0 Specification
-- ATA iSpec 2200 (Chapter 57: Wings)
-- UTCS-MI v5.0 (Canonical Hash)
-- MAL-EEM Ethics Guard
+**Fee:** 0.5% (base)  
+**Min quantum:** None
+
+```bash
+# 1 TT reward (allowed, no minimum)
+python tek_tokens.py reward --to alice --tt 1
+
+# 72 TT reward (uses 0.5% fee, not 0.314% π-tier)
+python tek_tokens.py reward --to bob --tt 72
+```
+
+### `consume`
+Consume tokens to TREASURY.
+
+**Fee:** 0.5% (base)  
+**Min quantum:** None
+
+```bash
+# 2 TT consume
+python tek_tokens.py consume --from alice --tt 2
+
+# 50 TT consume
+python tek_tokens.py consume --from bob --tt 50
+```
+
+### `quote`
+Non-mutating fee/net estimation.
+
+```bash
+# Quote transfer (shows π-tier fee)
+python tek_tokens.py quote --op transfer --tt 720
+# Output:
+# Amount: 259,200 deg (720.00 TT)
+# Fee: 2,566 deg (7.13 TT)
+# Sender pays: 261,766 deg (727.13 TT)
+# Recipient gets: 259,200 deg (720.00 TT)
+
+# Quote reward (shows 0.5% base fee)
+python tek_tokens.py quote --op reward --tt 72
+# Fee: 129 deg (0.36 TT)
+
+# With EUR
+python tek_tokens.py --eur-per-tt 0.10 quote --op transfer --tt 720
+```
+
+### `verify`
+Verify ledger integrity.
+
+```bash
+python tek_tokens.py verify
+```
+
+Checks:
+- Policy hash matches config
+- Total supply = 720B deg
+- No negative balances
+- Transaction log integrity
+
+### `badge`
+Generate verification badge SVG.
+
+```bash
+# Default output: badges/tt-verified.svg
+python tek_tokens.py badge
+
+# Custom output
+python tek_tokens.py badge --out path/to/badge.svg
+```
+
+## Configuration
+
+### Default (Hybrid)
+`finance/teknia.tokenomics.json`
+- π-tier fees for transfers
+- 0.5% for reward/consume
+- min_transfer_deg = 2592 (transfers only)
+- VAULT_SUSTAIN collects fees
+
+### No-Fee Variant
+`finance/teknia.tokenomics.nofee.json`
+- No sustain fees
+- No VAULT_SUSTAIN
+- min_transfer_deg still enforced for transfers
+- Useful for testing/internal systems
+
+Select config:
+
+```bash
+# Environment variable
+export TEKNIA_CONFIG=finance/teknia.tokenomics.nofee.json
+python tek_tokens.py init
+
+# Or CLI flag
+python tek_tokens.py --config finance/teknia.tokenomics.nofee.json init
+```
+
+## Files
+
+### Committed (Git)
+- `finance/teknia.tokenomics.json` - v3.14 config (π-tiers)
+- `finance/teknia.tokenomics.nofee.json` - v3.14 no-fee variant
+
+### Not Committed (.gitignore)
+- `finance/ledger.json` - Account balances and metadata
+- `finance/txlog.jsonl` - Transaction log (JSONL)
+- `finance/txhead.json` - Hash chain head
+
+## Examples
+
+### Complete Workflow
+
+```bash
+# 1. Initialize
+python tek_tokens.py init
+
+# 2. Check initial balances
+python tek_tokens.py balance
+
+# 3. Transfer with π-tier fees
+python tek_tokens.py transfer --from TREASURY --to alice --tt 72
+python tek_tokens.py transfer --from TREASURY --to bob --tt 720
+
+# 4. Reward (no min quantum, 0.5% fee)
+python tek_tokens.py reward --to charlie --tt 10
+
+# 5. Consume
+python tek_tokens.py consume --from alice --tt 5
+
+# 6. Quote before large transfer
+python tek_tokens.py quote --op transfer --tt 7200
+
+# 7. Verify integrity
+python tek_tokens.py verify
+
+# 8. Generate badge
+python tek_tokens.py badge
+```
+
+### With EUR Valuation
+
+```bash
+# Direct peg: 1 TT = €0.10
+python tek_tokens.py --eur-per-tt 0.10 balance
+python tek_tokens.py --eur-per-tt 0.10 quote --op transfer --tt 720
+
+# Landauer@CMB: €0.30 per kWh
+python tek_tokens.py --eur-per-kwh 0.30 balance
+python tek_tokens.py --eur-per-kwh 0.30 quote --op transfer --tt 7200
+```
+
+## Testing
+
+### v3.14 Test Suite
+
+```bash
+python tools/test_tek_tokens_v314.py
+```
+
+Tests:
+- Initialization with policy hash
+- π-tier fee calculation (0.314%, 0.99%, 3.14%)
+- Reward/consume use base 0.5% fee
+- Min transfer scope (transfers only)
+- Quote command
+- Verify command
+- Badge generation
+- EUR valuation
+- Balance conservation
+
+### v3.1 Legacy Tests
+
+```bash
+python tools/test_tek_tokens.py
+```
+
+Note: v3.1 tests expect old CLI structure and flat 0.5% fees. Use v3.14 tests for current system.
+
+## Changelog
+
+### v3.14 (Current)
+- **π-tier fees**: 0.314%, 0.99%, 3.14% for transfers
+- **Scope-based validation**: min_transfer_deg on transfers only
+- **Policy immutability**: SHA-256 hash verification
+- **New CLI**: `transfer`, `reward`, `consume`, `quote`, `badge`
+- **EUR valuation**: `--eur-per-tt` and `--eur-per-kwh`
+- **Hash chain**: `txlog.jsonl` + `txhead.json`
+- **No-fee config**: `teknia.tokenomics.nofee.json`
+
+### v3.1 (Legacy)
+- Flat 0.5% fee for all operations
+- min_transfer_deg enforced on all operations
+- Old CLI: `tx --type <type>`
+- No policy hash
+- `ledger.log` instead of `txlog.jsonl`
+
+## Migration from v3.1 to v3.14
+
+If you have an existing v3.1 ledger:
+
+1. Backup current ledger:
+   ```bash
+   cp finance/ledger.json finance/ledger.v31.backup.json
+   cp finance/ledger.log finance/ledger.v31.backup.log
+   ```
+
+2. Re-initialize with v3.14:
+   ```bash
+   python tek_tokens.py init
+   ```
+
+3. Policy hash will be computed and stored automatically
+
+4. Old transaction log (`ledger.log`) is replaced by `txlog.jsonl` and `txhead.json`
+
+**Note:** Account balances are NOT automatically migrated. You'll need to manually replay transactions if needed.
+
+## Support
+
+- **Documentation**: `docs/TOKENS.md`
+- **Finance README**: `finance/README.md`
+- **Config examples**: `finance/teknia.tokenomics.json`, `finance/teknia.tokenomics.nofee.json`
+- **Tests**: `tools/test_tek_tokens_v314.py`
 
 ---
 
-**Version:** 1.0.0  
-**Maintainer:** ASI-T Architecture Team  
-**Last Updated:** 2025-10-04
+**Teknia Token v3.14** — *π-tier hybrid tokenomics with policy immutability*
+```
+

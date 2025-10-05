@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 900 700"
+     width="900" height="700">
+  <title>Exploded View - IPD</title>
+  <desc>Placeholder exploded view diagram for Illustrated Parts Data</desc>
+  
+  <!-- Background -->
+  <rect width="900" height="700" fill="#f8f9fa"/>
+  
+  <!-- Callout 1 - Main Assembly -->
+  <rect x="200" y="250" width="200" height="150" 
+        fill="#e3f2fd" stroke="#0066cc" stroke-width="3"/>
+  <text x="300" y="330" text-anchor="middle" 
+        font-family="Arial" font-size="16" fill="#0066cc">
+    Main Assembly
+  </text>
+  <circle cx="180" cy="240" r="20" fill="#fff" stroke="#0066cc" stroke-width="2"/>
+  <text x="180" y="248" text-anchor="middle" 
+        font-family="Arial" font-size="18" font-weight="bold" fill="#0066cc">
+    1
+  </text>
+  
+  <!-- Callout 2 - Subcomponent A -->
+  <rect x="480" y="180" width="160" height="120" 
+        fill="#fff9db" stroke="#f59e0b" stroke-width="2"/>
+  <text x="560" y="245" text-anchor="middle" 
+        font-family="Arial" font-size="14" fill="#d97706">
+    Subcomponent A
+  </text>
+  <circle cx="460" cy="170" r="20" fill="#fff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="460" y="178" text-anchor="middle" 
+        font-family="Arial" font-size="18" font-weight="bold" fill="#f59e0b">
+    2
+  </text>
+  
+  <!-- Callout 3 - Fasteners -->
+  <circle cx="300" cy="480" r="12" fill="#ff6b6b" stroke="#c92a2a" stroke-width="2"/>
+  <circle cx="340" cy="480" r="12" fill="#ff6b6b" stroke="#c92a2a" stroke-width="2"/>
+  <circle cx="380" cy="480" r="12" fill="#ff6b6b" stroke="#c92a2a" stroke-width="2"/>
+  <circle cx="420" cy="480" r="12" fill="#ff6b6b" stroke="#c92a2a" stroke-width="2"/>
+  <text x="360" y="520" text-anchor="middle" 
+        font-family="Arial" font-size="12" fill="#c92a2a">
+    Hi-Lok Fasteners
+  </text>
+  <circle cx="280" cy="470" r="20" fill="#fff" stroke="#c92a2a" stroke-width="2"/>
+  <text x="280" y="478" text-anchor="middle" 
+        font-family="Arial" font-size="18" font-weight="bold" fill="#c92a2a">
+    3
+  </text>
+  
+  <!-- Explosion lines -->
+  <line x1="300" y1="400" x2="560" y2="300" 
+        stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="300" y1="400" x2="340" y2="468" 
+        stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+  
+  <!-- Assembly direction arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+  </defs>
+  <line x1="420" y1="325" x2="470" y2="240" 
+        stroke="#0066cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Title -->
+  <text x="450" y="50" text-anchor="middle" 
+        font-family="Arial" font-size="24" font-weight="bold" fill="#333">
+    57-90-00 Assembly - Exploded View
+  </text>
+  
+  <!-- Parts table -->
+  <rect x="50" y="580" width="800" height="100" 
+        fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="60" y="605" font-family="Arial" font-size="12" fill="#333">
+    Item 1: BWQ1-57-90-00-000 - Main Assembly (1 EA)
+  </text>
+  <text x="60" y="625" font-family="Arial" font-size="12" fill="#333">
+    Item 2: BWQ1-57-90-00-101 - Subcomponent A (1 EA)
+  </text>
+  <text x="60" y="645" font-family="Arial" font-size="12" fill="#333">
+    Item 3: HL18-6-12 - Hi-Lok Fastener (As req'd)
+  </text>
+  
+  <!-- Note -->
+  <text x="450" y="665" text-anchor="middle" 
+        font-family="Arial" font-size="10" fill="#999">
+    Placeholder IPD graphic - Replace with actual exploded view
+  </text>
+</svg>
