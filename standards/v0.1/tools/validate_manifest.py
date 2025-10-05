@@ -6,8 +6,12 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 SCHEMA = ROOT / "schemas" / "context.schema.json"
 
 def load_json(p):
-    with open(p, "r", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except json.JSONDecodeError as e:
+        print(f"Error: Failed to parse JSON file '{p}': {e}", file=sys.stderr)
+        sys.exit(2)
 
 def main():
     if len(sys.argv) != 2:
