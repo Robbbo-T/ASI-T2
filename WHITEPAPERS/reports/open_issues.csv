@@ -1,0 +1,11 @@
+Issue ID,Title,Description,Category,Severity,Owner,Status,UTCS ID,Opened Date,Target Resolution,Notes
+CERT-001,Evacuation models for BWB cabin,90-second evacuation demonstration planning and analysis for BWB cabin configuration,Safety,High,CCC,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:evac,2025-10-05,Sprint 1,Novel BWB geometry requires special analysis
+CERT-002,Hydrogen cryogenic safety envelopes,Safety envelopes and procedures for abnormal hydrogen cryogenic conditions,Safety,Critical,CQH,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:h2cryo,2025-10-05,Sprint 1,Special conditions required
+CERT-003,FBW fault detection coverage,Fault detection and handling coverage analysis for DAL A flight control systems,Software,Critical,IIS,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:fbw,2025-10-05,Sprint 2,DO-178C Level A requirements
+CERT-004,Flutter margins for BWB geometry,Flutter and aeroelastic analysis for blended wing body edge cases,Structures,High,AAA,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:flutter,2025-10-05,Sprint 2,Novel configuration analysis
+CERT-005,BWB icing and de-icing procedures,Ice protection procedures specific to BWB planform and surfaces,Systems,High,AAA,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:icing,2025-10-05,Sprint 2,BWB-specific considerations
+CERT-006,Hydrogen tank integrity monitoring,Real-time monitoring and inspection procedures for cryogenic hydrogen tanks,Safety,Critical,PPP,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:tankmoni,2025-10-05,Sprint 1,Continuous airworthiness
+CERT-007,BWB cabin pressurization analysis,Rapid decompression analysis for BWB cabin geometry,Safety,High,AAA,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:press,2025-10-05,Sprint 2,Novel geometry considerations
+CERT-008,Hydrogen emergency procedures,Emergency procedures and crew training for hydrogen-related incidents,Operations,Critical,PPP,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:h2emer,2025-10-05,Sprint 1,Special conditions required
+CERT-009,BWB ditching characteristics,Ditching analysis and demonstration for BWB configuration,Safety,High,AAA,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:ditch,2025-10-05,Sprint 3,BWB-specific analysis
+CERT-010,DAL allocation and traceability,Complete DAL allocation matrix and requirements traceability,Software,High,IIS,Open,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CERT:dal,2025-10-05,Sprint 1,ARP4754A/ARP4761 compliance

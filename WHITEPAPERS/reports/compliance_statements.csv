@@ -1,0 +1,20 @@
+Rule ID,Paragraph,Statement,Method,Evidence UTCS ID,Status,Reviewer,Date,Notes
+CS-25.301,a,BWB Q100 load envelope meets all design conditions including hydrogen fuel system integration,Analysis Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:loads:envelope,Planned,,,
+CS-25.301,b,Structural loads analysis complete for all flight phases and ground operations,Analysis,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:loads:analysis,Planned,,,
+CS-25.305,a,Strength analysis demonstrates adequate margins for all structural elements,Analysis Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:strength:analysis,Planned,,,
+CS-25.335,a,High speed stability and control demonstrated through CFD and flight test,Analysis Flight,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:stability:highspeed,Planned,,,
+CS-25.561,a,Emergency landing conditions meet crashworthiness requirements for BWB configuration,Analysis Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:crash:emergency,Planned,,,BWB-specific geometry considered
+CS-25.571,a,Damage tolerance and fatigue evaluation program established,Analysis Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:fatigue:program,Planned,,,
+CS-25.603,a,Materials meet specification and traceability requirements,Inspection,UTCS-MI:v5.0:AMPEL360:BWB:Q100:MEC:materials:trace,Planned,,,
+CS-25.853,a,Compartment interiors meet flammability test requirements,Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CCC:flammability:test,Planned,,,
+CS-25.857,a,Cargo compartments meet safety requirements,Analysis Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CCC:cargo:safety,Planned,,,
+CS-25.901,a,Engine installation meets all requirements,Inspection Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:PPP:engines:install,Planned,,,
+CS-25.981,a,Hydrogen fuel system meets safety requirements under special conditions,Analysis Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:PPP:hydrogen:safety,Planned,,,Critical - requires special conditions
+CS-25.981,b,Hydrogen leak detection and ventilation adequate,Analysis Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:PPP:hydrogen:leak,Planned,,,Critical - requires special conditions
+CS-25.1301,a,System function and installation meet requirements,Analysis Inspection,UTCS-MI:v5.0:AMPEL360:BWB:Q100:IIS:function:install,Planned,,,
+CS-25.1309,a,Equipment systems meet safety assessment requirements,SSA,UTCS-MI:v5.0:AMPEL360:BWB:Q100:IIS:safety:ssa,Planned,,,DO-178C/DO-254 required
+CS-25.1309,b,FHA PSSA SSA completed with appropriate DAL allocations,SSA,UTCS-MI:v5.0:AMPEL360:BWB:Q100:IIS:safety:dal,Planned,,,Critical software identified
+CS-25.1321,a,Cockpit arrangement and visibility meet requirements,Inspection,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CCC:cockpit:arrange,Planned,,,
+CS-25.1419,a,Ice protection system adequate for all conditions,Analysis Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:icing:protection,Planned,,,BWB-specific considerations
+Noise,Chapter 14,External noise levels meet certification requirements,Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:EER:noise:cert,Planned,,,
+Emissions,ICAO Annex 16,Environmental emissions meet requirements,Analysis Test,UTCS-MI:v5.0:AMPEL360:BWB:Q100:EER:emissions:icao,Planned,,,

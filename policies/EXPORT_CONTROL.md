@@ -137,7 +137,7 @@ export_control:
 export_control:
   itar: true
   usml_category: "VIII(h)"
-  classification: CONTROLLED
+  classification: INTERNAL–EVIDENCE-REQUIRED
   storage:
     location: "off-repo"
     hash_sha256: "a3f8b7c6d9e4..."

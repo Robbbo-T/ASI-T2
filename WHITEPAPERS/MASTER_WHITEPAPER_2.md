@@ -3,7 +3,7 @@ id: ASIT2-WHITEPAPER-INTEGRATION-2
 project: ASI-T2
 artifact: Integration Whitepaper #2 — TFA MAP · TFA MAL · ASI‑MAP (Definitive Clarification)
 llc: GENESIS
-classification: PUBLIC-DRAFT
+classification: INTERNAL–EVIDENCE-REQUIRED
 version: 0.1.0
 release_date: "2025-10-03"
 author: "Amedeo Pelliccia"
