@@ -1,3 +1,4 @@
+
 # Teknia Token CLI (`tek_tokens.py`) — v3.14
 
 CLI for an integer `deg` ledger with exact `TT ⇄ deg`, **founder 5% at genesis**, **sustain fee tiered for transfers (π)** with **0.5% for reward/consume**, optional **Δθmin = 2592 deg** on transfers, and a **tx hash‑chain** plus **policy pin**.
@@ -328,3 +329,5 @@ If you have an existing v3.1 ledger:
 ---
 
 **Teknia Token v3.14** — *π-tier hybrid tokenomics with policy immutability*
+```
+
