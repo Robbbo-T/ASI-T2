@@ -204,14 +204,7 @@ def main(paths: List[str]) -> int:
                 if f.is_file() and should_check_file(f):
                     result = lint_path(f)
                     ok &= result
-                    if not result:
-                        checked_count += 1
-                    elif f.name.startswith(('DMC-', 'ASSY-', 'PRT-', 'DRW-', 'FEM-', 
-                                           'CFD-', 'MBD-', 'EMI-', 'NC-', 'APT-', 'OPR-', 
-                                           'FIX-', 'TOOL-', 'SET-', 'QIP-', 'QIF-', 
-                                           'DMIS-', 'MEAS-', 'MSA-', 'CERT-', 'EPR-', 
-                                           'RECY-', 'TREAT-', 'DISP-', 'MATREC-')):
-                        checked_count += 1
+                    checked_count += 1
     
     if checked_count > 0:
         print(f"Checked {checked_count} CAx/DM files")
