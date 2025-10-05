@@ -1,7 +1,5 @@
 name: S1000D Validation
 
-# Validates S1000D data modules against BREX rules and XML schemas
-
 on:
   push:
     branches: [main, 'copilot/**']
@@ -34,7 +32,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install lxml defusedxml
 
-          # Install xmllint (libxml2-utils)
           sudo apt-get update
           sudo apt-get install -y libxml2-utils
 
@@ -43,15 +40,8 @@ jobs:
         run: |
           echo "🔍 Finding S1000D data modules..."
 
-          # Find all XML files in ata/ directories
           find . -path "*/ata/ATA-*/*.xml" -type f > s1000d-files.txt
 
-          # Exclude files that are not S1000D data modules:
-          # - BREX files (use brexIdent, not dmIdent)
-          # - DMRL files (use dmrlIdent, not dmIdent)
-          # - Test case files (not S1000D format)
-          # - Configuration files like schedule.xml, partition.xml
-          # - Schema catalog files
           grep -v "BREX" s1000d-files.txt | \
             grep -v "brex" | \
             grep -v "DMRL" | \
@@ -99,10 +89,18 @@ jobs:
         run: |
           python - <<'EOF'
           import sys
-          from pathlib import Path
           from defusedxml import ElementTree as ET
 
-          NS = "{http://www.s1000d.org/S1000D_6-0/descript}"
+          def find_with_or_without_ns(root, tag):
+              # Try no namespace
+              result = root.find(f'.//{tag}')
+              if result is not None:
+                  return result
+              # Try any namespace
+              for elem in root.iter():
+                  if elem.tag.endswith(tag):
+                      return elem
+              return None
 
           with open("data-modules.txt") as f:
               data_modules = [line.strip() for line in f if line.strip()]
@@ -117,22 +115,19 @@ jobs:
                   tree = ET.parse(dm_path)
                   root = tree.getroot()
 
-                  # Check for required S1000D elements (basic)
                   # identAndStatusSection
-                  if root.find(f".//{NS}identAndStatusSection") is None and root.find(".//identAndStatusSection") is None:
+                  if not find_with_or_without_ns(root, "identAndStatusSection"):
                       warnings.append(f"{dm_path}: Missing identAndStatusSection")
 
                   # dmIdent
-                  if root.find(f".//{NS}dmIdent") is None and root.find(".//dmIdent") is None:
+                  if not find_with_or_without_ns(root, "dmIdent"):
                       errors.append(f"{dm_path}: Missing dmIdent (data module code)")
 
                   # security
-                  security = root.find(f".//{NS}security") or root.find(".//security")
-                  if security is None:
+                  if not find_with_or_without_ns(root, "security"):
                       warnings.append(f"{dm_path}: Missing security classification")
 
                   print(f"  ✅ Basic structure OK")
-
               except Exception as e:
                   errors.append(f"{dm_path}: XML parsing error: {e}")
                   print(f"  ❌ ERROR: {e}")
@@ -171,8 +166,6 @@ jobs:
         run: |
           echo "✅ Validating BREX files..."
 
-          # For now, just check well-formedness
-          # Full BREX validation would require S1000D XSD schemas and a BREX validator
           errors=0
           while IFS= read -r brex; do
               echo "Checking: $brex"
