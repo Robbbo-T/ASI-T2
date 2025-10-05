@@ -504,7 +504,7 @@ def main() -> int:
     try:
         if args.cmd == "init":    return cmd_init(args)
         if args.cmd == "balance": return cmd_balance(args)
-        if args.cmd == "transfer":return cmd_transfer(args)
+        if args.cmd == "transfer": return cmd_transfer(args)
         if args.cmd == "reward":  return cmd_reward(args)
         if args.cmd == "consume": return cmd_consume(args)
         if args.cmd == "quote":   return cmd_quote(args)
