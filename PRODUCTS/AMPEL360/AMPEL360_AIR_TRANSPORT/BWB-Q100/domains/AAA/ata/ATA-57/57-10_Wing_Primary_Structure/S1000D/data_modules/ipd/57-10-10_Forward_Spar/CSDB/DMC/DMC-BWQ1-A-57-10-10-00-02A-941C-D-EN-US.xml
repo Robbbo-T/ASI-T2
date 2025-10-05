@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xsi:noNamespaceSchemaLocation="s1000d/ipd.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode
+          modelIdentCode="BWQ1"
+          systemDiffCode="A"
+          systemCode="57"
+          subSystemCode="10"
+          subSubSystemCode="10"
+          assyCode="00"
+          disassyCode="02A"
+          infoCode="941"
+          infoCodeVariant="C"
+          itemLocationCode="D"/>
+        <language countryIsoCode="US" languageIsoCode="en"/>
+        <issueInfo issueNumber="001" inWork="00">
+          <issueDate year="2025" month="10" day="04"/>
+        </issueInfo>
+      </dmIdent>
+      <dmAddressItems>
+        <issueType>new</issueType>
+        <responsiblePartnerCompany enterpriseCode="IDEALE.eu">IDEALE.eu</responsiblePartnerCompany>
+        <originator enterpriseCode="IDEALE.eu">IDEALE.eu</originator>
+        <title>Illustrated Parts – Forward Spar (57-10-10) – Sheet 3 (QSS Provisioning)</title>
+        <security classification="01"/>
+        <qualityAssurance qaLevel="00"/>
+      </dmAddressItems>
+    </dmAddress>
+
+    <applic>
+      <displayText>BWBQ100 baseline with QSS option (All MSN with OPT-QSS-FS)</displayText>
+    </applic>
+
+    <refs>
+      <!-- Descriptive DM for QSS -->
+      <dmRef xlink:href="DMC-BWQ1-A-57-10-50-00-00A-040A-D-EN-US.xml" dmRefIdent="desc-qss">
+        <dmRefAddressItems>
+          <dmTitle>Quantum Sensorial Skin System – General Description</dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <!-- First IPD sheet (sheet 1) -->
+      <dmRef xlink:href="DMC-BWQ1-A-57-10-10-00-00A-941A-D-EN-US.xml" dmRefIdent="ipd-sheet1">
+        <dmRefAddressItems>
+          <dmTitle>Illustrated Parts – Forward Spar (Sheet 1)</dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <!-- Second IPD sheet (sheet 2) -->
+      <dmRef xlink:href="DMC-BWQ1-A-57-10-10-00-01A-941B-D-EN-US.xml" dmRefIdent="ipd-sheet2">
+        <dmRefAddressItems>
+          <dmTitle>Illustrated Parts – Forward Spar (Sheet 2)</dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+    </refs>
+  </identAndStatusSection>
+
+  <content>
+    <illustratedPartsData>
+
+      <ipdStatus>
+        <catalogSeqNumberInfo>
+          <catalogSeqNumber>57-10-10 / Sheet 3 (QSS)</catalogSeqNumber>
+          <catalogSeqNumberTitle>Forward Spar – QSS Provisioning Bill</catalogSeqNumberTitle>
+        </catalogSeqNumberInfo>
+        <remarks>
+          <para>This sheet provides a dedicated QSS-only bill of materials for avionics provisioning. Includes sensor kits, harnesses, controller brackets, and associated hardware for Quantum Sensorial Skin (QSS) installation on forward spar structure.</para>
+          <para>Use this sheet in conjunction with Sheet 1 and Sheet 2 for complete forward spar assembly with QSS option.</para>
+        </remarks>
+      </ipdStatus>
+
+      <!-- ===== FIGURE ===== -->
+
+      <figure infoEntityIdent="fig-QSS-FS-ASSY">
+        <title>QSS Sensor Assembly – Forward Spar Installation</title>
+        <graphic xlink:href="../graphics/ipd/QSS_FS_assembly.svg" xlink:title="QSS FS Assembly"/>
+        <calloutList>
+          <callout><calloutId>1</calloutId><para>QSS Sensor Patch Kit (INB)</para></callout>
+          <callout><calloutId>2</calloutId><para>QSS Sensor Patch Kit (MID)</para></callout>
+          <callout><calloutId>3</calloutId><para>QSS Sensor Patch Kit (OUTB)</para></callout>
+          <callout><calloutId>4</calloutId><para>QSS Harness Assembly (Forward Spar)</para></callout>
+          <callout><calloutId>5</calloutId><para>QSS Controller Bracket</para></callout>
+          <callout><calloutId>6</calloutId><para>QSS Controller Unit</para></callout>
+          <callout><calloutId>7</calloutId><para>Adhesive Kit (Sensor Bonding)</para></callout>
+          <callout><calloutId>8</calloutId><para>Mounting Hardware Kit</para></callout>
+        </calloutList>
+      </figure>
+
+      <!-- ===== PARTS GROUPS ===== -->
+
+      <ipd>
+        
+        <!-- QSS Sensor Kits -->
+        <ipdGroup>
+          <groupTitle>QSS Sensor Patch Kits</groupTitle>
+          <applic>
+            <displayText>Aircraft with OPT-QSS-FS option</displayText>
+          </applic>
+          
+          <ipdItem>
+            <seqNumber>1</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-FS-KIT-01</partNumber>
+              <itemName>QSS Sensor Patch Kit (Forward Spar, INB)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="kit">2</quantityPerNextHigherAssy></quantities>
+            <applic>
+              <displayText>FS-INB zone (LH + RH)</displayText>
+            </applic>
+            <remarks>
+              <para>Includes: (1) FBG strain sensor array with 8 channels, (2) Piezoelectric grid (4×6 elements), (3) Bonding adhesive (50 mL), (4) Application tools, (5) Installation documentation.</para>
+            </remarks>
+          </ipdItem>
+
+          <ipdItem>
+            <seqNumber>2</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="2"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-FS-KIT-02</partNumber>
+              <itemName>QSS Sensor Patch Kit (Forward Spar, MID)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="kit">2</quantityPerNextHigherAssy></quantities>
+            <applic>
+              <displayText>FS-MID zone (LH + RH)</displayText>
+            </applic>
+            <remarks>
+              <para>Includes: (1) FBG strain sensor array with 6 channels, (2) Piezoelectric grid (3×5 elements), (3) Bonding adhesive (40 mL), (4) Application tools, (5) Installation documentation.</para>
+            </remarks>
+          </ipdItem>
+
+          <ipdItem>
+            <seqNumber>3</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="3"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-FS-KIT-03</partNumber>
+              <itemName>QSS Sensor Patch Kit (Forward Spar, OUTB)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="kit">2</quantityPerNextHigherAssy></quantities>
+            <applic>
+              <displayText>FS-OUTB zone (LH + RH)</displayText>
+            </applic>
+            <remarks>
+              <para>Includes: (1) FBG strain sensor array with 4 channels, (2) Piezoelectric grid (2×4 elements), (3) Bonding adhesive (30 mL), (4) Application tools, (5) Installation documentation.</para>
+            </remarks>
+          </ipdItem>
+
+        </ipdGroup>
+
+        <!-- QSS Harnesses and Controllers -->
+        <ipdGroup>
+          <groupTitle>QSS Harnesses and Controller Assembly</groupTitle>
+          <applic>
+            <displayText>Aircraft with OPT-QSS-FS option</displayText>
+          </applic>
+
+          <ipdItem>
+            <seqNumber>4</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="4"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-HARNESS-FS-001</partNumber>
+              <itemName>QSS Harness Assembly (Forward Spar)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+            <remarks>
+              <para>Shielded harness with fiber-optic and electrical connectors. Routes from all sensor patches to controller unit. Includes cable ties, grommets, and chafe protection.</para>
+            </remarks>
+          </ipdItem>
+
+          <ipdItem>
+            <seqNumber>5</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="5"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-BRACKET-FS-001</partNumber>
+              <itemName>QSS Controller Bracket (Forward Spar)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+            <remarks>
+              <para>Aluminum alloy mounting bracket for QSS controller unit. Includes vibration isolation mounts and bonding provisions.</para>
+            </remarks>
+          </ipdItem>
+
+          <ipdItem>
+            <seqNumber>6</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="6"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-CTRL-FS-001</partNumber>
+              <itemName>QSS Controller Unit (Forward Spar)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+            <remarks>
+              <para>Quantum Sensorial Skin controller with FBG interrogator, piezo signal conditioner, and ARINC 429 interface. Part of ATA-45 monitoring system.</para>
+            </remarks>
+          </ipdItem>
+
+        </ipdGroup>
+
+        <!-- QSS Installation Materials -->
+        <ipdGroup>
+          <groupTitle>QSS Installation Materials and Hardware</groupTitle>
+          <applic>
+            <displayText>Aircraft with OPT-QSS-FS option</displayText>
+          </applic>
+
+          <ipdItem>
+            <seqNumber>7</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="7"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-ADHESIVE-KIT-01</partNumber>
+              <itemName>Adhesive Kit (Sensor Bonding)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="kit">1</quantityPerNextHigherAssy></quantities>
+            <remarks>
+              <para>Two-part epoxy adhesive for sensor bonding. Includes surface preparation materials, mixing nozzles, and application spatulas. Shelf life: 12 months refrigerated.</para>
+            </remarks>
+          </ipdItem>
+
+          <ipdItem>
+            <seqNumber>8</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="8"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-HDWR-KIT-01</partNumber>
+              <itemName>Mounting Hardware Kit (QSS)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="kit">1</quantityPerNextHigherAssy></quantities>
+            <remarks>
+              <para>Includes fasteners, clamps, cable ties, grommets, and bonding straps for QSS installation. All hardware corrosion-protected per AMS-C-81562.</para>
+            </remarks>
+          </ipdItem>
+
+        </ipdGroup>
+
+        <!-- QSS Documentation -->
+        <ipdGroup>
+          <groupTitle>QSS Documentation and Tooling</groupTitle>
+          <applic>
+            <displayText>Aircraft with OPT-QSS-FS option</displayText>
+          </applic>
+
+          <ipdItem>
+            <seqNumber>9</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-DOC-FS-001</partNumber>
+              <itemName>QSS Installation Manual (Forward Spar)</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="ea">1</quantityPerNextHigherAssy></quantities>
+            <remarks>
+              <para>Comprehensive installation manual including surface preparation, sensor placement, adhesive application, harness routing, controller installation, and acceptance testing procedures.</para>
+            </remarks>
+          </ipdItem>
+
+          <ipdItem>
+            <seqNumber>10</seqNumber>
+            <figureRef infoEntityIdent="fig-QSS-FS-ASSY" calloutId="1"/>
+            <itemIdentData>
+              <manufacturerCode>IDEALE</manufacturerCode>
+              <partNumber>QSS-TOOL-KIT-01</partNumber>
+              <itemName>QSS Installation Tool Kit</itemName>
+            </itemIdentData>
+            <quantities><quantityPerNextHigherAssy uom="kit">As req'd</quantityPerNextHigherAssy></quantities>
+            <remarks>
+              <para>Special tools for QSS installation: surface preparation tools, adhesive applicators, alignment fixtures, cable routing tools, and acceptance test equipment. Reusable; one set per maintenance facility.</para>
+            </remarks>
+          </ipdItem>
+
+        </ipdGroup>
+
+      </ipd>
+    </illustratedPartsData>
+  </content>
+</dmodule>

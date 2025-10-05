@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<brex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/brex.xsd">
+  <identAndStatusSection>
+    <brexIdent>
+      <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+              systemCode="57" subSystemCode="9" subSubSystemCode="0"
+              assyCode="00" disassyCode="00" disassyCodeVariant="A"
+              infoCode="022" infoCodeVariant="B" itemLocationCode="D"/>
+      <language languageIsoCode="en" countryIsoCode="US"/>
+      <issueInfo issueNumber="001" inWork="00">
+        <issueDate year="2025" month="10" day="04"/>
+      </issueInfo>
+    </brexIdent>
+    <brexAddressItems>
+      <issueDate year="2025" month="10" day="04"/>
+      <brexTitle>BREX Rules for 57-90-00 Template Example (Issue 6.0)</brexTitle>
+    </brexAddressItems>
+    <brexStatus>
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+      <qualityAssurance><unverified/></qualityAssurance>
+    </brexStatus>
+  </identAndStatusSection>
+
+  <content>
+    <contextRules>
+      <contextRule>
+        <contextRuleIdent>CR-001</contextRuleIdent>
+        <contextRuleTitle>All DMs must reference BREX</contextRuleTitle>
+        <contextRuleContext>
+          <context>/dmodule/identAndStatusSection/dmStatus</context>
+        </contextRuleContext>
+        <contextRuleConstraint>
+          <assert test="brexDmRef">Every data module must include a brexDmRef element</assert>
+        </contextRuleConstraint>
+      </contextRule>
+
+      <contextRule>
+        <contextRuleIdent>CR-002</contextRuleIdent>
+        <contextRuleTitle>Enterprise code must be IDEALE.eu</contextRuleTitle>
+        <contextRuleContext>
+          <context>/dmodule/identAndStatusSection/dmStatus/responsiblePartnerCompany</context>
+        </contextRuleContext>
+        <contextRuleConstraint>
+          <assert test="@enterpriseCode = 'IDEALE.eu'">Enterprise code must be 'IDEALE.eu'</assert>
+        </contextRuleConstraint>
+      </contextRule>
+
+      <contextRule>
+        <contextRuleIdent>CR-003</contextRuleIdent>
+        <contextRuleTitle>Language must be en-US</contextRuleTitle>
+        <contextRuleContext>
+          <context>/dmodule/identAndStatusSection/dmAddress/dmIdent/language</context>
+        </contextRuleContext>
+        <contextRuleConstraint>
+          <assert test="@languageIsoCode = 'en' and @countryIsoCode = 'US'">Language must be en-US</assert>
+        </contextRuleConstraint>
+      </contextRule>
+
+      <contextRule>
+        <contextRuleIdent>CR-004</contextRuleIdent>
+        <contextRuleTitle>Security classification required</contextRuleTitle>
+        <contextRuleContext>
+          <context>/dmodule/identAndStatusSection/dmStatus</context>
+        </contextRuleContext>
+        <contextRuleConstraint>
+          <assert test="security">Every data module must specify security classification</assert>
+        </contextRuleConstraint>
+      </contextRule>
+
+      <contextRule>
+        <contextRuleIdent>CR-005</contextRuleIdent>
+        <contextRuleTitle>Title style enforcement</contextRuleTitle>
+        <contextRuleContext>
+          <context>/dmodule/identAndStatusSection/dmAddress/dmAddressItems/dmTitle</context>
+        </contextRuleContext>
+        <contextRuleConstraint>
+          <assert test="techName and infoName">Title must include both techName and infoName elements</assert>
+        </contextRuleConstraint>
+      </contextRule>
+
+      <contextRule>
+        <contextRuleIdent>CR-006</contextRuleIdent>
+        <contextRuleTitle>External schema reference policy</contextRuleTitle>
+        <contextRuleContext>
+          <context>/dmodule/identAndStatusSection/dmStatus/externalPubRef</context>
+        </contextRuleContext>
+        <contextRuleConstraint>
+          <assert test="@xlink:href">External publication references must include xlink:href attribute</assert>
+          <report test="not(contains(@xlink:href, '.json'))">Consider using JSON Schema for external validation schemas</report>
+        </contextRuleConstraint>
+      </contextRule>
+    </contextRules>
+
+    <notationRules>
+      <notationRule>
+        <notationRuleIdent>NR-001</notationRuleIdent>
+        <notationRuleTitle>SVG graphics preferred</notationRuleTitle>
+        <notationRuleConstraint>
+          <report test="//@xlink:href[contains(., '.svg')]">SVG format recommended for scalable graphics</report>
+        </notationRuleConstraint>
+      </notationRule>
+    </notationRules>
+  </content>
+</brex>

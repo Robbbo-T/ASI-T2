@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/proced.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="9" subSubSystemCode="0"
+                assyCode="00" disassyCode="00" disassyCodeVariant="A"
+                infoCode="520" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="00">
+          <issueDate year="2025" month="10" day="04"/>
+        </issueInfo>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="10" day="04"/>
+        <dmTitle>
+          <techName>57-90-00 Template Example</techName>
+          <infoName>Inspection / Operation</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="IDEALE.eu">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+
+      <applic>
+        <displayText>
+          <simplePara>All MSN (baseline)</simplePara>
+        </displayText>
+      </applic>
+
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+
+      <!-- Optional external schema reference -->
+      <externalPubRef id="extSchema01" xlink:href="../SCHEMA/external_schema.json" xlink:show="new" xlink:actuate="onRequest">
+        <title>External JSON Schema</title>
+      </externalPubRef>
+
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <procedure>
+      <preliminaryRqmts>
+        <reqCond>
+          <condType>aircraft-on-ground</condType>
+          <para>Prepare work area and secure power sources.</para>
+        </reqCond>
+        <reqTools>
+          <tool>
+            <name>Portable lighting</name>
+            <use>Visual inspection</use>
+          </tool>
+        </reqTools>
+        <reqSafety>
+          <warning>
+            <para>Observe PPE requirements as per safety data sheets.</para>
+          </warning>
+        </reqSafety>
+      </preliminaryRqmts>
+
+      <mainProcedure>
+        <proceduralStep>
+          <para><emphasis>General inspection philosophy</emphasis></para>
+          <steps>
+            <step>
+              <para>Perform a general visual inspection in accessible zones.</para>
+            </step>
+            <step>
+              <para>Record findings with stationing and photos.</para>
+            </step>
+          </steps>
+        </proceduralStep>
+
+        <proceduralStep>
+          <para><emphasis>Inspection zones and access</emphasis></para>
+          <steps>
+            <step>
+              <para>Prepare access panels per MM 06-XX.</para>
+            </step>
+          </steps>
+        </proceduralStep>
+
+        <proceduralStep>
+          <para><emphasis>NDT selection (UT/EC/thermography)</emphasis></para>
+          <table>
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Area</entry>
+                  <entry>Indication</entry>
+                  <entry>Method</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>Composite</entry>
+                  <entry>Delamination</entry>
+                  <entry>UT phased-array</entry>
+                </row>
+                <row>
+                  <entry>Metal</entry>
+                  <entry>Bore crack</entry>
+                  <entry>Eddy-current</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </proceduralStep>
+
+        <proceduralStep>
+          <para><emphasis>Intervals (MPD-derived)</emphasis></para>
+          <para>Apply intervals per approved MPD or MRBR.</para>
+        </proceduralStep>
+      </mainProcedure>
+
+      <closeRqmts>
+        <para>Restore configuration and update maintenance records.</para>
+      </closeRqmts>
+    </procedure>
+  </content>
+</dmodule>

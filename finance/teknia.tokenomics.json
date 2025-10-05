@@ -1,0 +1,44 @@
+{
+  "version": "3.14",
+  "token": {
+    "name": "Teknia Token",
+    "symbol": "TT",
+    "genesis_supply_tt": 2000000000,
+    "deg_per_tt": 360,
+    "unit": "deg",
+    "ledger_file": "finance/ledger.json",
+    "treasury_account": "TREASURY",
+    "founder_account": "FOUNDER",
+    "sustain_vault": "VAULT_SUSTAIN"
+  },
+  "policy": {
+    "divisibility": "360 deg per 1 TT",
+    "supply_model": "fixed",
+    "rounding": "reject-non-integer-deg",
+    "founder_allocation_bps": 500,
+    "sustain_fee_bps": 50,
+    "fee_rounding": "floor-deg",
+    "min_transfer_deg": 2592,
+    "min_transfer_scope": ["transfer"],
+    "sustain_fee_tiers": {
+      "scope": ["transfer"],
+      "schedule": [
+        { "min_deg": 25920,   "bps": "31.4", "label": "≥ 10× Δθmin (72 TT)" },
+        { "min_deg": 259200,  "bps": "99",   "label": "≥ 100× Δθmin (720 TT)" },
+        { "min_deg": 2592000, "bps": "314",  "label": "≥ 1000× Δθmin (7,200 TT)" }
+      ]
+    },
+    "validation": [
+      "sum(balances) == total_supply_deg",
+      "all amounts integer in deg",
+      "no negative balances",
+      "amount_deg % min_transfer_deg == 0"
+    ]
+  },
+  "physics": {
+    "model": "Landauer@CMB",
+    "T_CMB_K": 2.7255,
+    "k_B_J_per_K": 1.380649e-23,
+    "ln2": 0.6931471805599453
+  }
+}
