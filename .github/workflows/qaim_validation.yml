@@ -19,6 +19,7 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
+      # Ensure dependency files are present and display their content for debugging
       - name: Verify dependency files are present
         run: |
           echo "Checking for dependency files..."
@@ -26,10 +27,12 @@ jobs:
           echo "Content of requirements.txt:"
           head -5 requirements.txt
 
+      # Install all Python dependencies
       - name: Install Python dependencies
         run: |
           pip install -r requirements.txt
 
+      # Core QAIM and ATA validation (evidence, folder structure, ethics, classification)
       - name: Validate UTCS/QS evidence, ATA links, MAL-EEM, and classification dash
         shell: bash
         run: |
@@ -67,6 +70,7 @@ jobs:
                   has = any(d.is_dir() and re.fullmatch(r"ATA-\d{2}", d.name) for d in ata.iterdir())
                   if not has:
                       errors.append(f"[ATA] {ata}: no ATA-XX folders")
+          # Ethics marker check
           ethics_ok = False
           scan = [root/"README.md"]
           scan += list(root.glob("domains/*/README.md"))
@@ -89,11 +93,16 @@ jobs:
                   txt = md.read_text(encoding="utf-8", errors="ignore")
               except Exception:
                   continue
+              # Accept 'classification:' line or EN string anywhere (stricter compliance)
+              found = False
               for line in txt.splitlines():
                   if line.strip().lower().startswith("classification:"):
                       if EN not in line:
                           errors.append(f"[CLASS] {md}: classification must be '{EN}' (use EN dash)")
+                      found = True
                       break
+              if not found and EN not in txt:
+                  errors.append(f"[CLASS] {md}: classification must be '{EN}' (use EN dash)")
           if errors:
               print("QAIM validation failed:")
               for e in errors:
@@ -110,6 +119,7 @@ jobs:
                   f.write(f"### {msg}\n")
           PY
 
+      # Print info on latest QOx → ATA, for reviewer help
       - name: Generate latest QOx → ATA targets (info only)
         if: success()
         shell: bash
@@ -150,6 +160,7 @@ jobs:
                   print(f"- {domain}/{phase}: run={info['run_id']} @ {ts} UTC → {info['ata_dir']}")
           PY
 
+      # XML validation steps for S1000D if present
       - name: Install xmllint
         run: sudo apt-get update && sudo apt-get install -y libxml2-utils
 
@@ -168,6 +179,7 @@ jobs:
             find "$BASE/common_information" -name 'CIR-BWQ1-*.xml' -print0 2>/dev/null | xargs -0 -I{} xmllint --noout --schema "$BASE/schemas/cir.xsd" "{}" || true
           fi
 
+      # Optional: Build indices if script present
       - name: Build CSDB indices (optional)
         shell: bash
         run: |
@@ -176,6 +188,7 @@ jobs:
             python3 "$BASE/validation/validators/generate_indices.py" || echo "::warning::Index generation failed"
           fi
 
+      # Optional: Validate DMRL & DM coverage if present
       - name: Validate DMRL & DM coverage (optional)
         shell: bash
         run: |
@@ -191,6 +204,7 @@ jobs:
             rm -f /tmp/dmrl_out.txt
           fi
 
+      # Optional: CSDB lint
       - name: CSDB lint (optional)
         shell: bash
         run: |
@@ -198,4 +212,3 @@ jobs:
           if [ -f "$BASE/validation/validators/validate_csdb.py" ]; then
             python3 "$BASE/validation/validators/validate_csdb.py" || echo "::warning::CSDB validation failed"
           fi
-

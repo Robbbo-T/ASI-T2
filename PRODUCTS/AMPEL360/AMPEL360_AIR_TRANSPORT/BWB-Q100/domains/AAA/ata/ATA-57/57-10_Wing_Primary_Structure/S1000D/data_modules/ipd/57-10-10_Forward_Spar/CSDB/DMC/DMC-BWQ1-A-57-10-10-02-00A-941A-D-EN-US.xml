@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:dc="http://www.purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/ipd.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="10"
+                disassyCode="02" disassyCodeVariant="A"
+                infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="002" inWork="01"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="09" day="28"/>
+        <dmTitle>
+          <techName>AMPEL360 BWB-Q100 Wing</techName>
+          <infoName>Forward Spar Mid Sections – Illustrated Parts Data</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="changed">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+
+      <applic>
+        <displayText>
+          <simplePara>Applies to Forward Spar Mid Sections (BL160-BL320)</simplePara>
+        </displayText>
+      </applic>
+
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <illustratedPartsCatalog>
+      <figure id="fig-0002-mid">
+        <title>Forward Spar Mid Sections</title>
+        <graphic infoEntityIdent="ICN-BWQ1-57-10-10-02-001"/>
+      </figure>
+
+      <!-- Structural Components -->
+      <catalogSeqNumber figureNumber="2" item="001">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-2001-01">
+            <descrForPart>Upper Cap, CFRP (BL160-BL240)</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Carbon fiber reinforced polymer upper cap for mid section BL160-BL240</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="2" item="002">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-2001-02">
+            <descrForPart>Lower Cap, CFRP (BL160-BL240)</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Carbon fiber reinforced polymer lower cap for mid section BL160-BL240</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="2" item="003">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-2002-01">
+            <descrForPart>Web Panel, CFRP Laminate</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Carbon fiber laminate web panel for mid section</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>6</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="2" item="004">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-2003-01">
+            <descrForPart>Lightening Hole Grommet</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Reinforcement grommet for web panel lightening holes</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>24</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <!-- Splice Kit Assemblies -->
+      <catalogSeqNumber figureNumber="2" item="005">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="SK-57-2101">
+            <descrForPart>Inboard/Mid Splice Kit (BL160)</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Complete splice kit for inboard-to-mid section joint at BL160</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Splice Kit Assembly"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="2" item="006">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="SK-57-2201">
+            <descrForPart>Mid/Outboard Splice Kit (BL240)</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Complete splice kit for mid-to-outboard section joint at BL240</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Splice Kit Assembly"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <!-- Fastener Kits -->
+      <catalogSeqNumber figureNumber="2" item="007">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="FK-57-2001">
+            <descrForPart>Cap-to-Web Fasteners, Mid</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Fastener kit for cap-to-web attachment in mid section</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Fastener Kit"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="2" item="008">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="FK-57-2002">
+            <descrForPart>Web Stiffener Rivets</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Rivet kit for web panel stiffener attachment</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Fastener Kit"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <!-- QSS Components -->
+      <catalogSeqNumber figureNumber="2" item="009">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="QSS" partNumberValue="QSS-57-2001">
+            <descrForPart>Sensor Node, Mid Zone</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Quantum Sensorial Skin sensor node for mid section monitoring zone</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>3</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="QSS Component"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="2" item="010">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="QSS" partNumberValue="QSS-CABLE-02">
+            <descrForPart>Shielded Harness, 1.5m</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>1.5-meter shielded cable harness for QSS sensor connections</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>6</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="QSS Component"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="2" item="011">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="QSS" partNumberValue="QSS-CTRL-01">
+            <descrForPart>Local Controller Node</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Local controller node for QSS sensor network management</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="QSS Component"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+    </illustratedPartsCatalog>
+  </content>
+</dmodule>
