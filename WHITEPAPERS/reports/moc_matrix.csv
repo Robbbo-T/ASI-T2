@@ -1,0 +1,17 @@
+Rule ID,Subject,MoC Type,Evidence Artifact,Owner,Status,UTCS ID,Notes
+CS-25.301,Loads,Analysis Test,AAA/cax/analysis/loads/* · UTCS refs,AAA,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:loads,
+CS-25.305,Strength and Deformation,Analysis Test,FEM reports · coupons · UTCS,AAA,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:strength,
+CS-25.335,High Speed Stability and Control,Analysis Flight,CFD FTE reports · flight data · UTCS,AAA,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:stability,
+CS-25.561,Emergency Landing Loads,Analysis Test,Crash energy models · test films · UTCS,AAA,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:crash,
+CS-25.571,Damage Tolerance Fatigue Evaluation,Analysis Test,DT plans · coupons · UTCS,AAA,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:fatigue,
+CS-25.603,Materials,Inspection,Material specs · trace · UTCS,MEC,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:MEC:materials,
+CS-25.853,Compartment Interiors Flammability,Test,Burn test reports · UTCS,CCC,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CCC:flammability,
+CS-25.857,Cargo Compartments,Analysis Test,Cargo safety report · UTCS,CCC,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CCC:cargo,
+CS-25.901,Installation Engines,Inspection Test,PPP installation evidence · UTCS,PPP,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:PPP:engines,
+CS-25.981,Fuel System Safety,Analysis Test,Hydrogen SC set · CQH cryo tests · UTCS,PPP,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:PPP:hydrogen,Special conditions for hydrogen
+CS-25.1301,Function and Installation,Analysis Inspection,System ICDs · UTCS,IIS,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:IIS:function,
+CS-25.1309,Equipment Systems Safety,SSA DO-178C DO-254,FHA PSSA SSA · DAL table · UTCS,IIS,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:IIS:safety,Critical software and hardware
+CS-25.1321,Arrangement and Visibility,Inspection,Cockpit layout · HMI · UTCS,CCC,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:CCC:cockpit,
+CS-25.1419,Ice Protection,Analysis Test,Ice tunnel reports · flight icing · UTCS,AAA,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:AAA:icing,
+Noise rules,External Noise Compliance,Test,Acoustic measurements · UTCS,EER,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:EER:noise,
+Emissions,Environmental Compliance,Analysis Test,LCA EPD · EER metrics · UTCS,EER,TBD,UTCS-MI:v5.0:AMPEL360:BWB:Q100:EER:emissions,
