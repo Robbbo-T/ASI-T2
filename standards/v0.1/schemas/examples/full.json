@@ -1,0 +1,17 @@
+{
+  "ief_version": "0.1",
+  "name": "widget-suite",
+  "type": "product",
+  "exports": {
+    "sbom": "sbom/widget-suite.spdx.json",
+    "docs": "docs/",
+    "evidence": "evidence/"
+  },
+  "context": {
+    "who": { "org": "ACME", "team": "Core" },
+    "what": { "tag": "v1.2.3" },
+    "where": { "region": "EU" },
+    "when": { "built": "2025-10-05T12:00:00Z" },
+    "why":  { "objective": "release" }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "ief_version": "0.1",
+  "name": "bad",
+  "type": "library",
+  "exports": { "sbom": "sbom/x.spdx.json" }
+}

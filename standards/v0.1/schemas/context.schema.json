@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ideale.eu/ief/v0.1/context.schema.json",
+  "title": "IDEALE Evidence Framework - Context Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ief_version", "name", "type", "exports"],
+  "properties": {
+    "ief_version": {
+      "type": "string",
+      "const": "0.1",
+      "description": "IEF spec version"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "type": "string",
+      "enum": ["component", "product", "service"]
+    },
+    "exports": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sbom"],
+      "properties": {
+        "sbom": {
+          "type": "string",
+          "minLength": 1
+        },
+        "docs": { "type": "string" },
+        "evidence": { "type": "string" }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "who": { "type": "object" },
+        "what": { "type": "object" },
+        "where": { "type": "object" },
+        "when": { "type": "object" },
+        "why":  { "type": "object" }
+      }
+    }
+  }
+}

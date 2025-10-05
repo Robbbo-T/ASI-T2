@@ -1,0 +1,57 @@
+# IEF v0.1 Verification Workflow
+name: IEF Verify
+
+on:
+  push:
+    paths:
+      - 'IDEALE/context.manifest.json'
+      - 'IEF/context.manifest.json'
+      - '.ideale/context.manifest.json'
+      - 'sbom/**'
+      - 'standards/v0.1/**'
+  pull_request:
+    paths:
+      - 'IDEALE/context.manifest.json'
+      - 'IEF/context.manifest.json'
+      - '.ideale/context.manifest.json'
+      - 'sbom/**'
+      - 'standards/v0.1/**'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install jsonschema
+          # Optional: Install SPDX tools if needed
+          # pip install spdx-tools
+
+      - name: Run IEF conformance tests
+        run: |
+          cd standards/v0.1/tests
+          python run_tests.py
+
+      - name: Validate manifest (try each location)
+        run: |
+          if [ -f "IDEALE/context.manifest.json" ]; then
+            echo "Validating IDEALE/context.manifest.json"
+            python standards/v0.1/tools/validate_manifest.py IDEALE/context.manifest.json
+          elif [ -f "IEF/context.manifest.json" ]; then
+            echo "Validating IEF/context.manifest.json"
+            python standards/v0.1/tools/validate_manifest.py IEF/context.manifest.json
+          elif [ -f ".ideale/context.manifest.json" ]; then
+            echo "Validating .ideale/context.manifest.json"
+            python standards/v0.1/tools/validate_manifest.py .ideale/context.manifest.json
+          else
+            echo "No IEF manifest found (this is OK if not using IEF yet)"
+            exit 0
+          fi

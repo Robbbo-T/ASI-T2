@@ -1,0 +1,13 @@
+{
+  "ief_version": "0.1",
+  "name": "ok-full",
+  "type": "product",
+  "exports": {
+    "sbom": "sbom/widget.spdx.json",
+    "docs": "docs/",
+    "evidence": "evidence/"
+  },
+  "context": {
+    "who": {"org": "ACME"}
+  }
+}

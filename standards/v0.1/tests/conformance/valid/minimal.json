@@ -1,0 +1,8 @@
+{
+  "ief_version": "0.1",
+  "name": "ok",
+  "type": "component",
+  "exports": {
+    "sbom": "sbom/component.spdx.json"
+  }
+}
