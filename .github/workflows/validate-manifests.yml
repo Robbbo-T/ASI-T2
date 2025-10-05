@@ -20,24 +20,27 @@ on:
       - '**/manifest.json'
       - 'Shared/_templates/index.extracted.schema.json'
 
+env:
+  SCHEMA_PATH: Shared/_templates/index.extracted.schema.json
+
 jobs:
   validate:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install jsonschema pyyaml
-      
+
       - name: Find manifest files
         id: find-manifests
         run: |
@@ -45,7 +48,7 @@ jobs:
           find . -name "index.extracted.yaml" -o -name "index.extracted.json" > manifests.txt
           cat manifests.txt
           echo "count=$(wc -l < manifests.txt)" >> $GITHUB_OUTPUT
-      
+
       - name: Validate manifests against schema
         if: steps.find-manifests.outputs.count > 0
         run: |
@@ -54,10 +57,9 @@ jobs:
           import sys
           from pathlib import Path
           import yaml
-          from jsonschema import Draft202012Validator, ValidationError
+          from jsonschema import Draft202012Validator
           
-          # Load schema
-          schema_path = Path("Shared/_templates/index.extracted.schema.json")
+          schema_path = Path("${{ env.SCHEMA_PATH }}")
           if not schema_path.exists():
               print(f"⚠️  Schema not found: {schema_path}")
               sys.exit(0)
@@ -67,14 +69,12 @@ jobs:
           
           validator = Draft202012Validator(schema)
           
-          # Load manifest list
           with open("manifests.txt") as f:
               manifests = [line.strip() for line in f if line.strip()]
           
           errors_found = False
           for manifest_path in manifests:
               print(f"\n🔍 Validating: {manifest_path}")
-              
               try:
                   with open(manifest_path) as f:
                       if manifest_path.endswith('.yaml') or manifest_path.endswith('.yml'):
@@ -82,11 +82,10 @@ jobs:
                       else:
                           data = json.load(f)
                   
-                  # Validate
                   errors = list(validator.iter_errors(data))
                   if errors:
                       print(f"  ❌ FAILED: {len(errors)} validation error(s)")
-                      for error in errors[:5]:  # Show first 5 errors
+                      for error in errors[:5]:
                           path = " -> ".join(str(p) for p in error.absolute_path) if error.absolute_path else "root"
                           print(f"     • {path}: {error.message}")
                       if len(errors) > 5:
@@ -94,7 +93,6 @@ jobs:
                       errors_found = True
                   else:
                       print(f"  ✅ PASSED")
-              
               except Exception as e:
                   print(f"  ❌ ERROR: {e}")
                   errors_found = True
@@ -106,7 +104,7 @@ jobs:
               print("\n✅ SUCCESS: All manifests are valid")
               sys.exit(0)
           EOF
-      
+
       - name: Check classification fields
         if: steps.find-manifests.outputs.count > 0
         run: |
@@ -129,19 +127,16 @@ jobs:
                   else:
                       data = json.load(f)
               
-              # Check classification
               classification = data.get('classification')
               if not classification:
                   warnings.append(f"{manifest_path}: Missing 'classification' field")
                   continue
               
-              # Check export control consistency
               export_control = data.get('export_control', {})
               if classification == 'CONTROLLED':
                   if not export_control.get('itar') and export_control.get('ear') == 'NLR' and export_control.get('eu_dual_use') == 'none':
                       errors.append(f"{manifest_path}: CONTROLLED classification but no export control restrictions")
               
-              # Check contacts
               contacts = data.get('contacts', [])
               if not contacts:
                   warnings.append(f"{manifest_path}: Missing 'contacts' field")
@@ -159,26 +154,24 @@ jobs:
           else:
               print("\n✅ Classification checks passed")
           EOF
-      
+
       - name: Check for CONTROLLED content
         run: |
           echo "🔍 Checking for CONTROLLED content in public repository..."
-          
-          # Search for CONTROLLED markers in manifest files
+
           if grep -rP "classification.*\bCONTROLLED\b" --include="*.yaml" --include="*.json" .; then
               echo "❌ ERROR: CONTROLLED content detected in repository"
               echo "CONTROLLED artifacts must be stored off-repo and referenced by hash only."
               echo "See policies/DATA_CLASSIFICATION.md and policies/EXPORT_CONTROL.md"
               exit 1
           fi
-          
-          # Search for ITAR markers
+
           if grep -ri "itar.*true" --include="*.yaml" --include="*.json" .; then
               echo "⚠️  WARNING: ITAR=true detected. Verify this is intentional and content is off-repo."
           fi
-          
+
           echo "✅ No CONTROLLED content detected"
-      
+
       - name: Summary
         if: always()
         run: |
@@ -188,6 +181,7 @@ jobs:
               count=$(wc -l < manifests.txt)
               echo "- **Manifests checked:** $count" >> $GITHUB_STEP_SUMMARY
           fi
-          echo "- **Schema:** \`Shared/_templates/index.extracted.schema.json\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Schema:** \`${{ env.SCHEMA_PATH }}\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "For details, see job logs above." >> $GITHUB_STEP_SUMMARY
+
