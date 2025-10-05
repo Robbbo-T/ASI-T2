@@ -517,7 +517,7 @@ def main() -> int:
         return 1
     except Exception as e:
         print(f"Unexpected error: {e}", file=sys.stderr)
-        import traceback; traceback.print_exc()
+        import traceback
         return 1
 
 if __name__ == "__main__":
