@@ -12,49 +12,49 @@ jobs:
       - name: Build expected list from product roots
         id: build
         run: |
-          python - << 'PY'
-import json, sys
-from pathlib import Path
-repo = Path(".")
-globs = ["PRODUCTS/*/*/*/domains/*", "PRODUCTS/*/*/domains/*", "PRODUCTS/*/domains/*"]
-codes = set()
-for pat in globs:
-    for p in repo.glob(pat):
-        if p.is_dir():
-            codes.add(p.name)
-need = sorted(codes)
-print("CODES=" + json.dumps(need))
-open("codes.json","w").write(json.dumps(need))
-PY
+          python3 << 'EOF'
+          import json, sys
+          from pathlib import Path
+          repo = Path(".")
+          globs = ["PRODUCTS/*/*/*/domains/*", "PRODUCTS/*/*/domains/*", "PRODUCTS/*/domains/*"]
+          codes = set()
+          for pat in globs:
+              for p in repo.glob(pat):
+                  if p.is_dir():
+                      codes.add(p.name)
+          need = sorted(codes)
+          print("CODES=" + json.dumps(need))
+          open("codes.json","w").write(json.dumps(need))
+          EOF
 
       - name: Check Supplier/Services and Vendors/Components coverage
         run: |
-          python - << 'PY'
-import json, sys
-from pathlib import Path
-
-need = json.loads(Path("codes.json").read_text())
-tops = ["DELs","PAx","PLM","QUANTUM_OA","policy","tests"]
-plm_sub = ["CAO","CAD","CAE","CAM","CAV","CAI","CAS","CAP","CMP"]
-qoa_sub = ["QOX","MILP","LP","QP","QUBO","QAOA","SA","GA"]
-
-errors = []
-
-def must_exist(path):
-    if not Path(path).is_dir():
-        errors.append(f"missing dir: {path}")
-
-for base in ["Supplier/Services/domains", "Vendors/Components/domains"]:
-    for code in need:
-        for t in tops:
-            must_exist(f"{base}/{code}/{t}")
-        for s in plm_sub:
-            must_exist(f"{base}/{code}/PLM/{s}")
-        for s in qoa_sub:
-            must_exist(f"{base}/{code}/QUANTUM_OA/{s}")
-
-if errors:
-    print("\n".join(errors))
-    sys.exit(1)
-print("OK: supplier/vendor domain scaffolding present.")
-PY
+          python3 << 'EOF'
+          import json, sys
+          from pathlib import Path
+          
+          need = json.loads(Path("codes.json").read_text())
+          tops = ["DELs","PAx","PLM","QUANTUM_OA","policy","tests"]
+          plm_sub = ["CAO","CAD","CAE","CAM","CAV","CAI","CAS","CAP","CMP"]
+          qoa_sub = ["QOX","MILP","LP","QP","QUBO","QAOA","SA","GA"]
+          
+          errors = []
+          
+          def must_exist(path):
+              if not Path(path).is_dir():
+                  errors.append(f"missing dir: {path}")
+          
+          for base in ["Supplier/Services/domains", "Vendors/Components/domains"]:
+              for code in need:
+                  for t in tops:
+                      must_exist(f"{base}/{code}/{t}")
+                  for s in plm_sub:
+                      must_exist(f"{base}/{code}/PLM/{s}")
+                  for s in qoa_sub:
+                      must_exist(f"{base}/{code}/QUANTUM_OA/{s}")
+          
+          if errors:
+              print("\n".join(errors))
+              sys.exit(1)
+          print("OK: supplier/vendor domain scaffolding present.")
+          EOF

@@ -54,6 +54,9 @@ finance/txlog.jsonl
 finance/txhead.json
 badges/
 
+# Temporary CI files
+codes.json
+
 # ------------------------------
 # End of canonical ignore list
 # ------------------------------
