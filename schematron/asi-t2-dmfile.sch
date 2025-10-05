@@ -23,7 +23,7 @@
         Pattern: DMC-<MIC>-<SDC>-<SC>-<SSC>-<SSSC>-<AC><DAC>-<IC><ICV>-<ILC>-<LANG>-<COUNTRY>.xml
       -->
       <assert test="matches(document-uri(/),
-        'DMC-[A-Z0-9]{3,4}-[A-Z]-\d{2}-\d{2}-\d{2}-\d{2}[A-Z]-\d{3}[A-Z]-[A-Z]-[A-Z]{2}-[A-Z]{2}\.xml$')">
+        'DMC-[A-Z0-9]{3,4}-[A-Z]-\d{2}-\d{2}-\d{2}-\d{2}[A-Z]-[A-Z]-\d{3}[A-Z]-[A-Z]-[A-Z]{2}-[A-Z]{2}\.xml$')">
         DMC filename not compliant with S1000D pattern.
         Expected: DMC-&lt;MIC&gt;-&lt;SDC&gt;-&lt;SC&gt;-&lt;SSC&gt;-&lt;SSSC&gt;-&lt;AC&gt;&lt;DAC&gt;-&lt;IC&gt;&lt;ICV&gt;-&lt;ILC&gt;-&lt;LANG&gt;-&lt;COUNTRY&gt;.xml
       </assert>
