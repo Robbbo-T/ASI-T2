@@ -16,6 +16,8 @@ ethics_guard: "MAL-EEM"
 
 Blended Wing Body Q100 passenger aircraft under the ASI-T2 portfolio. This README is organized **Domain → Process (CAx/QOx) → ATA** for clean navigation and traceability.
 
+> **Path Migration Note**: This directory `BWB-Q100` is the current working path. Future migration to `BWB/Q100` hierarchical structure is planned per Whitepaper 5 (MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md). For certification evidence paths, see `sbom/AMPEL360/BWB/Q100/`.
+
 ---
 
 ## Quick Nav

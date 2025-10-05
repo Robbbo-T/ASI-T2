@@ -49,7 +49,7 @@ This directory contains technical whitepapers, specifications, and templates tha
 | **2** | Integration Architecture | ✅ Complete | v0.1.0 | [Whitepaper](./MASTER_WHITEPAPER_2.md) · [Schemas](./schemas/integration/) |
 | **4** | QAIM-2 Optimization | ✅ Complete | v0.1.0 | [Whitepaper](./MASTER_WHITEPAPER_4.md) |
 | **3** | QS/UTCS Provenance | 📋 Planned H1 | - | Roadmap item |
-| **5** | BWB Certification | 📋 Planned H1 | - | Roadmap item |
+| **5** | BWB Certification | ✅ Complete | v0.1.0 | [Whitepaper](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md) · [Reports](./reports/) |
 | **6** | GAIA SPACE Operations | 📋 Planned H2 | - | Roadmap item |
 | **7** | GAIA AIR Ethics | 📋 Planned H2 | - | Roadmap item |
 | **8** | H₂ Infrastructure | 📋 Planned H2 | - | Roadmap item |
@@ -236,6 +236,47 @@ Document: [MASTER_WHITEPAPER_4.md](./MASTER_WHITEPAPER_4.md)
 
 ---
 
+### Whitepaper #5: AMPEL360 BWB Certification Strategy
+
+Full Title: Whitepaper 5 · BWB Certification  
+Version: v0.1.0 (2025-10-05)  
+Status: Draft  
+Classification: INTERNAL–EVIDENCE-REQUIRED
+
+Abstract:
+
+Defines the certification strategy and evidence architecture for the AMPEL360 BWB Q100 aircraft under EASA CS-25, with special conditions for hydrogen propulsion and blended wing body configuration. Establishes Means of Compliance (MoC) matrix, compliance statements, test program outline, and UTCS-based evidence packaging for regulator-ready, replayable certification demonstrations.
+
+Key Topics:
+- Certification basis for BWB Q100 under CS-25
+- Special conditions for hydrogen fuel systems and BWB cabin
+- Means of Compliance matrix with UTCS anchors
+- Safety case integration (ARP4754A/ARP4761)
+- DO-178C/DO-254 software and hardware assurance
+- S1000D and ATA documentation mapping
+- UTCS → SPDX → Verify → Badge evidence flow
+- Test program outline (simulation, ground, flight)
+- Governance and RACI matrix
+
+Quick Navigation:
+- [1. Canon and Context](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md#1-canon-and-context)
+- [2. Certification Strategy](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md#2-certification-strategy)
+- [3. Phases and Milestones](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md#3-phases-and-milestones)
+- [4. Certification Basis](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md#4-certification-basis--initial-view)
+- [5. Means of Compliance](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md#5-means-of-compliance--matrix-skeleton)
+- [6. Safety Case and Assurance](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md#6-safety-case-and-assurance)
+- [7. Hydrogen and BWB Topics](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md#7-hydrogen-and-bwb-specific-topics)
+- [8. Evidence Architecture](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md#8-evidence-architecture--utcs--spdx--verify--badge)
+
+Artifacts:
+- [MoC Matrix CSV](./reports/moc_matrix.csv)
+- [Compliance Statements CSV](./reports/compliance_statements.csv)
+- [Open Issues CSV](./reports/open_issues.csv)
+
+Document: [MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md](./MASTER_WHITEPAPER_5_BWB_CERTIFICATION.md)
+
+---
+
 ## Governance Artifacts
 
 Complete governance package for ASI system (from Whitepaper #0):
@@ -282,13 +323,6 @@ Whitepaper #3: QS/UTCS Provenance Framework
 - 7+ year audit trails
 - DOI publishing for releases
 - Hall of Records integration
-
-Whitepaper #5: AMPEL360 BWB Certification Strategy
-- DO-178C/DO-254 compliance path
-- EASA CS-25 certification basis
-- Novel configuration airworthiness
-- Test and validation plans
-- Certification roadmap and milestones
 
 ### Long-Term (H2: 9-24 months)
 
