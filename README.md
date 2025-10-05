@@ -309,7 +309,7 @@ Interested in a 2‑week pilot (Aerospace · Energy · Defense · Logistics)?
 * **SPDX** → [https://spdx.dev](https://spdx.dev)
 
 ```
-
+```
 
 
 
