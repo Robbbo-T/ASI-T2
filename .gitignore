@@ -1,8 +1,8 @@
-# Build artifacts
-*.log
-*.tmp
+# ------------------------------
+# IDEALE / ASI-T2 canonical .gitignore
+# ------------------------------
 
-# GitHub Pages build output
+# Jekyll / site output
 _site/
 
 # Exchange packages (too large for git)
@@ -45,6 +45,15 @@ build/
 # And the specific planned UTCS output path:
 PRODUCTS/INFRANET/AQUA_OS_AIRCRAFT/optimization/aqua_pyomo_plan_utcs.json
 
-
 # Domain test sandboxes (created by test runs)
 domains/*/tests/sandbox_*/
+
+# Token ledger and badges (generated files - v3.14)
+finance/ledger.json
+finance/txlog.jsonl
+finance/txhead.json
+badges/
+
+# ------------------------------
+# End of canonical ignore list
+# ------------------------------
