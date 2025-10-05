@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-import json, sys, pathlib
+import json
+import sys
+import pathlib
 from jsonschema import Draft7Validator
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
