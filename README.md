@@ -1,4 +1,4 @@
-# 🚀 IDEALE.eu — Intelligence • Defense • Energy • Aerospace • Logistics • ESG
+# IDEALE.eu — Intelligence • Defense • Energy • Aerospace • Logistics • ESG
 
 [![CI · Evidence Verify](https://github.com/Robbbo-T/IDEALE-IEF/actions/workflows/verify.yml/badge.svg)](https://github.com/Robbbo-T/IDEALE-IEF/actions/workflows/verify.yml)
 [![SPDX 2.3](https://img.shields.io/badge/SBOM-SPDX_2.3-informational)](https://spdx.dev/specifications/)
