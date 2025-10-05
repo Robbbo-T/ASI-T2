@@ -81,40 +81,41 @@ A reusable **evidence & verification layer** adoptable in stages.
 
 ```mermaid
 graph TD
-  IDEALE[IDEALE.eu (Brand & Standards)]
-  IEF[IEF (Evidence Framework)]
-  TFA[TFA (Aerospace Profile)]
-  ASI[ASI-T2 (Reference Impl.)]
+  IDEALE[IDEALE.eu Brand & Standards]
+  IEF[IEF Evidence Framework]
+  TFA[TFA Aerospace Profile]
+  ASI[ASI-T2 Reference Implementation]
 
   IDEALE --> IEF --> TFA --> ASI
 
   subgraph Families & Programs
-    AMP[AMPEL360 (Family)]
-    GAIA[GAIA (Family)]
-    INFR[INFRANET (Programs)]
+    AMP[AMPEL360 Family]
+    GAIA[GAIA Family]
+    INFR[INFRANET Programs]
   end
 
   ASI --> AMP
   ASI --> GAIA
   ASI --> INFR
 
-  AMP --> AT[AMPEL360 Air Transport (Sub-family)]
-  AT  --> BWB[BWB-Q100 (Model)]
+  AMP --> AT[AMPEL360 Air Transport Sub-family]
+  AT  --> BWB[BWB-Q100 Model]
   AMP --> ST[Space Tourism]
-  ST  --> PLUS[AMPEL360 PLUS (Variant)]
+  ST  --> PLUS[AMPEL360 PLUS Variant]
 
   GAIA --> GAIR[GAIA-AIR]
-  GAIR --> EEUV[ETHICS-EMPATHY-UAV (Program)]
-  GAIR --> HYD[HYDROBOTS (Program)]
+  GAIR --> EEUV[ETHICS-EMPATHY-UAV Program]
+  GAIR --> HYD[HYDROBOTS Program]
   GAIA --> GSEA[GAIA-SEA]
-  GSEA --> SOUND[GAIA-SOUND (Program)]
+  GSEA --> SOUND[GAIA-SOUND Program]
   GAIA --> GSPACE[GAIA-SPACE]
   GSPACE --> ORB[ORBITAL-MACHINES]
   GSPACE --> SAT[SAT-CONSTELLATIONS]
 
   INFR --> AQUA[AQUA_OS_AIRCRAFT]
   INFR --> LH2[LH2_CORRIDOR]
-  INFR --> QAIM[QAIM / QAIM-2 (Bridge)]
+  INFR --> QAIM[QAIM / QAIM-2 Bridge]
+
 ````
 
 ---
