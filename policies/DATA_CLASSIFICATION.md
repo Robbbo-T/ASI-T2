@@ -40,7 +40,7 @@ This policy establishes a consistent data classification scheme for the IDEALE-E
 
 **Marking:**
 ```yaml
-classification: OPEN
+classification: INTERNAL–EVIDENCE-REQUIRED
 ```
 
 ---

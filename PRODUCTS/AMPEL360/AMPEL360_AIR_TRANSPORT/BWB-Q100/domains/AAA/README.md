@@ -18,7 +18,7 @@ This domain follows IDEALE-EU Federation standards. See:
 **Required Federation Fields**:
 ```yaml
 schema_version: "1.0.0"
-classification: "OPEN"           # or SHARED/RESTRICTED/CONTROLLED
+classification: INTERNAL–EVIDENCE-REQUIRED
 export_control:                  # ITAR/EAR/EU Dual-Use declarations
   itar: false
   ear: "NLR"

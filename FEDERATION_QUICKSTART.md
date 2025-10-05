@@ -160,7 +160,7 @@ If you maintain an existing domain with legacy `index.extracted.yaml`:
 1. **Add new required fields:**
    ```yaml
    schema_version: "1.0.0"
-   classification: "OPEN"  # or SHARED/RESTRICTED/CONTROLLED
+   classification: INTERNAL–EVIDENCE-REQUIRED
    export_control:
      itar: false
      ear: "NLR"

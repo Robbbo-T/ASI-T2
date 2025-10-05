@@ -341,7 +341,7 @@ Example: DMC-BWB-AAA-57-10-01-00A-040A-A-EN-US.xml
 All artifacts must be tagged with classification level:
 
 ```yaml
-classification: OPEN | SHARED | RESTRICTED | CONTROLLED
+classification: INTERNAL–EVIDENCE-REQUIRED
 ```
 
 **OPEN**: Public internet, no restrictions  

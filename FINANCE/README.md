@@ -3,7 +3,7 @@ id: ASIT2-FINANCE-README
 project: ASI-T2
 artifact: Sustainable Finance Framework
 llc: GOVERNANCE
-classification: PUBLIC-DRAFT
+classification: INTERNAL–EVIDENCE-REQUIRED
 version: 0.1.0
 release_date: "2025-10-01"
 maintainer: "ASI-T Architecture Team"

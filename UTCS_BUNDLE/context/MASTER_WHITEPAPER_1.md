@@ -3,7 +3,7 @@ id: ASIT2-WHITEPAPER-MASTER-1
 project: ASI-T2
 artifact: "Master Whitepaper #1"
 llc: GENESIS
-classification: PUBLIC-DRAFT
+classification: INTERNAL–EVIDENCE-REQUIRED
 version: "0.1.0"
 release_date: "2025-10-01"
 author: "Amedeo Pelliccia"
