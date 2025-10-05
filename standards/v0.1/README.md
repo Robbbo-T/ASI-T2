@@ -78,7 +78,7 @@ See the full JSON Schema: [`schemas/context.schema.json`](./schemas/context.sche
 | -----------------: | :-: | ------ | ------------------------------------------- |
 |      `ief_version` |  ✅  | string | Must equal `"0.1"`                          |
 |             `name` |  ✅  | string | Component or product identifier             |
-|             `type` |  ✅  | enum   | `component` \| `product` \| `service`       |
+|             `type` |  ✅  | enum   | `component` | `product` | `service`       |
 |     `exports.sbom` |  ✅  | path   | Relative path to SPDX 2.3 document          |
 |     `exports.docs` |  ❌  | path   | Optional documentation root                 |
 | `exports.evidence` |  ❌  | path   | Optional evidence directory                 |
