@@ -5,7 +5,7 @@ title: "Whitepaper 0 — TRUE_GENESIS-ASI"
 subtitle: "Aerospace Supernational Intelligence: A Federated, Policy-as-Code Intelligence Layer"
 version: 0.1.0
 release_date: "2025-10-03"
-classification: PUBLIC
+classification: INTERNAL–EVIDENCE-REQUIRED
 maintainer: "ASI-T Architecture Team"
 framework: "IDEALE-EU (Intelligence, Defense, Energy, Aerospace, Logistics, ESG · Europe)"
 marks:

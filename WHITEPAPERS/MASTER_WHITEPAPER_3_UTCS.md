@@ -3,7 +3,7 @@ id: ASIT2-WHITEPAPER-MASTER-3_UTCS
 project: ASI-T2
 artifact: Master Whitepaper #3 — QS/UTCS Provenance & Evidence Framework
 llc: GENESIS
-classification: PUBLIC-DRAFT
+classification: INTERNAL–EVIDENCE-REQUIRED
 version: 0.1.0
 release_date: "2025-10-03"
 author: "Amedeo Pelliccia"

@@ -148,7 +148,7 @@ schema_version: 1.0.0
 product: {PRODUCT}
 platform: {PLATFORM}
 domain: {DOMAIN_CODE}
-classification: {CLASSIFICATION}
+classification: INTERNAL–EVIDENCE-REQUIRED
 standards:
   - S1000D
   - STEP-AP242

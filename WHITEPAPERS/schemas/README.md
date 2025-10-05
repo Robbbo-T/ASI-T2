@@ -3,7 +3,7 @@ id: ASIT2-WHITEPAPERS-SCHEMAS
 project: ASI-T2
 artifact: Product Specification Templates and Schemas
 llc: GENESIS
-classification: PUBLIC-DRAFT
+classification: INTERNAL–EVIDENCE-REQUIRED
 version: 0.1.0
 release_date: "2025-10-01"
 maintainer: "ASI-T Architecture Team"
