@@ -10,8 +10,8 @@ DMC-BWQ1-A-57-10-10-01-00A-941A-D-EN-US.xml,Inboard Sections IPD,Forward Spar In
 DMC-BWQ1-A-57-10-10-01-00A-941A-D-EN-US.xml,Inboard Sections IPD,Forward Spar Inboard LH/RH,,002-00,2025-09-15,Structural,57-10-1003-01,Rib Interface Fitting (Ti-6Al-4V),8,pcs
 DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml,Mid Sections IPD,Forward Spar Mid Sections,BL160 - BL320,002-01,2025-09-28,Fastener Kit,FK-57-2001,"Cap-to-Web Fasteners, Mid",1,kit
 DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml,Mid Sections IPD,Forward Spar Mid Sections,BL160 - BL320,002-01,2025-09-28,Fastener Kit,FK-57-2002,Web Stiffener Rivets,1,kit
-DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml,Mid Sections IPD,Forward Spar Mid Sections,BL160 - BL320,002-01,2025-09-28,QSS Component,QSS-57-2001,Sensor Node Mid Zone,3,pcs
-DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml,Mid Sections IPD,Forward Spar Mid Sections,BL160 - BL320,002-01,2025-09-28,QSS Component,QSS-CABLE-02,Shielded Harness 1.5m,6,pcs
+DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml,Mid Sections IPD,Forward Spar Mid Sections,BL160 - BL320,002-01,2025-09-28,QSS Component,QSS-57-2001,"Sensor Node, Mid Zone",3,pcs
+DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml,Mid Sections IPD,Forward Spar Mid Sections,BL160 - BL320,002-01,2025-09-28,QSS Component,QSS-CABLE-02,"Shielded Harness, 1.5m",6,pcs
 DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml,Mid Sections IPD,Forward Spar Mid Sections,BL160 - BL320,002-01,2025-09-28,QSS Component,QSS-CTRL-01,Local Controller Node,1,pcs
 DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml,Mid Sections IPD,Forward Spar Mid Sections,BL160 - BL320,002-01,2025-09-28,Splice Kit Assembly,SK-57-2101,Inboard/Mid Splice Kit (BL160),1,pcs
 DMC-BWQ1-A-57-10-10-02-00A-941A-D-EN-US.xml,Mid Sections IPD,Forward Spar Mid Sections,BL160 - BL320,002-01,2025-09-28,Splice Kit Assembly,SK-57-2201,Mid/Outboard Splice Kit (BL240),1,pcs
