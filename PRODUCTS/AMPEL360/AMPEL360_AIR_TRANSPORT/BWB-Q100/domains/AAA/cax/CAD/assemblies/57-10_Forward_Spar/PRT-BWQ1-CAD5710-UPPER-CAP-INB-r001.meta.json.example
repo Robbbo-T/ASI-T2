@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../../contracts/schemas/cax_manifest.schema.json",
+  "id": "BWQ1-CAD-57-10-1001-01",
+  "vehicle": "AMPEL360_BWB-Q100",
+  "ata_chapter": "57-10-10",
+  "part_number": "57-10-1001-01",
+  "description": "Upper Cap Assembly, Al-Li",
+  "revision": "001",
+  "file_type": "CAD",
+  "format": "SLDPRT",
+  "created": "2025-10-04T00:00:00Z",
+  "author": "Engineering",
+  "status": "draft",
+  "dmRefs": [
+    "DMC-BWQ1-A-57-10-10-01-00A-941A-D-EN-US.xml",
+    "DMC-BWQ1-A-57-10-10-00-00A-040A-D-EN-US.xml"
+  ],
+  "utcs": {
+    "canonical_hash": "sha256:TBD",
+    "provenance": "ASIT-BWQ1-AAA-CAX-CAD-5710-0001",
+    "operator_id": "UTCS:OP:engineering-team",
+    "timestamp": "2025-10-04T00:00:00Z"
+  },
+  "effectivity": {
+    "aircraft_series": "BWB-Q100",
+    "msn_from": "001",
+    "config": "Standard"
+  },
+  "material": {
+    "specification": "AA2198-T8",
+    "type": "Aluminum-Lithium Alloy",
+    "form": "Extruded Profile"
+  },
+  "geometry": {
+    "units": "mm",
+    "coordinate_system": "BWB-Q100-MASTER",
+    "bounding_box": {
+      "min": [0, 0, 0],
+      "max": [2000, 200, 100]
+    }
+  },
+  "manufacturing": {
+    "zone": "INB",
+    "butt_line_range": "BL0-BL160",
+    "primary_process": "extrusion",
+    "secondary_processes": ["machining", "anodizing"]
+  }
+}

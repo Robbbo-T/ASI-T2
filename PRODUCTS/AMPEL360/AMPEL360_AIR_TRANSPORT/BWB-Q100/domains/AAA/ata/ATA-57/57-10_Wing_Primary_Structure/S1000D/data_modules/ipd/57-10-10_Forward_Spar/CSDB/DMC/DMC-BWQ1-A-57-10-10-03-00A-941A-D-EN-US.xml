@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:dc="http://www.purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_6/xml_schema_flat/ipd.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                systemCode="57" subSystemCode="1" subSubSystemCode="0" assyCode="10"
+                disassyCode="03" disassyCodeVariant="A"
+                infoCode="941" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="001" inWork="02"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="08" day="22"/>
+        <dmTitle>
+          <techName>AMPEL360 BWB-Q100 Wing</techName>
+          <infoName>Forward Spar Outboard Sections – Illustrated Parts Data</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="BWQ1">
+        <enterpriseName>IDEALE.eu</enterpriseName>
+      </originator>
+
+      <applic>
+        <displayText>
+          <simplePara>Applies to Forward Spar Outboard Sections (BL240-BL400, Wing Tip)</simplePara>
+        </displayText>
+      </applic>
+
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="BWQ1" systemDiffCode="A"
+                    systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00"
+                    disassyCode="00" disassyCodeVariant="A"
+                    infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+
+      <qualityAssurance><unverified/></qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <content>
+    <illustratedPartsCatalog>
+      <figure id="fig-0003-outboard">
+        <title>Forward Spar Outboard Sections</title>
+        <graphic infoEntityIdent="ICN-BWQ1-57-10-10-03-001"/>
+      </figure>
+
+      <!-- Structural Components - Caps and Webs -->
+      <catalogSeqNumber figureNumber="3" item="001">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3001-01">
+            <descrForPart>Upper Cap, CFRP UD (BL240-BL400)</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Carbon fiber unidirectional upper cap for outboard section BL240-BL400</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="002">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3001-02">
+            <descrForPart>Lower Cap, CFRP UD (BL240-BL400)</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Carbon fiber unidirectional lower cap for outboard section BL240-BL400</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="003">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3002-01">
+            <descrForPart>Web Panel, Reduced Thickness</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Reduced thickness web panel for outboard section weight optimization</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>8</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="004">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3002-02">
+            <descrForPart>Web Stringers, Co-cured</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Co-cured composite stringers for web panel reinforcement</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>16</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <!-- Tip Fittings -->
+      <catalogSeqNumber figureNumber="3" item="005">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3101-01">
+            <descrForPart>Tip Rib Closure Fitting</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Wing tip rib closure fitting for structural termination</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="006">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3102-01">
+            <descrForPart>Tip Fairing Bracket</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Mounting bracket for wing tip fairing attachment</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>2</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="007">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3103-01">
+            <descrForPart>Navigation Light Mount (Ti)</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Titanium navigation light mounting fitting at wing tip</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <!-- Aileron Hinge Components -->
+      <catalogSeqNumber figureNumber="3" item="008">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3201-01">
+            <descrForPart>Aileron Hinge Fitting, Outboard</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Outboard aileron hinge fitting for control surface attachment</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>3</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="009">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3201-02">
+            <descrForPart>Hinge Pin, CRES</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Corrosion-resistant steel hinge pin for aileron attachment</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>3</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="010">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="57-10-3201-03">
+            <descrForPart>Actuator Hardpoint Fitting</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Reinforced fitting for aileron actuator mounting</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>2</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Structural"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <!-- Fastener Kits -->
+      <catalogSeqNumber figureNumber="3" item="011">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="FK-57-3001">
+            <descrForPart>Cap-to-Web Fasteners, Outboard</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Fastener kit for cap-to-web attachment in outboard section</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Fastener Kit"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="012">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="FK-57-3002">
+            <descrForPart>Tip Attachment Hardware</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Hardware kit for wing tip attachment and closure</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Fastener Kit"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="013">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="BWQ1" partNumberValue="FK-57-3003">
+            <descrForPart>Aileron Hinge Hardware</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Complete hardware kit for aileron hinge assembly</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="Fastener Kit"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <!-- QSS Components -->
+      <catalogSeqNumber figureNumber="3" item="014">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="QSS" partNumberValue="QSS-57-3001">
+            <descrForPart>Sensor Node, Outboard Zone</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Quantum Sensorial Skin sensor node for outboard monitoring zone</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>2</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="QSS Component"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="015">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="QSS" partNumberValue="QSS-CABLE-03">
+            <descrForPart>Shielded Harness, 1m</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>1-meter shielded cable harness for QSS sensor connections</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>4</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="QSS Component"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+      <catalogSeqNumber figureNumber="3" item="016">
+        <itemSeqNumber>
+          <partRef manufacturerCodeValue="QSS" partNumberValue="QSS-TIP-01">
+            <descrForPart>Tip Sensor Array</descrForPart>
+          </partRef>
+          <itemIdentData>
+            <descrForItem>Specialized sensor array for wing tip monitoring and diagnostics</descrForItem>
+          </itemIdentData>
+          <quantityPerNextHigherAssy>1</quantityPerNextHigherAssy>
+          <functionalItemRef functionalItemNumber="QSS Component"/>
+        </itemSeqNumber>
+      </catalogSeqNumber>
+
+    </illustratedPartsCatalog>
+  </content>
+</dmodule>

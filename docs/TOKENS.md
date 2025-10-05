@@ -1,93 +1,171 @@
-# TeknIA TOKENS (TT) · Rules
+# Teknia Token (TT) — Rules & Spec v3.14
+
+**Teknia Token (TT)** is the native accounting unit for IDEALE/ASI-T2 interactions.  
+It supports verifiable incentives for knowledge exchange and a deterministic, integer-only ledger.
+
+---
 
 ## Objectives
-- Incentivize knowledge exchange (CXP) with a repo budget (TT).
-- Track costs/rewards in a verifiable append-only ledger.
 
-## Roles
-- **treasury**: repository budget holder
-- **user/<github-username>**: individual contributors
-- **sink:<event>**: absorbs costs (e.g., sink:consume)
-- **domain/<DDD>**: domain-specific accounts (future)
+- Incentivize **Context eXchange Profile (CXP)** publishing and consumption with a repo-scoped budget (TT).
+- Track costs/rewards in a verifiable **append-only** ledger with cryptographic integrity.
 
-## Economics
+---
 
-### Events & Pricing
-- **CXP Publish** → *reward* +`prices.cxp_publish_reward` TT to `user/<actor>` (from treasury) **if** `auto.reward_on_publish = true`.
-- **CXP Consume** → *charge* −`prices.cxp_consume_cost` TT from `treasury` to `sink:consume` **if** `auto.charge_on_consume = true`.
+## Roles & Accounts
 
-### Current Configuration
-See [finance/teknia.tokenomics.json](../finance/teknia.tokenomics.json):
-- Initial mint: 10,000 TT to treasury
-- Publish reward: 3 TT
-- Consume cost: 2 TT
-- Auto rewards/charges: Configurable via `auto.*` flags
+**Human & org roles**
+- `treasury` — repository budget holder
+- `user/<github-username>` — individual contributors
+- `domain/<DDD>` — domain budgets (e.g., `domain/AAA`) *(future/optional)*
+- `sink:<event>` — cost sinks (e.g., `sink:consume`)
 
-## Decision Points
+**System accounts**
+- `TREASURY` — main treasury (receives genesis minus founder allocation)
+- `FOUNDER` — founder allocation
+- `VAULT_SUSTAIN` — accumulates sustainability fees
 
-### 1. Reward on Publish?
-**Question**: Should we reward contributors for publishing context?
+> You can use either the lowercase “Rules” style (e.g., `treasury`) in docs or the uppercase system accounts in the CLI; both map cleanly in the tooling.
 
-**Options**:
-- **Yes** → Set `auto.reward_on_publish=true` (default)
-  - Incentivizes documentation and context sharing
-  - Credits come from treasury
-- **No** → Set to false
-  - Preserves treasury for other uses
-  - Reduces automatic transactions
+---
 
-### 2. Who pays for Consume?
-**Question**: Who should bear the cost of consuming external context?
+## Token Specifications (v3.14)
 
-**Current (M0)**: Treasury pays (repo-level cost)
+- **Symbol**: TT  
+- **Genesis Supply**: **2,000,000,000 TT**  
+- **Divisibility**: `1 TT = 360 deg` (integer **deg** only; no fractions)  
+- **Founder Allocation**: **5%** (100M TT / 36B deg) at genesis  
+- **Treasury at Genesis**: **95%** (1.9B TT / 684B deg)  
+- **Minimum Transfer Quantum**: **2,592 deg** (**7.2 TT**) — **transfers only**  
+- **Sustain Fees**: π-tier schedule on transfers; base 0.5% on reward/consume  
+- **Policy Immutability**: SHA-256 of policy stored in ledger and checked by `verify`
 
-**Future Options**:
-- **User-level**: Requester pays from personal account
-- **Domain-level**: Consuming domain pays from domain budget
-- **Mixed**: Treasury subsidizes, user/domain covers remainder
+### Divisibility & Precision
 
-To implement: Modify `cmd_auto()` in `tek_tokens.py` to debit from specified account.
-
-### 3. Domain allocation
-**Question**: How to distribute TT across domains?
-
-**Current (M0)**: Equal allocation declared, not yet initialized
-
-**Implementation Options**:
-1. **Equal split**: `10000 / 15 domains ≈ 667 TT` each
-2. **Activity-based**: Allocate based on contribution history
-3. **Project-based**: Allocate per active projects/priorities
-
-To implement: Run manual `TRANSFER` transactions from treasury to `domain/<DDD>`.
-
-## Operations
-
-### Initialize Ledger
-```bash
-python tools/tek_tokens.py init
+All arithmetic uses **integer deg**:
 ```
 
-Creates genesis transaction: MINT 10,000 TT to treasury.
+1 TT = 360 deg
+0.5 TT = 180 deg  ✓
+0.25 TT = 90 deg  ✓
+0.01 TT = 3.6 deg ✗ (not integer → invalid)
 
-### Check Balance
+````
+
+### Minimum Transfer Quantum (Δθmin)
+
+- **min_transfer_deg** = **2,592 deg** = **7.2 TT**  
+- Applies to **transfer** only (configurable).  
+- **reward/consume** have **no quantum restriction** (still integer deg).
+
+Valid transfer examples:
+- ✓ 2,592 deg (7.2 TT)
+- ✓ 25,920 deg (72 TT)
+- ✗ 360 deg (1 TT) — not a multiple of 2,592
+
+### Sustain Fee Mechanism (π-tiers for transfers)
+
+| Amount (TT) | Amount (deg) | Tier BPS | Fee %  | Notes                |
+|-------------|---------------|----------|--------|----------------------|
+| ≥ 7,200     | ≥ 2,592,000   | 314      | 3.14%  | 1000× Δθmin          |
+| ≥ 720       | ≥ 259,200     | 99       | 0.99%  | 100× Δθmin           |
+| ≥ 72        | ≥ 25,920      | 31.4     | 0.314% | 10× Δθmin            |
+| < 72        | < 25,920      | 50       | 0.5%   | Base transfer tier   |
+
+**Fee calculation**: `(amount_deg × tier_bps) // 10000` (integer floor division)  
+**Reward/Consume fee**: fixed **0.5%** (`50 bps`) → `(amount_deg × 50) // 10000`  
+**Fee sink**: all fees credit **`VAULT_SUSTAIN`** and are **paid by sender**.
+
+---
+
+## Economics: Events & Pricing (CXP)
+
+Automatable pricing hooks aligned to repo workflows:
+
+- **CXP Publish** → *reward* `+ prices.cxp_publish_reward` TT to `user/<actor>` (from `treasury`) **iff** `auto.reward_on_publish = true`.
+- **CXP Consume** → *charge* `− prices.cxp_consume_cost` TT from `treasury` to `sink:consume` **iff** `auto.charge_on_consume = true`.
+
+See configuration in `finance/teknia.tokenomics.json` (or `teknia.tokenomics.nofee.json`).
+
+---
+
+## Configuration Files
+
+- **Tokenomics**: `finance/teknia.tokenomics.json`  
+  - `deg_per_tt: 360`
+  - `min_transfer_deg: 2592`
+  - `sustain_fee_tiers` as above
+  - policy hashing & validation rules
+
+- **Ledger (balances + tx + policy hash)**: `finance/ledger.json`
+- **Transaction log (append-only)**: `finance/txlog.jsonl`
+- **Head pointer**: `finance/txhead.json`
+- **Badge output (example)**: `badges/tt-verified.svg` *(via CLI)*
+
+---
+
+## CLI — `tools/tek_tokens.py` (v3.14)
+
+> Python 3.8+. Integer-only arithmetic in **deg**, policy hashing, π-tier fees, min transfer quantum.
+
+### Init
+
+```bash
+# default config (π-tier fees)
+python tools/tek_tokens.py init
+
+# use alternate config (no-fee)
+python tools/tek_tokens.py --config finance/teknia.tokenomics.nofee.json init
+````
+
+Creates:
+
+* `TREASURY`: 684,000,000,000 deg (1.9B TT)
+* `FOUNDER`: 36,000,000,000 deg (100M TT)
+* `VAULT_SUSTAIN`: 0 deg
+
+### Balances
+
 ```bash
 python tools/tek_tokens.py balance
+python tools/tek_tokens.py balance --account TREASURY
+python tools/tek_tokens.py --eur-per-tt 0.10 balance
 ```
 
-Shows current balances for all holders.
+### Transfers (π-tiers, **must** be multiple of 7.2 TT)
 
-### Manual Transaction
 ```bash
-python tools/tek_tokens.py tx \
-  --type transfer \
-  --amount 10 \
-  --from treasury \
-  --to user/amedeo.pelliccia \
-  --memo "manual reward for documentation"
+python tools/tek_tokens.py transfer --from TREASURY --to alice --tt 7.2
+python tools/tek_tokens.py transfer --from TREASURY --to bob   --tt 72
 ```
 
-### Automatic CXP Events
-Triggered by GitHub Actions workflows:
+### Rewards & Consume (base 0.5% fee, **no** min quantum)
+
+```bash
+python tools/tek_tokens.py reward  --to alice       --tt 3
+python tools/tek_tokens.py consume --from user/bob  --tt 2
+```
+
+### Quotes (no mutation)
+
+```bash
+python tools/tek_tokens.py quote --op transfer --tt 720
+python tools/tek_tokens.py quote --op reward   --tt 72
+```
+
+### Verify & Badge
+
+```bash
+python tools/tek_tokens.py verify
+python tools/tek_tokens.py badge --out badges/tt-verified.svg
+```
+
+---
+
+## Automation Hooks (CXP)
+
+Typical GitHub Actions integration:
+
 ```bash
 # On CXP Publish
 python tools/tek_tokens.py auto \
@@ -102,96 +180,110 @@ python tools/tek_tokens.py auto \
   --run-id 12346
 ```
 
-### Verify Ledger Integrity
-```bash
-python tools/tek_tokens.py verify
+Toggle behavior via `auto.*` flags in tokenomics config.
+
+---
+
+## Validation Rules
+
+1. Amounts must resolve to **integer deg**.
+2. **Transfer** amounts must be **multiples of 2,592 deg** (7.2 TT).
+3. Source account must exist and have sufficient balance.
+4. No negative balances; sum of balances equals **genesis supply deg**.
+5. `verify` checks policy hash, chain consistency, and supply invariants.
+
+Example check function (conceptual):
+
+```python
+def is_valid_transfer_deg(amount_deg: int) -> bool:
+    return amount_deg > 0 and (amount_deg % 2592 == 0)
 ```
 
-Validates:
-- Chain continuity (prev links)
-- Hash integrity
-- Generates balance badge (if enabled)
+---
 
-## Ledger Structure
+## Ledger Model
 
-### Location
-`finance/ledger/tt-ledger.jsonl` (JSON Lines format)
+* **Format**: `finance/ledger.json` (balances + policy + metadata), `finance/txlog.jsonl` (append-only tx), `finance/txhead.json` (chain head).
+* **Immutability**: each tx links prior hash; `verify` recomputes and checks chain & policy hash.
+* **Corrections**: via compensating transactions only (no in-place edits).
 
-### Transaction Schema
+**Illustrative transaction entry**:
+
 ```json
 {
-  "id": "ttx_000001",
-  "ts": "2025-10-04T12:00:00Z",
-  "prev": "genesis",
-  "type": "MINT|BURN|DEBIT|CREDIT|TRANSFER",
-  "from": "mint|treasury|user/<username>|domain/<DDD>",
-  "to": "treasury|user/<username>|domain/<DDD>|sink:<event>",
-  "amount": 10.000,
-  "unit": "TT",
-  "ref": {"event": "...", "run_id": 0, "pr": 0},
-  "memo": "human-readable description",
-  "hash": "sha256(...)"
+  "tx_id": "TX-000123",
+  "type": "transfer",
+  "timestamp": "2025-10-04T12:00:00Z",
+  "from": "TREASURY",
+  "to": "alice",
+  "amount_deg": 25920,
+  "fee_deg": 81,
+  "policy_hash": "sha256:...",
+  "prev": "TX-000122",
+  "hash": "sha256:..."
 }
 ```
 
-### Append-Only Rules
-- No in-place edits allowed
-- Corrections via compensating transactions
-- Every record includes `prev` (previous id) and content `hash`
-- Forms verifiable chain from genesis
+---
 
-## Security
+## Domain Allocation (Optional)
 
-### Chain Integrity
-- Each transaction references previous via `prev` field
-- Content hash (`hash` field) prevents tampering
-- `verify` command checks full chain
+Initial ideas for distributing TT from treasury:
 
-### Access Control
-- Ledger modifications only via PR + code review
-- CI automatically appends for CXP events
-- Manual transactions require maintainer approval
+1. **Equal split** across domains (`AAA..PPP`)
+2. **Activity-based** by contribution metrics
+3. **Project-based** by portfolio priorities
 
-### Audit Trail
-- All transactions timestamped (UTC)
-- Event references (run_id, PR number) provide context
-- Git history provides additional provenance
+> Implement with `TRANSFER` transactions from `TREASURY` to `domain/<DDD>`.
 
-## Badge
+---
 
-### Configuration
-See `badges` section in [finance/teknia.tokenomics.json](../finance/teknia.tokenomics.json).
+## Security & Governance
 
-### Endpoint
-`finance/badges/tt-balance.json` follows Shields.io endpoint schema:
+* **Append-only** ledger with hash chaining
+* **Policy immutability** via stored SHA-256
+* **PR-gated** changes; CI verifies `balance` + `verify`
+* **Exportable** badges and reports for transparency
+
+---
+
+## Badge Endpoint (Shields)
+
+(Optional) Shields endpoint JSON:
+
 ```json
 {
   "schemaVersion": 1,
-  "label": "TeknIA TT",
-  "message": "10000.000 TT",
+  "label": "Teknia TT",
+  "message": "10000 TT",
   "color": "blue"
 }
 ```
 
-### Display
-Add to README:
+Embed in README:
+
 ```markdown
-![TeknIA TT](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Robbbo-T/ASI-T2/main/finance/badges/tt-balance.json)
+![Teknia TT](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/<org>/<repo>/main/finance/badges/tt-balance.json)
 ```
 
-## Future Enhancements
+---
 
-### Roadmap
-1. **Label-driven rewards**: Workflow reading `tt:reward-<n>` labels on PRs
-2. **Signatures**: Add `sig` field for GPG/OIDC job signatures
-3. **Domain accounts**: Split treasury into domain budgets
-4. **Folder-based tracking**: Auto-attribute costs based on changed files
-5. **Exchange rates**: Convert TT to other metrics (lines of code, test coverage)
+## Roadmap
 
-### Contributing
-See [GOVERNANCE.md](../governance/GOVERNANCE.md) for tokenomics change proposals.
+1. **Label-driven rewards** (`tt:reward-<n>` on PRs)
+2. **Signatures** for tx (GPG/OIDC job claims)
+3. **Domain budgets** with scheduled top-ups
+4. **Folder-based attribution** of costs/rewards
+5. **Quoting in EUR** via energy/price models
+
+---
 
 ## See Also
-- [INTERFACES.md](./INTERFACES.md) - CXP specifications
-- [CONTRIBUTING.md](../CONTRIBUTING.md) - Contribution guidelines
-- [GOVERNANCE.md](../governance/GOVERNANCE.md) - Governance model
+
+* Tokenomics config — `finance/teknia.tokenomics.json`
+* Optional no-fee config — `finance/teknia.tokenomics.nofee.json`
+* CLI — `tools/tek_tokens.py`
+* Repo README — `README.md`
+
+```
+
