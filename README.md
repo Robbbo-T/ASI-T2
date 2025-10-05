@@ -1,12 +1,18 @@
 # 🚀 IDEALE.eu — Intelligence • Defense • Energy • Aerospace • Logistics • ESG
 
+[![CI · Evidence Verify](https://github.com/Robbbo-T/IDEALE-IEF/actions/workflows/verify.yml/badge.svg)](https://github.com/Robbbo-T/IDEALE-IEF/actions/workflows/verify.yml)
+[![SPDX 2.3](https://img.shields.io/badge/SBOM-SPDX_2.3-informational)](https://spdx.dev/specifications/)
+![UTCS v5.0](https://img.shields.io/badge/UTCS-v5.0-blue)
+![Policy-Pinned Verify](https://img.shields.io/badge/Verify-policy--pinned-success)
+![Trust Mark · Pilot](https://img.shields.io/badge/IDEALE_Trust_Mark-pilot-lightgrey)
+
 [**IDEALE.eu**](https://ideale.eu) is a federated **brand & standards** program for **verifiable critical systems**. We prioritize **evidence over assertions** and publish portable formats and vendor-neutral CI hooks.
 
 > **Principle:** If it didn’t run in **CI**, it doesn’t count as **evidence**.
 
 - **Public framework:** [**IDEALE Evidence Framework (IEF)**](#ideale-evidence-framework-ief)  
 - **Primary sector profile:** [**TFA (Aerospace)**](#tfa--aerospace-domain-profile)  
-- **Reference implementation (code/templates):** [**ASI-T2**](#asi%E2%80%91t2-reference-implementation)
+- **Reference implementation (code/templates):** [**ASI-T2**](#asi-t2-reference-implementation)
 
 ---
 
@@ -15,8 +21,9 @@
 - [What is IDEALE?](#what-is-ideale)
 - [Naming Canon](#naming-canon)
 - [IDEALE Evidence Framework (IEF)](#ideale-evidence-framework-ief)
+- [Visual Overview](#visual-overview)
 - [Sector Profiles](#sector-profiles)
-- [ASI-T2 (Reference Implementation)](#asi%E2%80%91t2-reference-implementation)
+- [ASI-T2 (Reference Implementation)](#asi-t2-reference-implementation)
 - [Programs & Families (Aerospace-first)](#programs--families-aerospace-first)
 - [Evidence Objects](#evidence-objects)
 - [Conformance Ladder](#conformance-ladder)
@@ -70,15 +77,57 @@ A reusable **evidence & verification layer** adoptable in stages.
 
 ---
 
+## Visual Overview
+
+```mermaid
+graph TD
+  IDEALE[IDEALE.eu (Brand & Standards)]
+  IEF[IEF (Evidence Framework)]
+  TFA[TFA (Aerospace Profile)]
+  ASI[ASI-T2 (Reference Impl.)]
+
+  IDEALE --> IEF --> TFA --> ASI
+
+  subgraph Families & Programs
+    AMP[AMPEL360 (Family)]
+    GAIA[GAIA (Family)]
+    INFR[INFRANET (Programs)]
+  end
+
+  ASI --> AMP
+  ASI --> GAIA
+  ASI --> INFR
+
+  AMP --> AT[AMPEL360 Air Transport (Sub-family)]
+  AT  --> BWB[BWB-Q100 (Model)]
+  AMP --> ST[Space Tourism]
+  ST  --> PLUS[AMPEL360 PLUS (Variant)]
+
+  GAIA --> GAIR[GAIA-AIR]
+  GAIR --> EEUV[ETHICS-EMPATHY-UAV (Program)]
+  GAIR --> HYD[HYDROBOTS (Program)]
+  GAIA --> GSEA[GAIA-SEA]
+  GSEA --> SOUND[GAIA-SOUND (Program)]
+  GAIA --> GSPACE[GAIA-SPACE]
+  GSPACE --> ORB[ORBITAL-MACHINES]
+  GSPACE --> SAT[SAT-CONSTELLATIONS]
+
+  INFR --> AQUA[AQUA_OS_AIRCRAFT]
+  INFR --> LH2[LH2_CORRIDOR]
+  INFR --> QAIM[QAIM / QAIM-2 (Bridge)]
+````
+
+---
+
 ## Sector Profiles
 
 Profiles specialize IEF per regulatory domain. First up:
 
 ### TFA — Aerospace Domain Profile
 
-- Aligns **UTCS** fields to aviation semantics (ATA, safety, maintainability)  
-- Adds aerospace-specific **policy pins** and **conformance gates**  
-- Ships **reference badges** and **regulatory report layouts**
+* Aligns **UTCS** fields to aviation semantics (ATA, safety, maintainability)
+* Adds aerospace-specific **policy pins** and **conformance gates**
+* Ships **reference badges** and **regulatory report layouts**
 
 ---
 
@@ -86,10 +135,10 @@ Profiles specialize IEF per regulatory domain. First up:
 
 **ASI-T2** is the **reference repository** showing how to wire IEF in a real organization (templates, workflows, examples).
 
-- **Bundle:** `UTCS_BUNDLE/` (manifests, attestations)  
-- **Docs:** `WHITEPAPERS/` (architecture & interfaces)  
-- **Profiles:** TFA (aerospace)  
-- **Evidence:** `sbom/`, `badges/`, `.github/workflows/` (Verify)
+* **Bundle:** `UTCS_BUNDLE/` (manifests, attestations)
+* **Docs:** `WHITEPAPERS/` (architecture & interfaces)
+* **Profiles:** TFA (aerospace)
+* **Evidence:** `sbom/`, `badges/`, `.github/workflows/` (Verify)
 
 > Treat it as a **living reference**: copy what you need; keep your own governance.
 
@@ -97,47 +146,95 @@ Profiles specialize IEF per regulatory domain. First up:
 
 ## Programs & Families (Aerospace-first)
 
-- <a id="ampel360"></a>**AMPEL360 — Family of aircraft models**  
-  **Sub-family & models:** **AMPEL360 Air Transport** → **BWB-Q100** (model).  
+* <a id="ampel360"></a>**AMPEL360 — Family of aircraft models**
+  **Sub-family & models:** **AMPEL360 Air Transport** → **BWB-Q100** (model).
   **Variant:** **AMPEL360 PLUS** (Space Tourism). Evidence wiring: **UTCS → SPDX → Verify → Badge** aligned to **ATA**.
 
-- <a id="gaia-systems"></a>**GAIA — Family of multi-domain robotic systems**  
+* <a id="gaia-systems"></a>**GAIA — Family of multi-domain robotic systems**
   **Sub-families:** **GAIA-AIR** (UAV/UAM; includes **ETHICS-EMPATHY-UAV**, **HYDROBOTS**), **GAIA-SEA** (e.g., **GAIA-SOUND**), **GAIA-SPACE** (e.g., **ORBITAL-MACHINES**, **SAT-CONSTELLATIONS**). All expose **IEF badges** for readiness and safety lifecycle states.
 
-- <a id="qaim-2"></a>**QAIM-2 — CAx ↔ QOx bridge**  
+* <a id="qaim-2"></a>**QAIM-2 — CAx ↔ QOx bridge**
   Integrates classical engineering pipelines with quantum/hybrid optimization and generates **signed attestations** for **UTCS/CXP** replay.
 
-- <a id="hydrobots"></a>**HYDROBOTS — (under GAIA-AIR)**  
+* <a id="hydrobots"></a>**HYDROBOTS — (under GAIA-AIR)**
   Program for autonomous platforms with **evidence-first** maintenance, safety logs, and provenance manifests (lives in `GAIA-AIR/HYDROBOTS`).
 
-- **INFRANET — Infrastructure & OS**  
+* **INFRANET — Infrastructure & OS**
   Includes **AQUA_OS_AIRCRAFT** (ARINC/IMA partitions, AFDX/TSN/TTE, UTCS/QS sealing) and **LH2_CORRIDOR** (H₂ infrastructure). **QAIM** also lives here as a cross-cutting bridge.
 
 ---
 
 ## Evidence Objects
 
-- **UTCS / CXP** — machine-readable context (e.g., `UTCS/context.manifest.json`)  
-- **SPDX SBOM** — generated on build/release (`sbom/`)  
-- **Verify (CI)** — policy-pinned workflows under `.github/workflows/`  
-- **Badge + Replay** — status + links to replayable logs (`badges/`)
+* **UTCS / CXP** — machine-readable context (e.g., `UTCS/context.manifest.json`)
+* **SPDX SBOM** — generated on build/release (`sbom/`)
+* **Verify (CI)** — policy-pinned workflows under `.github/workflows/`
+* **Badge + Replay** — status + links to replayable logs (`badges/`)
 
-### UTCS (Universal Trust Context Spec)
-Defines **who/what/where/when/why**; portable, CI-friendly schemas.
+<details>
+  <summary><strong>UTCS manifest skeleton (YAML)</strong></summary>
 
-### CXP (Context Exchange Profile)
-Transport profile that wraps UTCS for inter-org evidence exchange.
+```yaml
+id: UTCS-MI:v5.0:<PRODUCT>:<CAX|QOX|PAX>:<DOMAIN>:<ATA>:<artifact-id>
+llc: SYSTEMS
+framework: IDEALE.eu
+bridge: QS→FWD→UE→FE→CB→QB      # TFA canon
+source:
+  repo_path: <relative/path/to/artifact>
+  commit: <git-sha>
+  created_at: <iso8601>
+context:
+  who:
+    org: <org-name>
+    team: <team-name>
+    owner: <contact@domain>
+  what:
+    product_family: <AMPEL360|GAIA|INFRANET>
+    product_model: <e.g., BWB-Q100>
+    variant: <e.g., PLUS|NULL>
+  where:
+    env: <OB|OFF|SIM|LAB|FLIGHT>
+    region: <EU|US|...>
+  when:
+    ts_build: <iso8601>
+    ts_verify: <iso8601>
+  why:
+    objective: <design|safety|compliance|maintenance|...>
+    ticket_ref: <issue-id or URL>
+inputs:
+  - path: <path/to/input>
+    digest: <sha256>
+outputs:
+  - type: <mesh|report|package|run|sbom>
+    path: <path/to/output>
+    digest: <sha256>
+evidence:
+  ata_dm_refs:
+    - <DMC-...-EN-US>
+  sbom:
+    format: SPDX-2.3
+    path: <sbom/<artifact>.spdx.json>
+  verify_log: <.evidence/logs/<run-id>.jsonl>
+provenance:
+  signatures:
+    qs_anchor: <sha256>
+    sigstore_bundle: <path/to/intoto.jsonl>
+ethics_guard: MAL-EEM
+classification: INTERNAL–EVIDENCE-REQUIRED
+```
+
+</details>
 
 ---
 
 ## Conformance Ladder
 
-| Level | Name         | Requirements (summary) |
-|-----:|--------------|-------------------------|
-| 1    | **Baseline** | Valid **UTCS** + one **SPDX** per release + visible **Badge** |
-| 2    | **Replayable** | Policy-pinned **Verify** + hash-chained logs + retention policy |
-| 3    | **Assured**  | Third-party attestation + sector **profile** (e.g., **TFA**) + revocation |
-| 4    | **Certified** | **IDEALE Trust Mark** aligned to EU frameworks |
+| Level | Name           | Requirements (summary)                                                    |
+| ----: | -------------- | ------------------------------------------------------------------------- |
+|     1 | **Baseline**   | Valid **UTCS** + one **SPDX** per release + visible **Badge**             |
+|     2 | **Replayable** | Policy-pinned **Verify** + hash-chained logs + retention policy           |
+|     3 | **Assured**    | Third-party attestation + sector **profile** (e.g., **TFA**) + revocation |
+|     4 | **Certified**  | **IDEALE Trust Mark** aligned to EU frameworks                            |
 
 > Progress is **evidence-driven**; each level adds traceability without lock-in.
 
@@ -145,9 +242,9 @@ Transport profile that wraps UTCS for inter-org evidence exchange.
 
 ## Roadmap Phases
 
-1. **Standards** — freeze **MVS v0.1** (UTCS/CXP schema, SPDX baseline, Verify action, Badge endpoint)  
-2. **Services** — Verification-as-a-Service (SaaS), data residency, signed attestations  
-3. **Trust Mark** — Levels, controls, assessor marketplace, revocation  
+1. **Standards** — freeze **MVS v0.1** (UTCS/CXP schema, SPDX baseline, Verify action, Badge endpoint)
+2. **Services** — Verification-as-a-Service (SaaS), data residency, signed attestations
+3. **Trust Mark** — Levels, controls, assessor marketplace, revocation
 4. **Policy Alignment** — Map primitives to EU requirements; public-sector pilots
 
 ---
@@ -156,26 +253,33 @@ Transport profile that wraps UTCS for inter-org evidence exchange.
 
 Interested in a 2-week pilot (Aerospace/Energy/Defense/Logistics)?
 
-- Email: **[pilots@ideale.eu](mailto:pilots@ideale.eu)**  
-- Issues: **[Open a Pilot request](https://github.com/Robbbo-T/IDEALE-IEF/issues/new?title=Pilot%3A%20Org)**
+* Email: **[pilots@ideale.eu](mailto:pilots@ideale.eu)**
+* Issues: **[Open a Pilot request](https://github.com/Robbbo-T/IDEALE-IEF/issues/new?title=Pilot%3A%20Org)**
 
 ---
 
 ## Link Map (for clustered keywords)
 
-- **IDEALE.eu** → https://ideale.eu  
-- **IEF** → #ideale-evidence-framework-ief  
-- **ASI-T2** → #asi%E2%80%91t2-reference-implementation  
-- **TFA** → #tfa--aerospace-domain-profile  
-- **UTCS** → #evidence-objects  
-- **CXP** → #evidence-objects  
-- **SPDX** → https://spdx.dev  
-- **SBOM** → #evidence-objects  
-- **Verify** → #evidence-objects  
-- **Badge** → #evidence-objects  
-- **AMPEL360** → #ampel360  
-- **GAIA** → #gaia-systems  
-- **QAIM-2** → #qaim-2  
-- **HYDROBOTS** → #hydrobots
+* **IDEALE.eu** → [https://ideale.eu](https://ideale.eu)
+* **IEF (IDEALE Evidence Framework)** → #ideale-evidence-framework-ief
+* **Sector Profiles** → #sector-profiles
+* **TFA (Aerospace Domain Profile)** → #tfa--aerospace-domain-profile
+* **ASI-T2 (Reference Implementation)** → #asi-t2-reference-implementation
+* **Programs & Families** → #programs--families-aerospace-first
+* **Evidence Objects** → #evidence-objects
+
+  * **UTCS** → #utcs-manifest-skeleton-yaml
+  * **CXP** → #evidence-objects
+  * **SBOM** → #evidence-objects
+  * **Verify / Badge** → #evidence-objects
+* **AMPEL360 (family)** → #ampel360
+* **GAIA (family)** → #gaia-systems
+* **QAIM-2 (bridge)** → #qaim-2
+* **HYDROBOTS (program under GAIA-AIR)** → #hydrobots
+* **Contact & Pilots** → #contact--pilots
+* **SPDX** → [https://spdx.dev](https://spdx.dev)
+
+```
+
 
 
