@@ -391,9 +391,9 @@ python scripts/validate_bridge_flow.py flow_definition.yaml
 
 ### Finance Framework
 
-- [FINANCE/README.md](../FINANCE/README.md) - Sustainable Finance overview
-- [FINANCE/PRINCIPLES.md](../FINANCE/PRINCIPLES.md) - Economic principles
-- [FINANCE/MECHANISMS.md](../FINANCE/MECHANISMS.md) - Financial mechanisms
+- [finance/README.md](../finance/README.md) - Sustainable Finance overview & Teknia Token (TT) v3.14
+- [finance/PRINCIPLES.md](../finance/PRINCIPLES.md) - Economic principles
+- [finance/SPONSORSHIP.md](../finance/SPONSORSHIP.md) - Sponsorship and funding policy
 
 ### Domain Documentation
 

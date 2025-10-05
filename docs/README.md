@@ -35,7 +35,7 @@ This directory contains comprehensive documentation for the ASI-T2 ecosystem.
 ### Other Documentation
 - Master Whitepapers: [WHITEPAPERS/](../WHITEPAPERS/)
 - UTCS Bundle: [UTCS_BUNDLE/README.md](../UTCS_BUNDLE/README.md)
-- Finance Framework: [FINANCE/README.md](../FINANCE/README.md)
+- Finance Framework: [finance/README.md](../finance/README.md)
 - Federation Quick Start: [FEDERATION_QUICKSTART.md](../FEDERATION_QUICKSTART.md)
 
 ## Contributing to Documentation

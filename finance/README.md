@@ -1,4 +1,75 @@
-# Teknia Token Finance (v3.14)
+---
+id: ASIT2-FINANCE-README
+project: ASI-T2
+artifact: Sustainable Finance Framework
+llc: GOVERNANCE
+classification: PUBLIC-DRAFT
+version: 0.1.0
+release_date: "2025-10-01"
+maintainer: "ASI-T Architecture Team"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: MAL-EEM
+canonical_hash: pending
+---
+
+# ASI-T2 Finance — Sustainable Economics & Teknia Token
+
+**Status:** Draft for technical review  
+**Whitepaper Reference:** [Master Whitepaper #1, Section 4.7](../WHITEPAPERS/MASTER_WHITEPAPER_1.md#47-sustainable-anti-speculative-finance)
+
+This directory contains both the **high-level sustainable finance framework** and the **technical implementation of Teknia Token (TT) v3.14**.
+
+---
+
+## Quick Links
+
+- [Sustainable Finance Framework](#sustainable-finance-framework)
+- [Teknia Token (TT) v3.14 Implementation](#teknia-token-tt-v314-implementation)
+- [Related Documentation](#related-documentation-1)
+
+---
+
+## Sustainable Finance Framework
+
+The ASI-T2 Sustainable Finance framework aligns economic incentives with service delivery, ethical governance, and verifiable impact, emphasizing **service-objective outcomes (SLOs)**, **operational credits**, and **quadratic funding**.
+
+### Core Principles
+
+#### 1. Service-Aligned Economics
+* **Service Level Objectives (SLOs):** Financial rewards tied to measurable service delivery.
+* **Performance-Based Allocation:** Resources flow to systems and teams meeting or exceeding SLOs.
+* **Verifiable Impact:** All claims must be backed by UTCS-anchored evidence.
+
+#### 2. Anti-Speculation Mechanisms
+* **Demurrage:** Holding costs applied to idle balances to discourage hoarding.
+* **Lock-ups:** Time-locked commitments for long-term stability.
+* **Reserve Requirements:** Mandatory reserves to ensure system solvency.
+
+#### 3. Operational Credits (Non-Transferable)
+* Cannot be traded on secondary markets
+* Expire after a defined period
+* Tied to specific products/services (AMPEL360 flights, GAIA data access, etc.)
+
+#### 4. Quadratic Funding for Public Goods
+* Matching funds favor projects with broad-based community support
+* Target: Public-interest R&D, safety improvements, open-source contributions
+* Governance: Transparent allocation via multisig treasury and MAL-EEM policies
+
+#### 5. Slashing for SLO Breaches
+* Trigger: Failure to meet committed SLOs or violation of MAL-EEM policies
+* Mechanism: Automated reduction of allocated resources
+* Appeals: Dispute resolution process with evidence review
+
+For detailed principles, see [PRINCIPLES.md](./PRINCIPLES.md).  
+For sponsorship policies, see [SPONSORSHIP.md](./SPONSORSHIP.md).
+
+---
+
+## Teknia Token (TT) v3.14 Implementation
+
+**Technical implementation of the token system with π-tier hybrid tokenomics.**
+
+### Key Parameters
 
 - **Unit of account:** `deg` (integer only)
 - **Conversion:** `1 TT = 360 deg`
@@ -147,4 +218,40 @@ The chain head is stored in `txhead.json` for efficient verification.
 
 **Version:** 3.14 (π-tier hybrid tokenomics)  
 **Previous:** 3.1 (flat 0.5% fee)
+
+---
+
+## Related Documentation
+
+### Within This Directory
+* [PRINCIPLES.md](./PRINCIPLES.md) - Detailed economic principles and mechanisms
+* [SPONSORSHIP.md](./SPONSORSHIP.md) - Sponsorship and funding policy (IDEALE-EU, MAL-EEM)
+* [teknia.tokenomics.json](./teknia.tokenomics.json) - v3.14 config with π-tiers
+* [teknia.tokenomics.nofee.json](./teknia.tokenomics.nofee.json) - v3.14 no-fee variant
+
+### External References
+* [Master Whitepaper #1](../WHITEPAPERS/MASTER_WHITEPAPER_1.md) - Architecture overview
+* [Token Documentation](../docs/TOKENS.md) - Comprehensive token guide
+* [Token CLI Tool](../tools/tek_tokens.py) - Command-line interface
+* [Token Tests](../tools/test_tek_tokens_v314.py) - Test suite
+
+---
+
+## Files in This Directory
+
+- **README.md** - This file (framework + implementation overview)
+- **PRINCIPLES.md** - Detailed economic principles (demurrage, lock-ups, slashing, treasury governance)
+- **SPONSORSHIP.md** - Sponsorship and funding policy
+- **teknia.tokenomics.json** - v3.14 config with π-tiers (committed)
+- **teknia.tokenomics.nofee.json** - v3.14 no-fee variant (committed)
+- **ledger.json** - Current account balances and metadata (generated, not committed)
+- **txlog.jsonl** - Append-only transaction log with hash chain (generated, not committed)
+- **txhead.json** - Latest transaction hash for chain verification (generated, not committed)
+
+---
+
+*Last Updated: 2025-10-01*  
+*Version: 0.1.0*  
+*Framework Status: Draft for technical review*  
+*Implementation: v3.14 (π-tier hybrid tokenomics)*
 

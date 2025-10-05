@@ -4,14 +4,14 @@ on:
   pull_request:
     paths:
       - ".github/FUNDING.yml"
-      - "FINANCE/**"
+      - "finance/**"
   push:
     branches:
       - "main"
       - "feat/**"
     paths:
       - ".github/FUNDING.yml"
-      - "FINANCE/**"
+      - "finance/**"
 
 jobs:
   validate:

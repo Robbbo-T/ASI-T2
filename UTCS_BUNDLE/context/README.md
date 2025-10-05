@@ -13,9 +13,11 @@ The **Context** section of the UiX Threading model stores:
 
 ## Contents
 
+**Note:** The canonical whitepapers are maintained in the repository's [WHITEPAPERS/](../../WHITEPAPERS/) directory. This context directory contains references and may have local snapshots for bundling purposes.
+
 ### Master Whitepaper #1: TFA V2 Architecture
 
-**File:** `MASTER_WHITEPAPER_1.md`
+**Canonical Location:** [../../WHITEPAPERS/MASTER_WHITEPAPER_1.md](../../WHITEPAPERS/MASTER_WHITEPAPER_1.md)
 
 Foundational document describing the ASI-T2 ecosystem architecture:
 
@@ -34,9 +36,9 @@ Foundational document describing the ASI-T2 ecosystem architecture:
 
 ### Master Whitepaper #3: QS/UTCS Provenance & Evidence Framework
 
-**File:** `MASTER_WHITEPAPER_3_UTCS.md`
+**Canonical Location:** [../../WHITEPAPERS/MASTER_WHITEPAPER_3_UTCS.md](../../WHITEPAPERS/MASTER_WHITEPAPER_3_UTCS.md)
 
-Complete UTCS v5.0 specification (13,709 characters):
+Complete UTCS v5.0 specification:
 
 - UiX Threading model (Context/Content/Cache & Structure/Style/Sheet)
 - Bundle layout and manifest schema
@@ -109,6 +111,7 @@ These documents are self-contained within the bundle, enabling:
 
 ## References
 
-- [Master Whitepaper #3](MASTER_WHITEPAPER_3_UTCS.md) — §1 Conceptual Model
+- [Canonical Whitepapers](../../WHITEPAPERS/) — Repository's authoritative whitepaper collection
+- [Master Whitepaper #3](../../WHITEPAPERS/MASTER_WHITEPAPER_3_UTCS.md) — §1 Conceptual Model
 - [Bundle README](../README.md) — Quick start guide
 - [Manifest](../manifest.utcs.yaml) — See `uix.context` section

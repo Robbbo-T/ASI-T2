@@ -255,10 +255,10 @@ See [UTCS_BUNDLE/README.md](UTCS_BUNDLE/README.md) for complete documentation.
 
 ### Sustainable Finance Framework
 
-The **FINANCE/** directory contains the anti-speculative economic design:
+The **finance/** directory contains the anti-speculative economic design and Teknia Token implementation:
 
-* **[Finance Overview](FINANCE/README.md)** — Framework emphasizing service-aligned economics with SLO-based rewards, operational credits, and quadratic funding
-* **[Finance Principles](FINANCE/PRINCIPLES.md)** — Detailed mechanisms including demurrage, lock-ups, slashing, and treasury governance
+* **[Finance Overview](finance/README.md)** — Framework emphasizing service-aligned economics with SLO-based rewards, operational credits, and quadratic funding, plus Teknia Token (TT) v3.14 implementation
+* **[Finance Principles](finance/PRINCIPLES.md)** — Detailed mechanisms including demurrage, lock-ups, slashing, and treasury governance
 
 ### Citation
 
