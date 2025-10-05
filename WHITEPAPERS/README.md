@@ -3,7 +3,7 @@ id: ASIT2-WHITEPAPERS-INDEX
 project: ASI-T2
 artifact: Whitepapers Index
 llc: GENESIS
-classification: PUBLIC-DRAFT
+classification: INTERNAL–EVIDENCE-REQUIRED
 version: 0.3.2
 release_date: "2025-10-04"
 last_updated: "2025-10-04 01:23:46"

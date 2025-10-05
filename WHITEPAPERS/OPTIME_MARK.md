@@ -2,7 +2,7 @@
 id: ASIT2-OPTIME-MARK
 project: ASI-T2
 artifact: OPTIME Mark Specification
-classification: PUBLIC-DRAFT
+classification: INTERNAL–EVIDENCE-REQUIRED
 version: 0.1.0
 release_date: "2025-10-04"
 maintainer: "ASI-T Architecture Team"

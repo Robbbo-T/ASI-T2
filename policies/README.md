@@ -29,7 +29,7 @@ Four-tier classification system for federation artifacts.
 **Usage**:
 ```yaml
 # In index.extracted.yaml
-classification: "OPEN"  # or SHARED/RESTRICTED/CONTROLLED
+classification: INTERNAL–EVIDENCE-REQUIRED
 ```
 
 ---

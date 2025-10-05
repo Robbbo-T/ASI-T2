@@ -3,7 +3,7 @@ id: ASIT2-WHITEPAPER-QAIM-4
 project: ASI-T2
 artifact: "Master Whitepaper #4 — QAIM-2: Quantum-Classical Optimization via AI Bridges"
 llc: GENESIS
-classification: PUBLIC-DRAFT
+classification: INTERNAL–EVIDENCE-REQUIRED
 version: "0.1.0"
 release_date: "2025-10-03"
 author: "Amedeo Pelliccia"
