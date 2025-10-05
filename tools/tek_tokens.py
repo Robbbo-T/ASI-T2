@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Teknia Token (TT) CLI - Token Management System v3.14
 
