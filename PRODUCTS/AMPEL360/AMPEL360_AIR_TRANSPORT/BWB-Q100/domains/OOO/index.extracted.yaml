@@ -2,39 +2,41 @@ schema_version: "1.0"
 product: "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT/BWB-Q100"
 domain: "OOO"
 project: "PRODUCTS/AMPEL360/AMPEL360_AIR_TRANSPORT"
+
+platform: AIRCRAFT
+classification: INTERNAL–EVIDENCE-REQUIRED
+export_control: EU-RESTRICTED
+licenses:
+  - MIT
+
+id: "AMPEL360-BWB-Q100-OOO"
+artifact: "OOO Domain Extract"
+llc: GENESIS
+version: "1.0.0"
+release_date: "2025-10-04"
+maintainer: "ASI-T Architecture Team"
+bridge: "CB→QB→UE→FE→FWD→QS"
+ethics_guard: MAL-EEM
+utcs_mi: v5.0
+canonical_hash: pending
+
 brex:
   ok: false
-  issues:
-    - "missing:id"
-    - "missing:project"
-    - "missing:artifact"
-    - "missing:llc"
-    - "missing:classification"
-    - "missing:version"
-    - "missing:release_date"
-    - "missing:maintainer"
-    - "missing:bridge"
-    - "missing:ethics_guard"
-    - "missing:utcs_mi"
-    - "missing:canonical_hash"
-  warnings:
+  issues: []
+  warnings: []
 
 extracted:
   ATA:
-    -
-      chapter: "45"
-    -
-      chapter: "46"
+    - chapter: "45"
+    - chapter: "46"
   CAx:
     - "CAI"
     - "CASE"
     - "CAX"
     - "PDM-PLM-PLM"
   QOx:
-
   PAx:
     OB:
-
     OFF:
 
 generated:
@@ -43,4 +45,5 @@ generated:
   qox: 0
   pax: 0
   files: 0
+
 timestamp: "2025-10-04T01:11:45.913759Z"
