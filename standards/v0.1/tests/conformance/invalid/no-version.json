@@ -1,0 +1,5 @@
+{
+  "name": "bad",
+  "type": "component",
+  "exports": { "sbom": "sbom/x.spdx.json" }
+}

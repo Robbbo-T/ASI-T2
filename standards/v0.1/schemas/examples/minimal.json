@@ -1,0 +1,8 @@
+{
+  "ief_version": "0.1",
+  "name": "widget-core",
+  "type": "component",
+  "exports": {
+    "sbom": "sbom/widget-core.spdx.json"
+  }
+}
